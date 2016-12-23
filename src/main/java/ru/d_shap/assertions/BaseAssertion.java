@@ -20,7 +20,7 @@
 package ru.d_shap.assertions;
 
 /**
- * Base assertion class for all assertions.
+ * Base class for all assertions.
  *
  * @author Dmitry Shapovalov
  */
