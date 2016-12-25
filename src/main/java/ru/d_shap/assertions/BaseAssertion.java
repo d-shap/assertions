@@ -57,7 +57,14 @@ public class BaseAssertion {
         if (_message == null || "".equals(_message)) {
             formattedMessage = "";
         } else {
-            formattedMessage = _message + " ";
+            if (_message.endsWith(".")) {
+                formattedMessage = _message + " ";
+            } else {
+                formattedMessage = _message + ". ";
+            }
+        }
+        if (message != null && !"".equals(message)) {
+            formattedMessage += message;
         }
         throw new AssertionError(formattedMessage);
     }
