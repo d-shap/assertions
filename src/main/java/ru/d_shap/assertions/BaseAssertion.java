@@ -31,7 +31,7 @@ public class BaseAssertion {
     /**
      * Create new object.
      *
-     * @param message the error message.
+     * @param message the assertion message.
      */
     protected BaseAssertion(final String message) {
         super();
@@ -39,9 +39,9 @@ public class BaseAssertion {
     }
 
     /**
-     * Get the error message.
+     * Get the assertion message.
      *
-     * @return the error message.
+     * @return the assertion message.
      */
     protected final String getMessage() {
         return _message;
@@ -50,23 +50,26 @@ public class BaseAssertion {
     /**
      * Fail a test.
      *
-     * @param message the error message.
+     * @param failMessage the fail message.
      */
-    protected final void fail(final String message) {
-        String formattedMessage;
+    protected final void fail(final String failMessage) {
+        String fullMessage = getAssertionMessagePart();
+        if (failMessage != null && !"".equals(failMessage)) {
+            fullMessage += failMessage;
+        }
+        throw new AssertionError(fullMessage);
+    }
+
+    private String getAssertionMessagePart() {
         if (_message == null || "".equals(_message)) {
-            formattedMessage = "";
+            return "";
         } else {
             if (_message.endsWith(".")) {
-                formattedMessage = _message + " ";
+                return _message + " ";
             } else {
-                formattedMessage = _message + ". ";
+                return _message + ". ";
             }
         }
-        if (message != null && !"".equals(message)) {
-            formattedMessage += message;
-        }
-        throw new AssertionError(formattedMessage);
     }
 
 }
