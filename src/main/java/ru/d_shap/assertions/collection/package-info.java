@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the primitive data types.
+ * Assertions for the collection data types.
  */
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.collection;
