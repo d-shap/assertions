@@ -20,9 +20,10 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
+import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the double primitive value.
+ * Assertions for the double value.
  *
  * @author Dmitry Shapovalov
  */
@@ -33,8 +34,8 @@ public class DoubleAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the error message.
+     * @param actual  the actual double value.
+     * @param message the assertion message.
      */
     public DoubleAssertion(final double actual, final String message) {
         super(message);
@@ -49,7 +50,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final double expected, final double delta) {
         if (Double.compare(expected, delta) != 0 && Math.abs(expected - delta) > delta) {
-            throw new AssertionError();
+            fail(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -61,7 +62,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final double expected, final double delta) {
         if (Double.compare(expected, delta) == 0 || Math.abs(expected - delta) <= delta) {
-            throw new AssertionError();
+            fail(FailMessages.getDifferent(String.valueOf(_actual)));
         }
     }
 
@@ -72,7 +73,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final double expected) {
         if (_actual <= expected) {
-            fail("Value should be greater then the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getGreater(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -83,7 +84,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final double expected) {
         if (_actual < expected) {
-            fail("Value should be greater then or equal to the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getGreaterOrEqual(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -94,7 +95,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isLessThan(final double expected) {
         if (_actual >= expected) {
-            fail("Value should be less then the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getLess(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -105,7 +106,79 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final double expected) {
         if (_actual > expected) {
-            fail("Value should be less then or equal to the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getLessOrEqual(String.valueOf(_actual), String.valueOf(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is zero.
+     */
+    public final void isZero() {
+        if (_actual != 0.0f) {
+            fail(FailMessages.getZero(String.valueOf(_actual)));
+        }
+    }
+
+    /**
+     * Check if the actual value is not zero.
+     */
+    public final void isNonZero() {
+        if (_actual == 0.0f) {
+            fail(FailMessages.getNonZero());
+        }
+    }
+
+    /**
+     * Check if the actual value is positive infinity.
+     */
+    public final void isPositiveInfinity() {
+        if (_actual != Double.POSITIVE_INFINITY) {
+            fail(FailMessages.getPositiveInfinity(String.valueOf(_actual)));
+        }
+    }
+
+    /**
+     * Check if the actual value is negative infinity.
+     */
+    public final void isNegativeInfinity() {
+        if (_actual != Double.NEGATIVE_INFINITY) {
+            fail(FailMessages.getNegativeInfinity(String.valueOf(_actual)));
+        }
+    }
+
+    /**
+     * Check if the actual value is infinity.
+     */
+    public final void isInfinity() {
+        if (!Double.isInfinite(_actual)) {
+            fail(FailMessages.getInfinity(String.valueOf(_actual)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NaN.
+     */
+    public final void isNaN() {
+        if (!Double.isNaN(_actual)) {
+            fail(FailMessages.getNaN(String.valueOf(_actual)));
+        }
+    }
+
+    /**
+     * Check if the actual value is not NaN.
+     */
+    public final void isNotNaN() {
+        if (Double.isNaN(_actual)) {
+            fail(FailMessages.getNotNaN());
+        }
+    }
+
+    /**
+     * Check if the actual value is finite value.
+     */
+    public final void isFinite() {
+        if (Double.isNaN(_actual) || Double.isInfinite(_actual)) {
+            fail(FailMessages.getFinite(String.valueOf(_actual)));
         }
     }
 

@@ -20,9 +20,10 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
+import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the byte primitive value.
+ * Assertions for the byte value.
  *
  * @author Dmitry Shapovalov
  */
@@ -33,8 +34,8 @@ public class ByteAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the error message.
+     * @param actual  the actual byte value.
+     * @param message the assertion message.
      */
     public ByteAssertion(final byte actual, final String message) {
         super(message);
@@ -48,7 +49,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final byte expected) {
         if (_actual != expected) {
-            fail("Values should be the same. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -59,7 +60,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final byte expected) {
         if (_actual == expected) {
-            fail("Values should be different. Actual: <" + _actual + ">");
+            fail(FailMessages.getDifferent(String.valueOf(_actual)));
         }
     }
 
@@ -70,7 +71,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final byte expected) {
         if (_actual <= expected) {
-            fail("Value should be greater then the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getGreater(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -81,7 +82,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final byte expected) {
         if (_actual < expected) {
-            fail("Value should be greater then or equal to the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getGreaterOrEqual(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -92,7 +93,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isLessThan(final byte expected) {
         if (_actual >= expected) {
-            fail("Value should be less then the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getLess(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -103,7 +104,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final byte expected) {
         if (_actual > expected) {
-            fail("Value should be less then or equal to the expected. Expected: <" + expected + ">, but was: <" + _actual + ">");
+            fail(FailMessages.getLessOrEqual(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 

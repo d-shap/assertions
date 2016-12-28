@@ -20,9 +20,10 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
+import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the boolean primitive value.
+ * Assertions for the boolean value.
  *
  * @author Dmitry Shapovalov
  */
@@ -33,8 +34,8 @@ public class BooleanAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the error message.
+     * @param actual  the actual boolean value.
+     * @param message the assertion message.
      */
     public BooleanAssertion(final boolean actual, final String message) {
         super(message);
@@ -46,7 +47,7 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isTrue() {
         if (!_actual) {
-            fail(null);
+            fail(FailMessages.getTrue());
         }
     }
 
@@ -55,7 +56,7 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isFalse() {
         if (_actual) {
-            fail(null);
+            fail(FailMessages.getFalse());
         }
     }
 
