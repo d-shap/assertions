@@ -279,12 +279,14 @@ public class StringAssertion extends ReferenceAssertion {
     public final void endsWithIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         boolean found = false;
-        int lastIndex = 0;
-        while (matcher.find(lastIndex)) {
+        int lastIndexStart = 0;
+        int lastIndexEnd = 0;
+        while (matcher.find(lastIndexStart)) {
             found = true;
-            lastIndex = matcher.end();
+            lastIndexStart = matcher.start() + 1;
+            lastIndexEnd = matcher.end();
         }
-        if (!found || lastIndex != ((String) getActual()).length()) {
+        if (!found || lastIndexEnd != ((String) getActual()).length()) {
             throw createAssertionError(FailMessages.getStringEndsWith((String) getActual(), expected));
         }
     }
@@ -297,12 +299,14 @@ public class StringAssertion extends ReferenceAssertion {
     public final void notEndsWithIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         boolean found = false;
-        int lastIndex = 0;
-        while (matcher.find(lastIndex)) {
+        int lastIndexStart = 0;
+        int lastIndexEnd = 0;
+        while (matcher.find(lastIndexStart)) {
             found = true;
-            lastIndex = matcher.end();
+            lastIndexStart = matcher.start() + 1;
+            lastIndexEnd = matcher.end();
         }
-        if (found && lastIndex == ((String) getActual()).length()) {
+        if (found && lastIndexEnd == ((String) getActual()).length()) {
             throw createAssertionError(FailMessages.getStringNotEndsWith((String) getActual(), expected));
         }
     }
