@@ -51,7 +51,7 @@ public class BaseAssertion {
      * Create new assertion error.
      *
      * @param failMessage the fail message.
-     * @return assertion error.
+     * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String failMessage) {
         return createAssertionError(_message, failMessage);
@@ -72,7 +72,7 @@ public class BaseAssertion {
      * Create new assertion error.
      *
      * @param throwable cause of the failure.
-     * @return assertion error.
+     * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Throwable throwable) {
         String fullMessage = getAssertionMessagePart(_message);
