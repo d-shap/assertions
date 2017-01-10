@@ -19,11 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.Arrays;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.Arrays;
 
 /**
  * Assertions for the object array.
@@ -47,7 +47,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((Object[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((Object[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((Object[]) getActual())));
         }
     }
 
@@ -64,7 +64,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((Object[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -75,7 +75,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final Object[] expected) {
         if (!Arrays.equals((Object[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((Object[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((Object[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -86,7 +86,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final Object[] expected) {
         if (Arrays.equals((Object[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((Object[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((Object[]) getActual())));
         }
     }
 

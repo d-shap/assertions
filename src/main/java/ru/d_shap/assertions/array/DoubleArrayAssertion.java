@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.DoubleAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions for the double array.
@@ -50,7 +50,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((double[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((double[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((double[]) getActual())));
         }
     }
 
@@ -67,7 +67,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((double[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -78,7 +78,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final double[] expected) {
         if (!Arrays.equals((double[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((double[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((double[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -89,7 +89,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final double[] expected) {
         if (Arrays.equals((double[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((double[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((double[]) getActual())));
         }
     }
 

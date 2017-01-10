@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 import ru.d_shap.assertions.primitive.ShortAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions for the short array.
@@ -50,7 +50,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((short[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((short[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((short[]) getActual())));
         }
     }
 
@@ -67,7 +67,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((short[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -78,7 +78,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final short[] expected) {
         if (!Arrays.equals((short[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((short[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((short[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -89,7 +89,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final short[] expected) {
         if (Arrays.equals((short[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((short[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((short[]) getActual())));
         }
     }
 

@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.BooleanAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions for the boolean array.
@@ -50,7 +50,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((boolean[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((boolean[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((boolean[]) getActual())));
         }
     }
 
@@ -67,7 +67,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((boolean[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -78,7 +78,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final boolean[] expected) {
         if (!Arrays.equals((boolean[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((boolean[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((boolean[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -89,7 +89,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final boolean[] expected) {
         if (Arrays.equals((boolean[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((boolean[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((boolean[]) getActual())));
         }
     }
 

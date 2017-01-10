@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.CharAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions the char array.
@@ -50,7 +50,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((char[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((char[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((char[]) getActual())));
         }
     }
 
@@ -67,7 +67,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((char[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -78,7 +78,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final char[] expected) {
         if (!Arrays.equals((char[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((char[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((char[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -89,7 +89,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final char[] expected) {
         if (Arrays.equals((char[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((char[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((char[]) getActual())));
         }
     }
 

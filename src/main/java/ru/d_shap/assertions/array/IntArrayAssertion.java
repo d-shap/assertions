@@ -19,13 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions for the int array.
@@ -49,7 +49,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((int[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((int[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((int[]) getActual())));
         }
     }
 
@@ -66,7 +66,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((int[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -77,7 +77,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final int[] expected) {
         if (!Arrays.equals((int[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((int[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((int[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -88,7 +88,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final int[] expected) {
         if (Arrays.equals((int[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((int[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((int[]) getActual())));
         }
     }
 

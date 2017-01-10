@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.FloatAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Assertions for the float array.
@@ -50,7 +50,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((float[]) getActual()).length > 0) {
-            fail(FailMessages.getArrayEmpty(arrayToString((float[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((float[]) getActual())));
         }
     }
 
@@ -67,7 +67,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((float[]) getActual()).length == 0) {
-            fail(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayNotEmpty());
         }
     }
 
@@ -78,7 +78,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final float[] expected) {
         if (!Arrays.equals((float[]) getActual(), expected)) {
-            fail(FailMessages.getSame(arrayToString((float[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(arrayToString((float[]) getActual()), arrayToString(expected)));
         }
     }
 
@@ -89,7 +89,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final float[] expected) {
         if (Arrays.equals((float[]) getActual(), expected)) {
-            fail(FailMessages.getDifferent(arrayToString((float[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(arrayToString((float[]) getActual())));
         }
     }
 
