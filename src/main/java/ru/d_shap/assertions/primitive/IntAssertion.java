@@ -49,7 +49,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final int expected) {
         if (_actual != expected) {
-            fail(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -60,7 +60,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final int expected) {
         if (_actual == expected) {
-            fail(FailMessages.getDifferent(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getDifferent(String.valueOf(_actual)));
         }
     }
 
@@ -71,7 +71,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final int expected) {
         if (_actual <= expected) {
-            fail(FailMessages.getGreater(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getGreater(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -82,7 +82,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
         if (_actual < expected) {
-            fail(FailMessages.getGreaterOrEqual(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getGreaterOrEqual(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -93,7 +93,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isLessThan(final int expected) {
         if (_actual >= expected) {
-            fail(FailMessages.getLess(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getLess(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -104,7 +104,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final int expected) {
         if (_actual > expected) {
-            fail(FailMessages.getLessOrEqual(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getLessOrEqual(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
