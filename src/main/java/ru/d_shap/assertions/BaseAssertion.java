@@ -48,26 +48,49 @@ public class BaseAssertion {
     }
 
     /**
-     * Fail a test.
+     * Create new assertion error.
      *
      * @param failMessage the fail message.
+     * @return assertion error.
      */
-    protected final void fail(final String failMessage) {
-        String fullMessage = getAssertionMessagePart();
-        if (failMessage != null && !"".equals(failMessage)) {
-            fullMessage += failMessage;
-        }
-        throw new AssertionError(fullMessage);
+    protected final AssertionError createAssertionError(final String failMessage) {
+        return createAssertionError(_message, failMessage);
     }
 
-    private String getAssertionMessagePart() {
-        if (_message == null || "".equals(_message)) {
+    static AssertionError createAssertionError(final String assertionMessage, final String failMessage) {
+        String fullMessage = getAssertionMessagePart(assertionMessage);
+        if (failMessage != null && !"".equals(failMessage)) {
+            if (!"".equals(fullMessage)) {
+                fullMessage += " ";
+            }
+            fullMessage += failMessage;
+        }
+        return new AssertionError(fullMessage);
+    }
+
+    /**
+     * Create new assertion error.
+     *
+     * @param throwable cause of the failure.
+     * @return assertion error.
+     */
+    protected final AssertionError createAssertionError(final Throwable throwable) {
+        String fullMessage = getAssertionMessagePart(_message);
+        if ("".equals(fullMessage)) {
+            return new AssertionError(throwable);
+        } else {
+            return new AssertionError(fullMessage, throwable);
+        }
+    }
+
+    private static String getAssertionMessagePart(final String assertionMessage) {
+        if (assertionMessage == null || "".equals(assertionMessage)) {
             return "";
         } else {
-            if (_message.endsWith(".")) {
-                return _message + " ";
+            if (assertionMessage.endsWith(".")) {
+                return assertionMessage;
             } else {
-                return _message + ". ";
+                return assertionMessage + ".";
             }
         }
     }
