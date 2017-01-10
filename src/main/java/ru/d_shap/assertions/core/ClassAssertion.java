@@ -44,9 +44,9 @@ public class ClassAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual class is the subtype of the specified class.
+     * Check if the actual class is the subtype of the expected class.
      *
-     * @param clazz the specified class.
+     * @param clazz the expected class.
      */
     public final void isSubtypeOf(final Class<?> clazz) {
         if (!clazz.isAssignableFrom((Class) getActual())) {
@@ -55,9 +55,9 @@ public class ClassAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual class is NOT the subtype of the specified class.
+     * Check if the actual class is NOT the subtype of the expected class.
      *
-     * @param clazz the specified class.
+     * @param clazz the expected class.
      */
     public final void isNotSubtypeOf(final Class<?> clazz) {
         if (clazz.isAssignableFrom((Class) getActual())) {
