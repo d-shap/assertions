@@ -66,6 +66,34 @@ public final class FailMessages {
 
     private static final String MSG_ARRAY_NOT_EMPTY = "Value should not be the empty array.";
 
+    private static final String MSG_CLASS_SUBTYPE = "Class should be the subtype of the expected class.";
+
+    private static final String MSG_CLASS_NOT_SUBTYPE = "Class should not be the subtype of the expected class.";
+
+    private static final String MSG_CONSTRUCTOR_DEFAULT = "Class should have one default constructor.";
+
+    private static final String MSG_CONSTRUCTOR_NOT_ACCESSIBLE = "Class constructor should not be acccessible.";
+
+    private static final String MSG_STRING_CONTAINS = "String should contain the expected string.";
+
+    private static final String MSG_STRING_NOT_CONTAINS = "String should not contain the expected string.";
+
+    private static final String MSG_STRING_PART_OF = "String should be the part of the expected string.";
+
+    private static final String MSG_STRING_NOT_PART_OF = "String should not be the part of the expected string.";
+
+    private static final String MSG_STRING_MATCHES = "String should match the expected regexp.";
+
+    private static final String MSG_STRING_NOT_MATCHES = "String should not match the expected regexp.";
+
+    private static final String MSG_STRING_STARTS_WITH = "String should start with the expected string.";
+
+    private static final String MSG_STRING_NOT_STARTS_WITH = "String should not start with the expected string.";
+
+    private static final String MSG_STRING_ENDS_WITH = "String should end with the expected string.";
+
+    private static final String MSG_STRING_NOT_ENDS_WITH = "String should not end with the expected string.";
+
     private FailMessages() {
         super();
     }
@@ -267,6 +295,156 @@ public final class FailMessages {
      */
     public static String getArrayNotEmpty() {
         return MSG_ARRAY_NOT_EMPTY;
+    }
+
+    /**
+     * Get the fail message if the actual class should be the subtype of the expected class.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getClassSubtype(final String actual, final String expected) {
+        return MSG_CLASS_SUBTYPE + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual class should not be the subtype of the expected class.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getClassNotSubtype(final String actual, final String expected) {
+        return MSG_CLASS_NOT_SUBTYPE + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual class should have the default constructor.
+     *
+     * @return the fail message.
+     */
+    public static String getConstructorDefault() {
+        return MSG_CONSTRUCTOR_DEFAULT;
+    }
+
+    /**
+     * Get the fail message if the actual class constructor should not be accessible.
+     *
+     * @return the fail message.
+     */
+    public static String getConstructorNotAccessible() {
+        return MSG_CONSTRUCTOR_NOT_ACCESSIBLE;
+    }
+
+    /**
+     * Get the fail message if the actual string should contain the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringContains(final String actual, final String expected) {
+        return MSG_STRING_CONTAINS + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should not contain the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringNotContains(final String actual, final String expected) {
+        return MSG_STRING_NOT_CONTAINS + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should be the part of the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringPartOf(final String actual, final String expected) {
+        return MSG_STRING_PART_OF + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should not be the part of the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringNotPartOf(final String actual, final String expected) {
+        return MSG_STRING_NOT_PART_OF + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should match the expected regexp.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringMatches(final String actual, final String expected) {
+        return MSG_STRING_MATCHES + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should not match the expected regexp.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringNotMatches(final String actual, final String expected) {
+        return MSG_STRING_NOT_MATCHES + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should start with the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringStartsWith(final String actual, final String expected) {
+        return MSG_STRING_STARTS_WITH + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should not start with the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringNotStartsWith(final String actual, final String expected) {
+        return MSG_STRING_NOT_STARTS_WITH + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should end with the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringEndsWith(final String actual, final String expected) {
+        return MSG_STRING_ENDS_WITH + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual string should not end with the expected string.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getStringNotEndsWith(final String actual, final String expected) {
+        return MSG_STRING_NOT_ENDS_WITH + " " + getValueMessagePart(actual, expected);
     }
 
     private static String getValueMessagePart(final String actual) {
