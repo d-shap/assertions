@@ -55,7 +55,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNull() {
         if (_actual != null) {
-            fail(FailMessages.getNull(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getNull(String.valueOf(_actual)));
         }
     }
 
@@ -64,7 +64,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNotNull() {
         if (_actual == null) {
-            fail(FailMessages.getNotNull());
+            throw createAssertionError(FailMessages.getNotNull());
         }
     }
 
@@ -75,7 +75,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isSameAs(final Object expected) {
         if (_actual != expected) {
-            fail(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
 
@@ -86,7 +86,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNotSameAs(final Object expected) {
         if (_actual == expected) {
-            fail(FailMessages.getDifferent(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getDifferent(String.valueOf(_actual)));
         }
     }
 
@@ -96,7 +96,7 @@ public class ReferenceAssertion extends BaseAssertion {
      * @return assertion.
      */
     public final ClassAssertion toClass() {
-        return new ClassAssertion(getClass(), getMessage());
+        return new ClassAssertion(getActual().getClass(), getMessage());
     }
 
 }
