@@ -93,10 +93,19 @@ public class ReferenceAssertion extends BaseAssertion {
     /**
      * Make assertion about the objects class.
      *
-     * @return assertion.
+     * @return the assertion.
      */
     public final ClassAssertion toClass() {
         return new ClassAssertion(getActual().getClass(), getMessage());
+    }
+
+    /**
+     * Check if the actual object is instance of the expected class.
+     *
+     * @param clazz the expected class.
+     */
+    public final void isInstanceOf(final Class<?> clazz) {
+        toClass().isSubtypeOf(clazz);
     }
 
 }
