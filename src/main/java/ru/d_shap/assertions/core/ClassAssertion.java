@@ -19,12 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailMessages;
-import ru.d_shap.assertions.ReferenceAssertion;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+
+import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
  * Assertions for the class.
