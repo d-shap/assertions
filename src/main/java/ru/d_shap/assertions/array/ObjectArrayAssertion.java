@@ -93,10 +93,19 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
     /**
      * Make assertion about the actual array length.
      *
-     * @return assertion.
+     * @return the assertion.
      */
     public final IntAssertion toLength() {
         return new IntAssertion(((Object[]) getActual()).length, getMessage());
+    }
+
+    /**
+     * Check if the actual array length is equal to the expected array length.
+     *
+     * @param expected the expected array length.
+     */
+    public final void hasLength(final int expected) {
+        toLength().isEqualTo(expected);
     }
 
     private String arrayToString(final Object[] elements) {

@@ -96,17 +96,26 @@ public class LongArrayAssertion extends ReferenceAssertion {
     /**
      * Make assertion about the actual array length.
      *
-     * @return assertion.
+     * @return the assertion.
      */
     public final IntAssertion toLength() {
         return new IntAssertion(((long[]) getActual()).length, getMessage());
     }
 
     /**
+     * Check if the actual array length is equal to the expected array length.
+     *
+     * @param expected the expected array length.
+     */
+    public final void hasLength(final int expected) {
+        toLength().isEqualTo(expected);
+    }
+
+    /**
      * Make assertion about the actual array item.
      *
      * @param index item index.
-     * @return assertion.
+     * @return the assertion.
      */
     public final LongAssertion toItem(final int index) {
         return new LongAssertion(((long[]) getActual())[index], getMessage());
