@@ -772,6 +772,7 @@ public final class StringAssertionTest {
         new StringAssertion("знАчЕнИе", null).endsWithIgnoreCase("значеНИЕ");
         new StringAssertion("знАчЕнИе", null).endsWithIgnoreCase("чеНИЕ");
         new StringAssertion("знАчЕнИе", null).endsWithIgnoreCase("Е");
+        new StringAssertion("aaaxxxxx", null).endsWithIgnoreCase("xxx");
 
         try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase("val");
@@ -834,6 +835,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<е> but was:<знАчЕнИе>");
+        }
+        try {
+            new StringAssertion("aaaxxxxx", null).notEndsWithIgnoreCase("xxx");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<xxx> but was:<aaaxxxxx>");
         }
     }
 
