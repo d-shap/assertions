@@ -51,7 +51,7 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isEqualTo('Z');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<Z> but was:<a>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<Z(90)> but was:<a(97)>");
         }
     }
 
@@ -69,7 +69,7 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isNotEqualTo('a');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<a>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<a(97)>");
         }
     }
 
@@ -86,13 +86,13 @@ public final class CharAssertionTest {
             new CharAssertion('x', null).isGreaterThan('x');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x> but was:<x>");
+            Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x(120)> but was:<x(120)>");
         }
         try {
             new CharAssertion('s', null).isGreaterThan('t');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<t> but was:<s>");
+            Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<t(116)> but was:<s(115)>");
         }
     }
 
@@ -109,7 +109,7 @@ public final class CharAssertionTest {
             new CharAssertion('x', null).isGreaterThanOrEqualTo('y');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<y> but was:<x>");
+            Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<y(121)> but was:<x(120)>");
         }
     }
 
@@ -126,13 +126,13 @@ public final class CharAssertionTest {
             new CharAssertion('x', null).isLessThan('x');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<x> but was:<x>");
+            Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<x(120)> but was:<x(120)>");
         }
         try {
             new CharAssertion('t', null).isLessThan('s');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<s> but was:<t>");
+            Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<s(115)> but was:<t(116)>");
         }
     }
 
@@ -149,7 +149,7 @@ public final class CharAssertionTest {
             new CharAssertion('y', null).isLessThanOrEqualTo('x');
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<x> but was:<y>");
+            Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<x(120)> but was:<y(121)>");
         }
     }
 
