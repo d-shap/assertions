@@ -49,7 +49,7 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final float expected, final float delta) {
-        if (Float.compare(expected, delta) != 0 && Math.abs(expected - delta) > delta) {
+        if (Float.compare(expected, _actual) != 0 && Math.abs(expected - _actual) > delta) {
             throw createAssertionError(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
         }
     }
@@ -61,7 +61,7 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final float expected, final float delta) {
-        if (Float.compare(expected, delta) == 0 || Math.abs(expected - delta) <= delta) {
+        if (Float.compare(expected, _actual) == 0 || Math.abs(expected - _actual) <= delta) {
             throw createAssertionError(FailMessages.getDifferent(String.valueOf(_actual)));
         }
     }
