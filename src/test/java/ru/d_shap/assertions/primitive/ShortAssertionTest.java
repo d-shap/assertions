@@ -49,7 +49,7 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 10, null).isEqualTo((short) 20);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20> but was:<10>");
         }
@@ -67,7 +67,7 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 10, null).isNotEqualTo((short) 10);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10>");
         }
@@ -84,13 +84,13 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 10, null).isGreaterThan((short) 10);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10> but was:<10>");
         }
         try {
             new ShortAssertion((short) 10, null).isGreaterThan((short) 11);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11> but was:<10>");
         }
@@ -107,7 +107,7 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 10, null).isGreaterThanOrEqualTo((short) 11);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11> but was:<10>");
         }
@@ -124,13 +124,13 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 10, null).isLessThan((short) 10);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<10>");
         }
         try {
             new ShortAssertion((short) 11, null).isLessThan((short) 10);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<11>");
         }
@@ -147,7 +147,7 @@ public final class ShortAssertionTest {
 
         try {
             new ShortAssertion((short) 11, null).isLessThanOrEqualTo((short) 10);
-            Assertions.fail("short assertion test fail");
+            Assertions.fail("Short assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<10> but was:<11>");
         }
