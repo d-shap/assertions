@@ -62,9 +62,26 @@ public class EnumAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toValueCount() {
-        Object[] values = getValues();
-        callValueOf(values);
-        return new IntAssertion(values.length, getMessage());
+        return new IntAssertion(getValueCount(), getMessage());
+    }
+
+    private int getValueCount() {
+        try {
+            Class<?> actualClass = getActual().getClass();
+
+            Method valuesMethod = actualClass.getDeclaredMethod(_valuesMethodName);
+            Object[] values = (Object[]) valuesMethod.invoke(getActual());
+
+            Method valueOfMethod = actualClass.getDeclaredMethod(_valueOfMethodName, String.class);
+            for (Object value : values) {
+                String valueName = value.toString();
+                valueOfMethod.invoke(getActual(), valueName);
+            }
+
+            return values.length;
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+            throw createAssertionError(ex);
+        }
     }
 
     /**
@@ -74,29 +91,6 @@ public class EnumAssertion extends ReferenceAssertion {
      */
     public final void hasValueCount(final int expected) {
         toValueCount().isEqualTo(expected);
-    }
-
-    private Object[] getValues() {
-        try {
-            Class<?> actualClass = getActual().getClass();
-            Method method = actualClass.getDeclaredMethod(_valuesMethodName);
-            return (Object[]) method.invoke(getActual());
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
-            throw createAssertionError(ex);
-        }
-    }
-
-    private void callValueOf(final Object[] values) {
-        try {
-            Class<?> actualClass = getActual().getClass();
-            Method method = actualClass.getDeclaredMethod(_valueOfMethodName, String.class);
-            for (Object value : values) {
-                String valueName = value.toString();
-                method.invoke(getActual(), valueName);
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
-            throw createAssertionError(ex);
-        }
     }
 
 }
