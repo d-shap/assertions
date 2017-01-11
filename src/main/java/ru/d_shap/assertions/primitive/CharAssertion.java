@@ -109,7 +109,7 @@ public class CharAssertion extends BaseAssertion {
     }
 
     private String charToString(final char value) {
-        return String.valueOf(value) + "(" + (int) value + ")";
+        return value + "(" + (int) value + ")";
     }
 
 }
