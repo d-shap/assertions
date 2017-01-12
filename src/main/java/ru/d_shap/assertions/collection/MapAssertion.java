@@ -40,4 +40,9 @@ public class MapAssertion extends ReferenceAssertion {
         super(actual, message);
     }
 
+    @Override
+    protected final String asString(final Object value) {
+        return String.valueOf(value);
+    }
+
 }

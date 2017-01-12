@@ -90,4 +90,9 @@ public class CollectionAssertion extends ReferenceAssertion {
         }
     }
 
+    @Override
+    protected final String asString(final Object value) {
+        return String.valueOf(value);
+    }
+
 }
