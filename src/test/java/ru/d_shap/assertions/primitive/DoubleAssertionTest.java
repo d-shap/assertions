@@ -92,6 +92,12 @@ public final class DoubleAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>");
         }
         try {
+            new DoubleAssertion(10.0, null).isNotEqualTo(10.0, 0.01);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>");
+        }
+        try {
             new DoubleAssertion(+0.0, null).isNotEqualTo(-0.0, 0.0);
             Assertions.fail("Double assertion test fail");
         } catch (AssertionError ex) {

@@ -92,6 +92,12 @@ public final class FloatAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>");
         }
         try {
+            new FloatAssertion(10.0f, null).isNotEqualTo(10.0f, 0.01f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>");
+        }
+        try {
             new FloatAssertion(+0.0f, null).isNotEqualTo(-0.0f, 0.0f);
             Assertions.fail("Float assertion test fail");
         } catch (AssertionError ex) {
