@@ -39,6 +39,7 @@ import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.EnumAssertion;
+import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
 import ru.d_shap.assertions.primitive.BooleanAssertion;
@@ -157,8 +158,8 @@ public final class Assertions {
      * @param actual the actual object.
      * @return the assertion.
      */
-    public static ReferenceAssertion assertThat(final Object actual) {
-        return new ReferenceAssertion(actual, null);
+    public static ObjectAssertion assertThat(final Object actual) {
+        return new ObjectAssertion(actual, null);
     }
 
     /**
