@@ -22,11 +22,11 @@ package ru.d_shap.assertions;
 import ru.d_shap.assertions.core.ClassAssertion;
 
 /**
- * Assertions for the object.
+ * Base class for all reference type assertions.
  *
  * @author Dmitry Shapovalov
  */
-public class ReferenceAssertion extends BaseAssertion {
+public abstract class ReferenceAssertion extends BaseAssertion {
 
     private final Object _actual;
 
@@ -55,7 +55,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNull() {
         if (_actual != null) {
-            throw createAssertionError(FailMessages.getNull(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getNull(asString(_actual)));
         }
     }
 
@@ -75,7 +75,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isSameAs(final Object expected) {
         if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
         }
     }
 
@@ -86,7 +86,7 @@ public class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNotSameAs(final Object expected) {
         if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
         }
     }
 
@@ -107,5 +107,13 @@ public class ReferenceAssertion extends BaseAssertion {
     public final void isInstanceOf(final Class<?> clazz) {
         toClass().isSubtypeOf(clazz);
     }
+
+    /**
+     * Get the string representation of the object.
+     *
+     * @param value the object to get the string representation.
+     * @return the string representation of the object.
+     */
+    protected abstract String asString(Object value);
 
 }
