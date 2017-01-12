@@ -93,4 +93,9 @@ public class EnumAssertion extends ReferenceAssertion {
         toValueCount().isEqualTo(expected);
     }
 
+    @Override
+    protected final String asString(final Object value) {
+        return String.valueOf(value);
+    }
+
 }

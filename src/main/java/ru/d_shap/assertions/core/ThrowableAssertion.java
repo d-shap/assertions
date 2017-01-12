@@ -83,4 +83,9 @@ public class ThrowableAssertion extends ReferenceAssertion {
         toCause().hasMessage(message);
     }
 
+    @Override
+    protected final String asString(final Object value) {
+        return String.valueOf(value);
+    }
+
 }
