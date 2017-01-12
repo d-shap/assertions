@@ -49,16 +49,8 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((int[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((int[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -77,7 +69,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final int[] expected) {
         if (!Arrays.equals((int[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((int[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -88,7 +80,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final int[] expected) {
         if (Arrays.equals((int[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((int[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -120,13 +112,14 @@ public class IntArrayAssertion extends ReferenceAssertion {
         return new IntAssertion(((int[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final int[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Integer> list = new ArrayList<>(elements.length);
-            for (int element : elements) {
-                list.add(element);
+            List<Integer> list = new ArrayList<>(((int[]) value).length);
+            for (int item : (int[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

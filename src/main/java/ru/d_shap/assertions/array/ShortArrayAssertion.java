@@ -50,16 +50,8 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((short[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((short[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final short[] expected) {
         if (!Arrays.equals((short[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((short[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final short[] expected) {
         if (Arrays.equals((short[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((short[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class ShortArrayAssertion extends ReferenceAssertion {
         return new ShortAssertion(((short[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final short[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Short> list = new ArrayList<>(elements.length);
-            for (short element : elements) {
-                list.add(element);
+            List<Short> list = new ArrayList<>(((short[]) value).length);
+            for (short item : (short[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

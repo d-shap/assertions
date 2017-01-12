@@ -50,16 +50,8 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((double[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((double[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final double[] expected) {
         if (!Arrays.equals((double[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((double[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final double[] expected) {
         if (Arrays.equals((double[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((double[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
         return new DoubleAssertion(((double[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final double[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Double> list = new ArrayList<>(elements.length);
-            for (double element : elements) {
-                list.add(element);
+            List<Double> list = new ArrayList<>(((double[]) value).length);
+            for (double item : (double[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

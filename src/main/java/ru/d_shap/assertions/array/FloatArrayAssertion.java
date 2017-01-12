@@ -50,16 +50,8 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((float[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((float[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final float[] expected) {
         if (!Arrays.equals((float[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((float[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class FloatArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final float[] expected) {
         if (Arrays.equals((float[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((float[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class FloatArrayAssertion extends ReferenceAssertion {
         return new FloatAssertion(((float[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final float[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Float> list = new ArrayList<>(elements.length);
-            for (float element : elements) {
-                list.add(element);
+            List<Float> list = new ArrayList<>(((float[]) value).length);
+            for (float item : (float[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

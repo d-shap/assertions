@@ -50,16 +50,8 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((byte[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((byte[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final byte[] expected) {
         if (!Arrays.equals((byte[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((byte[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final byte[] expected) {
         if (Arrays.equals((byte[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((byte[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class ByteArrayAssertion extends ReferenceAssertion {
         return new ByteAssertion(((byte[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final byte[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Byte> list = new ArrayList<>(elements.length);
-            for (byte element : elements) {
-                list.add(element);
+            List<Byte> list = new ArrayList<>(((byte[]) value).length);
+            for (byte item : (byte[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

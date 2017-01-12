@@ -50,16 +50,8 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((long[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((long[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final long[] expected) {
         if (!Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((long[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final long[] expected) {
         if (Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((long[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class LongArrayAssertion extends ReferenceAssertion {
         return new LongAssertion(((long[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final long[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Long> list = new ArrayList<>(elements.length);
-            for (long element : elements) {
-                list.add(element);
+            List<Long> list = new ArrayList<>(((long[]) value).length);
+            for (long item : (long[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

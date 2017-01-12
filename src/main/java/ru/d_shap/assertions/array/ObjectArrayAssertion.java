@@ -47,16 +47,8 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((Object[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((Object[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -75,7 +67,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final Object[] expected) {
         if (!Arrays.equals((Object[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((Object[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -86,7 +78,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final Object[] expected) {
         if (Arrays.equals((Object[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((Object[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -108,11 +100,12 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
         toLength().isEqualTo(expected);
     }
 
-    private String arrayToString(final Object[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            return Arrays.asList(elements).toString();
+            return Arrays.asList((Object[]) value).toString();
         }
     }
 

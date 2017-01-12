@@ -50,16 +50,8 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((boolean[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((boolean[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final boolean[] expected) {
         if (!Arrays.equals((boolean[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((boolean[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final boolean[] expected) {
         if (Arrays.equals((boolean[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((boolean[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
         return new BooleanAssertion(((boolean[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final boolean[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Boolean> list = new ArrayList<>(elements.length);
-            for (boolean element : elements) {
-                list.add(element);
+            List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
+            for (boolean item : (boolean[]) value) {
+                list.add(item);
             }
             return list.toString();
         }

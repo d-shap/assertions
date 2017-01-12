@@ -50,16 +50,8 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((char[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(arrayToString((char[]) getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
         }
-    }
-
-    /**
-     * Check if the actual array is null or empty.
-     */
-    public final void isNullOrEmpty() {
-        isNull();
-        isEmpty();
     }
 
     /**
@@ -78,7 +70,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final char[] expected) {
         if (!Arrays.equals((char[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(arrayToString((char[]) getActual()), arrayToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
         }
     }
 
@@ -89,7 +81,7 @@ public class CharArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final char[] expected) {
         if (Arrays.equals((char[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(arrayToString((char[]) getActual())));
+            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
         }
     }
 
@@ -121,13 +113,14 @@ public class CharArrayAssertion extends ReferenceAssertion {
         return new CharAssertion(((char[]) getActual())[index], getMessage());
     }
 
-    private String arrayToString(final char[] elements) {
-        if (elements == null) {
+    @Override
+    protected final String asString(final Object value) {
+        if (value == null) {
             return null;
         } else {
-            List<Character> list = new ArrayList<>(elements.length);
-            for (char element : elements) {
-                list.add(element);
+            List<Character> list = new ArrayList<>(((char[]) value).length);
+            for (char item : (char[]) value) {
+                list.add(item);
             }
             return list.toString();
         }
