@@ -77,9 +77,17 @@ public class BaseAssertion {
     protected final AssertionError createAssertionError(final Throwable throwable) {
         String fullMessage = getAssertionMessagePart(_message);
         if ("".equals(fullMessage)) {
-            return new AssertionError(throwable);
+            if (throwable == null) {
+                return new AssertionError();
+            } else {
+                return new AssertionError(throwable);
+            }
         } else {
-            return new AssertionError(fullMessage, throwable);
+            if (throwable == null) {
+                return new AssertionError(fullMessage);
+            } else {
+                return new AssertionError(fullMessage, throwable);
+            }
         }
     }
 
