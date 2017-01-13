@@ -109,7 +109,7 @@ public class IntAssertion extends BaseAssertion {
     }
 
     @Override
-    protected String asString(final Object value) {
+    protected final String asString(final Object value) {
         return String.valueOf(value);
     }
 

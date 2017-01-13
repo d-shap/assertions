@@ -109,7 +109,7 @@ public class CharAssertion extends BaseAssertion {
     }
 
     @Override
-    protected String asString(final Object value) {
+    protected final String asString(final Object value) {
         char symbol = (char) value;
         int code = (char) value;
         return symbol + "(" + code + ")";
