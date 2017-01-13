@@ -24,7 +24,7 @@ package ru.d_shap.assertions;
  *
  * @author Dmitry Shapovalov
  */
-public class BaseAssertion {
+public abstract class BaseAssertion {
 
     private final String _message;
 
@@ -102,5 +102,13 @@ public class BaseAssertion {
             }
         }
     }
+
+    /**
+     * Get the string representation of the object.
+     *
+     * @param value the object to get the string representation.
+     * @return the string representation of the object.
+     */
+    protected abstract String asString(Object value);
 
 }
