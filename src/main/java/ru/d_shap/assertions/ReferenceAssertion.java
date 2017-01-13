@@ -108,12 +108,4 @@ public abstract class ReferenceAssertion extends BaseAssertion {
         toClass().isSubtypeOf(clazz);
     }
 
-    /**
-     * Get the string representation of the object.
-     *
-     * @param value the object to get the string representation.
-     * @return the string representation of the object.
-     */
-    protected abstract String asString(Object value);
-
 }
