@@ -322,4 +322,9 @@ public final class MessageAssertion extends BaseAssertion {
         return new MapAssertion(actual, getMessage());
     }
 
+    @Override
+    protected String asString(final Object value) {
+        return null;
+    }
+
 }
