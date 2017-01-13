@@ -49,7 +49,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final char expected) {
         if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(charToString(_actual), charToString(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
         }
     }
 
@@ -60,7 +60,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final char expected) {
         if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(charToString(_actual)));
+            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
         }
     }
 
@@ -71,7 +71,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final char expected) {
         if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(charToString(_actual), charToString(expected)));
+            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
         }
     }
 
@@ -82,7 +82,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final char expected) {
         if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(charToString(_actual), charToString(expected)));
+            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
         }
     }
 
@@ -93,7 +93,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThan(final char expected) {
         if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(charToString(_actual), charToString(expected)));
+            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
         }
     }
 
@@ -104,12 +104,15 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final char expected) {
         if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(charToString(_actual), charToString(expected)));
+            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
         }
     }
 
-    private String charToString(final char value) {
-        return value + "(" + (int) value + ")";
+    @Override
+    protected String asString(final Object value) {
+        char symbol = (char) value;
+        int code = (char) value;
+        return symbol + "(" + code + ")";
     }
 
 }

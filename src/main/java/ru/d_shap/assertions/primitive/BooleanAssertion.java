@@ -60,4 +60,9 @@ public class BooleanAssertion extends BaseAssertion {
         }
     }
 
+    @Override
+    protected String asString(final Object value) {
+        return String.valueOf(value);
+    }
+
 }

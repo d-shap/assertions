@@ -49,7 +49,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final byte expected) {
         if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
         }
     }
 
@@ -60,7 +60,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final byte expected) {
         if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(String.valueOf(_actual)));
+            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
         }
     }
 
@@ -71,7 +71,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final byte expected) {
         if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
         }
     }
 
@@ -82,7 +82,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final byte expected) {
         if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
         }
     }
 
@@ -93,7 +93,7 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isLessThan(final byte expected) {
         if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
         }
     }
 
@@ -104,8 +104,13 @@ public class ByteAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final byte expected) {
         if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(String.valueOf(_actual), String.valueOf(expected)));
+            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
         }
+    }
+
+    @Override
+    protected String asString(final Object value) {
+        return String.valueOf(value);
     }
 
 }
