@@ -69,12 +69,12 @@ public class EnumAssertion extends ClassAssertion {
             Class<?> actualClass = (Class<?>) getActual();
 
             Method valuesMethod = actualClass.getDeclaredMethod(_valuesMethodName);
-            Object[] values = (Object[]) valuesMethod.invoke(getActual());
+            Object[] values = (Object[]) valuesMethod.invoke(actualClass);
 
             Method valueOfMethod = actualClass.getDeclaredMethod(_valueOfMethodName, String.class);
             for (Object value : values) {
                 String valueName = value.toString();
-                valueOfMethod.invoke(getActual(), valueName);
+                valueOfMethod.invoke(actualClass, valueName);
             }
 
             return values.length;
