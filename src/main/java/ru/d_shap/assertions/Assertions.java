@@ -38,7 +38,6 @@ import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
-import ru.d_shap.assertions.core.EnumAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
@@ -270,16 +269,6 @@ public final class Assertions {
      */
     public static StringAssertion assertThat(final String actual) {
         return new StringAssertion(actual, null);
-    }
-
-    /**
-     * Make assertion about the actual enum.
-     *
-     * @param actual the actual enum.
-     * @return the assertion.
-     */
-    public static EnumAssertion assertThat(final Enum<?> actual) {
-        return new EnumAssertion(actual, null);
     }
 
     /**
