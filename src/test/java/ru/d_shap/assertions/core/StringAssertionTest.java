@@ -867,4 +867,13 @@ public final class StringAssertionTest {
         new StringAssertion("знАчЕнИе", null).hasLength(8);
     }
 
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new StringAssertion("vAlUe", null).asString("vAlUe")).isEqualTo("vAlUe");
+        Assertions.assertThat(new StringAssertion("vAlUe", null).asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
+    }
+
 }
