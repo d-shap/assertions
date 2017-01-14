@@ -58,43 +58,43 @@ public final class ClassAssertionTest {
             new ClassAssertion(String.class, null).isSubtypeOf(Integer.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.Integer> but was:<class java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.Integer> but was:<java.lang.String>");
         }
         try {
             new ClassAssertion(Integer.class, null).isSubtypeOf(String.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.String> but was:<class java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.String> but was:<java.lang.Integer>");
         }
         try {
             new ClassAssertion(Object.class, null).isSubtypeOf(Integer.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.Integer> but was:<class java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.Integer> but was:<java.lang.Object>");
         }
         try {
             new ClassAssertion(Comparable.class, null).isSubtypeOf(Integer.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.Integer> but was:<interface java.lang.Comparable>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.Integer> but was:<java.lang.Comparable>");
         }
         try {
             new ClassAssertion(Object.class, null).isSubtypeOf(String.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.String> but was:<class java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.String> but was:<java.lang.Object>");
         }
         try {
             new ClassAssertion(Serializable.class, null).isSubtypeOf(String.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.String> but was:<interface java.io.Serializable>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.String> but was:<java.io.Serializable>");
         }
         try {
             new ClassAssertion(CharSequence.class, null).isSubtypeOf(String.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<class java.lang.String> but was:<interface java.lang.CharSequence>");
+            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.String> but was:<java.lang.CharSequence>");
         }
     }
 
@@ -115,43 +115,43 @@ public final class ClassAssertionTest {
             new ClassAssertion(Integer.class, null).isNotSubtypeOf(Integer.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<class java.lang.Integer> but was:<class java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.Integer> but was:<java.lang.Integer>");
         }
         try {
             new ClassAssertion(Integer.class, null).isNotSubtypeOf(Object.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<class java.lang.Object> but was:<class java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.Object> but was:<java.lang.Integer>");
         }
         try {
             new ClassAssertion(Integer.class, null).isNotSubtypeOf(Comparable.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<interface java.lang.Comparable> but was:<class java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.Comparable> but was:<java.lang.Integer>");
         }
         try {
             new ClassAssertion(String.class, null).isNotSubtypeOf(String.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<class java.lang.String> but was:<class java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.String> but was:<java.lang.String>");
         }
         try {
             new ClassAssertion(String.class, null).isNotSubtypeOf(Object.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<class java.lang.Object> but was:<class java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.Object> but was:<java.lang.String>");
         }
         try {
             new ClassAssertion(String.class, null).isNotSubtypeOf(Serializable.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<interface java.io.Serializable> but was:<class java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.io.Serializable> but was:<java.lang.String>");
         }
         try {
             new ClassAssertion(String.class, null).isNotSubtypeOf(CharSequence.class);
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<interface java.lang.CharSequence> but was:<class java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Class should not be the subtype of the expected class. Expected:<java.lang.CharSequence> but was:<java.lang.String>");
         }
     }
 
@@ -206,7 +206,7 @@ public final class ClassAssertionTest {
             Assertions.assertThat(ex).hasCauseInstanceOf(InstantiationException.class);
         }
         try {
-            new ClassAssertion(FailClass.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(FailConstructorClass.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasCauseInstanceOf(InvocationTargetException.class);
@@ -214,7 +214,29 @@ public final class ClassAssertionTest {
     }
 
     /**
-     * Non-instantiatable class.
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void asEnumTest() {
+        new ClassAssertion(Values.class, null).asEnum().hasValueCount(3);
+        new ClassAssertion(AbstractClass.class, null).asEnum();
+        new ClassAssertion(FailConstructorClass.class, null).asEnum();
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(null)).isNull();
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Object.class)).isEqualTo("java.lang.Object");
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(AbstractClass.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$AbstractClass");
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(FailConstructorClass.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass");
+    }
+
+    /**
+     * Test class.
      *
      * @author Dmitry Shapovalov
      */
@@ -227,16 +249,27 @@ public final class ClassAssertionTest {
     }
 
     /**
-     * Non-instantiatable class.
+     * Test class.
      *
      * @author Dmitry Shapovalov
      */
-    private static final class FailClass {
+    private static final class FailConstructorClass {
 
-        private FailClass() {
+        private FailConstructorClass() {
             super();
             throw new IllegalStateException("Exception in instantiation");
         }
+
+    }
+
+    /**
+     * Test enum.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private enum Values {
+
+        VALUE_1, VALUE_2, VALUE_3
 
     }
 
