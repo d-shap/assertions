@@ -26,16 +26,29 @@ package ru.d_shap.assertions;
  */
 public abstract class BaseAssertion {
 
+    private final Object _actual;
+
     private final String _message;
 
     /**
      * Create new object.
      *
+     * @param actual  the actual object.
      * @param message the assertion message.
      */
-    protected BaseAssertion(final String message) {
+    protected BaseAssertion(final Object actual, final String message) {
         super();
+        _actual = actual;
         _message = message;
+    }
+
+    /**
+     * Get the actual object.
+     *
+     * @return the actual object.
+     */
+    protected final Object getActual() {
+        return _actual;
     }
 
     /**
@@ -101,6 +114,15 @@ public abstract class BaseAssertion {
                 return assertionMessage + ".";
             }
         }
+    }
+
+    /**
+     * Get the string representation of the actual object.
+     *
+     * @return the string representation of the actual object.
+     */
+    protected final String actualAsString() {
+        return asString(_actual);
     }
 
     /**
