@@ -89,9 +89,22 @@ public class ClassAssertion extends ReferenceAssertion {
         }
     }
 
+    /**
+     * Make assertion about the class as enum.
+     *
+     * @return the assertion.
+     */
+    public final EnumAssertion asEnum() {
+        return new EnumAssertion((Class<?>) getActual(), getMessage());
+    }
+
     @Override
     protected final String asString(final Object value) {
-        return String.valueOf(value);
+        if (value == null) {
+            return null;
+        } else {
+            return ((Class<?>) value).getName();
+        }
     }
 
 }

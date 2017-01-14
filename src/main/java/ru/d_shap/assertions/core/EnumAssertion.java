@@ -22,15 +22,14 @@ package ru.d_shap.assertions.core;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
- * Assertions for the enum.
+ * Assertions for the enum class.
  *
  * @author Dmitry Shapovalov
  */
-public class EnumAssertion extends ReferenceAssertion {
+public class EnumAssertion extends ClassAssertion {
 
     private static final String VALUES_METHOD_NAME = "values";
 
@@ -43,14 +42,14 @@ public class EnumAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual enum.
+     * @param actual  the actual enum class.
      * @param message the assertion message.
      */
-    public EnumAssertion(final Enum<?> actual, final String message) {
+    public EnumAssertion(final Class<?> actual, final String message) {
         this(actual, message, VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
     }
 
-    EnumAssertion(final Enum<?> actual, final String message, final String valuesMethodName, final String valueOfMethodName) {
+    EnumAssertion(final Class<?> actual, final String message, final String valuesMethodName, final String valueOfMethodName) {
         super(actual, message);
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
@@ -67,7 +66,7 @@ public class EnumAssertion extends ReferenceAssertion {
 
     private int getValueCount() {
         try {
-            Class<?> actualClass = getActual().getClass();
+            Class<?> actualClass = (Class<?>) getActual();
 
             Method valuesMethod = actualClass.getDeclaredMethod(_valuesMethodName);
             Object[] values = (Object[]) valuesMethod.invoke(getActual());
@@ -91,11 +90,6 @@ public class EnumAssertion extends ReferenceAssertion {
      */
     public final void hasValueCount(final int expected) {
         toValueCount().isEqualTo(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return String.valueOf(value);
     }
 
 }
