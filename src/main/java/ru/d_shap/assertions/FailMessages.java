@@ -90,6 +90,8 @@ public final class FailMessages {
 
     private static final String MSG_CONSTRUCTOR_NOT_ACCESSIBLE = "Class constructor should not be acccessible.";
 
+    private static final String MSG_ENUM_CLASS = "Class should be the enum class.";
+
     private static final String MSG_STRING_CONTAINS = "String should contain the expected string.";
 
     private static final String MSG_STRING_NOT_CONTAINS = "String should not contain the expected string.";
@@ -431,6 +433,16 @@ public final class FailMessages {
      */
     public static String getConstructorNotAccessible() {
         return MSG_CONSTRUCTOR_NOT_ACCESSIBLE;
+    }
+
+    /**
+     * Get the fail message if the actual class should be the enum class.
+     *
+     * @param actual the actual value.
+     * @return the fail message.
+     */
+    public static String getEnumClass(final String actual) {
+        return MSG_ENUM_CLASS + " " + getValueMessagePart(actual);
     }
 
     /**
