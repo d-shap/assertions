@@ -42,17 +42,9 @@ public final class EnumAssertionTest {
      */
     @Test
     public void toValueCountTest() {
-        new EnumAssertion(Values.VALUE_1, null).toValueCount().isEqualTo(3);
-        new EnumAssertion(Values.VALUE_1, null).toValueCount().isGreaterThan(2);
-        new EnumAssertion(Values.VALUE_1, null).toValueCount().isLessThan(4);
-
-        new EnumAssertion(Values.VALUE_2, null).toValueCount().isEqualTo(3);
-        new EnumAssertion(Values.VALUE_2, null).toValueCount().isGreaterThan(2);
-        new EnumAssertion(Values.VALUE_2, null).toValueCount().isLessThan(4);
-
-        new EnumAssertion(Values.VALUE_3, null).toValueCount().isEqualTo(3);
-        new EnumAssertion(Values.VALUE_3, null).toValueCount().isGreaterThan(2);
-        new EnumAssertion(Values.VALUE_3, null).toValueCount().isLessThan(4);
+        new EnumAssertion(Values.class, null).toValueCount().isEqualTo(3);
+        new EnumAssertion(Values.class, null).toValueCount().isGreaterThan(2);
+        new EnumAssertion(Values.class, null).toValueCount().isLessThan(4);
     }
 
     /**
@@ -60,9 +52,7 @@ public final class EnumAssertionTest {
      */
     @Test
     public void hasValueCountTest() {
-        new EnumAssertion(Values.VALUE_1, null).hasValueCount(3);
-        new EnumAssertion(Values.VALUE_2, null).hasValueCount(3);
-        new EnumAssertion(Values.VALUE_3, null).hasValueCount(3);
+        new EnumAssertion(Values.class, null).hasValueCount(3);
     }
 
     /**
@@ -71,13 +61,13 @@ public final class EnumAssertionTest {
     @Test
     public void callReflectionCatchStatemensTest() {
         try {
-            new EnumAssertion(Values.VALUE_1, null, "wrongMethodName", "valueOf").toValueCount();
+            new EnumAssertion(Values.class, null, "wrongMethodName", "valueOf").toValueCount();
             Assertions.fail("Enum assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasCauseInstanceOf(NoSuchMethodException.class);
         }
         try {
-            new EnumAssertion(Values.VALUE_1, null, "values", "wrongMethodName").toValueCount();
+            new EnumAssertion(Values.class, null, "values", "wrongMethodName").toValueCount();
             Assertions.fail("Enum assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasCauseInstanceOf(NoSuchMethodException.class);
