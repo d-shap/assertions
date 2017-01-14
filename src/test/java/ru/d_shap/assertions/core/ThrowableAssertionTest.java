@@ -21,6 +21,8 @@ package ru.d_shap.assertions.core;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.Assertions;
+
 /**
  * Tests for {@link ThrowableAssertion}.
  *
@@ -91,6 +93,16 @@ public final class ThrowableAssertionTest {
     public void hasCauseMessageTest() {
         new ThrowableAssertion(new Exception(new RuntimeException("value")), null).hasCauseMessage("value");
         new ThrowableAssertion(new Exception(new RuntimeException("some exception value")), null).hasCauseMessage("some exception value");
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Throwable())).isEqualTo("java.lang.Throwable");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Exception())).isEqualTo("java.lang.Exception");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");
     }
 
 }
