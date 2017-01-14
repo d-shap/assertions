@@ -39,12 +39,22 @@ public final class BaseAssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void getActualTest() {
+        Object object = new Object();
+        Assertions.assertThat(new BaseAssertionImpl(object, null).getActual()).isNotNull();
+        Assertions.assertThat(new BaseAssertionImpl(object, null).getActual()).isSameAs(object);
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void getMessageTest() {
-        Assertions.assertThat(new BaseAssertion(null).getMessage()).isNull();
-        Assertions.assertThat(new BaseAssertion("some message").getMessage()).isEqualTo("some message");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).getMessage()).isNull();
+        Assertions.assertThat(new BaseAssertionImpl(null, "some message").getMessage()).isEqualTo("some message");
 
         try {
-            Assertions.assertThat(new BaseAssertion("some message").getMessage()).isEqualTo("some other message");
+            Assertions.assertThat(new BaseAssertionImpl(null, "some message").getMessage()).isEqualTo("some other message");
             Assertions.fail("Base assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<some other message> but was:<some message>");
@@ -56,21 +66,21 @@ public final class BaseAssertionTest {
      */
     @Test
     public void createAssertionErrorWithFailMessageTest() {
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError((String) null).getMessage()).isEqualTo("");
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError("").getMessage()).isEqualTo("");
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError("fail message").getMessage()).isEqualTo("fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((String) null).getMessage()).isEqualTo("");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("").getMessage()).isEqualTo("");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message").getMessage()).isEqualTo("fail message");
 
-        Assertions.assertThat(new BaseAssertion("").createAssertionError((String) null).getMessage()).isEqualTo("");
-        Assertions.assertThat(new BaseAssertion("").createAssertionError("").getMessage()).isEqualTo("");
-        Assertions.assertThat(new BaseAssertion("").createAssertionError("fail message").getMessage()).isEqualTo("fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError((String) null).getMessage()).isEqualTo("");
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("").getMessage()).isEqualTo("");
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message").getMessage()).isEqualTo("fail message");
 
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
 
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
     }
 
     /**
@@ -78,21 +88,48 @@ public final class BaseAssertionTest {
      */
     @Test
     public void createAssertionErrorWithThrowableTest() {
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError((Throwable) null).getMessage()).isNull();
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertion(null).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((Throwable) null).getMessage()).isNull();
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
+        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
 
-        Assertions.assertThat(new BaseAssertion("").createAssertionError((Throwable) null).getMessage()).isNull();
-        Assertions.assertThat(new BaseAssertion("").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertion("").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError((Throwable) null).getMessage()).isNull();
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
+        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
 
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
 
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertion("assertion message.").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void actualAsStringTest() {
+        Assertions.assertThat(new BaseAssertionImpl("value", null).actualAsString()).isEqualTo("value");
+        Assertions.assertThat(new BaseAssertionImpl(1, null).actualAsString()).isEqualTo("1");
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseAssertionImpl extends BaseAssertion {
+
+        BaseAssertionImpl(final Object actual, final String message) {
+            super(actual, message);
+        }
+
+        @Override
+        protected String asString(final Object value) {
+            return String.valueOf(value);
+        }
+
     }
 
 }
