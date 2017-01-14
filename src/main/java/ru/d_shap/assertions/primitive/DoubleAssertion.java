@@ -29,8 +29,6 @@ import ru.d_shap.assertions.FailMessages;
  */
 public class DoubleAssertion extends BaseAssertion {
 
-    private final double _actual;
-
     /**
      * Create new object.
      *
@@ -38,8 +36,7 @@ public class DoubleAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     public DoubleAssertion(final double actual, final String message) {
-        super(message);
-        _actual = actual;
+        super(actual, message);
     }
 
     /**
@@ -49,8 +46,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final double expected, final double delta) {
-        if (Double.compare(expected, _actual) != 0 && Math.abs(expected - _actual) > delta) {
-            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
+        if (Double.compare(expected, (Double) getActual()) != 0 && Math.abs(expected - (Double) getActual()) > delta) {
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -61,8 +58,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final double expected, final double delta) {
-        if (Double.compare(expected, _actual) == 0 || Math.abs(expected - _actual) <= delta) {
-            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
+        if (Double.compare(expected, (Double) getActual()) == 0 || Math.abs(expected - (Double) getActual()) <= delta) {
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -72,8 +69,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final double expected) {
-        if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
+        if ((Double) getActual() <= expected) {
+            throw createAssertionError(FailMessages.getGreater(actualAsString(), asString(expected)));
         }
     }
 
@@ -83,8 +80,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final double expected) {
-        if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
+        if ((Double) getActual() < expected) {
+            throw createAssertionError(FailMessages.getGreaterOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -94,8 +91,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final double expected) {
-        if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
+        if ((Double) getActual() >= expected) {
+            throw createAssertionError(FailMessages.getLess(actualAsString(), asString(expected)));
         }
     }
 
@@ -105,8 +102,8 @@ public class DoubleAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final double expected) {
-        if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
+        if ((Double) getActual() > expected) {
+            throw createAssertionError(FailMessages.getLessOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -114,8 +111,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is zero.
      */
     public final void isZero() {
-        if (_actual != 0.0f) {
-            throw createAssertionError(FailMessages.getZero(asString(_actual)));
+        if ((Double) getActual() != 0.0f) {
+            throw createAssertionError(FailMessages.getZero(actualAsString()));
         }
     }
 
@@ -123,7 +120,7 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is not zero.
      */
     public final void isNonZero() {
-        if (_actual == 0.0f) {
+        if ((Double) getActual() == 0.0f) {
             throw createAssertionError(FailMessages.getNonZero());
         }
     }
@@ -132,8 +129,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is positive infinity.
      */
     public final void isPositiveInfinity() {
-        if (_actual != Double.POSITIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getPositiveInfinity(asString(_actual)));
+        if ((Double) getActual() != Double.POSITIVE_INFINITY) {
+            throw createAssertionError(FailMessages.getPositiveInfinity(actualAsString()));
         }
     }
 
@@ -141,8 +138,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is negative infinity.
      */
     public final void isNegativeInfinity() {
-        if (_actual != Double.NEGATIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getNegativeInfinity(asString(_actual)));
+        if ((Double) getActual() != Double.NEGATIVE_INFINITY) {
+            throw createAssertionError(FailMessages.getNegativeInfinity(actualAsString()));
         }
     }
 
@@ -150,8 +147,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is infinity.
      */
     public final void isInfinity() {
-        if (!Double.isInfinite(_actual)) {
-            throw createAssertionError(FailMessages.getInfinity(asString(_actual)));
+        if (!((Double) getActual()).isInfinite()) {
+            throw createAssertionError(FailMessages.getInfinity(actualAsString()));
         }
     }
 
@@ -159,8 +156,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is NaN.
      */
     public final void isNaN() {
-        if (!Double.isNaN(_actual)) {
-            throw createAssertionError(FailMessages.getNaN(asString(_actual)));
+        if (!((Double) getActual()).isNaN()) {
+            throw createAssertionError(FailMessages.getNaN(actualAsString()));
         }
     }
 
@@ -168,7 +165,7 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is not NaN.
      */
     public final void isNotNaN() {
-        if (Double.isNaN(_actual)) {
+        if (((Double) getActual()).isNaN()) {
             throw createAssertionError(FailMessages.getNotNaN());
         }
     }
@@ -177,8 +174,8 @@ public class DoubleAssertion extends BaseAssertion {
      * Check if the actual value is finite value.
      */
     public final void isFinite() {
-        if (Double.isNaN(_actual) || Double.isInfinite(_actual)) {
-            throw createAssertionError(FailMessages.getFinite(asString(_actual)));
+        if (((Double) getActual()).isNaN() || ((Double) getActual()).isInfinite()) {
+            throw createAssertionError(FailMessages.getFinite(actualAsString()));
         }
     }
 

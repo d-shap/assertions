@@ -29,8 +29,6 @@ import ru.d_shap.assertions.FailMessages;
  */
 public class BooleanAssertion extends BaseAssertion {
 
-    private final boolean _actual;
-
     /**
      * Create new object.
      *
@@ -38,15 +36,14 @@ public class BooleanAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     public BooleanAssertion(final boolean actual, final String message) {
-        super(message);
-        _actual = actual;
+        super(actual, message);
     }
 
     /**
      * Check if the actual value is true.
      */
     public final void isTrue() {
-        if (!_actual) {
+        if (!((Boolean) getActual())) {
             throw createAssertionError(FailMessages.getTrue());
         }
     }
@@ -55,7 +52,7 @@ public class BooleanAssertion extends BaseAssertion {
      * Check if the actual value is false.
      */
     public final void isFalse() {
-        if (_actual) {
+        if ((Boolean) getActual()) {
             throw createAssertionError(FailMessages.getFalse());
         }
     }

@@ -29,8 +29,6 @@ import ru.d_shap.assertions.FailMessages;
  */
 public class FloatAssertion extends BaseAssertion {
 
-    private final float _actual;
-
     /**
      * Create new object.
      *
@@ -38,8 +36,7 @@ public class FloatAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     public FloatAssertion(final float actual, final String message) {
-        super(message);
-        _actual = actual;
+        super(actual, message);
     }
 
     /**
@@ -49,8 +46,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final float expected, final float delta) {
-        if (Float.compare(expected, _actual) != 0 && Math.abs(expected - _actual) > delta) {
-            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
+        if (Float.compare(expected, (Float) getActual()) != 0 && Math.abs(expected - (Float) getActual()) > delta) {
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -61,8 +58,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final float expected, final float delta) {
-        if (Float.compare(expected, _actual) == 0 || Math.abs(expected - _actual) <= delta) {
-            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
+        if (Float.compare(expected, (Float) getActual()) == 0 || Math.abs(expected - (Float) getActual()) <= delta) {
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -72,8 +69,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final float expected) {
-        if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
+        if ((Float) getActual() <= expected) {
+            throw createAssertionError(FailMessages.getGreater(actualAsString(), asString(expected)));
         }
     }
 
@@ -83,8 +80,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final float expected) {
-        if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
+        if ((Float) getActual() < expected) {
+            throw createAssertionError(FailMessages.getGreaterOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -94,8 +91,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final float expected) {
-        if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
+        if ((Float) getActual() >= expected) {
+            throw createAssertionError(FailMessages.getLess(actualAsString(), asString(expected)));
         }
     }
 
@@ -105,8 +102,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final float expected) {
-        if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
+        if ((Float) getActual() > expected) {
+            throw createAssertionError(FailMessages.getLessOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -114,8 +111,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is zero.
      */
     public final void isZero() {
-        if (_actual != 0.0f) {
-            throw createAssertionError(FailMessages.getZero(asString(_actual)));
+        if ((Float) getActual() != 0.0f) {
+            throw createAssertionError(FailMessages.getZero(actualAsString()));
         }
     }
 
@@ -123,7 +120,7 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is not zero.
      */
     public final void isNonZero() {
-        if (_actual == 0.0f) {
+        if ((Float) getActual() == 0.0f) {
             throw createAssertionError(FailMessages.getNonZero());
         }
     }
@@ -132,8 +129,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is positive infinity.
      */
     public final void isPositiveInfinity() {
-        if (_actual != Float.POSITIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getPositiveInfinity(asString(_actual)));
+        if ((Float) getActual() != Float.POSITIVE_INFINITY) {
+            throw createAssertionError(FailMessages.getPositiveInfinity(actualAsString()));
         }
     }
 
@@ -141,8 +138,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is negative infinity.
      */
     public final void isNegativeInfinity() {
-        if (_actual != Float.NEGATIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getNegativeInfinity(asString(_actual)));
+        if ((Float) getActual() != Float.NEGATIVE_INFINITY) {
+            throw createAssertionError(FailMessages.getNegativeInfinity(actualAsString()));
         }
     }
 
@@ -150,8 +147,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is infinity.
      */
     public final void isInfinity() {
-        if (!Float.isInfinite(_actual)) {
-            throw createAssertionError(FailMessages.getInfinity(asString(_actual)));
+        if (!((Float) getActual()).isInfinite()) {
+            throw createAssertionError(FailMessages.getInfinity(actualAsString()));
         }
     }
 
@@ -159,8 +156,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is NaN.
      */
     public final void isNaN() {
-        if (!Float.isNaN(_actual)) {
-            throw createAssertionError(FailMessages.getNaN(asString(_actual)));
+        if (!((Float) getActual()).isNaN()) {
+            throw createAssertionError(FailMessages.getNaN(actualAsString()));
         }
     }
 
@@ -168,7 +165,7 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is not NaN.
      */
     public final void isNotNaN() {
-        if (Float.isNaN(_actual)) {
+        if (((Float) getActual()).isNaN()) {
             throw createAssertionError(FailMessages.getNotNaN());
         }
     }
@@ -177,8 +174,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is finite value.
      */
     public final void isFinite() {
-        if (Float.isNaN(_actual) || Float.isInfinite(_actual)) {
-            throw createAssertionError(FailMessages.getFinite(asString(_actual)));
+        if (((Float) getActual()).isNaN() || ((Float) getActual()).isInfinite()) {
+            throw createAssertionError(FailMessages.getFinite(actualAsString()));
         }
     }
 

@@ -29,8 +29,6 @@ import ru.d_shap.assertions.FailMessages;
  */
 public class IntAssertion extends BaseAssertion {
 
-    private final int _actual;
-
     /**
      * Create new object.
      *
@@ -38,8 +36,7 @@ public class IntAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     public IntAssertion(final int actual, final String message) {
-        super(message);
-        _actual = actual;
+        super(actual, message);
     }
 
     /**
@@ -48,8 +45,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final int expected) {
-        if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
+        if ((Integer) getActual() != expected) {
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -59,8 +56,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final int expected) {
-        if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
+        if ((Integer) getActual() == expected) {
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -70,8 +67,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final int expected) {
-        if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
+        if ((Integer) getActual() <= expected) {
+            throw createAssertionError(FailMessages.getGreater(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,8 +78,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
-        if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
+        if ((Integer) getActual() < expected) {
+            throw createAssertionError(FailMessages.getGreaterOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -92,8 +89,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final int expected) {
-        if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
+        if ((Integer) getActual() >= expected) {
+            throw createAssertionError(FailMessages.getLess(actualAsString(), asString(expected)));
         }
     }
 
@@ -103,8 +100,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final int expected) {
-        if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
+        if ((Integer) getActual() > expected) {
+            throw createAssertionError(FailMessages.getLessOrEqual(actualAsString(), asString(expected)));
         }
     }
 

@@ -29,8 +29,6 @@ import ru.d_shap.assertions.FailMessages;
  */
 public class CharAssertion extends BaseAssertion {
 
-    private final char _actual;
-
     /**
      * Create new object.
      *
@@ -38,8 +36,7 @@ public class CharAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     public CharAssertion(final char actual, final String message) {
-        super(message);
-        _actual = actual;
+        super(actual, message);
     }
 
     /**
@@ -48,8 +45,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final char expected) {
-        if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
+        if ((Character) getActual() != expected) {
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -59,8 +56,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final char expected) {
-        if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
+        if ((Character) getActual() == expected) {
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -70,8 +67,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final char expected) {
-        if (_actual <= expected) {
-            throw createAssertionError(FailMessages.getGreater(asString(_actual), asString(expected)));
+        if ((Character) getActual() <= expected) {
+            throw createAssertionError(FailMessages.getGreater(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,8 +78,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final char expected) {
-        if (_actual < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(asString(_actual), asString(expected)));
+        if ((Character) getActual() < expected) {
+            throw createAssertionError(FailMessages.getGreaterOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -92,8 +89,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final char expected) {
-        if (_actual >= expected) {
-            throw createAssertionError(FailMessages.getLess(asString(_actual), asString(expected)));
+        if ((Character) getActual() >= expected) {
+            throw createAssertionError(FailMessages.getLess(actualAsString(), asString(expected)));
         }
     }
 
@@ -103,8 +100,80 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final char expected) {
-        if (_actual > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(asString(_actual), asString(expected)));
+        if ((Character) getActual() > expected) {
+            throw createAssertionError(FailMessages.getLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is the alphabetic symbol.
+     */
+    public final void isAlphabetic() {
+        if (!Character.isAlphabetic((Character) getActual())) {
+            throw createAssertionError(FailMessages.getAlphabetic(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the digit.
+     */
+    public final void isDigit() {
+        if (!Character.isDigit((Character) getActual())) {
+            throw createAssertionError(FailMessages.getDigit(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the letter.
+     */
+    public final void isLetter() {
+        if (!Character.isLetter((Character) getActual())) {
+            throw createAssertionError(FailMessages.getLetter(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the letter or the digit.
+     */
+    public final void isLetterOrDigit() {
+        if (!Character.isLetterOrDigit((Character) getActual())) {
+            throw createAssertionError(FailMessages.getLetterOrDigit(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the control symbol.
+     */
+    public final void isControl() {
+        if (!Character.isISOControl((Character) getActual())) {
+            throw createAssertionError(FailMessages.getControl(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the lower case symbol.
+     */
+    public final void isLowerCase() {
+        if (!Character.isLowerCase((Character) getActual())) {
+            throw createAssertionError(FailMessages.getLowerCase(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the upper case symbol.
+     */
+    public final void isUpperCase() {
+        if (!Character.isUpperCase((Character) getActual())) {
+            throw createAssertionError(FailMessages.getUpperCase(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is the whitespace symbol.
+     */
+    public final void isWhitespace() {
+        if (!Character.isWhitespace((Character) getActual())) {
+            throw createAssertionError(FailMessages.getWhitespace(actualAsString()));
         }
     }
 
