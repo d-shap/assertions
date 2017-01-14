@@ -38,7 +38,6 @@ import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
-import ru.d_shap.assertions.core.EnumAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
@@ -59,7 +58,7 @@ import ru.d_shap.assertions.primitive.ShortAssertion;
 public final class MessageAssertion extends BaseAssertion {
 
     MessageAssertion(final String message) {
-        super(message);
+        super(null, message);
     }
 
     /**
@@ -260,16 +259,6 @@ public final class MessageAssertion extends BaseAssertion {
      */
     public StringAssertion that(final String actual) {
         return new StringAssertion(actual, getMessage());
-    }
-
-    /**
-     * Make assertion about the actual enum.
-     *
-     * @param actual the actual enum.
-     * @return the assertion.
-     */
-    public EnumAssertion that(final Enum<?> actual) {
-        return new EnumAssertion(actual, getMessage());
     }
 
     /**
