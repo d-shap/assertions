@@ -43,6 +43,7 @@ public final class BooleanAssertionTest {
     @Test
     public void isTrueTest() {
         new BooleanAssertion(true, null).isTrue();
+
         try {
             new BooleanAssertion(false, null).isTrue();
             Assertions.fail("Boolean assertion test fail");
@@ -57,12 +58,22 @@ public final class BooleanAssertionTest {
     @Test
     public void isFalseTest() {
         new BooleanAssertion(false, null).isFalse();
+
         try {
             new BooleanAssertion(true, null).isFalse();
             Assertions.fail("Boolean assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
+    }
+
+    /**
+     * {@link BooleanAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new BooleanAssertion(true, null).asString(true)).isEqualTo("true");
+        Assertions.assertThat(new BooleanAssertion(true, null).asString(false)).isEqualTo("false");
     }
 
 }

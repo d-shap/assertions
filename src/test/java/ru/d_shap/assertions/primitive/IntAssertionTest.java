@@ -153,4 +153,14 @@ public final class IntAssertionTest {
         }
     }
 
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new IntAssertion(5, null).asString(5)).isEqualTo("5");
+        Assertions.assertThat(new IntAssertion(5, null).asString(60)).isEqualTo("60");
+        Assertions.assertThat(new IntAssertion(5, null).asString(244)).isEqualTo("244");
+    }
+
 }

@@ -435,4 +435,14 @@ public final class DoubleAssertionTest {
         }
     }
 
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new DoubleAssertion(10.0, null).asString(5.0)).isEqualTo("5.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, null).asString(60.0)).isEqualTo("60.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, null).asString(244.0)).isEqualTo("244.0");
+    }
+
 }

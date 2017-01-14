@@ -153,4 +153,14 @@ public final class ByteAssertionTest {
         }
     }
 
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 5)).isEqualTo("5");
+        Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 60)).isEqualTo("60");
+        Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 244)).isEqualTo("-12");
+    }
+
 }

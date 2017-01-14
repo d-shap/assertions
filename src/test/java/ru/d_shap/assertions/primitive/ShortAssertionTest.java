@@ -153,4 +153,14 @@ public final class ShortAssertionTest {
         }
     }
 
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 5)).isEqualTo("5");
+        Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 60)).isEqualTo("60");
+        Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 244)).isEqualTo("244");
+    }
+
 }
