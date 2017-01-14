@@ -95,7 +95,12 @@ public class ClassAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
-        return new EnumAssertion((Class<?>) getActual(), getMessage());
+        Class<?> actualClass = (Class<?>) getActual();
+        if (Enum.class.isAssignableFrom(actualClass)) {
+            return new EnumAssertion(actualClass, getMessage());
+        } else {
+            throw createAssertionError(FailMessages.getEnumClass(actualAsString()));
+        }
     }
 
     @Override
