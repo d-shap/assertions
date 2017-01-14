@@ -50,7 +50,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((boolean[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
         }
     }
 
@@ -70,7 +70,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final boolean[] expected) {
         if (!Arrays.equals((boolean[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,7 +81,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final boolean[] expected) {
         if (Arrays.equals((boolean[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 

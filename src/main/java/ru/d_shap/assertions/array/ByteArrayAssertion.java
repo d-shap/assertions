@@ -50,7 +50,7 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((byte[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
         }
     }
 
@@ -70,7 +70,7 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final byte[] expected) {
         if (!Arrays.equals((byte[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,7 +81,7 @@ public class ByteArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final byte[] expected) {
         if (Arrays.equals((byte[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 

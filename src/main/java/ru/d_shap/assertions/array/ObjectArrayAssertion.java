@@ -47,7 +47,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((Object[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(asString(getActual())));
+            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
         }
     }
 
@@ -67,7 +67,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final Object[] expected) {
         if (!Arrays.equals((Object[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -78,7 +78,7 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final Object[] expected) {
         if (Arrays.equals((Object[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
