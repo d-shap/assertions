@@ -69,6 +69,15 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual collection size is equal to the expected collection size.
+     *
+     * @param expected the expected collection size.
+     */
+    public final void hasSize(final int expected) {
+        toSize().isEqualTo(expected);
+    }
+
+    /**
      * Check if the actual collection has the expected value.
      *
      * @param expected the expected value.
