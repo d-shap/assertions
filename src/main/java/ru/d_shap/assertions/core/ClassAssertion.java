@@ -50,7 +50,7 @@ public class ClassAssertion extends ReferenceAssertion {
      */
     public final void isSubtypeOf(final Class<?> clazz) {
         if (!clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassSubtype(asString(getActual()), asString(clazz)));
+            throw createAssertionError(FailMessages.getClassSubtype(actualAsString(), asString(clazz)));
         }
     }
 
@@ -61,7 +61,7 @@ public class ClassAssertion extends ReferenceAssertion {
      */
     public final void isNotSubtypeOf(final Class<?> clazz) {
         if (clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassNotSubtype(asString(getActual()), asString(clazz)));
+            throw createAssertionError(FailMessages.getClassNotSubtype(actualAsString(), asString(clazz)));
         }
     }
 

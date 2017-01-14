@@ -52,7 +52,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final String expected) {
         if (!getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -63,7 +63,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final String expected) {
         if (getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -74,7 +74,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isEqualToIgnoreCase(final String expected) {
         if (!((String) getActual()).equalsIgnoreCase(expected)) {
-            throw createAssertionError(FailMessages.getSame(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -85,7 +85,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
         if (((String) getActual()).equalsIgnoreCase(expected)) {
-            throw createAssertionError(FailMessages.getDifferent(asString(getActual())));
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
@@ -96,7 +96,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void contains(final String expected) {
         if (!((String) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getStringContains(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringContains(actualAsString(), asString(expected)));
         }
     }
 
@@ -107,7 +107,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void notContains(final String expected) {
         if (((String) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getStringNotContains(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotContains(actualAsString(), asString(expected)));
         }
     }
 
@@ -119,7 +119,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void containsIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find()) {
-            throw createAssertionError(FailMessages.getStringContains(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringContains(actualAsString(), asString(expected)));
         }
     }
 
@@ -131,7 +131,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void notContainsIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find()) {
-            throw createAssertionError(FailMessages.getStringNotContains(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotContains(actualAsString(), asString(expected)));
         }
     }
 
@@ -142,7 +142,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isPartOf(final String expected) {
         if (!expected.contains((String) getActual())) {
-            throw createAssertionError(FailMessages.getStringPartOf(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringPartOf(actualAsString(), asString(expected)));
         }
     }
 
@@ -153,7 +153,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void isNotPartOf(final String expected) {
         if (expected.contains((String) getActual())) {
-            throw createAssertionError(FailMessages.getStringNotPartOf(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotPartOf(actualAsString(), asString(expected)));
         }
     }
 
@@ -165,7 +165,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isPartOfIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
-            throw createAssertionError(FailMessages.getStringPartOf(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringPartOf(actualAsString(), asString(expected)));
         }
     }
 
@@ -177,7 +177,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotPartOfIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
-            throw createAssertionError(FailMessages.getStringNotPartOf(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotPartOf(actualAsString(), asString(expected)));
         }
     }
 
@@ -188,7 +188,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void matches(final String expected) {
         if (!((String) getActual()).matches(expected)) {
-            throw createAssertionError(FailMessages.getStringMatches(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringMatches(actualAsString(), asString(expected)));
         }
     }
 
@@ -199,7 +199,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void notMatches(final String expected) {
         if (((String) getActual()).matches(expected)) {
-            throw createAssertionError(FailMessages.getStringNotMatches(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotMatches(actualAsString(), asString(expected)));
         }
     }
 
@@ -210,7 +210,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void startsWith(final String expected) {
         if (!((String) getActual()).startsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringStartsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringStartsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -221,7 +221,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void notStartsWith(final String expected) {
         if (((String) getActual()).startsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringNotStartsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotStartsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -233,7 +233,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void startsWithIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find() || matcher.start() != 0) {
-            throw createAssertionError(FailMessages.getStringStartsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringStartsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -245,7 +245,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void notStartsWithIgnoreCase(final String expected) {
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find() && matcher.start() == 0) {
-            throw createAssertionError(FailMessages.getStringNotStartsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotStartsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -256,7 +256,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void endsWith(final String expected) {
         if (!((String) getActual()).endsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringEndsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringEndsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -267,7 +267,7 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void notEndsWith(final String expected) {
         if (((String) getActual()).endsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringNotEndsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotEndsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -287,7 +287,7 @@ public class StringAssertion extends ReferenceAssertion {
             lastIndexEnd = matcher.end();
         }
         if (!found || lastIndexEnd != ((String) getActual()).length()) {
-            throw createAssertionError(FailMessages.getStringEndsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringEndsWith(actualAsString(), asString(expected)));
         }
     }
 
@@ -307,7 +307,7 @@ public class StringAssertion extends ReferenceAssertion {
             lastIndexEnd = matcher.end();
         }
         if (found && lastIndexEnd == ((String) getActual()).length()) {
-            throw createAssertionError(FailMessages.getStringNotEndsWith(asString(getActual()), asString(expected)));
+            throw createAssertionError(FailMessages.getStringNotEndsWith(actualAsString(), asString(expected)));
         }
     }
 
