@@ -58,6 +58,22 @@ public final class FailMessages {
 
     private static final String MSG_FINITE = "Value should be finite.";
 
+    private static final String MSG_ALPHABETIC = "Character should be the alphabetic symbol.";
+
+    private static final String MSG_DIGIT = "Character should be the digit.";
+
+    private static final String MSG_LETTER = "Character should be the letter.";
+
+    private static final String MSG_LETTER_OR_DIGIT = "Character should be the letter or the digit.";
+
+    private static final String MSG_CONTROL_SYMBOL = "Character should be the control symbol.";
+
+    private static final String MSG_LOWER_CASE = "Character should be the lower case symbol.";
+
+    private static final String MSG_UPPER_CASE = "Character should be the upper case symbol.";
+
+    private static final String MSG_WHITESPACE = "Character should be the whitespace symbol.";
+
     private static final String MSG_NULL = "Value should be null.";
 
     private static final String MSG_NOT_NULL = "Value should not be null.";
@@ -257,6 +273,86 @@ public final class FailMessages {
      */
     public static String getFinite(final String actual) {
         return MSG_FINITE + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the alphabetic symbol.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getAlphabetic(final String actual) {
+        return MSG_ALPHABETIC + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the digit.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getDigit(final String actual) {
+        return MSG_DIGIT + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the letter.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getLetter(final String actual) {
+        return MSG_LETTER + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the letter or the digit.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getLetterOrDigit(final String actual) {
+        return MSG_LETTER_OR_DIGIT + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the control symbol.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getControl(final String actual) {
+        return MSG_CONTROL_SYMBOL + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the lower case symbol.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getLowerCase(final String actual) {
+        return MSG_LOWER_CASE + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the upper case symbol.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getUpperCase(final String actual) {
+        return MSG_UPPER_CASE + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual character should be the whitespace symbol.
+     *
+     * @param actual the actual character.
+     * @return the fail message.
+     */
+    public static String getWhitespace(final String actual) {
+        return MSG_WHITESPACE + " " + getValueMessagePart(actual);
     }
 
     /**
