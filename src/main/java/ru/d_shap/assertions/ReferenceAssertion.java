@@ -28,8 +28,6 @@ import ru.d_shap.assertions.core.ClassAssertion;
  */
 public abstract class ReferenceAssertion extends BaseAssertion {
 
-    private final Object _actual;
-
     /**
      * Create new object.
      *
@@ -37,25 +35,15 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param message the assertion message.
      */
     protected ReferenceAssertion(final Object actual, final String message) {
-        super(message);
-        _actual = actual;
-    }
-
-    /**
-     * Get the actual object.
-     *
-     * @return the actual object.
-     */
-    protected final Object getActual() {
-        return _actual;
+        super(actual, message);
     }
 
     /**
      * Check if the actual object is null.
      */
     public final void isNull() {
-        if (_actual != null) {
-            throw createAssertionError(FailMessages.getNull(asString(_actual)));
+        if (getActual() != null) {
+            throw createAssertionError(FailMessages.getNull(actualAsString()));
         }
     }
 
@@ -63,7 +51,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * Check if the actual object is NOT null.
      */
     public final void isNotNull() {
-        if (_actual == null) {
+        if (getActual() == null) {
             throw createAssertionError(FailMessages.getNotNull());
         }
     }
@@ -74,8 +62,8 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected object.
      */
     public final void isSameAs(final Object expected) {
-        if (_actual != expected) {
-            throw createAssertionError(FailMessages.getSame(asString(_actual), asString(expected)));
+        if (getActual() != expected) {
+            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -85,8 +73,8 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected object.
      */
     public final void isNotSameAs(final Object expected) {
-        if (_actual == expected) {
-            throw createAssertionError(FailMessages.getDifferent(asString(_actual)));
+        if (getActual() == expected) {
+            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
         }
     }
 
