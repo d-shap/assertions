@@ -219,8 +219,19 @@ public final class ClassAssertionTest {
     @Test
     public void asEnumTest() {
         new ClassAssertion(Values.class, null).asEnum().hasValueCount(3);
-        new ClassAssertion(AbstractClass.class, null).asEnum();
-        new ClassAssertion(FailConstructorClass.class, null).asEnum();
+
+        try {
+            new ClassAssertion(AbstractClass.class, null).asEnum();
+            Assertions.fail("Class assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Class should be the enum class. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$AbstractClass>");
+        }
+        try {
+            new ClassAssertion(FailConstructorClass.class, null).asEnum();
+            Assertions.fail("Class assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Class should be the enum class. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
+        }
     }
 
     /**
