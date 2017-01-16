@@ -420,19 +420,21 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class should have the default constructor.
      *
+     * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getConstructorDefault() {
-        return MSG_CONSTRUCTOR_DEFAULT;
+    public static String getConstructorDefault(final String actual) {
+        return MSG_CONSTRUCTOR_DEFAULT + " " + getValueMessagePart(actual);
     }
 
     /**
      * Get the fail message if the actual class constructor should not be accessible.
      *
+     * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getConstructorNotAccessible() {
-        return MSG_CONSTRUCTOR_NOT_ACCESSIBLE;
+    public static String getConstructorNotAccessible(final String actual) {
+        return MSG_CONSTRUCTOR_NOT_ACCESSIBLE + " " + getValueMessagePart(actual);
     }
 
     /**
