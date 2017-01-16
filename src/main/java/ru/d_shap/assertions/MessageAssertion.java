@@ -20,6 +20,7 @@
 package ru.d_shap.assertions;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,10 +35,12 @@ import ru.d_shap.assertions.array.LongArrayAssertion;
 import ru.d_shap.assertions.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.array.ShortArrayAssertion;
 import ru.d_shap.assertions.collection.CollectionAssertion;
+import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
@@ -272,6 +275,16 @@ public final class MessageAssertion extends BaseAssertion {
     }
 
     /**
+     * Make assertion about the actual iterable.
+     *
+     * @param actual the actual iterable.
+     * @return the assertion.
+     */
+    public IterableAssertion that(final Iterable<?> actual) {
+        return new IterableAssertion(actual, getMessage());
+    }
+
+    /**
      * Make assertion about the actual collection.
      *
      * @param actual the actual collection.
@@ -279,6 +292,16 @@ public final class MessageAssertion extends BaseAssertion {
      */
     public CollectionAssertion that(final Collection<?> actual) {
         return new CollectionAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the actual iterator.
+     *
+     * @param actual the actual iterator.
+     * @return the assertion.
+     */
+    public IteratorAssertion that(final Iterator<?> actual) {
+        return new IteratorAssertion(actual, getMessage());
     }
 
     /**
