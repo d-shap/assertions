@@ -280,9 +280,9 @@ public final class FailMessagesTest {
      */
     @Test
     public void getNullTest() {
-        Assertions.assertThat(FailMessages.getNull(null)).isEqualTo("Value should be null. Actual:<null>");
-        Assertions.assertThat(FailMessages.getNull("val1")).isEqualTo("Value should be null. Actual:<val1>");
-        Assertions.assertThat(FailMessages.getNull("test1")).isEqualTo("Value should be null. Actual:<test1>");
+        Assertions.assertThat(FailMessages.getNull(null)).isEqualTo("Object should be null. Actual:<null>");
+        Assertions.assertThat(FailMessages.getNull("val1")).isEqualTo("Object should be null. Actual:<val1>");
+        Assertions.assertThat(FailMessages.getNull("test1")).isEqualTo("Object should be null. Actual:<test1>");
     }
 
     /**
@@ -290,7 +290,7 @@ public final class FailMessagesTest {
      */
     @Test
     public void getNotNullTest() {
-        Assertions.assertThat(FailMessages.getNotNull()).isEqualTo("Value should not be null.");
+        Assertions.assertThat(FailMessages.getNotNull()).isEqualTo("Object should not be null.");
     }
 
     /**
@@ -298,9 +298,9 @@ public final class FailMessagesTest {
      */
     @Test
     public void getArrayEmptyTest() {
-        Assertions.assertThat(FailMessages.getArrayEmpty(null)).isEqualTo("Value should be the empty array. Actual:<null>");
-        Assertions.assertThat(FailMessages.getArrayEmpty("val1")).isEqualTo("Value should be the empty array. Actual:<val1>");
-        Assertions.assertThat(FailMessages.getArrayEmpty("test1")).isEqualTo("Value should be the empty array. Actual:<test1>");
+        Assertions.assertThat(FailMessages.getArrayEmpty(null)).isEqualTo("Array should be empty. Actual:<null>");
+        Assertions.assertThat(FailMessages.getArrayEmpty("val1")).isEqualTo("Array should be empty. Actual:<val1>");
+        Assertions.assertThat(FailMessages.getArrayEmpty("test1")).isEqualTo("Array should be empty. Actual:<test1>");
     }
 
     /**
@@ -308,7 +308,7 @@ public final class FailMessagesTest {
      */
     @Test
     public void getArrayNotEmptyTest() {
-        Assertions.assertThat(FailMessages.getArrayNotEmpty()).isEqualTo("Value should not be the empty array.");
+        Assertions.assertThat(FailMessages.getArrayNotEmpty()).isEqualTo("Array should not be empty.");
     }
 
     /**
@@ -459,6 +459,94 @@ public final class FailMessagesTest {
         Assertions.assertThat(FailMessages.getStringNotEndsWith(null, null)).isEqualTo("String should not end with the expected string. Expected:<null> but was:<null>");
         Assertions.assertThat(FailMessages.getStringNotEndsWith("val1", "val2")).isEqualTo("String should not end with the expected string. Expected:<val2> but was:<val1>");
         Assertions.assertThat(FailMessages.getStringNotEndsWith("test1", "test2")).isEqualTo("String should not end with the expected string. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionEmptyTest() {
+        Assertions.assertThat(FailMessages.getCollectionEmpty(null)).isEqualTo("Collection should be empty. Actual:<null>");
+        Assertions.assertThat(FailMessages.getCollectionEmpty("val1")).isEqualTo("Collection should be empty. Actual:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionEmpty("test1")).isEqualTo("Collection should be empty. Actual:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionNotEmptyTest() {
+        Assertions.assertThat(FailMessages.getCollectionNotEmpty()).isEqualTo("Collection should not be empty.");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasValueTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasValue(null, null)).isEqualTo("Collection should contain the expected value. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasValue("val1", "val2")).isEqualTo("Collection should contain the expected value. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasValue("test1", "test2")).isEqualTo("Collection should contain the expected value. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasNotValueTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasNotValue(null, null)).isEqualTo("Collection should not contain the expected value. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasNotValue("val1", "val2")).isEqualTo("Collection should not contain the expected value. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasNotValue("test1", "test2")).isEqualTo("Collection should not contain the expected value. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasAllValuesTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasAllValues(null, null)).isEqualTo("Collection should contain all expected values. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasAllValues("val1", "val2")).isEqualTo("Collection should contain all expected values. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasAllValues("test1", "test2")).isEqualTo("Collection should contain all expected values. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasAllValuesInAnyOrderTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasAllValuesInAnyOrder(null, null)).isEqualTo("Collection should contain all expected values in any order. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasAllValuesInAnyOrder("val1", "val2")).isEqualTo("Collection should contain all expected values in any order. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasAllValuesInAnyOrder("test1", "test2")).isEqualTo("Collection should contain all expected values in any order. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasExactValuesTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasExactValues(null, null)).isEqualTo("Collection should contain the exact expected values. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasExactValues("val1", "val2")).isEqualTo("Collection should contain the exact expected values. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasExactValues("test1", "test2")).isEqualTo("Collection should contain the exact expected values. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasExactValuesInAnyOrderTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasExactValuesInAnyOrder(null, null)).isEqualTo("Collection should contain the exact expected values in any order. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasExactValuesInAnyOrder("val1", "val2")).isEqualTo("Collection should contain the exact expected values in any order. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasExactValuesInAnyOrder("test1", "test2")).isEqualTo("Collection should contain the exact expected values in any order. Expected:<test2> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getCollectionHasAnyValueTest() {
+        Assertions.assertThat(FailMessages.getCollectionHasAnyValue(null, null)).isEqualTo("Collection should contain any of the expected values. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionHasAnyValue("val1", "val2")).isEqualTo("Collection should contain any of the expected values. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionHasAnyValue("test1", "test2")).isEqualTo("Collection should contain any of the expected values. Expected:<test2> but was:<test1>");
     }
 
 }
