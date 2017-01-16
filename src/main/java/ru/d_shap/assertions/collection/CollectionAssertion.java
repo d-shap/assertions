@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
+import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
@@ -46,7 +50,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (!((Collection) getActual()).isEmpty()) {
-            throw new AssertionError();
+            throw createAssertionError(FailMessages.getCollectionEmpty(actualAsString()));
         }
     }
 
@@ -55,8 +59,84 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (((Collection) getActual()).isEmpty()) {
-            throw new AssertionError();
+            throw createAssertionError(FailMessages.getCollectionNotEmpty());
         }
+    }
+
+    /**
+     * Check if the actual collection has the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasValue(final Object expected) {
+        if (!((Collection) getActual()).contains(expected)) {
+            throw createAssertionError(FailMessages.getCollectionHasValue(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual collection has NOT the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasNotValue(final Object expected) {
+        if (((Collection) getActual()).contains(expected)) {
+            throw createAssertionError(FailMessages.getCollectionHasNotValue(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual collection has all the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void hasAllValues(final Object... expected) {
+
+    }
+
+    /**
+     * Check if the actual collection has all the expected values in any order.
+     *
+     * @param expected the expected values.
+     */
+    public final void hasAllValuesInAnyOrder(final Object... expected) {
+        List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
+        for (Object expectedItem : expected) {
+            int idx = actualListCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                actualListCopy.remove(idx);
+            } else {
+                List<?> expectedList = Arrays.asList(expected);
+                throw createAssertionError(FailMessages.getCollectionHasAllValuesInAnyOrder(actualAsString(), asString(expectedList)));
+            }
+        }
+    }
+
+    /**
+     * Check if the actual collection has the exact expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void hasExactValues(final Object... expected) {
+
+    }
+
+    /**
+     * Check if the actual collection has the exact expected values in any order.
+     *
+     * @param expected the expected values.
+     */
+    public final void hasExactValuesInAnyOrder(final Object... expected) {
+
+    }
+
+    /**
+     * Check if the actual collection has any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void hasAnyValue(final Object... expected) {
+
     }
 
     /**
@@ -75,28 +155,6 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    /**
-     * Check if the actual collection has the expected value.
-     *
-     * @param expected the expected value.
-     */
-    public final void hasValue(final Object expected) {
-        if (!((Collection) getActual()).contains(expected)) {
-            throw new AssertionError();
-        }
-    }
-
-    /**
-     * Check if the actual collection has NOT the expected value.
-     *
-     * @param expected the expected value.
-     */
-    public final void hasNotValue(final Object expected) {
-        if (((Collection) getActual()).contains(expected)) {
-            throw new AssertionError();
-        }
     }
 
     @Override
