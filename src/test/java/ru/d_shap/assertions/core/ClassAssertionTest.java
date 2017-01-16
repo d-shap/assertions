@@ -164,37 +164,37 @@ public final class ClassAssertionTest {
             new ClassAssertion(int.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should have one default constructor.");
+            Assertions.assertThat(ex).hasMessage("Class should have one default constructor. Actual:<int>");
         }
         try {
             new ClassAssertion(Appendable.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should have one default constructor.");
+            Assertions.assertThat(ex).hasMessage("Class should have one default constructor. Actual:<java.lang.Appendable>");
         }
         try {
             new ClassAssertion(String.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should have one default constructor.");
+            Assertions.assertThat(ex).hasMessage("Class should have one default constructor. Actual:<java.lang.String>");
         }
         try {
             new ClassAssertion(Character.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should have one default constructor.");
+            Assertions.assertThat(ex).hasMessage("Class should have one default constructor. Actual:<java.lang.Character>");
         }
         try {
             new ClassAssertion(Object.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class constructor should not be acccessible.");
+            Assertions.assertThat(ex).hasMessage("Class constructor should not be acccessible. Actual:<java.lang.Object>");
         }
         try {
             new ClassAssertion(Number.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class constructor should not be acccessible.");
+            Assertions.assertThat(ex).hasMessage("Class constructor should not be acccessible. Actual:<java.lang.Number>");
         }
 
         new ClassAssertion(Math.class, null).hasOnePrivateConstructor();
