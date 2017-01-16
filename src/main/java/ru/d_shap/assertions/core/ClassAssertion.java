@@ -71,15 +71,15 @@ public class ClassAssertion extends ReferenceAssertion {
     public final void hasOnePrivateConstructor() {
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw createAssertionError(FailMessages.getConstructorDefault());
+            throw createAssertionError(FailMessages.getConstructorDefault(actualAsString()));
         }
         Constructor constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw createAssertionError(FailMessages.getConstructorDefault());
+            throw createAssertionError(FailMessages.getConstructorDefault(actualAsString()));
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw createAssertionError(FailMessages.getConstructorNotAccessible());
+            throw createAssertionError(FailMessages.getConstructorNotAccessible(actualAsString()));
         }
         constructor.setAccessible(true);
         try {
