@@ -49,13 +49,13 @@ public final class CharArrayAssertionTest {
             new CharArrayAssertion(new char[]{'a'}, null).isEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[a]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[a]>");
         }
         try {
             new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[a, Z, Й]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[a, Z, Й]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class CharArrayAssertionTest {
             new CharArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
         try {
             new CharArrayAssertion(new char[]{}, null).isNotEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
     }
 

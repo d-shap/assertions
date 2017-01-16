@@ -46,7 +46,7 @@ public final class ReferenceAssertionTest {
             new ReferenceAssertionIml("reference", null).isNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<reference>");
+            Assertions.assertThat(ex).hasMessage("Object should be null. Actual:<reference>");
         }
     }
 
@@ -62,7 +62,7 @@ public final class ReferenceAssertionTest {
             new ReferenceAssertionIml(null, null).isNotNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Object should not be null.");
         }
     }
 

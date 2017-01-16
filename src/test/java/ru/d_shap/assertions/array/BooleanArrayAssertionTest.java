@@ -49,13 +49,13 @@ public final class BooleanArrayAssertionTest {
             new BooleanArrayAssertion(new boolean[]{true}, null).isEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[true]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[true]>");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[true, false, true]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[true, false, true]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class BooleanArrayAssertionTest {
             new BooleanArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{}, null).isNotEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
     }
 

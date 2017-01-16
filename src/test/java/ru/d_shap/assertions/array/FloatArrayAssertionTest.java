@@ -49,13 +49,13 @@ public final class FloatArrayAssertionTest {
             new FloatArrayAssertion(new float[]{1.0f}, null).isEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[1.0]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1.0]>");
         }
         try {
             new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[5.0, 10.0, 15.0]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5.0, 10.0, 15.0]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class FloatArrayAssertionTest {
             new FloatArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
         try {
             new FloatArrayAssertion(new float[]{}, null).isNotEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
     }
 

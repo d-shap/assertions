@@ -49,13 +49,13 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1}, null).isEmpty();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1]>");
         }
         try {
             new IntArrayAssertion(new int[]{5, 10, 15}, null).isEmpty();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5, 10, 15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
         try {
             new IntArrayAssertion(new int[]{}, null).isNotEmpty();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
     }
 

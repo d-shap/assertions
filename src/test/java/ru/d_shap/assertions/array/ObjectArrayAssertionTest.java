@@ -49,13 +49,13 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new Object[]{"val1"}, null).isEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[val1]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[val1]>");
         }
         try {
             new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the empty array. Actual:<[val5, val10, val15]>");
+            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[val5, val10, val15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
         try {
             new ObjectArrayAssertion(new Object[]{}, null).isNotEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the empty array.");
+            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
         }
     }
 
