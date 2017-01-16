@@ -74,13 +74,13 @@ public final class FailMessages {
 
     private static final String MSG_WHITESPACE = "Character should be the whitespace symbol.";
 
-    private static final String MSG_NULL = "Value should be null.";
+    private static final String MSG_NULL = "Object should be null.";
 
-    private static final String MSG_NOT_NULL = "Value should not be null.";
+    private static final String MSG_NOT_NULL = "Object should not be null.";
 
-    private static final String MSG_ARRAY_EMPTY = "Value should be the empty array.";
+    private static final String MSG_ARRAY_EMPTY = "Array should be empty.";
 
-    private static final String MSG_ARRAY_NOT_EMPTY = "Value should not be the empty array.";
+    private static final String MSG_ARRAY_NOT_EMPTY = "Array should not be empty.";
 
     private static final String MSG_CLASS_SUBTYPE = "Class should be the subtype of the expected class.";
 
@@ -111,6 +111,24 @@ public final class FailMessages {
     private static final String MSG_STRING_ENDS_WITH = "String should end with the expected string.";
 
     private static final String MSG_STRING_NOT_ENDS_WITH = "String should not end with the expected string.";
+
+    private static final String MSG_COLLECTION_EMPTY = "Collection should be empty.";
+
+    private static final String MSG_COLLECTION_NOT_EMPTY = "Collection should not be empty.";
+
+    private static final String MSG_COLLECTION_HAS_VALUE = "Collection should contain the expected value.";
+
+    private static final String MSG_COLLECTION_HAS_NOT_VALUE = "Collection should not contain the expected value.";
+
+    private static final String MSG_COLLECTION_HAS_ALL_VALUES = "Collection should contain all expected values.";
+
+    private static final String MSG_COLLECTION_HAS_ALL_VALUES_IN_ANY_ORDER = "Collection should contain all expected values in any order.";
+
+    private static final String MSG_COLLECTION_HAS_EXACT_VALUES = "Collection should contain the exact expected values.";
+
+    private static final String MSG_COLLECTION_HAS_EXACT_VALUES_IN_ANY_ORDER = "Collection should contain the exact expected values in any order.";
+
+    private static final String MSG_COLLECTION_HAS_ANY_VALUE = "Collection should contain any of the expected values.";
 
     private FailMessages() {
         super();
@@ -358,9 +376,9 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should be null.
+     * Get the fail message if the actual object should be null.
      *
-     * @param actual the actual value.
+     * @param actual the actual object.
      * @return the fail message.
      */
     public static String getNull(final String actual) {
@@ -368,7 +386,7 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should not be null.
+     * Get the fail message if the actual object should not be null.
      *
      * @return the fail message.
      */
@@ -377,9 +395,9 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should be the empty array.
+     * Get the fail message if the actual array should be empty.
      *
-     * @param actual the actual value.
+     * @param actual the actual array.
      * @return the fail message.
      */
     public static String getArrayEmpty(final String actual) {
@@ -387,7 +405,7 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should not be the empty array.
+     * Get the fail message if the actual array should not be empty.
      *
      * @return the fail message.
      */
@@ -398,8 +416,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class should be the subtype of the expected class.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual class.
+     * @param expected the expected class.
      * @return the fail message.
      */
     public static String getClassSubtype(final String actual, final String expected) {
@@ -409,8 +427,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class should not be the subtype of the expected class.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual class.
+     * @param expected the expected class.
      * @return the fail message.
      */
     public static String getClassNotSubtype(final String actual, final String expected) {
@@ -420,7 +438,7 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class should have the default constructor.
      *
-     * @param actual the actual value.
+     * @param actual the actual class.
      * @return the fail message.
      */
     public static String getConstructorDefault(final String actual) {
@@ -430,7 +448,7 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class constructor should not be accessible.
      *
-     * @param actual the actual value.
+     * @param actual the actual class.
      * @return the fail message.
      */
     public static String getConstructorNotAccessible(final String actual) {
@@ -440,7 +458,7 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual class should be the enum class.
      *
-     * @param actual the actual value.
+     * @param actual the actual class.
      * @return the fail message.
      */
     public static String getEnumClass(final String actual) {
@@ -450,8 +468,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should contain the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringContains(final String actual, final String expected) {
@@ -461,8 +479,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should not contain the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringNotContains(final String actual, final String expected) {
@@ -472,8 +490,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should be the part of the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringPartOf(final String actual, final String expected) {
@@ -483,8 +501,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should not be the part of the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringNotPartOf(final String actual, final String expected) {
@@ -494,8 +512,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should match the expected regexp.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected regexp.
      * @return the fail message.
      */
     public static String getStringMatches(final String actual, final String expected) {
@@ -505,8 +523,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should not match the expected regexp.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected regexp.
      * @return the fail message.
      */
     public static String getStringNotMatches(final String actual, final String expected) {
@@ -516,8 +534,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should start with the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual should.
+     * @param expected the expected should.
      * @return the fail message.
      */
     public static String getStringStartsWith(final String actual, final String expected) {
@@ -527,8 +545,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should not start with the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual should.
+     * @param expected the expected should.
      * @return the fail message.
      */
     public static String getStringNotStartsWith(final String actual, final String expected) {
@@ -538,8 +556,8 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should end with the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringEndsWith(final String actual, final String expected) {
@@ -549,12 +567,108 @@ public final class FailMessages {
     /**
      * Get the fail message if the actual string should not end with the expected string.
      *
-     * @param actual   the actual value.
-     * @param expected the expected value.
+     * @param actual   the actual string.
+     * @param expected the expected string.
      * @return the fail message.
      */
     public static String getStringNotEndsWith(final String actual, final String expected) {
         return MSG_STRING_NOT_ENDS_WITH + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should be empty.
+     *
+     * @param actual the actual collection.
+     * @return the fail message.
+     */
+    public static String getCollectionEmpty(final String actual) {
+        return MSG_COLLECTION_EMPTY + " " + getValueMessagePart(actual);
+    }
+
+    /**
+     * Get the fail message if the actual collection should not be empty.
+     *
+     * @return the fail message.
+     */
+    public static String getCollectionNotEmpty() {
+        return MSG_COLLECTION_NOT_EMPTY;
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain the expected value.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getCollectionHasValue(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_VALUE + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should not contain the expected value.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected value.
+     * @return the fail message.
+     */
+    public static String getCollectionHasNotValue(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_NOT_VALUE + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain all expected values.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionHasAllValues(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_ALL_VALUES + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain all expected values in any order.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionHasAllValuesInAnyOrder(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_ALL_VALUES_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain the exact expected values.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionHasExactValues(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_EXACT_VALUES + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain the exact expected values in any order.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionHasExactValuesInAnyOrder(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_EXACT_VALUES_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should contain any of the expected values.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionHasAnyValue(final String actual, final String expected) {
+        return MSG_COLLECTION_HAS_ANY_VALUE + " " + getValueMessagePart(actual, expected);
     }
 
     private static String getValueMessagePart(final String actual) {
