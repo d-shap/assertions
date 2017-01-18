@@ -209,40 +209,40 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notContainsTest() {
-        new StringAssertion("value", null).notContains("vaue");
-        new StringAssertion("value", null).notContains("VAL");
-        new StringAssertion("value", null).notContains("UE");
-        new StringAssertion("значение", null).notContains("ЗНАЧ");
-        new StringAssertion("значение", null).notContains("кени");
-        new StringAssertion("значение", null).notContains("НИЕ");
+    public void doesNotContainTest() {
+        new StringAssertion("value", null).doesNotContain("vaue");
+        new StringAssertion("value", null).doesNotContain("VAL");
+        new StringAssertion("value", null).doesNotContain("UE");
+        new StringAssertion("значение", null).doesNotContain("ЗНАЧ");
+        new StringAssertion("значение", null).doesNotContain("кени");
+        new StringAssertion("значение", null).doesNotContain("НИЕ");
 
         try {
-            new StringAssertion("value", null).notContains("val");
+            new StringAssertion("value", null).doesNotContain("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<val> but was:<value>");
         }
         try {
-            new StringAssertion("value", null).notContains("alu");
+            new StringAssertion("value", null).doesNotContain("alu");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<alu> but was:<value>");
         }
         try {
-            new StringAssertion("value", null).notContains("lue");
+            new StringAssertion("value", null).doesNotContain("lue");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<lue> but was:<value>");
         }
         try {
-            new StringAssertion("значение", null).notContains("знач");
+            new StringAssertion("значение", null).doesNotContain("знач");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<знач> but was:<значение>");
         }
         try {
-            new StringAssertion("значение", null).notContains("ение");
+            new StringAssertion("значение", null).doesNotContain("ение");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<ение> but was:<значение>");
@@ -291,40 +291,40 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notContainsIgnoreCaseTest() {
-        new StringAssertion("value", null).notContainsIgnoreCase("vaUE");
-        new StringAssertion("valUE", null).notContainsIgnoreCase("1VAL");
-        new StringAssertion("valUE", null).notContainsIgnoreCase("UE1");
-        new StringAssertion("знАчеНие", null).notContainsIgnoreCase("ЗНАН");
-        new StringAssertion("знАчеНие", null).notContainsIgnoreCase("кени");
-        new StringAssertion("знАчеНие", null).notContainsIgnoreCase("чИЕ");
+    public void doesNotContainIgnoreCaseTest() {
+        new StringAssertion("value", null).doesNotContainIgnoreCase("vaUE");
+        new StringAssertion("valUE", null).doesNotContainIgnoreCase("1VAL");
+        new StringAssertion("valUE", null).doesNotContainIgnoreCase("UE1");
+        new StringAssertion("знАчеНие", null).doesNotContainIgnoreCase("ЗНАН");
+        new StringAssertion("знАчеНие", null).doesNotContainIgnoreCase("кени");
+        new StringAssertion("знАчеНие", null).doesNotContainIgnoreCase("чИЕ");
 
         try {
-            new StringAssertion("vaLUe", null).notContainsIgnoreCase("val");
+            new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<val> but was:<vaLUe>");
         }
         try {
-            new StringAssertion("vaLUe", null).notContainsIgnoreCase("VAL");
+            new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("VAL");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<VAL> but was:<vaLUe>");
         }
         try {
-            new StringAssertion("vaLUe", null).notContainsIgnoreCase("lUE");
+            new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("lUE");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<lUE> but was:<vaLUe>");
         }
         try {
-            new StringAssertion("зНАчеНИе", null).notContainsIgnoreCase("знач");
+            new StringAssertion("зНАчеНИе", null).doesNotContainIgnoreCase("знач");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<знач> but was:<зНАчеНИе>");
         }
         try {
-            new StringAssertion("зНАчеНИе", null).notContainsIgnoreCase("еНИе");
+            new StringAssertion("зНАчеНИе", null).doesNotContainIgnoreCase("еНИе");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not contain the expected string. Expected:<еНИе> but was:<зНАчеНИе>");
@@ -512,21 +512,21 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notMatchesTest() {
-        new StringAssertion("value", null).notMatches("valu.+e");
-        new StringAssertion("value", null).notMatches("v[zZ].{2}[eE]");
-        new StringAssertion("value", null).notMatches("\\s\\w+");
-        new StringAssertion("value", null).notMatches("\\w{8}");
-        new StringAssertion("значение", null).notMatches("\\w+");
+    public void doesNotMatchTest() {
+        new StringAssertion("value", null).doesNotMatch("valu.+e");
+        new StringAssertion("value", null).doesNotMatch("v[zZ].{2}[eE]");
+        new StringAssertion("value", null).doesNotMatch("\\s\\w+");
+        new StringAssertion("value", null).doesNotMatch("\\w{8}");
+        new StringAssertion("значение", null).doesNotMatch("\\w+");
 
         try {
-            new StringAssertion("value", null).notMatches("\\w+");
+            new StringAssertion("value", null).doesNotMatch("\\w+");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not match the expected regexp. Expected:<\\w+> but was:<value>");
         }
         try {
-            new StringAssertion("значение", null).notMatches("\\p{L}{8}");
+            new StringAssertion("значение", null).doesNotMatch("\\p{L}{8}");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not match the expected regexp. Expected:<\\p{L}{8}> but was:<значение>");
@@ -575,34 +575,34 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notStartsWithTest() {
-        new StringAssertion("value", null).notStartsWith("VA");
-        new StringAssertion("value", null).notStartsWith("VaL");
-        new StringAssertion("value", null).notStartsWith("vale");
-        new StringAssertion("значение", null).notStartsWith("ЗНА");
-        new StringAssertion("значение", null).notStartsWith("Знач");
-        new StringAssertion("значение", null).notStartsWith("чение");
+    public void doesNotStartWithTest() {
+        new StringAssertion("value", null).doesNotStartWith("VA");
+        new StringAssertion("value", null).doesNotStartWith("VaL");
+        new StringAssertion("value", null).doesNotStartWith("vale");
+        new StringAssertion("значение", null).doesNotStartWith("ЗНА");
+        new StringAssertion("значение", null).doesNotStartWith("Знач");
+        new StringAssertion("значение", null).doesNotStartWith("чение");
 
         try {
-            new StringAssertion("value", null).notStartsWith("val");
+            new StringAssertion("value", null).doesNotStartWith("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<val> but was:<value>");
         }
         try {
-            new StringAssertion("value", null).notStartsWith("valu");
+            new StringAssertion("value", null).doesNotStartWith("valu");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<valu> but was:<value>");
         }
         try {
-            new StringAssertion("значение", null).notStartsWith("зн");
+            new StringAssertion("значение", null).doesNotStartWith("зн");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<зн> but was:<значение>");
         }
         try {
-            new StringAssertion("значение", null).notStartsWith("значен");
+            new StringAssertion("значение", null).doesNotStartWith("значен");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<значен> but was:<значение>");
@@ -651,34 +651,34 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notStartsWithIgnoreCaseTest() {
-        new StringAssertion("vAlUe", null).notStartsWithIgnoreCase("Vu");
-        new StringAssertion("vAlUe", null).notStartsWithIgnoreCase("Vue");
-        new StringAssertion("vAlUe", null).notStartsWithIgnoreCase("ale");
-        new StringAssertion("знАчЕнИе", null).notStartsWithIgnoreCase("НА");
-        new StringAssertion("знАчЕнИе", null).notStartsWithIgnoreCase("Знч");
-        new StringAssertion("знАчЕнИе", null).notStartsWithIgnoreCase("чние");
+    public void doesNotStartWithIgnoreCaseTest() {
+        new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("Vu");
+        new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("Vue");
+        new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("ale");
+        new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("НА");
+        new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("Знч");
+        new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("чние");
 
         try {
-            new StringAssertion("vAlUe", null).notStartsWithIgnoreCase("val");
+            new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<val> but was:<vAlUe>");
         }
         try {
-            new StringAssertion("vAlUe", null).notStartsWithIgnoreCase("VALUe");
+            new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("VALUe");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<VALUe> but was:<vAlUe>");
         }
         try {
-            new StringAssertion("знАчЕнИе", null).notStartsWithIgnoreCase("зн");
+            new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("зн");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<зн> but was:<знАчЕнИе>");
         }
         try {
-            new StringAssertion("знАчЕнИе", null).notStartsWithIgnoreCase("значение");
+            new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("значение");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not start with the expected string. Expected:<значение> but was:<знАчЕнИе>");
@@ -727,34 +727,34 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notEndsWithTest() {
-        new StringAssertion("value", null).notEndsWith("aLue");
-        new StringAssertion("value", null).notEndsWith("vue");
-        new StringAssertion("value", null).notEndsWith("val");
-        new StringAssertion("значение", null).notEndsWith("ачЕниЕ");
-        new StringAssertion("значение", null).notEndsWith("зние");
-        new StringAssertion("значение", null).notEndsWith("зна");
+    public void doesNotEndWithTest() {
+        new StringAssertion("value", null).doesNotEndWith("aLue");
+        new StringAssertion("value", null).doesNotEndWith("vue");
+        new StringAssertion("value", null).doesNotEndWith("val");
+        new StringAssertion("значение", null).doesNotEndWith("ачЕниЕ");
+        new StringAssertion("значение", null).doesNotEndWith("зние");
+        new StringAssertion("значение", null).doesNotEndWith("зна");
 
         try {
-            new StringAssertion("value", null).notEndsWith("value");
+            new StringAssertion("value", null).doesNotEndWith("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<value> but was:<value>");
         }
         try {
-            new StringAssertion("value", null).notEndsWith("alue");
+            new StringAssertion("value", null).doesNotEndWith("alue");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<alue> but was:<value>");
         }
         try {
-            new StringAssertion("значение", null).notEndsWith("значение");
+            new StringAssertion("значение", null).doesNotEndWith("значение");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<значение> but was:<значение>");
         }
         try {
-            new StringAssertion("значение", null).notEndsWith("ие");
+            new StringAssertion("значение", null).doesNotEndWith("ие");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<ие> but was:<значение>");
@@ -804,40 +804,40 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void notEndsWithIgnoreCaseTest() {
-        new StringAssertion("vAlUe", null).notEndsWithIgnoreCase("aLe");
-        new StringAssertion("vAlUe", null).notEndsWithIgnoreCase("vue");
-        new StringAssertion("vAlUe", null).notEndsWithIgnoreCase("val");
-        new StringAssertion("знАчЕнИе", null).notEndsWithIgnoreCase("зачЕниЕ");
-        new StringAssertion("знАчЕнИе", null).notEndsWithIgnoreCase("зние");
-        new StringAssertion("знАчЕнИе", null).notEndsWithIgnoreCase("зна");
+    public void doesNotEndWithIgnoreCaseTest() {
+        new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("aLe");
+        new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("vue");
+        new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("val");
+        new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зачЕниЕ");
+        new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зние");
+        new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зна");
 
         try {
-            new StringAssertion("vAlUe", null).notEndsWithIgnoreCase("vaLue");
+            new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("vaLue");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<vaLue> but was:<vAlUe>");
         }
         try {
-            new StringAssertion("vAlUe", null).notEndsWithIgnoreCase("aLue");
+            new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("aLue");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<aLue> but was:<vAlUe>");
         }
         try {
-            new StringAssertion("знАчЕнИе", null).notEndsWithIgnoreCase("знАчение");
+            new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("знАчение");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<знАчение> but was:<знАчЕнИе>");
         }
         try {
-            new StringAssertion("знАчЕнИе", null).notEndsWithIgnoreCase("е");
+            new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("е");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<е> but was:<знАчЕнИе>");
         }
         try {
-            new StringAssertion("aaaxxxxx", null).notEndsWithIgnoreCase("xxx");
+            new StringAssertion("aaaxxxxx", null).doesNotEndWithIgnoreCase("xxx");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("String should not end with the expected string. Expected:<xxx> but was:<aaaxxxxx>");
