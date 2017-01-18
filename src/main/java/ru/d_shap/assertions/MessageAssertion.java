@@ -39,7 +39,9 @@ import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
+import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.ComparableAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
@@ -255,6 +257,16 @@ public final class MessageAssertion extends BaseAssertion {
     }
 
     /**
+     * Make assertion about the actual char sequence.
+     *
+     * @param actual the actual char sequence.
+     * @return the assertion.
+     */
+    public CharSequenceAssertion that(final CharSequence actual) {
+        return new CharSequenceAssertion(actual, getMessage());
+    }
+
+    /**
      * Make assertion about the actual string.
      *
      * @param actual the actual string.
@@ -262,6 +274,16 @@ public final class MessageAssertion extends BaseAssertion {
      */
     public StringAssertion that(final String actual) {
         return new StringAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the actual comparable.
+     *
+     * @param actual the actual comparable.
+     * @return the assertion.
+     */
+    public ComparableAssertion that(final Comparable<?> actual) {
+        return new ComparableAssertion(actual, getMessage());
     }
 
     /**

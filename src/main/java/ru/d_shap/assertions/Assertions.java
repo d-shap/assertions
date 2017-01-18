@@ -39,7 +39,9 @@ import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
+import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.ComparableAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
@@ -265,6 +267,16 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the actual char sequence.
+     *
+     * @param actual the actual char sequence.
+     * @return the assertion.
+     */
+    public static CharSequenceAssertion assertThat(final CharSequence actual) {
+        return new CharSequenceAssertion(actual, null);
+    }
+
+    /**
      * Make assertion about the actual string.
      *
      * @param actual the actual string.
@@ -272,6 +284,16 @@ public final class Assertions {
      */
     public static StringAssertion assertThat(final String actual) {
         return new StringAssertion(actual, null);
+    }
+
+    /**
+     * Make assertion about the actual comparable.
+     *
+     * @param actual the actual comparable.
+     * @return the assertion.
+     */
+    public static ComparableAssertion assertThat(final Comparable<?> actual) {
+        return new ComparableAssertion(actual, null);
     }
 
     /**
