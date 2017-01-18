@@ -137,6 +137,10 @@ public class CollectionAssertion extends ReferenceAssertion {
                 throw createAssertionError(FailMessages.getCollectionContainsExactly(actualAsString(), asString(expectedList)));
             }
         }
+        if (!actualListCopy.isEmpty()) {
+            List<?> expectedList = Arrays.asList(expected);
+            throw createAssertionError(FailMessages.getCollectionContainsExactly(actualAsString(), asString(expectedList)));
+        }
     }
 
     /**
