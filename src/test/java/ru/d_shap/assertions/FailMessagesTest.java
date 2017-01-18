@@ -524,9 +524,9 @@ public final class FailMessagesTest {
      */
     @Test
     public void getCollectionContainsExactlyTest() {
-        Assertions.assertThat(FailMessages.getCollectionContainsExactly(null, null)).isEqualTo("Collection should contain exactly the expected values. Expected:<null> but was:<null>");
-        Assertions.assertThat(FailMessages.getCollectionContainsExactly("val1", "val2")).isEqualTo("Collection should contain exactly the expected values. Expected:<val2> but was:<val1>");
-        Assertions.assertThat(FailMessages.getCollectionContainsExactly("test1", "test2")).isEqualTo("Collection should contain exactly the expected values. Expected:<test2> but was:<test1>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactly(null, null)).isEqualTo("Collection should contain the expected values exactly. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactly("val1", "val2")).isEqualTo("Collection should contain the expected values exactly. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactly("test1", "test2")).isEqualTo("Collection should contain the expected values exactly. Expected:<test2> but was:<test1>");
     }
 
     /**
@@ -534,9 +534,9 @@ public final class FailMessagesTest {
      */
     @Test
     public void getCollectionContainsExactlyInAnyOrderTest() {
-        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder(null, null)).isEqualTo("Collection should contain exactly the expected values in any order. Expected:<null> but was:<null>");
-        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder("val1", "val2")).isEqualTo("Collection should contain exactly the expected values in any order. Expected:<val2> but was:<val1>");
-        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder("test1", "test2")).isEqualTo("Collection should contain exactly the expected values in any order. Expected:<test2> but was:<test1>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder(null, null)).isEqualTo("Collection should contain the expected values exactly in any order. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder("val1", "val2")).isEqualTo("Collection should contain the expected values exactly in any order. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getCollectionContainsExactlyInAnyOrder("test1", "test2")).isEqualTo("Collection should contain the expected values exactly in any order. Expected:<test2> but was:<test1>");
     }
 
     /**

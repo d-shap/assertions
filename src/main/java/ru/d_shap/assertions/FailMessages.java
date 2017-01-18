@@ -124,9 +124,9 @@ public final class FailMessages {
 
     private static final String MSG_COLLECTION_CONTAINS_ALL_IN_ANY_ORDER = "Collection should contain all of the expected values in any order.";
 
-    private static final String MSG_COLLECTION_CONTAINS_EXACTLY = "Collection should contain exactly the expected values.";
+    private static final String MSG_COLLECTION_CONTAINS_EXACTLY = "Collection should contain the expected values exactly.";
 
-    private static final String MSG_COLLECTION_CONTAINS_EXACTLY_IN_ANY_ORDER = "Collection should contain exactly the expected values in any order.";
+    private static final String MSG_COLLECTION_CONTAINS_EXACTLY_IN_ANY_ORDER = "Collection should contain the expected values exactly in any order.";
 
     private static final String MSG_COLLECTION_CONTAINS_ANY = "Collection should contain any of the expected values.";
 
@@ -641,7 +641,7 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual collection should contain exactly the expected values.
+     * Get the fail message if the actual collection should contain the expected values exactly.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
@@ -652,7 +652,7 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual collection should contain exactly the expected values in any order.
+     * Get the fail message if the actual collection should contain the expected values exactly in any order.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
