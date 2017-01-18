@@ -43,7 +43,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNull() {
         if (getActual() != null) {
-            throw createAssertionError(FailMessages.getNull(actualAsString()));
+            throw createAssertionError(FailMessages.getIsNull(actualAsString()));
         }
     }
 
@@ -52,7 +52,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNotNull() {
         if (getActual() == null) {
-            throw createAssertionError(FailMessages.getNotNull());
+            throw createAssertionError(FailMessages.getIsNotNull());
         }
     }
 
@@ -63,7 +63,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isSameAs(final Object expected) {
         if (getActual() != expected) {
-            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -74,7 +74,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNotSameAs(final Object expected) {
         if (getActual() == expected) {
-            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
