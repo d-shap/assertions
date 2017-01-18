@@ -50,7 +50,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((short[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
+            throw createAssertionError(FailMessages.getArrayIsEmpty(actualAsString()));
         }
     }
 
@@ -59,7 +59,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((short[]) getActual()).length == 0) {
-            throw createAssertionError(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayIsNotEmpty());
         }
     }
 
@@ -70,7 +70,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final short[] expected) {
         if (!Arrays.equals((short[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,7 +81,7 @@ public class ShortArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final short[] expected) {
         if (Arrays.equals((short[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 

@@ -50,7 +50,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((double[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
+            throw createAssertionError(FailMessages.getArrayIsEmpty(actualAsString()));
         }
     }
 
@@ -59,7 +59,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((double[]) getActual()).length == 0) {
-            throw createAssertionError(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayIsNotEmpty());
         }
     }
 
@@ -70,7 +70,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final double[] expected) {
         if (!Arrays.equals((double[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,7 +81,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final double[] expected) {
         if (Arrays.equals((double[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 

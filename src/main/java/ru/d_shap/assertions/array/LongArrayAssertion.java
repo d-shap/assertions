@@ -50,7 +50,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         if (getActual() != null && ((long[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayEmpty(actualAsString()));
+            throw createAssertionError(FailMessages.getArrayIsEmpty(actualAsString()));
         }
     }
 
@@ -59,7 +59,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((long[]) getActual()).length == 0) {
-            throw createAssertionError(FailMessages.getArrayNotEmpty());
+            throw createAssertionError(FailMessages.getArrayIsNotEmpty());
         }
     }
 
@@ -70,7 +70,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final long[] expected) {
         if (!Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -81,7 +81,7 @@ public class LongArrayAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final long[] expected) {
         if (Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
