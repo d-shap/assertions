@@ -50,7 +50,7 @@ public class ClassAssertion extends ReferenceAssertion {
      */
     public final void isSubtypeOf(final Class<?> clazz) {
         if (!clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassSubtype(actualAsString(), asString(clazz)));
+            throw createAssertionError(FailMessages.getClassIsSubtypeOf(actualAsString(), asString(clazz)));
         }
     }
 
@@ -61,7 +61,7 @@ public class ClassAssertion extends ReferenceAssertion {
      */
     public final void isNotSubtypeOf(final Class<?> clazz) {
         if (clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassNotSubtype(actualAsString(), asString(clazz)));
+            throw createAssertionError(FailMessages.getClassIsNotSubtypeOf(actualAsString(), asString(clazz)));
         }
     }
 
@@ -71,15 +71,15 @@ public class ClassAssertion extends ReferenceAssertion {
     public final void hasOnePrivateConstructor() {
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw createAssertionError(FailMessages.getConstructorDefault(actualAsString()));
+            throw createAssertionError(FailMessages.getConstructorIsDefault(actualAsString()));
         }
         Constructor constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw createAssertionError(FailMessages.getConstructorDefault(actualAsString()));
+            throw createAssertionError(FailMessages.getConstructorIsDefault(actualAsString()));
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw createAssertionError(FailMessages.getConstructorNotAccessible(actualAsString()));
+            throw createAssertionError(FailMessages.getConstructorIsNotAccessible(actualAsString()));
         }
         constructor.setAccessible(true);
         try {
@@ -99,7 +99,7 @@ public class ClassAssertion extends ReferenceAssertion {
         if (Enum.class.isAssignableFrom(actualClass)) {
             return new EnumAssertion(actualClass, getMessage());
         } else {
-            throw createAssertionError(FailMessages.getEnumClass(actualAsString()));
+            throw createAssertionError(FailMessages.getIsEnumClass(actualAsString()));
         }
     }
 
