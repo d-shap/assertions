@@ -34,7 +34,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param actual  the actual comparable.
      * @param message the assertion message.
      */
-    public ComparableAssertion(final Iterable<?> actual, final String message) {
+    public ComparableAssertion(final Comparable<?> actual, final String message) {
         super(actual, message);
     }
 

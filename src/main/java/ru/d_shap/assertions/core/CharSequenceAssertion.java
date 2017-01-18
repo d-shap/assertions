@@ -34,7 +34,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      * @param actual  the actual char sequence.
      * @param message the assertion message.
      */
-    public CharSequenceAssertion(final Iterable<?> actual, final String message) {
+    public CharSequenceAssertion(final CharSequence actual, final String message) {
         super(actual, message);
     }
 
