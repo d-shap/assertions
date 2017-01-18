@@ -44,7 +44,7 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isTrue() {
         if (!((Boolean) getActual())) {
-            throw createAssertionError(FailMessages.getTrue());
+            throw createAssertionError(FailMessages.getIsTrue());
         }
     }
 
@@ -53,7 +53,7 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isFalse() {
         if ((Boolean) getActual()) {
-            throw createAssertionError(FailMessages.getFalse());
+            throw createAssertionError(FailMessages.getIsFalse());
         }
     }
 

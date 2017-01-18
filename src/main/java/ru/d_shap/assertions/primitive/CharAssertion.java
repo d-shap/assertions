@@ -46,7 +46,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final char expected) {
         if ((Character) getActual() != expected) {
-            throw createAssertionError(FailMessages.getSame(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
@@ -57,7 +57,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final char expected) {
         if ((Character) getActual() == expected) {
-            throw createAssertionError(FailMessages.getDifferent(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
@@ -68,7 +68,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final char expected) {
         if ((Character) getActual() <= expected) {
-            throw createAssertionError(FailMessages.getGreater(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
         }
     }
 
@@ -79,7 +79,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final char expected) {
         if ((Character) getActual() < expected) {
-            throw createAssertionError(FailMessages.getGreaterOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -90,7 +90,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThan(final char expected) {
         if ((Character) getActual() >= expected) {
-            throw createAssertionError(FailMessages.getLess(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
         }
     }
 
@@ -101,7 +101,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final char expected) {
         if ((Character) getActual() > expected) {
-            throw createAssertionError(FailMessages.getLessOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
         }
     }
 
@@ -110,7 +110,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isAlphabetic() {
         if (!Character.isAlphabetic((Character) getActual())) {
-            throw createAssertionError(FailMessages.getAlphabetic(actualAsString()));
+            throw createAssertionError(FailMessages.getIsAlphabetic(actualAsString()));
         }
     }
 
@@ -119,7 +119,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isDigit() {
         if (!Character.isDigit((Character) getActual())) {
-            throw createAssertionError(FailMessages.getDigit(actualAsString()));
+            throw createAssertionError(FailMessages.getIsDigit(actualAsString()));
         }
     }
 
@@ -128,7 +128,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLetter() {
         if (!Character.isLetter((Character) getActual())) {
-            throw createAssertionError(FailMessages.getLetter(actualAsString()));
+            throw createAssertionError(FailMessages.getIsLetter(actualAsString()));
         }
     }
 
@@ -137,7 +137,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLetterOrDigit() {
         if (!Character.isLetterOrDigit((Character) getActual())) {
-            throw createAssertionError(FailMessages.getLetterOrDigit(actualAsString()));
+            throw createAssertionError(FailMessages.getIsLetterOrDigit(actualAsString()));
         }
     }
 
@@ -146,7 +146,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isControl() {
         if (!Character.isISOControl((Character) getActual())) {
-            throw createAssertionError(FailMessages.getControl(actualAsString()));
+            throw createAssertionError(FailMessages.getIsControl(actualAsString()));
         }
     }
 
@@ -155,7 +155,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLowerCase() {
         if (!Character.isLowerCase((Character) getActual())) {
-            throw createAssertionError(FailMessages.getLowerCase(actualAsString()));
+            throw createAssertionError(FailMessages.getIsLowerCase(actualAsString()));
         }
     }
 
@@ -164,7 +164,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isUpperCase() {
         if (!Character.isUpperCase((Character) getActual())) {
-            throw createAssertionError(FailMessages.getUpperCase(actualAsString()));
+            throw createAssertionError(FailMessages.getIsUpperCase(actualAsString()));
         }
     }
 
@@ -173,7 +173,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isWhitespace() {
         if (!Character.isWhitespace((Character) getActual())) {
-            throw createAssertionError(FailMessages.getWhitespace(actualAsString()));
+            throw createAssertionError(FailMessages.getIsWhitespace(actualAsString()));
         }
     }
 
