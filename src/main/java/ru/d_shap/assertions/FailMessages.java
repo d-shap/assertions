@@ -26,109 +26,111 @@ package ru.d_shap.assertions;
  */
 public final class FailMessages {
 
-    private static final String MSG_TRUE = "Value should be true.";
+    private static final String MSG_IS_TRUE = "Value should be true.";
 
-    private static final String MSG_FALSE = "Value should be false.";
+    private static final String MSG_IS_FALSE = "Value should be false.";
 
-    private static final String MSG_SAME = "Values should be the same.";
+    private static final String MSG_IS_SAME = "Values should be the same.";
 
-    private static final String MSG_DIFFERENT = "Values should be different.";
+    private static final String MSG_IS_DIFFERENT = "Values should be different.";
 
-    private static final String MSG_GREATER = "Value should be greater then the expected.";
+    private static final String MSG_IS_GREATER = "Value should be greater then the expected.";
 
-    private static final String MSG_GREATER_OR_EQUAL = "Value should be greater then or equal to the expected.";
+    private static final String MSG_IS_GREATER_OR_EQUAL = "Value should be greater then or equal to the expected.";
 
-    private static final String MSG_LESS = "Value should be less then the expected.";
+    private static final String MSG_IS_LESS = "Value should be less then the expected.";
 
-    private static final String MSG_LESS_OR_EQUAL = "Value should be less then or equal to the expected.";
+    private static final String MSG_IS_LESS_OR_EQUAL = "Value should be less then or equal to the expected.";
 
-    private static final String MSG_ZERO = "Value should be zero.";
+    private static final String MSG_IS_ZERO = "Value should be zero.";
 
-    private static final String MSG_NON_ZERO = "Value should not be zero.";
+    private static final String MSG_IS_NON_ZERO = "Value should not be zero.";
 
-    private static final String MSG_POSITIVE_INFINITY = "Value should be positive infinity.";
+    private static final String MSG_IS_POSITIVE_INFINITY = "Value should be positive infinity.";
 
-    private static final String MSG_NEGATIVE_INFINITY = "Value should be negative infinity.";
+    private static final String MSG_IS_NEGATIVE_INFINITY = "Value should be negative infinity.";
 
-    private static final String MSG_INFINITY = "Value should be infinity.";
+    private static final String MSG_IS_INFINITY = "Value should be infinity.";
 
-    private static final String MSG_NAN = "Value should be NaN.";
+    private static final String MSG_IS_NAN = "Value should be NaN.";
 
-    private static final String MSG_NOT_NAN = "Value should not be NaN.";
+    private static final String MSG_IS_NOT_NAN = "Value should not be NaN.";
 
-    private static final String MSG_FINITE = "Value should be finite.";
+    private static final String MSG_IS_FINITE = "Value should be finite.";
 
-    private static final String MSG_ALPHABETIC = "Character should be the alphabetic symbol.";
+    private static final String MSG_IS_ALPHABETIC = "Character should be the alphabetic symbol.";
 
-    private static final String MSG_DIGIT = "Character should be the digit.";
+    private static final String MSG_IS_DIGIT = "Character should be the digit.";
 
-    private static final String MSG_LETTER = "Character should be the letter.";
+    private static final String MSG_IS_LETTER = "Character should be the letter.";
 
-    private static final String MSG_LETTER_OR_DIGIT = "Character should be the letter or the digit.";
+    private static final String MSG_IS_LETTER_OR_DIGIT = "Character should be the letter or the digit.";
 
-    private static final String MSG_CONTROL_SYMBOL = "Character should be the control symbol.";
+    private static final String MSG_IS_CONTROL_SYMBOL = "Character should be the control symbol.";
 
-    private static final String MSG_LOWER_CASE = "Character should be the lower case symbol.";
+    private static final String MSG_IS_LOWER_CASE = "Character should be the lower case symbol.";
 
-    private static final String MSG_UPPER_CASE = "Character should be the upper case symbol.";
+    private static final String MSG_IS_UPPER_CASE = "Character should be the upper case symbol.";
 
-    private static final String MSG_WHITESPACE = "Character should be the whitespace symbol.";
+    private static final String MSG_IS_WHITESPACE = "Character should be the whitespace symbol.";
 
-    private static final String MSG_NULL = "Object should be null.";
+    private static final String MSG_IS_NULL = "Object should be null.";
 
-    private static final String MSG_NOT_NULL = "Object should not be null.";
+    private static final String MSG_IS_NOT_NULL = "Object should not be null.";
 
-    private static final String MSG_ARRAY_EMPTY = "Array should be empty.";
+    private static final String MSG_ARRAY_IS_EMPTY = "Array should be empty.";
 
-    private static final String MSG_ARRAY_NOT_EMPTY = "Array should not be empty.";
+    private static final String MSG_ARRAY_IS_NOT_EMPTY = "Array should not be empty.";
 
-    private static final String MSG_CLASS_SUBTYPE = "Class should be the subtype of the expected class.";
+    private static final String MSG_CLASS_IS_SUBTYPE_OF = "Class should be the subtype of the expected class.";
 
-    private static final String MSG_CLASS_NOT_SUBTYPE = "Class should not be the subtype of the expected class.";
+    private static final String MSG_CLASS_IS_NOT_SUBTYPE_OF = "Class should not be the subtype of the expected class.";
 
-    private static final String MSG_CONSTRUCTOR_DEFAULT = "Class should have one default constructor.";
+    private static final String MSG_CONSTRUCTOR_IS_DEFAULT = "Class should have one default constructor.";
 
-    private static final String MSG_CONSTRUCTOR_NOT_ACCESSIBLE = "Class constructor should not be acccessible.";
+    private static final String MSG_CONSTRUCTOR_IS_NOT_ACCESSIBLE = "Class constructor should not be acccessible.";
 
-    private static final String MSG_ENUM_CLASS = "Class should be the enum class.";
+    private static final String MSG_IS_ENUM_CLASS = "Class should be the enum class.";
 
     private static final String MSG_STRING_CONTAINS = "String should contain the expected string.";
 
-    private static final String MSG_STRING_NOT_CONTAINS = "String should not contain the expected string.";
+    private static final String MSG_STRING_DOES_NOT_CONTAIN = "String should not contain the expected string.";
 
-    private static final String MSG_STRING_PART_OF = "String should be the part of the expected string.";
+    private static final String MSG_STRING_IS_PART_OF = "String should be the part of the expected string.";
 
-    private static final String MSG_STRING_NOT_PART_OF = "String should not be the part of the expected string.";
+    private static final String MSG_STRING_IS_NOT_PART_OF = "String should not be the part of the expected string.";
 
     private static final String MSG_STRING_MATCHES = "String should match the expected regexp.";
 
-    private static final String MSG_STRING_NOT_MATCHES = "String should not match the expected regexp.";
+    private static final String MSG_STRING_DOES_NOT_MATCH = "String should not match the expected regexp.";
 
     private static final String MSG_STRING_STARTS_WITH = "String should start with the expected string.";
 
-    private static final String MSG_STRING_NOT_STARTS_WITH = "String should not start with the expected string.";
+    private static final String MSG_STRING_DOES_NOT_START_WITH = "String should not start with the expected string.";
 
     private static final String MSG_STRING_ENDS_WITH = "String should end with the expected string.";
 
-    private static final String MSG_STRING_NOT_ENDS_WITH = "String should not end with the expected string.";
+    private static final String MSG_STRING_DOES_NOT_END_WITH = "String should not end with the expected string.";
 
-    private static final String MSG_COLLECTION_EMPTY = "Collection should be empty.";
+    private static final String MSG_COLLECTION_IS_EMPTY = "Collection should be empty.";
 
-    private static final String MSG_COLLECTION_NOT_EMPTY = "Collection should not be empty.";
+    private static final String MSG_COLLECTION_IS_NOT_EMPTY = "Collection should not be empty.";
 
-    private static final String MSG_COLLECTION_HAS_VALUE = "Collection should contain the expected value.";
+    private static final String MSG_COLLECTION_CONTAINS = "Collection should contain the expected value.";
 
-    private static final String MSG_COLLECTION_HAS_NOT_VALUE = "Collection should not contain the expected value.";
+    private static final String MSG_COLLECTION_DOES_NOT_CONTAIN = "Collection should not contain the expected value.";
 
-    private static final String MSG_COLLECTION_HAS_ALL_VALUES = "Collection should contain all expected values.";
+    private static final String MSG_COLLECTION_CONTAINS_ALL = "Collection should contain all of the expected values.";
 
-    private static final String MSG_COLLECTION_HAS_ALL_VALUES_IN_ANY_ORDER = "Collection should contain all expected values in any order.";
+    private static final String MSG_COLLECTION_CONTAINS_ALL_IN_ANY_ORDER = "Collection should contain all of the expected values in any order.";
 
-    private static final String MSG_COLLECTION_HAS_EXACT_VALUES = "Collection should contain the exact expected values.";
+    private static final String MSG_COLLECTION_CONTAINS_EXACTLY = "Collection should contain exactly the expected values.";
 
-    private static final String MSG_COLLECTION_HAS_EXACT_VALUES_IN_ANY_ORDER = "Collection should contain the exact expected values in any order.";
+    private static final String MSG_COLLECTION_CONTAINS_EXACTLY_IN_ANY_ORDER = "Collection should contain exactly the expected values in any order.";
 
-    private static final String MSG_COLLECTION_HAS_ANY_VALUE = "Collection should contain any of the expected values.";
+    private static final String MSG_COLLECTION_CONTAINS_ANY = "Collection should contain any of the expected values.";
+
+    private static final String MSG_COLLECTION_CONTAINS_NONE = "Collection should not contain any of the expected values.";
 
     private FailMessages() {
         super();
@@ -139,8 +141,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getTrue() {
-        return MSG_TRUE;
+    public static String getIsTrue() {
+        return MSG_IS_TRUE;
     }
 
     /**
@@ -148,8 +150,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getFalse() {
-        return MSG_FALSE;
+    public static String getIsFalse() {
+        return MSG_IS_FALSE;
     }
 
     /**
@@ -159,8 +161,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getSame(final String actual, final String expected) {
-        return MSG_SAME + " " + getValueMessagePart(actual, expected);
+    public static String getIsSame(final String actual, final String expected) {
+        return MSG_IS_SAME + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -169,8 +171,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getDifferent(final String actual) {
-        return MSG_DIFFERENT + " " + getValueMessagePart(actual);
+    public static String getIsDifferent(final String actual) {
+        return MSG_IS_DIFFERENT + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -180,8 +182,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getGreater(final String actual, final String expected) {
-        return MSG_GREATER + " " + getValueMessagePart(actual, expected);
+    public static String getIsGreater(final String actual, final String expected) {
+        return MSG_IS_GREATER + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -191,8 +193,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getGreaterOrEqual(final String actual, final String expected) {
-        return MSG_GREATER_OR_EQUAL + " " + getValueMessagePart(actual, expected);
+    public static String getIsGreaterOrEqual(final String actual, final String expected) {
+        return MSG_IS_GREATER_OR_EQUAL + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -202,8 +204,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getLess(final String actual, final String expected) {
-        return MSG_LESS + " " + getValueMessagePart(actual, expected);
+    public static String getIsLess(final String actual, final String expected) {
+        return MSG_IS_LESS + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -213,8 +215,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getLessOrEqual(final String actual, final String expected) {
-        return MSG_LESS_OR_EQUAL + " " + getValueMessagePart(actual, expected);
+    public static String getIsLessOrEqual(final String actual, final String expected) {
+        return MSG_IS_LESS_OR_EQUAL + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -223,8 +225,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getZero(final String actual) {
-        return MSG_ZERO + " " + getValueMessagePart(actual);
+    public static String getIsZero(final String actual) {
+        return MSG_IS_ZERO + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -232,8 +234,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getNonZero() {
-        return MSG_NON_ZERO;
+    public static String getIsNonZero() {
+        return MSG_IS_NON_ZERO;
     }
 
     /**
@@ -242,8 +244,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getPositiveInfinity(final String actual) {
-        return MSG_POSITIVE_INFINITY + " " + getValueMessagePart(actual);
+    public static String getIsPositiveInfinity(final String actual) {
+        return MSG_IS_POSITIVE_INFINITY + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -252,8 +254,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getNegativeInfinity(final String actual) {
-        return MSG_NEGATIVE_INFINITY + " " + getValueMessagePart(actual);
+    public static String getIsNegativeInfinity(final String actual) {
+        return MSG_IS_NEGATIVE_INFINITY + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -262,8 +264,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getInfinity(final String actual) {
-        return MSG_INFINITY + " " + getValueMessagePart(actual);
+    public static String getIsInfinity(final String actual) {
+        return MSG_IS_INFINITY + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -272,8 +274,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getNaN(final String actual) {
-        return MSG_NAN + " " + getValueMessagePart(actual);
+    public static String getIsNaN(final String actual) {
+        return MSG_IS_NAN + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -281,8 +283,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getNotNaN() {
-        return MSG_NOT_NAN;
+    public static String getIsNotNaN() {
+        return MSG_IS_NOT_NAN;
     }
 
     /**
@@ -291,8 +293,8 @@ public final class FailMessages {
      * @param actual the actual value.
      * @return the fail message.
      */
-    public static String getFinite(final String actual) {
-        return MSG_FINITE + " " + getValueMessagePart(actual);
+    public static String getIsFinite(final String actual) {
+        return MSG_IS_FINITE + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -301,8 +303,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getAlphabetic(final String actual) {
-        return MSG_ALPHABETIC + " " + getValueMessagePart(actual);
+    public static String getIsAlphabetic(final String actual) {
+        return MSG_IS_ALPHABETIC + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -311,8 +313,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getDigit(final String actual) {
-        return MSG_DIGIT + " " + getValueMessagePart(actual);
+    public static String getIsDigit(final String actual) {
+        return MSG_IS_DIGIT + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -321,8 +323,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getLetter(final String actual) {
-        return MSG_LETTER + " " + getValueMessagePart(actual);
+    public static String getIsLetter(final String actual) {
+        return MSG_IS_LETTER + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -331,8 +333,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getLetterOrDigit(final String actual) {
-        return MSG_LETTER_OR_DIGIT + " " + getValueMessagePart(actual);
+    public static String getIsLetterOrDigit(final String actual) {
+        return MSG_IS_LETTER_OR_DIGIT + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -341,8 +343,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getControl(final String actual) {
-        return MSG_CONTROL_SYMBOL + " " + getValueMessagePart(actual);
+    public static String getIsControl(final String actual) {
+        return MSG_IS_CONTROL_SYMBOL + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -351,8 +353,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getLowerCase(final String actual) {
-        return MSG_LOWER_CASE + " " + getValueMessagePart(actual);
+    public static String getIsLowerCase(final String actual) {
+        return MSG_IS_LOWER_CASE + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -361,8 +363,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getUpperCase(final String actual) {
-        return MSG_UPPER_CASE + " " + getValueMessagePart(actual);
+    public static String getIsUpperCase(final String actual) {
+        return MSG_IS_UPPER_CASE + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -371,8 +373,8 @@ public final class FailMessages {
      * @param actual the actual character.
      * @return the fail message.
      */
-    public static String getWhitespace(final String actual) {
-        return MSG_WHITESPACE + " " + getValueMessagePart(actual);
+    public static String getIsWhitespace(final String actual) {
+        return MSG_IS_WHITESPACE + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -381,8 +383,8 @@ public final class FailMessages {
      * @param actual the actual object.
      * @return the fail message.
      */
-    public static String getNull(final String actual) {
-        return MSG_NULL + " " + getValueMessagePart(actual);
+    public static String getIsNull(final String actual) {
+        return MSG_IS_NULL + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -390,8 +392,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getNotNull() {
-        return MSG_NOT_NULL;
+    public static String getIsNotNull() {
+        return MSG_IS_NOT_NULL;
     }
 
     /**
@@ -400,8 +402,8 @@ public final class FailMessages {
      * @param actual the actual array.
      * @return the fail message.
      */
-    public static String getArrayEmpty(final String actual) {
-        return MSG_ARRAY_EMPTY + " " + getValueMessagePart(actual);
+    public static String getArrayIsEmpty(final String actual) {
+        return MSG_ARRAY_IS_EMPTY + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -409,8 +411,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getArrayNotEmpty() {
-        return MSG_ARRAY_NOT_EMPTY;
+    public static String getArrayIsNotEmpty() {
+        return MSG_ARRAY_IS_NOT_EMPTY;
     }
 
     /**
@@ -420,8 +422,8 @@ public final class FailMessages {
      * @param expected the expected class.
      * @return the fail message.
      */
-    public static String getClassSubtype(final String actual, final String expected) {
-        return MSG_CLASS_SUBTYPE + " " + getValueMessagePart(actual, expected);
+    public static String getClassIsSubtypeOf(final String actual, final String expected) {
+        return MSG_CLASS_IS_SUBTYPE_OF + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -431,8 +433,8 @@ public final class FailMessages {
      * @param expected the expected class.
      * @return the fail message.
      */
-    public static String getClassNotSubtype(final String actual, final String expected) {
-        return MSG_CLASS_NOT_SUBTYPE + " " + getValueMessagePart(actual, expected);
+    public static String getClassIsNotSubtypeOf(final String actual, final String expected) {
+        return MSG_CLASS_IS_NOT_SUBTYPE_OF + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -441,8 +443,8 @@ public final class FailMessages {
      * @param actual the actual class.
      * @return the fail message.
      */
-    public static String getConstructorDefault(final String actual) {
-        return MSG_CONSTRUCTOR_DEFAULT + " " + getValueMessagePart(actual);
+    public static String getConstructorIsDefault(final String actual) {
+        return MSG_CONSTRUCTOR_IS_DEFAULT + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -451,8 +453,8 @@ public final class FailMessages {
      * @param actual the actual class.
      * @return the fail message.
      */
-    public static String getConstructorNotAccessible(final String actual) {
-        return MSG_CONSTRUCTOR_NOT_ACCESSIBLE + " " + getValueMessagePart(actual);
+    public static String getConstructorIsNotAccessible(final String actual) {
+        return MSG_CONSTRUCTOR_IS_NOT_ACCESSIBLE + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -461,8 +463,8 @@ public final class FailMessages {
      * @param actual the actual class.
      * @return the fail message.
      */
-    public static String getEnumClass(final String actual) {
-        return MSG_ENUM_CLASS + " " + getValueMessagePart(actual);
+    public static String getIsEnumClass(final String actual) {
+        return MSG_IS_ENUM_CLASS + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -483,8 +485,8 @@ public final class FailMessages {
      * @param expected the expected string.
      * @return the fail message.
      */
-    public static String getStringNotContains(final String actual, final String expected) {
-        return MSG_STRING_NOT_CONTAINS + " " + getValueMessagePart(actual, expected);
+    public static String getStringDoesNotContain(final String actual, final String expected) {
+        return MSG_STRING_DOES_NOT_CONTAIN + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -494,8 +496,8 @@ public final class FailMessages {
      * @param expected the expected string.
      * @return the fail message.
      */
-    public static String getStringPartOf(final String actual, final String expected) {
-        return MSG_STRING_PART_OF + " " + getValueMessagePart(actual, expected);
+    public static String getStringIsPartOf(final String actual, final String expected) {
+        return MSG_STRING_IS_PART_OF + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -505,8 +507,8 @@ public final class FailMessages {
      * @param expected the expected string.
      * @return the fail message.
      */
-    public static String getStringNotPartOf(final String actual, final String expected) {
-        return MSG_STRING_NOT_PART_OF + " " + getValueMessagePart(actual, expected);
+    public static String getStringIsNotPartOf(final String actual, final String expected) {
+        return MSG_STRING_IS_NOT_PART_OF + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -527,8 +529,8 @@ public final class FailMessages {
      * @param expected the expected regexp.
      * @return the fail message.
      */
-    public static String getStringNotMatches(final String actual, final String expected) {
-        return MSG_STRING_NOT_MATCHES + " " + getValueMessagePart(actual, expected);
+    public static String getStringDoesNotMatch(final String actual, final String expected) {
+        return MSG_STRING_DOES_NOT_MATCH + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -549,8 +551,8 @@ public final class FailMessages {
      * @param expected the expected should.
      * @return the fail message.
      */
-    public static String getStringNotStartsWith(final String actual, final String expected) {
-        return MSG_STRING_NOT_STARTS_WITH + " " + getValueMessagePart(actual, expected);
+    public static String getStringDoesNotStartWith(final String actual, final String expected) {
+        return MSG_STRING_DOES_NOT_START_WITH + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -571,8 +573,8 @@ public final class FailMessages {
      * @param expected the expected string.
      * @return the fail message.
      */
-    public static String getStringNotEndsWith(final String actual, final String expected) {
-        return MSG_STRING_NOT_ENDS_WITH + " " + getValueMessagePart(actual, expected);
+    public static String getStringDoesNotEndWith(final String actual, final String expected) {
+        return MSG_STRING_DOES_NOT_END_WITH + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -581,8 +583,8 @@ public final class FailMessages {
      * @param actual the actual collection.
      * @return the fail message.
      */
-    public static String getCollectionEmpty(final String actual) {
-        return MSG_COLLECTION_EMPTY + " " + getValueMessagePart(actual);
+    public static String getCollectionIsEmpty(final String actual) {
+        return MSG_COLLECTION_IS_EMPTY + " " + getValueMessagePart(actual);
     }
 
     /**
@@ -590,8 +592,8 @@ public final class FailMessages {
      *
      * @return the fail message.
      */
-    public static String getCollectionNotEmpty() {
-        return MSG_COLLECTION_NOT_EMPTY;
+    public static String getCollectionIsNotEmpty() {
+        return MSG_COLLECTION_IS_NOT_EMPTY;
     }
 
     /**
@@ -601,8 +603,8 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getCollectionHasValue(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_VALUE + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContains(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -612,52 +614,52 @@ public final class FailMessages {
      * @param expected the expected value.
      * @return the fail message.
      */
-    public static String getCollectionHasNotValue(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_NOT_VALUE + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionDoesNotContain(final String actual, final String expected) {
+        return MSG_COLLECTION_DOES_NOT_CONTAIN + " " + getValueMessagePart(actual, expected);
     }
 
     /**
-     * Get the fail message if the actual collection should contain all expected values.
+     * Get the fail message if the actual collection should contain all of the expected values.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getCollectionHasAllValues(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_ALL_VALUES + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContainsAll(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_ALL + " " + getValueMessagePart(actual, expected);
     }
 
     /**
-     * Get the fail message if the actual collection should contain all expected values in any order.
+     * Get the fail message if the actual collection should contain all of the expected values in any order.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getCollectionHasAllValuesInAnyOrder(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_ALL_VALUES_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContainsAllInAnyOrder(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_ALL_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
     }
 
     /**
-     * Get the fail message if the actual collection should contain the exact expected values.
+     * Get the fail message if the actual collection should contain exactly the expected values.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getCollectionHasExactValues(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_EXACT_VALUES + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContainsExactly(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_EXACTLY + " " + getValueMessagePart(actual, expected);
     }
 
     /**
-     * Get the fail message if the actual collection should contain the exact expected values in any order.
+     * Get the fail message if the actual collection should contain exactly the expected values in any order.
      *
      * @param actual   the actual collection.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getCollectionHasExactValuesInAnyOrder(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_EXACT_VALUES_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContainsExactlyInAnyOrder(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_EXACTLY_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -667,8 +669,19 @@ public final class FailMessages {
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getCollectionHasAnyValue(final String actual, final String expected) {
-        return MSG_COLLECTION_HAS_ANY_VALUE + " " + getValueMessagePart(actual, expected);
+    public static String getCollectionContainsAny(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_ANY + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual collection should not contain any of the expected values.
+     *
+     * @param actual   the actual collection.
+     * @param expected the expected values.
+     * @return the fail message.
+     */
+    public static String getCollectionContainsNone(final String actual, final String expected) {
+        return MSG_COLLECTION_CONTAINS_NONE + " " + getValueMessagePart(actual, expected);
     }
 
     private static String getValueMessagePart(final String actual) {
