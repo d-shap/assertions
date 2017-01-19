@@ -184,6 +184,7 @@ public final class CharArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new CharArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new CharArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new CharArrayAssertion(null, null).asString(new char[]{'a'})).isEqualTo("[a]");
         Assertions.assertThat(new CharArrayAssertion(null, null).asString(new char[]{'a', 'Z', 'Й'})).isEqualTo("[a, Z, Й]");
         Assertions.assertThat(new CharArrayAssertion(null, null).asString(new char[]{'a', 'Z', 'Й', '1'})).isEqualTo("[a, Z, Й, 1]");

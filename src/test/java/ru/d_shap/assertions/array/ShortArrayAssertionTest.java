@@ -184,6 +184,7 @@ public final class ShortArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new ShortArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new ShortArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{5, 10, 15})).isEqualTo("[5, 10, 15]");
         Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{5, 10, 15, 20})).isEqualTo("[5, 10, 15, 20]");

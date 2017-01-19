@@ -184,6 +184,7 @@ public final class FloatArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new FloatArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new FloatArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new FloatArrayAssertion(null, null).asString(new float[]{1.0f})).isEqualTo("[1.0]");
         Assertions.assertThat(new FloatArrayAssertion(null, null).asString(new float[]{5.0f, 10.0f, 15.0f})).isEqualTo("[5.0, 10.0, 15.0]");
         Assertions.assertThat(new FloatArrayAssertion(null, null).asString(new float[]{5.0f, 10.0f, 15.0f, 20.0f})).isEqualTo("[5.0, 10.0, 15.0, 20.0]");

@@ -184,6 +184,7 @@ public final class LongArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new LongArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new LongArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{1L})).isEqualTo("[1]");
         Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{5L, 10L, 15L})).isEqualTo("[5, 10, 15]");
         Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{5L, 10L, 15L, 20L})).isEqualTo("[5, 10, 15, 20]");

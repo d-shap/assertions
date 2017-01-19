@@ -184,6 +184,7 @@ public final class BooleanArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new BooleanArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new BooleanArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new BooleanArrayAssertion(null, null).asString(new boolean[]{true})).isEqualTo("[true]");
         Assertions.assertThat(new BooleanArrayAssertion(null, null).asString(new boolean[]{true, false, true})).isEqualTo("[true, false, true]");
         Assertions.assertThat(new BooleanArrayAssertion(null, null).asString(new boolean[]{true, false, true, true})).isEqualTo("[true, false, true, true]");

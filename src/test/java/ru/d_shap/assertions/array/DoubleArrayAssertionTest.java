@@ -184,6 +184,7 @@ public final class DoubleArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new DoubleArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new DoubleArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new DoubleArrayAssertion(null, null).asString(new double[]{1.0})).isEqualTo("[1.0]");
         Assertions.assertThat(new DoubleArrayAssertion(null, null).asString(new double[]{5.0, 10.0, 15.0})).isEqualTo("[5.0, 10.0, 15.0]");
         Assertions.assertThat(new DoubleArrayAssertion(null, null).asString(new double[]{5.0, 10.0, 15.0, 20.0})).isEqualTo("[5.0, 10.0, 15.0, 20.0]");

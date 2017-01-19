@@ -167,6 +167,7 @@ public final class ObjectArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new ObjectArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new ObjectArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ObjectArrayAssertion(null, null).asString(new Object[]{"val1"})).isEqualTo("[val1]");
         Assertions.assertThat(new ObjectArrayAssertion(null, null).asString(new Object[]{"val5", "val10", "val15"})).isEqualTo("[val5, val10, val15]");
         Assertions.assertThat(new ObjectArrayAssertion(null, null).asString(new Object[]{"val5", "val10", "val15", "val20"})).isEqualTo("[val5, val10, val15, val20]");

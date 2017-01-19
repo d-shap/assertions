@@ -184,6 +184,7 @@ public final class ByteArrayAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new ByteArrayAssertion(null, null).asString(null)).isNull();
+        Assertions.assertThat(new ByteArrayAssertion(null, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ByteArrayAssertion(null, null).asString(new byte[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new ByteArrayAssertion(null, null).asString(new byte[]{5, 10, 15})).isEqualTo("[5, 10, 15]");
         Assertions.assertThat(new ByteArrayAssertion(null, null).asString(new byte[]{5, 10, 15, 20})).isEqualTo("[5, 10, 15, 20]");
