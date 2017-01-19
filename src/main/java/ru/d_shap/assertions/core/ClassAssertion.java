@@ -108,7 +108,11 @@ public class ClassAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            return ((Class<?>) value).getName();
+            if (value instanceof Class) {
+                return ((Class<?>) value).getName();
+            } else {
+                return String.valueOf(value);
+            }
         }
     }
 

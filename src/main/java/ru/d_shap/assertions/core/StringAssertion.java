@@ -331,7 +331,15 @@ public class StringAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        return (String) value;
+        if (value == null) {
+            return null;
+        } else {
+            if (value instanceof String) {
+                return (String) value;
+            } else {
+                return String.valueOf(value);
+            }
+        }
     }
 
 }
