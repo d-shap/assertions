@@ -42,7 +42,11 @@ public class IteratorAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        return String.valueOf(value);
+        if (value == null) {
+            return null;
+        } else {
+            return String.valueOf(value);
+        }
     }
 
 }
