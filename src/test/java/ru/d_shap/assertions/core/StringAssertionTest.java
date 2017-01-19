@@ -872,8 +872,10 @@ public final class StringAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new StringAssertion("vAlUe", null).asString(null)).isNull();
         Assertions.assertThat(new StringAssertion("vAlUe", null).asString("vAlUe")).isEqualTo("vAlUe");
         Assertions.assertThat(new StringAssertion("vAlUe", null).asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
+        Assertions.assertThat(new StringAssertion("vAlUe", null).asString(1)).isEqualTo("1");
     }
 
 }
