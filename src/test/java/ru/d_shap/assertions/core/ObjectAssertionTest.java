@@ -42,6 +42,7 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(null)).isNull();
         Assertions.assertThat(new ObjectAssertion(new Object(), null).asString("value")).isEqualTo("value");
         Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(1)).isEqualTo("1");
         Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(new StringBuilder("builder"))).isEqualTo("builder");
