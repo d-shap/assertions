@@ -72,6 +72,8 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new BooleanAssertion(true, null).asString(null)).isNull();
+        Assertions.assertThat(new BooleanAssertion(true, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new BooleanAssertion(true, null).asString(true)).isEqualTo("true");
         Assertions.assertThat(new BooleanAssertion(true, null).asString(false)).isEqualTo("false");
     }

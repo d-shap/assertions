@@ -158,6 +158,8 @@ public final class ShortAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new ShortAssertion((short) 5, null).asString(null)).isNull();
+        Assertions.assertThat(new ShortAssertion((short) 5, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 5)).isEqualTo("5");
         Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 60)).isEqualTo("60");
         Assertions.assertThat(new ShortAssertion((short) 5, null).asString((short) 244)).isEqualTo("244");

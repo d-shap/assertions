@@ -440,6 +440,8 @@ public final class FloatAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new FloatAssertion(10.0f, null).asString(null)).isNull();
+        Assertions.assertThat(new FloatAssertion(10.0f, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(5.0f)).isEqualTo("5.0");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(60.0f)).isEqualTo("60.0");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(244.0f)).isEqualTo("244.0");

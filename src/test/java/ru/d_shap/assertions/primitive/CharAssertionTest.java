@@ -383,6 +383,8 @@ public final class CharAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new CharAssertion('a', null).asString(null)).isNull();
+        Assertions.assertThat(new CharAssertion('a', null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new CharAssertion('a', null).asString('a')).isEqualTo("a(97)");
         Assertions.assertThat(new CharAssertion('a', null).asString('7')).isEqualTo("7(55)");
         Assertions.assertThat(new CharAssertion('a', null).asString('F')).isEqualTo("F(70)");

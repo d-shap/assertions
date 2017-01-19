@@ -158,6 +158,8 @@ public final class ByteAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new ByteAssertion((byte) 5, null).asString(null)).isNull();
+        Assertions.assertThat(new ByteAssertion((byte) 5, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 5)).isEqualTo("5");
         Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 60)).isEqualTo("60");
         Assertions.assertThat(new ByteAssertion((byte) 5, null).asString((byte) 244)).isEqualTo("-12");
