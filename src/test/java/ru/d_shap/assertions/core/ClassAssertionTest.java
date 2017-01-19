@@ -240,6 +240,7 @@ public final class ClassAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(null)).isNull();
+        Assertions.assertThat(new ClassAssertion(Values.class, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(AbstractClass.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$AbstractClass");
