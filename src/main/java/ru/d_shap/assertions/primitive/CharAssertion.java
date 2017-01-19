@@ -179,9 +179,17 @@ public class CharAssertion extends BaseAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        char symbol = (char) value;
-        int code = (char) value;
-        return symbol + "(" + code + ")";
+        if (value == null) {
+            return null;
+        } else {
+            if (value instanceof Character) {
+                char symbol = (char) value;
+                int code = (char) value;
+                return symbol + "(" + code + ")";
+            } else {
+                return String.valueOf(value);
+            }
+        }
     }
 
 }
