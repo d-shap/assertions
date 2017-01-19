@@ -100,6 +100,7 @@ public final class ThrowableAssertionTest {
      */
     @Test
     public void asStringTest() {
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(null)).isNull();
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Throwable())).isEqualTo("java.lang.Throwable");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Exception())).isEqualTo("java.lang.Exception");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");
