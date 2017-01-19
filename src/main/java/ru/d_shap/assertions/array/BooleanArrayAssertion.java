@@ -118,11 +118,15 @@ public class BooleanArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
-            for (boolean item : (boolean[]) value) {
-                list.add(item);
+            if (value instanceof boolean[]) {
+                List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
+                for (boolean item : (boolean[]) value) {
+                    list.add(item);
+                }
+                return list.toString();
+            } else {
+                return String.valueOf(value);
             }
-            return list.toString();
         }
     }
 

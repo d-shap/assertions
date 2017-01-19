@@ -118,11 +118,15 @@ public class ShortArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            List<Short> list = new ArrayList<>(((short[]) value).length);
-            for (short item : (short[]) value) {
-                list.add(item);
+            if (value instanceof short[]) {
+                List<Short> list = new ArrayList<>(((short[]) value).length);
+                for (short item : (short[]) value) {
+                    list.add(item);
+                }
+                return list.toString();
+            } else {
+                return String.valueOf(value);
             }
-            return list.toString();
         }
     }
 

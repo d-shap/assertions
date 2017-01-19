@@ -118,11 +118,15 @@ public class FloatArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            List<Float> list = new ArrayList<>(((float[]) value).length);
-            for (float item : (float[]) value) {
-                list.add(item);
+            if (value instanceof float[]) {
+                List<Float> list = new ArrayList<>(((float[]) value).length);
+                for (float item : (float[]) value) {
+                    list.add(item);
+                }
+                return list.toString();
+            } else {
+                return String.valueOf(value);
             }
-            return list.toString();
         }
     }
 

@@ -105,7 +105,11 @@ public class ObjectArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            return Arrays.asList((Object[]) value).toString();
+            if (value instanceof Object[]) {
+                return Arrays.asList((Object[]) value).toString();
+            } else {
+                return String.valueOf(value);
+            }
         }
     }
 

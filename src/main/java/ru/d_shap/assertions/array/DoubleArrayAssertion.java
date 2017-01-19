@@ -118,11 +118,15 @@ public class DoubleArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            List<Double> list = new ArrayList<>(((double[]) value).length);
-            for (double item : (double[]) value) {
-                list.add(item);
+            if (value instanceof double[]) {
+                List<Double> list = new ArrayList<>(((double[]) value).length);
+                for (double item : (double[]) value) {
+                    list.add(item);
+                }
+                return list.toString();
+            } else {
+                return String.valueOf(value);
             }
-            return list.toString();
         }
     }
 

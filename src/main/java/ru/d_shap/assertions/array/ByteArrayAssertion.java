@@ -118,11 +118,15 @@ public class ByteArrayAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            List<Byte> list = new ArrayList<>(((byte[]) value).length);
-            for (byte item : (byte[]) value) {
-                list.add(item);
+            if (value instanceof byte[]) {
+                List<Byte> list = new ArrayList<>(((byte[]) value).length);
+                for (byte item : (byte[]) value) {
+                    list.add(item);
+                }
+                return list.toString();
+            } else {
+                return String.valueOf(value);
             }
-            return list.toString();
         }
     }
 
