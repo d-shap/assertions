@@ -131,6 +131,26 @@ public final class FailMessagesTest {
      * {@link FailMessages} class test.
      */
     @Test
+    public void getIsInRangeTest() {
+        Assertions.assertThat(FailMessages.getIsInRange(null, null, null)).isEqualTo("Value should be in the expected range. Expected:<null:null> but was:<null>");
+        Assertions.assertThat(FailMessages.getIsInRange("val1", "val2", "val3")).isEqualTo("Value should be in the expected range. Expected:<val2:val3> but was:<val1>");
+        Assertions.assertThat(FailMessages.getIsInRange("test1", "test2", "test3")).isEqualTo("Value should be in the expected range. Expected:<test2:test3> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getIsNotInRangeTest() {
+        Assertions.assertThat(FailMessages.getIsNotInRange(null, null, null)).isEqualTo("Value should not be in the expected range. Expected:<null:null> but was:<null>");
+        Assertions.assertThat(FailMessages.getIsNotInRange("val1", "val2", "val3")).isEqualTo("Value should not be in the expected range. Expected:<val2:val3> but was:<val1>");
+        Assertions.assertThat(FailMessages.getIsNotInRange("test1", "test2", "test3")).isEqualTo("Value should not be in the expected range. Expected:<test2:test3> but was:<test1>");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
     public void getIsZeroTest() {
         Assertions.assertThat(FailMessages.getIsZero(null)).isEqualTo("Value should be zero. Actual:<null>");
         Assertions.assertThat(FailMessages.getIsZero("val1")).isEqualTo("Value should be zero. Actual:<val1>");
