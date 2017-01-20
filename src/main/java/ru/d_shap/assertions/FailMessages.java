@@ -26,6 +26,8 @@ package ru.d_shap.assertions;
  */
 public final class FailMessages {
 
+    private static final String MSG_ARGUMENT_IS_NOT_NULL = "Argument should not be null.";
+
     private static final String MSG_IS_TRUE = "Value should be true.";
 
     private static final String MSG_IS_FALSE = "Value should be false.";
@@ -134,6 +136,15 @@ public final class FailMessages {
 
     private FailMessages() {
         super();
+    }
+
+    /**
+     * Get the fail message if the argument should not be null.
+     *
+     * @return the fail message.
+     */
+    public static String getArgumentIsNotNull() {
+        return MSG_ARGUMENT_IS_NOT_NULL;
     }
 
     /**
