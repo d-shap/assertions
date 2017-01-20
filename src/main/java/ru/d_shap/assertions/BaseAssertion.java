@@ -61,6 +61,17 @@ public abstract class BaseAssertion {
     }
 
     /**
+     * Check if the argument is NOT null.
+     *
+     * @param argument the argument.
+     */
+    protected final void checkArgumentIsNotNull(final Object argument) {
+        if (argument == null) {
+            throw createAssertionError(FailMessages.getArgumentIsNotNull());
+        }
+    }
+
+    /**
      * Create new assertion error.
      *
      * @param failMessage the fail message.
@@ -128,7 +139,7 @@ public abstract class BaseAssertion {
     /**
      * Get the string representation of the object.
      *
-     * @param value the object to get the string representation.
+     * @param value the object.
      * @return the string representation of the object.
      */
     protected abstract String asString(Object value);
