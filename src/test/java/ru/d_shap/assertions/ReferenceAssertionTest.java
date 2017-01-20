@@ -40,10 +40,10 @@ public final class ReferenceAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new ReferenceAssertionIml(null, null).isNull();
+        new ReferenceAssertionImpl(null).isNull();
 
         try {
-            new ReferenceAssertionIml("reference", null).isNull();
+            new ReferenceAssertionImpl("reference").isNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Object should be null. Actual:<reference>");
@@ -55,11 +55,11 @@ public final class ReferenceAssertionTest {
      */
     @Test
     public void isNotNullTest() {
-        new ReferenceAssertionIml(new Object(), null).isNotNull();
-        new ReferenceAssertionIml("reference", null).isNotNull();
+        new ReferenceAssertionImpl(new Object()).isNotNull();
+        new ReferenceAssertionImpl("reference").isNotNull();
 
         try {
-            new ReferenceAssertionIml(null, null).isNotNull();
+            new ReferenceAssertionImpl(null).isNotNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Object should not be null.");
@@ -72,10 +72,10 @@ public final class ReferenceAssertionTest {
     @Test
     public void isSameAsTest() {
         Object object = new Object();
-        new ReferenceAssertionIml(object, null).isSameAs(object);
+        new ReferenceAssertionImpl(object).isSameAs(object);
 
         try {
-            new ReferenceAssertionIml(new StringBuilder("value"), null).isSameAs(new StringBuilder("value"));
+            new ReferenceAssertionImpl(new StringBuilder("value")).isSameAs(new StringBuilder("value"));
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>");
@@ -87,12 +87,12 @@ public final class ReferenceAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        new ReferenceAssertionIml(new Object(), null).isNotSameAs(new Object());
-        new ReferenceAssertionIml(new StringBuilder("value"), null).isNotSameAs(new StringBuilder("value"));
+        new ReferenceAssertionImpl(new Object()).isNotSameAs(new Object());
+        new ReferenceAssertionImpl(new StringBuilder("value")).isNotSameAs(new StringBuilder("value"));
 
         try {
             StringBuilder value = new StringBuilder("value");
-            new ReferenceAssertionIml(value, null).isNotSameAs(value);
+            new ReferenceAssertionImpl(value).isNotSameAs(value);
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
@@ -104,12 +104,12 @@ public final class ReferenceAssertionTest {
      */
     @Test
     public void toClassTest() {
-        new ReferenceAssertionIml(new Object(), null).toClass().isSameAs(Object.class);
+        new ReferenceAssertionImpl(new Object()).toClass().isSameAs(Object.class);
 
-        new ReferenceAssertionIml(new StringBuilder("value"), null).toClass().isSameAs(StringBuilder.class);
-        new ReferenceAssertionIml(new StringBuilder("value"), null).toClass().isSubtypeOf(StringBuilder.class);
-        new ReferenceAssertionIml(new StringBuilder("value"), null).toClass().isSubtypeOf(CharSequence.class);
-        new ReferenceAssertionIml(new StringBuilder("value"), null).toClass().isSubtypeOf(Object.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSameAs(StringBuilder.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(StringBuilder.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(CharSequence.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(Object.class);
     }
 
     /**
@@ -117,14 +117,14 @@ public final class ReferenceAssertionTest {
      */
     @Test
     public void isInstanceOfTest() {
-        new ReferenceAssertionIml(new Object(), null).isInstanceOf(Object.class);
+        new ReferenceAssertionImpl(new Object()).isInstanceOf(Object.class);
 
-        new ReferenceAssertionIml(new StringBuilder("value"), null).isInstanceOf(StringBuilder.class);
-        new ReferenceAssertionIml(new StringBuilder("value"), null).isInstanceOf(CharSequence.class);
-        new ReferenceAssertionIml(new StringBuilder("value"), null).isInstanceOf(Object.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).isInstanceOf(StringBuilder.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).isInstanceOf(CharSequence.class);
+        new ReferenceAssertionImpl(new StringBuilder("value")).isInstanceOf(Object.class);
 
         try {
-            new ReferenceAssertionIml(new Object(), null).isInstanceOf(StringBuilder.class);
+            new ReferenceAssertionImpl(new Object()).isInstanceOf(StringBuilder.class);
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.StringBuilder> but was:<java.lang.Object>");
@@ -136,10 +136,10 @@ public final class ReferenceAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ReferenceAssertionIml extends ReferenceAssertion {
+    private static final class ReferenceAssertionImpl extends ReferenceAssertion {
 
-        ReferenceAssertionIml(final Object actual, final String message) {
-            super(actual, message);
+        ReferenceAssertionImpl(final Object actual) {
+            super(actual, null);
         }
 
         @Override
