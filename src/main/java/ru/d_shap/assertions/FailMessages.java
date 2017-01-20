@@ -44,6 +44,10 @@ public final class FailMessages {
 
     private static final String MSG_IS_LESS_OR_EQUAL = "Value should be less then or equal to the expected.";
 
+    private static final String MSG_IS_IN_RANGE = "Value should be in the expected range.";
+
+    private static final String MSG_IS_NOT_IN_RANGE = "Value should not be in the expected range.";
+
     private static final String MSG_IS_ZERO = "Value should be zero.";
 
     private static final String MSG_IS_NON_ZERO = "Value should not be zero.";
@@ -228,6 +232,30 @@ public final class FailMessages {
      */
     public static String getIsLessOrEqual(final String actual, final String expected) {
         return MSG_IS_LESS_OR_EQUAL + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual value should be in the expected range.
+     *
+     * @param actual       the actual value.
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     * @return the fail message.
+     */
+    public static String getIsInRange(final String actual, final String expectedFrom, final String expectedTo) {
+        return MSG_IS_IN_RANGE + " " + getValueMessagePart(actual, expectedFrom, expectedTo);
+    }
+
+    /**
+     * Get the fail message if the actual value should not be in the expected range.
+     *
+     * @param actual       the actual value.
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     * @return the fail message.
+     */
+    public static String getIsNotInRange(final String actual, final String expectedFrom, final String expectedTo) {
+        return MSG_IS_NOT_IN_RANGE + " " + getValueMessagePart(actual, expectedFrom, expectedTo);
     }
 
     /**
@@ -701,6 +729,10 @@ public final class FailMessages {
 
     private static String getValueMessagePart(final String actual, final String expected) {
         return "Expected:<" + expected + "> but was:<" + actual + ">";
+    }
+
+    private static String getValueMessagePart(final String actual, final String expectedFrom, final String expectedTo) {
+        return "Expected:<" + expectedFrom + ":" + expectedTo + "> but was:<" + actual + ">";
     }
 
 }
