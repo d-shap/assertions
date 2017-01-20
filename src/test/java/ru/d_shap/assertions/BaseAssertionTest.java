@@ -65,6 +65,23 @@ public final class BaseAssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void checkArgumentIsNotNullTest() {
+        new BaseAssertionImpl(null, null).checkArgumentIsNotNull(new Object());
+        new BaseAssertionImpl(null, null).checkArgumentIsNotNull("test");
+        new BaseAssertionImpl(null, null).checkArgumentIsNotNull(1);
+
+        try {
+            new BaseAssertionImpl(null, null).checkArgumentIsNotNull(null);
+            Assertions.fail("Base assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void createAssertionErrorWithFailMessageTest() {
         Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((String) null).getMessage()).isEqualTo("");
         Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("").getMessage()).isEqualTo("");
