@@ -142,8 +142,6 @@ public class ComparableAssertion extends ReferenceAssertion {
     public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotNull(expectedTo);
         if (((Comparable<Object>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<Object>) getActual()).compareTo(expectedTo) < 0) {
             throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
