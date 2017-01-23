@@ -23,7 +23,7 @@ import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the boolean value.
+ * Assertions for the boolean.
  *
  * @author Dmitry Shapovalov
  */
@@ -32,7 +32,7 @@ public class BooleanAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual boolean value.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public BooleanAssertion(final boolean actual, final String message) {

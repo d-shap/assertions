@@ -23,7 +23,7 @@ import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the float value.
+ * Assertions for the float.
  *
  * @author Dmitry Shapovalov
  */
@@ -32,7 +32,7 @@ public class FloatAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual float value.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public FloatAssertion(final float actual, final String message) {
@@ -104,6 +104,30 @@ public class FloatAssertion extends BaseAssertion {
     public final void isLessThanOrEqualTo(final float expected) {
         if ((Float) getActual() > expected) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRange(final float expectedFrom, final float expectedTo) {
+        if ((Float) getActual() < expectedFrom || (Float) getActual() >= expectedTo) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRange(final float expectedFrom, final float expectedTo) {
+        if ((Float) getActual() >= expectedFrom && (Float) getActual() < expectedTo) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
     }
 

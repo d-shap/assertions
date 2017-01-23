@@ -23,7 +23,7 @@ import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the byte value.
+ * Assertions for the byte.
  *
  * @author Dmitry Shapovalov
  */
@@ -32,7 +32,7 @@ public class ByteAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual byte value.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public ByteAssertion(final byte actual, final String message) {
@@ -44,7 +44,7 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final byte expected) {
+    public final void isEqualTo(final int expected) {
         if ((Byte) getActual() != expected) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
@@ -55,7 +55,7 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final byte expected) {
+    public final void isNotEqualTo(final int expected) {
         if ((Byte) getActual() == expected) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
@@ -66,7 +66,7 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final byte expected) {
+    public final void isGreaterThan(final int expected) {
         if ((Byte) getActual() <= expected) {
             throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
         }
@@ -77,7 +77,7 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final byte expected) {
+    public final void isGreaterThanOrEqualTo(final int expected) {
         if ((Byte) getActual() < expected) {
             throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
         }
@@ -88,7 +88,7 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final byte expected) {
+    public final void isLessThan(final int expected) {
         if ((Byte) getActual() >= expected) {
             throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
         }
@@ -99,9 +99,33 @@ public class ByteAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final byte expected) {
+    public final void isLessThanOrEqualTo(final int expected) {
         if ((Byte) getActual() > expected) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRange(final int expectedFrom, final int expectedTo) {
+        if ((Byte) getActual() < expectedFrom || (Byte) getActual() >= expectedTo) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRange(final int expectedFrom, final int expectedTo) {
+        if ((Byte) getActual() >= expectedFrom && (Byte) getActual() < expectedTo) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
     }
 

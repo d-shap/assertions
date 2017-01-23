@@ -23,7 +23,7 @@ import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the double value.
+ * Assertions for the double.
  *
  * @author Dmitry Shapovalov
  */
@@ -32,7 +32,7 @@ public class DoubleAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual double value.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public DoubleAssertion(final double actual, final String message) {
@@ -104,6 +104,30 @@ public class DoubleAssertion extends BaseAssertion {
     public final void isLessThanOrEqualTo(final double expected) {
         if ((Double) getActual() > expected) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRange(final double expectedFrom, final double expectedTo) {
+        if ((Double) getActual() < expectedFrom || (Double) getActual() >= expectedTo) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRange(final double expectedFrom, final double expectedTo) {
+        if ((Double) getActual() >= expectedFrom && (Double) getActual() < expectedTo) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
     }
 

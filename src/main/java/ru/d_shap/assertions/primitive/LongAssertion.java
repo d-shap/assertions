@@ -23,7 +23,7 @@ import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.FailMessages;
 
 /**
- * Assertions for the long value.
+ * Assertions for the long.
  *
  * @author Dmitry Shapovalov
  */
@@ -32,7 +32,7 @@ public class LongAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual long value.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public LongAssertion(final long actual, final String message) {
@@ -102,6 +102,30 @@ public class LongAssertion extends BaseAssertion {
     public final void isLessThanOrEqualTo(final long expected) {
         if ((Long) getActual() > expected) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRange(final long expectedFrom, final long expectedTo) {
+        if ((Long) getActual() < expectedFrom || (Long) getActual() >= expectedTo) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRange(final long expectedFrom, final long expectedTo) {
+        if ((Long) getActual() >= expectedFrom && (Long) getActual() < expectedTo) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
     }
 
