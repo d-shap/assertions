@@ -32,7 +32,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual comparable.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public ComparableAssertion(final Comparable<?> actual, final String message) {
@@ -40,7 +40,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is equal to the expected value.
+     * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
      */
@@ -53,7 +53,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is NOT equal to the expected value.
+     * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
      */
@@ -66,7 +66,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is greater than the expected value.
+     * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
      */
@@ -79,7 +79,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is greater than or equal to the expected value.
+     * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
      */
@@ -92,7 +92,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is less than the expected value.
+     * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
      */
@@ -105,7 +105,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is less than or equal to the expected value.
+     * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
      */
@@ -118,7 +118,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is in the expected range.
+     * Check if the actual value is in the expected range.
      *
      * @param expectedFrom the expected left bound of the range.
      * @param expectedTo   the expected right bound of the range.
@@ -133,7 +133,7 @@ public class ComparableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual comparable is NOT in the expected range.
+     * Check if the actual value is NOT in the expected range.
      *
      * @param expectedFrom the expected left bound of the range.
      * @param expectedTo   the expected right bound of the range.
