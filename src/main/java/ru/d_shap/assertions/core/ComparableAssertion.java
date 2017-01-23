@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -36,6 +37,116 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     public ComparableAssertion(final Comparable<?> actual, final String message) {
         super(actual, message);
+    }
+
+    /**
+     * Check if the actual comparable is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isEqualTo(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) != 0) {
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isNotEqualTo(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) == 0) {
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isGreaterThan(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) <= 0) {
+            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isGreaterThanOrEqualTo(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) < 0) {
+            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isLessThan(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) >= 0) {
+            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isLessThanOrEqualTo(final Object expected) {
+        checkArgumentIsNotNull(expected);
+        if (((Comparable<Object>) getActual()).compareTo(expected) > 0) {
+            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isInRange(final Object expectedFrom, final Object expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((Comparable<Object>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<Object>) getActual()).compareTo(expectedTo) >= 0) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual comparable is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    @SuppressWarnings("unchecked")
+    public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((Comparable<Object>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<Object>) getActual()).compareTo(expectedTo) < 0) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
     }
 
     @Override
