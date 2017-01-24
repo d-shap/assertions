@@ -36,7 +36,7 @@ public class ClassAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual class.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public ClassAssertion(final Class<?> actual, final String message) {
@@ -44,42 +44,44 @@ public class ClassAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual class is the subtype of the expected class.
+     * Check if the actual value is the subtype of the expected class.
      *
      * @param clazz the expected class.
      */
     public final void isSubtypeOf(final Class<?> clazz) {
+        checkArgumentIsNotNull(clazz);
         if (!clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassIsSubtypeOf(actualAsString(), asString(clazz)));
+            throw createAssertionError(FailMessages.getIsSubtypeOf(actualAsString(), asString(clazz)));
         }
     }
 
     /**
-     * Check if the actual class is NOT the subtype of the expected class.
+     * Check if the actual value is NOT the subtype of the expected class.
      *
      * @param clazz the expected class.
      */
     public final void isNotSubtypeOf(final Class<?> clazz) {
+        checkArgumentIsNotNull(clazz);
         if (clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getClassIsNotSubtypeOf(actualAsString(), asString(clazz)));
+            throw createAssertionError(FailMessages.getIsNotSubtypeOf(actualAsString(), asString(clazz)));
         }
     }
 
     /**
-     * Check if the actual class has one private no-arg constructor (utility class constructor).
+     * Check if the actual value has one private no-arg constructor (utility class constructor).
      */
     public final void hasOnePrivateConstructor() {
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw createAssertionError(FailMessages.getConstructorIsDefault(actualAsString()));
+            throw createAssertionError(FailMessages.getIsConstructorDefault(actualAsString()));
         }
         Constructor constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw createAssertionError(FailMessages.getConstructorIsDefault(actualAsString()));
+            throw createAssertionError(FailMessages.getIsConstructorDefault(actualAsString()));
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw createAssertionError(FailMessages.getConstructorIsNotAccessible(actualAsString()));
+            throw createAssertionError(FailMessages.getIsConstructorNotAccessible(actualAsString()));
         }
         constructor.setAccessible(true);
         try {
@@ -99,7 +101,7 @@ public class ClassAssertion extends ReferenceAssertion {
         if (Enum.class.isAssignableFrom(actualClass)) {
             return new EnumAssertion(actualClass, getMessage());
         } else {
-            throw createAssertionError(FailMessages.getIsEnumClass(actualAsString()));
+            throw createAssertionError(FailMessages.getIsEnum(actualAsString()));
         }
     }
 
