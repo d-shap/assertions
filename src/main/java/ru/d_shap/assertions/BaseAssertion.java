@@ -33,7 +33,7 @@ public abstract class BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual object.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     protected BaseAssertion(final Object actual, final String message) {
@@ -43,9 +43,9 @@ public abstract class BaseAssertion {
     }
 
     /**
-     * Get the actual object.
+     * Get the actual value.
      *
-     * @return the actual object.
+     * @return the actual value.
      */
     protected final Object getActual() {
         return _actual;
@@ -128,19 +128,19 @@ public abstract class BaseAssertion {
     }
 
     /**
-     * Get the string representation of the actual object.
+     * Get the string representation of the actual value.
      *
-     * @return the string representation of the actual object.
+     * @return the string representation of the actual value.
      */
     protected final String actualAsString() {
         return asString(_actual);
     }
 
     /**
-     * Get the string representation of the object.
+     * Get the string representation of the value.
      *
-     * @param value the object.
-     * @return the string representation of the object.
+     * @param value the value.
+     * @return the string representation of the value.
      */
     protected abstract String asString(Object value);
 
