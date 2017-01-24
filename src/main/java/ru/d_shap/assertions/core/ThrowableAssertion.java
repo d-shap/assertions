@@ -31,7 +31,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual throwable.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public ThrowableAssertion(final Throwable actual, final String message) {
