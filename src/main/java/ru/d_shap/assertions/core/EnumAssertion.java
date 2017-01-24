@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
- * Assertions for the enum class.
+ * Assertions for the enum.
  *
  * @author Dmitry Shapovalov
  */
@@ -42,7 +42,7 @@ public class EnumAssertion extends ClassAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual enum class.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public EnumAssertion(final Class<?> actual, final String message) {
