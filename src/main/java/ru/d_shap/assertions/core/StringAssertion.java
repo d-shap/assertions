@@ -38,7 +38,7 @@ public class StringAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual string.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public StringAssertion(final String actual, final String message) {
@@ -46,237 +46,465 @@ public class StringAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual string is equal to the expected string.
+     * Check if the actual value is empty.
+     */
+    public final void isEmpty() {
+        if (!"".equals(getActual())) {
+            throw createAssertionError(FailMessages.getIsEmpty(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is null or empty.
+     */
+    public final void isNullOrEmpty() {
+        if (getActual() != null && !"".equals(getActual())) {
+            throw createAssertionError(FailMessages.getIsNullOrEmpty(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT empty.
+     */
+    public final void isNotEmpty() {
+        if ("".equals(getActual())) {
+            throw createAssertionError(FailMessages.getIsNotEmpty());
+        }
+    }
+
+    /**
+     * Check if the actual value is blank.
+     */
+    public final void isBlank() {
+        for (int i = 0; i < ((String) getActual()).length(); i++) {
+            if (!Character.isWhitespace(((String) getActual()).charAt(i))) {
+                throw createAssertionError(FailMessages.getIsBlank(actualAsString()));
+            }
+        }
+    }
+
+    /**
+     * Check if the actual value is null or blank.
+     */
+    public final void isNullOrBlank() {
+        if (getActual() != null) {
+            for (int i = 0; i < ((String) getActual()).length(); i++) {
+                if (!Character.isWhitespace(((String) getActual()).charAt(i))) {
+                    throw createAssertionError(FailMessages.getIsNullOrBlank(actualAsString()));
+                }
+            }
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT blank.
+     */
+    public final void isNotBlank() {
+        boolean blank = true;
+        for (int i = 0; i < ((String) getActual()).length(); i++) {
+            if (!Character.isWhitespace(((String) getActual()).charAt(i))) {
+                blank = false;
+                break;
+            }
+        }
+        if (blank) {
+            throw createAssertionError(FailMessages.getIsNotBlank());
+        }
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void isEqualTo(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string is NOT equal to the expected string.
+     * Check if the actual value is equal to the expected value ignoring case.
      *
-     * @param expected the expected string.
-     */
-    public final void isNotEqualTo(final String expected) {
-        if (getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
-        }
-    }
-
-    /**
-     * Check if the actual string is equal to the expected string ignoring case.
-     *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void isEqualToIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!((String) getActual()).equalsIgnoreCase(expected)) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string is NOT equal to the expected string ignoring case.
+     * Check if the actual value is NOT equal to the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (getActual().equals(expected)) {
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value ignoring case.
+     *
+     * @param expected the expected value.
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (((String) getActual()).equalsIgnoreCase(expected)) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
     /**
-     * Check if the actual string contains the expected string.
+     * Check if the actual value is greater than the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareTo(expected) <= 0) {
+            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is greater than the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareToIgnoreCase(expected) <= 0) {
+            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareTo(expected) < 0) {
+            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualToIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareToIgnoreCase(expected) < 0) {
+            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareTo(expected) >= 0) {
+            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is less than the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareToIgnoreCase(expected) >= 0) {
+            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareTo(expected) > 0) {
+            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualToIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).compareToIgnoreCase(expected) > 0) {
+            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRange(final String expectedFrom, final String expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((String) getActual()).compareTo(expectedFrom) < 0 || ((String) getActual()).compareTo(expectedTo) >= 0) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range ignoring case.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((String) getActual()).compareToIgnoreCase(expectedFrom) < 0 || ((String) getActual()).compareToIgnoreCase(expectedTo) >= 0) {
+            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRange(final String expectedFrom, final String expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((String) getActual()).compareTo(expectedFrom) >= 0 && ((String) getActual()).compareTo(expectedTo) < 0) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range ignoring case.
+     *
+     * @param expectedFrom the expected left bound of the range.
+     * @param expectedTo   the expected right bound of the range.
+     */
+    public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+        checkArgumentIsNotNull(expectedFrom);
+        checkArgumentIsNotNull(expectedTo);
+        if (((String) getActual()).compareToIgnoreCase(expectedFrom) >= 0 && ((String) getActual()).compareToIgnoreCase(expectedTo) < 0) {
+            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+        }
+    }
+
+    /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
      */
     public final void contains(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!((String) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getStringContains(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getContains(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT contain the expected string.
+     * Check if the actual value contains the expected value ignoring case.
      *
-     * @param expected the expected string.
-     */
-    public final void doesNotContain(final String expected) {
-        if (((String) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getStringDoesNotContain(actualAsString(), asString(expected)));
-        }
-    }
-
-    /**
-     * Check if the actual string contains the expected string ignoring case.
-     *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void containsIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find()) {
-            throw createAssertionError(FailMessages.getStringContains(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getContains(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT contain the expected string ignoring case.
+     * Check if the actual value does NOT contain the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void doesNotContain(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).contains(expected)) {
+            throw createAssertionError(FailMessages.getDoesNotContain(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value ignoring case.
+     *
+     * @param expected the expected value.
      */
     public final void doesNotContainIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find()) {
-            throw createAssertionError(FailMessages.getStringDoesNotContain(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getDoesNotContain(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string is part of the expected string.
+     * Check if the actual value is part of the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void isPartOf(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!expected.contains((String) getActual())) {
-            throw createAssertionError(FailMessages.getStringIsPartOf(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsPartOf(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string is NOT part of the expected string.
+     * Check if the actual value is part of the expected value ignoring case.
      *
-     * @param expected the expected string.
-     */
-    public final void isNotPartOf(final String expected) {
-        if (expected.contains((String) getActual())) {
-            throw createAssertionError(FailMessages.getStringIsNotPartOf(actualAsString(), asString(expected)));
-        }
-    }
-
-    /**
-     * Check if the actual string is part of the expected string ignoring case.
-     *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void isPartOfIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
-            throw createAssertionError(FailMessages.getStringIsPartOf(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsPartOf(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string is NOT part of the expected string ignoring case.
+     * Check if the actual value is NOT part of the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void isNotPartOf(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (expected.contains((String) getActual())) {
+            throw createAssertionError(FailMessages.getIsNotPartOf(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT part of the expected value ignoring case.
+     *
+     * @param expected the expected value.
      */
     public final void isNotPartOfIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
-            throw createAssertionError(FailMessages.getStringIsNotPartOf(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getIsNotPartOf(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string matches the expected regexp.
+     * Check if the actual value matches the expected value.
      *
-     * @param expected the expected regexp.
+     * @param expected the expected value.
      */
     public final void matches(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!((String) getActual()).matches(expected)) {
-            throw createAssertionError(FailMessages.getStringMatches(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getMatches(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT match the expected regexp.
+     * Check if the actual value does NOT match the expected value.
      *
-     * @param expected the expected regexp.
+     * @param expected the expected value.
      */
     public final void doesNotMatch(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (((String) getActual()).matches(expected)) {
-            throw createAssertionError(FailMessages.getStringDoesNotMatch(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getDoesNotMatch(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string starts with the expected string.
+     * Check if the actual value starts with the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void startsWith(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!((String) getActual()).startsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringStartsWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getStartsWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT start with the expected string.
+     * Check if the actual value starts with the expected value ignoring case.
      *
-     * @param expected the expected string.
-     */
-    public final void doesNotStartWith(final String expected) {
-        if (((String) getActual()).startsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringDoesNotStartWith(actualAsString(), asString(expected)));
-        }
-    }
-
-    /**
-     * Check if the actual string starts with the expected string ignoring case.
-     *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void startsWithIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find() || matcher.start() != 0) {
-            throw createAssertionError(FailMessages.getStringStartsWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getStartsWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT start with the expected string ignoring case.
+     * Check if the actual value does NOT start with the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void doesNotStartWith(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).startsWith(expected)) {
+            throw createAssertionError(FailMessages.getDoesNotStartWith(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value does NOT start with the expected value ignoring case.
+     *
+     * @param expected the expected value.
      */
     public final void doesNotStartWithIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find() && matcher.start() == 0) {
-            throw createAssertionError(FailMessages.getStringDoesNotStartWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getDoesNotStartWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string ends with the expected string.
+     * Check if the actual value ends with the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void endsWith(final String expected) {
+        checkArgumentIsNotNull(expected);
         if (!((String) getActual()).endsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringEndsWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getEndsWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT end with the expected string.
+     * Check if the actual value ends with the expected value ignoring case.
      *
-     * @param expected the expected string.
-     */
-    public final void doesNotEndWith(final String expected) {
-        if (((String) getActual()).endsWith(expected)) {
-            throw createAssertionError(FailMessages.getStringDoesNotEndWith(actualAsString(), asString(expected)));
-        }
-    }
-
-    /**
-     * Check if the actual string ends with the expected string ignoring case.
-     *
-     * @param expected the expected string.
+     * @param expected the expected value.
      */
     public final void endsWithIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         boolean found = false;
         int lastIndexStart = 0;
@@ -287,16 +515,29 @@ public class StringAssertion extends ReferenceAssertion {
             lastIndexEnd = matcher.end();
         }
         if (!found || lastIndexEnd != ((String) getActual()).length()) {
-            throw createAssertionError(FailMessages.getStringEndsWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getEndsWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual string does NOT end with the expected string ignoring case.
+     * Check if the actual value does NOT end with the expected value.
      *
-     * @param expected the expected string.
+     * @param expected the expected value.
+     */
+    public final void doesNotEndWith(final String expected) {
+        checkArgumentIsNotNull(expected);
+        if (((String) getActual()).endsWith(expected)) {
+            throw createAssertionError(FailMessages.getDoesNotEndWith(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value does NOT end with the expected value ignoring case.
+     *
+     * @param expected the expected value.
      */
     public final void doesNotEndWithIgnoreCase(final String expected) {
+        checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         boolean found = false;
         int lastIndexStart = 0;
@@ -307,12 +548,12 @@ public class StringAssertion extends ReferenceAssertion {
             lastIndexEnd = matcher.end();
         }
         if (found && lastIndexEnd == ((String) getActual()).length()) {
-            throw createAssertionError(FailMessages.getStringDoesNotEndWith(actualAsString(), asString(expected)));
+            throw createAssertionError(FailMessages.getDoesNotEndWith(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Make assertion about the actual string length.
+     * Make assertion about the actual value length.
      *
      * @return the assertion.
      */
@@ -321,9 +562,9 @@ public class StringAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual string length is equal to the expected string length.
+     * Check if the actual value is equal to the expected length.
      *
-     * @param expected the expected string length.
+     * @param expected the expected length.
      */
     public final void hasLength(final int expected) {
         toLength().isEqualTo(expected);
@@ -334,11 +575,7 @@ public class StringAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            if (value instanceof String) {
-                return (String) value;
-            } else {
-                return String.valueOf(value);
-            }
+            return String.valueOf(value);
         }
     }
 
