@@ -31,7 +31,7 @@ public class ObjectAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual object.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public ObjectAssertion(final Object actual, final String message) {
