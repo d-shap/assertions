@@ -37,7 +37,7 @@ public class IntArrayAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual int array.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public IntArrayAssertion(final int[] actual, final String message) {
@@ -45,47 +45,49 @@ public class IntArrayAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual array is empty.
+     * Check if the actual value is empty.
      */
     public final void isEmpty() {
         if (getActual() != null && ((int[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getArrayIsEmpty(actualAsString()));
+            throw createAssertionError(FailMessages.getIsEmpty(actualAsString()));
         }
     }
 
     /**
-     * Check if the actual array is NOT empty.
+     * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
         if (getActual() == null || ((int[]) getActual()).length == 0) {
-            throw createAssertionError(FailMessages.getArrayIsNotEmpty());
+            throw createAssertionError(FailMessages.getIsNotEmpty());
         }
     }
 
     /**
-     * Check if the actual array is equal to the expected array.
+     * Check if the actual value is equal to the expected value.
      *
-     * @param expected the expected array.
+     * @param expected the expected value.
      */
-    public final void isEqualTo(final int[] expected) {
+    public final void isEqualTo(final int... expected) {
+        checkArgumentIsNotNull(expected);
         if (!Arrays.equals((int[]) getActual(), expected)) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check if the actual array is NOT equal to the expected array.
+     * Check if the actual value is NOT equal to the expected value.
      *
-     * @param expected the expected array.
+     * @param expected the expected value.
      */
-    public final void isNotEqualTo(final int[] expected) {
+    public final void isNotEqualTo(final int... expected) {
+        checkArgumentIsNotNull(expected);
         if (Arrays.equals((int[]) getActual(), expected)) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
     /**
-     * Make assertion about the actual array length.
+     * Make assertion about the actual value length.
      *
      * @return the assertion.
      */
@@ -94,16 +96,16 @@ public class IntArrayAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual array length is equal to the expected array length.
+     * Check if the actual value length is equal to the expected length.
      *
-     * @param expected the expected array length.
+     * @param expected the expected length.
      */
     public final void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 
     /**
-     * Make assertion about the actual array item.
+     * Make assertion about the actual value item.
      *
      * @param index item index.
      * @return the assertion.
