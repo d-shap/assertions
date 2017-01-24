@@ -31,7 +31,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual object.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     protected ReferenceAssertion(final Object actual, final String message) {
@@ -39,7 +39,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Check if the actual object is null.
+     * Check if the actual value is null.
      */
     public final void isNull() {
         if (getActual() != null) {
@@ -48,7 +48,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Check if the actual object is NOT null.
+     * Check if the actual value is NOT null.
      */
     public final void isNotNull() {
         if (getActual() == null) {
@@ -57,29 +57,31 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Check is the actual object is the same as the expected object.
+     * Check if the actual value is the same as the expected value.
      *
-     * @param expected the expected object.
+     * @param expected the expected value.
      */
     public final void isSameAs(final Object expected) {
+        checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
 
     /**
-     * Check is the actual object is NOT the same as the expected object.
+     * Check if the actual value is NOT the same as the expected value.
      *
-     * @param expected the expected object.
+     * @param expected the expected value.
      */
     public final void isNotSameAs(final Object expected) {
+        checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
 
     /**
-     * Make assertion about the objects class.
+     * Make assertion about the value class.
      *
      * @return the assertion.
      */
@@ -88,7 +90,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Check if the actual object is instance of the expected class.
+     * Check if the actual value is the instance of the expected class.
      *
      * @param clazz the expected class.
      */
