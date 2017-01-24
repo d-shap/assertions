@@ -20,6 +20,8 @@
 package ru.d_shap.assertions.core;
 
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.collection.IteratorAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
  * Assertions for the iterable.
@@ -31,20 +33,129 @@ public class IterableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual iterable.
+     * @param actual  the actual value.
      * @param message the assertion message.
      */
     public IterableAssertion(final Iterable<?> actual, final String message) {
         super(actual, message);
     }
 
+    /**
+     * Check if the actual value is empty.
+     */
+    public final void isEmpty() {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isEmpty();
+    }
+
+    /**
+     * Check if the actual value is null or empty.
+     */
+    public final void isNullOrEmpty() {
+        if (getActual() != null) {
+            new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isEmpty();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT empty.
+     */
+    public final void isNotEmpty() {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNotEmpty();
+    }
+
+    /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void contains(final Object expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).contains(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void doesNotContain(final Object expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).doesNotContain(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAll(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in any order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInAnyOrder(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInAnyOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactly(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in any order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInAnyOrder(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInAnyOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final Object... expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsNone(expected);
+    }
+
+    /**
+     * Make assertion about the actual collection size.
+     *
+     * @return assertion.
+     */
+    public final IntAssertion toSize() {
+        return new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).toSize();
+    }
+
+    /**
+     * Check if the actual value size is equal to the expected collection size.
+     *
+     * @param expected the expected collection size.
+     */
+    public final void hasSize(final int expected) {
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).hasSize(expected);
+    }
+
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            return String.valueOf(value);
-        }
+        return null;
     }
 
 }
