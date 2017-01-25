@@ -207,12 +207,26 @@ public class CharAssertion extends BaseAssertion {
             return null;
         } else {
             if (value instanceof Character) {
-                char symbol = (char) value;
-                int code = (char) value;
-                return symbol + "(" + code + ")";
+                return asString((char) value, (char) value);
+            } else if (value instanceof Integer) {
+                int code = (int) value;
+                char symbol = (char) code;
+                if (symbol == code) {
+                    return asString(symbol, code);
+                } else {
+                    return asString(' ', code);
+                }
             } else {
                 return String.valueOf(value);
             }
+        }
+    }
+
+    private String asString(final char symbol, final int code) {
+        if (Character.isLetterOrDigit(symbol)) {
+            return symbol + "(" + code + ")";
+        } else {
+            return " (" + code + ")";
         }
     }
 
