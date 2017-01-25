@@ -46,7 +46,7 @@ public final class ReferenceAssertionTest {
             new ReferenceAssertionImpl("reference").isNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Object should be null. Actual:<reference>");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<reference>");
         }
     }
 
@@ -62,7 +62,7 @@ public final class ReferenceAssertionTest {
             new ReferenceAssertionImpl(null).isNotNull();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Object should not be null.");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
     }
 
@@ -74,6 +74,18 @@ public final class ReferenceAssertionTest {
         Object object = new Object();
         new ReferenceAssertionImpl(object).isSameAs(object);
 
+        try {
+            new ReferenceAssertionImpl(null).isSameAs(new StringBuilder("value"));
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value")).isSameAs(null);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
         try {
             new ReferenceAssertionImpl(new StringBuilder("value")).isSameAs(new StringBuilder("value"));
             Assertions.fail("Reference assertion test fail");
@@ -91,6 +103,18 @@ public final class ReferenceAssertionTest {
         new ReferenceAssertionImpl(new StringBuilder("value")).isNotSameAs(new StringBuilder("value"));
 
         try {
+            new ReferenceAssertionImpl(null).isNotSameAs(new Object());
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ReferenceAssertionImpl(new Object()).isNotSameAs(null);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
             StringBuilder value = new StringBuilder("value");
             new ReferenceAssertionImpl(value).isNotSameAs(value);
             Assertions.fail("Reference assertion test fail");
@@ -105,11 +129,19 @@ public final class ReferenceAssertionTest {
     @Test
     public void toClassTest() {
         new ReferenceAssertionImpl(new Object()).toClass().isSameAs(Object.class);
+        new ReferenceAssertionImpl(new Object()).toClass().isSubtypeOf(Object.class);
 
         new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSameAs(StringBuilder.class);
         new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(StringBuilder.class);
         new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(CharSequence.class);
         new ReferenceAssertionImpl(new StringBuilder("value")).toClass().isSubtypeOf(Object.class);
+
+        try {
+            new ReferenceAssertionImpl(null).toClass();
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -127,7 +159,7 @@ public final class ReferenceAssertionTest {
             new ReferenceAssertionImpl(new Object()).isInstanceOf(StringBuilder.class);
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Class should be the subtype of the expected class. Expected:<java.lang.StringBuilder> but was:<java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.Object>");
         }
     }
 
