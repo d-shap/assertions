@@ -61,6 +61,15 @@ public abstract class BaseAssertion {
     }
 
     /**
+     * Check if the actual value is NOT null.
+     */
+    protected final void checkActualIsNotNull() {
+        if (_actual == null) {
+            throw createAssertionError(FailMessages.getIsNotNull());
+        }
+    }
+
+    /**
      * Check if the argument is NOT null.
      *
      * @param argument the argument.
