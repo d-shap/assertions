@@ -40,6 +40,24 @@ public class MapAssertion extends ReferenceAssertion {
         super(actual, message);
     }
 
+    /**
+     * Make assertion about the actual map keys.
+     *
+     * @return assertion.
+     */
+    public final SetAssertion toKeys() {
+        return new SetAssertion(((Map<?, ?>) getActual()).keySet(), getMessage());
+    }
+
+    /**
+     * Check if the actual value contains the expected key.
+     *
+     * @param expected the expected key.
+     */
+    public final void containsKey(final Object expected) {
+        toKeys().contains(expected);
+    }
+
     @Override
     protected final String asString(final Object value) {
         if (value == null) {
