@@ -51,9 +51,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * Check if the actual value is NOT null.
      */
     public final void isNotNull() {
-        if (getActual() == null) {
-            throw createAssertionError(FailMessages.getIsNotNull());
-        }
+        checkActualIsNotNull();
     }
 
     /**
@@ -62,6 +60,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isSameAs(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
@@ -74,6 +73,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotSameAs(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
@@ -86,6 +86,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public final ClassAssertion toClass() {
+        checkActualIsNotNull();
         return new ClassAssertion(getActual().getClass(), getMessage());
     }
 
