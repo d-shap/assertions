@@ -52,7 +52,6 @@ public class IterableAssertion extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkActualIsNotNull();
         if (getActual() != null) {
             new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNullOrEmpty();
         }
