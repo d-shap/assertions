@@ -783,6 +783,12 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:vaLUE> but was:<value>");
         }
+        try {
+            new StringAssertion("value", null).isInRange("xxx", "yyy");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
+        }
     }
 
     /**
@@ -836,6 +842,18 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:vaLUE> but was:<value>");
         }
+        try {
+            new StringAssertion("value", null).isInRangeIgnoreCase("xxx", "yyy");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
+        }
+        try {
+            new StringAssertion("value", null).isInRangeIgnoreCase("XXX", "YYY");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<XXX:YYY> but was:<value>");
+        }
     }
 
     /**
@@ -848,6 +866,8 @@ public final class StringAssertionTest {
         new StringAssertion("value", null).isNotInRange("A", "value");
         new StringAssertion("value", null).isNotInRange("A", "vaLUE");
         new StringAssertion("value", null).isNotInRange("VALUE", "Z");
+        new StringAssertion("value", null).isNotInRange("xxx", "yyy");
+        new StringAssertion("value", null).isNotInRange("XXX", "YYY");
 
         try {
             new StringAssertion(null, null).isNotInRange("value", "value");
@@ -907,6 +927,8 @@ public final class StringAssertionTest {
         new StringAssertion("value", null).isNotInRangeIgnoreCase("a", "test");
         new StringAssertion("value", null).isNotInRangeIgnoreCase("A", "value");
         new StringAssertion("value", null).isNotInRangeIgnoreCase("A", "vaLUE");
+        new StringAssertion("value", null).isNotInRangeIgnoreCase("xxx", "yyy");
+        new StringAssertion("value", null).isNotInRangeIgnoreCase("XXX", "YYY");
 
         try {
             new StringAssertion(null, null).isNotInRangeIgnoreCase("value", "value");
