@@ -45,6 +45,13 @@ public final class EnumAssertionTest {
         new EnumAssertion(Values.class, null).toValueCount().isEqualTo(3);
         new EnumAssertion(Values.class, null).toValueCount().isGreaterThan(2);
         new EnumAssertion(Values.class, null).toValueCount().isLessThan(4);
+
+        try {
+            new EnumAssertion(null, null).toValueCount();
+            Assertions.fail("Enum assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -53,6 +60,13 @@ public final class EnumAssertionTest {
     @Test
     public void hasValueCountTest() {
         new EnumAssertion(Values.class, null).hasValueCount(3);
+
+        try {
+            new EnumAssertion(null, null).hasValueCount(3);
+            Assertions.fail("Enum assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
