@@ -230,15 +230,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>artifactory</id>
-            <url>${artifactory.url}/${artifactory.repo.release}</url>
-        </repository>
-        <snapshotRepository>
-            <id>artifactory</id>
-            <url>${artifactory.url}/${artifactory.repo.snapshot}</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
