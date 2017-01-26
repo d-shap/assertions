@@ -47,6 +47,13 @@ public final class ThrowableAssertionTest {
 
         new ThrowableAssertion(new Exception("some exception value"), null).toMessage().isEqualTo("some exception value");
         new ThrowableAssertion(new Exception("some exception value"), null).toMessage().contains("exception");
+
+        try {
+            new ThrowableAssertion(null, null).toMessage();
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -56,6 +63,13 @@ public final class ThrowableAssertionTest {
     public void hasMessageTest() {
         new ThrowableAssertion(new Exception("value"), null).hasMessage("value");
         new ThrowableAssertion(new Exception("some exception value"), null).hasMessage("some exception value");
+
+        try {
+            new ThrowableAssertion(null, null).hasMessage("value");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -71,6 +85,15 @@ public final class ThrowableAssertionTest {
         new ThrowableAssertion(new Exception(new Error("value")), null).toCause().isInstanceOf(Error.class);
         new ThrowableAssertion(new Exception(new Error("value")), null).toCause().isInstanceOf(Throwable.class);
         new ThrowableAssertion(new Exception(new Error("value")), null).toCause().toCause().isNull();
+
+        new ThrowableAssertion(new Exception(), null).toCause().isNull();
+
+        try {
+            new ThrowableAssertion(null, null).toCause();
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -84,6 +107,13 @@ public final class ThrowableAssertionTest {
 
         new ThrowableAssertion(new Exception(new Error("value")), null).hasCauseInstanceOf(Error.class);
         new ThrowableAssertion(new Exception(new Error("value")), null).hasCauseInstanceOf(Throwable.class);
+
+        try {
+            new ThrowableAssertion(null, null).hasCauseInstanceOf(Throwable.class);
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -93,6 +123,13 @@ public final class ThrowableAssertionTest {
     public void hasCauseMessageTest() {
         new ThrowableAssertion(new Exception(new RuntimeException("value")), null).hasCauseMessage("value");
         new ThrowableAssertion(new Exception(new RuntimeException("some exception value")), null).hasCauseMessage("some exception value");
+
+        try {
+            new ThrowableAssertion(null, null).hasCauseMessage("value");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
     }
 
     /**
@@ -104,6 +141,7 @@ public final class ThrowableAssertionTest {
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Throwable())).isEqualTo("java.lang.Throwable");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new Exception())).isEqualTo("java.lang.Exception");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), null).asString(new RuntimeException("exception message"))).isEqualTo("java.lang.RuntimeException: exception message");
     }
 
 }
