@@ -49,6 +49,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param clazz the expected class.
      */
     public final void isSubtypeOf(final Class<?> clazz) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(clazz);
         if (!clazz.isAssignableFrom((Class) getActual())) {
             throw createAssertionError(FailMessages.getIsSubtypeOf(actualAsString(), asString(clazz)));
@@ -61,6 +62,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param clazz the expected class.
      */
     public final void isNotSubtypeOf(final Class<?> clazz) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(clazz);
         if (clazz.isAssignableFrom((Class) getActual())) {
             throw createAssertionError(FailMessages.getIsNotSubtypeOf(actualAsString(), asString(clazz)));
@@ -71,6 +73,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      */
     public final void hasOnePrivateConstructor() {
+        checkActualIsNotNull();
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
             throw createAssertionError(FailMessages.getIsConstructorDefault(actualAsString()));
@@ -97,6 +100,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
+        checkActualIsNotNull();
         Class<?> actualClass = (Class<?>) getActual();
         if (Enum.class.isAssignableFrom(actualClass)) {
             return new EnumAssertion(actualClass, getMessage());

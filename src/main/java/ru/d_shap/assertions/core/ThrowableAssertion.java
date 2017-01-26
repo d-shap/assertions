@@ -44,6 +44,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final StringAssertion toMessage() {
+        checkActualIsNotNull();
         return new StringAssertion(((Throwable) getActual()).getMessage(), getMessage());
     }
 
@@ -62,6 +63,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ThrowableAssertion toCause() {
+        checkActualIsNotNull();
         return new ThrowableAssertion(((Throwable) getActual()).getCause(), getMessage());
     }
 

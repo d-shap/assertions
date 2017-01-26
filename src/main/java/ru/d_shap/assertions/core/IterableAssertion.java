@@ -44,6 +44,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isEmpty();
     }
 
@@ -51,8 +52,9 @@ public class IterableAssertion extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkActualIsNotNull();
         if (getActual() != null) {
-            new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isEmpty();
+            new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNullOrEmpty();
         }
     }
 
@@ -60,6 +62,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNotEmpty();
     }
 
@@ -69,6 +72,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void contains(final Object expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).contains(expected);
     }
 
@@ -78,6 +82,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContain(final Object expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).doesNotContain(expected);
     }
 
@@ -87,6 +92,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAll(expected);
     }
 
@@ -96,6 +102,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAllInAnyOrder(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInAnyOrder(expected);
     }
 
@@ -105,6 +112,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactly(expected);
     }
 
@@ -114,6 +122,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactlyInAnyOrder(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInAnyOrder(expected);
     }
 
@@ -123,6 +132,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
     }
 
@@ -132,6 +142,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Object... expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsNone(expected);
     }
 
@@ -141,6 +152,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @return assertion.
      */
     public final IntAssertion toSize() {
+        checkActualIsNotNull();
         return new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).toSize();
     }
 
@@ -150,6 +162,7 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected collection size.
      */
     public final void hasSize(final int expected) {
+        checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).hasSize(expected);
     }
 

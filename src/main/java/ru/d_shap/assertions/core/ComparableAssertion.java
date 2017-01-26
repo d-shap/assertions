@@ -46,6 +46,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isEqualTo(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) != 0) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
@@ -59,6 +60,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isNotEqualTo(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) == 0) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
@@ -72,6 +74,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isGreaterThan(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) <= 0) {
             throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
@@ -85,6 +88,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isGreaterThanOrEqualTo(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) < 0) {
             throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
@@ -98,6 +102,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isLessThan(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) >= 0) {
             throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
@@ -111,6 +116,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isLessThanOrEqualTo(final Object expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) > 0) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
@@ -125,6 +131,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isInRange(final Object expectedFrom, final Object expectedTo) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (((Comparable<Object>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<Object>) getActual()).compareTo(expectedTo) >= 0) {
@@ -140,6 +147,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (((Comparable<Object>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<Object>) getActual()).compareTo(expectedTo) < 0) {

@@ -61,6 +61,7 @@ public class EnumAssertion extends ClassAssertion {
      * @return the assertion.
      */
     public final IntAssertion toValueCount() {
+        checkActualIsNotNull();
         return new IntAssertion(getValueCount(), getMessage());
     }
 
