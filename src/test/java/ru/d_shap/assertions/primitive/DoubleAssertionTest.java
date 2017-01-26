@@ -195,6 +195,64 @@ public final class DoubleAssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
+    public void isInRangeTest() {
+        new DoubleAssertion(5.0, null).isInRange(4.0, 6.0);
+        new DoubleAssertion(5.0, null).isInRange(5.0, 6.0);
+        new DoubleAssertion(5.0, null).isInRange(1.0, 10.0);
+
+        try {
+            new DoubleAssertion(5.0, null).isInRange(1.0, 5.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1.0:5.0> but was:<5.0>");
+        }
+        try {
+            new DoubleAssertion(5.0, null).isInRange(6.0, 10.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6.0:10.0> but was:<5.0>");
+        }
+        try {
+            new DoubleAssertion(5.0, null).isInRange(8.0, 9.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8.0:9.0> but was:<5.0>");
+        }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        new DoubleAssertion(5.0, null).isNotInRange(1.0, 5.0);
+        new DoubleAssertion(5.0, null).isNotInRange(6.0, 10.0);
+        new DoubleAssertion(5.0, null).isNotInRange(8.0, 9.0);
+
+        try {
+            new DoubleAssertion(5.0, null).isNotInRange(4.0, 6.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4.0:6.0> but was:<5.0>");
+        }
+        try {
+            new DoubleAssertion(5.0, null).isNotInRange(5.0, 6.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5.0:6.0> but was:<5.0>");
+        }
+        try {
+            new DoubleAssertion(5.0, null).isNotInRange(1.0, 10.0);
+            Assertions.fail("Double assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1.0:10.0> but was:<5.0>");
+        }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
     public void isZeroTest() {
         new DoubleAssertion(0.0, null).isZero();
         new DoubleAssertion(+0.0, null).isZero();
@@ -441,10 +499,10 @@ public final class DoubleAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new DoubleAssertion(10.0, null).asString(null)).isNull();
-        Assertions.assertThat(new DoubleAssertion(10.0, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new DoubleAssertion(10.0, null).asString(5.0)).isEqualTo("5.0");
         Assertions.assertThat(new DoubleAssertion(10.0, null).asString(60.0)).isEqualTo("60.0");
         Assertions.assertThat(new DoubleAssertion(10.0, null).asString(244.0)).isEqualTo("244.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, null).asString("test")).isEqualTo("test");
     }
 
 }

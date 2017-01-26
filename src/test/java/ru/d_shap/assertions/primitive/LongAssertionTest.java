@@ -157,12 +157,70 @@ public final class LongAssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
+    public void isInRangeTest() {
+        new LongAssertion(5L, null).isInRange(4L, 6L);
+        new LongAssertion(5L, null).isInRange(5L, 6L);
+        new LongAssertion(5L, null).isInRange(1L, 10L);
+
+        try {
+            new LongAssertion(5L, null).isInRange(1L, 5L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>");
+        }
+        try {
+            new LongAssertion(5L, null).isInRange(6L, 10L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>");
+        }
+        try {
+            new LongAssertion(5L, null).isInRange(8L, 9L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        new LongAssertion(5L, null).isNotInRange(1L, 5L);
+        new LongAssertion(5L, null).isNotInRange(6L, 10L);
+        new LongAssertion(5L, null).isNotInRange(8L, 9L);
+
+        try {
+            new LongAssertion(5L, null).isNotInRange(4L, 6L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>");
+        }
+        try {
+            new LongAssertion(5L, null).isNotInRange(5L, 6L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>");
+        }
+        try {
+            new LongAssertion(5L, null).isNotInRange(1L, 10L);
+            Assertions.fail("Long assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new LongAssertion(5L, null).asString(null)).isNull();
-        Assertions.assertThat(new LongAssertion(5L, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new LongAssertion(5L, null).asString(5L)).isEqualTo("5");
         Assertions.assertThat(new LongAssertion(5L, null).asString(60L)).isEqualTo("60");
         Assertions.assertThat(new LongAssertion(5L, null).asString(244L)).isEqualTo("244");
+        Assertions.assertThat(new LongAssertion(5L, null).asString("test")).isEqualTo("test");
     }
 
 }

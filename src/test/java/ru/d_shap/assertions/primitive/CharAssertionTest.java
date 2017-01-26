@@ -157,6 +157,64 @@ public final class CharAssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
+    public void isInRangeTest() {
+        new CharAssertion('s', null).isInRange('p', 'x');
+        new CharAssertion('s', null).isInRange('s', 'x');
+        new CharAssertion('s', null).isInRange('a', 'x');
+
+        try {
+            new CharAssertion('s', null).isInRange('a', 's');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<a(97):s(115)> but was:<s(115)>");
+        }
+        try {
+            new CharAssertion('s', null).isInRange('t', 'x');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<t(116):x(120)> but was:<s(115)>");
+        }
+        try {
+            new CharAssertion('s', null).isInRange('a', 'c');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<a(97):c(99)> but was:<s(115)>");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        new CharAssertion('s', null).isNotInRange('a', 's');
+        new CharAssertion('s', null).isNotInRange('t', 'x');
+        new CharAssertion('s', null).isNotInRange('a', 'c');
+
+        try {
+            new CharAssertion('s', null).isNotInRange('p', 'x');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<p(112):x(120)> but was:<s(115)>");
+        }
+        try {
+            new CharAssertion('s', null).isNotInRange('s', 'x');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<s(115):x(120)> but was:<s(115)>");
+        }
+        try {
+            new CharAssertion('s', null).isNotInRange('a', 'x');
+            Assertions.fail("Char assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<a(97):x(120)> but was:<s(115)>");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
     public void isAlphabeticTest() {
         new CharAssertion('a', null).isAlphabetic();
         new CharAssertion('F', null).isAlphabetic();
@@ -167,13 +225,13 @@ public final class CharAssertionTest {
             new CharAssertion('7', null).isAlphabetic();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the alphabetic symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the alphabetic symbol. Actual:<7(55)>");
         }
         try {
             new CharAssertion('\n', null).isAlphabetic();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the alphabetic symbol. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the alphabetic symbol. Actual:< (10)>");
         }
     }
 
@@ -190,19 +248,19 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isDigit();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the digit. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the digit. Actual:<a(97)>");
         }
         try {
             new CharAssertion('Й', null).isDigit();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the digit. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the digit. Actual:<Й(1049)>");
         }
         try {
             new CharAssertion('\n', null).isDigit();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the digit. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the digit. Actual:< (10)>");
         }
     }
 
@@ -220,13 +278,13 @@ public final class CharAssertionTest {
             new CharAssertion('7', null).isLetter();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the letter. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the letter. Actual:<7(55)>");
         }
         try {
             new CharAssertion('\n', null).isLetter();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the letter. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the letter. Actual:< (10)>");
         }
     }
 
@@ -245,7 +303,7 @@ public final class CharAssertionTest {
             new CharAssertion('\n', null).isLetterOrDigit();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the letter or the digit. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the letter or the digit. Actual:< (10)>");
         }
     }
 
@@ -261,19 +319,19 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isControl();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the control symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the control symbol. Actual:<a(97)>");
         }
         try {
             new CharAssertion('Й', null).isControl();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the control symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the control symbol. Actual:<Й(1049)>");
         }
         try {
             new CharAssertion('7', null).isControl();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the control symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the control symbol. Actual:<7(55)>");
         }
     }
 
@@ -291,25 +349,25 @@ public final class CharAssertionTest {
             new CharAssertion('A', null).isLowerCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the lower case symbol. Actual:<A(65)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the lower case symbol. Actual:<A(65)>");
         }
         try {
             new CharAssertion('Й', null).isLowerCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the lower case symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the lower case symbol. Actual:<Й(1049)>");
         }
         try {
             new CharAssertion('7', null).isLowerCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the lower case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the lower case symbol. Actual:<7(55)>");
         }
         try {
             new CharAssertion('\n', null).isLowerCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the lower case symbol. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the lower case symbol. Actual:< (10)>");
         }
     }
 
@@ -327,25 +385,25 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isUpperCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the upper case symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the upper case symbol. Actual:<a(97)>");
         }
         try {
             new CharAssertion('й', null).isUpperCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the upper case symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the upper case symbol. Actual:<й(1081)>");
         }
         try {
             new CharAssertion('7', null).isUpperCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the upper case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the upper case symbol. Actual:<7(55)>");
         }
         try {
             new CharAssertion('\n', null).isUpperCase();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the upper case symbol. Actual:<\n(10)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the upper case symbol. Actual:< (10)>");
         }
     }
 
@@ -362,19 +420,19 @@ public final class CharAssertionTest {
             new CharAssertion('a', null).isWhitespace();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the whitespace symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the whitespace symbol. Actual:<a(97)>");
         }
         try {
             new CharAssertion('й', null).isWhitespace();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the whitespace symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the whitespace symbol. Actual:<й(1081)>");
         }
         try {
             new CharAssertion('7', null).isWhitespace();
             Assertions.fail("Char assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Character should be the whitespace symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Value should be the whitespace symbol. Actual:<7(55)>");
         }
     }
 
@@ -384,10 +442,12 @@ public final class CharAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new CharAssertion('a', null).asString(null)).isNull();
-        Assertions.assertThat(new CharAssertion('a', null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new CharAssertion('a', null).asString('a')).isEqualTo("a(97)");
         Assertions.assertThat(new CharAssertion('a', null).asString('7')).isEqualTo("7(55)");
         Assertions.assertThat(new CharAssertion('a', null).asString('F')).isEqualTo("F(70)");
+        Assertions.assertThat(new CharAssertion('a', null).asString(10)).isEqualTo(" (10)");
+        Assertions.assertThat(new CharAssertion('a', null).asString(100000)).isEqualTo(" (100000)");
+        Assertions.assertThat(new CharAssertion('a', null).asString("test")).isEqualTo("test");
     }
 
 }

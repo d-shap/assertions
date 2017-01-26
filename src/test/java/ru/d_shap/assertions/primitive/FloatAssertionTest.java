@@ -195,6 +195,64 @@ public final class FloatAssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
+    public void isInRangeTest() {
+        new FloatAssertion(5.0f, null).isInRange(4.0f, 6.0f);
+        new FloatAssertion(5.0f, null).isInRange(5.0f, 6.0f);
+        new FloatAssertion(5.0f, null).isInRange(1.0f, 10.0f);
+
+        try {
+            new FloatAssertion(5.0f, null).isInRange(1.0f, 5.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1.0:5.0> but was:<5.0>");
+        }
+        try {
+            new FloatAssertion(5.0f, null).isInRange(6.0f, 10.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6.0:10.0> but was:<5.0>");
+        }
+        try {
+            new FloatAssertion(5.0f, null).isInRange(8.0f, 9.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8.0:9.0> but was:<5.0>");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        new FloatAssertion(5.0f, null).isNotInRange(1.0f, 5.0f);
+        new FloatAssertion(5.0f, null).isNotInRange(6.0f, 10.0f);
+        new FloatAssertion(5.0f, null).isNotInRange(8.0f, 9.0f);
+
+        try {
+            new FloatAssertion(5.0f, null).isNotInRange(4.0f, 6.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4.0:6.0> but was:<5.0>");
+        }
+        try {
+            new FloatAssertion(5.0f, null).isNotInRange(5.0f, 6.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5.0:6.0> but was:<5.0>");
+        }
+        try {
+            new FloatAssertion(5.0f, null).isNotInRange(1.0f, 10.0f);
+            Assertions.fail("Float assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1.0:10.0> but was:<5.0>");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
     public void isZeroTest() {
         new FloatAssertion(0.0f, null).isZero();
         new FloatAssertion(+0.0f, null).isZero();
@@ -441,10 +499,10 @@ public final class FloatAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(null)).isNull();
-        Assertions.assertThat(new FloatAssertion(10.0f, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(5.0f)).isEqualTo("5.0");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(60.0f)).isEqualTo("60.0");
         Assertions.assertThat(new FloatAssertion(10.0f, null).asString(244.0f)).isEqualTo("244.0");
+        Assertions.assertThat(new FloatAssertion(10.0f, null).asString("test")).isEqualTo("test");
     }
 
 }

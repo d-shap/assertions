@@ -157,12 +157,70 @@ public final class IntAssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
+    public void isInRangeTest() {
+        new IntAssertion(5, null).isInRange(4, 6);
+        new IntAssertion(5, null).isInRange(5, 6);
+        new IntAssertion(5, null).isInRange(1, 10);
+
+        try {
+            new IntAssertion(5, null).isInRange(1, 5);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>");
+        }
+        try {
+            new IntAssertion(5, null).isInRange(6, 10);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>");
+        }
+        try {
+            new IntAssertion(5, null).isInRange(8, 9);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        new IntAssertion(5, null).isNotInRange(1, 5);
+        new IntAssertion(5, null).isNotInRange(6, 10);
+        new IntAssertion(5, null).isNotInRange(8, 9);
+
+        try {
+            new IntAssertion(5, null).isNotInRange(4, 6);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>");
+        }
+        try {
+            new IntAssertion(5, null).isNotInRange(5, 6);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>");
+        }
+        try {
+            new IntAssertion(5, null).isNotInRange(1, 10);
+            Assertions.fail("Int assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new IntAssertion(5, null).asString(null)).isNull();
-        Assertions.assertThat(new IntAssertion(5, null).asString("test")).isEqualTo("test");
         Assertions.assertThat(new IntAssertion(5, null).asString(5)).isEqualTo("5");
         Assertions.assertThat(new IntAssertion(5, null).asString(60)).isEqualTo("60");
         Assertions.assertThat(new IntAssertion(5, null).asString(244)).isEqualTo("244");
+        Assertions.assertThat(new IntAssertion(5, null).asString("test")).isEqualTo("test");
     }
 
 }
