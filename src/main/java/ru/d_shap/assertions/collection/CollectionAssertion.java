@@ -68,6 +68,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkActualIsNotNull();
         if (((Collection) getActual()).isEmpty()) {
             throw createAssertionError(FailMessages.getIsNotEmpty());
         }
@@ -148,18 +149,16 @@ public class CollectionAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
-        int elementCount = 0;
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
             if (idx == 0) {
                 actualListCopy.remove(idx);
-                elementCount++;
             } else {
                 List<?> expectedList = Arrays.asList(expected);
                 throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
             }
         }
-        if (!actualListCopy.isEmpty() || elementCount != expected.length) {
+        if (!actualListCopy.isEmpty()) {
             List<?> expectedList = Arrays.asList(expected);
             throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
         }
