@@ -47,6 +47,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkActualIsNotNull();
         createCollectionAssertion().isEmpty();
     }
 
@@ -55,7 +56,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null) {
-            createCollectionAssertion().isEmpty();
+            createCollectionAssertion().isNullOrEmpty();
         }
     }
 
@@ -63,6 +64,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkActualIsNotNull();
         createCollectionAssertion().isNotEmpty();
     }
 
@@ -72,6 +74,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void contains(final Object expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().contains(expected);
     }
 
@@ -81,6 +84,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContain(final Object expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().doesNotContain(expected);
     }
 
@@ -90,6 +94,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsAll(expected);
     }
 
@@ -99,6 +104,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAllInAnyOrder(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsAllInAnyOrder(expected);
     }
 
@@ -108,6 +114,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsExactly(expected);
     }
 
@@ -117,6 +124,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactlyInAnyOrder(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsExactlyInAnyOrder(expected);
     }
 
@@ -126,6 +134,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsAny(expected);
     }
 
@@ -135,6 +144,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Object... expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().containsNone(expected);
     }
 
@@ -144,6 +154,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @return assertion.
      */
     public final IntAssertion toSize() {
+        checkActualIsNotNull();
         return createCollectionAssertion().toSize();
     }
 
@@ -153,6 +164,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected collection size.
      */
     public final void hasSize(final int expected) {
+        checkActualIsNotNull();
         createCollectionAssertion().hasSize(expected);
     }
 
