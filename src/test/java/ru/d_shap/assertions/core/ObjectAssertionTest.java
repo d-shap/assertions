@@ -41,6 +41,61 @@ public final class ObjectAssertionTest {
      * {@link ObjectAssertion} class test.
      */
     @Test
+    public void isEqualToTest() {
+        new ObjectAssertion("value", null).isEqualTo("value");
+
+        try {
+            new ObjectAssertion(null, null).isEqualTo("value");
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ObjectAssertion("value", null).isEqualTo(null);
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ObjectAssertion("value1", null).isEqualTo("value2");
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
+        }
+    }
+
+    /**
+     * {@link ObjectAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        new ObjectAssertion("value1", null).isNotEqualTo("value2");
+        new ObjectAssertion("value2", null).isNotEqualTo("value1");
+
+        try {
+            new ObjectAssertion(null, null).isNotEqualTo("value");
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ObjectAssertion("value", null).isNotEqualTo(null);
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ObjectAssertion("value", null).isNotEqualTo("value");
+            Assertions.fail("Object assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
+        }
+    }
+
+    /**
+     * {@link ObjectAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(null)).isNull();
         Assertions.assertThat(new ObjectAssertion(new Object(), null).asString("value")).isEqualTo("value");
