@@ -112,7 +112,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
             if (idx >= 0) {
-                actualListCopy = actualListCopy.subList(idx + 1, actualListCopy.size());
+                actualListCopy.remove(idx);
             } else {
                 List<?> expectedList = Arrays.asList(expected);
                 throw createAssertionError(FailMessages.getContainsAll(actualAsString(), asString(expectedList)));
@@ -121,23 +121,41 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value contains all of the expected values in any order.
+     * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
      */
-    public final void containsAllInAnyOrder(final Object... expected) {
+    public final void containsAll(final Iterable<?> expected) {
+        containsAll(iterableToArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
             if (idx >= 0) {
-                actualListCopy.remove(idx);
+                actualListCopy = actualListCopy.subList(idx + 1, actualListCopy.size());
             } else {
                 List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsAllInAnyOrder(actualAsString(), asString(expectedList)));
+                throw createAssertionError(FailMessages.getContainsAllInOrder(actualAsString(), asString(expectedList)));
             }
         }
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Iterable<?> expected) {
+        containsAllInOrder(iterableToArray(expected));
     }
 
     /**
@@ -146,30 +164,6 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Object... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
-        for (Object expectedItem : expected) {
-            int idx = actualListCopy.indexOf(expectedItem);
-            if (idx == 0) {
-                actualListCopy.remove(idx);
-            } else {
-                List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
-            }
-        }
-        if (!actualListCopy.isEmpty()) {
-            List<?> expectedList = Arrays.asList(expected);
-            throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
-        }
-    }
-
-    /**
-     * Check if the actual value contains all of the expected values exactly in any order.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsExactlyInAnyOrder(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
@@ -183,8 +177,50 @@ public class CollectionAssertion extends ReferenceAssertion {
         }
         if (!actualListCopy.isEmpty() || elementCount != expected.length) {
             List<?> expectedList = Arrays.asList(expected);
-            throw createAssertionError(FailMessages.getContainsExactlyInAnyOrder(actualAsString(), asString(expectedList)));
+            throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
         }
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactly(final Iterable<?> expected) {
+        containsExactly(iterableToArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Object... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
+        for (Object expectedItem : expected) {
+            int idx = actualListCopy.indexOf(expectedItem);
+            if (idx == 0) {
+                actualListCopy.remove(idx);
+            } else {
+                List<?> expectedList = Arrays.asList(expected);
+                throw createAssertionError(FailMessages.getContainsExactlyInOrder(actualAsString(), asString(expectedList)));
+            }
+        }
+        if (!actualListCopy.isEmpty()) {
+            List<?> expectedList = Arrays.asList(expected);
+            throw createAssertionError(FailMessages.getContainsExactlyInOrder(actualAsString(), asString(expectedList)));
+        }
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Iterable<?> expected) {
+        containsExactlyInOrder(iterableToArray(expected));
     }
 
     /**
@@ -211,6 +247,15 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final Iterable<?> expected) {
+        containsAny(iterableToArray(expected));
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -229,9 +274,27 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final Iterable<?> expected) {
+        containsNone(iterableToArray(expected));
+    }
+
+    private Object[] iterableToArray(final Iterable<?> expected) {
+        checkArgumentIsNotNull(expected);
+        List<Object> result = new ArrayList<>();
+        for (Object value : expected) {
+            result.add(value);
+        }
+        return result.toArray(new Object[result.size()]);
+    }
+
+    /**
      * Make assertion about the actual collection size.
      *
-     * @return assertion.
+     * @return the assertion.
      */
     public final IntAssertion toSize() {
         checkActualIsNotNull();

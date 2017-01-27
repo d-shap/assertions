@@ -96,13 +96,33 @@ public class IterableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value contains all of the expected values in any order.
+     * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
      */
-    public final void containsAllInAnyOrder(final Object... expected) {
+    public final void containsAll(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInAnyOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Object... expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Iterable<?> expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInOrder(expected);
     }
 
     /**
@@ -116,13 +136,33 @@ public class IterableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value contains all of the expected values exactly in any order.
+     * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInAnyOrder(final Object... expected) {
+    public final void containsExactly(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInAnyOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Object... expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Iterable<?> expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -131,6 +171,16 @@ public class IterableAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Object... expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final Iterable<?> expected) {
         checkActualIsNotNull();
         new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
     }
@@ -146,9 +196,19 @@ public class IterableAssertion extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final Iterable<?> expected) {
+        checkActualIsNotNull();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsNone(expected);
+    }
+
+    /**
      * Make assertion about the actual collection size.
      *
-     * @return assertion.
+     * @return the assertion.
      */
     public final IntAssertion toSize() {
         checkActualIsNotNull();

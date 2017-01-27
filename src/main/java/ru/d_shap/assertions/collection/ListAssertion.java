@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.collection;
 
 import java.util.List;
+import java.util.RandomAccess;
 
 /**
  * Assertions for the list.
@@ -36,6 +37,20 @@ public class ListAssertion extends CollectionAssertion {
      */
     public ListAssertion(final List<?> actual, final String message) {
         super(actual, message);
+    }
+
+    /**
+     * Check if the actual value is the random access list.
+     */
+    public final void isRandomAccess() {
+        toClass().isSubtypeOf(RandomAccess.class);
+    }
+
+    /**
+     * Check if the actual value is NOT the random access list.
+     */
+    public final void isNotRandomAccess() {
+        toClass().isNotSubtypeOf(RandomAccess.class);
     }
 
 }
