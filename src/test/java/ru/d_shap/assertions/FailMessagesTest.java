@@ -461,10 +461,10 @@ public final class FailMessagesTest {
      * {@link FailMessages} class test.
      */
     @Test
-    public void getContainsAllInAnyOrderTest() {
-        Assertions.assertThat(FailMessages.getContainsAllInAnyOrder(null, null)).isEqualTo("Value should contain all of the expected values in any order. Expected:<null> but was:<null>");
-        Assertions.assertThat(FailMessages.getContainsAllInAnyOrder("val1", "val2")).isEqualTo("Value should contain all of the expected values in any order. Expected:<val2> but was:<val1>");
-        Assertions.assertThat(FailMessages.getContainsAllInAnyOrder("test1", "test2")).isEqualTo("Value should contain all of the expected values in any order. Expected:<test2> but was:<test1>");
+    public void getContainsAllInOrderTest() {
+        Assertions.assertThat(FailMessages.getContainsAllInOrder(null, null)).isEqualTo("Value should contain all of the expected values in the specified order. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getContainsAllInOrder("val1", "val2")).isEqualTo("Value should contain all of the expected values in the specified order. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getContainsAllInOrder("test1", "test2")).isEqualTo("Value should contain all of the expected values in the specified order. Expected:<test2> but was:<test1>");
     }
 
     /**
@@ -481,10 +481,10 @@ public final class FailMessagesTest {
      * {@link FailMessages} class test.
      */
     @Test
-    public void getContainsExactlyInAnyOrderTest() {
-        Assertions.assertThat(FailMessages.getContainsExactlyInAnyOrder(null, null)).isEqualTo("Value should contain all of the expected values exactly in any order. Expected:<null> but was:<null>");
-        Assertions.assertThat(FailMessages.getContainsExactlyInAnyOrder("val1", "val2")).isEqualTo("Value should contain all of the expected values exactly in any order. Expected:<val2> but was:<val1>");
-        Assertions.assertThat(FailMessages.getContainsExactlyInAnyOrder("test1", "test2")).isEqualTo("Value should contain all of the expected values exactly in any order. Expected:<test2> but was:<test1>");
+    public void getContainsExactlyInOrderTest() {
+        Assertions.assertThat(FailMessages.getContainsExactlyInOrder(null, null)).isEqualTo("Value should contain all of the expected values exactly in the specified order. Expected:<null> but was:<null>");
+        Assertions.assertThat(FailMessages.getContainsExactlyInOrder("val1", "val2")).isEqualTo("Value should contain all of the expected values exactly in the specified order. Expected:<val2> but was:<val1>");
+        Assertions.assertThat(FailMessages.getContainsExactlyInOrder("test1", "test2")).isEqualTo("Value should contain all of the expected values exactly in the specified order. Expected:<test2> but was:<test1>");
     }
 
     /**
