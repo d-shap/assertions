@@ -112,11 +112,11 @@ public final class FailMessages {
 
     private static final String MSG_CONTAINS_ALL = "Value should contain all of the expected values.";
 
-    private static final String MSG_CONTAINS_ALL_IN_ANY_ORDER = "Value should contain all of the expected values in any order.";
+    private static final String MSG_CONTAINS_ALL_IN_ORDER = "Value should contain all of the expected values in the specified order.";
 
     private static final String MSG_CONTAINS_EXACTLY = "Value should contain all of the expected values exactly.";
 
-    private static final String MSG_CONTAINS_EXACTLY_IN_ANY_ORDER = "Value should contain all of the expected values exactly in any order.";
+    private static final String MSG_CONTAINS_EXACTLY_IN_ORDER = "Value should contain all of the expected values exactly in the specified order.";
 
     private static final String MSG_CONTAINS_ANY = "Value should contain any of the expected values.";
 
@@ -579,14 +579,14 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should contain all of the expected values in any order.
+     * Get the fail message if the actual value should contain all of the expected values in the specified order.
      *
      * @param actual   the actual value.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getContainsAllInAnyOrder(final String actual, final String expected) {
-        return MSG_CONTAINS_ALL_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    public static String getContainsAllInOrder(final String actual, final String expected) {
+        return MSG_CONTAINS_ALL_IN_ORDER + " " + getValueMessagePart(actual, expected);
     }
 
     /**
@@ -601,14 +601,14 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the actual value should contain all of the expected values exactly in any order.
+     * Get the fail message if the actual value should contain all of the expected values exactly in the specified order.
      *
      * @param actual   the actual value.
      * @param expected the expected values.
      * @return the fail message.
      */
-    public static String getContainsExactlyInAnyOrder(final String actual, final String expected) {
-        return MSG_CONTAINS_EXACTLY_IN_ANY_ORDER + " " + getValueMessagePart(actual, expected);
+    public static String getContainsExactlyInOrder(final String actual, final String expected) {
+        return MSG_CONTAINS_EXACTLY_IN_ORDER + " " + getValueMessagePart(actual, expected);
     }
 
     /**
