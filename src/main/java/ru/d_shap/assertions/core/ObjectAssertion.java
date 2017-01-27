@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -36,6 +37,32 @@ public class ObjectAssertion extends ReferenceAssertion {
      */
     public ObjectAssertion(final Object actual, final String message) {
         super(actual, message);
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Object expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (!getActual().equals(expected)) {
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (getActual().equals(expected)) {
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+        }
     }
 
     @Override
