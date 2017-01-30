@@ -49,13 +49,13 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new Object[]{"val1"}, null).isEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[val1]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1]>");
         }
         try {
             new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[val5, val10, val15]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val5, val10, val15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new ObjectArrayAssertion(new Object[]{}, null).isNotEmpty();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new ObjectArrayAssertion(new Object[]{}, null).isEqualTo(new Object[]{});
-        new ObjectArrayAssertion(new Object[]{"val1"}, null).isEqualTo(new Object[]{"val1"});
-        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo(new Object[]{"val5", "val10", "val15"});
+        new ObjectArrayAssertion(new Object[]{}, null).isEqualTo();
+        new ObjectArrayAssertion(new Object[]{"val1"}, null).isEqualTo("val1");
+        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo("val5", "val10", "val15");
 
         try {
-            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo(new Object[]{"val5", "val10", "val15", "val20"});
+            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo("val5", "val10", "val15", "val20");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val5, val10, val15, val20]> but was:<[val5, val10, val15]>");
         }
         try {
-            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15", "val20"}, null).isEqualTo(new Object[]{"val5", "val10", "val15"});
+            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15", "val20"}, null).isEqualTo("val5", "val10", "val15");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val5, val10, val15]> but was:<[val5, val10, val15, val20]>");
         }
         try {
-            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo(new Object[]{"val5", "val10", "val20"});
+            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isEqualTo("val5", "val10", "val20");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val5, val10, val20]> but was:<[val5, val10, val15]>");
@@ -115,24 +115,24 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo(new Object[]{"val5", "val10", "val15", "val20"});
-        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15", "val20"}, null).isNotEqualTo(new Object[]{"val5", "val10", "val15"});
-        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo(new Object[]{"val5", "val10", "val20"});
+        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo("val5", "val10", "val15", "val20");
+        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15", "val20"}, null).isNotEqualTo("val5", "val10", "val15");
+        new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo("val5", "val10", "val20");
 
         try {
-            new ObjectArrayAssertion(new Object[]{}, null).isNotEqualTo(new Object[]{});
+            new ObjectArrayAssertion(new Object[]{}, null).isNotEqualTo();
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new ObjectArrayAssertion(new Object[]{"val1"}, null).isNotEqualTo(new Object[]{"val1"});
+            new ObjectArrayAssertion(new Object[]{"val1"}, null).isNotEqualTo("val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1]>");
         }
         try {
-            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo(new Object[]{"val5", "val10", "val15"});
+            new ObjectArrayAssertion(new Object[]{"val5", "val10", "val15"}, null).isNotEqualTo("val5", "val10", "val15");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val5, val10, val15]>");
