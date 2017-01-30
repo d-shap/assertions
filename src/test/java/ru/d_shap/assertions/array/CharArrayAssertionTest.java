@@ -49,13 +49,13 @@ public final class CharArrayAssertionTest {
             new CharArrayAssertion(new char[]{'a'}, null).isEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[a]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[a]>");
         }
         try {
             new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[a, Z, Й]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[a, Z, Й]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class CharArrayAssertionTest {
             new CharArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new CharArrayAssertion(new char[]{}, null).isNotEmpty();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class CharArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new CharArrayAssertion(new char[]{}, null).isEqualTo(new char[]{});
-        new CharArrayAssertion(new char[]{'a'}, null).isEqualTo(new char[]{'a'});
-        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo(new char[]{'a', 'Z', 'Й'});
+        new CharArrayAssertion(new char[]{}, null).isEqualTo();
+        new CharArrayAssertion(new char[]{'a'}, null).isEqualTo('a');
+        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo('a', 'Z', 'Й');
 
         try {
-            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo(new char[]{'a', 'Z', 'Й', '1'});
+            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo('a', 'Z', 'Й', '1');
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[a, Z, Й, 1]> but was:<[a, Z, Й]>");
         }
         try {
-            new CharArrayAssertion(new char[]{'a', 'Z', 'Й', '1'}, null).isEqualTo(new char[]{'a', 'Z', 'Й'});
+            new CharArrayAssertion(new char[]{'a', 'Z', 'Й', '1'}, null).isEqualTo('a', 'Z', 'Й');
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[a, Z, Й]> but was:<[a, Z, Й, 1]>");
         }
         try {
-            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo(new char[]{'a', 'Z', '1'});
+            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isEqualTo('a', 'Z', '1');
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[a, Z, 1]> but was:<[a, Z, Й]>");
@@ -115,24 +115,24 @@ public final class CharArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo(new char[]{'a', 'Z', 'Й', '1'});
-        new CharArrayAssertion(new char[]{'a', 'Z', 'Й', '1'}, null).isNotEqualTo(new char[]{'a', 'Z', 'Й'});
-        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo(new char[]{'a', 'Z', '1'});
+        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo('a', 'Z', 'Й', '1');
+        new CharArrayAssertion(new char[]{'a', 'Z', 'Й', '1'}, null).isNotEqualTo('a', 'Z', 'Й');
+        new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo('a', 'Z', '1');
 
         try {
-            new CharArrayAssertion(new char[]{}, null).isNotEqualTo(new char[]{});
+            new CharArrayAssertion(new char[]{}, null).isNotEqualTo();
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new CharArrayAssertion(new char[]{'a'}, null).isNotEqualTo(new char[]{'a'});
+            new CharArrayAssertion(new char[]{'a'}, null).isNotEqualTo('a');
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[a]>");
         }
         try {
-            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo(new char[]{'a', 'Z', 'Й'});
+            new CharArrayAssertion(new char[]{'a', 'Z', 'Й'}, null).isNotEqualTo('a', 'Z', 'Й');
             Assertions.fail("Char array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[a, Z, Й]>");
