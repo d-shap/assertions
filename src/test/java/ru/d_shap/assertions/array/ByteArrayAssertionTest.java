@@ -49,13 +49,13 @@ public final class ByteArrayAssertionTest {
             new ByteArrayAssertion(new byte[]{1}, null).isEmpty();
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1]>");
         }
         try {
             new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEmpty();
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5, 10, 15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class ByteArrayAssertionTest {
             new ByteArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new ByteArrayAssertion(new byte[]{}, null).isNotEmpty();
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class ByteArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new ByteArrayAssertion(new byte[]{}, null).isEqualTo(new byte[]{});
-        new ByteArrayAssertion(new byte[]{1}, null).isEqualTo(new byte[]{1});
-        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo(new byte[]{5, 10, 15});
+        new ByteArrayAssertion(new byte[]{}, null).isEqualTo();
+        new ByteArrayAssertion(new byte[]{1}, null).isEqualTo((byte) 1);
+        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo((byte) 5, (byte) 10, (byte) 15);
 
         try {
-            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo(new byte[]{5, 10, 15, 20});
+            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo((byte) 5, (byte) 10, (byte) 15, (byte) 20);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15, 20]> but was:<[5, 10, 15]>");
         }
         try {
-            new ByteArrayAssertion(new byte[]{5, 10, 15, 20}, null).isEqualTo(new byte[]{5, 10, 15});
+            new ByteArrayAssertion(new byte[]{5, 10, 15, 20}, null).isEqualTo((byte) 5, (byte) 10, (byte) 15);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15]> but was:<[5, 10, 15, 20]>");
         }
         try {
-            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo(new byte[]{5, 10, 20});
+            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isEqualTo((byte) 5, (byte) 10, (byte) 20);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 20]> but was:<[5, 10, 15]>");
@@ -115,24 +115,24 @@ public final class ByteArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo(new byte[]{5, 10, 15, 20});
-        new ByteArrayAssertion(new byte[]{5, 10, 15, 20}, null).isNotEqualTo(new byte[]{5, 10, 15});
-        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo(new byte[]{5, 10, 20});
+        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo((byte) 5, (byte) 10, (byte) 15, (byte) 20);
+        new ByteArrayAssertion(new byte[]{5, 10, 15, 20}, null).isNotEqualTo((byte) 5, (byte) 10, (byte) 15);
+        new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo((byte) 5, (byte) 10, (byte) 20);
 
         try {
-            new ByteArrayAssertion(new byte[]{}, null).isNotEqualTo(new byte[]{});
+            new ByteArrayAssertion(new byte[]{}, null).isNotEqualTo();
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1}, null).isNotEqualTo(new byte[]{1});
+            new ByteArrayAssertion(new byte[]{1}, null).isNotEqualTo((byte) 1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1]>");
         }
         try {
-            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo(new byte[]{5, 10, 15});
+            new ByteArrayAssertion(new byte[]{5, 10, 15}, null).isNotEqualTo((byte) 5, (byte) 10, (byte) 15);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5, 10, 15]>");
