@@ -49,13 +49,13 @@ public final class DoubleArrayAssertionTest {
             new DoubleArrayAssertion(new double[]{1.0}, null).isEmpty();
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1.0]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0]>");
         }
         try {
             new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEmpty();
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5.0, 10.0, 15.0]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5.0, 10.0, 15.0]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class DoubleArrayAssertionTest {
             new DoubleArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new DoubleArrayAssertion(new double[]{}, null).isNotEmpty();
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new DoubleArrayAssertion(new double[]{}, null).isEqualTo(new double[]{});
-        new DoubleArrayAssertion(new double[]{1.0}, null).isEqualTo(new double[]{1.0});
-        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(new double[]{5.0, 10.0, 15.0});
+        new DoubleArrayAssertion(new double[]{}, null).isEqualTo();
+        new DoubleArrayAssertion(new double[]{1.0}, null).isEqualTo(1.0);
+        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(5.0, 10.0, 15.0);
 
         try {
-            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(new double[]{5.0, 10.0, 15.0, 20.0});
+            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(5.0, 10.0, 15.0, 20.0);
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 15.0, 20.0]> but was:<[5.0, 10.0, 15.0]>");
         }
         try {
-            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0, 20.0}, null).isEqualTo(new double[]{5.0, 10.0, 15.0});
+            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0, 20.0}, null).isEqualTo(5.0, 10.0, 15.0);
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 15.0]> but was:<[5.0, 10.0, 15.0, 20.0]>");
         }
         try {
-            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(new double[]{5.0, 10.0, 20.0});
+            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isEqualTo(5.0, 10.0, 20.0);
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 20.0]> but was:<[5.0, 10.0, 15.0]>");
@@ -115,24 +115,24 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(new double[]{5.0, 10.0, 15.0, 20.0});
-        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0, 20.0}, null).isNotEqualTo(new double[]{5.0, 10.0, 15.0});
-        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(new double[]{5.0, 10.0, 20.0});
+        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(5.0, 10.0, 15.0, 20.0);
+        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0, 20.0}, null).isNotEqualTo(5.0, 10.0, 15.0);
+        new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(5.0, 10.0, 20.0);
 
         try {
-            new DoubleArrayAssertion(new double[]{}, null).isNotEqualTo(new double[]{});
+            new DoubleArrayAssertion(new double[]{}, null).isNotEqualTo();
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0}, null).isNotEqualTo(new double[]{1.0});
+            new DoubleArrayAssertion(new double[]{1.0}, null).isNotEqualTo(1.0);
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0]>");
         }
         try {
-            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(new double[]{5.0, 10.0, 15.0});
+            new DoubleArrayAssertion(new double[]{5.0, 10.0, 15.0}, null).isNotEqualTo(5.0, 10.0, 15.0);
             Assertions.fail("Double array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5.0, 10.0, 15.0]>");
