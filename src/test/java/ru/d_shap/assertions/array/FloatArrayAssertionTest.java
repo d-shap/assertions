@@ -49,13 +49,13 @@ public final class FloatArrayAssertionTest {
             new FloatArrayAssertion(new float[]{1.0f}, null).isEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1.0]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0]>");
         }
         try {
             new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5.0, 10.0, 15.0]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5.0, 10.0, 15.0]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class FloatArrayAssertionTest {
             new FloatArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new FloatArrayAssertion(new float[]{}, null).isNotEmpty();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class FloatArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new FloatArrayAssertion(new float[]{}, null).isEqualTo(new float[]{});
-        new FloatArrayAssertion(new float[]{1.0f}, null).isEqualTo(new float[]{1.0f});
-        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(new float[]{5.0f, 10.0f, 15.0f});
+        new FloatArrayAssertion(new float[]{}, null).isEqualTo();
+        new FloatArrayAssertion(new float[]{1.0f}, null).isEqualTo(1.0f);
+        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(5.0f, 10.0f, 15.0f);
 
         try {
-            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(new float[]{5.0f, 10.0f, 15.0f, 20.0f});
+            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(5.0f, 10.0f, 15.0f, 20.0f);
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 15.0, 20.0]> but was:<[5.0, 10.0, 15.0]>");
         }
         try {
-            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f, 20.0f}, null).isEqualTo(new float[]{5.0f, 10.0f, 15.0f});
+            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f, 20.0f}, null).isEqualTo(5.0f, 10.0f, 15.0f);
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 15.0]> but was:<[5.0, 10.0, 15.0, 20.0]>");
         }
         try {
-            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(new float[]{5.0f, 10.0f, 20.0f});
+            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isEqualTo(5.0f, 10.0f, 20.0f);
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5.0, 10.0, 20.0]> but was:<[5.0, 10.0, 15.0]>");
@@ -115,24 +115,24 @@ public final class FloatArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(new float[]{5.0f, 10.0f, 15.0f, 20.0f});
-        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f, 20.0f}, null).isNotEqualTo(new float[]{5.0f, 10.0f, 15.0f});
-        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(new float[]{5.0f, 10.0f, 20.0f});
+        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(5.0f, 10.0f, 15.0f, 20.0f);
+        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f, 20.0f}, null).isNotEqualTo(5.0f, 10.0f, 15.0f);
+        new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(5.0f, 10.0f, 20.0f);
 
         try {
-            new FloatArrayAssertion(new float[]{}, null).isNotEqualTo(new float[]{});
+            new FloatArrayAssertion(new float[]{}, null).isNotEqualTo();
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f}, null).isNotEqualTo(new float[]{1.0f});
+            new FloatArrayAssertion(new float[]{1.0f}, null).isNotEqualTo(1.0f);
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0]>");
         }
         try {
-            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(new float[]{5.0f, 10.0f, 15.0f});
+            new FloatArrayAssertion(new float[]{5.0f, 10.0f, 15.0f}, null).isNotEqualTo(5.0f, 10.0f, 15.0f);
             Assertions.fail("Float array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5.0, 10.0, 15.0]>");
