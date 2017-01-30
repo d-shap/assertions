@@ -55,6 +55,14 @@ public final class FailMessagesTest {
      * {@link FailMessages} class test.
      */
     @Test
+    public void getArgumentIsNotEmptyTest() {
+        Assertions.assertThat(FailMessages.getArgumentIsNotEmpty()).isEqualTo("Argument should not be empty.");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
     public void getIsTrueTest() {
         Assertions.assertThat(FailMessages.getIsTrue()).isEqualTo("Value should be true.");
     }
