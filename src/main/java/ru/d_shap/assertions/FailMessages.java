@@ -28,6 +28,8 @@ public final class FailMessages {
 
     private static final String MSG_ARGUMENT_IS_NOT_NULL = "Argument should not be null.";
 
+    private static final String MSG_ARGUMENT_IS_NOT_EMPTY = "Argument should not be empty.";
+
     private static final String MSG_IS_TRUE = "Value should be true.";
 
     private static final String MSG_IS_FALSE = "Value should be false.";
@@ -149,6 +151,15 @@ public final class FailMessages {
      */
     public static String getArgumentIsNotNull() {
         return MSG_ARGUMENT_IS_NOT_NULL;
+    }
+
+    /**
+     * Get the fail message if the argument should not be empty.
+     *
+     * @return the fail message.
+     */
+    public static String getArgumentIsNotEmpty() {
+        return MSG_ARGUMENT_IS_NOT_EMPTY;
     }
 
     /**
