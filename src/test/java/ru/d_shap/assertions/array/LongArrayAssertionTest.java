@@ -49,13 +49,13 @@ public final class LongArrayAssertionTest {
             new LongArrayAssertion(new long[]{1L}, null).isEmpty();
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1]>");
         }
         try {
             new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEmpty();
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5, 10, 15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class LongArrayAssertionTest {
             new LongArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new LongArrayAssertion(new long[]{}, null).isNotEmpty();
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class LongArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new LongArrayAssertion(new long[]{}, null).isEqualTo(new long[]{});
-        new LongArrayAssertion(new long[]{1L}, null).isEqualTo(new long[]{1L});
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(new long[]{5L, 10L, 15L});
+        new LongArrayAssertion(new long[]{}, null).isEqualTo();
+        new LongArrayAssertion(new long[]{1L}, null).isEqualTo(1L);
+        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 15L);
 
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(new long[]{5L, 10L, 15L, 20L});
+            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 15L, 20L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15, 20]> but was:<[5, 10, 15]>");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isEqualTo(new long[]{5L, 10L, 15L});
+            new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isEqualTo(5L, 10L, 15L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15]> but was:<[5, 10, 15, 20]>");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(new long[]{5L, 10L, 20L});
+            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 20L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 20]> but was:<[5, 10, 15]>");
@@ -115,24 +115,24 @@ public final class LongArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(new long[]{5L, 10L, 15L, 20L});
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isNotEqualTo(new long[]{5L, 10L, 15L});
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(new long[]{5L, 10L, 20L});
+        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 15L, 20L);
+        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isNotEqualTo(5L, 10L, 15L);
+        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 20L);
 
         try {
-            new LongArrayAssertion(new long[]{}, null).isNotEqualTo(new long[]{});
+            new LongArrayAssertion(new long[]{}, null).isNotEqualTo();
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new LongArrayAssertion(new long[]{1L}, null).isNotEqualTo(new long[]{1L});
+            new LongArrayAssertion(new long[]{1L}, null).isNotEqualTo(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1]>");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(new long[]{5L, 10L, 15L});
+            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 15L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5, 10, 15]>");
