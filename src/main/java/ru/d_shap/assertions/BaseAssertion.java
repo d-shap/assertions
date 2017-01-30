@@ -91,7 +91,6 @@ public abstract class BaseAssertion {
         }
     }
 
-
     /**
      * Create new assertion error.
      *
