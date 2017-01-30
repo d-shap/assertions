@@ -49,13 +49,13 @@ public final class ShortArrayAssertionTest {
             new ShortArrayAssertion(new short[]{1}, null).isEmpty();
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1]>");
         }
         try {
             new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEmpty();
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5, 10, 15]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class ShortArrayAssertionTest {
             new ShortArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new ShortArrayAssertion(new short[]{}, null).isNotEmpty();
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class ShortArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new ShortArrayAssertion(new short[]{}, null).isEqualTo(new short[]{});
-        new ShortArrayAssertion(new short[]{1}, null).isEqualTo(new short[]{1});
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo(new short[]{5, 10, 15});
+        new ShortArrayAssertion(new short[]{}, null).isEqualTo();
+        new ShortArrayAssertion(new short[]{1}, null).isEqualTo((short) 1);
+        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 15);
 
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo(new short[]{5, 10, 15, 20});
+            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 15, (short) 20);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15, 20]> but was:<[5, 10, 15]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isEqualTo(new short[]{5, 10, 15});
+            new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isEqualTo((short) 5, (short) 10, (short) 15);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15]> but was:<[5, 10, 15, 20]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo(new short[]{5, 10, 20});
+            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 20);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 20]> but was:<[5, 10, 15]>");
@@ -115,24 +115,24 @@ public final class ShortArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo(new short[]{5, 10, 15, 20});
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isNotEqualTo(new short[]{5, 10, 15});
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo(new short[]{5, 10, 20});
+        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 15, (short) 20);
+        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isNotEqualTo((short) 5, (short) 10, (short) 15);
+        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 20);
 
         try {
-            new ShortArrayAssertion(new short[]{}, null).isNotEqualTo(new short[]{});
+            new ShortArrayAssertion(new short[]{}, null).isNotEqualTo();
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{1}, null).isNotEqualTo(new short[]{1});
+            new ShortArrayAssertion(new short[]{1}, null).isNotEqualTo((short) 1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo(new short[]{5, 10, 15});
+            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 15);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5, 10, 15]>");
