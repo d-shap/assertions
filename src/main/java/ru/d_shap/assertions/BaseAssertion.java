@@ -81,6 +81,18 @@ public abstract class BaseAssertion {
     }
 
     /**
+     * Check if the argument is NOT empty.
+     *
+     * @param isEmpty is the argument empty.
+     */
+    protected final void checkArgumentIsNotEmpty(final boolean isEmpty) {
+        if (isEmpty) {
+            throw createAssertionError(FailMessages.getArgumentIsNotEmpty());
+        }
+    }
+
+
+    /**
      * Create new assertion error.
      *
      * @param failMessage the fail message.
