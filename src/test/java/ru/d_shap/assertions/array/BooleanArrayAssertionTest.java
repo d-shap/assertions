@@ -49,13 +49,13 @@ public final class BooleanArrayAssertionTest {
             new BooleanArrayAssertion(new boolean[]{true}, null).isEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[true]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[true]>");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should be empty. Actual:<[true, false, true]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[true, false, true]>");
         }
     }
 
@@ -71,13 +71,13 @@ public final class BooleanArrayAssertionTest {
             new BooleanArrayAssertion(null, null).isNotEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{}, null).isNotEmpty();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Array should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
     }
 
@@ -86,24 +86,24 @@ public final class BooleanArrayAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new BooleanArrayAssertion(new boolean[]{}, null).isEqualTo(new boolean[]{});
-        new BooleanArrayAssertion(new boolean[]{true}, null).isEqualTo(new boolean[]{true});
-        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(new boolean[]{true, false, true});
+        new BooleanArrayAssertion(new boolean[]{}, null).isEqualTo();
+        new BooleanArrayAssertion(new boolean[]{true}, null).isEqualTo(true);
+        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(true, false, true);
 
         try {
-            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(new boolean[]{true, false, true, true});
+            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(true, false, true, true);
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[true, false, true, true]> but was:<[true, false, true]>");
         }
         try {
-            new BooleanArrayAssertion(new boolean[]{true, false, true, true}, null).isEqualTo(new boolean[]{true, false, true});
+            new BooleanArrayAssertion(new boolean[]{true, false, true, true}, null).isEqualTo(true, false, true);
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[true, false, true]> but was:<[true, false, true, true]>");
         }
         try {
-            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(new boolean[]{true, false, false});
+            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isEqualTo(true, false, false);
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[true, false, false]> but was:<[true, false, true]>");
@@ -115,24 +115,24 @@ public final class BooleanArrayAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(new boolean[]{true, false, true, true});
-        new BooleanArrayAssertion(new boolean[]{true, false, true, true}, null).isNotEqualTo(new boolean[]{true, false, true});
-        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(new boolean[]{true, false, false});
+        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(true, false, true, true);
+        new BooleanArrayAssertion(new boolean[]{true, false, true, true}, null).isNotEqualTo(true, false, true);
+        new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(true, false, false);
 
         try {
-            new BooleanArrayAssertion(new boolean[]{}, null).isNotEqualTo(new boolean[]{});
+            new BooleanArrayAssertion(new boolean[]{}, null).isNotEqualTo();
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
         }
         try {
-            new BooleanArrayAssertion(new boolean[]{true}, null).isNotEqualTo(new boolean[]{true});
+            new BooleanArrayAssertion(new boolean[]{true}, null).isNotEqualTo(true);
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[true]>");
         }
         try {
-            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(new boolean[]{true, false, true});
+            new BooleanArrayAssertion(new boolean[]{true, false, true}, null).isNotEqualTo(true, false, true);
             Assertions.fail("Boolean array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[true, false, true]>");
