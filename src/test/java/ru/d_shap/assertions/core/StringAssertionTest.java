@@ -212,6 +212,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isEqualTo("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value1", null).isEqualTo("value2");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -257,6 +263,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("vALue", null).isEqualToIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value1", null).isEqualToIgnoreCase("value2");
@@ -307,6 +319,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isNotEqualTo("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isNotEqualTo("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -347,6 +365,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("vaLUe", null).isNotEqualToIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isNotEqualToIgnoreCase("value");
@@ -392,6 +416,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isGreaterThan("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isGreaterThan("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -433,6 +463,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isGreaterThanIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("value");
@@ -491,6 +527,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isGreaterThanOrEqualTo("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isGreaterThanOrEqualTo("valuea");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -528,6 +570,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase("XYZ");
@@ -573,6 +621,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isLessThan("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isLessThan("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -614,6 +668,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isLessThanIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase("value");
@@ -672,6 +732,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isLessThanOrEqualTo("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isLessThanOrEqualTo("valu");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -709,6 +775,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isLessThanOrEqualToIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("XYZ", null).isLessThanOrEqualToIgnoreCase("value");
@@ -754,10 +826,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isInRange("", "value");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isInRange("value", null);
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isInRange("value", "");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isInRange("A", "Z");
@@ -819,10 +903,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isInRangeIgnoreCase("", "value");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isInRangeIgnoreCase("value", null);
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isInRangeIgnoreCase("value", "");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("a", "test");
@@ -882,10 +978,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isNotInRange("", "value");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isNotInRange("value", null);
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isNotInRange("value", "");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isNotInRange("v", "valuea");
@@ -943,10 +1051,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isNotInRangeIgnoreCase("", "value");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("value", null);
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).isNotInRangeIgnoreCase("value", "");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("A", "Z");
@@ -1017,6 +1137,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).contains("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).contains("VAL");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1067,6 +1193,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("VAlue", null).containsIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).containsIgnoreCase("VAE");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1115,6 +1247,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).doesNotContain("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).doesNotContain("val");
@@ -1173,6 +1311,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("valUE", null).doesNotContainIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1229,6 +1373,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isPartOf("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("VAL", null).isPartOf("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1277,6 +1427,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("vaLUe", null).isPartOfIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("VAe", null).isPartOfIgnoreCase("vaLUe");
@@ -1329,6 +1485,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).isNotPartOf("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("val", null).isNotPartOf("value");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1377,6 +1539,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("vaLUe", null).isNotPartOfIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("VAL", null).isNotPartOfIgnoreCase("vaLUe");
@@ -1428,6 +1596,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("value", null).matches("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("value", null).matches("\\d+");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1463,6 +1637,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).doesNotMatch("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).doesNotMatch("\\w+");
@@ -1501,6 +1681,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).startsWith("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).startsWith("lue");
@@ -1553,6 +1739,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("vAlUe", null).startsWithIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("vAlUe", null).startsWithIgnoreCase("lUe");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1601,6 +1793,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).doesNotStartWith("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).doesNotStartWith("val");
@@ -1653,6 +1851,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1701,6 +1905,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).endsWith("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).endsWith("val");
@@ -1754,6 +1964,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("vAlUe", null).endsWithIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase("val");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1802,6 +2018,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value", null).doesNotEndWith("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new StringAssertion("value", null).doesNotEndWith("value");
@@ -1854,6 +2076,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
             new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("vaLue");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
@@ -1904,6 +2132,18 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+        try {
+            new StringAssertion("vAlUe", null).toLength().isEqualTo(6);
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
+        }
+        try {
+            new StringAssertion("vAlUe", "Message").toLength().isEqualTo(6);
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -1919,6 +2159,18 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new StringAssertion("vAlUe", null).hasLength(6);
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
+        }
+        try {
+            new StringAssertion("vAlUe", "Message").hasLength(6);
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
