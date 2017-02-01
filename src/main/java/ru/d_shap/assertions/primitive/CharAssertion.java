@@ -211,11 +211,7 @@ public class CharAssertion extends BaseAssertion {
             } else if (value instanceof Integer) {
                 int code = (int) value;
                 char symbol = (char) code;
-                if (symbol == code) {
-                    return asString(symbol, code);
-                } else {
-                    return asString(' ', code);
-                }
+                return asString(symbol, code);
             } else {
                 return String.valueOf(value);
             }
