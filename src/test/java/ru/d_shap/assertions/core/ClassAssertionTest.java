@@ -273,6 +273,18 @@ public final class ClassAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
         }
+        try {
+            new ClassAssertion(Values.class, null).asEnum().hasValueCount(4);
+            Assertions.fail("Class assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new ClassAssertion(Values.class, "Message").asEnum().hasValueCount(4);
+            Assertions.fail("Class assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+        }
     }
 
     /**
