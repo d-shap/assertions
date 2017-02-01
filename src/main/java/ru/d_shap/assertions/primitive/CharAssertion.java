@@ -207,14 +207,14 @@ public class CharAssertion extends BaseAssertion {
             return null;
         } else {
             if (value instanceof Character) {
-                return asString((char) value, (char) value);
+                return asSymbolAndCodeString((char) value, (char) value);
             } else if (value instanceof Integer) {
                 int code = (int) value;
                 char symbol = (char) code;
                 if (symbol == code) {
-                    return asString(symbol, code);
+                    return asSymbolAndCodeString(symbol, code);
                 } else {
-                    return asString(' ', code);
+                    return asCodeString(code);
                 }
             } else {
                 return String.valueOf(value);
@@ -222,12 +222,16 @@ public class CharAssertion extends BaseAssertion {
         }
     }
 
-    private String asString(final char symbol, final int code) {
+    private String asSymbolAndCodeString(final char symbol, final int code) {
         if (Character.isLetterOrDigit(symbol)) {
             return symbol + "(" + code + ")";
         } else {
-            return " (" + code + ")";
+            return asCodeString(code);
         }
+    }
+
+    private String asCodeString(final int code) {
+        return " (" + code + ")";
     }
 
 }
