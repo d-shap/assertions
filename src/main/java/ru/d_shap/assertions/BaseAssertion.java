@@ -127,11 +127,7 @@ public abstract class BaseAssertion {
                 return new AssertionError(throwable);
             }
         } else {
-            if (throwable == null) {
-                return new AssertionError(fullMessage);
-            } else {
-                return new AssertionError(fullMessage, throwable);
-            }
+            return new AssertionError(fullMessage, throwable);
         }
     }
 
