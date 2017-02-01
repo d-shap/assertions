@@ -169,6 +169,7 @@ public final class StringAssertionTest {
     @Test
     public void isNotBlankTest() {
         new StringAssertion("value", null).isNotBlank();
+        new StringAssertion("v   ", null).isNotBlank();
 
         try {
             new StringAssertion(null, null).isNotBlank();
