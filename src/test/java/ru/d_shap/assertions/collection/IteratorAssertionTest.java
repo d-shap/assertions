@@ -233,6 +233,12 @@ public final class IteratorAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new IteratorAssertion(null, null).containsAll(new ArrayList<String>());
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), null).containsAll((Object[]) null);
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
@@ -308,6 +314,12 @@ public final class IteratorAssertionTest {
 
         try {
             new IteratorAssertion(null, null).containsAllInOrder("val");
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, null).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -389,6 +401,12 @@ public final class IteratorAssertionTest {
 
         try {
             new IteratorAssertion(null, null).containsExactly("val");
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, null).containsExactly(new ArrayList<String>());
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -478,6 +496,12 @@ public final class IteratorAssertionTest {
 
         try {
             new IteratorAssertion(null, null).containsExactlyInOrder("val");
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, null).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -573,6 +597,12 @@ public final class IteratorAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new IteratorAssertion(null, null).containsAny(new ArrayList<String>());
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), null).containsAny((Object[]) null);
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
@@ -639,6 +669,12 @@ public final class IteratorAssertionTest {
 
         try {
             new IteratorAssertion(null, null).containsNone("val");
+            Assertions.fail("Iterator assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, null).containsNone(new ArrayList<String>());
             Assertions.fail("Iterator assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
