@@ -46,7 +46,7 @@ public class DoubleAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final double expected, final double delta) {
-        if (Double.compare(expected, (Double) getActual()) != 0 && Math.abs(expected - (Double) getActual()) > delta) {
+        if (Math.abs(expected - (Double) getActual()) > delta) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
     }
@@ -58,7 +58,7 @@ public class DoubleAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final double expected, final double delta) {
-        if (Double.compare(expected, (Double) getActual()) == 0 || Math.abs(expected - (Double) getActual()) <= delta) {
+        if (Math.abs(expected - (Double) getActual()) <= delta) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
     }
