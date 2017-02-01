@@ -54,6 +54,18 @@ public final class ThrowableAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+        try {
+            new ThrowableAssertion(new Exception("value"), null).toMessage().isEqualTo("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<value>");
+        }
+        try {
+            new ThrowableAssertion(new Exception("value"), "Message").toMessage().isEqualTo("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<value>");
+        }
     }
 
     /**
@@ -69,6 +81,18 @@ public final class ThrowableAssertionTest {
             Assertions.fail("Throwable assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ThrowableAssertion(new Exception("value"), null).hasMessage("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<value>");
+        }
+        try {
+            new ThrowableAssertion(new Exception("value"), "Message").hasMessage("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<value>");
         }
     }
 
@@ -94,6 +118,18 @@ public final class ThrowableAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+        try {
+            new ThrowableAssertion(new Exception(new Error("value")), null).toCause().isInstanceOf(RuntimeException.class);
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+        }
+        try {
+            new ThrowableAssertion(new Exception(new Error("value")), "Message").toCause().isInstanceOf(RuntimeException.class);
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+        }
     }
 
     /**
@@ -114,6 +150,18 @@ public final class ThrowableAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+        try {
+            new ThrowableAssertion(new Exception(new Error("value")), null).hasCauseInstanceOf(RuntimeException.class);
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+        }
+        try {
+            new ThrowableAssertion(new Exception(new Error("value")), "Message").hasCauseInstanceOf(RuntimeException.class);
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+        }
     }
 
     /**
@@ -129,6 +177,18 @@ public final class ThrowableAssertionTest {
             Assertions.fail("Throwable assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ThrowableAssertion(new Exception(new RuntimeException("value")), null).hasCauseMessage("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<value>");
+        }
+        try {
+            new ThrowableAssertion(new Exception(new RuntimeException("value")), "Message").hasCauseMessage("test");
+            Assertions.fail("Throwable assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<value>");
         }
     }
 
