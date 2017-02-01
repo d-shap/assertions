@@ -130,6 +130,12 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<value>");
         }
+        try {
+            new StringAssertion("v   ", null).isBlank();
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<v   >");
+        }
     }
 
     /**
@@ -148,6 +154,12 @@ public final class StringAssertionTest {
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<value>");
+        }
+        try {
+            new StringAssertion("v   ", null).isNullOrBlank();
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<v   >");
         }
     }
 

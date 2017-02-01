@@ -149,6 +149,12 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<value>");
         }
         try {
+            new CharSequenceAssertion("v   ", null).isBlank();
+            Assertions.fail("Char sequence assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<v   >");
+        }
+        try {
             new CharSequenceAssertion("value", "Message").isBlank();
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
@@ -172,6 +178,12 @@ public final class CharSequenceAssertionTest {
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<value>");
+        }
+        try {
+            new CharSequenceAssertion("v   ", null).isNullOrBlank();
+            Assertions.fail("Char sequence assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<v   >");
         }
         try {
             new CharSequenceAssertion("value", "Message").isNullOrBlank();
