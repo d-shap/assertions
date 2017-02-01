@@ -267,6 +267,12 @@ public final class ClassAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
         }
+        try {
+            new ClassAssertion(FailConstructorClass.class, "Message").asEnum();
+            Assertions.fail("Class assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
+        }
     }
 
     /**
