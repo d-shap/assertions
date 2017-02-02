@@ -272,6 +272,12 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
+            new CharSequenceAssertion("value1", null).isEqualTo("value2");
+            Assertions.fail("Char sequence assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Values should be the same. Expected:<value2> but was:<value1>");
+        }
+        try {
             new CharSequenceAssertion("value", null).isEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {

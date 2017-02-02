@@ -237,6 +237,12 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
+            new StringAssertion("value1", null).isEqualTo("value2");
+            Assertions.fail("String assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Values should be the same. Expected:<value2> but was:<value1>");
+        }
+        try {
             new StringAssertion("value", null).isEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {

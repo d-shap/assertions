@@ -33,7 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 public class StringAssertion extends ReferenceAssertion {
 
-    private static final int PATTERN_FLAGS = Pattern.LITERAL + Pattern.CASE_INSENSITIVE + Pattern.UNICODE_CASE;
+    private static final int PATTERN_FLAGS = Pattern.LITERAL | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
 
     /**
      * Create new object.
