@@ -19,21 +19,18 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.FailMessages;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.primitive.LongAssertion;
+import ru.d_shap.assertions.collection.CollectionAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
 
 /**
  * Assertions for the long array.
  *
  * @author Dmitry Shapovalov
  */
-public class LongArrayAssertion extends ReferenceAssertion {
+public class LongArrayAssertion extends BaseArrayAssertion<Long> {
 
     /**
      * Create new object.
@@ -46,90 +43,147 @@ public class LongArrayAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value is empty.
-     */
-    public final void isEmpty() {
-        if (getActual() != null && ((long[]) getActual()).length > 0) {
-            throw createAssertionError(FailMessages.getIsEmpty(actualAsString()));
-        }
-    }
-
-    /**
-     * Check if the actual value is NOT empty.
-     */
-    public final void isNotEmpty() {
-        if (getActual() == null || ((long[]) getActual()).length == 0) {
-            throw createAssertionError(FailMessages.getIsNotEmpty());
-        }
-    }
-
-    /**
-     * Check if the actual value is equal to the expected value.
+     * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final long... expected) {
-        checkArgumentIsNotNull(expected);
-        if (!Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
-        }
+    public final void contains(final long expected) {
+        doContains(expected);
     }
 
     /**
-     * Check if the actual value is NOT equal to the expected value.
+     * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final long... expected) {
-        checkArgumentIsNotNull(expected);
-        if (Arrays.equals((long[]) getActual(), expected)) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
-        }
+    public final void doesNotContain(final long expected) {
+        doDoesNotContain(expected);
     }
 
     /**
-     * Make assertion about the actual value length.
+     * Check if the actual value contains all of the expected values.
      *
-     * @return the assertion.
+     * @param expected the expected values.
      */
-    public final IntAssertion toLength() {
-        return new IntAssertion(((long[]) getActual()).length, getMessage());
+    public final void containsAll(final long... expected) {
+        doContainsAll(createArgumentArray(expected));
     }
 
     /**
-     * Check if the actual value length is equal to the expected length.
+     * Check if the actual value contains all of the expected values.
      *
-     * @param expected the expected length.
+     * @param expected the expected values.
      */
-    public final void hasLength(final int expected) {
-        toLength().isEqualTo(expected);
+    public final void containsAll(final Iterable<Long> expected) {
+        doContainsAll(expected);
     }
 
     /**
-     * Make assertion about the actual value item.
+     * Check if the actual value contains all of the expected values in the specified order.
      *
-     * @param index item index.
-     * @return the assertion.
+     * @param expected the expected values.
      */
-    public final LongAssertion toItem(final int index) {
-        return new LongAssertion(((long[]) getActual())[index], getMessage());
+    public final void containsAllInOrder(final long... expected) {
+        doContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Iterable<Long> expected) {
+        doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactly(final long... expected) {
+        doContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactly(final Iterable<Long> expected) {
+        doContainsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final long... expected) {
+        doContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Iterable<Long> expected) {
+        doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final long... expected) {
+        doContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final Iterable<Long> expected) {
+        doContainsAny(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final long... expected) {
+        doContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final Iterable<Long> expected) {
+        doContainsNone(expected);
     }
 
     @Override
-    protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            if (value instanceof long[]) {
-                List<Long> list = new ArrayList<>(((long[]) value).length);
-                for (long item : (long[]) value) {
-                    list.add(item);
-                }
-                return list.toString();
-            } else {
-                return String.valueOf(value);
-            }
+    protected final CollectionAssertion createCollectionAssertion() {
+        long[] array = (long[]) getActual();
+        List<Long> result = new LinkedList<>();
+        for (long value : array) {
+            result.add(value);
         }
+        return new ListAssertion(result, getMessage());
+    }
+
+    private Long[] createArgumentArray(final long... array) {
+        Long[] result = new Long[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = array[i];
+        }
+        return result;
     }
 
 }
