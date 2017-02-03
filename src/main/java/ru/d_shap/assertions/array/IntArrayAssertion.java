@@ -66,6 +66,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAll(createArgumentArray(expected));
     }
 
@@ -84,6 +85,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAllInOrder(createArgumentArray(expected));
     }
 
@@ -102,6 +104,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsExactly(createArgumentArray(expected));
     }
 
@@ -120,6 +123,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(createArgumentArray(expected));
     }
 
@@ -138,6 +142,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAny(createArgumentArray(expected));
     }
 
@@ -156,6 +161,7 @@ public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsNone(createArgumentArray(expected));
     }
 

@@ -66,6 +66,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAll(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAll(createArgumentArray(expected));
     }
 
@@ -84,6 +85,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAllInOrder(createArgumentArray(expected));
     }
 
@@ -102,6 +104,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactly(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsExactly(createArgumentArray(expected));
     }
 
@@ -120,6 +123,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(createArgumentArray(expected));
     }
 
@@ -138,6 +142,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAny(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsAny(createArgumentArray(expected));
     }
 
@@ -156,6 +161,7 @@ public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsNone(final double... expected) {
+        checkArgumentIsNotNull(expected);
         doContainsNone(createArgumentArray(expected));
     }
 
