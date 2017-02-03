@@ -299,11 +299,11 @@ public class CollectionAssertion extends ReferenceAssertion {
         for (Object value : expected) {
             result.add(value);
         }
-        return result.toArray(new Object[result.size()]);
+        return result.toArray();
     }
 
     /**
-     * Make assertion about the actual collection size.
+     * Make assertion about the actual value size.
      *
      * @return the assertion.
      */
@@ -313,9 +313,9 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value size is equal to the expected collection size.
+     * Check if the actual value size is equal to the expected size.
      *
-     * @param expected the expected collection size.
+     * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
