@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
@@ -41,43 +44,27 @@ public final class LongArrayAssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void isEmptyTest() {
-        new LongArrayAssertion(null, null).isEmpty();
-        new LongArrayAssertion(new long[]{}, null).isEmpty();
+    public void containsTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).contains(1L);
+        new LongArrayAssertion(new long[]{1L, 2L}, null).contains(2L);
 
         try {
-            new LongArrayAssertion(new long[]{1L}, null).isEmpty();
+            new LongArrayAssertion(null, null).contains(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEmpty();
+            new LongArrayAssertion(new long[]{1L, 2L}, null).contains(3L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5, 10, 15]>");
-        }
-    }
-
-    /**
-     * {@link LongArrayAssertion} class test.
-     */
-    @Test
-    public void isNotEmptyTest() {
-        new LongArrayAssertion(new long[]{1L}, null).isNotEmpty();
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEmpty();
-
-        try {
-            new LongArrayAssertion(null, null).isNotEmpty();
-            Assertions.fail("Long array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
         try {
-            new LongArrayAssertion(new long[]{}, null).isNotEmpty();
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").contains(3L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
     }
 
@@ -85,28 +72,26 @@ public final class LongArrayAssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
-        new LongArrayAssertion(new long[]{}, null).isEqualTo();
-        new LongArrayAssertion(new long[]{1L}, null).isEqualTo(1L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 15L);
+    public void doesNotContainTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).doesNotContain(3L);
 
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 15L, 20L);
+            new LongArrayAssertion(null, null).doesNotContain(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15, 20]> but was:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isEqualTo(5L, 10L, 15L);
+            new LongArrayAssertion(new long[]{1L, 2L}, null).doesNotContain(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15]> but was:<[5, 10, 15, 20]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isEqualTo(5L, 10L, 20L);
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").doesNotContain(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 20]> but was:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
     }
 
@@ -114,28 +99,71 @@ public final class LongArrayAssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 15L, 20L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).isNotEqualTo(5L, 10L, 15L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 20L);
+    public void containsAllTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll(1L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAll(1L, 3L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAll(4L, 2L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAll(Arrays.asList(4L, 2L));
 
         try {
-            new LongArrayAssertion(new long[]{}, null).isNotEqualTo();
+            new LongArrayAssertion(null, null).containsAll(1L);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new LongArrayAssertion(new long[]{1L}, null).isNotEqualTo(1L);
+            new LongArrayAssertion(null, null).containsAll(new ArrayList<Long>());
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).isNotEqualTo(5L, 10L, 15L);
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll((long[]) null);
             Assertions.fail("Long array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll(2L, 3L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAll(2L, 3L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAll(Arrays.asList(2L, 3L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAll(Arrays.asList(2L, 3L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 
@@ -143,51 +171,422 @@ public final class LongArrayAssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void toLengthTest() {
-        new LongArrayAssertion(new long[]{}, null).toLength().isEqualTo(0);
-        new LongArrayAssertion(new long[]{1L}, null).toLength().isEqualTo(1);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).toLength().isEqualTo(3);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).toLength().isEqualTo(4);
+    public void containsAllInOrderTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder(1L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAllInOrder(1L, 3L, 4L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAllInOrder(Arrays.asList(1L, 3L, 4L));
+
+        try {
+            new LongArrayAssertion(null, null).containsAllInOrder(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(null, null).containsAllInOrder(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder((long[]) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder(2L, 3L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder(2L, 1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAllInOrder(2L, 1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAllInOrder(Arrays.asList(2L, 1L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAllInOrder(Arrays.asList(2L, 1L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
     }
 
     /**
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void hasLengthTest() {
-        new LongArrayAssertion(new long[]{}, null).hasLength(0);
-        new LongArrayAssertion(new long[]{1L}, null).hasLength(1);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).hasLength(3);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).hasLength(4);
+    public void containsExactlyTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly(1L, 2L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(1L, 2L, 3L, 4);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(1L, 3L, 2L, 4L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(Arrays.asList(1L, 3L, 2L, 4L));
+
+        try {
+            new LongArrayAssertion(null, null).containsExactly(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(null, null).containsExactly(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly((long[]) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactly(2L, 3L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(1L, 2L, 3L, 4L, 5L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(1L, 1L, 3L, 2L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, "Message").containsExactly(1L, 1L, 3L, 2L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, "Message").containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
     }
 
     /**
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void toItemTest() {
-        new LongArrayAssertion(new long[]{1L}, null).toItem(0).isEqualTo(1L);
+    public void containsExactlyInOrderTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder(1L, 2L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(1, 2L, 3L, 4);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
 
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).toItem(0).isEqualTo(5L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).toItem(1).isEqualTo(10L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L}, null).toItem(2).isEqualTo(15L);
-
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).toItem(0).isEqualTo(5L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).toItem(1).isEqualTo(10L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).toItem(2).isEqualTo(15L);
-        new LongArrayAssertion(new long[]{5L, 10L, 15L, 20L}, null).toItem(3).isEqualTo(20L);
+        try {
+            new LongArrayAssertion(null, null).containsExactlyInOrder(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(null, null).containsExactlyInOrder(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder((long[]) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(1L, 2L, 3L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(2L, 3L, 1L, 4L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, "Message").containsExactlyInOrder(2L, 3L, 1L, 4L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, "Message").containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
     }
 
     /**
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        Assertions.assertThat(new LongArrayAssertion(null, null).asString(null)).isNull();
-        Assertions.assertThat(new LongArrayAssertion(null, null).asString("test")).isEqualTo("test");
-        Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{1L})).isEqualTo("[1]");
-        Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{5L, 10L, 15L})).isEqualTo("[5, 10, 15]");
-        Assertions.assertThat(new LongArrayAssertion(null, null).asString(new long[]{5L, 10L, 15L, 20L})).isEqualTo("[5, 10, 15, 20]");
+    public void containsAnyTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny(2L, 3L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAny(2L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAny(4L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAny(5L, 3L);
+        new LongArrayAssertion(new long[]{1L, 2L, 3L, 4L}, null).containsAny(Arrays.asList(5L, 3L));
+
+        try {
+            new LongArrayAssertion(null, null).containsAny(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(null, null).containsAny(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny((long[]) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny(3L, 4L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAny(3L, 4L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsAny(Arrays.asList(3L, 4L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsAny(Arrays.asList(3L, 4L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void containsNoneTest() {
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(3L);
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(3L, 4L);
+        new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(Arrays.asList(3L, 4L));
+
+        try {
+            new LongArrayAssertion(null, null).containsNone(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(null, null).containsNone(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone((long[]) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone((Iterable<Long>) null);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(new ArrayList<Long>());
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(2L, 1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsNone(2L, 1L);
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).containsNone(Arrays.asList(2L, 1L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").containsNone(Arrays.asList(2L, 1L));
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void createCollectionAssertionTest() {
+        new LongArrayAssertion(new long[0], null).createCollectionAssertion().isEmpty();
+        new LongArrayAssertion(new long[]{1L, 2L}, null).createCollectionAssertion().isNotEmpty();
+
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, null).createCollectionAssertion().isEmpty();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+        }
+        try {
+            new LongArrayAssertion(new long[]{1L, 2L}, "Message").createCollectionAssertion().isEmpty();
+            Assertions.fail("Long array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+        }
     }
 
 }

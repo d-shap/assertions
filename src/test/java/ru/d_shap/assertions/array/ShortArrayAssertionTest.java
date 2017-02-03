@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
@@ -41,43 +44,27 @@ public final class ShortArrayAssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void isEmptyTest() {
-        new ShortArrayAssertion(null, null).isEmpty();
-        new ShortArrayAssertion(new short[]{}, null).isEmpty();
+    public void containsTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).contains(1);
+        new ShortArrayAssertion(new short[]{1, 2}, null).contains(2);
 
         try {
-            new ShortArrayAssertion(new short[]{1}, null).isEmpty();
+            new ShortArrayAssertion(null, null).contains(1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEmpty();
+            new ShortArrayAssertion(new short[]{1, 2}, null).contains(3);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[5, 10, 15]>");
-        }
-    }
-
-    /**
-     * {@link ShortArrayAssertion} class test.
-     */
-    @Test
-    public void isNotEmptyTest() {
-        new ShortArrayAssertion(new short[]{1}, null).isNotEmpty();
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEmpty();
-
-        try {
-            new ShortArrayAssertion(null, null).isNotEmpty();
-            Assertions.fail("Short array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{}, null).isNotEmpty();
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").contains(3);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
     }
 
@@ -85,28 +72,26 @@ public final class ShortArrayAssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
-        new ShortArrayAssertion(new short[]{}, null).isEqualTo();
-        new ShortArrayAssertion(new short[]{1}, null).isEqualTo((short) 1);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 15);
+    public void doesNotContainTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).doesNotContain(3);
 
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 15, (short) 20);
+            new ShortArrayAssertion(null, null).doesNotContain(1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15, 20]> but was:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isEqualTo((short) 5, (short) 10, (short) 15);
+            new ShortArrayAssertion(new short[]{1, 2}, null).doesNotContain(1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 15]> but was:<[5, 10, 15, 20]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isEqualTo((short) 5, (short) 10, (short) 20);
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").doesNotContain(1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[5, 10, 20]> but was:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
     }
 
@@ -114,28 +99,71 @@ public final class ShortArrayAssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 15, (short) 20);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).isNotEqualTo((short) 5, (short) 10, (short) 15);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 20);
+    public void containsAllTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsAll((short) 1);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAll((short) 1, (short) 3);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAll((short) 4, (short) 2);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAll(Arrays.asList((short) 4, (short) 2));
 
         try {
-            new ShortArrayAssertion(new short[]{}, null).isNotEqualTo();
+            new ShortArrayAssertion(null, null).containsAll((short) 1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ShortArrayAssertion(new short[]{1}, null).isNotEqualTo((short) 1);
+            new ShortArrayAssertion(null, null).containsAll(new ArrayList<Short>());
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1]>");
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ShortArrayAssertion(new short[]{5, 10, 15}, null).isNotEqualTo((short) 5, (short) 10, (short) 15);
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll((short[]) null);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[5, 10, 15]>");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll((short) 2, (short) 3);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAll((short) 2, (short) 3);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAll(Arrays.asList((short) 2, (short) 3));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAll(Arrays.asList((short) 2, (short) 3));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 
@@ -143,51 +171,422 @@ public final class ShortArrayAssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void toLengthTest() {
-        new ShortArrayAssertion(new short[]{}, null).toLength().isEqualTo(0);
-        new ShortArrayAssertion(new short[]{1}, null).toLength().isEqualTo(1);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).toLength().isEqualTo(3);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).toLength().isEqualTo(4);
+    public void containsAllInOrderTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder((short) 1);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAllInOrder((short) 1, (short) 3, (short) 4);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAllInOrder(Arrays.asList((short) 1, (short) 3, (short) 4));
+
+        try {
+            new ShortArrayAssertion(null, null).containsAllInOrder((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, null).containsAllInOrder(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder((short[]) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder((short) 2, (short) 3);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder((short) 2, (short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAllInOrder((short) 2, (short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAllInOrder(Arrays.asList((short) 2, (short) 1));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAllInOrder(Arrays.asList((short) 2, (short) 1));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
     }
 
     /**
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void hasLengthTest() {
-        new ShortArrayAssertion(new short[]{}, null).hasLength(0);
-        new ShortArrayAssertion(new short[]{1}, null).hasLength(1);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).hasLength(3);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).hasLength(4);
+    public void containsExactlyTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly((short) 1, (short) 2);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly((short) 1, (short) 2, (short) 3, (short) 4);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly((short) 1, (short) 3, (short) 2, (short) 4);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly(Arrays.asList((short) 1, (short) 3, (short) 2, (short) 4));
+
+        try {
+            new ShortArrayAssertion(null, null).containsExactly((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, null).containsExactly(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly((short[]) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly((short) 2, (short) 3);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly((short) 1, (short) 1, (short) 3, (short) 2);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, "Message").containsExactly((short) 1, (short) 1, (short) 3, (short) 2);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, "Message").containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
     }
 
     /**
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void toItemTest() {
-        new ShortArrayAssertion(new short[]{1}, null).toItem(0).isEqualTo((short) 1);
+    public void containsExactlyInOrderTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder((short) 1, (short) 2);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4));
 
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).toItem(0).isEqualTo((short) 5);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).toItem(1).isEqualTo((short) 10);
-        new ShortArrayAssertion(new short[]{5, 10, 15}, null).toItem(2).isEqualTo((short) 15);
-
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).toItem(0).isEqualTo((short) 5);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).toItem(1).isEqualTo((short) 10);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).toItem(2).isEqualTo((short) 15);
-        new ShortArrayAssertion(new short[]{5, 10, 15, 20}, null).toItem(3).isEqualTo((short) 20);
+        try {
+            new ShortArrayAssertion(null, null).containsExactlyInOrder((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, null).containsExactlyInOrder(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder((short[]) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder((short) 2, (short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder((short) 1, (short) 2, (short) 3);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, "Message").containsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
     }
 
     /**
      * {@link ShortArrayAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        Assertions.assertThat(new ShortArrayAssertion(null, null).asString(null)).isNull();
-        Assertions.assertThat(new ShortArrayAssertion(null, null).asString("test")).isEqualTo("test");
-        Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{1})).isEqualTo("[1]");
-        Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{5, 10, 15})).isEqualTo("[5, 10, 15]");
-        Assertions.assertThat(new ShortArrayAssertion(null, null).asString(new short[]{5, 10, 15, 20})).isEqualTo("[5, 10, 15, 20]");
+    public void containsAnyTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsAny((short) 2, (short) 3);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAny((short) 2);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAny((short) 4);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAny((short) 5, (short) 3);
+        new ShortArrayAssertion(new short[]{1, 2, 3, 4}, null).containsAny(Arrays.asList((short) 5, (short) 3));
+
+        try {
+            new ShortArrayAssertion(null, null).containsAny((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, null).containsAny(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny((short[]) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny((short) 3, (short) 4);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAny((short) 3, (short) 4);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsAny(Arrays.asList((short) 3, (short) 4));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsAny(Arrays.asList((short) 3, (short) 4));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void containsNoneTest() {
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((short) 3);
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((short) 3, (short) 4);
+        new ShortArrayAssertion(new short[]{1, 2}, null).containsNone(Arrays.asList((short) 3, (short) 4));
+
+        try {
+            new ShortArrayAssertion(null, null).containsNone((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, null).containsNone(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((short[]) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((Iterable<Short>) null);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone(new ArrayList<Short>());
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone((short) 2, (short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsNone((short) 2, (short) 1);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsNone(Arrays.asList((short) 2, (short) 1));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").containsNone(Arrays.asList((short) 2, (short) 1));
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void createCollectionAssertionTest() {
+        new ShortArrayAssertion(new short[0], null).createCollectionAssertion().isEmpty();
+        new ShortArrayAssertion(new short[]{1, 2}, null).createCollectionAssertion().isNotEmpty();
+
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).createCollectionAssertion().isEmpty();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, "Message").createCollectionAssertion().isEmpty();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+        }
     }
 
 }
