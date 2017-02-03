@@ -245,6 +245,12 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
+            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAll("val1", "val1", "val2");
+            Assertions.fail("Collection assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("Collection assertion test fail");
         } catch (AssertionError ex) {
@@ -267,6 +273,7 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder("val1", "val3");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder("val1", "val3", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder("val3", "val4", "val5");
+        new CollectionAssertion(Arrays.asList("val1", "val1", "val1", "val2", "val2"), null).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
 
@@ -317,6 +324,12 @@ public final class CollectionAssertionTest {
             Assertions.fail("Collection assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val1", "val1"), null).containsAllInOrder("val1", "val1", "val1", "val1");
+            Assertions.fail("Collection assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), null).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
