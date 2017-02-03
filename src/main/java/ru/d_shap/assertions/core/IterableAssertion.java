@@ -206,7 +206,7 @@ public class IterableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual collection size.
+     * Make assertion about the actual value size.
      *
      * @return the assertion.
      */
@@ -216,9 +216,9 @@ public class IterableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value size is equal to the expected collection size.
+     * Check if the actual value size is equal to the expected size.
      *
-     * @param expected the expected collection size.
+     * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
         checkActualIsNotNull();
