@@ -255,7 +255,7 @@ public class MapAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual map size.
+     * Make assertion about the actual value size.
      *
      * @return the assertion.
      */
@@ -265,9 +265,9 @@ public class MapAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Check if the actual value size is equal to the expected map size.
+     * Check if the actual value size is equal to the expected size.
      *
-     * @param expected the expected map size.
+     * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
