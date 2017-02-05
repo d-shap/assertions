@@ -145,25 +145,25 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAll("val2", "val3");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAll("val2", "val3");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAll(Arrays.asList("val2", "val3"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAll(Arrays.asList("val2", "val3"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
     }
 
@@ -216,31 +216,31 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAllInOrder("val2", "val3");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAllInOrder("val2", "val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAllInOrder("val2", "val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.fail("Object array assertion test fail");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAllInOrder(Arrays.asList("val2", "val1"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.fail("Object array assertion test fail");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAllInOrder(Arrays.asList("val2", "val1"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.fail("Object array assertion test fail");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
     }
 
@@ -294,37 +294,37 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsExactly("val2", "val3");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactly("val1", "val2", "val3", "val4", "val5");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactly("val1", "val1", "val3", "val2");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactly("val1", "val1", "val3", "val2");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>");
         }
     }
 
@@ -377,43 +377,43 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsExactlyInOrder("val2", "val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactlyInOrder("val1", "val2", "val3");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactlyInOrder("val2", "val3", "val1", "val4");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactlyInOrder("val2", "val3", "val1", "val4");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>");
         }
     }
 
@@ -468,25 +468,25 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAny("val3", "val4");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAny("val3", "val4");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsAny(Arrays.asList("val3", "val4"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsAny(Arrays.asList("val3", "val4"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>");
         }
     }
 
@@ -539,31 +539,31 @@ public final class ObjectArrayAssertionTest {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsNone("val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsNone("val2", "val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsNone("val2", "val1");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsNone(Arrays.asList("val2", "val1"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, "Message").containsNone(Arrays.asList("val2", "val1"));
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage(" ");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>");
         }
     }
 
