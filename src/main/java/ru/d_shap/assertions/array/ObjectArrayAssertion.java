@@ -74,8 +74,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsAll(final Iterable<?> expected) {
-        doContainsAll(expected);
+        doContainsAll((Iterable<Object>) expected);
     }
 
     /**
@@ -92,8 +93,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsAllInOrder(final Iterable<?> expected) {
-        doContainsAllInOrder(expected);
+        doContainsAllInOrder((Iterable<Object>) expected);
     }
 
     /**
@@ -110,8 +112,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsExactly(final Iterable<?> expected) {
-        doContainsExactly(expected);
+        doContainsExactly((Iterable<Object>) expected);
     }
 
     /**
@@ -128,8 +131,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsExactlyInOrder(final Iterable<?> expected) {
-        doContainsExactlyInOrder(expected);
+        doContainsExactlyInOrder((Iterable<Object>) expected);
     }
 
     /**
@@ -146,8 +150,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsAny(final Iterable<?> expected) {
-        doContainsAny(expected);
+        doContainsAny((Iterable<Object>) expected);
     }
 
     /**
@@ -164,8 +169,9 @@ public class ObjectArrayAssertion extends BaseArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
+    @SuppressWarnings("unchecked")
     public final void containsNone(final Iterable<?> expected) {
-        doContainsNone(expected);
+        doContainsNone((Iterable<Object>) expected);
     }
 
     @Override
