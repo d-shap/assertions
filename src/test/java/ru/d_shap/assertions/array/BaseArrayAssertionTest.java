@@ -818,7 +818,11 @@ public final class BaseArrayAssertionTest {
 
         @Override
         protected CollectionAssertion createCollectionAssertion() {
-            return new CollectionAssertion((List) getActual(), getMessage());
+            List<Object> copy = new ArrayList<>();
+            for (Object object : (List) getActual()) {
+                copy.add(object);
+            }
+            return new CollectionAssertion(copy, getMessage());
         }
 
     }
