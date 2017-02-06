@@ -2200,6 +2200,12 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<vUe> but was:<vAlUe>");
         }
         try {
+            new CharSequenceAssertion("", null).endsWithIgnoreCase("val");
+            Assertions.fail("Char sequence assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<val> but was:<>");
+        }
+        try {
             new CharSequenceAssertion("знАчЕнИе", null).endsWithIgnoreCase("знАчЕ");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
@@ -2292,6 +2298,7 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зачЕниЕ");
         new CharSequenceAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зние");
         new CharSequenceAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("зна");
+        new CharSequenceAssertion("", null).doesNotEndWithIgnoreCase("val");
 
         try {
             new CharSequenceAssertion(null, null).doesNotEndWithIgnoreCase("vAlUe");
