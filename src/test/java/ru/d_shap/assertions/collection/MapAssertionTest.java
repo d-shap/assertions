@@ -534,7 +534,7 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), null).toValues().isNotEmpty();
 
         try {
-            new MapAssertion(null, null).isNotEmpty();
+            new MapAssertion(null, null).toValues();
             Assertions.fail("Map assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
