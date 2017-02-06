@@ -578,15 +578,13 @@ public class StringAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmpty("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
-        boolean found = false;
         int lastIndexStart = 0;
-        int lastIndexEnd = 0;
+        int lastIndexEnd = -1;
         while (matcher.find(lastIndexStart)) {
-            found = true;
             lastIndexStart = matcher.start() + 1;
             lastIndexEnd = matcher.end();
         }
-        if (!found || lastIndexEnd != ((String) getActual()).length()) {
+        if (lastIndexEnd != ((String) getActual()).length()) {
             throw createAssertionError(FailMessages.getEndsWith(actualAsString(), asString(expected)));
         }
     }
@@ -615,15 +613,13 @@ public class StringAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmpty("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
-        boolean found = false;
         int lastIndexStart = 0;
-        int lastIndexEnd = 0;
+        int lastIndexEnd = -1;
         while (matcher.find(lastIndexStart)) {
-            found = true;
             lastIndexStart = matcher.start() + 1;
             lastIndexEnd = matcher.end();
         }
-        if (found && lastIndexEnd == ((String) getActual()).length()) {
+        if (lastIndexEnd == ((String) getActual()).length()) {
             throw createAssertionError(FailMessages.getDoesNotEndWith(actualAsString(), asString(expected)));
         }
     }
