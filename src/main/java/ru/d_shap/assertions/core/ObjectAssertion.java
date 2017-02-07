@@ -57,7 +57,7 @@ public class ObjectAssertion extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final String expected) {
+    public final void isNotEqualTo(final Object expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
