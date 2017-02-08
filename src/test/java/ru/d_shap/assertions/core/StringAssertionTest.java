@@ -211,6 +211,7 @@ public final class StringAssertionTest {
         new StringAssertion("value", null).isEqualTo("value");
         new StringAssertion("ЗНАЧЕНИЕ", null).isEqualTo("ЗНАЧЕНИЕ");
         new StringAssertion("значение", null).isEqualTo("значение");
+        new StringAssertion("", null).isEqualTo("");
 
         try {
             new StringAssertion(null, null).isEqualTo("value");
@@ -228,7 +229,7 @@ public final class StringAssertionTest {
             new StringAssertion("value", null).isEqualTo("");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("value1", null).isEqualTo("value2");
@@ -270,6 +271,7 @@ public final class StringAssertionTest {
         new StringAssertion("valUe", null).isEqualToIgnoreCase("vALue");
         new StringAssertion("ЗНАЧЕНИЕ", null).isEqualToIgnoreCase("значение");
         new StringAssertion("значение", null).isEqualToIgnoreCase("ЗНАЧЕНИЕ");
+        new StringAssertion("", null).isEqualToIgnoreCase("");
 
         try {
             new StringAssertion(null, null).isEqualToIgnoreCase("vALue");
@@ -287,7 +289,7 @@ public final class StringAssertionTest {
             new StringAssertion("vALue", null).isEqualToIgnoreCase("");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<vALue>");
         }
         try {
             new StringAssertion("value1", null).isEqualToIgnoreCase("value2");
@@ -324,6 +326,7 @@ public final class StringAssertionTest {
         new StringAssertion("value", null).isNotEqualTo("ЗНАЧЕНИЕ");
         new StringAssertion("значение", null).isNotEqualTo("value");
         new StringAssertion("ЗНАЧЕНИЕ", null).isNotEqualTo("value");
+        new StringAssertion("ЗНАЧЕНИЕ", null).isNotEqualTo("");
 
         try {
             new StringAssertion(null, null).isNotEqualTo("value");
@@ -338,10 +341,10 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new StringAssertion("value", null).isNotEqualTo("");
+            new StringAssertion("", null).isNotEqualTo("");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new StringAssertion("value", null).isNotEqualTo("value");
@@ -372,6 +375,7 @@ public final class StringAssertionTest {
         new StringAssertion("VAluE", null).isNotEqualToIgnoreCase("ЗНачЕНие");
         new StringAssertion("знАЧенИЕ", null).isNotEqualToIgnoreCase("vaLUe");
         new StringAssertion("ЗНачЕНие", null).isNotEqualToIgnoreCase("VAluE");
+        new StringAssertion("ЗНачЕНие", null).isNotEqualToIgnoreCase("");
 
         try {
             new StringAssertion(null, null).isNotEqualToIgnoreCase("vaLUe");
@@ -386,10 +390,10 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new StringAssertion("vaLUe", null).isNotEqualToIgnoreCase("");
+            new StringAssertion("", null).isNotEqualToIgnoreCase("");
             Assertions.fail("String assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new StringAssertion("value", null).isNotEqualToIgnoreCase("value");

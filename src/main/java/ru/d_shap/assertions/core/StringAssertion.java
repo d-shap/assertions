@@ -124,7 +124,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (!getActual().equals(expected)) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
@@ -138,7 +137,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (!((String) getActual()).equalsIgnoreCase(expected)) {
             throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
         }
@@ -152,7 +150,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (getActual().equals(expected)) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }
@@ -166,7 +163,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).equalsIgnoreCase(expected)) {
             throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
         }

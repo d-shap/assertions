@@ -246,6 +246,7 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("value", null).isEqualTo("value");
         new CharSequenceAssertion("ЗНАЧЕНИЕ", null).isEqualTo("ЗНАЧЕНИЕ");
         new CharSequenceAssertion("значение", null).isEqualTo("значение");
+        new CharSequenceAssertion("", null).isEqualTo("");
 
         try {
             new CharSequenceAssertion(null, null).isEqualTo("value");
@@ -263,7 +264,7 @@ public final class CharSequenceAssertionTest {
             new CharSequenceAssertion("value", null).isEqualTo("");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<value>");
         }
         try {
             new CharSequenceAssertion("value1", null).isEqualTo("value2");
@@ -311,6 +312,7 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("valUe", null).isEqualToIgnoreCase("vALue");
         new CharSequenceAssertion("ЗНАЧЕНИЕ", null).isEqualToIgnoreCase("значение");
         new CharSequenceAssertion("значение", null).isEqualToIgnoreCase("ЗНАЧЕНИЕ");
+        new CharSequenceAssertion("", null).isEqualToIgnoreCase("");
 
         try {
             new CharSequenceAssertion(null, null).isEqualToIgnoreCase("vALue");
@@ -328,7 +330,7 @@ public final class CharSequenceAssertionTest {
             new CharSequenceAssertion("vALue", null).isEqualToIgnoreCase("");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<vALue>");
         }
         try {
             new CharSequenceAssertion("value1", null).isEqualToIgnoreCase("value2");
@@ -371,6 +373,7 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("value", null).isNotEqualTo("ЗНАЧЕНИЕ");
         new CharSequenceAssertion("значение", null).isNotEqualTo("value");
         new CharSequenceAssertion("ЗНАЧЕНИЕ", null).isNotEqualTo("value");
+        new CharSequenceAssertion("ЗНАЧЕНИЕ", null).isNotEqualTo("");
 
         try {
             new CharSequenceAssertion(null, null).isNotEqualTo("value");
@@ -385,10 +388,10 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharSequenceAssertion("value", null).isNotEqualTo("");
+            new CharSequenceAssertion("", null).isNotEqualTo("");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new CharSequenceAssertion("value", null).isNotEqualTo("value");
@@ -425,6 +428,7 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("VAluE", null).isNotEqualToIgnoreCase("ЗНачЕНие");
         new CharSequenceAssertion("знАЧенИЕ", null).isNotEqualToIgnoreCase("vaLUe");
         new CharSequenceAssertion("ЗНачЕНие", null).isNotEqualToIgnoreCase("VAluE");
+        new CharSequenceAssertion("ЗНачЕНие", null).isNotEqualToIgnoreCase("");
 
         try {
             new CharSequenceAssertion(null, null).isNotEqualToIgnoreCase("vaLUe");
@@ -439,10 +443,10 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharSequenceAssertion("vaLUe", null).isNotEqualToIgnoreCase("");
+            new CharSequenceAssertion("", null).isNotEqualToIgnoreCase("");
             Assertions.fail("Char sequence assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new CharSequenceAssertion("value", null).isNotEqualToIgnoreCase("value");
