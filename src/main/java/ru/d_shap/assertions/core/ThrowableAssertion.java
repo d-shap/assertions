@@ -72,7 +72,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      *
      * @param clazz the expected class.
      */
-    public final void hasCauseInstanceOf(final Class<?> clazz) {
+    public final void isCauseInstanceOf(final Class<?> clazz) {
         toCause().isInstanceOf(clazz);
     }
 
