@@ -20,6 +20,8 @@
 package ru.d_shap.assertions;
 
 import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.StringAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
  * Base class for all reference type assertions.
@@ -97,6 +99,36 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isInstanceOf(final Class<?> clazz) {
         toClass().isSubtypeOf(clazz);
+    }
+
+    /**
+     * Check if the string representation of the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isToStringEqualTo(final String expected) {
+        checkActualIsNotNull();
+        new StringAssertion(getActual().toString(), getMessage()).isEqualTo(expected);
+    }
+
+    /**
+     * Check if the string representation of the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void toStringContains(final String expected) {
+        checkActualIsNotNull();
+        new StringAssertion(getActual().toString(), getMessage()).contains(expected);
+    }
+
+    /**
+     * Check if the actual values hash code is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isHashCodeEqualTo(final int expected) {
+        checkActualIsNotNull();
+        new IntAssertion(getActual().hashCode(), getMessage()).isEqualTo(expected);
     }
 
 }
