@@ -102,13 +102,13 @@ public final class EnumAssertionTest {
             new EnumAssertion(Values.class, null, "wrongMethodName", "valueOf").toValueCount();
             Assertions.fail("Enum assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCauseInstanceOf(NoSuchMethodException.class);
+            Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
         }
         try {
             new EnumAssertion(Values.class, null, "values", "wrongMethodName").toValueCount();
             Assertions.fail("Enum assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCauseInstanceOf(NoSuchMethodException.class);
+            Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
         }
     }
 

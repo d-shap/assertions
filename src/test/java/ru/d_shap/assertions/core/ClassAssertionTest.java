@@ -232,13 +232,13 @@ public final class ClassAssertionTest {
             new ClassAssertion(AbstractClass.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCauseInstanceOf(InstantiationException.class);
+            Assertions.assertThat(ex).isCauseInstanceOf(InstantiationException.class);
         }
         try {
             new ClassAssertion(FailConstructorClass.class, null).hasOnePrivateConstructor();
             Assertions.fail("Class assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCauseInstanceOf(InvocationTargetException.class);
+            Assertions.assertThat(ex).isCauseInstanceOf(InvocationTargetException.class);
         }
     }
 
