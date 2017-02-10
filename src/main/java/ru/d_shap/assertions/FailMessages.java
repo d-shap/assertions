@@ -28,7 +28,9 @@ public final class FailMessages {
 
     private static final String MSG_ARGUMENT_IS_NOT_NULL = "Argument should not be null.";
 
-    private static final String MSG_ARGUMENT_IS_NOT_EMPTY = "Argument should not be empty.";
+    private static final String MSG_ARGUMENT_IS_NOT_EMPTY_TRUE = "Argument should not be empty. The result is always true.";
+
+    private static final String MSG_ARGUMENT_IS_NOT_EMPTY_FALSE = "Argument should not be empty. The result is always false.";
 
     private static final String MSG_IS_TRUE = "Value should be true.";
 
@@ -154,12 +156,21 @@ public final class FailMessages {
     }
 
     /**
-     * Get the fail message if the argument should not be empty.
+     * Get the fail message if the argument should not be empty because the result is always true.
      *
      * @return the fail message.
      */
-    public static String getArgumentIsNotEmpty() {
-        return MSG_ARGUMENT_IS_NOT_EMPTY;
+    public static String getArgumentIsNotEmptyTrue() {
+        return MSG_ARGUMENT_IS_NOT_EMPTY_TRUE;
+    }
+
+    /**
+     * Get the fail message if the argument should not be empty because the result is always false.
+     *
+     * @return the fail message.
+     */
+    public static String getArgumentIsNotEmptyFalse() {
+        return MSG_ARGUMENT_IS_NOT_EMPTY_FALSE;
     }
 
     /**
