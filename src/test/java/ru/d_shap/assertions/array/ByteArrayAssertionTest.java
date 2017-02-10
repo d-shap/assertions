@@ -103,10 +103,17 @@ public final class ByteArrayAssertionTest {
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll((byte) 1);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAll((byte) 1, (byte) 3);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAll((byte) 4, (byte) 2);
+        new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAll(4, 2);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAll(Arrays.asList((byte) 4, (byte) 2));
 
         try {
             new ByteArrayAssertion(null, null).containsAll((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsAll(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -124,16 +131,28 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll();
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll((Iterable<Byte>) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll();
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll(new int[0]);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll(new ArrayList<Byte>());
@@ -149,6 +168,18 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsAll((byte) 2, (byte) 3);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAll(2, 3);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsAll(2, 3);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
@@ -174,10 +205,17 @@ public final class ByteArrayAssertionTest {
     public void containsAllInOrderTest() {
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder((byte) 1);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
+        new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAllInOrder(1, 3, 4);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
 
         try {
             new ByteArrayAssertion(null, null).containsAllInOrder((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsAllInOrder(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -195,16 +233,28 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder();
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder();
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder(new int[0]);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder(new ArrayList<Byte>());
@@ -231,6 +281,18 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder(2, 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsAllInOrder(2, 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
@@ -252,12 +314,20 @@ public final class ByteArrayAssertionTest {
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactly((byte) 1, (byte) 2);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
+        new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly(1, 3, 2, 4);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly(Arrays.asList((byte) 1, (byte) 3, (byte) 2, (byte) 4));
         new ByteArrayAssertion(new byte[0], null).containsExactly();
+        new ByteArrayAssertion(new byte[0], null).containsExactly(new int[0]);
         new ByteArrayAssertion(new byte[0], null).containsExactly(new ArrayList<Byte>());
 
         try {
             new ByteArrayAssertion(null, null).containsExactly((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsExactly((int) 1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -270,6 +340,12 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactly((byte[]) null);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactly((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -317,6 +393,18 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
+            new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly(1, 1, 3, 2);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, "Message").containsExactly(1, 1, 3, 2);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
@@ -337,12 +425,20 @@ public final class ByteArrayAssertionTest {
     public void containsExactlyInOrderTest() {
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactlyInOrder((byte) 1, (byte) 2);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
+        new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactlyInOrder(1, 2, 3, 4);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         new ByteArrayAssertion(new byte[0], null).containsExactlyInOrder();
+        new ByteArrayAssertion(new byte[0], null).containsExactlyInOrder(new int[0]);
         new ByteArrayAssertion(new byte[0], null).containsExactlyInOrder(new ArrayList<Byte>());
 
         try {
             new ByteArrayAssertion(null, null).containsExactlyInOrder((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsExactlyInOrder(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -355,6 +451,12 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactlyInOrder((byte[]) null);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactlyInOrder((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -408,6 +510,18 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
+            new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactlyInOrder(2, 3, 1, 4);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(2, 3, 1, 4);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
@@ -430,10 +544,17 @@ public final class ByteArrayAssertionTest {
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAny((byte) 2);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAny((byte) 4);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAny((byte) 5, (byte) 3);
+        new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAny(5, 3);
         new ByteArrayAssertion(new byte[]{1, 2, 3, 4}, null).containsAny(Arrays.asList((byte) 5, (byte) 3));
 
         try {
             new ByteArrayAssertion(null, null).containsAny((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsAny(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -451,16 +572,28 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny();
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny((Iterable<Byte>) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny();
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny(new int[0]);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny(new ArrayList<Byte>());
@@ -476,6 +609,18 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsAny((byte) 3, (byte) 4);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsAny(3, 4);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsAny(3, 4);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
@@ -501,10 +646,17 @@ public final class ByteArrayAssertionTest {
     public void containsNoneTest() {
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone((byte) 3);
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone((byte) 3, (byte) 4);
+        new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone(3, 4);
         new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone(Arrays.asList((byte) 3, (byte) 4));
 
         try {
             new ByteArrayAssertion(null, null).containsNone((byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, null).containsNone(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -522,16 +674,28 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone();
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone((int[]) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone((Iterable<Byte>) null);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone();
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone(new int[0]);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone(new ArrayList<Byte>());
@@ -553,6 +717,18 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsNone((byte) 2, (byte) 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsNone(2, 1);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, "Message").containsNone(2, 1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
