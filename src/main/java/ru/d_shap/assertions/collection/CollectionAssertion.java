@@ -108,7 +108,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsAll(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
@@ -139,7 +139,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsAllInOrder(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
@@ -170,7 +170,6 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsExactly(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         int elementCount = 0;
         for (Object expectedItem : expected) {
@@ -204,7 +203,6 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsExactlyInOrder(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
@@ -239,7 +237,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsAny(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
+        checkArgumentIsNotEmptyFalse(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         boolean found = false;
         for (Object expectedItem : expected) {
@@ -273,7 +271,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void containsNone(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
