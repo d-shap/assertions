@@ -127,7 +127,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAll();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAll((Iterable<Integer>) null);
@@ -139,7 +139,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAll(new ArrayList<Integer>());
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAll(2, 3);
@@ -198,7 +198,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAllInOrder();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAllInOrder((Iterable<Integer>) null);
@@ -210,7 +210,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAllInOrder(2, 3);
@@ -253,6 +253,8 @@ public final class IntArrayAssertionTest {
         new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactly(1, 2, 3, 4);
         new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactly(1, 3, 2, 4);
         new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactly(Arrays.asList(1, 3, 2, 4));
+        new IntArrayAssertion(new int[0], null).containsExactly();
+        new IntArrayAssertion(new int[0], null).containsExactly(new ArrayList<Integer>());
 
         try {
             new IntArrayAssertion(null, null).containsExactly(1);
@@ -273,22 +275,10 @@ public final class IntArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntArrayAssertion(new int[]{1, 2}, null).containsExactly();
-            Assertions.fail("Int array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
-        }
-        try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsExactly((Iterable<Integer>) null);
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new IntArrayAssertion(new int[]{1, 2}, null).containsExactly(new ArrayList<Integer>());
-            Assertions.fail("Int array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsExactly(2, 3);
@@ -301,6 +291,18 @@ public final class IntArrayAssertionTest {
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new IntArrayAssertion(new int[]{1, 2}, null).containsExactly();
+            Assertions.fail("Int array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
+            new IntArrayAssertion(new int[]{1, 2}, null).containsExactly(new ArrayList<Integer>());
+            Assertions.fail("Int array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactly(1, 1, 3, 2);
@@ -336,6 +338,8 @@ public final class IntArrayAssertionTest {
         new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder(1, 2);
         new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactlyInOrder(1, 2, 3, 4);
         new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
+        new IntArrayAssertion(new int[0], null).containsExactlyInOrder();
+        new IntArrayAssertion(new int[0], null).containsExactlyInOrder(new ArrayList<Integer>());
 
         try {
             new IntArrayAssertion(null, null).containsExactlyInOrder(1);
@@ -356,22 +360,10 @@ public final class IntArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder();
-            Assertions.fail("Int array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
-        }
-        try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder((Iterable<Integer>) null);
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder(new ArrayList<Integer>());
-            Assertions.fail("Int array assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder(2, 1);
@@ -390,6 +382,18 @@ public final class IntArrayAssertionTest {
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+        }
+        try {
+            new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder();
+            Assertions.fail("Int array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
+            new IntArrayAssertion(new int[]{1, 2}, null).containsExactlyInOrder(new ArrayList<Integer>());
+            Assertions.fail("Int array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2, 3, 4}, null).containsExactlyInOrder(2, 3, 1, 4);
@@ -450,7 +454,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAny();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAny((Iterable<Integer>) null);
@@ -462,7 +466,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAny(new ArrayList<Integer>());
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsAny(3, 4);
@@ -521,7 +525,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsNone();
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsNone((Iterable<Integer>) null);
@@ -533,7 +537,7 @@ public final class IntArrayAssertionTest {
             new IntArrayAssertion(new int[]{1, 2}, null).containsNone(new ArrayList<Integer>());
             Assertions.fail("Int array assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new IntArrayAssertion(new int[]{1, 2}, null).containsNone(1);
