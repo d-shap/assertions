@@ -98,14 +98,29 @@ public final class BaseAssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void checkArgumentIsNotEmpty() {
-        new BaseAssertionImpl(null, null).checkArgumentIsNotEmpty(false);
+    public void checkArgumentIsNotEmptyTrueTest() {
+        new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyTrue(false);
 
         try {
-            new BaseAssertionImpl(null, null).checkArgumentIsNotEmpty(true);
+            new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("Base assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentIsNotEmptyFalseTest() {
+        new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyFalse(false);
+
+        try {
+            new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyFalse(true);
+            Assertions.fail("Base assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
     }
 

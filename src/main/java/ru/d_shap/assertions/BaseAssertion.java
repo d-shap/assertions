@@ -81,13 +81,24 @@ public abstract class BaseAssertion {
     }
 
     /**
-     * Check if the argument is NOT empty.
+     * Check if the argument is NOT empty because the result is always true.
      *
      * @param isEmpty is the argument empty.
      */
-    protected final void checkArgumentIsNotEmpty(final boolean isEmpty) {
+    protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         if (isEmpty) {
-            throw createAssertionError(FailMessages.getArgumentIsNotEmpty());
+            throw createAssertionError(FailMessages.getArgumentIsNotEmptyTrue());
+        }
+    }
+
+    /**
+     * Check if the argument is NOT empty because the result is always false.
+     *
+     * @param isEmpty is the argument empty.
+     */
+    protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
+        if (isEmpty) {
+            throw createAssertionError(FailMessages.getArgumentIsNotEmptyFalse());
         }
     }
 
