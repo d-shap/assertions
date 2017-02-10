@@ -176,7 +176,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isGreaterThan(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         if (((String) getActual()).compareTo(expected) <= 0) {
             throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
         }
@@ -190,7 +190,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isGreaterThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         if (((String) getActual()).compareToIgnoreCase(expected) <= 0) {
             throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
         }
@@ -204,7 +204,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isGreaterThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).compareTo(expected) < 0) {
             throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
         }
@@ -218,7 +217,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isGreaterThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).compareToIgnoreCase(expected) < 0) {
             throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
         }
@@ -232,7 +230,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isLessThan(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         if (((String) getActual()).compareTo(expected) >= 0) {
             throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
         }
@@ -246,7 +244,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isLessThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         if (((String) getActual()).compareToIgnoreCase(expected) >= 0) {
             throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
         }
@@ -260,7 +258,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isLessThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).compareTo(expected) > 0) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
         }
@@ -274,7 +271,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isLessThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).compareToIgnoreCase(expected) > 0) {
             throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
         }
@@ -289,9 +285,8 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotEmpty("".equals(expectedFrom));
         checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo));
+        checkArgumentIsNotEmptyFalse("".equals(expectedTo));
         if (((String) getActual()).compareTo(expectedFrom) < 0 || ((String) getActual()).compareTo(expectedTo) >= 0) {
             throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
@@ -306,9 +301,8 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotEmpty("".equals(expectedFrom));
         checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo));
+        checkArgumentIsNotEmptyFalse("".equals(expectedTo));
         if (((String) getActual()).compareToIgnoreCase(expectedFrom) < 0 || ((String) getActual()).compareToIgnoreCase(expectedTo) >= 0) {
             throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
@@ -323,9 +317,8 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotEmpty("".equals(expectedFrom));
         checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo));
+        checkArgumentIsNotEmptyTrue("".equals(expectedTo));
         if (((String) getActual()).compareTo(expectedFrom) >= 0 && ((String) getActual()).compareTo(expectedTo) < 0) {
             throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
@@ -340,9 +333,8 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotEmpty("".equals(expectedFrom));
         checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo));
+        checkArgumentIsNotEmptyTrue("".equals(expectedTo));
         if (((String) getActual()).compareToIgnoreCase(expectedFrom) >= 0 && ((String) getActual()).compareToIgnoreCase(expectedTo) < 0) {
             throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
         }
@@ -356,7 +348,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void contains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!((String) getActual()).contains(expected)) {
             throw createAssertionError(FailMessages.getContains(actualAsString(), asString(expected)));
         }
@@ -370,7 +362,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void containsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find()) {
             throw createAssertionError(FailMessages.getContains(actualAsString(), asString(expected)));
@@ -385,7 +377,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotContain(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         if (((String) getActual()).contains(expected)) {
             throw createAssertionError(FailMessages.getDoesNotContain(actualAsString(), asString(expected)));
         }
@@ -399,7 +391,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotContainIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find()) {
             throw createAssertionError(FailMessages.getDoesNotContain(actualAsString(), asString(expected)));
@@ -414,7 +406,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isPartOf(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (!expected.contains((String) getActual())) {
             throw createAssertionError(FailMessages.getIsPartOf(actualAsString(), asString(expected)));
         }
@@ -428,7 +419,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
             throw createAssertionError(FailMessages.getIsPartOf(actualAsString(), asString(expected)));
@@ -443,7 +433,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotPartOf(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (expected.contains((String) getActual())) {
             throw createAssertionError(FailMessages.getIsNotPartOf(actualAsString(), asString(expected)));
         }
@@ -457,7 +446,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void isNotPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
             throw createAssertionError(FailMessages.getIsNotPartOf(actualAsString(), asString(expected)));
@@ -472,7 +460,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void matches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (!((String) getActual()).matches(expected)) {
             throw createAssertionError(FailMessages.getMatches(actualAsString(), asString(expected)));
         }
@@ -486,7 +473,6 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotMatch(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
         if (((String) getActual()).matches(expected)) {
             throw createAssertionError(FailMessages.getDoesNotMatch(actualAsString(), asString(expected)));
         }
@@ -500,7 +486,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void startsWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!((String) getActual()).startsWith(expected)) {
             throw createAssertionError(FailMessages.getStartsWith(actualAsString(), asString(expected)));
         }
@@ -514,7 +500,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void startsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (!matcher.find() || matcher.start() != 0) {
             throw createAssertionError(FailMessages.getStartsWith(actualAsString(), asString(expected)));
@@ -529,7 +515,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotStartWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         if (((String) getActual()).startsWith(expected)) {
             throw createAssertionError(FailMessages.getDoesNotStartWith(actualAsString(), asString(expected)));
         }
@@ -543,7 +529,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotStartWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         if (matcher.find() && matcher.start() == 0) {
             throw createAssertionError(FailMessages.getDoesNotStartWith(actualAsString(), asString(expected)));
@@ -558,7 +544,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void endsWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!((String) getActual()).endsWith(expected)) {
             throw createAssertionError(FailMessages.getEndsWith(actualAsString(), asString(expected)));
         }
@@ -572,7 +558,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void endsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyTrue("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         int lastIndexStart = 0;
         int lastIndexEnd = -1;
@@ -593,7 +579,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotEndWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         if (((String) getActual()).endsWith(expected)) {
             throw createAssertionError(FailMessages.getDoesNotEndWith(actualAsString(), asString(expected)));
         }
@@ -607,7 +593,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final void doesNotEndWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected));
+        checkArgumentIsNotEmptyFalse("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher((String) getActual());
         int lastIndexStart = 0;
         int lastIndexEnd = -1;
