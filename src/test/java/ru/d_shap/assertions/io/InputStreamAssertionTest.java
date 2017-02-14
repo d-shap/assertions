@@ -168,12 +168,6 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), null).isNextBytesEqualTo((byte) 2, (byte) 2, (byte) 3);
-            Assertions.fail("Input stream assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 2, 3]> but was:<[1, 2, 3]>");
-        }
-        try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), null).isNextBytesEqualTo((byte) 1, (byte) 2, (byte) 3, (byte) 4);
             Assertions.fail("Input stream assertion test fail");
         } catch (AssertionError ex) {
@@ -311,18 +305,6 @@ public final class InputStreamAssertionTest {
             Assertions.fail("Input stream assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
-        }
-        try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), null).isAllBytesEqualTo((byte) 1, (byte) 3);
-            Assertions.fail("Input stream assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2, 3]>");
-        }
-        try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), null).isAllBytesEqualTo((byte) 2, (byte) 3, (byte) 4);
-            Assertions.fail("Input stream assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), null).isAllBytesEqualTo((byte) 1, (byte) 2, (byte) 4);
