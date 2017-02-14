@@ -840,7 +840,7 @@ public final class MessageAssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void inputStreamAssertionTest() {
@@ -867,7 +867,7 @@ public final class MessageAssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void readerAssertionTest() {
