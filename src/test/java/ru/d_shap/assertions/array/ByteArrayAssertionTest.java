@@ -375,6 +375,12 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactly(new int[0]);
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactly(new ArrayList<Byte>());
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
@@ -487,6 +493,12 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactlyInOrder();
+            Assertions.fail("Byte array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
+            new ByteArrayAssertion(new byte[]{1, 2}, null).containsExactlyInOrder(new int[0]);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");

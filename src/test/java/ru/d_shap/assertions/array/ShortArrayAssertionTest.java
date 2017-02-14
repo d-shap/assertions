@@ -375,6 +375,12 @@ public final class ShortArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly(new int[0]);
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
             new ShortArrayAssertion(new short[]{1, 2}, null).containsExactly(new ArrayList<Short>());
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
@@ -487,6 +493,12 @@ public final class ShortArrayAssertionTest {
         }
         try {
             new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder();
+            Assertions.fail("Short array assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+        }
+        try {
+            new ShortArrayAssertion(new short[]{1, 2}, null).containsExactlyInOrder(new int[0]);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
