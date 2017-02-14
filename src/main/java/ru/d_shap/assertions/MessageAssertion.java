@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +48,8 @@ import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
+import ru.d_shap.assertions.io.InputStreamAssertion;
+import ru.d_shap.assertions.io.ReaderAssertion;
 import ru.d_shap.assertions.primitive.BooleanAssertion;
 import ru.d_shap.assertions.primitive.ByteAssertion;
 import ru.d_shap.assertions.primitive.CharAssertion;
@@ -354,6 +358,26 @@ public final class MessageAssertion extends BaseAssertion {
      */
     public MapAssertion that(final Map<?, ?> actual) {
         return new MapAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the input stream.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public InputStreamAssertion that(final InputStream actual) {
+        return new InputStreamAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the reader.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public ReaderAssertion that(final Reader actual) {
+        return new ReaderAssertion(actual, getMessage());
     }
 
     @Override
