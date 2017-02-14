@@ -51,7 +51,7 @@ public class ReaderAssertion extends ReferenceAssertion {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        new IntAssertion(actualAsInt(), getMessage()).isLessThan(0);
+        new IntAssertion(actualAsInt(), getMessage()).isLessThanOrEqualTo(-1);
     }
 
     /**
