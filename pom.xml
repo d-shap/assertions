@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>Assertions framework</name>
-    <description>Assertions framework provides facilities for unit testing</description>
+    <description>Assertions framework provides facilities for the unit testing</description>
     <url>https://github.com/d-shap/assertions</url>
 
     <licenses>
