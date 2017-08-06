@@ -142,6 +142,14 @@ public final class FailMessages {
 
     private static final String MSG_DOES_NOT_END_WITH = "Value should not end with the expected value.";
 
+    private static final String MSG_IS_DIRECT = "Value should be direct.";
+
+    private static final String MSG_IS_NOT_DIRECT = "Value should not be direct.";
+
+    private static final String MSG_IS_READ_ONLY = "Value should be read only.";
+
+    private static final String MSG_IS_NOT_READ_ONLY = "Value should not be read only.";
+
     private FailMessages() {
         super();
     }
@@ -741,6 +749,42 @@ public final class FailMessages {
      */
     public static String getDoesNotEndWith(final String actual, final String expected) {
         return MSG_DOES_NOT_END_WITH + " " + getValueMessagePart(actual, expected);
+    }
+
+    /**
+     * Get the fail message if the actual value should be direct.
+     *
+     * @return the fail message.
+     */
+    public static String getIsDirect() {
+        return MSG_IS_DIRECT;
+    }
+
+    /**
+     * Get the fail message if the actual value should not be direct.
+     *
+     * @return the fail message.
+     */
+    public static String getIsNotDirect() {
+        return MSG_IS_NOT_DIRECT;
+    }
+
+    /**
+     * Get the fail message if the actual value should be read only.
+     *
+     * @return the fail message.
+     */
+    public static String getIsReadOnly() {
+        return MSG_IS_READ_ONLY;
+    }
+
+    /**
+     * Get the fail message if the actual value should not be read only.
+     *
+     * @return the fail message.
+     */
+    public static String getIsNotReadOnly() {
+        return MSG_IS_NOT_READ_ONLY;
     }
 
     private static String getValueMessagePart(final String actual) {
