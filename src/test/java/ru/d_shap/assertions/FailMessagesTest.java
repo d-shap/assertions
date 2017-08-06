@@ -603,4 +603,36 @@ public final class FailMessagesTest {
         Assertions.assertThat(FailMessages.getDoesNotEndWith("test1", "test2")).isEqualTo("Value should not end with the expected value. Expected:<test2> but was:<test1>");
     }
 
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getIsDirectTest() {
+        Assertions.assertThat(FailMessages.getIsDirect()).isEqualTo("Value should be direct.");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getIsNotDirectTest() {
+        Assertions.assertThat(FailMessages.getIsNotDirect()).isEqualTo("Value should not be direct.");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getIsReadOnlyTest() {
+        Assertions.assertThat(FailMessages.getIsReadOnly()).isEqualTo("Value should be read only.");
+    }
+
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getIsNotReadOnlyTest() {
+        Assertions.assertThat(FailMessages.getIsNotReadOnly()).isEqualTo("Value should not be read only.");
+    }
+
 }
