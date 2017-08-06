@@ -21,6 +21,13 @@ package ru.d_shap.assertions;
 
 import java.io.InputStream;
 import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.LongBuffer;
+import java.nio.ShortBuffer;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -50,6 +57,13 @@ import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
 import ru.d_shap.assertions.io.InputStreamAssertion;
 import ru.d_shap.assertions.io.ReaderAssertion;
+import ru.d_shap.assertions.nio.ByteBufferAssertion;
+import ru.d_shap.assertions.nio.CharBufferAssertion;
+import ru.d_shap.assertions.nio.DoubleBufferAssertion;
+import ru.d_shap.assertions.nio.FloatBufferAssertion;
+import ru.d_shap.assertions.nio.IntBufferAssertion;
+import ru.d_shap.assertions.nio.LongBufferAssertion;
+import ru.d_shap.assertions.nio.ShortBufferAssertion;
 import ru.d_shap.assertions.primitive.BooleanAssertion;
 import ru.d_shap.assertions.primitive.ByteAssertion;
 import ru.d_shap.assertions.primitive.CharAssertion;
@@ -378,6 +392,76 @@ public final class MessageAssertion extends BaseAssertion {
      */
     public ReaderAssertion that(final Reader actual) {
         return new ReaderAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the byte buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public ByteBufferAssertion that(final ByteBuffer actual) {
+        return new ByteBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the short buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public ShortBufferAssertion that(final ShortBuffer actual) {
+        return new ShortBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the int buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public IntBufferAssertion that(final IntBuffer actual) {
+        return new IntBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the long buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public LongBufferAssertion that(final LongBuffer actual) {
+        return new LongBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the float buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public FloatBufferAssertion that(final FloatBuffer actual) {
+        return new FloatBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the double buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public DoubleBufferAssertion that(final DoubleBuffer actual) {
+        return new DoubleBufferAssertion(actual, getMessage());
+    }
+
+    /**
+     * Make assertion about the char buffer.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public CharBufferAssertion that(final CharBuffer actual) {
+        return new CharBufferAssertion(actual, getMessage());
     }
 
     @Override
