@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Assertions framework provides facilities for unit testing.
+// Assertions framework provides facilities for the unit testing.
 // Copyright (C) 2017 Dmitry Shapovalov.
 //
 // This file is part of assertions framework.
