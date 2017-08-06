@@ -175,7 +175,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         int[] array = (int[]) getActual();
         List<Integer> result = new LinkedList<>();
         for (int value : array) {

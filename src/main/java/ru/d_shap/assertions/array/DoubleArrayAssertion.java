@@ -175,7 +175,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         double[] array = (double[]) getActual();
         List<Double> result = new LinkedList<>();
         for (double value : array) {

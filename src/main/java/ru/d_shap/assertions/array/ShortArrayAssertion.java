@@ -235,7 +235,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         short[] array = (short[]) getActual();
         List<Short> result = new LinkedList<>();
         for (short value : array) {

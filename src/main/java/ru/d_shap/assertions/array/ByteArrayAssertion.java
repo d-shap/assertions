@@ -235,7 +235,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         byte[] array = (byte[]) getActual();
         List<Byte> result = new LinkedList<>();
         for (byte value : array) {

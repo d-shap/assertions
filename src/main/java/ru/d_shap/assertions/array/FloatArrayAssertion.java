@@ -175,7 +175,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         float[] array = (float[]) getActual();
         List<Float> result = new LinkedList<>();
         for (float value : array) {

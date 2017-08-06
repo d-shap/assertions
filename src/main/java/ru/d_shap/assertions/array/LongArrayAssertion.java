@@ -175,7 +175,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         long[] array = (long[]) getActual();
         List<Long> result = new LinkedList<>();
         for (long value : array) {

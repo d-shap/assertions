@@ -235,7 +235,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         char[] array = (char[]) getActual();
         List<Character> result = new LinkedList<>();
         for (char value : array) {

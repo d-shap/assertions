@@ -175,7 +175,7 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         Object[] array = (Object[]) getActual();
         List<Object> result = Arrays.asList(array);
         return new ListAssertion(result, getMessage());

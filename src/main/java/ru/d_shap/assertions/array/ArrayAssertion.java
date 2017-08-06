@@ -156,7 +156,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
         createCollectionAssertion().hasSize(expected);
     }
 
-    protected abstract CollectionAssertion createCollectionAssertion();
+    abstract CollectionAssertion createCollectionAssertion();
 
     @Override
     protected final String asString(final Object value) {

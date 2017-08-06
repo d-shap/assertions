@@ -175,7 +175,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
     }
 
     @Override
-    protected final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion() {
         boolean[] array = (boolean[]) getActual();
         List<Boolean> result = new LinkedList<>();
         for (boolean value : array) {
