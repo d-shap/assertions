@@ -176,9 +176,12 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         DoubleBuffer buffer = (DoubleBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Double> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             double value = buffer.get();

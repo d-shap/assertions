@@ -176,9 +176,12 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         FloatBuffer buffer = (FloatBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Float> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             float value = buffer.get();

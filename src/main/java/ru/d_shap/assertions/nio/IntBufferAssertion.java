@@ -176,9 +176,12 @@ public class IntBufferAssertion extends BufferAssertion<Integer> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         IntBuffer buffer = (IntBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Integer> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             int value = buffer.get();

@@ -176,9 +176,12 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         LongBuffer buffer = (LongBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Long> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             long value = buffer.get();

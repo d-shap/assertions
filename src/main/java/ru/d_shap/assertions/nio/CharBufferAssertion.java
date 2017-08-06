@@ -236,9 +236,12 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         CharBuffer buffer = (CharBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Character> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             char value = buffer.get();

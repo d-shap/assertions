@@ -236,9 +236,12 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         ByteBuffer buffer = (ByteBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Byte> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             byte value = buffer.get();

@@ -236,9 +236,12 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
         ShortBuffer buffer = (ShortBuffer) getActual();
         int position = buffer.position();
+        if (rewind) {
+            buffer.rewind();
+        }
         List<Short> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
             short value = buffer.get();
