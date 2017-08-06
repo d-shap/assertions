@@ -30,7 +30,7 @@ import ru.d_shap.assertions.collection.ListAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayAssertion extends BaseArrayAssertion<Integer> {
+public class IntArrayAssertion extends ArrayAssertion<Integer> {
 
     /**
      * Create new object.

@@ -29,9 +29,9 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * @param <T> the array element type.
  * @author Dmitry Shapovalov
  */
-abstract class BaseArrayAssertion<T> extends ReferenceAssertion {
+abstract class ArrayAssertion<T> extends ReferenceAssertion {
 
-    BaseArrayAssertion(final Object actual, final String message) {
+    ArrayAssertion(final Object actual, final String message) {
         super(actual, message);
     }
 

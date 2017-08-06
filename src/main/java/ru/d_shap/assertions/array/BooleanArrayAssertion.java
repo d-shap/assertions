@@ -30,7 +30,7 @@ import ru.d_shap.assertions.collection.ListAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanArrayAssertion extends BaseArrayAssertion<Boolean> {
+public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
 
     /**
      * Create new object.

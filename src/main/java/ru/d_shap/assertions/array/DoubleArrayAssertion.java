@@ -30,7 +30,7 @@ import ru.d_shap.assertions.collection.ListAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class DoubleArrayAssertion extends BaseArrayAssertion<Double> {
+public class DoubleArrayAssertion extends ArrayAssertion<Double> {
 
     /**
      * Create new object.

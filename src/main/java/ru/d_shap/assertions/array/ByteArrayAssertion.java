@@ -30,7 +30,7 @@ import ru.d_shap.assertions.collection.ListAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ByteArrayAssertion extends BaseArrayAssertion<Byte> {
+public class ByteArrayAssertion extends ArrayAssertion<Byte> {
 
     /**
      * Create new object.

@@ -30,7 +30,7 @@ import ru.d_shap.assertions.collection.ListAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class CharArrayAssertion extends BaseArrayAssertion<Character> {
+public class CharArrayAssertion extends ArrayAssertion<Character> {
 
     /**
      * Create new object.
