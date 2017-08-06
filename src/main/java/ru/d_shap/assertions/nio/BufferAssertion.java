@@ -197,6 +197,19 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual value properties is equal to the expected properties.
+     *
+     * @param expectedPosition the expected position.
+     * @param expectedLimit    the expected limit.
+     * @param expectedCapacity the expected capacity.
+     */
+    public final void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+        hasPosition(expectedPosition);
+        hasLimit(expectedLimit);
+        hasCapacity(expectedCapacity);
+    }
+
+    /**
      * Make assertion about the actual value remaining.
      *
      * @return the assertion.
