@@ -100,7 +100,7 @@
                     </rulesets>
                     <ignoreIdentifiers>false</ignoreIdentifiers>
                     <ignoreLiterals>true</ignoreLiterals>
-                    <minimumTokens>200</minimumTokens>
+                    <minimumTokens>500</minimumTokens>
                 </configuration>
             </plugin>
             <plugin>
