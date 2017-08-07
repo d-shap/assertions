@@ -53,12 +53,30 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     }
 
     /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndContains(final int expected) {
+        doRewindAndContains((byte) expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
         doDoesNotContain((byte) expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndDoesNotContain(final int expected) {
+        doRewindAndDoesNotContain((byte) expected);
     }
 
     /**
@@ -91,6 +109,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Byte> expected) {
+        doRewindAndContainsAll(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
@@ -117,6 +164,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      */
     public final void containsAllInOrder(final Iterable<Byte> expected) {
         doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Byte> expected) {
+        doRewindAndContainsAllInOrder(expected);
     }
 
     /**
@@ -149,6 +225,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Byte> expected) {
+        doRewindAndContainsExactly(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
@@ -175,6 +280,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      */
     public final void containsExactlyInOrder(final Iterable<Byte> expected) {
         doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Byte> expected) {
+        doRewindAndContainsExactlyInOrder(expected);
     }
 
     /**
@@ -207,6 +341,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Byte> expected) {
+        doRewindAndContainsAny(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -233,6 +396,35 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      */
     public final void containsNone(final Iterable<Byte> expected) {
         doContainsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final byte... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Byte> expected) {
+        doRewindAndContainsNone(expected);
     }
 
     @Override

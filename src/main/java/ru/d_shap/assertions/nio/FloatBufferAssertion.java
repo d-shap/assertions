@@ -53,12 +53,30 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     }
 
     /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndContains(final float expected) {
+        doRewindAndContains(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
     public final void doesNotContain(final float expected) {
         doDoesNotContain(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndDoesNotContain(final float expected) {
+        doRewindAndDoesNotContain(expected);
     }
 
     /**
@@ -81,6 +99,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Float> expected) {
+        doRewindAndContainsAll(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
@@ -97,6 +134,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
      */
     public final void containsAllInOrder(final Iterable<Float> expected) {
         doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
+        doRewindAndContainsAllInOrder(expected);
     }
 
     /**
@@ -119,6 +175,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Float> expected) {
+        doRewindAndContainsExactly(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
@@ -135,6 +210,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
      */
     public final void containsExactlyInOrder(final Iterable<Float> expected) {
         doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
+        doRewindAndContainsExactlyInOrder(expected);
     }
 
     /**
@@ -157,6 +251,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Float> expected) {
+        doRewindAndContainsAny(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -173,6 +286,25 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
      */
     public final void containsNone(final Iterable<Float> expected) {
         doContainsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final float... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Float> expected) {
+        doRewindAndContainsNone(expected);
     }
 
     @Override

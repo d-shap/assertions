@@ -53,12 +53,30 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndContains(final double expected) {
+        doRewindAndContains(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
     public final void doesNotContain(final double expected) {
         doDoesNotContain(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndDoesNotContain(final double expected) {
+        doRewindAndDoesNotContain(expected);
     }
 
     /**
@@ -81,6 +99,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Double> expected) {
+        doRewindAndContainsAll(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
@@ -97,6 +134,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      */
     public final void containsAllInOrder(final Iterable<Double> expected) {
         doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Double> expected) {
+        doRewindAndContainsAllInOrder(expected);
     }
 
     /**
@@ -119,6 +175,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Double> expected) {
+        doRewindAndContainsExactly(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
@@ -135,6 +210,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      */
     public final void containsExactlyInOrder(final Iterable<Double> expected) {
         doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Double> expected) {
+        doRewindAndContainsExactlyInOrder(expected);
     }
 
     /**
@@ -157,6 +251,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Double> expected) {
+        doRewindAndContainsAny(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -173,6 +286,25 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      */
     public final void containsNone(final Iterable<Double> expected) {
         doContainsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final double... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Double> expected) {
+        doRewindAndContainsNone(expected);
     }
 
     @Override

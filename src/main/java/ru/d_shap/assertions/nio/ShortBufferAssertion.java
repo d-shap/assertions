@@ -53,12 +53,30 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndContains(final int expected) {
+        doRewindAndContains((short) expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
         doDoesNotContain((short) expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndDoesNotContain(final int expected) {
+        doRewindAndDoesNotContain((short) expected);
     }
 
     /**
@@ -91,6 +109,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Short> expected) {
+        doRewindAndContainsAll(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
@@ -117,6 +164,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      */
     public final void containsAllInOrder(final Iterable<Short> expected) {
         doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Short> expected) {
+        doRewindAndContainsAllInOrder(expected);
     }
 
     /**
@@ -149,6 +225,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Short> expected) {
+        doRewindAndContainsExactly(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
@@ -175,6 +280,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      */
     public final void containsExactlyInOrder(final Iterable<Short> expected) {
         doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Short> expected) {
+        doRewindAndContainsExactlyInOrder(expected);
     }
 
     /**
@@ -207,6 +341,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Short> expected) {
+        doRewindAndContainsAny(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -233,6 +396,35 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      */
     public final void containsNone(final Iterable<Short> expected) {
         doContainsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final short... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final int... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Short> expected) {
+        doRewindAndContainsNone(expected);
     }
 
     @Override

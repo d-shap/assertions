@@ -53,12 +53,30 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     /**
+     * Check if the actual value contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndContains(final long expected) {
+        doRewindAndContains(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
      */
     public final void doesNotContain(final long expected) {
         doDoesNotContain(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void rewindAndDoesNotContain(final long expected) {
+        doRewindAndDoesNotContain(expected);
     }
 
     /**
@@ -81,6 +99,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAll(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Long> expected) {
+        doRewindAndContainsAll(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
@@ -97,6 +134,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      */
     public final void containsAllInOrder(final Iterable<Long> expected) {
         doContainsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Long> expected) {
+        doRewindAndContainsAllInOrder(expected);
     }
 
     /**
@@ -119,6 +175,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactly(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Long> expected) {
+        doRewindAndContainsExactly(expected);
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
@@ -135,6 +210,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      */
     public final void containsExactlyInOrder(final Iterable<Long> expected) {
         doContainsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Long> expected) {
+        doRewindAndContainsExactlyInOrder(expected);
     }
 
     /**
@@ -157,6 +251,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsAny(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Long> expected) {
+        doRewindAndContainsAny(expected);
+    }
+
+    /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
@@ -173,6 +286,25 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      */
     public final void containsNone(final Iterable<Long> expected) {
         doContainsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final long... expected) {
+        checkArgumentIsNotNull(expected);
+        doRewindAndContainsNone(createArgumentArray(expected));
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Long> expected) {
+        doRewindAndContainsNone(expected);
     }
 
     @Override
