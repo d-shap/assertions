@@ -797,6 +797,15 @@ public final class BufferAssertionTest {
     }
 
     /**
+     * {@link BufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new BufferAssertionImpl((ByteBuffer) null, null).asString(null)).isNull();
+        Assertions.assertThat(new BufferAssertionImpl((ByteBuffer) null, null).asString(ByteBuffer.allocate(10))).isNull();
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
