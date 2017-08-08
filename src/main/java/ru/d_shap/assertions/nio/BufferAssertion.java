@@ -364,8 +364,8 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isNotReadOnly() {
         checkActualIsNotNull();
-        if (!((Buffer) getActual()).isReadOnly()) {
-            throw createAssertionError(FailMessages.getIsReadOnly());
+        if (((Buffer) getActual()).isReadOnly()) {
+            throw createAssertionError(FailMessages.getIsNotReadOnly());
         }
     }
 
