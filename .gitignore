@@ -1,6 +1,6 @@
-glob:*.class
-glob:*.iml
-glob:*~
+*.class
+*.iml
+*~
 
 .idea/copyright/
 .idea/dictionaries/
