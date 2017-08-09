@@ -821,6 +821,7 @@ public final class ArrayAssertionTest {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         protected CollectionAssertion createCollectionAssertion() {
             List<Object> copy = new ArrayList<>();
             copy.addAll((List) getActual());
