@@ -1661,6 +1661,47 @@ public final class ByteBufferAssertionTest {
         }
     }
 
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void positionTest() {
+        ByteBuffer buffer = createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).contains(4);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContains(2);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).doesNotContain(2);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndDoesNotContain(0);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsAll(4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsAll(2, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsAllInOrder(4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsAllInOrder(2, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsExactly(4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsExactlyInOrder(4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsAny(1, 5, 7);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsAny(1, 7, 9);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).containsNone(1, 9);
+        Assertions.assertThat(buffer).hasPosition(3);
+        Assertions.assertThat(buffer).rewindAndContainsNone(7, 9);
+        Assertions.assertThat(buffer).hasPosition(3);
+    }
+
     private static ByteBuffer createByteBuffer(final byte[] values) {
         return createByteBuffer(values, 0);
     }
