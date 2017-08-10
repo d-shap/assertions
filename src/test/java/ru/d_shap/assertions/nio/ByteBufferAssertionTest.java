@@ -1644,7 +1644,21 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void createCollectionAssertionTest() {
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).createCollectionAssertion(false).isEmpty();
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).createCollectionAssertion(false).isNotEmpty();
 
+        try {
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).createCollectionAssertion(false).isEmpty();
+            Assertions.fail("Byte buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+        }
+        try {
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").createCollectionAssertion(false).isEmpty();
+            Assertions.fail("Byte buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+        }
     }
 
     private static ByteBuffer createByteBuffer(final byte[] values) {
