@@ -1962,6 +1962,12 @@ public final class BufferAssertionTest {
         new BufferAssertionImpl(ByteBuffer.allocateDirect(10), null).isDirect();
 
         try {
+            new BufferAssertionImpl((ByteBuffer) null, null).isDirect();
+            Assertions.fail("Buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BufferAssertionImpl(ByteBuffer.allocate(10), null).isDirect();
             Assertions.fail("Buffer assertion test fail");
         } catch (AssertionError ex) {
@@ -1982,6 +1988,12 @@ public final class BufferAssertionTest {
     public void isNotDirectTest() {
         new BufferAssertionImpl(ByteBuffer.allocate(10), null).isNotDirect();
 
+        try {
+            new BufferAssertionImpl((ByteBuffer) null, null).isNotDirect();
+            Assertions.fail("Buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
         try {
             new BufferAssertionImpl(ByteBuffer.allocateDirect(10), null).isNotDirect();
             Assertions.fail("Buffer assertion test fail");
@@ -2007,6 +2019,12 @@ public final class BufferAssertionTest {
         new BufferAssertionImpl(readOnlyBuffer, null).isReadOnly();
 
         try {
+            new BufferAssertionImpl((ByteBuffer) null, null).isReadOnly();
+            Assertions.fail("Buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BufferAssertionImpl(byteBuffer, null).isReadOnly();
             Assertions.fail("Buffer assertion test fail");
         } catch (AssertionError ex) {
@@ -2030,6 +2048,12 @@ public final class BufferAssertionTest {
 
         new BufferAssertionImpl(byteBuffer, null).isNotReadOnly();
 
+        try {
+            new BufferAssertionImpl((ByteBuffer) null, null).isNotReadOnly();
+            Assertions.fail("Buffer assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
         try {
             new BufferAssertionImpl(readOnlyBuffer, null).isNotReadOnly();
             Assertions.fail("Buffer assertion test fail");
