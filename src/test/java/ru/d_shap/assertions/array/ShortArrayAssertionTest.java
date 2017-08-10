@@ -327,7 +327,7 @@ public final class ShortArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ShortArrayAssertion(null, null).containsExactly((int) 1);
+            new ShortArrayAssertion(null, null).containsExactly(1);
             Assertions.fail("Short array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

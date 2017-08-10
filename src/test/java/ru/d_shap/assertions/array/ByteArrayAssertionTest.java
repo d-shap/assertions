@@ -327,7 +327,7 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteArrayAssertion(null, null).containsExactly((int) 1);
+            new ByteArrayAssertion(null, null).containsExactly(1);
             Assertions.fail("Byte array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
