@@ -21,6 +21,13 @@ package ru.d_shap.assertions;
 
 import java.io.ByteArrayInputStream;
 import java.io.StringReader;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.LongBuffer;
+import java.nio.ShortBuffer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -890,6 +897,223 @@ public final class MessageAssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void byteBufferAssertionTest() {
+        ByteBuffer buffer = ByteBuffer.allocate(2);
+        buffer.put((byte) 1);
+        buffer.put((byte) 2);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void shortBufferAssertionTest() {
+        ShortBuffer buffer = ByteBuffer.allocate(4).asShortBuffer();
+        buffer.put((short) 1);
+        buffer.put((short) 2);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void intBufferAssertionTest() {
+        IntBuffer buffer = ByteBuffer.allocate(8).asIntBuffer();
+        buffer.put(1);
+        buffer.put(2);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void longBufferAssertionTest() {
+        LongBuffer buffer = ByteBuffer.allocate(16).asLongBuffer();
+        buffer.put(1L);
+        buffer.put(2L);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1L, 2L);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void floatBufferAssertionTest() {
+        FloatBuffer buffer = ByteBuffer.allocate(8).asFloatBuffer();
+        buffer.put(1.0f);
+        buffer.put(2.0f);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1.0f, 2.0f);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void doubleBufferAssertionTest() {
+        DoubleBuffer buffer = ByteBuffer.allocate(16).asDoubleBuffer();
+        buffer.put(1.0);
+        buffer.put(2.0);
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1.0, 2.0);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void charBufferAssertionTest() {
+        CharBuffer buffer = ByteBuffer.allocate(4).asCharBuffer();
+        buffer.put('1');
+        buffer.put('2');
+        buffer.flip();
+        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(49, 50);
+
+        try {
+            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(50, 49);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(50, 49);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(50, 49);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
     }
 
