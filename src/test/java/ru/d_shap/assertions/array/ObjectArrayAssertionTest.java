@@ -49,7 +49,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).contains("val2");
 
         try {
-            new ObjectArrayAssertion(null, null).contains("val1");
+            new ObjectArrayAssertion(null, null).contains("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -76,7 +76,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).doesNotContain("val3");
 
         try {
-            new ObjectArrayAssertion(null, null).doesNotContain("val1");
+            new ObjectArrayAssertion(null, null).doesNotContain("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -106,7 +106,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsAll(Arrays.asList("val4", "val2"));
 
         try {
-            new ObjectArrayAssertion(null, null).containsAll("val1");
+            new ObjectArrayAssertion(null, null).containsAll("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -177,7 +177,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsAllInOrder(Arrays.asList("val1", "val3", "val4"));
 
         try {
-            new ObjectArrayAssertion(null, null).containsAllInOrder("val1");
+            new ObjectArrayAssertion(null, null).containsAllInOrder("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -257,7 +257,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[0], null).containsExactly(new ArrayList<String>());
 
         try {
-            new ObjectArrayAssertion(null, null).containsExactly("val1");
+            new ObjectArrayAssertion(null, null).containsExactly("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -342,7 +342,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[0], null).containsExactlyInOrder(new ArrayList<String>());
 
         try {
-            new ObjectArrayAssertion(null, null).containsExactlyInOrder("val1");
+            new ObjectArrayAssertion(null, null).containsExactlyInOrder("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -433,7 +433,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, null).containsAny(Arrays.asList("val5", "val3"));
 
         try {
-            new ObjectArrayAssertion(null, null).containsAny("val1");
+            new ObjectArrayAssertion(null, null).containsAny("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -504,7 +504,7 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, null).containsNone(Arrays.asList("val3", "val4"));
 
         try {
-            new ObjectArrayAssertion(null, null).containsNone("val1");
+            new ObjectArrayAssertion(null, null).containsNone("val");
             Assertions.fail("Object array assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
