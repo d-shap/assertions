@@ -19,6 +19,13 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <name>Dmitry Shapovalov</name>
+            <email>me@d-shap.ru</email>
+        </developer>
+    </developers>
+
     <scm>
         <url>https://github.com/d-shap/assertions</url>
     </scm>
