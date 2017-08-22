@@ -16,7 +16,7 @@ assertThat("value").containsIgnoreCase("ALU");
 assertThat("value").isPartOf("Some value.");
 assertThat("value").matches("\\w+");
 ```
- 
+
 The following example shows some assertions for the collection data types:
 ```
 assertThat(Arrays.asList("val1", "val2", "val3")).isNotEmpty();
