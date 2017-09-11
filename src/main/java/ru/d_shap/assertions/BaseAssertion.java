@@ -19,6 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Base class for all assertions.
  *
@@ -40,6 +45,43 @@ public abstract class BaseAssertion {
         super();
         _actual = actual;
         _message = message;
+    }
+
+    /**
+     * Make another type assertion about the same actual.
+     *
+     * @param clazz class of the assertion.
+     * @param <T>   type of the assertion.
+     * @return the assertion.
+     */
+    public final <T extends BaseAssertion> T as(final Class<T> clazz) {
+        try {
+            List<Constructor<T>> constructors = getConstructors(clazz);
+            if (constructors.size() == 1) {
+                Constructor<T> constructor = constructors.get(0);
+                return constructor.newInstance(getActual(), getMessage());
+            } else {
+                throw new WrongAssertionClassError(clazz, "class should have one constructor(Object.class, String.class)");
+            }
+        } catch (IllegalAccessException ex) {
+            throw new WrongAssertionClassError(clazz, ex);
+        } catch (InvocationTargetException ex) {
+            throw new WrongAssertionClassError(clazz, ex);
+        } catch (InstantiationException ex) {
+            throw new WrongAssertionClassError(clazz, ex);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T extends BaseAssertion> List<Constructor<T>> getConstructors(final Class<T> clazz) {
+        List<Constructor<T>> result = new ArrayList<>();
+        for (Constructor constructor : clazz.getDeclaredConstructors()) {
+            Class<?>[] parameterTypes = constructor.getParameterTypes();
+            if (parameterTypes.length == 2 && parameterTypes[0].isAssignableFrom(getActual().getClass()) && parameterTypes[1].isAssignableFrom(String.class)) {
+                result.add((Constructor<T>) constructor);
+            }
+        }
+        return result;
     }
 
     /**
@@ -109,10 +151,41 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String failMessage) {
-        return createAssertionError(_message, failMessage);
+        String fullMessage = getFullAssertionMessage(_message, failMessage);
+        return new AssertionError(fullMessage);
     }
 
-    static AssertionError createAssertionError(final String assertionMessage, final String failMessage) {
+    /**
+     * Create new assertion error.
+     *
+     * @param throwable the cause of the failure.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Throwable throwable) {
+        return createAssertionError(null, throwable);
+    }
+
+    /**
+     * Create new assertion error.
+     *
+     * @param failMessage the fail message.
+     * @param throwable   the cause of the failure.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String failMessage, final Throwable throwable) {
+        String fullMessage = getFullAssertionMessage(_message, failMessage);
+        if ("".equals(fullMessage)) {
+            if (throwable == null) {
+                return new AssertionError(fullMessage);
+            } else {
+                return new AssertionError(throwable);
+            }
+        } else {
+            return new AssertionError(fullMessage, throwable);
+        }
+    }
+
+    private static String getFullAssertionMessage(final String assertionMessage, final String failMessage) {
         String fullMessage = getAssertionMessagePart(assertionMessage);
         if (failMessage != null && !"".equals(failMessage)) {
             if (!"".equals(fullMessage)) {
@@ -120,26 +193,7 @@ public abstract class BaseAssertion {
             }
             fullMessage += failMessage;
         }
-        return new AssertionError(fullMessage);
-    }
-
-    /**
-     * Create new assertion error.
-     *
-     * @param throwable cause of the failure.
-     * @return the assertion error.
-     */
-    protected final AssertionError createAssertionError(final Throwable throwable) {
-        String fullMessage = getAssertionMessagePart(_message);
-        if ("".equals(fullMessage)) {
-            if (throwable == null) {
-                return new AssertionError();
-            } else {
-                return new AssertionError(throwable);
-            }
-        } else {
-            return new AssertionError(fullMessage, throwable);
-        }
+        return fullMessage;
     }
 
     private static String getAssertionMessagePart(final String assertionMessage) {
