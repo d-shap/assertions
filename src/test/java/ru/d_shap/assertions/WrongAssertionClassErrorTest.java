@@ -49,10 +49,6 @@ public final class WrongAssertionClassErrorTest {
         Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, "fail message")).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - fail message");
         Assertions.assertThat(new WrongAssertionClassError(MapAssertion.class, "fail message")).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - fail message");
 
-        Assertions.assertThat(new WrongAssertionClassError(BaseAssertion.class, new NoSuchMethodException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertion");
-        Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, new NoSuchMethodException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion");
-        Assertions.assertThat(new WrongAssertionClassError(MapAssertion.class, new NoSuchMethodException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion");
-
         Assertions.assertThat(new WrongAssertionClassError(BaseAssertion.class, new IllegalAccessException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertion");
         Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, new IllegalAccessException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion");
         Assertions.assertThat(new WrongAssertionClassError(MapAssertion.class, new IllegalAccessException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion");

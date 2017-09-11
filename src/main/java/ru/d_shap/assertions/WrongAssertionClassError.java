@@ -47,16 +47,6 @@ public final class WrongAssertionClassError extends Error {
      * @param clazz assertion class.
      * @param cause cause of the error.
      */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> clazz, final NoSuchMethodException cause) {
-        super("Wrong assertion class: " + clazz.getName(), cause);
-    }
-
-    /**
-     * Create new object.
-     *
-     * @param clazz assertion class.
-     * @param cause cause of the error.
-     */
     public WrongAssertionClassError(final Class<? extends BaseAssertion> clazz, final IllegalAccessException cause) {
         super("Wrong assertion class: " + clazz.getName(), cause);
     }
