@@ -19,7 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -45,9 +47,9 @@ public final class WrongAssertionClassErrorTest {
      */
     @Test
     public void errorMessageTest() {
-        Assertions.assertThat(new WrongAssertionClassError(BaseAssertion.class, "fail message")).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertion - fail message");
-        Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, "fail message")).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - fail message");
-        Assertions.assertThat(new WrongAssertionClassError(MapAssertion.class, "fail message")).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - fail message");
+        Assertions.assertThat(new WrongAssertionClassError(BaseAssertion.class, Object.class)).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertion - class should have one constructor BaseAssertion(java.lang.Object, java.lang.String)");
+        Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, InputStream.class)).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.io.InputStream, java.lang.String)");
+        Assertions.assertThat(new WrongAssertionClassError(MapAssertion.class, List.class)).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor MapAssertion(java.util.List, java.lang.String)");
 
         Assertions.assertThat(new WrongAssertionClassError(BaseAssertion.class, new IllegalAccessException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertion");
         Assertions.assertThat(new WrongAssertionClassError(IntAssertion.class, new IllegalAccessException())).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion");
