@@ -23,7 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * Error is thrown when the assertion class is wrong, i.e. class is abstract, does not have
- * the necessary constractor, etc.
+ * the necessary constructor, etc.
  *
  * @author Dmitry Shapovalov
  */
@@ -34,11 +34,11 @@ public final class WrongAssertionClassError extends Error {
     /**
      * Create new object.
      *
-     * @param clazz   assertion class.
-     * @param message exception message.
+     * @param assertionClass assertion class.
+     * @param actualClass    actual class.
      */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> clazz, final String message) {
-        super("Wrong assertion class: " + clazz.getName() + " - " + message);
+    public WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final Class<?> actualClass) {
+        super("Wrong assertion class: " + assertionClass.getName() + " - class should have one constructor " + assertionClass.getSimpleName() + "(" + actualClass.getName() + ", " + String.class.getName() + ")");
     }
 
     /**
