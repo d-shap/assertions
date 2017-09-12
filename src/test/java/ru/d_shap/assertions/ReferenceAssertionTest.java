@@ -148,6 +148,57 @@ public final class ReferenceAssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
+    public void hasClassTest() {
+        new ReferenceAssertionImpl(new Object(), null).hasClass(Object.class);
+        new ReferenceAssertionImpl(new StringBuilder("value"), null).hasClass(StringBuilder.class);
+
+        try {
+            new ReferenceAssertionImpl(new Object(), null).hasClass(StringBuilder.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.StringBuilder> but was:<java.lang.Object>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).hasClass(CharSequence.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.CharSequence> but was:<java.lang.StringBuilder>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).hasClass(Object.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.Object> but was:<java.lang.StringBuilder>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void hasNotClassTest() {
+        new ReferenceAssertionImpl(new Object(), null).hasNotClass(StringBuilder.class);
+        new ReferenceAssertionImpl(new StringBuilder("value"), null).hasNotClass(CharSequence.class);
+        new ReferenceAssertionImpl(new StringBuilder("value"), null).hasNotClass(Object.class);
+
+        try {
+            new ReferenceAssertionImpl(new Object(), null).hasNotClass(Object.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<java.lang.Object>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).hasNotClass(StringBuilder.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<java.lang.StringBuilder>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
     public void isInstanceOfTest() {
         new ReferenceAssertionImpl(new Object(), null).isInstanceOf(Object.class);
 
@@ -160,6 +211,39 @@ public final class ReferenceAssertionTest {
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.Object>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void isNotInstanceOfTest() {
+        new ReferenceAssertionImpl(new Object(), null).isNotInstanceOf(StringBuilder.class);
+
+        try {
+            new ReferenceAssertionImpl(new Object(), null).isNotInstanceOf(Object.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.Object>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).isNotInstanceOf(StringBuilder.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.StringBuilder>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).isNotInstanceOf(CharSequence.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.CharSequence> but was:<java.lang.StringBuilder>");
+        }
+        try {
+            new ReferenceAssertionImpl(new StringBuilder("value"), null).isNotInstanceOf(Object.class);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.StringBuilder>");
         }
     }
 
