@@ -83,7 +83,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Make assertion about the value class.
+     * Make assertion about the actual value class.
      *
      * @return the assertion.
      */
@@ -129,13 +129,22 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
+     * Make assertion about the actual value string representation.
+     *
+     * @return the assertion.
+     */
+    public final StringAssertion toToString() {
+        checkActualIsNotNull();
+        return new StringAssertion(getActual().toString(), getMessage());
+    }
+
+    /**
      * Check if the string representation of the actual value is equal to the expected value.
      *
      * @param expected the expected value.
      */
     public final void isToStringEqualTo(final String expected) {
-        checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isEqualTo(expected);
+        toToString().isEqualTo(expected);
     }
 
     /**
@@ -144,8 +153,17 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void toStringContains(final String expected) {
+        toToString().contains(expected);
+    }
+
+    /**
+     * Make assertion about the actual value hash code.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toHashCode() {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).contains(expected);
+        return new IntAssertion(getActual().hashCode(), getMessage());
     }
 
     /**
@@ -154,8 +172,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isHashCodeEqualTo(final int expected) {
-        checkActualIsNotNull();
-        new IntAssertion(getActual().hashCode(), getMessage()).isEqualTo(expected);
+        toHashCode().isEqualTo(expected);
     }
 
 }
