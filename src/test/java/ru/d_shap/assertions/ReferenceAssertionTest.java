@@ -251,15 +251,26 @@ public final class ReferenceAssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void isToStringEqualToTest() {
-        new ReferenceAssertionImpl("reference", null).isToStringEqualTo("reference");
+    public void toToStringTest() {
+        new ReferenceAssertionImpl("reference", null).toToString().isEqualTo("reference");
+        new ReferenceAssertionImpl("reference", null).toToString().startsWith("ref");
+        new ReferenceAssertionImpl("reference", null).toToString().endsWith("ce");
 
         try {
-            new ReferenceAssertionImpl(null, null).isToStringEqualTo("reference");
+            new ReferenceAssertionImpl(null, null).toToString();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void isToStringEqualToTest() {
+        new ReferenceAssertionImpl("reference", null).isToStringEqualTo("reference");
+
         try {
             new ReferenceAssertionImpl("reference", null).isToStringEqualTo("value");
             Assertions.fail("Reference assertion test fail");
@@ -282,12 +293,6 @@ public final class ReferenceAssertionTest {
         new ReferenceAssertionImpl("reference", null).toStringContains("feren");
 
         try {
-            new ReferenceAssertionImpl(null, null).toStringContains("feren");
-            Assertions.fail("Reference assertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
             new ReferenceAssertionImpl("reference", null).toStringContains("FEREN");
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
@@ -305,15 +310,26 @@ public final class ReferenceAssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void isHashCodeEqualToTest() {
-        new ReferenceAssertionImpl("reference", null).isHashCodeEqualTo(-925155509);
+    public void toHashCodeTest() {
+        new ReferenceAssertionImpl("reference", null).toHashCode().isEqualTo(-925155509);
+        new ReferenceAssertionImpl("reference", null).toHashCode().isLessThan(0);
+        new ReferenceAssertionImpl("reference", null).toHashCode().isNotInRange(1, 10);
 
         try {
-            new ReferenceAssertionImpl(null, null).isHashCodeEqualTo(-925155509);
+            new ReferenceAssertionImpl(null, null).toHashCode();
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void isHashCodeEqualToTest() {
+        new ReferenceAssertionImpl("reference", null).isHashCodeEqualTo(-925155509);
+
         try {
             new ReferenceAssertionImpl("reference", null).isHashCodeEqualTo(1);
             Assertions.fail("Reference assertion test fail");
