@@ -93,12 +93,39 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
+     * Check if the actual value has the expected class.
+     *
+     * @param expected the expected class.
+     */
+    public final void hasClass(final Class<?> expected) {
+        toClass().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value has NOT the expected class.
+     *
+     * @param expected the expected class.
+     */
+    public final void hasNotClass(final Class<?> expected) {
+        toClass().isNotEqualTo(expected);
+    }
+
+    /**
      * Check if the actual value is the instance of the expected class.
      *
-     * @param clazz the expected class.
+     * @param expected the expected class.
      */
-    public final void isInstanceOf(final Class<?> clazz) {
-        toClass().isSubtypeOf(clazz);
+    public final void isInstanceOf(final Class<?> expected) {
+        toClass().isSubtypeOf(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT the instance of the expected class.
+     *
+     * @param expected the expected class.
+     */
+    public final void isNotInstanceOf(final Class<?> expected) {
+        toClass().isNotSubtypeOf(expected);
     }
 
     /**
