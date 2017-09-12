@@ -61,7 +61,7 @@ public abstract class BaseAssertion {
                 Constructor<T> constructor = constructors.get(0);
                 return constructor.newInstance(getActual(), getMessage());
             } else {
-                throw new WrongAssertionClassError(clazz, "class should have one constructor(Object.class, String.class)");
+                throw new WrongAssertionClassError(clazz, getActual().getClass());
             }
         } catch (IllegalAccessException ex) {
             throw new WrongAssertionClassError(clazz, ex);
