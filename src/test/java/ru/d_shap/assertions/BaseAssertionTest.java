@@ -463,7 +463,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static abstract class BaseAssertionInstantiationImpl extends BaseAssertion {
+    private abstract static class BaseAssertionInstantiationImpl extends BaseAssertion {
 
         BaseAssertionInstantiationImpl(final Object actual, final String message) {
             super(actual, message);
