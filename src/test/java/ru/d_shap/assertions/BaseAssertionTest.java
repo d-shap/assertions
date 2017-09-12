@@ -72,13 +72,13 @@ public final class BaseAssertionTest {
             new BaseAssertionImpl(new Object(), null).as(BaseAssertionWrongConstructorImpl.class);
             Assertions.fail("Base assertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongConstructorImpl - class should have one constructor(Object.class, String.class)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongConstructorImpl - class should have one constructor BaseAssertionWrongConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
             new ListAssertion(new ArrayList<String>(), null).as(MapAssertion.class);
             Assertions.fail("Base assertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor(Object.class, String.class)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor MapAssertion(java.util.ArrayList, java.lang.String)");
         }
     }
 
