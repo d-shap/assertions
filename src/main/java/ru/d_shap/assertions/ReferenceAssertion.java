@@ -19,7 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.lang.reflect.Field;
+import java.security.AccessController;
+
 import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
@@ -173,6 +177,52 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isHashCodeEqualTo(final int expected) {
         toHashCode().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's field.
+     *
+     * @param fieldName the field name.
+     * @return the assertion.
+     */
+    public final ObjectAssertion toField(final String fieldName) {
+        checkActualIsNotNull();
+        try {
+            Field field = getField(fieldName);
+            AccessController.doPrivileged(new FieldAccessAction(field));
+            Object value = field.get(getActual());
+            return new ObjectAssertion(value, getMessage());
+        } catch (NoSuchFieldException | IllegalAccessException ex) {
+            throw createAssertionError(FailMessages.getContainsField(fieldName));
+        }
+    }
+
+    private Field getField(final String fieldName) throws NoSuchFieldException {
+        Class<?> clazz = getActual().getClass();
+        NoSuchFieldException noSuchFieldException = null;
+        while (clazz != null) {
+            try {
+                return clazz.getDeclaredField(fieldName);
+            } catch (NoSuchFieldException ex) {
+                if (noSuchFieldException == null) {
+                    noSuchFieldException = ex;
+                }
+                clazz = clazz.getSuperclass();
+            }
+        }
+        throw noSuchFieldException;
+    }
+
+    /**
+     * Make assertion of specified type about the actual value's field.
+     *
+     * @param fieldName      the field name.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public final <T extends BaseAssertion> T toField(final String fieldName, final Class<T> assertionClass) {
+        return toField(fieldName).as(assertionClass);
     }
 
 }
