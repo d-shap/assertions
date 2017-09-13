@@ -175,6 +175,42 @@ public final class MessageAssertion extends BaseAssertion {
     }
 
     /**
+     * Make assertion of specified type about the object.
+     *
+     * @param actual         the actual value.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public <T extends BaseAssertion> T that(final Object actual, final Class<T> assertionClass) {
+        return that(actual).as(assertionClass);
+    }
+
+    /**
+     * Make assertion about the object's field.
+     *
+     * @param actual    the actual value.
+     * @param fieldName the field name.
+     * @return the assertion.
+     */
+    public ObjectAssertion that(final Object actual, final String fieldName) {
+        return that(actual).toField(fieldName);
+    }
+
+    /**
+     * Make assertion of specified type about the object's field.
+     *
+     * @param actual         the actual value.
+     * @param fieldName      the field name.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public <T extends BaseAssertion> T that(final Object actual, final String fieldName, final Class<T> assertionClass) {
+        return that(actual).toField(fieldName, assertionClass);
+    }
+
+    /**
      * Make assertion about the byte array.
      *
      * @param actual the actual value.

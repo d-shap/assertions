@@ -185,6 +185,42 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion of specified type about the object.
+     *
+     * @param actual         the actual value.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public static <T extends BaseAssertion> T assertThat(final Object actual, final Class<T> assertionClass) {
+        return assertThat(actual).as(assertionClass);
+    }
+
+    /**
+     * Make assertion about the object's field.
+     *
+     * @param actual    the actual value.
+     * @param fieldName the field name.
+     * @return the assertion.
+     */
+    public static ObjectAssertion assertThat(final Object actual, final String fieldName) {
+        return assertThat(actual).toField(fieldName);
+    }
+
+    /**
+     * Make assertion of specified type about the object's field.
+     *
+     * @param actual         the actual value.
+     * @param fieldName      the field name.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public static <T extends BaseAssertion> T assertThat(final Object actual, final String fieldName, final Class<T> assertionClass) {
+        return assertThat(actual).toField(fieldName, assertionClass);
+    }
+
+    /**
      * Make assertion about the byte array.
      *
      * @param actual the actual value.
@@ -480,7 +516,7 @@ public final class Assertions {
      * @param failMessage the fail message.
      */
     public static void fail(final String failMessage) {
-        throw BaseAssertion.createAssertionError(null, failMessage);
+        throw new AssertionError(failMessage);
     }
 
 }
