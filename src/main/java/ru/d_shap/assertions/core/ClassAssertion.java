@@ -44,28 +44,54 @@ public class ClassAssertion extends ReferenceAssertion {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Class<?> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (!getActual().equals(expected)) {
+            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Class<?> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (getActual().equals(expected)) {
+            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+        }
+    }
+
+    /**
      * Check if the actual value is the subtype of the expected class.
      *
-     * @param clazz the expected class.
+     * @param expected the expected class.
      */
-    public final void isSubtypeOf(final Class<?> clazz) {
+    public final void isSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(clazz);
-        if (!clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getIsSubtypeOf(actualAsString(), asString(clazz)));
+        checkArgumentIsNotNull(expected);
+        if (!expected.isAssignableFrom((Class) getActual())) {
+            throw createAssertionError(FailMessages.getIsSubtypeOf(actualAsString(), asString(expected)));
         }
     }
 
     /**
      * Check if the actual value is NOT the subtype of the expected class.
      *
-     * @param clazz the expected class.
+     * @param expected the expected class.
      */
-    public final void isNotSubtypeOf(final Class<?> clazz) {
+    public final void isNotSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(clazz);
-        if (clazz.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getIsNotSubtypeOf(actualAsString(), asString(clazz)));
+        checkArgumentIsNotNull(expected);
+        if (expected.isAssignableFrom((Class) getActual())) {
+            throw createAssertionError(FailMessages.getIsNotSubtypeOf(actualAsString(), asString(expected)));
         }
     }
 
@@ -100,13 +126,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
-        checkActualIsNotNull();
-        Class<?> actualClass = (Class<?>) getActual();
-        if (Enum.class.isAssignableFrom(actualClass)) {
-            return new EnumAssertion(actualClass, getMessage());
-        } else {
-            throw createAssertionError(FailMessages.getIsEnum(actualAsString()));
-        }
+        return as(EnumAssertion.class);
     }
 
     @Override
