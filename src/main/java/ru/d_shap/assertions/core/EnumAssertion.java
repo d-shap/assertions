@@ -22,6 +22,7 @@ package ru.d_shap.assertions.core;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -51,6 +52,9 @@ public class EnumAssertion extends ClassAssertion {
 
     EnumAssertion(final Class<?> actual, final String message, final String valuesMethodName, final String valueOfMethodName) {
         super(actual, message);
+        if (actual != null && !Enum.class.isAssignableFrom(actual)) {
+            throw createAssertionError(FailMessages.getIsEnum(actualAsString()));
+        }
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
     }
