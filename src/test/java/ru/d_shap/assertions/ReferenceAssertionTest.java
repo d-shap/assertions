@@ -272,6 +272,12 @@ public final class ReferenceAssertionTest {
         new ReferenceAssertionImpl("reference", null).isToStringEqualTo("reference");
 
         try {
+            new ReferenceAssertionImpl("reference", null).isToStringEqualTo(null);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
             new ReferenceAssertionImpl("reference", null).isToStringEqualTo("value");
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
@@ -297,6 +303,12 @@ public final class ReferenceAssertionTest {
             Assertions.fail("Reference assertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<FEREN> but was:<reference>");
+        }
+        try {
+            new ReferenceAssertionImpl("reference", null).toStringContains(null);
+            Assertions.fail("Reference assertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReferenceAssertionImpl("reference", "Message").toStringContains("FEREN");
