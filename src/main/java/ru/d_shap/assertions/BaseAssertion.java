@@ -48,80 +48,80 @@ public abstract class BaseAssertion {
     }
 
     /**
-     * Make another type assertion about the same actual.
+     * Make assertion of specified type about the same actual.
      *
-     * @param clazz class of the assertion.
-     * @param <T>   type of the assertion.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
      * @return the assertion.
      */
-    public final <T extends BaseAssertion> T as(final Class<T> clazz) {
+    public final <T extends BaseAssertion> T as(final Class<T> assertionClass) {
         try {
-            List<Constructor<T>> constructors = getConstructors(clazz);
+            List<Constructor<T>> constructors = getConstructors(assertionClass);
             if (constructors.size() == 1) {
                 Constructor<T> constructor = constructors.get(0);
                 return constructor.newInstance(_actual, _message);
             } else {
-                throw new WrongAssertionClassError(clazz, _actual.getClass());
+                throw new WrongAssertionClassError(assertionClass, _actual.getClass());
             }
         } catch (IllegalAccessException ex) {
-            throw new WrongAssertionClassError(clazz, ex);
+            throw new WrongAssertionClassError(assertionClass, ex);
         } catch (InvocationTargetException ex) {
-            throw new WrongAssertionClassError(clazz, ex);
+            throw new WrongAssertionClassError(assertionClass, ex);
         } catch (InstantiationException ex) {
-            throw new WrongAssertionClassError(clazz, ex);
+            throw new WrongAssertionClassError(assertionClass, ex);
         }
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends BaseAssertion> List<Constructor<T>> getConstructors(final Class<T> clazz) {
-        List<Constructor<T>> result = new ArrayList<>();
-        for (Constructor constructor : clazz.getDeclaredConstructors()) {
+    private <T extends BaseAssertion> List<Constructor<T>> getConstructors(final Class<T> assertionClass) {
+        List<Constructor<T>> constructors = new ArrayList<>();
+        for (Constructor constructor : assertionClass.getDeclaredConstructors()) {
             Class<?>[] parameterTypes = constructor.getParameterTypes();
-            if (parameterTypes.length == 2 && isCompatibleTypes(parameterTypes[0]) && parameterTypes[1].isAssignableFrom(String.class)) {
-                result.add((Constructor<T>) constructor);
+            if (parameterTypes.length == 2 && isCompatibleTypes(_actual, parameterTypes[0]) && parameterTypes[1].isAssignableFrom(String.class)) {
+                constructors.add((Constructor<T>) constructor);
             }
         }
-        return result;
+        return constructors;
     }
 
-    private boolean isCompatibleTypes(final Class<?> clazz) {
-        return clazz.isAssignableFrom(_actual.getClass()) || isActualToPrimitiveAssignable(clazz);
+    static boolean isCompatibleTypes(final Object actual, final Class<?> targetClass) {
+        return actual == null && !targetClass.isPrimitive() || actual != null && (targetClass.isAssignableFrom(actual.getClass()) || isActualToPrimitiveAssignable(actual.getClass(), targetClass));
     }
 
-    private boolean isActualToPrimitiveAssignable(final Class<?> clazz) {
-        return isActualToPrimitiveByteAssignable(clazz) || isActualToPrimitiveShortAssignable(clazz) || isActualToPrimitiveIntAssignable(clazz) || isActualToPrimitiveLongAssignable(clazz) || isActualToPrimitiveFloatAssignable(clazz) || isActualToPrimitiveDoubleAssignable(clazz) || isActualToPrimitiveBooleanAssignable(clazz) || isActualToPrimitiveCharAssignable(clazz);
+    private static boolean isActualToPrimitiveAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return isActualToPrimitiveByteAssignable(actualClass, targetClass) || isActualToPrimitiveShortAssignable(actualClass, targetClass) || isActualToPrimitiveIntAssignable(actualClass, targetClass) || isActualToPrimitiveLongAssignable(actualClass, targetClass) || isActualToPrimitiveFloatAssignable(actualClass, targetClass) || isActualToPrimitiveDoubleAssignable(actualClass, targetClass) || isActualToPrimitiveBooleanAssignable(actualClass, targetClass) || isActualToPrimitiveCharAssignable(actualClass, targetClass);
     }
 
-    private boolean isActualToPrimitiveByteAssignable(final Class<?> clazz) {
-        return _actual.getClass().equals(Byte.class) && clazz.equals(byte.class);
+    private static boolean isActualToPrimitiveByteAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return actualClass.equals(Byte.class) && targetClass.equals(byte.class);
     }
 
-    private boolean isActualToPrimitiveShortAssignable(final Class<?> clazz) {
-        return (_actual.getClass().equals(Byte.class) || _actual.getClass().equals(Short.class)) && clazz.equals(short.class);
+    private static boolean isActualToPrimitiveShortAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class)) && targetClass.equals(short.class);
     }
 
-    private boolean isActualToPrimitiveIntAssignable(final Class<?> clazz) {
-        return (_actual.getClass().equals(Byte.class) || _actual.getClass().equals(Short.class) || _actual.getClass().equals(Integer.class) || _actual.getClass().equals(Character.class)) && clazz.equals(int.class);
+    private static boolean isActualToPrimitiveIntAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Character.class)) && targetClass.equals(int.class);
     }
 
-    private boolean isActualToPrimitiveLongAssignable(final Class<?> clazz) {
-        return (_actual.getClass().equals(Byte.class) || _actual.getClass().equals(Short.class) || _actual.getClass().equals(Integer.class) || _actual.getClass().equals(Long.class) || _actual.getClass().equals(Character.class)) && clazz.equals(long.class);
+    private static boolean isActualToPrimitiveLongAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Character.class)) && targetClass.equals(long.class);
     }
 
-    private boolean isActualToPrimitiveFloatAssignable(final Class<?> clazz) {
-        return (_actual.getClass().equals(Byte.class) || _actual.getClass().equals(Short.class) || _actual.getClass().equals(Integer.class) || _actual.getClass().equals(Long.class) || _actual.getClass().equals(Float.class) || _actual.getClass().equals(Character.class)) && clazz.equals(float.class);
+    private static boolean isActualToPrimitiveFloatAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Float.class) || actualClass.equals(Character.class)) && targetClass.equals(float.class);
     }
 
-    private boolean isActualToPrimitiveDoubleAssignable(final Class<?> clazz) {
-        return (_actual.getClass().equals(Byte.class) || _actual.getClass().equals(Short.class) || _actual.getClass().equals(Integer.class) || _actual.getClass().equals(Long.class) || _actual.getClass().equals(Float.class) || _actual.getClass().equals(Double.class) || _actual.getClass().equals(Character.class)) && clazz.equals(double.class);
+    private static boolean isActualToPrimitiveDoubleAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Float.class) || actualClass.equals(Double.class) || actualClass.equals(Character.class)) && targetClass.equals(double.class);
     }
 
-    private boolean isActualToPrimitiveBooleanAssignable(final Class<?> clazz) {
-        return _actual.getClass().equals(Boolean.class) && clazz.equals(boolean.class);
+    private static boolean isActualToPrimitiveBooleanAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return actualClass.equals(Boolean.class) && targetClass.equals(boolean.class);
     }
 
-    private boolean isActualToPrimitiveCharAssignable(final Class<?> clazz) {
-        return _actual.getClass().equals(Character.class) && clazz.equals(char.class);
+    private static boolean isActualToPrimitiveCharAssignable(final Class<?> actualClass, final Class<?> targetClass) {
+        return actualClass.equals(Character.class) && targetClass.equals(char.class);
     }
 
     /**
