@@ -70,10 +70,10 @@ public class ThrowableAssertion extends ReferenceAssertion {
     /**
      * Check if the cause of the throwable is instance of the expected class.
      *
-     * @param clazz the expected class.
+     * @param expected the expected class.
      */
-    public final void isCauseInstanceOf(final Class<?> clazz) {
-        toCause().isInstanceOf(clazz);
+    public final void isCauseInstanceOf(final Class<?> expected) {
+        toCause().isInstanceOf(expected);
     }
 
     /**
