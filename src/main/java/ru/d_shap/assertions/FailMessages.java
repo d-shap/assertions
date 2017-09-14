@@ -803,16 +803,16 @@ public final class FailMessages {
         return "Actual:<" + actual + ">";
     }
 
-    private static String getExpectedValueMessagePart(final String expected) {
-        return "Expected:<" + expected + ">";
-    }
-
     private static String getActualValueMessagePart(final String actual, final String expected) {
         return "Expected:<" + expected + "> but was:<" + actual + ">";
     }
 
     private static String getActualValueMessagePart(final String actual, final String expectedFrom, final String expectedTo) {
         return "Expected:<" + expectedFrom + ":" + expectedTo + "> but was:<" + actual + ">";
+    }
+
+    private static String getExpectedValueMessagePart(final String expected) {
+        return "Expected:<" + expected + ">";
     }
 
 }
