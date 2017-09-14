@@ -19,8 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * Error is thrown when the assertion class is wrong, i.e. class is abstract, does not have
  * the necessary constructor, etc.
@@ -37,7 +35,7 @@ public final class WrongAssertionClassError extends Error {
      * @param assertionClass assertion class.
      * @param actualClass    actual class.
      */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final Class<?> actualClass) {
+    WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final Class<?> actualClass) {
         super("Wrong assertion class: " + assertionClass.getName() + " - class should have one constructor " + assertionClass.getSimpleName() + "(" + actualClass.getName() + ", " + String.class.getName() + ")");
     }
 
@@ -47,27 +45,7 @@ public final class WrongAssertionClassError extends Error {
      * @param assertionClass assertion class.
      * @param cause          cause of the error.
      */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final IllegalAccessException cause) {
-        super("Wrong assertion class: " + assertionClass.getName(), cause);
-    }
-
-    /**
-     * Create new object.
-     *
-     * @param assertionClass assertion class.
-     * @param cause          cause of the error.
-     */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final InvocationTargetException cause) {
-        super("Wrong assertion class: " + assertionClass.getName(), cause);
-    }
-
-    /**
-     * Create new object.
-     *
-     * @param assertionClass assertion class.
-     * @param cause          cause of the error.
-     */
-    public WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final InstantiationException cause) {
+    WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final ReflectiveOperationException cause) {
         super("Wrong assertion class: " + assertionClass.getName(), cause);
     }
 
