@@ -50,19 +50,19 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).contains('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).contains('3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").contains('3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
@@ -77,19 +77,19 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).doesNotContain('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).doesNotContain('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").doesNotContain('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
@@ -108,91 +108,91 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsAll('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAll(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAll(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll('2', '3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAll('2', '3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll(50, 51);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAll(50, 51);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAll(Arrays.asList('2', '3'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAll(Arrays.asList('2', '3'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -210,97 +210,97 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsAllInOrder('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAllInOrder(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAllInOrder(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder('2', '3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder('2', '1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAllInOrder('2', '1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder(50, 49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAllInOrder(50, 49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAllInOrder(Arrays.asList('2', '1'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAllInOrder(Arrays.asList('2', '1'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -322,103 +322,103 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsExactly('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsExactly(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsExactly(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly('2', '3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactly('1', '2', '3', '4', '5');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactly(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactly('1', '1', '3', '2');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactly('1', '1', '3', '2');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactly(49, 49, 51, 50);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactly(49, 49, 51, 50);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactly(Arrays.asList('1', '1', '3', '2'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactly(Arrays.asList('1', '1', '3', '2'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
@@ -439,109 +439,109 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsExactlyInOrder('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsExactlyInOrder(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsExactlyInOrder(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder('2', '1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactlyInOrder('1', '2', '3');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactlyInOrder('1', '2', '3', '4', '5');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsExactlyInOrder(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactlyInOrder('2', '3', '1', '4');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder('2', '3', '1', '4');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactlyInOrder(50, 51, 49, 52);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder(50, 51, 49, 52);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, null).containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
@@ -561,91 +561,91 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsAny('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAny(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsAny(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny('3', '4');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAny('3', '4');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny(51, 52);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAny(51, 52);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsAny(Arrays.asList('3', '4'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsAny(Arrays.asList('3', '4'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
@@ -663,97 +663,97 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(null, null).containsNone('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsNone(49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(null, null).containsNone(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone((char[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone((int[]) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone((Iterable<Character>) null);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone(new int[0]);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone(new ArrayList<Character>());
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone('1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone('2', '1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsNone('2', '1');
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone(50, 49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsNone(50, 49);
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).containsNone(Arrays.asList('2', '1'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").containsNone(Arrays.asList('2', '1'));
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -769,13 +769,13 @@ public final class CharArrayAssertionTest {
 
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, null).createCollectionAssertion().isEmpty();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
         }
         try {
             new CharArrayAssertion(new char[]{'1', '2'}, "Message").createCollectionAssertion().isEmpty();
-            Assertions.fail("Char array assertion test fail");
+            Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
         }
