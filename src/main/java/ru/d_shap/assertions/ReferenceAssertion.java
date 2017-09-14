@@ -187,14 +187,27 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final ObjectAssertion toField(final String fieldName) {
         checkActualIsNotNull();
+        checkArgumentIsNotNull(fieldName);
         try {
             Field field = getField(fieldName);
             AccessController.doPrivileged(new FieldAccessAction(field));
             Object value = field.get(getActual());
             return new ObjectAssertion(value, getMessage());
         } catch (NoSuchFieldException | IllegalAccessException ex) {
-            throw createAssertionError(FailMessages.getContainsField(fieldName));
+            throw createAssertionError(FailMessages.getContainsField(fieldName), ex);
         }
+    }
+
+    /**
+     * Make assertion of specified type about the actual value's field.
+     *
+     * @param fieldName      the field name.
+     * @param assertionClass class of the assertion.
+     * @param <T>            type of the assertion.
+     * @return the assertion.
+     */
+    public final <T extends BaseAssertion> T toField(final String fieldName, final Class<T> assertionClass) {
+        return toField(fieldName).as(assertionClass);
     }
 
     private Field getField(final String fieldName) throws NoSuchFieldException {
@@ -211,18 +224,6 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             }
         }
         throw noSuchFieldException;
-    }
-
-    /**
-     * Make assertion of specified type about the actual value's field.
-     *
-     * @param fieldName      the field name.
-     * @param assertionClass class of the assertion.
-     * @param <T>            type of the assertion.
-     * @return the assertion.
-     */
-    public final <T extends BaseAssertion> T toField(final String fieldName, final Class<T> assertionClass) {
-        return toField(fieldName).as(assertionClass);
     }
 
 }
