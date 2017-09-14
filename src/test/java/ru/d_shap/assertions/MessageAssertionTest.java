@@ -20,6 +20,8 @@
 package ru.d_shap.assertions;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.Reader;
 import java.io.StringReader;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -32,11 +34,51 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.array.BooleanArrayAssertion;
+import ru.d_shap.assertions.array.ByteArrayAssertion;
+import ru.d_shap.assertions.array.CharArrayAssertion;
+import ru.d_shap.assertions.array.DoubleArrayAssertion;
+import ru.d_shap.assertions.array.FloatArrayAssertion;
+import ru.d_shap.assertions.array.IntArrayAssertion;
+import ru.d_shap.assertions.array.LongArrayAssertion;
+import ru.d_shap.assertions.array.ObjectArrayAssertion;
+import ru.d_shap.assertions.array.ShortArrayAssertion;
+import ru.d_shap.assertions.collection.CollectionAssertion;
+import ru.d_shap.assertions.collection.IteratorAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.collection.MapAssertion;
+import ru.d_shap.assertions.collection.SetAssertion;
+import ru.d_shap.assertions.core.CharSequenceAssertion;
+import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.ComparableAssertion;
+import ru.d_shap.assertions.core.IterableAssertion;
+import ru.d_shap.assertions.core.ObjectAssertion;
+import ru.d_shap.assertions.core.StringAssertion;
+import ru.d_shap.assertions.core.ThrowableAssertion;
+import ru.d_shap.assertions.io.InputStreamAssertion;
+import ru.d_shap.assertions.io.ReaderAssertion;
+import ru.d_shap.assertions.nio.ByteBufferAssertion;
+import ru.d_shap.assertions.nio.CharBufferAssertion;
+import ru.d_shap.assertions.nio.DoubleBufferAssertion;
+import ru.d_shap.assertions.nio.FloatBufferAssertion;
+import ru.d_shap.assertions.nio.IntBufferAssertion;
+import ru.d_shap.assertions.nio.LongBufferAssertion;
+import ru.d_shap.assertions.nio.ShortBufferAssertion;
+import ru.d_shap.assertions.primitive.BooleanAssertion;
+import ru.d_shap.assertions.primitive.ByteAssertion;
+import ru.d_shap.assertions.primitive.CharAssertion;
+import ru.d_shap.assertions.primitive.DoubleAssertion;
+import ru.d_shap.assertions.primitive.FloatAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.primitive.LongAssertion;
+import ru.d_shap.assertions.primitive.ShortAssertion;
 
 /**
  * Tests for {@link MessageAssertion}.
@@ -58,22 +100,25 @@ public final class MessageAssertionTest {
     @Test
     public void byteAssertionTest() {
         Assertions.assertWithMessage("Test message").that((byte) 5).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that((byte) 5, ByteAssertion.class).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byte").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byte", ByteAssertion.class).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -85,22 +130,25 @@ public final class MessageAssertionTest {
     @Test
     public void shortAssertionTest() {
         Assertions.assertWithMessage("Test message").that((short) 5).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that((short) 5, ShortAssertion.class).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_short").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_short", ShortAssertion.class).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -112,22 +160,25 @@ public final class MessageAssertionTest {
     @Test
     public void intAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(5, IntAssertion.class).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_int").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_int", IntAssertion.class).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -139,22 +190,25 @@ public final class MessageAssertionTest {
     @Test
     public void longAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5L).isEqualTo(5L);
+        Assertions.assertWithMessage("Test message").that(5L, LongAssertion.class).isEqualTo(5L);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_long").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_long", LongAssertion.class).isEqualTo(5L);
 
         try {
             Assertions.assertWithMessage(null).that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -166,22 +220,25 @@ public final class MessageAssertionTest {
     @Test
     public void floatAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(5.0f, 0.001f);
+        Assertions.assertWithMessage("Test message").that(5.0f, FloatAssertion.class).isEqualTo(5.0f, 0.001f);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_float").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_float", FloatAssertion.class).isEqualTo(5.0f, 0.001f);
 
         try {
             Assertions.assertWithMessage(null).that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
@@ -193,22 +250,25 @@ public final class MessageAssertionTest {
     @Test
     public void doubleAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(5.0, 0.001);
+        Assertions.assertWithMessage("Test message").that(5.0, DoubleAssertion.class).isEqualTo(5.0, 0.001);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_double").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_double", DoubleAssertion.class).isEqualTo(5.0, 0.001);
 
         try {
             Assertions.assertWithMessage(null).that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
@@ -220,22 +280,25 @@ public final class MessageAssertionTest {
     @Test
     public void booleanAssertionTest() {
         Assertions.assertWithMessage("Test message").that(true).isTrue();
+        Assertions.assertWithMessage("Test message").that(true, BooleanAssertion.class).isTrue();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_boolean").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_boolean", BooleanAssertion.class).isTrue();
 
         try {
             Assertions.assertWithMessage(null).that(true).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
         try {
             Assertions.assertWithMessage("").that(true).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
         try {
             Assertions.assertWithMessage("Test message").that(true).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should be false.");
         }
@@ -247,22 +310,25 @@ public final class MessageAssertionTest {
     @Test
     public void charAssertionTest() {
         Assertions.assertWithMessage("Test message").that('5').isEqualTo('5');
+        Assertions.assertWithMessage("Test message").that('5', CharAssertion.class).isEqualTo('5');
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_char").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_char", CharAssertion.class).isEqualTo('5');
 
         try {
             Assertions.assertWithMessage(null).that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("").that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("Test message").that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
@@ -274,25 +340,28 @@ public final class MessageAssertionTest {
     @Test
     public void objectAssertionTest() {
         Object object = new StringBuilder("value");
-        Assertions.assertWithMessage("Test message").that(object).isSameAs(object);
+        Assertions.assertWithMessage("Test message").that(object).isNotEqualTo(new StringBuilder("value"));
+        Assertions.assertWithMessage("Test message").that(object, ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_object").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_object", ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
 
         try {
-            Assertions.assertWithMessage(null).that(object).isSameAs(new StringBuilder("another value"));
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(object).isNotEqualTo(object);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<another value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
         }
         try {
-            Assertions.assertWithMessage("").that(object).isSameAs(new StringBuilder("another value"));
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(object).isNotEqualTo(object);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<another value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(object).isSameAs(new StringBuilder("another value"));
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(object).isNotEqualTo(object);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<another value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Test message. Values should be different. Actual:<value>");
         }
     }
 
@@ -301,25 +370,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void byteArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}, ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteArray", ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
         try {
-            Assertions.assertWithMessage(null).that(new byte[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new byte[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -328,25 +400,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void shortArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}, ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortArray", ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
         try {
-            Assertions.assertWithMessage(null).that(new short[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new short[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -355,25 +430,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void intArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}, IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intArray", IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
         try {
-            Assertions.assertWithMessage(null).that(new int[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new int[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -382,25 +460,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void longArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L);
+        Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}, LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longArray", LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
 
         try {
-            Assertions.assertWithMessage(null).that(new long[]{1L, 2L, 3L}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new long[]{1L, 2L, 3L}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -409,25 +490,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void floatArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
+        Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}, FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatArray", FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
 
         try {
-            Assertions.assertWithMessage(null).that(new float[]{1.0f, 2.0f, 3.0f}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new float[]{1.0f, 2.0f, 3.0f}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
     }
 
@@ -436,25 +520,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void doubleArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0);
+        Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}, DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleArray", DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
 
         try {
-            Assertions.assertWithMessage(null).that(new double[]{1.0, 2.0, 3.0}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new double[]{1.0, 2.0, 3.0}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
     }
 
@@ -463,25 +550,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void booleanArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false);
+        Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}, BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_booleanArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_booleanArray", BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
 
         try {
-            Assertions.assertWithMessage(null).that(new boolean[]{true, true, false}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false, true]> but was:<[true, true, false]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new boolean[]{true, true, false}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false, true]> but was:<[true, true, false]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false, true]> but was:<[true, true, false]>");
         }
     }
 
@@ -490,25 +580,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void charArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}, CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charArray", CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
 
         try {
-            Assertions.assertWithMessage(null).that(new char[]{'1', '2', '3'}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3', '4');
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new char[]{'1', '2', '3'}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3', '4');
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3', '4');
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -517,25 +610,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void objectArrayAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}).hasLength(3);
+        Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}, ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_objectArray").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_objectArray", ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(new Object[]{"1", "2", "3"}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(new Object[]{"1", "2", "3"}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}).hasLength(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -545,22 +641,25 @@ public final class MessageAssertionTest {
     @Test
     public void classAssertionTest() {
         Assertions.assertWithMessage("Test message").that(String.class).isSubtypeOf(Object.class);
+        Assertions.assertWithMessage("Test message").that(String.class, ClassAssertion.class).isSubtypeOf(Object.class);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_class").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_class", ClassAssertion.class).isSubtypeOf(Object.class);
 
         try {
             Assertions.assertWithMessage(null).that(String.class).isSubtypeOf(StringBuilder.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.String>");
         }
         try {
             Assertions.assertWithMessage("").that(String.class).isSubtypeOf(StringBuilder.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.String>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(String.class).isSubtypeOf(StringBuilder.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should be the subtype of the expected value. Expected:<java.lang.StringBuilder> but was:<java.lang.String>");
         }
@@ -572,22 +671,25 @@ public final class MessageAssertionTest {
     @Test
     public void charSequenceAssertionTest() {
         Assertions.assertWithMessage("Test message").that(new StringBuilder("test")).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(new StringBuilder("test"), CharSequenceAssertion.class).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charSequence").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charSequence", CharSequenceAssertion.class).hasLength(4);
 
         try {
             Assertions.assertWithMessage(null).that(new StringBuilder("test")).hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5> but was:<4>");
         }
         try {
             Assertions.assertWithMessage("").that(new StringBuilder("test")).hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5> but was:<4>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new StringBuilder("test")).hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<5> but was:<4>");
         }
@@ -599,22 +701,25 @@ public final class MessageAssertionTest {
     @Test
     public void stringAssertionTest() {
         Assertions.assertWithMessage("Test message").that("test").hasLength(4);
+        Assertions.assertWithMessage("Test message").that("test", StringAssertion.class).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_string").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_string", StringAssertion.class).hasLength(4);
 
         try {
             Assertions.assertWithMessage(null).that("test").hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5> but was:<4>");
         }
         try {
             Assertions.assertWithMessage("").that("test").hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5> but was:<4>");
         }
         try {
             Assertions.assertWithMessage("Test message").that("test").hasLength(5);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<5> but was:<4>");
         }
@@ -627,22 +732,25 @@ public final class MessageAssertionTest {
     public void comparableAssertionTest() {
         Comparable<?> comparable = Integer.valueOf("5");
         Assertions.assertWithMessage("Test message").that(comparable).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(comparable, ComparableAssertion.class).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_comparable").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_comparable", ComparableAssertion.class).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that(comparable).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(comparable).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(comparable).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -655,22 +763,25 @@ public final class MessageAssertionTest {
     public void iterableAssertionTest() {
         Iterable<?> iterable = Arrays.asList("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(iterable).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(iterable, IterableAssertion.class).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterable").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterable", IterableAssertion.class).hasSize(3);
 
         try {
             Assertions.assertWithMessage(null).that(iterable).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             Assertions.assertWithMessage("").that(iterable).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(iterable).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
         }
@@ -682,22 +793,25 @@ public final class MessageAssertionTest {
     @Test
     public void throwableAssertionTest() {
         Assertions.assertWithMessage("Test message").that(new AssertionError("error")).isInstanceOf(Error.class);
+        Assertions.assertWithMessage("Test message").that(new AssertionError("error"), ThrowableAssertion.class).isInstanceOf(Error.class);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_throwable").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_throwable", ThrowableAssertion.class).isInstanceOf(Error.class);
 
         try {
             Assertions.assertWithMessage(null).that(new AssertionError("error")).isInstanceOf(RuntimeException.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
         }
         try {
             Assertions.assertWithMessage("").that(new AssertionError("error")).isInstanceOf(RuntimeException.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new AssertionError("error")).isInstanceOf(RuntimeException.class);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
         }
@@ -709,25 +823,28 @@ public final class MessageAssertionTest {
     @Test
     public void collectionAssertionTest() {
         Collection<?> collection = Arrays.asList("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that(collection).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(collection).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(collection, CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection", CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(collection).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(collection).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(collection).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(collection).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(collection).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(collection).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -736,26 +853,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void iteratorAssertionTest() {
-        Collection<?> collection = Arrays.asList("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that(collection.iterator()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator(), IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterator").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterator", IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(collection.iterator()).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(collection.iterator()).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(collection.iterator()).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -764,26 +883,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void listAssertionTest() {
-        List<?> list = Arrays.asList("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that(list).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3"), ListAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_list").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_list", ListAssertion.class).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(list).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(list).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(list).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -792,26 +913,28 @@ public final class MessageAssertionTest {
      */
     @Test
     public void setAssertionTest() {
-        Set<?> set = new HashSet<>(Arrays.asList("1", "2", "3"));
-        Assertions.assertWithMessage("Test message").that(set).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new HashSet<>(Arrays.asList("1", "2", "3")), SetAssertion.class).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_set").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_set", SetAssertion.class).containsExactly("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(set).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(set).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(set).hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -820,27 +943,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void mapAssertionTest() {
-        Map<String, String> map = new HashMap<>();
-        map.put("1", "val1");
-        map.put("2", "val2");
-        map.put("3", "val3");
-        Assertions.assertWithMessage("Test message").that(map).toKeys().hasSize(3);
+        Assertions.assertWithMessage("Test message").that(createMap()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(createMap(), MapAssertion.class).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_map").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_map", MapAssertion.class).hasSize(3);
 
         try {
-            Assertions.assertWithMessage(null).that(map).toKeys().hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createMap()).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("").that(map).toKeys().hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createMap()).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(map).toKeys().hasSize(4);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createMap()).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<4> but was:<3>");
         }
@@ -852,22 +974,25 @@ public final class MessageAssertionTest {
     @Test
     public void inputStreamAssertionTest() {
         Assertions.assertWithMessage("Test message").that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(1, 2);
+        Assertions.assertWithMessage("Test message").that(new ByteArrayInputStream(new byte[]{1, 2, 3}), InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_inputStream").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_inputStream", InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
 
         try {
             Assertions.assertWithMessage(null).that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("").that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -879,22 +1004,25 @@ public final class MessageAssertionTest {
     @Test
     public void readerAssertionTest() {
         Assertions.assertWithMessage("Test message").that(new StringReader("123")).isNextCharsEqualTo('1', '2');
+        Assertions.assertWithMessage("Test message").that(new StringReader("123"), ReaderAssertion.class).isNextCharsEqualTo('1', '2');
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_reader").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_reader", ReaderAssertion.class).isNextCharsEqualTo('1', '2');
 
         try {
             Assertions.assertWithMessage(null).that(new StringReader("123")).isNextCharsEqualTo('2', '3');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("").that(new StringReader("123")).isNextCharsEqualTo('2', '3');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new StringReader("123")).isNextCharsEqualTo('2', '3');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -905,27 +1033,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void byteBufferAssertionTest() {
-        ByteBuffer buffer = ByteBuffer.allocate(2);
-        buffer.put((byte) 1);
-        buffer.put((byte) 2);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createByteBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createByteBuffer(), ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteBuffer", ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createByteBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createByteBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createByteBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -936,27 +1063,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void shortBufferAssertionTest() {
-        ShortBuffer buffer = ByteBuffer.allocate(4).asShortBuffer();
-        buffer.put((short) 1);
-        buffer.put((short) 2);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createShortBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createShortBuffer(), ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortBuffer", ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createShortBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createShortBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createShortBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -967,27 +1093,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void intBufferAssertionTest() {
-        IntBuffer buffer = ByteBuffer.allocate(8).asIntBuffer();
-        buffer.put(1);
-        buffer.put(2);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createIntBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(createIntBuffer(), IntBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intBuffer", IntBufferAssertion.class).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createIntBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createIntBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2, 1);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createIntBuffer()).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -998,27 +1123,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void longBufferAssertionTest() {
-        LongBuffer buffer = ByteBuffer.allocate(16).asLongBuffer();
-        buffer.put(1L);
-        buffer.put(2L);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1L, 2L);
+        Assertions.assertWithMessage("Test message").that(createLongBuffer()).containsExactlyInOrder(1L, 2L);
+        Assertions.assertWithMessage("Test message").that(createLongBuffer(), LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longBuffer", LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2L, 1L);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createLongBuffer()).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2L, 1L);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createLongBuffer()).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2L, 1L);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createLongBuffer()).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -1029,27 +1153,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void floatBufferAssertionTest() {
-        FloatBuffer buffer = ByteBuffer.allocate(8).asFloatBuffer();
-        buffer.put(1.0f);
-        buffer.put(2.0f);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertWithMessage("Test message").that(createFloatBuffer()).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertWithMessage("Test message").that(createFloatBuffer(), FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatBuffer", FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2.0f, 1.0f);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createFloatBuffer()).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2.0f, 1.0f);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createFloatBuffer()).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2.0f, 1.0f);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createFloatBuffer()).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
@@ -1060,27 +1183,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void doubleBufferAssertionTest() {
-        DoubleBuffer buffer = ByteBuffer.allocate(16).asDoubleBuffer();
-        buffer.put(1.0);
-        buffer.put(2.0);
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(createDoubleBuffer()).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(createDoubleBuffer(), DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleBuffer", DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(2.0, 1.0);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createDoubleBuffer()).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(2.0, 1.0);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createDoubleBuffer()).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(2.0, 1.0);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createDoubleBuffer()).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
@@ -1091,27 +1213,26 @@ public final class MessageAssertionTest {
      */
     @Test
     public void charBufferAssertionTest() {
-        CharBuffer buffer = ByteBuffer.allocate(4).asCharBuffer();
-        buffer.put('1');
-        buffer.put('2');
-        buffer.flip();
-        Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(49, 50);
+        Assertions.assertWithMessage("Test message").that(createCharBuffer()).containsExactlyInOrder(49, 50);
+        Assertions.assertWithMessage("Test message").that(createCharBuffer(), CharBufferAssertion.class).containsExactlyInOrder(49, 50);
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charBuffer").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charBuffer", CharBufferAssertion.class).containsExactlyInOrder(49, 50);
 
         try {
-            Assertions.assertWithMessage(null).that(buffer).containsExactlyInOrder(50, 49);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage(null).that(createCharBuffer()).containsExactlyInOrder(50, 49);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("").that(buffer).containsExactlyInOrder(50, 49);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("").that(createCharBuffer()).containsExactlyInOrder(50, 49);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(buffer).containsExactlyInOrder(50, 49);
-            Assertions.fail("Assertions test fail");
+            Assertions.assertWithMessage("Test message").that(createCharBuffer()).containsExactlyInOrder(50, 49);
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -1125,6 +1246,159 @@ public final class MessageAssertionTest {
         Assertions.assertThat(new MessageAssertion(null).asString(null)).isNull();
         Assertions.assertThat(new MessageAssertion(null).asString(new Object())).isNull();
         Assertions.assertThat(new MessageAssertion(null).asString("value")).isNull();
+    }
+
+    private static Map<String, String> createMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "val1");
+        map.put("2", "val2");
+        map.put("3", "val3");
+        return map;
+    }
+
+    private static ByteBuffer createByteBuffer() {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(2);
+        byteBuffer.put((byte) 1);
+        byteBuffer.put((byte) 2);
+        byteBuffer.flip();
+        return byteBuffer;
+    }
+
+    private static ShortBuffer createShortBuffer() {
+        ShortBuffer shortBuffer = ByteBuffer.allocate(4).asShortBuffer();
+        shortBuffer.put((short) 1);
+        shortBuffer.put((short) 2);
+        shortBuffer.flip();
+        return shortBuffer;
+    }
+
+    private static IntBuffer createIntBuffer() {
+        IntBuffer intBuffer = ByteBuffer.allocate(8).asIntBuffer();
+        intBuffer.put(1);
+        intBuffer.put(2);
+        intBuffer.flip();
+        return intBuffer;
+    }
+
+    private static LongBuffer createLongBuffer() {
+        LongBuffer longBuffer = ByteBuffer.allocate(16).asLongBuffer();
+        longBuffer.put(1L);
+        longBuffer.put(2L);
+        longBuffer.flip();
+        return longBuffer;
+    }
+
+    private static FloatBuffer createFloatBuffer() {
+        FloatBuffer floatBuffer = ByteBuffer.allocate(8).asFloatBuffer();
+        floatBuffer.put(1.0f);
+        floatBuffer.put(2.0f);
+        floatBuffer.flip();
+        return floatBuffer;
+    }
+
+    private static DoubleBuffer createDoubleBuffer() {
+        DoubleBuffer doubleBuffer = ByteBuffer.allocate(16).asDoubleBuffer();
+        doubleBuffer.put(1.0);
+        doubleBuffer.put(2.0);
+        doubleBuffer.flip();
+        return doubleBuffer;
+    }
+
+    private static CharBuffer createCharBuffer() {
+        CharBuffer charBuffer = ByteBuffer.allocate(4).asCharBuffer();
+        charBuffer.put('1');
+        charBuffer.put('2');
+        charBuffer.flip();
+        return charBuffer;
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivateFieldsClass {
+
+        private byte _byte = 5;
+
+        private short _short = 5;
+
+        private int _int = 5;
+
+        private long _long = 5L;
+
+        private float _float = 5.0f;
+
+        private double _double = 5.0;
+
+        private boolean _boolean = true;
+
+        private char _char = '5';
+
+        private Object _object = new StringBuilder("value");
+
+        private byte[] _byteArray = new byte[]{1, 2, 3};
+
+        private short[] _shortArray = new short[]{1, 2, 3};
+
+        private int[] _intArray = new int[]{1, 2, 3};
+
+        private long[] _longArray = new long[]{1L, 2L, 3L};
+
+        private float[] _floatArray = new float[]{1.0f, 2.0f, 3.0f};
+
+        private double[] _doubleArray = new double[]{1.0, 2.0, 3.0};
+
+        private boolean[] _booleanArray = new boolean[]{true, true, false};
+
+        private char[] _charArray = new char[]{'1', '2', '3'};
+
+        private Object[] _objectArray = new Object[]{"1", "2", "3"};
+
+        private Class<?> _class = String.class;
+
+        private CharSequence _charSequence = new StringBuilder("test");
+
+        private String _string = "test";
+
+        private Comparable<?> _comparable = Integer.valueOf("5");
+
+        private Iterable<?> _iterable = Arrays.asList("1", "2", "3");
+
+        private Throwable _throwable = new AssertionError("error");
+
+        private Collection<?> _collection = Arrays.asList("1", "2", "3");
+
+        private Iterator<?> _iterator = Arrays.asList("1", "2", "3").iterator();
+
+        private List<?> _list = Arrays.asList("1", "2", "3");
+
+        private Set<?> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
+
+        private Map<String, String> _map = createMap();
+
+        private InputStream _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
+
+        private Reader _reader = new StringReader("123");
+
+        private ByteBuffer _byteBuffer = createByteBuffer();
+
+        private ShortBuffer _shortBuffer = createShortBuffer();
+
+        private IntBuffer _intBuffer = createIntBuffer();
+
+        private LongBuffer _longBuffer = createLongBuffer();
+
+        private FloatBuffer _floatBuffer = createFloatBuffer();
+
+        private DoubleBuffer _doubleBuffer = createDoubleBuffer();
+
+        private CharBuffer _charBuffer = createCharBuffer();
+
+        PrivateFieldsClass() {
+            super();
+        }
+
     }
 
 }
