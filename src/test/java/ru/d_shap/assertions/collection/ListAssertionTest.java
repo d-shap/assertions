@@ -49,13 +49,13 @@ public final class ListAssertionTest {
 
         try {
             new ListAssertion(null, null).isRandomAccess();
-            Assertions.fail("List assertion test fail");
+            Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ListAssertion(new LinkedList<String>(), null).isRandomAccess();
-            Assertions.fail("List assertion test fail");
+            Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
@@ -70,13 +70,13 @@ public final class ListAssertionTest {
 
         try {
             new ListAssertion(null, null).isNotRandomAccess();
-            Assertions.fail("List assertion test fail");
+            Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ListAssertion(new ArrayList<String>(), null).isNotRandomAccess();
-            Assertions.fail("List assertion test fail");
+            Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
