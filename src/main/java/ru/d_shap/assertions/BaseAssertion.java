@@ -56,6 +56,7 @@ public abstract class BaseAssertion {
      */
     public final <T extends BaseAssertion> T as(final Class<T> assertionClass) {
         checkActualIsNotNull();
+        checkArgumentIsNotNull(assertionClass);
         try {
             List<Constructor<T>> constructors = getConstructors(assertionClass);
             if (constructors.size() == 1) {
@@ -64,11 +65,14 @@ public abstract class BaseAssertion {
             } else {
                 throw new WrongAssertionClassError(assertionClass, _actual.getClass());
             }
-        } catch (IllegalAccessException ex) {
-            throw new WrongAssertionClassError(assertionClass, ex);
         } catch (InvocationTargetException ex) {
-            throw new WrongAssertionClassError(assertionClass, ex);
-        } catch (InstantiationException ex) {
+            Throwable cause = ex.getCause();
+            if (cause instanceof AssertionError) {
+                throw (AssertionError) cause;
+            } else {
+                throw new WrongAssertionClassError(assertionClass, ex);
+            }
+        } catch (ReflectiveOperationException ex) {
             throw new WrongAssertionClassError(assertionClass, ex);
         }
     }
@@ -76,7 +80,7 @@ public abstract class BaseAssertion {
     @SuppressWarnings("unchecked")
     private <T extends BaseAssertion> List<Constructor<T>> getConstructors(final Class<T> assertionClass) {
         List<Constructor<T>> constructors = new ArrayList<>();
-        for (Constructor constructor : assertionClass.getDeclaredConstructors()) {
+        for (Constructor constructor : assertionClass.getConstructors()) {
             Class<?>[] parameterTypes = constructor.getParameterTypes();
             if (parameterTypes.length == 2 && isCompatibleTypes(_actual, parameterTypes[0]) && parameterTypes[1].isAssignableFrom(String.class)) {
                 constructors.add((Constructor<T>) constructor);
@@ -192,8 +196,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String failMessage) {
-        String fullMessage = getFullAssertionMessage(_message, failMessage);
-        return new AssertionError(fullMessage);
+        return createAssertionError(failMessage, null);
     }
 
     /**
@@ -214,27 +217,26 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String failMessage, final Throwable throwable) {
-        String fullMessage = getFullAssertionMessage(_message, failMessage);
-        if ("".equals(fullMessage)) {
-            if (throwable == null) {
-                return new AssertionError(fullMessage);
-            } else {
-                return new AssertionError(throwable);
-            }
+        String fullMessage = getFullAssertionMessage(_message, failMessage, throwable);
+        if (throwable == null) {
+            return new AssertionError(fullMessage);
         } else {
             return new AssertionError(fullMessage, throwable);
         }
     }
 
-    private static String getFullAssertionMessage(final String assertionMessage, final String failMessage) {
-        String fullMessage = getAssertionMessagePart(assertionMessage);
-        if (failMessage != null && !"".equals(failMessage)) {
-            if (!"".equals(fullMessage)) {
-                fullMessage += " ";
+    private static String getFullAssertionMessage(final String assertionMessage, final String failMessage, final Throwable throwable) {
+        String assertionMessagePart = getAssertionMessagePart(assertionMessage);
+        String failMessagePart = getFailMessagePart(failMessage, throwable);
+        if ("".equals(failMessagePart)) {
+            return assertionMessagePart;
+        } else {
+            if ("".equals(assertionMessagePart)) {
+                return failMessagePart;
+            } else {
+                return assertionMessagePart + " " + failMessagePart;
             }
-            fullMessage += failMessage;
         }
-        return fullMessage;
     }
 
     private static String getAssertionMessagePart(final String assertionMessage) {
@@ -246,6 +248,18 @@ public abstract class BaseAssertion {
             } else {
                 return assertionMessage + ".";
             }
+        }
+    }
+
+    private static String getFailMessagePart(final String failMessage, final Throwable throwable) {
+        if (failMessage == null || "".equals(failMessage)) {
+            if (throwable == null) {
+                return "";
+            } else {
+                return throwable.toString();
+            }
+        } else {
+            return failMessage;
         }
     }
 
