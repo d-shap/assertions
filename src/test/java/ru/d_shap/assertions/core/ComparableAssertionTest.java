@@ -49,19 +49,19 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isEqualTo(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isEqualTo(20);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20> but was:<10>");
         }
@@ -79,19 +79,19 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isNotEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isNotEqualTo(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isNotEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10>");
         }
@@ -108,25 +108,25 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isGreaterThan(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isGreaterThan(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isGreaterThan(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10> but was:<10>");
         }
         try {
             new ComparableAssertion(10, null).isGreaterThan(11);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11> but was:<10>");
         }
@@ -143,19 +143,19 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isGreaterThanOrEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isGreaterThanOrEqualTo(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isGreaterThanOrEqualTo(11);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11> but was:<10>");
         }
@@ -172,25 +172,25 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isLessThan(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isLessThan(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isLessThan(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<10>");
         }
         try {
             new ComparableAssertion(11, null).isLessThan(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<11>");
         }
@@ -207,19 +207,19 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isLessThanOrEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isLessThanOrEqualTo(null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(11, null).isLessThanOrEqualTo(10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<10> but was:<11>");
         }
@@ -236,37 +236,37 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isInRange(10, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isInRange(null, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isInRange(10, null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(5, null).isInRange(1, 5);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>");
         }
         try {
             new ComparableAssertion(5, null).isInRange(6, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>");
         }
         try {
             new ComparableAssertion(5, null).isInRange(8, 9);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>");
         }
@@ -283,37 +283,37 @@ public final class ComparableAssertionTest {
 
         try {
             new ComparableAssertion(null, null).isNotInRange(10, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isNotInRange(null, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(10, null).isNotInRange(10, null);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ComparableAssertion(5, null).isNotInRange(4, 6);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>");
         }
         try {
             new ComparableAssertion(5, null).isNotInRange(5, 6);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>");
         }
         try {
             new ComparableAssertion(5, null).isNotInRange(1, 10);
-            Assertions.fail("Comparable assertion test fail");
+            Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>");
         }

@@ -46,19 +46,19 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion(" ", null).isEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:< >");
         }
         try {
             new StringAssertion("value", null).isEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<value>");
         }
@@ -74,13 +74,13 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(" ", null).isNullOrEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:< >");
         }
         try {
             new StringAssertion("value", null).isNullOrEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<value>");
         }
@@ -96,13 +96,13 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("", null).isNotEmpty();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
@@ -120,19 +120,19 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<value>");
         }
         try {
             new StringAssertion("v   ", null).isBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<v   >");
         }
@@ -151,13 +151,13 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion("value", null).isNullOrBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<value>");
         }
         try {
             new StringAssertion("v   ", null).isNullOrBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<v   >");
         }
@@ -173,31 +173,31 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("", null).isNotBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
             new StringAssertion(" ", null).isNotBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
             new StringAssertion("\t", null).isNotBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
             new StringAssertion("   \t   \t", null).isNotBlank();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
@@ -215,49 +215,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isEqualTo("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isEqualTo(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isEqualTo("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("value1", null).isEqualTo("value2");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
             new StringAssertion("value1", null).isEqualTo("value2");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
             new StringAssertion("value", null).isEqualTo("ЗНАЧЕНИЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<ЗНАЧЕНИЕ> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).isEqualTo("ЗНАЧЕНИЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<ЗНАЧЕНИЕ> but was:<значение>");
         }
         try {
             new StringAssertion("ЗНАЧЕНИЕ", null).isEqualTo("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<значение> but was:<ЗНАЧЕНИЕ>");
         }
@@ -275,43 +275,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isEqualToIgnoreCase("vALue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vALue", null).isEqualToIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vALue", null).isEqualToIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<> but was:<vALue>");
         }
         try {
             new StringAssertion("value1", null).isEqualToIgnoreCase("value2");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
             new StringAssertion("value", null).isEqualToIgnoreCase("ЗНАЧЕНИЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<ЗНАЧЕНИЕ> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isEqualToIgnoreCase("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<значение> but was:<value>");
         }
         try {
             new StringAssertion("ЗнаЧеНИЕ", null).isEqualToIgnoreCase("vaLUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<vaLUE> but was:<ЗнаЧеНИЕ>");
         }
@@ -330,37 +330,37 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotEqualTo("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotEqualTo(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("", null).isNotEqualTo("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new StringAssertion("value", null).isNotEqualTo("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
         }
         try {
             new StringAssertion("значение", null).isNotEqualTo("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<значение>");
         }
         try {
             new StringAssertion("ЗНАЧЕНИЕ", null).isNotEqualTo("ЗНАЧЕНИЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<ЗНАЧЕНИЕ>");
         }
@@ -379,37 +379,37 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotEqualToIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vaLUe", null).isNotEqualToIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("", null).isNotEqualToIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<>");
         }
         try {
             new StringAssertion("value", null).isNotEqualToIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
         }
         try {
             new StringAssertion("знАЧенИЕ", null).isNotEqualToIgnoreCase("ЗНачЕНие");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<знАЧенИЕ>");
         }
         try {
             new StringAssertion("ЗНачЕНие", null).isNotEqualToIgnoreCase("знАЧенИЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<ЗНачЕНие>");
         }
@@ -428,37 +428,37 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isGreaterThan("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThan(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThan("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).isGreaterThan("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThan("valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThan("x");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x> but was:<value>");
         }
@@ -477,49 +477,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isGreaterThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("VALUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<VALUE> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("XYZ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<XYZ> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanIgnoreCase("x");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x> but was:<value>");
         }
@@ -541,25 +541,25 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isGreaterThanOrEqualTo("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualTo(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualTo("valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualTo("x");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<x> but was:<value>");
         }
@@ -582,31 +582,31 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isGreaterThanOrEqualToIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase("XYZ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<XYZ> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase("valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isGreaterThanOrEqualToIgnoreCase("x");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<x> but was:<value>");
         }
@@ -625,37 +625,37 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isLessThan("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThan(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThan("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).isLessThan("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThan("valu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<valu> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThan("c");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<c> but was:<value>");
         }
@@ -674,49 +674,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isLessThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<value> but was:<value>");
         }
         try {
             new StringAssertion("VALUE", null).isLessThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<value> but was:<VALUE>");
         }
         try {
             new StringAssertion("XYZ", null).isLessThanIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<value> but was:<XYZ>");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase("valu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<valu> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThanIgnoreCase("c");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<c> but was:<value>");
         }
@@ -737,31 +737,31 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isLessThanOrEqualTo("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualTo(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualTo("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualTo("valu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<valu> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualTo("c");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<c> but was:<value>");
         }
@@ -783,37 +783,37 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isLessThanOrEqualToIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualToIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualToIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("XYZ", null).isLessThanOrEqualToIgnoreCase("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<value> but was:<XYZ>");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualToIgnoreCase("valu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<valu> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isLessThanOrEqualToIgnoreCase("c");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<c> but was:<value>");
         }
@@ -834,55 +834,55 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isInRange("value", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRange(null, "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRange("value", null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRange("value", "");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).isInRange("A", "Z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:Z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRange("a", "test");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<a:test> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRange("A", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRange("A", "vaLUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:vaLUE> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRange("xxx", "yyy");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
         }
@@ -907,55 +907,55 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isInRangeIgnoreCase("value", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase(null, "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("value", null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("value", "");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("a", "test");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<a:test> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("A", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("A", "vaLUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<A:vaLUE> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("xxx", "yyy");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isInRangeIgnoreCase("XXX", "YYY");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<XXX:YYY> but was:<value>");
         }
@@ -977,55 +977,55 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotInRange("value", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRange(null, "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRange("value", null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRange("value", "");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).isNotInRange("v", "valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<v:valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRange("a", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<a:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRange("A", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<A:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRange("value", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<value:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRange("VALUE", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<VALUE:z> but was:<value>");
         }
@@ -1045,67 +1045,67 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotInRangeIgnoreCase("value", "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase(null, "value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("value", null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("value", "");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("A", "Z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<A:Z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("v", "valuea");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<v:valuea> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("a", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<a:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("A", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<A:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("value", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<value:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("VALUE", "z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<VALUE:z> but was:<value>");
         }
         try {
             new StringAssertion("value", null).isNotInRangeIgnoreCase("VALUE", "Z");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<VALUE:Z> but was:<value>");
         }
@@ -1125,43 +1125,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).contains("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).contains(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).contains("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).contains("VAL");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<VAL> but was:<value>");
         }
         try {
             new StringAssertion("value", null).contains("v.*ue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<v.*ue> but was:<value>");
         }
         try {
             new StringAssertion("value", null).contains("знач");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<знач> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).contains("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<value> but was:<значение>");
         }
@@ -1181,43 +1181,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).containsIgnoreCase("VAlue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("VAlue", null).containsIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("VAlue", null).containsIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).containsIgnoreCase("VAE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<VAE> but was:<value>");
         }
         try {
             new StringAssertion("vaLUe", null).containsIgnoreCase("v.*ue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<v.*ue> but was:<vaLUe>");
         }
         try {
             new StringAssertion("vaLue", null).containsIgnoreCase("зНАч");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<зНАч> but was:<vaLue>");
         }
         try {
             new StringAssertion("знАЧЕние", null).containsIgnoreCase("valUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<valUE> but was:<знАЧЕние>");
         }
@@ -1237,49 +1237,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotContain("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotContain(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotContain("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).doesNotContain("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val> but was:<value>");
         }
         try {
             new StringAssertion("value", null).doesNotContain("alu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<alu> but was:<value>");
         }
         try {
             new StringAssertion("value", null).doesNotContain("lue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<lue> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).doesNotContain("знач");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<знач> but was:<значение>");
         }
         try {
             new StringAssertion("значение", null).doesNotContain("ение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<ение> but was:<значение>");
         }
@@ -1299,49 +1299,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotContainIgnoreCase("valUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("valUE", null).doesNotContainIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("valUE", null).doesNotContainIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val> but was:<vaLUe>");
         }
         try {
             new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("VAL");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<VAL> but was:<vaLUe>");
         }
         try {
             new StringAssertion("vaLUe", null).doesNotContainIgnoreCase("lUE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<lUE> but was:<vaLUe>");
         }
         try {
             new StringAssertion("зНАчеНИе", null).doesNotContainIgnoreCase("знач");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<знач> but was:<зНАчеНИе>");
         }
         try {
             new StringAssertion("зНАчеНИе", null).doesNotContainIgnoreCase("еНИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<еНИе> but was:<зНАчеНИе>");
         }
@@ -1362,43 +1362,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isPartOf(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).isPartOf("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("VAL", null).isPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<VAL>");
         }
         try {
             new StringAssertion("vue", null).isPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<vue>");
         }
         try {
             new StringAssertion("ЗнАЧ", null).isPartOf("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<значение> but was:<ЗнАЧ>");
         }
         try {
             new StringAssertion("чача", null).isPartOf("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<значение> but was:<чача>");
         }
@@ -1419,43 +1419,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vaLUe", null).isPartOfIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vaLUe", null).isPartOfIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<> but was:<vaLUe>");
         }
         try {
             new StringAssertion("VAe", null).isPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<vaLUe> but was:<VAe>");
         }
         try {
             new StringAssertion("vUe", null).isPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<vaLUe> but was:<vUe>");
         }
         try {
             new StringAssertion("ЗАЧ", null).isPartOfIgnoreCase("зНАчеНИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<зНАчеНИе> but was:<ЗАЧ>");
         }
         try {
             new StringAssertion("чача", null).isPartOfIgnoreCase("зНАчеНИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<зНАчеНИе> but was:<чача>");
         }
@@ -1476,43 +1476,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).isNotPartOf(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("", null).isNotPartOf("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<> but was:<>");
         }
         try {
             new StringAssertion("val", null).isNotPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<value> but was:<val>");
         }
         try {
             new StringAssertion("lue", null).isNotPartOf("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<value> but was:<lue>");
         }
         try {
             new StringAssertion("знач", null).isNotPartOf("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<значение> but was:<знач>");
         }
         try {
             new StringAssertion("ение", null).isNotPartOf("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<значение> but was:<ение>");
         }
@@ -1533,43 +1533,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).isNotPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vaLUe", null).isNotPartOfIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("", null).isNotPartOfIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<> but was:<>");
         }
         try {
             new StringAssertion("VAL", null).isNotPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<vaLUe> but was:<VAL>");
         }
         try {
             new StringAssertion("LuE", null).isNotPartOfIgnoreCase("vaLUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<vaLUe> but was:<LuE>");
         }
         try {
             new StringAssertion("зНАч", null).isNotPartOfIgnoreCase("знАченИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<знАченИе> but was:<зНАч>");
         }
         try {
             new StringAssertion("ЕниЕ", null).isNotPartOfIgnoreCase("знАченИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<знАченИе> but was:<ЕниЕ>");
         }
@@ -1589,31 +1589,31 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).matches("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).matches(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).matches("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the expected value. Expected:<> but was:<value>");
         }
         try {
             new StringAssertion("value", null).matches("\\d+");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the expected value. Expected:<\\d+> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).matches("\\w+");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the expected value. Expected:<\\w+> but was:<значение>");
         }
@@ -1633,31 +1633,31 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotMatch("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotMatch(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("", null).doesNotMatch("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not match the expected value. Expected:<> but was:<>");
         }
         try {
             new StringAssertion("value", null).doesNotMatch("\\w+");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not match the expected value. Expected:<\\w+> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).doesNotMatch("\\p{L}{8}");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not match the expected value. Expected:<\\p{L}{8}> but was:<значение>");
         }
@@ -1677,43 +1677,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).startsWith("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).startsWith(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).startsWith("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).startsWith("lue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<lue> but was:<value>");
         }
         try {
             new StringAssertion("value", null).startsWith("Val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Val> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).startsWith("ачен");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<ачен> but was:<значение>");
         }
         try {
             new StringAssertion("значение", null).startsWith("Знач");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Знач> but was:<значение>");
         }
@@ -1733,43 +1733,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).startsWithIgnoreCase("vAlUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).startsWithIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).startsWithIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("vAlUe", null).startsWithIgnoreCase("lUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<lUe> but was:<vAlUe>");
         }
         try {
             new StringAssertion("vAlUe", null).startsWithIgnoreCase("Vau");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Vau> but was:<vAlUe>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).startsWithIgnoreCase("аЧен");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<аЧен> but was:<знАчЕнИе>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).startsWithIgnoreCase("Значи");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Значи> but was:<знАчЕнИе>");
         }
@@ -1789,43 +1789,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotStartWith("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotStartWith(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotStartWith("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).doesNotStartWith("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<val> but was:<value>");
         }
         try {
             new StringAssertion("value", null).doesNotStartWith("valu");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<valu> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).doesNotStartWith("зн");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<зн> but was:<значение>");
         }
         try {
             new StringAssertion("значение", null).doesNotStartWith("значен");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<значен> but was:<значение>");
         }
@@ -1845,43 +1845,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotStartWithIgnoreCase("vAlUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<val> but was:<vAlUe>");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotStartWithIgnoreCase("VALUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<VALUe> but was:<vAlUe>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("зн");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<зн> but was:<знАчЕнИе>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).doesNotStartWithIgnoreCase("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<значение> but was:<знАчЕнИе>");
         }
@@ -1901,43 +1901,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).endsWith("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).endsWith(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).endsWith("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("value", null).endsWith("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<val> but was:<value>");
         }
         try {
             new StringAssertion("value", null).endsWith("LuE");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<LuE> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).endsWith("значе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<значе> but was:<значение>");
         }
         try {
             new StringAssertion("значение", null).endsWith("ЧенИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<ЧенИе> but was:<значение>");
         }
@@ -1958,49 +1958,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).endsWithIgnoreCase("vAlUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<val> but was:<vAlUe>");
         }
         try {
             new StringAssertion("vAlUe", null).endsWithIgnoreCase("vUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<vUe> but was:<vAlUe>");
         }
         try {
             new StringAssertion("", null).endsWithIgnoreCase("val");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<val> but was:<>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).endsWithIgnoreCase("знАчЕ");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<знАчЕ> but was:<знАчЕнИе>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).endsWithIgnoreCase("знАИе");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<знАИе> but was:<знАчЕнИе>");
         }
@@ -2020,43 +2020,43 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotEndWith("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotEndWith(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("value", null).doesNotEndWith("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("value", null).doesNotEndWith("value");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<value> but was:<value>");
         }
         try {
             new StringAssertion("value", null).doesNotEndWith("alue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<alue> but was:<value>");
         }
         try {
             new StringAssertion("значение", null).doesNotEndWith("значение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<значение> but was:<значение>");
         }
         try {
             new StringAssertion("значение", null).doesNotEndWith("ие");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<ие> but was:<значение>");
         }
@@ -2077,49 +2077,49 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).doesNotEndWithIgnoreCase("vAlUe");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase(null);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("vaLue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<vaLue> but was:<vAlUe>");
         }
         try {
             new StringAssertion("vAlUe", null).doesNotEndWithIgnoreCase("aLue");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<aLue> but was:<vAlUe>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("знАчение");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<знАчение> but was:<знАчЕнИе>");
         }
         try {
             new StringAssertion("знАчЕнИе", null).doesNotEndWithIgnoreCase("е");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<е> but was:<знАчЕнИе>");
         }
         try {
             new StringAssertion("aaaxxxxx", null).doesNotEndWithIgnoreCase("xxx");
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<xxx> but was:<aaaxxxxx>");
         }
@@ -2140,19 +2140,19 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).toLength();
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).toLength().isEqualTo(6);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             new StringAssertion("vAlUe", "Message").toLength().isEqualTo(6);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<6> but was:<5>");
         }
@@ -2168,19 +2168,19 @@ public final class StringAssertionTest {
 
         try {
             new StringAssertion(null, null).hasLength(5);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new StringAssertion("vAlUe", null).hasLength(6);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             new StringAssertion("vAlUe", "Message").hasLength(6);
-            Assertions.fail("String assertion test fail");
+            Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<6> but was:<5>");
         }

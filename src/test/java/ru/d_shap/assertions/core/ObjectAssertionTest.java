@@ -46,19 +46,19 @@ public final class ObjectAssertionTest {
 
         try {
             new ObjectAssertion(null, null).isEqualTo("value");
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ObjectAssertion("value", null).isEqualTo(null);
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ObjectAssertion("value1", null).isEqualTo("value2");
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
@@ -74,19 +74,19 @@ public final class ObjectAssertionTest {
 
         try {
             new ObjectAssertion(null, null).isNotEqualTo("value");
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ObjectAssertion("value", null).isNotEqualTo(null);
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ObjectAssertion("value", null).isNotEqualTo("value");
-            Assertions.fail("Object assertion test fail");
+            Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
         }
