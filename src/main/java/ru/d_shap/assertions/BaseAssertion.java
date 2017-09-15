@@ -55,7 +55,6 @@ public abstract class BaseAssertion {
      * @return the assertion.
      */
     public final <T extends BaseAssertion> T as(final Class<T> assertionClass) {
-        checkActualIsNotNull();
         checkArgumentIsNotNull(assertionClass);
         try {
             List<Constructor<T>> constructors = getConstructors(assertionClass);
@@ -90,7 +89,7 @@ public abstract class BaseAssertion {
     }
 
     static boolean isCompatibleTypes(final Object actual, final Class<?> targetClass) {
-        return targetClass.isAssignableFrom(actual.getClass()) || isActualToPrimitiveAssignable(actual.getClass(), targetClass);
+        return actual == null && !targetClass.isPrimitive() || actual != null && (targetClass.isAssignableFrom(actual.getClass()) || isActualToPrimitiveAssignable(actual.getClass(), targetClass));
     }
 
     private static boolean isActualToPrimitiveAssignable(final Class<?> actualClass, final Class<?> targetClass) {
