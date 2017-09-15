@@ -60,25 +60,25 @@ public final class ReaderAssertionTest {
 
         try {
             new ReaderAssertion(null, null).isCompleted();
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isCompleted();
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isCompleted();
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<-1> but was:<49>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), "Message").isCompleted();
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<-1> but was:<49>");
         }
@@ -111,115 +111,115 @@ public final class ReaderAssertionTest {
 
         try {
             new ReaderAssertion(null, null).isNextCharsEqualTo('1');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(null, null).isNextCharsEqualTo(49);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(null, null).isNextCharsEqualTo(new ArrayList<Character>());
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo((char[]) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo((int[]) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isNextCharsEqualTo('1');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isNextCharsEqualTo(49);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isNextCharsEqualTo(new ArrayList<Character>());
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo('1', '3');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo('1', '2', '3', '4');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isNextCharsEqualTo();
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1]>");
         }
         try {
             new ReaderAssertion(new StringReader(""), null).isNextCharsEqualTo('1', '2');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), null).isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), null).isNextCharsEqualTo(0, 0, 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo(0, 0, 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), null).isNextCharsEqualTo(Arrays.asList((char) 0, (char) 0, (char) 0));
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo(Arrays.asList((char) 0, (char) 0, (char) 0));
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
@@ -244,115 +244,115 @@ public final class ReaderAssertionTest {
 
         try {
             new ReaderAssertion(null, null).isAllCharsEqualTo('1');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(null, null).isAllCharsEqualTo(49);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(null, null).isAllCharsEqualTo(new ArrayList<Character>());
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo((char[]) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo((int[]) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isAllCharsEqualTo('1');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isAllCharsEqualTo(49);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new ErrorReader(), null).isAllCharsEqualTo(new ArrayList<Character>());
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo(49);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1]> but was:<[1, 2]>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo('1', '2');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo('1', '2', '4');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             new ReaderAssertion(new StringReader("123"), null).isAllCharsEqualTo('1', '2', '3', '4');
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), null).isAllCharsEqualTo((char) 0, (char) 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo((char) 0, (char) 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), null).isAllCharsEqualTo(0, 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo(0, 0);
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), null).isAllCharsEqualTo(Arrays.asList((char) 0, (char) 0));
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo(Arrays.asList((char) 0, (char) 0));
-            Assertions.fail("Reader assertion test fail");
+            Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
