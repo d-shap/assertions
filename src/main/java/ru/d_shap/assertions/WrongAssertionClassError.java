@@ -33,6 +33,15 @@ public final class WrongAssertionClassError extends Error {
      * Create new object.
      *
      * @param assertionClass assertion class.
+     */
+    WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass) {
+        super("Wrong assertion class: " + assertionClass.getName() + " - class should have one constructor " + assertionClass.getSimpleName() + "(" + Object.class.getName() + ", " + String.class.getName() + ")");
+    }
+
+    /**
+     * Create new object.
+     *
+     * @param assertionClass assertion class.
      * @param actualClass    actual class.
      */
     WrongAssertionClassError(final Class<? extends BaseAssertion> assertionClass, final Class<?> actualClass) {
