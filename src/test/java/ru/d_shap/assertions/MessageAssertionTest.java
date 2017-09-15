@@ -100,7 +100,19 @@ public final class MessageAssertionTest {
     @Test
     public void byteAssertionTest() {
         Assertions.assertWithMessage("Test message").that((byte) 5).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, ByteAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that((byte) 5, ByteAssertion.class).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ByteAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byte").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byte", ByteAssertion.class).isEqualTo(5);
 
@@ -130,7 +142,19 @@ public final class MessageAssertionTest {
     @Test
     public void shortAssertionTest() {
         Assertions.assertWithMessage("Test message").that((short) 5).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, ShortAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that((short) 5, ShortAssertion.class).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ShortAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_short").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_short", ShortAssertion.class).isEqualTo(5);
 
@@ -160,7 +184,19 @@ public final class MessageAssertionTest {
     @Test
     public void intAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, IntAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(5, IntAssertion.class).isEqualTo(5);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", IntAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_int").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_int", IntAssertion.class).isEqualTo(5);
 
@@ -190,7 +226,19 @@ public final class MessageAssertionTest {
     @Test
     public void longAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5L).isEqualTo(5L);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, LongAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(5L, LongAssertion.class).isEqualTo(5L);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", LongAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_long").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_long", LongAssertion.class).isEqualTo(5L);
 
@@ -220,7 +268,19 @@ public final class MessageAssertionTest {
     @Test
     public void floatAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(5.0f, 0.001f);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, FloatAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(5.0f, FloatAssertion.class).isEqualTo(5.0f, 0.001f);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", FloatAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_float").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_float", FloatAssertion.class).isEqualTo(5.0f, 0.001f);
 
@@ -250,7 +310,19 @@ public final class MessageAssertionTest {
     @Test
     public void doubleAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(5.0, 0.001);
+        try {
+            Assertions.assertWithMessage("Test message").that(null, DoubleAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(5.0, DoubleAssertion.class).isEqualTo(5.0, 0.001);
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", DoubleAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_double").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_double", DoubleAssertion.class).isEqualTo(5.0, 0.001);
 
@@ -280,7 +352,19 @@ public final class MessageAssertionTest {
     @Test
     public void booleanAssertionTest() {
         Assertions.assertWithMessage("Test message").that(true).isTrue();
+        try {
+            Assertions.assertWithMessage("Test message").that(null, BooleanAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(true, BooleanAssertion.class).isTrue();
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", BooleanAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_boolean").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_boolean", BooleanAssertion.class).isTrue();
 
@@ -310,7 +394,19 @@ public final class MessageAssertionTest {
     @Test
     public void charAssertionTest() {
         Assertions.assertWithMessage("Test message").that('5').isEqualTo('5');
+        try {
+            Assertions.assertWithMessage("Test message").that(null, CharAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that('5', CharAssertion.class).isEqualTo('5');
+        try {
+            Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", CharAssertion.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Object, java.lang.String)");
+        }
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_char").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_char", CharAssertion.class).isEqualTo('5');
 
