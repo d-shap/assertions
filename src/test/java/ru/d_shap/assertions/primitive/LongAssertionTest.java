@@ -49,7 +49,7 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(10L, null).isEqualTo(20L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20> but was:<10>");
         }
@@ -67,7 +67,7 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(10L, null).isNotEqualTo(10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10>");
         }
@@ -84,13 +84,13 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(10L, null).isGreaterThan(10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10> but was:<10>");
         }
         try {
             new LongAssertion(10L, null).isGreaterThan(11L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11> but was:<10>");
         }
@@ -107,7 +107,7 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(10L, null).isGreaterThanOrEqualTo(11L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11> but was:<10>");
         }
@@ -124,13 +124,13 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(10L, null).isLessThan(10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<10>");
         }
         try {
             new LongAssertion(11L, null).isLessThan(10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<11>");
         }
@@ -147,7 +147,7 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(11L, null).isLessThanOrEqualTo(10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<10> but was:<11>");
         }
@@ -164,19 +164,19 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(5L, null).isInRange(1L, 5L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>");
         }
         try {
             new LongAssertion(5L, null).isInRange(6L, 10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>");
         }
         try {
             new LongAssertion(5L, null).isInRange(8L, 9L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>");
         }
@@ -193,19 +193,19 @@ public final class LongAssertionTest {
 
         try {
             new LongAssertion(5L, null).isNotInRange(4L, 6L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>");
         }
         try {
             new LongAssertion(5L, null).isNotInRange(5L, 6L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>");
         }
         try {
             new LongAssertion(5L, null).isNotInRange(1L, 10L);
-            Assertions.fail("Long assertion test fail");
+            Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>");
         }

@@ -46,7 +46,7 @@ public final class BooleanAssertionTest {
 
         try {
             new BooleanAssertion(false, null).isTrue();
-            Assertions.fail("Boolean assertion test fail");
+            Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be true.");
         }
@@ -61,7 +61,7 @@ public final class BooleanAssertionTest {
 
         try {
             new BooleanAssertion(true, null).isFalse();
-            Assertions.fail("Boolean assertion test fail");
+            Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
