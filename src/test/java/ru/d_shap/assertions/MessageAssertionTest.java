@@ -344,6 +344,8 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(object).isNotEqualTo(new StringBuilder("value"));
         Assertions.assertWithMessage("Test message").that(null, ObjectAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(object, ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field").isNull();
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ObjectAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_object").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_object", ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
 
@@ -376,6 +378,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
         Assertions.assertWithMessage("Test message").that(null, ByteArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}, ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ByteArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteArray", ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
@@ -408,6 +411,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
         Assertions.assertWithMessage("Test message").that(null, ShortArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new short[]{1, 2, 3}, ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ShortArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortArray", ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
@@ -440,6 +444,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
         Assertions.assertWithMessage("Test message").that(null, IntArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new int[]{1, 2, 3}, IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", IntArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intArray", IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
 
@@ -472,6 +477,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L);
         Assertions.assertWithMessage("Test message").that(null, LongArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new long[]{1L, 2L, 3L}, LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", LongArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longArray", LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
 
@@ -504,6 +510,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
         Assertions.assertWithMessage("Test message").that(null, FloatArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new float[]{1.0f, 2.0f, 3.0f}, FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", FloatArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatArray", FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
 
@@ -536,6 +543,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0);
         Assertions.assertWithMessage("Test message").that(null, DoubleArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new double[]{1.0, 2.0, 3.0}, DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", DoubleArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleArray", DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
 
@@ -568,6 +576,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false);
         Assertions.assertWithMessage("Test message").that(null, BooleanArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}, BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", BooleanArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_booleanArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_booleanArray", BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
 
@@ -600,6 +609,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3');
         Assertions.assertWithMessage("Test message").that(null, CharArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new char[]{'1', '2', '3'}, CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", CharArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charArray", CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
 
@@ -632,6 +642,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, ObjectArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new Object[]{"1", "2", "3"}, ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ObjectArrayAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_objectArray").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_objectArray", ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
 
@@ -664,6 +675,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(String.class).isSubtypeOf(Object.class);
         Assertions.assertWithMessage("Test message").that(null, ClassAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(String.class, ClassAssertion.class).isSubtypeOf(Object.class);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ClassAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_class").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_class", ClassAssertion.class).isSubtypeOf(Object.class);
 
@@ -696,6 +708,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new StringBuilder("test")).hasLength(4);
         Assertions.assertWithMessage("Test message").that(null, CharSequenceAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new StringBuilder("test"), CharSequenceAssertion.class).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", CharSequenceAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charSequence").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charSequence", CharSequenceAssertion.class).hasLength(4);
 
@@ -728,6 +741,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that("test").hasLength(4);
         Assertions.assertWithMessage("Test message").that(null, StringAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that("test", StringAssertion.class).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", StringAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_string").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_string", StringAssertion.class).hasLength(4);
 
@@ -761,6 +775,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(comparable).isEqualTo(5);
         Assertions.assertWithMessage("Test message").that(null, ComparableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(comparable, ComparableAssertion.class).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ComparableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_comparable").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_comparable", ComparableAssertion.class).isEqualTo(5);
 
@@ -794,6 +809,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(iterable).hasSize(3);
         Assertions.assertWithMessage("Test message").that(null, IterableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(iterable, IterableAssertion.class).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", IterableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterable").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterable", IterableAssertion.class).hasSize(3);
 
@@ -826,6 +842,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new AssertionError("error")).isInstanceOf(Error.class);
         Assertions.assertWithMessage("Test message").that(null, ThrowableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new AssertionError("error"), ThrowableAssertion.class).isInstanceOf(Error.class);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ThrowableAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_throwable").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_throwable", ThrowableAssertion.class).isInstanceOf(Error.class);
 
@@ -859,6 +876,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(collection).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, CollectionAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(collection, CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", CollectionAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection", CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
 
@@ -891,6 +909,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, IteratorAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator(), IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", IteratorAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_iterator", IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
 
@@ -923,6 +942,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, ListAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3"), ListAssertion.class).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ListAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_list").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_list", ListAssertion.class).containsExactlyInOrder("1", "2", "3");
 
@@ -955,6 +975,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, SetAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new HashSet<>(Arrays.asList("1", "2", "3")), SetAssertion.class).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", SetAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_set").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_set", SetAssertion.class).containsExactly("1", "2", "3");
 
@@ -987,6 +1008,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createMap()).hasSize(3);
         Assertions.assertWithMessage("Test message").that(null, MapAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createMap(), MapAssertion.class).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", MapAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_map").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_map", MapAssertion.class).hasSize(3);
 
@@ -1019,6 +1041,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(1, 2);
         Assertions.assertWithMessage("Test message").that(null, InputStreamAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new ByteArrayInputStream(new byte[]{1, 2, 3}), InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", InputStreamAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_inputStream").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_inputStream", InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
 
@@ -1051,6 +1074,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(new StringReader("123")).isNextCharsEqualTo('1', '2');
         Assertions.assertWithMessage("Test message").that(null, ReaderAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new StringReader("123"), ReaderAssertion.class).isNextCharsEqualTo('1', '2');
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ReaderAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_reader").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_reader", ReaderAssertion.class).isNextCharsEqualTo('1', '2');
 
@@ -1083,6 +1107,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createByteBuffer()).containsExactlyInOrder(1, 2);
         Assertions.assertWithMessage("Test message").that(null, ByteBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createByteBuffer(), ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ByteBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_byteBuffer", ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
 
@@ -1115,6 +1140,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createShortBuffer()).containsExactlyInOrder(1, 2);
         Assertions.assertWithMessage("Test message").that(null, ShortBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createShortBuffer(), ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", ShortBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_shortBuffer", ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
 
@@ -1147,6 +1173,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createIntBuffer()).containsExactlyInOrder(1, 2);
         Assertions.assertWithMessage("Test message").that(null, IntBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createIntBuffer(), IntBufferAssertion.class).containsExactlyInOrder(1, 2);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", IntBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_intBuffer", IntBufferAssertion.class).containsExactlyInOrder(1, 2);
 
@@ -1179,6 +1206,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createLongBuffer()).containsExactlyInOrder(1L, 2L);
         Assertions.assertWithMessage("Test message").that(null, LongBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createLongBuffer(), LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", LongBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_longBuffer", LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
 
@@ -1211,6 +1239,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createFloatBuffer()).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertWithMessage("Test message").that(null, FloatBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createFloatBuffer(), FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", FloatBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_floatBuffer", FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
 
@@ -1243,6 +1272,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createDoubleBuffer()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertWithMessage("Test message").that(null, DoubleBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createDoubleBuffer(), DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", DoubleBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_doubleBuffer", DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
 
@@ -1275,6 +1305,7 @@ public final class MessageAssertionTest {
         Assertions.assertWithMessage("Test message").that(createCharBuffer()).containsExactlyInOrder(49, 50);
         Assertions.assertWithMessage("Test message").that(null, CharBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(createCharBuffer(), CharBufferAssertion.class).containsExactlyInOrder(49, 50);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", CharBufferAssertion.class).isNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_charBuffer", CharBufferAssertion.class).containsExactlyInOrder(49, 50);
 
@@ -1370,6 +1401,21 @@ public final class MessageAssertionTest {
         charBuffer.put('2');
         charBuffer.flip();
         return charBuffer;
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class NullFieldClass {
+
+        private Object _field;
+
+        NullFieldClass() {
+            super();
+        }
+
     }
 
     /**
