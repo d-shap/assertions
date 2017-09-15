@@ -267,7 +267,9 @@ public final class AssertionsTest {
     @Test
     public void objectAssertionTest() {
         Object object = new StringBuilder("value");
+        Assertions.assertThat((Object) null).isNull();
         Assertions.assertThat(object).isNotEqualTo(new StringBuilder("value"));
+        Assertions.assertThat(null, ObjectAssertion.class).isNull();
         Assertions.assertThat(object, ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
         Assertions.assertThat(new PrivateFieldsClass(), "_object").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_object", ObjectAssertion.class).isNotEqualTo(new StringBuilder("value"));
@@ -285,7 +287,9 @@ public final class AssertionsTest {
      */
     @Test
     public void byteArrayAssertionTest() {
+        Assertions.assertThat((byte[]) null).isNull();
         Assertions.assertThat(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(null, ByteArrayAssertion.class).isNull();
         Assertions.assertThat(new byte[]{1, 2, 3}, ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
         Assertions.assertThat(new PrivateFieldsClass(), "_byteArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byteArray", ByteArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
@@ -303,7 +307,9 @@ public final class AssertionsTest {
      */
     @Test
     public void shortArrayAssertionTest() {
+        Assertions.assertThat((short[]) null).isNull();
         Assertions.assertThat(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(null, ShortArrayAssertion.class).isNull();
         Assertions.assertThat(new short[]{1, 2, 3}, ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
         Assertions.assertThat(new PrivateFieldsClass(), "_shortArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_shortArray", ShortArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
@@ -321,7 +327,9 @@ public final class AssertionsTest {
      */
     @Test
     public void intArrayAssertionTest() {
+        Assertions.assertThat((int[]) null).isNull();
         Assertions.assertThat(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(null, IntArrayAssertion.class).isNull();
         Assertions.assertThat(new int[]{1, 2, 3}, IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
         Assertions.assertThat(new PrivateFieldsClass(), "_intArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_intArray", IntArrayAssertion.class).containsExactlyInOrder(1, 2, 3);
@@ -339,7 +347,9 @@ public final class AssertionsTest {
      */
     @Test
     public void longArrayAssertionTest() {
+        Assertions.assertThat((long[]) null).isNull();
         Assertions.assertThat(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L);
+        Assertions.assertThat(null, LongArrayAssertion.class).isNull();
         Assertions.assertThat(new long[]{1L, 2L, 3L}, LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
         Assertions.assertThat(new PrivateFieldsClass(), "_longArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_longArray", LongArrayAssertion.class).containsExactlyInOrder(1L, 2L, 3L);
@@ -357,7 +367,9 @@ public final class AssertionsTest {
      */
     @Test
     public void floatArrayAssertionTest() {
+        Assertions.assertThat((float[]) null).isNull();
         Assertions.assertThat(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
+        Assertions.assertThat(null, FloatArrayAssertion.class).isNull();
         Assertions.assertThat(new float[]{1.0f, 2.0f, 3.0f}, FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
         Assertions.assertThat(new PrivateFieldsClass(), "_floatArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_floatArray", FloatArrayAssertion.class).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
@@ -375,7 +387,9 @@ public final class AssertionsTest {
      */
     @Test
     public void doubleArrayAssertionTest() {
+        Assertions.assertThat((double[]) null).isNull();
         Assertions.assertThat(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0);
+        Assertions.assertThat(null, DoubleArrayAssertion.class).isNull();
         Assertions.assertThat(new double[]{1.0, 2.0, 3.0}, DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleArray", DoubleArrayAssertion.class).containsExactlyInOrder(1.0, 2.0, 3.0);
@@ -393,7 +407,9 @@ public final class AssertionsTest {
      */
     @Test
     public void booleanArrayAssertionTest() {
+        Assertions.assertThat((boolean[]) null).isNull();
         Assertions.assertThat(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false);
+        Assertions.assertThat(null, BooleanArrayAssertion.class).isNull();
         Assertions.assertThat(new boolean[]{true, true, false}, BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
         Assertions.assertThat(new PrivateFieldsClass(), "_booleanArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_booleanArray", BooleanArrayAssertion.class).containsExactlyInOrder(true, true, false);
@@ -411,7 +427,9 @@ public final class AssertionsTest {
      */
     @Test
     public void charArrayAssertionTest() {
+        Assertions.assertThat((char[]) null).isNull();
         Assertions.assertThat(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertThat(null, CharArrayAssertion.class).isNull();
         Assertions.assertThat(new char[]{'1', '2', '3'}, CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
         Assertions.assertThat(new PrivateFieldsClass(), "_charArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_charArray", CharArrayAssertion.class).containsExactlyInOrder('1', '2', '3');
@@ -429,7 +447,9 @@ public final class AssertionsTest {
      */
     @Test
     public void objectArrayAssertionTest() {
+        Assertions.assertThat((Object[]) null).isNull();
         Assertions.assertThat(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(null, ObjectArrayAssertion.class).isNull();
         Assertions.assertThat(new Object[]{"1", "2", "3"}, ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(new PrivateFieldsClass(), "_objectArray").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_objectArray", ObjectArrayAssertion.class).containsExactlyInOrder("1", "2", "3");
@@ -447,7 +467,9 @@ public final class AssertionsTest {
      */
     @Test
     public void classAssertionTest() {
+        Assertions.assertThat((Class<?>) null).isNull();
         Assertions.assertThat(String.class).isSubtypeOf(Object.class);
+        Assertions.assertThat(null, ClassAssertion.class).isNull();
         Assertions.assertThat(String.class, ClassAssertion.class).isSubtypeOf(Object.class);
         Assertions.assertThat(new PrivateFieldsClass(), "_class").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_class", ClassAssertion.class).isSubtypeOf(Object.class);
@@ -465,7 +487,9 @@ public final class AssertionsTest {
      */
     @Test
     public void charSequenceAssertionTest() {
+        Assertions.assertThat((CharSequence) null).isNull();
         Assertions.assertThat(new StringBuilder("test")).hasLength(4);
+        Assertions.assertThat(null, CharSequenceAssertion.class).isNull();
         Assertions.assertThat(new StringBuilder("test"), CharSequenceAssertion.class).hasLength(4);
         Assertions.assertThat(new PrivateFieldsClass(), "_charSequence").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_charSequence", CharSequenceAssertion.class).hasLength(4);
@@ -483,7 +507,9 @@ public final class AssertionsTest {
      */
     @Test
     public void stringAssertionTest() {
+        Assertions.assertThat((String) null).isNull();
         Assertions.assertThat("test").hasLength(4);
+        Assertions.assertThat(null, StringAssertion.class).isNull();
         Assertions.assertThat("test", StringAssertion.class).hasLength(4);
         Assertions.assertThat(new PrivateFieldsClass(), "_string").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_string", StringAssertion.class).hasLength(4);
@@ -502,7 +528,9 @@ public final class AssertionsTest {
     @Test
     public void comparableAssertionTest() {
         Comparable<?> comparable = Integer.valueOf("5");
+        Assertions.assertThat((Comparable<?>) null).isNull();
         Assertions.assertThat(comparable).isEqualTo(5);
+        Assertions.assertThat(null, ComparableAssertion.class).isNull();
         Assertions.assertThat(comparable, ComparableAssertion.class).isEqualTo(5);
         Assertions.assertThat(new PrivateFieldsClass(), "_comparable").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_comparable", ComparableAssertion.class).isEqualTo(5);
@@ -521,7 +549,9 @@ public final class AssertionsTest {
     @Test
     public void iterableAssertionTest() {
         Iterable<?> iterable = Arrays.asList("1", "2", "3");
+        Assertions.assertThat((Iterable<?>) null).isNull();
         Assertions.assertThat(iterable).hasSize(3);
+        Assertions.assertThat(null, IterableAssertion.class).isNull();
         Assertions.assertThat(iterable, IterableAssertion.class).hasSize(3);
         Assertions.assertThat(new PrivateFieldsClass(), "_iterable").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_iterable", IterableAssertion.class).hasSize(3);
@@ -539,7 +569,9 @@ public final class AssertionsTest {
      */
     @Test
     public void throwableAssertionTest() {
+        Assertions.assertThat((Throwable) null).isNull();
         Assertions.assertThat(new AssertionError("error")).isInstanceOf(Error.class);
+        Assertions.assertThat(null, ThrowableAssertion.class).isNull();
         Assertions.assertThat(new AssertionError("error"), ThrowableAssertion.class).isInstanceOf(Error.class);
         Assertions.assertThat(new PrivateFieldsClass(), "_throwable").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_throwable", ThrowableAssertion.class).isInstanceOf(Error.class);
@@ -558,7 +590,9 @@ public final class AssertionsTest {
     @Test
     public void collectionAssertionTest() {
         Collection<?> collection = Arrays.asList("1", "2", "3");
+        Assertions.assertThat((Collection<?>) null).isNull();
         Assertions.assertThat(collection).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(null, CollectionAssertion.class).isNull();
         Assertions.assertThat(collection, CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(new PrivateFieldsClass(), "_collection").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_collection", CollectionAssertion.class).containsExactlyInOrder("1", "2", "3");
@@ -576,7 +610,9 @@ public final class AssertionsTest {
      */
     @Test
     public void iteratorAssertionTest() {
+        Assertions.assertThat((Iterator<?>) null).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(null, IteratorAssertion.class).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3").iterator(), IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(new PrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_iterator", IteratorAssertion.class).containsExactlyInOrder("1", "2", "3");
@@ -594,7 +630,9 @@ public final class AssertionsTest {
      */
     @Test
     public void listAssertionTest() {
+        Assertions.assertThat((List<?>) null).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(null, ListAssertion.class).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3"), ListAssertion.class).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(new PrivateFieldsClass(), "_list").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_list", ListAssertion.class).containsExactlyInOrder("1", "2", "3");
@@ -612,7 +650,9 @@ public final class AssertionsTest {
      */
     @Test
     public void setAssertionTest() {
+        Assertions.assertThat((Set<?>) null).isNull();
         Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
+        Assertions.assertThat(null, SetAssertion.class).isNull();
         Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3")), SetAssertion.class).containsExactly("1", "2", "3");
         Assertions.assertThat(new PrivateFieldsClass(), "_set").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_set", SetAssertion.class).containsExactly("1", "2", "3");
@@ -630,7 +670,9 @@ public final class AssertionsTest {
      */
     @Test
     public void mapAssertionTest() {
+        Assertions.assertThat((Map<?, ?>) null).isNull();
         Assertions.assertThat(createMap()).hasSize(3);
+        Assertions.assertThat(null, MapAssertion.class).isNull();
         Assertions.assertThat(createMap(), MapAssertion.class).hasSize(3);
         Assertions.assertThat(new PrivateFieldsClass(), "_map").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_map", MapAssertion.class).hasSize(3);
@@ -648,7 +690,9 @@ public final class AssertionsTest {
      */
     @Test
     public void inputStreamAssertionTest() {
+        Assertions.assertThat((InputStream) null).isNull();
         Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(1, 2);
+        Assertions.assertThat(null, InputStreamAssertion.class).isNull();
         Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3}), InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
         Assertions.assertThat(new PrivateFieldsClass(), "_inputStream").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_inputStream", InputStreamAssertion.class).isNextBytesEqualTo(1, 2);
@@ -666,7 +710,9 @@ public final class AssertionsTest {
      */
     @Test
     public void readerAssertionTest() {
+        Assertions.assertThat((Reader) null).isNull();
         Assertions.assertThat(new StringReader("123")).isNextCharsEqualTo('1', '2');
+        Assertions.assertThat(null, ReaderAssertion.class).isNull();
         Assertions.assertThat(new StringReader("123"), ReaderAssertion.class).isNextCharsEqualTo('1', '2');
         Assertions.assertThat(new PrivateFieldsClass(), "_reader").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_reader", ReaderAssertion.class).isNextCharsEqualTo('1', '2');
@@ -684,7 +730,9 @@ public final class AssertionsTest {
      */
     @Test
     public void byteBufferAssertionTest() {
+        Assertions.assertThat((ByteBuffer) null).isNull();
         Assertions.assertThat(createByteBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(null, ByteBufferAssertion.class).isNull();
         Assertions.assertThat(createByteBuffer(), ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new PrivateFieldsClass(), "_byteBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byteBuffer", ByteBufferAssertion.class).containsExactlyInOrder(1, 2);
@@ -702,7 +750,9 @@ public final class AssertionsTest {
      */
     @Test
     public void shortBufferAssertionTest() {
+        Assertions.assertThat((ShortBuffer) null).isNull();
         Assertions.assertThat(createShortBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(null, ShortBufferAssertion.class).isNull();
         Assertions.assertThat(createShortBuffer(), ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new PrivateFieldsClass(), "_shortBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_shortBuffer", ShortBufferAssertion.class).containsExactlyInOrder(1, 2);
@@ -720,7 +770,9 @@ public final class AssertionsTest {
      */
     @Test
     public void intBufferAssertionTest() {
+        Assertions.assertThat((IntBuffer) null).isNull();
         Assertions.assertThat(createIntBuffer()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(null, IntBufferAssertion.class).isNull();
         Assertions.assertThat(createIntBuffer(), IntBufferAssertion.class).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new PrivateFieldsClass(), "_intBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_intBuffer", IntBufferAssertion.class).containsExactlyInOrder(1, 2);
@@ -738,7 +790,9 @@ public final class AssertionsTest {
      */
     @Test
     public void longBufferAssertionTest() {
+        Assertions.assertThat((LongBuffer) null).isNull();
         Assertions.assertThat(createLongBuffer()).containsExactlyInOrder(1L, 2L);
+        Assertions.assertThat(null, LongBufferAssertion.class).isNull();
         Assertions.assertThat(createLongBuffer(), LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
         Assertions.assertThat(new PrivateFieldsClass(), "_longBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_longBuffer", LongBufferAssertion.class).containsExactlyInOrder(1L, 2L);
@@ -756,7 +810,9 @@ public final class AssertionsTest {
      */
     @Test
     public void floatBufferAssertionTest() {
+        Assertions.assertThat((FloatBuffer) null).isNull();
         Assertions.assertThat(createFloatBuffer()).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertThat(null, FloatBufferAssertion.class).isNull();
         Assertions.assertThat(createFloatBuffer(), FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(new PrivateFieldsClass(), "_floatBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_floatBuffer", FloatBufferAssertion.class).containsExactlyInOrder(1.0f, 2.0f);
@@ -774,7 +830,9 @@ public final class AssertionsTest {
      */
     @Test
     public void doubleBufferAssertionTest() {
+        Assertions.assertThat((DoubleBuffer) null).isNull();
         Assertions.assertThat(createDoubleBuffer()).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertThat(null, DoubleBufferAssertion.class).isNull();
         Assertions.assertThat(createDoubleBuffer(), DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleBuffer", DoubleBufferAssertion.class).containsExactlyInOrder(1.0, 2.0);
@@ -792,7 +850,9 @@ public final class AssertionsTest {
      */
     @Test
     public void charBufferAssertionTest() {
+        Assertions.assertThat((CharBuffer) null).isNull();
         Assertions.assertThat(createCharBuffer()).containsExactlyInOrder(49, 50);
+        Assertions.assertThat(null, CharBufferAssertion.class).isNull();
         Assertions.assertThat(createCharBuffer(), CharBufferAssertion.class).containsExactlyInOrder(49, 50);
         Assertions.assertThat(new PrivateFieldsClass(), "_charBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_charBuffer", CharBufferAssertion.class).containsExactlyInOrder(49, 50);
