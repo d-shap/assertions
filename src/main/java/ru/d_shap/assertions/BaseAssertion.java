@@ -62,7 +62,11 @@ public abstract class BaseAssertion {
                 Constructor<T> constructor = constructors.get(0);
                 return constructor.newInstance(_actual, _message);
             } else {
-                throw new WrongAssertionClassError(assertionClass, _actual.getClass());
+                if (_actual == null) {
+                    throw new WrongAssertionClassError(assertionClass);
+                } else {
+                    throw new WrongAssertionClassError(assertionClass, _actual.getClass());
+                }
             }
         } catch (InvocationTargetException ex) {
             Throwable cause = ex.getCause();
