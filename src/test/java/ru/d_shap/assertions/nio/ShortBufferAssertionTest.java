@@ -52,31 +52,31 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).contains(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).contains(2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).contains(4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).contains(3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").contains(3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
@@ -93,25 +93,25 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContains(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContains(4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContains(3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContains(3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
         }
@@ -128,25 +128,25 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).doesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).doesNotContain(2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).doesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").doesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
@@ -162,31 +162,31 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndDoesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).rewindAndDoesNotContain(2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndDoesNotContain(2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndDoesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndDoesNotContain(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
         }
@@ -205,127 +205,127 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsAll((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAll(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAll(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAll((short) 1, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAll(1, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAll(Arrays.asList((short) 1, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAll((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll(2, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAll(2, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAll(Arrays.asList((short) 2, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAll(Arrays.asList((short) 2, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -347,109 +347,109 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAll((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAll(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAll(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll(2, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll(2, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAll(Arrays.asList((short) 2, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll(Arrays.asList((short) 2, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -467,133 +467,133 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsAllInOrder((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAllInOrder(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAllInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder((short) 1, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(1, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(Arrays.asList((short) 1, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAllInOrder(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -614,115 +614,115 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAllInOrder((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAllInOrder(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAllInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAllInOrder(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -744,139 +744,139 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsExactly((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsExactly(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsExactly(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactly(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactly(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactly((short) 1, (short) 1, (short) 3, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactly((short) 1, (short) 1, (short) 3, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactly(1, 1, 3, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactly(1, 1, 3, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
@@ -901,121 +901,121 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactly((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactly(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactly(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly((short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactly(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactly((short) 1, (short) 1, (short) 3, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly((short) 1, (short) 1, (short) 3, (short) 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 1, 3, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1, 1, 3, 2);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
@@ -1036,145 +1036,145 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsExactlyInOrder((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsExactlyInOrder(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsExactlyInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactlyInOrder((short) 1, (short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsExactlyInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactlyInOrder(2, 3, 1, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2, 3, 1, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
@@ -1198,127 +1198,127 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactlyInOrder((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactlyInOrder(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsExactlyInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((short) 1, (short) 2, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsExactlyInOrder(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2, 3, 1, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
@@ -1338,127 +1338,127 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsAny((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAny(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsAny(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAny((short) 1, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAny(1, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).containsAny(Arrays.asList((short) 1, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny((short) 3, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAny((short) 3, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny(3, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAny(3, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsAny(Arrays.asList((short) 3, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsAny(Arrays.asList((short) 3, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
@@ -1481,109 +1481,109 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAny((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAny(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsAny(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny((short) 4, (short) 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(4, 5);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(Arrays.asList((short) 4, (short) 5));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny((short) 3, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny((short) 3, (short) 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny(3, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny(3, 4);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsAny(Arrays.asList((short) 3, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny(Arrays.asList((short) 3, (short) 4));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
         }
@@ -1607,97 +1607,97 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).containsNone((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsNone(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).containsNone(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsNone((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsNone(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).containsNone(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").containsNone(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -1718,115 +1718,115 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsNone((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsNone(1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(null, null).rewindAndContainsNone(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone((short[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone((int[]) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone((Iterable<Short>) null);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone(new int[0]);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone(new ArrayList<Short>());
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone((short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone((short) 1, (short) 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(1, 3);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(Arrays.asList((short) 1, (short) 3));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone((short) 2, (short) 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone(2, 1);
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).rewindAndContainsNone(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone(Arrays.asList((short) 2, (short) 1));
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
         }
@@ -1842,13 +1842,13 @@ public final class ShortBufferAssertionTest {
 
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), null).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
         }
         try {
             new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), "Message").createCollectionAssertion(false).isEmpty();
-            Assertions.fail("Short buffer assertion test fail");
+            Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
         }
