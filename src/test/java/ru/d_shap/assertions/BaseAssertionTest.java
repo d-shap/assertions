@@ -775,10 +775,16 @@ public final class BaseAssertionTest {
     @Test
     public void asWrongConstructorFailTest() {
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionWrongParameterCountConstructor.class);
+            new BaseAssertionImpl(null, null).as(BaseAssertionWrongParameterCountConstructor.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructor - class should have one constructor BaseAssertionWrongParameterCountConstructor(java.lang.Object, java.lang.String)");
+        }
+        try {
+            new BaseAssertionImpl("value", null).as(BaseAssertionWrongParameterCountConstructor.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructor - class should have one constructor BaseAssertionWrongParameterCountConstructor(java.lang.String, java.lang.String)");
         }
         try {
             new ListAssertion(new ArrayList<String>(), null).as(MapAssertion.class);
@@ -787,16 +793,28 @@ public final class BaseAssertionTest {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor MapAssertion(java.util.ArrayList, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(new Object(), "message").as(BaseAssertionWrongParameterTypeConstructor.class);
+            new BaseAssertionImpl(null, "message").as(BaseAssertionWrongParameterTypeConstructor.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructor - class should have one constructor BaseAssertionWrongParameterTypeConstructor(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionMultipleConstructors.class);
+            new BaseAssertionImpl("value", "message").as(BaseAssertionWrongParameterTypeConstructor.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructor - class should have one constructor BaseAssertionWrongParameterTypeConstructor(java.lang.String, java.lang.String)");
+        }
+        try {
+            new BaseAssertionImpl(null, null).as(BaseAssertionMultipleConstructors.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructors - class should have one constructor BaseAssertionMultipleConstructors(java.lang.Object, java.lang.String)");
+        }
+        try {
+            new BaseAssertionImpl("value", null).as(BaseAssertionMultipleConstructors.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructors - class should have one constructor BaseAssertionMultipleConstructors(java.lang.String, java.lang.String)");
         }
     }
 
