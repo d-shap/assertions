@@ -635,4 +635,12 @@ public final class FailMessagesTest {
         Assertions.assertThat(FailMessages.getIsNotReadOnly()).isEqualTo("Value should not be read only.");
     }
 
+    /**
+     * {@link FailMessages} class test.
+     */
+    @Test
+    public void getContainsFieldTest() {
+        Assertions.assertThat(FailMessages.getContainsField("field")).isEqualTo("Value should contain the expected field. Expected:<field>");
+    }
+
 }
