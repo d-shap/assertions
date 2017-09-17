@@ -69,6 +69,15 @@ public final class BaseAssertionTest {
     @Test
     public void asTest() {
         Object object = new Object();
+
+        Assertions.assertThat(new BaseAssertionImpl(null, null).as(BaseAssertionImpl.class).getActual()).isNull();
+        try {
+            new BaseAssertionImpl(object, null).as(null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+
         BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, null);
         Assertions.assertThat(baseAssertion.as(BaseAssertionImpl.class)).hasClass(BaseAssertionImpl.class);
         Assertions.assertThat(baseAssertion.as(BaseAssertionImpl.class)).isNotSameAs(baseAssertion);
@@ -78,19 +87,6 @@ public final class BaseAssertionTest {
         Assertions.assertThat(baseAssertion.as(ObjectAssertion.class)).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(ObjectAssertion.class).getActual()).isSameAs(object);
         baseAssertion.as(ObjectAssertion.class).isSameAs(object);
-
-        try {
-            new BaseAssertionImpl(null, null).as(BaseAssertionImpl.class);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BaseAssertionImpl(object, null).as(null);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
     }
 
     /**
