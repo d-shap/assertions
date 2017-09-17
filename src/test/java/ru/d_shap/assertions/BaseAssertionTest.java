@@ -1273,7 +1273,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static abstract class BaseAssertionInstantiationExceptionImpl extends BaseAssertion {
+    public abstract static class BaseAssertionInstantiationExceptionImpl extends BaseAssertion {
 
         /**
          * Create new object.
