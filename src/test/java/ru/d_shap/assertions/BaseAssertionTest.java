@@ -775,46 +775,46 @@ public final class BaseAssertionTest {
     @Test
     public void asWrongConstructorFailTest() {
         try {
-            new BaseAssertionImpl(null, null).as(BaseAssertionWrongParameterCountConstructor.class);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructor - class should have one constructor BaseAssertionWrongParameterCountConstructor(java.lang.Object, java.lang.String)");
-        }
-        try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionWrongParameterCountConstructor.class);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructor - class should have one constructor BaseAssertionWrongParameterCountConstructor(java.lang.String, java.lang.String)");
-        }
-        try {
             new ListAssertion(new ArrayList<String>(), null).as(MapAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor MapAssertion(java.util.ArrayList, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, "message").as(BaseAssertionWrongParameterTypeConstructor.class);
+            new BaseAssertionImpl(null, null).as(BaseAssertionWrongParameterCountConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructor - class should have one constructor BaseAssertionWrongParameterTypeConstructor(java.lang.Object, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructorImpl - class should have one constructor BaseAssertionWrongParameterCountConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", "message").as(BaseAssertionWrongParameterTypeConstructor.class);
+            new BaseAssertionImpl("value", null).as(BaseAssertionWrongParameterCountConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructor - class should have one constructor BaseAssertionWrongParameterTypeConstructor(java.lang.String, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructorImpl - class should have one constructor BaseAssertionWrongParameterCountConstructorImpl(java.lang.String, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, null).as(BaseAssertionMultipleConstructors.class);
+            new BaseAssertionImpl(null, "message").as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructors - class should have one constructor BaseAssertionMultipleConstructors(java.lang.Object, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionMultipleConstructors.class);
+            new BaseAssertionImpl("value", "message").as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructors - class should have one constructor BaseAssertionMultipleConstructors(java.lang.String, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.String, java.lang.String)");
+        }
+        try {
+            new BaseAssertionImpl(null, null).as(BaseAssertionMultipleConstructorsImpl.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructorsImpl - class should have one constructor BaseAssertionMultipleConstructorsImpl(java.lang.Object, java.lang.String)");
+        }
+        try {
+            new BaseAssertionImpl("value", null).as(BaseAssertionMultipleConstructorsImpl.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructorsImpl - class should have one constructor BaseAssertionMultipleConstructorsImpl(java.lang.String, java.lang.String)");
         }
     }
 
@@ -824,19 +824,32 @@ public final class BaseAssertionTest {
     @Test
     public void asInvocationTargetFailTest() {
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationRuntimeException.class);
+            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationRuntimeExceptionImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInvocationRuntimeException");
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInvocationRuntimeExceptionImpl");
             Assertions.assertThat(ex).isCauseInstanceOf(InvocationTargetException.class);
             Assertions.assertThat(ex).toCause().isCauseInstanceOf(RuntimeException.class);
             Assertions.assertThat(ex).toCause().hasCauseMessage("ERROR");
         }
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationAssertionError.class);
+            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationAssertionErrorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("ERROR");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void asInstantiationFailTest() {
+        try {
+            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInstantiationExceptionImpl.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInstantiationExceptionImpl");
         }
     }
 
@@ -1129,14 +1142,14 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionWrongParameterCountConstructor extends BaseAssertion {
+    public static final class BaseAssertionWrongParameterCountConstructorImpl extends BaseAssertion {
 
         /**
          * Create new object.
          *
          * @param actual the actual value.
          */
-        public BaseAssertionWrongParameterCountConstructor(final Object actual) {
+        public BaseAssertionWrongParameterCountConstructorImpl(final Object actual) {
             super(actual, null);
         }
 
@@ -1152,7 +1165,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionWrongParameterTypeConstructor extends BaseAssertion {
+    public static final class BaseAssertionWrongParameterTypeConstructorImpl extends BaseAssertion {
 
         /**
          * Create new object.
@@ -1160,7 +1173,7 @@ public final class BaseAssertionTest {
          * @param actual  the actual value.
          * @param message the assertion message.
          */
-        public BaseAssertionWrongParameterTypeConstructor(final Object actual, final StringBuilder message) {
+        public BaseAssertionWrongParameterTypeConstructorImpl(final Object actual, final StringBuilder message) {
             super(actual, message.toString());
         }
 
@@ -1176,7 +1189,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionMultipleConstructors extends BaseAssertion {
+    public static final class BaseAssertionMultipleConstructorsImpl extends BaseAssertion {
 
         /**
          * Create new object.
@@ -1184,7 +1197,7 @@ public final class BaseAssertionTest {
          * @param actual  the actual value.
          * @param message the assertion message.
          */
-        public BaseAssertionMultipleConstructors(final Object actual, final String message) {
+        public BaseAssertionMultipleConstructorsImpl(final Object actual, final String message) {
             super(actual, message);
         }
 
@@ -1194,7 +1207,7 @@ public final class BaseAssertionTest {
          * @param actual  the actual value.
          * @param message the assertion message.
          */
-        public BaseAssertionMultipleConstructors(final Object actual, final Object message) {
+        public BaseAssertionMultipleConstructorsImpl(final Object actual, final Object message) {
             super(actual, message.toString());
         }
 
@@ -1210,7 +1223,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionInvocationRuntimeException extends BaseAssertion {
+    public static final class BaseAssertionInvocationRuntimeExceptionImpl extends BaseAssertion {
 
         /**
          * Create new object.
@@ -1218,7 +1231,7 @@ public final class BaseAssertionTest {
          * @param actual  the actual value.
          * @param message the assertion message.
          */
-        public BaseAssertionInvocationRuntimeException(final Object actual, final String message) {
+        public BaseAssertionInvocationRuntimeExceptionImpl(final Object actual, final String message) {
             super(actual, message);
             throw new RuntimeException("ERROR");
         }
@@ -1235,7 +1248,7 @@ public final class BaseAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionInvocationAssertionError extends BaseAssertion {
+    public static final class BaseAssertionInvocationAssertionErrorImpl extends BaseAssertion {
 
         /**
          * Create new object.
@@ -1243,9 +1256,33 @@ public final class BaseAssertionTest {
          * @param actual  the actual value.
          * @param message the assertion message.
          */
-        public BaseAssertionInvocationAssertionError(final Object actual, final String message) {
+        public BaseAssertionInvocationAssertionErrorImpl(final Object actual, final String message) {
             super(actual, message);
             throw new AssertionError("ERROR");
+        }
+
+        @Override
+        protected String asString(final Object value) {
+            return String.valueOf(value);
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static abstract class BaseAssertionInstantiationExceptionImpl extends BaseAssertion {
+
+        /**
+         * Create new object.
+         *
+         * @param actual  the actual value.
+         * @param message the assertion message.
+         */
+        public BaseAssertionInstantiationExceptionImpl(final Object actual, final String message) {
+            super(actual, message);
         }
 
         @Override
