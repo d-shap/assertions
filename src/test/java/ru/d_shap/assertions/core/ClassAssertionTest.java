@@ -247,14 +247,9 @@ public final class ClassAssertionTest {
      */
     @Test
     public void asEnumTest() {
+        new ClassAssertion(null, null).asEnum().isNull();
         new ClassAssertion(Values.class, null).asEnum().hasValueCount(3);
 
-        try {
-            new ClassAssertion(null, null).asEnum();
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
         try {
             new ClassAssertion(AbstractClass.class, null).asEnum();
             Assertions.fail("ClassAssertion test fail");
