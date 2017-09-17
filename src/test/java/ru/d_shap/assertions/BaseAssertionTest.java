@@ -824,7 +824,7 @@ public final class BaseAssertionTest {
     @Test
     public void asInvocationTargetFailTest() {
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationRuntimeExceptionImpl.class);
+            new BaseAssertionImpl("value", null).as(BaseAssertionInvocationRuntimeExceptionImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInvocationRuntimeExceptionImpl");
@@ -833,7 +833,7 @@ public final class BaseAssertionTest {
             Assertions.assertThat(ex).toCause().hasCauseMessage("ERROR");
         }
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInvocationAssertionErrorImpl.class);
+            new BaseAssertionImpl("value", null).as(BaseAssertionInvocationAssertionErrorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("ERROR");
@@ -846,7 +846,7 @@ public final class BaseAssertionTest {
     @Test
     public void asInstantiationFailTest() {
         try {
-            new BaseAssertionImpl(new Object(), null).as(BaseAssertionInstantiationExceptionImpl.class);
+            new BaseAssertionImpl("value", null).as(BaseAssertionInstantiationExceptionImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInstantiationExceptionImpl");
