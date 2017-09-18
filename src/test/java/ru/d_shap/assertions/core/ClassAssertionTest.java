@@ -44,6 +44,62 @@ public final class ClassAssertionTest {
      * {@link ClassAssertion} class test.
      */
     @Test
+    public void isEqualToTest() {
+        new ClassAssertion(Integer.class, null).isEqualTo(Integer.class);
+        new ClassAssertion(String.class, null).isEqualTo(String.class);
+
+        try {
+            new ClassAssertion(null, null).isEqualTo(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ClassAssertion(Object.class, null).isEqualTo(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ClassAssertion(String.class, null).isEqualTo(Integer.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.Integer> but was:<java.lang.String>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        new ClassAssertion(Integer.class, null).isNotEqualTo(String.class);
+        new ClassAssertion(String.class, null).isNotEqualTo(Object.class);
+
+        try {
+            new ClassAssertion(null, null).isNotEqualTo(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ClassAssertion(Object.class, null).isNotEqualTo(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ClassAssertion(String.class, null).isNotEqualTo(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<java.lang.String>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
     public void isSubtypeOfTest() {
         new ClassAssertion(Integer.class, null).isSubtypeOf(Integer.class);
         new ClassAssertion(Integer.class, null).isSubtypeOf(Object.class);
@@ -251,24 +307,6 @@ public final class ClassAssertionTest {
         new ClassAssertion(Values.class, null).asEnum().hasValueCount(3);
 
         try {
-            new ClassAssertion(AbstractClass.class, null).asEnum();
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$AbstractClass>");
-        }
-        try {
-            new ClassAssertion(FailConstructorClass.class, null).asEnum();
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
-        }
-        try {
-            new ClassAssertion(FailConstructorClass.class, "Message").asEnum();
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be the enum. Actual:<ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass>");
-        }
-        try {
             new ClassAssertion(Values.class, null).asEnum().hasValueCount(4);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
@@ -290,8 +328,6 @@ public final class ClassAssertionTest {
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(null)).isNull();
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(AbstractClass.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$AbstractClass");
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(FailConstructorClass.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$FailConstructorClass");
         Assertions.assertThat(new ClassAssertion(Values.class, null).asString("test")).isEqualTo("test");
     }
 
@@ -317,7 +353,7 @@ public final class ClassAssertionTest {
 
         private FailConstructorClass() {
             super();
-            throw new IllegalStateException("Exception in instantiation");
+            throw new RuntimeException("Exception in instantiation");
         }
 
     }
