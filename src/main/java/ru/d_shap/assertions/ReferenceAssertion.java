@@ -193,7 +193,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             AccessController.doPrivileged(new FieldAccessAction(field));
             Object value = field.get(getActual());
             return new ObjectAssertion(value, getMessage());
-        } catch (NoSuchFieldException | IllegalAccessException ex) {
+        } catch (ReflectiveOperationException ex) {
             throw createAssertionError(FailMessages.getContainsField(fieldName), ex);
         }
     }
