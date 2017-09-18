@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import ru.d_shap.assertions.FailMessages;
@@ -83,7 +82,7 @@ public class EnumAssertion extends ClassAssertion {
             }
 
             return values.length;
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+        } catch (ReflectiveOperationException ex) {
             throw createAssertionError(ex);
         }
     }
