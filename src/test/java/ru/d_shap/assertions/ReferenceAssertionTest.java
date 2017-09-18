@@ -21,6 +21,9 @@ package ru.d_shap.assertions;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.core.ClassAssertion;
+import ru.d_shap.assertions.core.StringAssertion;
+
 /**
  * Tests for {@link ReferenceAssertion}.
  *
@@ -357,6 +360,60 @@ public final class ReferenceAssertionTest {
     }
 
     /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toFieldTest() {
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_nullField").isNull();
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_nullField", StringAssertion.class).isNull();
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_nullField", ClassAssertion.class).isNull();
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_parentField").isNotNull();
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_parentField").isEqualTo("parentField");
+        new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("_parentField", StringAssertion.class).isEqualTo("parentField");
+
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_nullField").isNull();
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_nullField", StringAssertion.class).isNull();
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_nullField", ClassAssertion.class).isNull();
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_parentField").isNotNull();
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_parentField").isEqualTo("parentField");
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_parentField", StringAssertion.class).isEqualTo("parentField");
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_childField").isNotNull();
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_childField").isEqualTo("childField");
+        new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_childField", StringAssertion.class).isEqualTo("childField");
+
+        try {
+            new ReferenceAssertionImpl(null, null).toField("_parentField");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ReferenceAssertionImpl(new ToFieldParentClass(), null).toField("wrongFieldName");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected field. Expected:<wrongFieldName>");
+        }
+        try {
+            new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("wrongFieldName");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected field. Expected:<wrongFieldName>");
+        }
+        try {
+            new ReferenceAssertionImpl(new ToFieldChildClass(), null).toField("_childField", ClassAssertion.class);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (WrongAssertionClassError ex) {
+            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.ClassAssertion - class should have one constructor ClassAssertion(java.lang.String, java.lang.String)");
+        }
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
@@ -370,6 +427,38 @@ public final class ReferenceAssertionTest {
         @Override
         protected String asString(final Object value) {
             return String.valueOf(value);
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ToFieldParentClass {
+
+        private String _nullField;
+
+        private String _parentField = "parentField";
+
+        ToFieldParentClass() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ToFieldChildClass extends ToFieldParentClass {
+
+        private String _childField = "childField";
+
+        ToFieldChildClass() {
+            super();
         }
 
     }
