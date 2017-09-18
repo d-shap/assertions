@@ -41,6 +41,22 @@ public final class EnumAssertionTest {
      * {@link EnumAssertion} class test.
      */
     @Test
+    public void constructorTest() {
+        new EnumAssertion(null, null).isNull();
+        new EnumAssertion(Values.class, null).isNotNull();
+
+        try {
+            new EnumAssertion(String.class, null);
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<java.lang.String>");
+        }
+    }
+
+    /**
+     * {@link EnumAssertion} class test.
+     */
+    @Test
     public void toValueCountTest() {
         new EnumAssertion(Values.class, null).toValueCount().isEqualTo(3);
         new EnumAssertion(Values.class, null).toValueCount().isGreaterThan(2);
