@@ -211,16 +211,16 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     private Field getField(final String fieldName) throws NoSuchFieldException {
-        Class<?> actualClass = getActual().getClass();
+        Class<?> currentClass = getActual().getClass();
         NoSuchFieldException noSuchFieldException = null;
-        while (actualClass != null) {
+        while (currentClass != null) {
             try {
-                return actualClass.getDeclaredField(fieldName);
+                return currentClass.getDeclaredField(fieldName);
             } catch (NoSuchFieldException ex) {
                 if (noSuchFieldException == null) {
                     noSuchFieldException = ex;
                 }
-                actualClass = actualClass.getSuperclass();
+                currentClass = currentClass.getSuperclass();
             }
         }
         throw noSuchFieldException;
