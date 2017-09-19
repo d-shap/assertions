@@ -224,7 +224,7 @@
                         </executions>
                         <configuration>
                             <threads>5</threads>
-                            <mutateStaticInitializers>true</mutateStaticInitializers>
+                            <mutateStaticInitializers>false</mutateStaticInitializers>
                             <mutators>
                                 <mutator>CONDITIONALS_BOUNDARY</mutator>
                                 <mutator>NEGATE_CONDITIONALS</mutator>
@@ -243,6 +243,7 @@
                                 <value>-Xmx256M</value>
                             </jvmArgs>
                             <failWhenNoMutations>true</failWhenNoMutations>
+                            <detectInlinedCode>true</detectInlinedCode>
                             <timestampedReports>false</timestampedReports>
                         </configuration>
                     </plugin>
