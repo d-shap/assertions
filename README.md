@@ -1,7 +1,7 @@
 Assertions framework
 ====================
 Assertions framework provides facilities for the unit testing.
-Framework allows checking of conditions via existing assertion classes.
+Assertions framework allows checking of conditions via existing assertion classes.
 This assertion classes make the tests more readable, understandable and maintainable.
 Also this assertion classes reduce the amount of code needed to perform some complicated checks.
 
@@ -92,3 +92,73 @@ assertThat(floatBufferValue).containsExactlyInOrder(1.0f, 2.0f, 1.0f, 2.0f, 3.0f
 assertThat(doubleBufferValue).rewindAndContainsAll(5.0, 10.0, 15.0);
 assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
 ```
+
+Custom assertion classes can be used in the next extension points:
+* Assertions.assertThat(java.lang.Object, java.lang.Class)
+* Assertions.assertThat(java.lang.Object, java.lang.String, java.lang.Class)
+* BaseAssertion.as(java.lang.Class)
+* MessageAssertion.that(java.lang.Object, java.lang.Class)
+* MessageAssertion.that(java.lang.Object, java.lang.String, java.lang.Class)
+
+Assertions framework and Hamcrest
+=================================
+Too many braces
+---------------
+Hamcrest has the target to make tests as readable as possible.
+But Hamcrest tends to use too many braces in even simple assertions.
+And this braces makes tests less readable.
+
+For example, JUnit check for equals:
+```
+assertEquals(expected, actual);
+``` 
+Hamcrest check for equals:
+```
+assertThat(actual, is(equalTo(expected)));
+```
+Assertions framework check for equals:
+```
+assertThat(actual).isEqualTo(expected);
+```
+
+JUnit check for not equals:
+```
+assertNotEquals(expected, actual)
+```
+Hamcrest check for not equals:
+```
+assertThat(actual, is(not(equalTo(expected))));
+```
+Also valid Hamcrest check for not equals, but with less sense:
+```
+assertThat(actual, not(is(equalTo(expected))));
+```
+Assertions framework check for not equals:
+```
+assertThat(actual).isNotEqualTo(expected);
+```
+
+Combinations of matchers
+------------------------
+Hamcrest allows any combination of matchers in assertions:
+```
+assertThat(10, greaterThan(5));
+assertThat(Arrays.asList(15, 20, 25, 30), everyItem(greaterThan(5)));
+assertThat("value", anyOf(nullValue(), equalTo("test"), allOf(containsString("alu"), not(containsString("zzz")))));
+```
+But some combinations of matchers do not make sense.
+Also it is too difficult to understand some complicated combinations of matchers.
+The test should be as simple as possible - to prevent bugs in the tests itself.
+And too difficult combinations of matchers are error prone.
+
+Assertions framework provides methods for specific combinations of matchers.
+```
+assertThat(stringValue).isNullOrBlank();
+assertThat(stringValue).isNullOrEmpty();
+```
+There are few of them, but the more will be developed.
+
+Custom matchers
+---------------
+Custom Hamcrest matchers can be easily developed and used in assertions.
+Assertions framework support for custom matchers is rather awkward.
