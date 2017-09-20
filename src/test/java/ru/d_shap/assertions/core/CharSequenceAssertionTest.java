@@ -2429,6 +2429,85 @@ public final class CharSequenceAssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
+    public void toTokensTest() {
+        new CharSequenceAssertion("value1 value2 value3", null).toTokens().containsAll("value1", "value2", "value3");
+        new CharSequenceAssertion("value1|value2|value3", null).toTokens().containsAll("value1|value2|value3");
+        new CharSequenceAssertion("value1|value2|value3", null).toTokens("|").containsAll("value1", "value2", "value3");
+        new CharSequenceAssertion("value1|value2|value3", null).toTokens("|", false).containsAll("value1", "value2", "value3");
+        new CharSequenceAssertion("value1|value2|value3", null).toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
+
+        try {
+            new CharSequenceAssertion(null, null).toTokens();
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharSequenceAssertion(null, null).toTokens("|");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", null).toTokens(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CharSequenceAssertion(null, null).toTokens("|", false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", null).toTokens(null, false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CharSequenceAssertion("value1 value2 value3", null).toTokens().hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new CharSequenceAssertion("value1 value2 value3", "Message").toTokens().hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", null).toTokens("|").hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", "Message").toTokens("|").hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", null).toTokens("|", true).hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<5>");
+        }
+        try {
+            new CharSequenceAssertion("value1|value2|value3", "Message").toTokens("|", true).hasSize(4);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link CharSequenceAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", null).asString(null)).isNull();
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", null).asString("vAlUe")).isNull();

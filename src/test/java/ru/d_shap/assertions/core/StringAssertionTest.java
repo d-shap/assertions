@@ -2190,6 +2190,85 @@ public final class StringAssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
+    public void toTokensTest() {
+        new StringAssertion("value1 value2 value3", null).toTokens().containsAll("value1", "value2", "value3");
+        new StringAssertion("value1|value2|value3", null).toTokens().containsAll("value1|value2|value3");
+        new StringAssertion("value1|value2|value3", null).toTokens("|").containsAll("value1", "value2", "value3");
+        new StringAssertion("value1|value2|value3", null).toTokens("|", false).containsAll("value1", "value2", "value3");
+        new StringAssertion("value1|value2|value3", null).toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
+
+        try {
+            new StringAssertion(null, null).toTokens();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new StringAssertion(null, null).toTokens("|");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", null).toTokens(null);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion(null, null).toTokens("|", false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", null).toTokens(null, false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new StringAssertion("value1 value2 value3", null).toTokens().hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new StringAssertion("value1 value2 value3", "Message").toTokens().hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", null).toTokens("|").hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", "Message").toTokens("|").hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", null).toTokens("|", true).hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<5>");
+        }
+        try {
+            new StringAssertion("value1|value2|value3", "Message").toTokens("|", true).hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new StringAssertion("vAlUe", null).asString(null)).isNull();
         Assertions.assertThat(new StringAssertion("vAlUe", null).asString("vAlUe")).isEqualTo("vAlUe");
