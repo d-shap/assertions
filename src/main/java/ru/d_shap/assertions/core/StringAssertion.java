@@ -19,11 +19,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ru.d_shap.assertions.FailMessages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -623,6 +627,53 @@ public class StringAssertion extends ReferenceAssertion {
      */
     public final void hasLength(final int expected) {
         toLength().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens() {
+        checkActualIsNotNull();
+        StringTokenizer stringTokenizer = new StringTokenizer((String) getActual());
+        return toTokens(stringTokenizer);
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @param delimiters the delimiters.
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens(final String delimiters) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(delimiters);
+        StringTokenizer stringTokenizer = new StringTokenizer((String) getActual(), delimiters);
+        return toTokens(stringTokenizer);
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @param delimiters       the delimiters.
+     * @param returnDelimiters whether to return the delimiters as tokens.
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(delimiters);
+        StringTokenizer stringTokenizer = new StringTokenizer((String) getActual(), delimiters, returnDelimiters);
+        return toTokens(stringTokenizer);
+    }
+
+    private ListAssertion toTokens(final StringTokenizer stringTokenizer) {
+        List<String> tokens = new ArrayList<>();
+        while (stringTokenizer.hasMoreTokens()) {
+            String token = stringTokenizer.nextToken();
+            tokens.add(token);
+        }
+        return new ListAssertion(tokens, getMessage());
     }
 
     @Override

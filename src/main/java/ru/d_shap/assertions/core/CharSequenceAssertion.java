@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.core;
 
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -451,6 +452,39 @@ public class CharSequenceAssertion extends ReferenceAssertion {
     public final void hasLength(final int expected) {
         checkActualIsNotNull();
         new StringAssertion(getActual().toString(), getMessage()).hasLength(expected);
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens() {
+        checkActualIsNotNull();
+        return new StringAssertion(getActual().toString(), getMessage()).toTokens();
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @param delimiters the delimiters.
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens(final String delimiters) {
+        checkActualIsNotNull();
+        return new StringAssertion(getActual().toString(), getMessage()).toTokens(delimiters);
+    }
+
+    /**
+     * Make assertion about the actual value tokens.
+     *
+     * @param delimiters       the delimiters.
+     * @param returnDelimiters whether to return the delimiters as tokens.
+     * @return the assertion.
+     */
+    public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
+        checkActualIsNotNull();
+        return new StringAssertion(getActual().toString(), getMessage()).toTokens(delimiters, returnDelimiters);
     }
 
     @Override
