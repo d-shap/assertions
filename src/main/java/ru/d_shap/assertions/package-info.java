@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * <p>
- * Assertions framework provides facilities for the unit testing. Framework allows checking of conditions
+ * Assertions framework provides facilities for the unit testing. Assertions framework allows checking of conditions
  * via existing assertion classes. This assertion classes make the tests more readable, understandable and maintainable.
  * Also this assertion classes reduce the amount of code needed to perform some complicated checks.
  * </p>
@@ -118,5 +118,15 @@
  * assertThat(doubleBufferValue).rewindAndContainsAll(5.0, 10.0, 15.0);
  * assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
  * }</pre>
+ * <p>
+ * Custom assertion classes can be used in the next extension points:
+ * </p>
+ * <ul>
+ * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, java.lang.Class)}</li>
+ * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, java.lang.String, java.lang.Class)}</li>
+ * <li>{@link ru.d_shap.assertions.BaseAssertion#as(java.lang.Class)}</li>
+ * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.Class)}</li>
+ * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, java.lang.Class)}</li>
+ * </ul>
  */
 package ru.d_shap.assertions;
