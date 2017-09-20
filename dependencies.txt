@@ -1,0 +1,6 @@
+Assertion classes dependencies:
+
+StringAssertion                 -> CharSequenceAssertion
+
+CollectionAssertion             -> IteratorAssertion
+CollectionAssertion             -> IterableAssertion
