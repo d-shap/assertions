@@ -49,29 +49,29 @@ public final class Messages {
 
         public static final String ACTUAL_VALUE_SIZE = "Check actual value size";
 
-        public static final String ACTUAL_VALUE_KEYS = "Check actual value keys";
+        public static final String ACTUAL_KEYS = "Check actual keys";
 
-        public static final String ACTUAL_VALUE_VALUES = "Check actual value values";
+        public static final String ACTUAL_VALUES = "Check actual values";
 
         public static final String ACTUAL_VALUE_TOKENS = "Check actual value tokens";
 
-        public static final String ACTUAL_VALUE_MESSAGE = "Check actual value message";
+        public static final String ACTUAL_THROWABLE_MESSAGE = "Check actual throwable message";
 
-        public static final String ACTUAL_VALUE_CAUSE = "Check actual value cause";
+        public static final String ACTUAL_THROWABLE_CAUSE = "Check actual throwable cause";
 
-        public static final String ACTUAL_VALUE_VALUE_COUNT = "Check actual value value count";
+        public static final String ACTUAL_ENUM_VALUE_COUNT = "Check actual enum value count";
 
-        public static final String ACTUAL_VALUE_BYTE_READ = "Check actual value byte read";
+        public static final String ACTUAL_STREAM_BYTE_READ = "Check actual stream byte read";
 
-        public static final String ACTUAL_VALUE_CHAR_READ = "Check actual value char read";
+        public static final String ACTUAL_READER_CHAR_READ = "Check actual reader char read";
 
-        public static final String ACTUAL_VALUE_POSITION = "Check actual value position";
+        public static final String ACTUAL_BUFFER_POSITION = "Check actual buffer position";
 
-        public static final String ACTUAL_VALUE_LIMIT = "Check actual value limit";
+        public static final String ACTUAL_BUFFER_LIMIT = "Check actual buffer limit";
 
-        public static final String ACTUAL_VALUE_CAPACITY = "Check actual value capacity";
+        public static final String ACTUAL_BUFFER_CAPACITY = "Check actual buffer capacity";
 
-        public static final String ACTUAL_VALUE_REMAINING = "Check actual value remaining";
+        public static final String ACTUAL_BUFFER_REMAINING = "Check actual buffer remaining";
 
         private Check() {
             super();
