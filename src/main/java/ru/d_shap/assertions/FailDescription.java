@@ -45,15 +45,6 @@ public final class FailDescription {
         _throwable = null;
     }
 
-    FailDescription(final String message) {
-        super();
-        _messages = new ArrayList<>();
-        addMessage(message);
-        _actual = null;
-        _expected = null;
-        _throwable = null;
-    }
-
     /**
      * Add the message to the fail description.
      *
