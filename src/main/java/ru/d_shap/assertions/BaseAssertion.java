@@ -33,18 +33,18 @@ public abstract class BaseAssertion {
 
     private final Object _actual;
 
-    private final String _message;
+    private final FailDescription _failDescription;
 
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    protected BaseAssertion(final Object actual, final String message) {
+    protected BaseAssertion(final Object actual, final FailDescription failDescription) {
         super();
         _actual = actual;
-        _message = message;
+        _failDescription = failDescription;
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class BaseAssertion {
             List<Constructor<T>> constructors = getConstructors(assertionClass);
             if (constructors.size() == 1) {
                 Constructor<T> constructor = constructors.get(0);
-                return constructor.newInstance(_actual, _message);
+                return constructor.newInstance(_actual, _failDescription);
             } else {
                 if (_actual == null) {
                     throw new WrongAssertionClassError(assertionClass);
@@ -85,7 +85,7 @@ public abstract class BaseAssertion {
         List<Constructor<T>> constructors = new ArrayList<>();
         for (Constructor constructor : assertionClass.getConstructors()) {
             Class<?>[] parameterTypes = constructor.getParameterTypes();
-            if (parameterTypes.length == 2 && isCompatibleTypes(_actual, parameterTypes[0]) && parameterTypes[1].isAssignableFrom(String.class)) {
+            if (parameterTypes.length == 2 && isCompatibleTypes(_actual, parameterTypes[0]) && parameterTypes[1].isAssignableFrom(FailDescription.class)) {
                 constructors.add((Constructor<T>) constructor);
             }
         }
@@ -142,12 +142,23 @@ public abstract class BaseAssertion {
     }
 
     /**
-     * Get the assertion message.
+     * Get the fail description.
      *
-     * @return the assertion message.
+     * @return the fail description.
      */
-    protected final String getMessage() {
-        return _message;
+    protected final FailDescription getFailDescription() {
+        return _failDescription;
+    }
+
+    /**
+     * Get the fail description with the message.
+     *
+     * @param message the message.
+     * @return the fail description.
+     */
+    protected final FailDescription getFailDescription(final String message) {
+        _failDescription.addMessage(message);
+        return _failDescription;
     }
 
     /**
@@ -155,7 +166,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkActualIsNotNull() {
         if (_actual == null) {
-            throw createAssertionError(FailMessages.getIsNotNull());
+            throw getFailDescription(Messages.Fail.IS_NOT_NULL).createAssertionError();
         }
     }
 
@@ -166,7 +177,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotNull(final Object argument) {
         if (argument == null) {
-            throw createAssertionError(FailMessages.getArgumentIsNotNull());
+            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_NULL).createAssertionError();
         }
     }
 
@@ -177,7 +188,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         if (isEmpty) {
-            throw createAssertionError(FailMessages.getArgumentIsNotEmptyTrue());
+            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE).createAssertionError();
         }
     }
 
@@ -188,90 +199,11 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
         if (isEmpty) {
-            throw createAssertionError(FailMessages.getArgumentIsNotEmptyFalse());
+            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE).createAssertionError();
         }
     }
 
-    /**
-     * Create new assertion error.
-     *
-     * @param failMessage the fail message.
-     * @return the assertion error.
-     */
-    protected final AssertionError createAssertionError(final String failMessage) {
-        return createAssertionError(failMessage, null);
-    }
-
-    /**
-     * Create new assertion error.
-     *
-     * @param throwable the cause of the failure.
-     * @return the assertion error.
-     */
-    protected final AssertionError createAssertionError(final Throwable throwable) {
-        return createAssertionError(null, throwable);
-    }
-
-    /**
-     * Create new assertion error.
-     *
-     * @param failMessage the fail message.
-     * @param throwable   the cause of the failure.
-     * @return the assertion error.
-     */
-    protected final AssertionError createAssertionError(final String failMessage, final Throwable throwable) {
-        String fullMessage = getFullAssertionMessage(_message, failMessage, throwable);
-        if (throwable == null) {
-            return new AssertionError(fullMessage);
-        } else {
-            return new AssertionError(fullMessage, throwable);
-        }
-    }
-
-    private static String getFullAssertionMessage(final String assertionMessage, final String failMessage, final Throwable throwable) {
-        String assertionMessagePart = getAssertionMessagePart(assertionMessage);
-        String failMessagePart = getFailMessagePart(failMessage, throwable);
-        if ("".equals(failMessagePart)) {
-            return assertionMessagePart;
-        } else {
-            if ("".equals(assertionMessagePart)) {
-                return failMessagePart;
-            } else {
-                return assertionMessagePart + " " + failMessagePart;
-            }
-        }
-    }
-
-    private static String getAssertionMessagePart(final String assertionMessage) {
-        if (assertionMessage == null || "".equals(assertionMessage)) {
-            return "";
-        } else {
-            if (assertionMessage.endsWith(".")) {
-                return assertionMessage;
-            } else {
-                return assertionMessage + ".";
-            }
-        }
-    }
-
-    private static String getFailMessagePart(final String failMessage, final Throwable throwable) {
-        if (failMessage == null || "".equals(failMessage)) {
-            if (throwable == null) {
-                return "";
-            } else {
-                return throwable.toString();
-            }
-        } else {
-            return failMessage;
-        }
-    }
-
-    /**
-     * Get the string representation of the actual value.
-     *
-     * @return the string representation of the actual value.
-     */
-    protected final String actualAsString() {
+    final String actualAsString() {
         return asString(_actual);
     }
 
