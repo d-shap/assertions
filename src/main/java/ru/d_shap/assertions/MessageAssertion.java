@@ -78,10 +78,13 @@ import ru.d_shap.assertions.primitive.ShortAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class MessageAssertion extends BaseAssertion {
+public final class MessageAssertion {
 
-    MessageAssertion(final String message) {
-        super(null, message);
+    private final FailDescription _failDescription;
+
+    MessageAssertion(final FailDescription failDescription) {
+        super();
+        _failDescription = failDescription;
     }
 
     /**
@@ -91,7 +94,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ByteAssertion that(final byte actual) {
-        return new ByteAssertion(actual, getMessage());
+        return new ByteAssertion(actual, _failDescription);
     }
 
     /**
@@ -101,7 +104,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ShortAssertion that(final short actual) {
-        return new ShortAssertion(actual, getMessage());
+        return new ShortAssertion(actual, _failDescription);
     }
 
     /**
@@ -111,7 +114,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public IntAssertion that(final int actual) {
-        return new IntAssertion(actual, getMessage());
+        return new IntAssertion(actual, _failDescription);
     }
 
     /**
@@ -121,7 +124,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public LongAssertion that(final long actual) {
-        return new LongAssertion(actual, getMessage());
+        return new LongAssertion(actual, _failDescription);
     }
 
     /**
@@ -131,7 +134,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public FloatAssertion that(final float actual) {
-        return new FloatAssertion(actual, getMessage());
+        return new FloatAssertion(actual, _failDescription);
     }
 
     /**
@@ -141,7 +144,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public DoubleAssertion that(final double actual) {
-        return new DoubleAssertion(actual, getMessage());
+        return new DoubleAssertion(actual, _failDescription);
     }
 
     /**
@@ -151,7 +154,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public BooleanAssertion that(final boolean actual) {
-        return new BooleanAssertion(actual, getMessage());
+        return new BooleanAssertion(actual, _failDescription);
     }
 
     /**
@@ -161,7 +164,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public CharAssertion that(final char actual) {
-        return new CharAssertion(actual, getMessage());
+        return new CharAssertion(actual, _failDescription);
     }
 
     /**
@@ -171,7 +174,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ObjectAssertion that(final Object actual) {
-        return new ObjectAssertion(actual, getMessage());
+        return new ObjectAssertion(actual, _failDescription);
     }
 
     /**
@@ -217,7 +220,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ByteArrayAssertion that(final byte[] actual) {
-        return new ByteArrayAssertion(actual, getMessage());
+        return new ByteArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -227,7 +230,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ShortArrayAssertion that(final short[] actual) {
-        return new ShortArrayAssertion(actual, getMessage());
+        return new ShortArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -237,7 +240,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public IntArrayAssertion that(final int[] actual) {
-        return new IntArrayAssertion(actual, getMessage());
+        return new IntArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -247,7 +250,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public LongArrayAssertion that(final long[] actual) {
-        return new LongArrayAssertion(actual, getMessage());
+        return new LongArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -257,7 +260,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public FloatArrayAssertion that(final float[] actual) {
-        return new FloatArrayAssertion(actual, getMessage());
+        return new FloatArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -267,7 +270,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public DoubleArrayAssertion that(final double[] actual) {
-        return new DoubleArrayAssertion(actual, getMessage());
+        return new DoubleArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -277,7 +280,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public BooleanArrayAssertion that(final boolean[] actual) {
-        return new BooleanArrayAssertion(actual, getMessage());
+        return new BooleanArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -287,7 +290,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public CharArrayAssertion that(final char[] actual) {
-        return new CharArrayAssertion(actual, getMessage());
+        return new CharArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -297,7 +300,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ObjectArrayAssertion that(final Object[] actual) {
-        return new ObjectArrayAssertion(actual, getMessage());
+        return new ObjectArrayAssertion(actual, _failDescription);
     }
 
     /**
@@ -307,7 +310,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ClassAssertion that(final Class<?> actual) {
-        return new ClassAssertion(actual, getMessage());
+        return new ClassAssertion(actual, _failDescription);
     }
 
     /**
@@ -317,7 +320,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public CharSequenceAssertion that(final CharSequence actual) {
-        return new CharSequenceAssertion(actual, getMessage());
+        return new CharSequenceAssertion(actual, _failDescription);
     }
 
     /**
@@ -327,7 +330,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public StringAssertion that(final String actual) {
-        return new StringAssertion(actual, getMessage());
+        return new StringAssertion(actual, _failDescription);
     }
 
     /**
@@ -337,7 +340,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ComparableAssertion that(final Comparable<?> actual) {
-        return new ComparableAssertion(actual, getMessage());
+        return new ComparableAssertion(actual, _failDescription);
     }
 
     /**
@@ -347,7 +350,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public IterableAssertion that(final Iterable<?> actual) {
-        return new IterableAssertion(actual, getMessage());
+        return new IterableAssertion(actual, _failDescription);
     }
 
     /**
@@ -357,7 +360,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ThrowableAssertion that(final Throwable actual) {
-        return new ThrowableAssertion(actual, getMessage());
+        return new ThrowableAssertion(actual, _failDescription);
     }
 
     /**
@@ -367,7 +370,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public CollectionAssertion that(final Collection<?> actual) {
-        return new CollectionAssertion(actual, getMessage());
+        return new CollectionAssertion(actual, _failDescription);
     }
 
     /**
@@ -377,7 +380,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public IteratorAssertion that(final Iterator<?> actual) {
-        return new IteratorAssertion(actual, getMessage());
+        return new IteratorAssertion(actual, _failDescription);
     }
 
     /**
@@ -387,7 +390,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ListAssertion that(final List<?> actual) {
-        return new ListAssertion(actual, getMessage());
+        return new ListAssertion(actual, _failDescription);
     }
 
     /**
@@ -397,7 +400,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public SetAssertion that(final Set<?> actual) {
-        return new SetAssertion(actual, getMessage());
+        return new SetAssertion(actual, _failDescription);
     }
 
     /**
@@ -407,7 +410,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public MapAssertion that(final Map<?, ?> actual) {
-        return new MapAssertion(actual, getMessage());
+        return new MapAssertion(actual, _failDescription);
     }
 
     /**
@@ -417,7 +420,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public InputStreamAssertion that(final InputStream actual) {
-        return new InputStreamAssertion(actual, getMessage());
+        return new InputStreamAssertion(actual, _failDescription);
     }
 
     /**
@@ -427,7 +430,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ReaderAssertion that(final Reader actual) {
-        return new ReaderAssertion(actual, getMessage());
+        return new ReaderAssertion(actual, _failDescription);
     }
 
     /**
@@ -437,7 +440,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ByteBufferAssertion that(final ByteBuffer actual) {
-        return new ByteBufferAssertion(actual, getMessage());
+        return new ByteBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -447,7 +450,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public ShortBufferAssertion that(final ShortBuffer actual) {
-        return new ShortBufferAssertion(actual, getMessage());
+        return new ShortBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -457,7 +460,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public IntBufferAssertion that(final IntBuffer actual) {
-        return new IntBufferAssertion(actual, getMessage());
+        return new IntBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -467,7 +470,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public LongBufferAssertion that(final LongBuffer actual) {
-        return new LongBufferAssertion(actual, getMessage());
+        return new LongBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -477,7 +480,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public FloatBufferAssertion that(final FloatBuffer actual) {
-        return new FloatBufferAssertion(actual, getMessage());
+        return new FloatBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -487,7 +490,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public DoubleBufferAssertion that(final DoubleBuffer actual) {
-        return new DoubleBufferAssertion(actual, getMessage());
+        return new DoubleBufferAssertion(actual, _failDescription);
     }
 
     /**
@@ -497,12 +500,7 @@ public final class MessageAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public CharBufferAssertion that(final CharBuffer actual) {
-        return new CharBufferAssertion(actual, getMessage());
-    }
-
-    @Override
-    protected String asString(final Object value) {
-        return null;
+        return new CharBufferAssertion(actual, _failDescription);
     }
 
 }
