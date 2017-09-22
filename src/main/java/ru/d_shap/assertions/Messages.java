@@ -37,41 +37,41 @@ public final class Messages {
      */
     public static final class Check {
 
-        public static final String ACTUAL_VALUE_CLASS = "Check actual value class";
+        public static final String ACTUAL_VALUE_CLASS = "Check value class";
 
-        public static final String ACTUAL_VALUE_TO_STRING = "Check actual value string representation";
+        public static final String ACTUAL_VALUE_TO_STRING = "Check value string representation";
 
-        public static final String ACTUAL_VALUE_HASH_CODE = "Check actual value hash code";
+        public static final String ACTUAL_VALUE_HASH_CODE = "Check value hash code";
 
-        public static final String ACTUAL_VALUE_FIELD = "Check actual value field";
+        public static final String ACTUAL_VALUE_FIELD = "Check value field";
 
-        public static final String ACTUAL_VALUE_LENGTH = "Check actual value length";
+        public static final String ACTUAL_VALUE_LENGTH = "Check value length";
 
-        public static final String ACTUAL_VALUE_SIZE = "Check actual value size";
+        public static final String ACTUAL_VALUE_SIZE = "Check value size";
 
-        public static final String ACTUAL_KEYS = "Check actual keys";
+        public static final String ACTUAL_KEYS = "Check keys";
 
-        public static final String ACTUAL_VALUES = "Check actual values";
+        public static final String ACTUAL_VALUES = "Check values";
 
-        public static final String ACTUAL_VALUE_TOKENS = "Check actual value tokens";
+        public static final String ACTUAL_VALUE_TOKENS = "Check value tokens";
 
-        public static final String ACTUAL_THROWABLE_MESSAGE = "Check actual throwable message";
+        public static final String ACTUAL_THROWABLE_MESSAGE = "Check throwable message";
 
-        public static final String ACTUAL_THROWABLE_CAUSE = "Check actual throwable cause";
+        public static final String ACTUAL_THROWABLE_CAUSE = "Check throwable cause";
 
-        public static final String ACTUAL_ENUM_VALUE_COUNT = "Check actual enum value count";
+        public static final String ACTUAL_ENUM_VALUE_COUNT = "Check enum value count";
 
-        public static final String ACTUAL_STREAM_BYTE_READ = "Check actual stream byte read";
+        public static final String ACTUAL_STREAM_BYTE_READ = "Check input stream byte read";
 
-        public static final String ACTUAL_READER_CHAR_READ = "Check actual reader char read";
+        public static final String ACTUAL_READER_CHAR_READ = "Check reader char read";
 
-        public static final String ACTUAL_BUFFER_POSITION = "Check actual buffer position";
+        public static final String ACTUAL_BUFFER_POSITION = "Check buffer position";
 
-        public static final String ACTUAL_BUFFER_LIMIT = "Check actual buffer limit";
+        public static final String ACTUAL_BUFFER_LIMIT = "Check buffer limit";
 
-        public static final String ACTUAL_BUFFER_CAPACITY = "Check actual buffer capacity";
+        public static final String ACTUAL_BUFFER_CAPACITY = "Check buffer capacity";
 
-        public static final String ACTUAL_BUFFER_REMAINING = "Check actual buffer remaining";
+        public static final String ACTUAL_BUFFER_REMAINING = "Check buffer remaining";
 
         private Check() {
             super();
