@@ -69,10 +69,11 @@ public final class FailDescription {
      * @return current object for the chain call.
      */
     public FailDescription addActual(final BaseAssertion assertion) {
-        if (assertion.getActual() == null) {
+        Object actual = assertion.getActual();
+        if (actual == null) {
             _actual = null;
         } else {
-            _actual = "<" + assertion.actualAsString() + ">";
+            _actual = "<" + assertion.asString(actual) + ">";
         }
         return this;
     }
