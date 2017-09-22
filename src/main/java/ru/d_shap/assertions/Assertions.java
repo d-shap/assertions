@@ -91,7 +91,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static MessageAssertion assertWithMessage(final String message) {
-        return new MessageAssertion(message);
+        return new MessageAssertion(new FailDescription().addMessage(message));
     }
 
     /**
@@ -101,7 +101,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ByteAssertion assertThat(final byte actual) {
-        return new ByteAssertion(actual, null);
+        return new ByteAssertion(actual, new FailDescription());
     }
 
     /**
@@ -111,7 +111,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ShortAssertion assertThat(final short actual) {
-        return new ShortAssertion(actual, null);
+        return new ShortAssertion(actual, new FailDescription());
     }
 
     /**
@@ -121,7 +121,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static IntAssertion assertThat(final int actual) {
-        return new IntAssertion(actual, null);
+        return new IntAssertion(actual, new FailDescription());
     }
 
     /**
@@ -131,7 +131,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static LongAssertion assertThat(final long actual) {
-        return new LongAssertion(actual, null);
+        return new LongAssertion(actual, new FailDescription());
     }
 
     /**
@@ -141,7 +141,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static FloatAssertion assertThat(final float actual) {
-        return new FloatAssertion(actual, null);
+        return new FloatAssertion(actual, new FailDescription());
     }
 
     /**
@@ -151,7 +151,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static DoubleAssertion assertThat(final double actual) {
-        return new DoubleAssertion(actual, null);
+        return new DoubleAssertion(actual, new FailDescription());
     }
 
     /**
@@ -161,7 +161,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static BooleanAssertion assertThat(final boolean actual) {
-        return new BooleanAssertion(actual, null);
+        return new BooleanAssertion(actual, new FailDescription());
     }
 
     /**
@@ -171,7 +171,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static CharAssertion assertThat(final char actual) {
-        return new CharAssertion(actual, null);
+        return new CharAssertion(actual, new FailDescription());
     }
 
     /**
@@ -181,7 +181,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ObjectAssertion assertThat(final Object actual) {
-        return new ObjectAssertion(actual, null);
+        return new ObjectAssertion(actual, new FailDescription());
     }
 
     /**
@@ -227,7 +227,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ByteArrayAssertion assertThat(final byte[] actual) {
-        return new ByteArrayAssertion(actual, null);
+        return new ByteArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -237,7 +237,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ShortArrayAssertion assertThat(final short[] actual) {
-        return new ShortArrayAssertion(actual, null);
+        return new ShortArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -247,7 +247,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static IntArrayAssertion assertThat(final int[] actual) {
-        return new IntArrayAssertion(actual, null);
+        return new IntArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -257,7 +257,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static LongArrayAssertion assertThat(final long[] actual) {
-        return new LongArrayAssertion(actual, null);
+        return new LongArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -267,7 +267,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static FloatArrayAssertion assertThat(final float[] actual) {
-        return new FloatArrayAssertion(actual, null);
+        return new FloatArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -277,7 +277,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static DoubleArrayAssertion assertThat(final double[] actual) {
-        return new DoubleArrayAssertion(actual, null);
+        return new DoubleArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -287,7 +287,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static BooleanArrayAssertion assertThat(final boolean[] actual) {
-        return new BooleanArrayAssertion(actual, null);
+        return new BooleanArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -297,7 +297,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static CharArrayAssertion assertThat(final char[] actual) {
-        return new CharArrayAssertion(actual, null);
+        return new CharArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -307,7 +307,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ObjectArrayAssertion assertThat(final Object[] actual) {
-        return new ObjectArrayAssertion(actual, null);
+        return new ObjectArrayAssertion(actual, new FailDescription());
     }
 
     /**
@@ -317,7 +317,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ClassAssertion assertThat(final Class<?> actual) {
-        return new ClassAssertion(actual, null);
+        return new ClassAssertion(actual, new FailDescription());
     }
 
     /**
@@ -327,7 +327,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static CharSequenceAssertion assertThat(final CharSequence actual) {
-        return new CharSequenceAssertion(actual, null);
+        return new CharSequenceAssertion(actual, new FailDescription());
     }
 
     /**
@@ -337,7 +337,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static StringAssertion assertThat(final String actual) {
-        return new StringAssertion(actual, null);
+        return new StringAssertion(actual, new FailDescription());
     }
 
     /**
@@ -347,7 +347,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ComparableAssertion assertThat(final Comparable<?> actual) {
-        return new ComparableAssertion(actual, null);
+        return new ComparableAssertion(actual, new FailDescription());
     }
 
     /**
@@ -357,7 +357,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static IterableAssertion assertThat(final Iterable<?> actual) {
-        return new IterableAssertion(actual, null);
+        return new IterableAssertion(actual, new FailDescription());
     }
 
     /**
@@ -367,7 +367,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ThrowableAssertion assertThat(final Throwable actual) {
-        return new ThrowableAssertion(actual, null);
+        return new ThrowableAssertion(actual, new FailDescription());
     }
 
     /**
@@ -377,7 +377,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static CollectionAssertion assertThat(final Collection<?> actual) {
-        return new CollectionAssertion(actual, null);
+        return new CollectionAssertion(actual, new FailDescription());
     }
 
     /**
@@ -387,7 +387,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static IteratorAssertion assertThat(final Iterator<?> actual) {
-        return new IteratorAssertion(actual, null);
+        return new IteratorAssertion(actual, new FailDescription());
     }
 
     /**
@@ -397,7 +397,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ListAssertion assertThat(final List<?> actual) {
-        return new ListAssertion(actual, null);
+        return new ListAssertion(actual, new FailDescription());
     }
 
     /**
@@ -407,7 +407,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static SetAssertion assertThat(final Set<?> actual) {
-        return new SetAssertion(actual, null);
+        return new SetAssertion(actual, new FailDescription());
     }
 
     /**
@@ -417,7 +417,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static MapAssertion assertThat(final Map<?, ?> actual) {
-        return new MapAssertion(actual, null);
+        return new MapAssertion(actual, new FailDescription());
     }
 
     /**
@@ -427,7 +427,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static InputStreamAssertion assertThat(final InputStream actual) {
-        return new InputStreamAssertion(actual, null);
+        return new InputStreamAssertion(actual, new FailDescription());
     }
 
     /**
@@ -437,7 +437,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ReaderAssertion assertThat(final Reader actual) {
-        return new ReaderAssertion(actual, null);
+        return new ReaderAssertion(actual, new FailDescription());
     }
 
     /**
@@ -447,7 +447,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ByteBufferAssertion assertThat(final ByteBuffer actual) {
-        return new ByteBufferAssertion(actual, null);
+        return new ByteBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -457,7 +457,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ShortBufferAssertion assertThat(final ShortBuffer actual) {
-        return new ShortBufferAssertion(actual, null);
+        return new ShortBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -467,7 +467,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static IntBufferAssertion assertThat(final IntBuffer actual) {
-        return new IntBufferAssertion(actual, null);
+        return new IntBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -477,7 +477,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static LongBufferAssertion assertThat(final LongBuffer actual) {
-        return new LongBufferAssertion(actual, null);
+        return new LongBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -487,7 +487,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static FloatBufferAssertion assertThat(final FloatBuffer actual) {
-        return new FloatBufferAssertion(actual, null);
+        return new FloatBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -497,7 +497,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static DoubleBufferAssertion assertThat(final DoubleBuffer actual) {
-        return new DoubleBufferAssertion(actual, null);
+        return new DoubleBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -507,7 +507,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static CharBufferAssertion assertThat(final CharBuffer actual) {
-        return new CharBufferAssertion(actual, null);
+        return new CharBufferAssertion(actual, new FailDescription());
     }
 
     /**
@@ -516,7 +516,7 @@ public final class Assertions {
      * @param failMessage the fail message.
      */
     public static void fail(final String failMessage) {
-        throw new AssertionError(failMessage);
+        throw new FailDescription().addMessage(failMessage).createAssertionError();
     }
 
 }
