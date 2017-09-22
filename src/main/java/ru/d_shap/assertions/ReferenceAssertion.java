@@ -37,11 +37,11 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    protected ReferenceAssertion(final Object actual, final String message) {
-        super(actual, message);
+    protected ReferenceAssertion(final Object actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -49,7 +49,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final void isNull() {
         if (getActual() != null) {
-            throw createAssertionError(FailMessages.getIsNull(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL);
         }
     }
 
@@ -69,7 +69,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -82,7 +82,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final ClassAssertion toClass() {
         checkActualIsNotNull();
-        return new ClassAssertion(getActual().getClass(), getMessage());
+        return new ClassAssertion(getActual().getClass(), getFailDescription(Messages.Check.ACTUAL_VALUE_CLASS));
     }
 
     /**
@@ -139,7 +139,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final StringAssertion toToString() {
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getMessage());
+        return new StringAssertion(getActual().toString(), getFailDescription(Messages.Check.ACTUAL_VALUE_TO_STRING));
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      */
     public final IntAssertion toHashCode() {
         checkActualIsNotNull();
-        return new IntAssertion(getActual().hashCode(), getMessage());
+        return new IntAssertion(getActual().hashCode(), getFailDescription(Messages.Check.ACTUAL_VALUE_HASH_CODE));
     }
 
     /**
@@ -180,7 +180,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     }
 
     /**
-     * Make assertion about the actual value's field.
+     * Make assertion about the actual value field.
      *
      * @param fieldName the field name.
      * @return the assertion.
@@ -192,14 +192,14 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             Field field = getField(fieldName);
             AccessController.doPrivileged(new FieldAccessAction(field));
             Object value = field.get(getActual());
-            return new ObjectAssertion(value, getMessage());
+            return new ObjectAssertion(value, getFailDescription(Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName));
         } catch (ReflectiveOperationException ex) {
-            throw createAssertionError(FailMessages.getContainsField(fieldName), ex);
+            throw createAssertionError(Messages.Fail.CONTAINS_FIELD + ": " + fieldName, ex);
         }
     }
 
     /**
-     * Make assertion of specified type about the actual value's field.
+     * Make assertion of specified type about the actual value field.
      *
      * @param fieldName      the field name.
      * @param assertionClass class of the assertion.
