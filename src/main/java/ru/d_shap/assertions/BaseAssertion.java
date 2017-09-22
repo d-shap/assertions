@@ -166,7 +166,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkActualIsNotNull() {
         if (_actual == null) {
-            throw getFailDescription(Messages.Fail.IS_NOT_NULL).createAssertionError();
+            throw createAssertionError(Messages.Fail.IS_NOT_NULL);
         }
     }
 
@@ -177,7 +177,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotNull(final Object argument) {
         if (argument == null) {
-            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_NULL).createAssertionError();
+            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_NULL);
         }
     }
 
@@ -188,7 +188,7 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         if (isEmpty) {
-            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE).createAssertionError();
+            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE);
         }
     }
 
@@ -199,12 +199,155 @@ public abstract class BaseAssertion {
      */
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
         if (isEmpty) {
-            throw getFailDescription(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE).createAssertionError();
+            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE);
         }
     }
 
-    final String actualAsString() {
-        return asString(_actual);
+    /**
+     * Create the assertion error based on the fail description.
+     *
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError() {
+        return getFailDescription().createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message.
+     *
+     * @param message the message.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message) {
+        return getFailDescription(message).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the expected value.
+     *
+     * @param expected the expected value.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Object expected) {
+        return getFailDescription().addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message and the expected value.
+     *
+     * @param message  the message.
+     * @param expected the expected value.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message, final Object expected) {
+        return getFailDescription(message).addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the expected value range.
+     *
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Object expectedFrom, final Object expectedTo) {
+        return getFailDescription().addExpected(this, expectedFrom, expectedTo).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message and the expected value range.
+     *
+     * @param message      the message.
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo) {
+        return getFailDescription(message).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the throwable.
+     *
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Throwable throwable) {
+        return getFailDescription().addThrowable(throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message and the throwable.
+     *
+     * @param message   the message.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message, final Throwable throwable) {
+        return getFailDescription().addThrowable(message, throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value.
+     *
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual() {
+        return getFailDescription().addActual(this).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value and the message.
+     *
+     * @param message the message.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message) {
+        return getFailDescription(message).addActual(this).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value and the expected value.
+     *
+     * @param expected the expected value.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final Object expected) {
+        return getFailDescription().addActual(this).addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the message and the expected value.
+     *
+     * @param message  the message.
+     * @param expected the expected value.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message, final Object expected) {
+        return getFailDescription(message).addActual(this).addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value and the expected value range.
+     *
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo) {
+        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the message and the expected value range.
+     *
+     * @param message      the message.
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo) {
+        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
     /**
