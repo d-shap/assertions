@@ -37,7 +37,10 @@ public final class FailDescription {
 
     private Throwable _throwable;
 
-    FailDescription() {
+    /**
+     * Create new object.
+     */
+    public FailDescription() {
         super();
         _messages = new ArrayList<>();
         _actual = null;
@@ -65,7 +68,7 @@ public final class FailDescription {
     /**
      * Add the actual value of the assertion to the fail description.
      *
-     * @param assertion the assertion to get the actual value.
+     * @param assertion the assertion.
      * @return current object for the chain call.
      */
     public FailDescription addActual(final BaseAssertion assertion) {
@@ -114,6 +117,18 @@ public final class FailDescription {
     /**
      * Add the throwabe to the fail description.
      *
+     * @param throwable the throwabe.
+     * @return current object for the chain call.
+     */
+    public FailDescription addThrowable(final Throwable throwable) {
+        addMessage(throwable.toString());
+        _throwable = throwable;
+        return this;
+    }
+
+    /**
+     * Add the throwabe with the message to the fail description.
+     *
      * @param message   the message.
      * @param throwable the throwabe.
      * @return current object for the chain call.
@@ -125,19 +140,7 @@ public final class FailDescription {
     }
 
     /**
-     * Add the throwabe to the fail description.
-     *
-     * @param throwable the throwabe.
-     * @return current object for the chain call.
-     */
-    public FailDescription addThrowable(final Throwable throwable) {
-        addMessage(throwable.toString());
-        _throwable = throwable;
-        return this;
-    }
-
-    /**
-     * Create the assertion error based on this fail description.
+     * Create the assertion error based on the fail description.
      *
      * @return the assertion error.
      */
