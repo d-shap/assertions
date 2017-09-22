@@ -20,7 +20,8 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 
 /**
  * Assertions for the char.
@@ -32,11 +33,11 @@ public class CharAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public CharAssertion(final char actual, final String message) {
-        super(actual, message);
+    public CharAssertion(final char actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -46,7 +47,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final int expected) {
         if ((Character) getActual() != expected) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -57,7 +58,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final int expected) {
         if ((Character) getActual() == expected) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -68,7 +69,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final int expected) {
         if ((Character) getActual() <= expected) {
-            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
 
@@ -79,7 +80,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
         if ((Character) getActual() < expected) {
-            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
 
@@ -90,7 +91,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThan(final int expected) {
         if ((Character) getActual() >= expected) {
-            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
 
@@ -101,31 +102,31 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final int expected) {
         if ((Character) getActual() > expected) {
-            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
 
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
         if ((Character) getActual() < expectedFrom || (Character) getActual() >= expectedTo) {
-            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         if ((Character) getActual() >= expectedFrom && (Character) getActual() < expectedTo) {
-            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
@@ -134,7 +135,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isAlphabetic() {
         if (!Character.isAlphabetic((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsAlphabetic(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_ALPHABETIC);
         }
     }
 
@@ -143,7 +144,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isDigit() {
         if (!Character.isDigit((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsDigit(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIGIT);
         }
     }
 
@@ -152,7 +153,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLetter() {
         if (!Character.isLetter((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsLetter(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER);
         }
     }
 
@@ -161,7 +162,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLetterOrDigit() {
         if (!Character.isLetterOrDigit((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsLetterOrDigit(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER_OR_DIGIT);
         }
     }
 
@@ -170,7 +171,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isControl() {
         if (!Character.isISOControl((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsControl(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_CONTROL_SYMBOL);
         }
     }
 
@@ -179,7 +180,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isLowerCase() {
         if (!Character.isLowerCase((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsLowerCase(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LOWER_CASE);
         }
     }
 
@@ -188,7 +189,7 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isUpperCase() {
         if (!Character.isUpperCase((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsUpperCase(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_UPPER_CASE);
         }
     }
 
@@ -197,28 +198,24 @@ public class CharAssertion extends BaseAssertion {
      */
     public final void isWhitespace() {
         if (!Character.isWhitespace((Character) getActual())) {
-            throw createAssertionError(FailMessages.getIsWhitespace(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_WHITESPACE);
         }
     }
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            if (value instanceof Character) {
-                return asSymbolAndCodeString((char) value, (char) value);
-            } else if (value instanceof Integer) {
-                int code = (int) value;
-                char symbol = (char) code;
-                if (symbol == code) {
-                    return asSymbolAndCodeString(symbol, code);
-                } else {
-                    return asCodeString(code);
-                }
+        if (value instanceof Character) {
+            return asSymbolAndCodeString((char) value, (char) value);
+        } else if (value instanceof Integer) {
+            int code = (int) value;
+            char symbol = (char) code;
+            if (symbol == code) {
+                return asSymbolAndCodeString(symbol, code);
             } else {
-                return String.valueOf(value);
+                return asCodeString(code);
             }
+        } else {
+            return String.valueOf(value);
         }
     }
 

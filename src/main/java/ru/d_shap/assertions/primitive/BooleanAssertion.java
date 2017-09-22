@@ -20,7 +20,8 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 
 /**
  * Assertions for the boolean.
@@ -32,11 +33,11 @@ public class BooleanAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public BooleanAssertion(final boolean actual, final String message) {
-        super(actual, message);
+    public BooleanAssertion(final boolean actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -44,7 +45,7 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isTrue() {
         if (!((Boolean) getActual())) {
-            throw createAssertionError(FailMessages.getIsTrue());
+            throw createAssertionError(Messages.Fail.IS_TRUE);
         }
     }
 
@@ -53,17 +54,13 @@ public class BooleanAssertion extends BaseAssertion {
      */
     public final void isFalse() {
         if ((Boolean) getActual()) {
-            throw createAssertionError(FailMessages.getIsFalse());
+            throw createAssertionError(Messages.Fail.IS_FALSE);
         }
     }
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            return String.valueOf(value);
-        }
+        return String.valueOf(value);
     }
 
 }

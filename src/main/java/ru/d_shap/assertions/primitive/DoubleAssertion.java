@@ -20,7 +20,8 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 
 /**
  * Assertions for the double.
@@ -32,11 +33,11 @@ public class DoubleAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public DoubleAssertion(final double actual, final String message) {
-        super(actual, message);
+    public DoubleAssertion(final double actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -47,7 +48,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final double expected, final double delta) {
         if (Math.abs(expected - (Double) getActual()) > delta) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -59,7 +60,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final double expected, final double delta) {
         if (Math.abs(expected - (Double) getActual()) <= delta) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -70,7 +71,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final double expected) {
         if ((Double) getActual() <= expected) {
-            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
 
@@ -81,7 +82,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final double expected) {
         if ((Double) getActual() < expected) {
-            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
 
@@ -92,7 +93,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isLessThan(final double expected) {
         if ((Double) getActual() >= expected) {
-            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
 
@@ -103,31 +104,31 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final double expected) {
         if ((Double) getActual() > expected) {
-            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
 
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final double expectedFrom, final double expectedTo) {
         if ((Double) getActual() < expectedFrom || (Double) getActual() >= expectedTo) {
-            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final double expectedFrom, final double expectedTo) {
         if ((Double) getActual() >= expectedFrom && (Double) getActual() < expectedTo) {
-            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
@@ -136,7 +137,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isZero() {
         if ((Double) getActual() != 0.0f) {
-            throw createAssertionError(FailMessages.getIsZero(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_ZERO);
         }
     }
 
@@ -145,7 +146,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNonZero() {
         if ((Double) getActual() == 0.0f) {
-            throw createAssertionError(FailMessages.getIsNonZero());
+            throw createAssertionError(Messages.Fail.IS_NON_ZERO);
         }
     }
 
@@ -154,7 +155,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isPositiveInfinity() {
         if ((Double) getActual() != Double.POSITIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getIsPositiveInfinity(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_POSITIVE_INFINITY);
         }
     }
 
@@ -163,7 +164,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNegativeInfinity() {
         if ((Double) getActual() != Double.NEGATIVE_INFINITY) {
-            throw createAssertionError(FailMessages.getIsNegativeInfinity(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NEGATIVE_INFINITY);
         }
     }
 
@@ -172,7 +173,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isInfinity() {
         if (!((Double) getActual()).isInfinite()) {
-            throw createAssertionError(FailMessages.getIsInfinity(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_INFINITY);
         }
     }
 
@@ -181,7 +182,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNaN() {
         if (!((Double) getActual()).isNaN()) {
-            throw createAssertionError(FailMessages.getIsNaN(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NAN);
         }
     }
 
@@ -190,7 +191,7 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isNotNaN() {
         if (((Double) getActual()).isNaN()) {
-            throw createAssertionError(FailMessages.getIsNotNaN());
+            throw createAssertionError(Messages.Fail.IS_NOT_NAN);
         }
     }
 
@@ -199,17 +200,13 @@ public class DoubleAssertion extends BaseAssertion {
      */
     public final void isFinite() {
         if (((Double) getActual()).isNaN() || ((Double) getActual()).isInfinite()) {
-            throw createAssertionError(FailMessages.getIsFinite(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_FINITE);
         }
     }
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            return String.valueOf(value);
-        }
+        return String.valueOf(value);
     }
 
 }

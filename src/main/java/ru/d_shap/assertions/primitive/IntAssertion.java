@@ -20,7 +20,8 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 
 /**
  * Assertions for the int.
@@ -32,11 +33,11 @@ public class IntAssertion extends BaseAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public IntAssertion(final int actual, final String message) {
-        super(actual, message);
+    public IntAssertion(final int actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -46,7 +47,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isEqualTo(final int expected) {
         if ((Integer) getActual() != expected) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -57,7 +58,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isNotEqualTo(final int expected) {
         if ((Integer) getActual() == expected) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -68,7 +69,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isGreaterThan(final int expected) {
         if ((Integer) getActual() <= expected) {
-            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
 
@@ -79,7 +80,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
         if ((Integer) getActual() < expected) {
-            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
 
@@ -90,7 +91,7 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isLessThan(final int expected) {
         if ((Integer) getActual() >= expected) {
-            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
 
@@ -101,41 +102,37 @@ public class IntAssertion extends BaseAssertion {
      */
     public final void isLessThanOrEqualTo(final int expected) {
         if ((Integer) getActual() > expected) {
-            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
 
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
         if ((Integer) getActual() < expectedFrom || (Integer) getActual() >= expectedTo) {
-            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         if ((Integer) getActual() >= expectedFrom && (Integer) getActual() < expectedTo) {
-            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            return String.valueOf(value);
-        }
+        return String.valueOf(value);
     }
 
 }
