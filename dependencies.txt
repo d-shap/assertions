@@ -1,6 +1,34 @@
 Assertion classes dependencies:
 
-StringAssertion                 -> CharSequenceAssertion
+---------------------------------
+----- comparable assertions
+---------------------------------
+ByteAssertion
+ShortAssertion
+IntAssertion
+LongAssertion
+FloatAssertion
+DoubleAssertion
+CharAssertion
+StringAssertion
+CharSequenceAssertion
+ComparableAssertion
 
-CollectionAssertion             -> IterableAssertion
-CollectionAssertion             -> IteratorAssertion
+---------------------------------
+----- float number assertions
+---------------------------------
+FloatAssertion
+DoubleAssertion
+
+---------------------------------
+----- string assertions
+---------------------------------
+StringAssertion
+CharSequenceAssertion
+
+---------------------------------
+----- collection assertions
+---------------------------------
+CollectionAssertion
+IteratorAssertion
+IterableAssertion
