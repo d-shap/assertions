@@ -22,6 +22,7 @@ package ru.d_shap.assertions.primitive;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link BooleanAssertion}.
@@ -42,10 +43,10 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void isTrueTest() {
-        new BooleanAssertion(true, null).isTrue();
+        new BooleanAssertion(true, new FailDescription()).isTrue();
 
         try {
-            new BooleanAssertion(false, null).isTrue();
+            new BooleanAssertion(false, new FailDescription()).isTrue();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be true.");
@@ -57,10 +58,10 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void isFalseTest() {
-        new BooleanAssertion(false, null).isFalse();
+        new BooleanAssertion(false, new FailDescription()).isFalse();
 
         try {
-            new BooleanAssertion(true, null).isFalse();
+            new BooleanAssertion(true, new FailDescription()).isFalse();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
@@ -72,10 +73,10 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new BooleanAssertion(true, null).asString(null)).isNull();
-        Assertions.assertThat(new BooleanAssertion(true, null).asString(true)).isEqualTo("true");
-        Assertions.assertThat(new BooleanAssertion(true, null).asString(false)).isEqualTo("false");
-        Assertions.assertThat(new BooleanAssertion(true, null).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(null)).isEqualTo("null");
+        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(true)).isEqualTo("true");
+        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(false)).isEqualTo("false");
+        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString("test")).isEqualTo("test");
     }
 
 }
