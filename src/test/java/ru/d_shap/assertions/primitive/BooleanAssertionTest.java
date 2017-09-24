@@ -51,6 +51,12 @@ public final class BooleanAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be true.");
         }
+        try {
+            new BooleanAssertion(false, new FailDescription().addMessage("Message")).isTrue();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be true.");
+        }
     }
 
     /**
@@ -65,6 +71,12 @@ public final class BooleanAssertionTest {
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
+        }
+        try {
+            new BooleanAssertion(true, new FailDescription().addMessage("Message")).isFalse();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be false.");
         }
     }
 
