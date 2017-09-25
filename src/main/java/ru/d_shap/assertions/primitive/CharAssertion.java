@@ -204,18 +204,22 @@ public class CharAssertion extends BaseAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        if (value instanceof Character) {
-            return asSymbolAndCodeString((char) value, (char) value);
-        } else if (value instanceof Integer) {
-            int code = (int) value;
-            char symbol = (char) code;
-            if (symbol == code) {
-                return asSymbolAndCodeString(symbol, code);
-            } else {
-                return asCodeString(code);
-            }
+        if (value == null) {
+            return null;
         } else {
-            return String.valueOf(value);
+            if (value instanceof Character) {
+                return asSymbolAndCodeString((char) value, (char) value);
+            } else if (value instanceof Integer) {
+                int code = (int) value;
+                char symbol = (char) code;
+                if (symbol == code) {
+                    return asSymbolAndCodeString(symbol, code);
+                } else {
+                    return asCodeString(code);
+                }
+            } else {
+                return String.valueOf(value);
+            }
         }
     }
 
