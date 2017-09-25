@@ -301,7 +301,7 @@ public final class ByteAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString(null)).isEqualTo("null");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString(null)).isNull();
         Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 5)).isEqualTo("5");
         Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 60)).isEqualTo("60");
         Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 244)).isEqualTo("-12");

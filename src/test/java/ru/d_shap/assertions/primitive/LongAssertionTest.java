@@ -301,7 +301,7 @@ public final class LongAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null)).isEqualTo("null");
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null)).isNull();
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(5L)).isEqualTo("5");
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(60L)).isEqualTo("60");
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(244L)).isEqualTo("244");
