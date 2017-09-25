@@ -21,6 +21,8 @@ package ru.d_shap.assertions.collection;
 
 import java.util.Set;
 
+import ru.d_shap.assertions.FailDescription;
+
 /**
  * Assertions for the set.
  *
@@ -31,11 +33,11 @@ public class SetAssertion extends CollectionAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual set.
-     * @param message the assertion message.
+     * @param actual          the actual set.
+     * @param failDescription the fail description.
      */
-    public SetAssertion(final Set<?> actual, final String message) {
-        super(actual, message);
+    public SetAssertion(final Set<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
 }

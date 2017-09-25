@@ -22,6 +22,8 @@ package ru.d_shap.assertions.collection;
 import java.util.List;
 import java.util.RandomAccess;
 
+import ru.d_shap.assertions.FailDescription;
+
 /**
  * Assertions for the list.
  *
@@ -32,11 +34,11 @@ public class ListAssertion extends CollectionAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual list.
-     * @param message the assertion message.
+     * @param actual          the actual list.
+     * @param failDescription the fail description.
      */
-    public ListAssertion(final List<?> actual, final String message) {
-        super(actual, message);
+    public ListAssertion(final List<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
