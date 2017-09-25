@@ -24,7 +24,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
@@ -38,11 +39,11 @@ public class CollectionAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public CollectionAssertion(final Collection<?> actual, final String message) {
-        super(actual, message);
+    public CollectionAssertion(final Collection<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -51,7 +52,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void isEmpty() {
         checkActualIsNotNull();
         if (!((Collection) getActual()).isEmpty()) {
-            throw createAssertionError(FailMessages.getIsEmpty(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
         }
     }
 
@@ -60,7 +61,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null && !((Collection) getActual()).isEmpty()) {
-            throw createAssertionError(FailMessages.getIsNullOrEmpty(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
         }
     }
 
@@ -70,7 +71,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final void isNotEmpty() {
         checkActualIsNotNull();
         if (((Collection) getActual()).isEmpty()) {
-            throw createAssertionError(FailMessages.getIsNotEmpty());
+            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
         }
     }
 
@@ -83,7 +84,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!((Collection) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getContains(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS, expected);
         }
     }
 
@@ -96,7 +97,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Collection) getActual()).contains(expected)) {
-            throw createAssertionError(FailMessages.getDoesNotContain(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN, expected);
         }
     }
 
@@ -116,7 +117,7 @@ public class CollectionAssertion extends ReferenceAssertion {
                 actualListCopy.remove(idx);
             } else {
                 List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsAll(actualAsString(), asString(expectedList)));
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL, expectedList);
             }
         }
     }
@@ -147,7 +148,7 @@ public class CollectionAssertion extends ReferenceAssertion {
                 actualListCopy = actualListCopy.subList(idx + 1, actualListCopy.size());
             } else {
                 List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsAllInOrder(actualAsString(), asString(expectedList)));
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL_IN_ORDER, expectedList);
             }
         }
     }
@@ -181,7 +182,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         }
         if (!actualListCopy.isEmpty() || elementCount != expected.length) {
             List<?> expectedList = Arrays.asList(expected);
-            throw createAssertionError(FailMessages.getContainsExactly(actualAsString(), asString(expectedList)));
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY, expectedList);
         }
     }
 
@@ -210,12 +211,12 @@ public class CollectionAssertion extends ReferenceAssertion {
                 actualListCopy.remove(idx);
             } else {
                 List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsExactlyInOrder(actualAsString(), asString(expectedList)));
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expectedList);
             }
         }
         if (!actualListCopy.isEmpty()) {
             List<?> expectedList = Arrays.asList(expected);
-            throw createAssertionError(FailMessages.getContainsExactlyInOrder(actualAsString(), asString(expectedList)));
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expectedList);
         }
     }
 
@@ -249,7 +250,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         }
         if (!found) {
             List<?> expectedList = Arrays.asList(expected);
-            throw createAssertionError(FailMessages.getContainsAny(actualAsString(), asString(expectedList)));
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ANY, expectedList);
         }
     }
 
@@ -277,7 +278,7 @@ public class CollectionAssertion extends ReferenceAssertion {
             int idx = actualListCopy.indexOf(expectedItem);
             if (idx >= 0) {
                 List<?> expectedList = Arrays.asList(expected);
-                throw createAssertionError(FailMessages.getContainsNone(actualAsString(), asString(expectedList)));
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_NONE, expectedList);
             }
         }
     }
@@ -307,7 +308,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final IntAssertion toSize() {
         checkActualIsNotNull();
-        return new IntAssertion(((Collection) getActual()).size(), getMessage());
+        return new IntAssertion(((Collection) getActual()).size(), getFailDescription(Messages.Check.ACTUAL_VALUE_SIZE));
     }
 
     /**
