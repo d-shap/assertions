@@ -127,6 +127,7 @@
  * <li>{@link ru.d_shap.assertions.BaseAssertion#as(java.lang.Class)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.Class)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, java.lang.Class)}</li>
+ * <li>{@link ru.d_shap.assertions.ReferenceAssertion#toField(java.lang.String, java.lang.Class)}</li>
  * </ul>
  */
 package ru.d_shap.assertions;
