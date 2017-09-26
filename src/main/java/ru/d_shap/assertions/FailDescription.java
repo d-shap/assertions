@@ -76,7 +76,7 @@ public final class FailDescription {
         if (actual == null) {
             _actual = null;
         } else {
-            _actual = "<" + assertion.asString(actual) + ">";
+            _actual = "<" + assertion.asString(actual, true) + ">";
         }
         return this;
     }
@@ -92,7 +92,7 @@ public final class FailDescription {
         if (expected == null) {
             _expected = null;
         } else {
-            _expected = "<" + assertion.asString(expected) + ">";
+            _expected = "<" + assertion.asString(expected, false) + ">";
         }
         return this;
     }
@@ -109,7 +109,7 @@ public final class FailDescription {
         if (expectedFrom == null || expectedTo == null) {
             _expected = null;
         } else {
-            _expected = "<" + assertion.asString(expectedFrom) + ":" + assertion.asString(expectedTo) + ">";
+            _expected = "<" + assertion.asString(expectedFrom, false) + ":" + assertion.asString(expectedTo, false) + ">";
         }
         return this;
     }
