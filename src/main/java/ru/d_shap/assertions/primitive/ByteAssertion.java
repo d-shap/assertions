@@ -131,7 +131,7 @@ public class ByteAssertion extends BaseAssertion {
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
