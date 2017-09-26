@@ -294,11 +294,11 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     private Object[] iterableToArray(final Iterable<?> expected) {
-        List<Object> result = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
         for (Object value : expected) {
-            result.add(value);
+            list.add(value);
         }
-        return result.toArray();
+        return list.toArray();
     }
 
     /**
@@ -321,7 +321,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
