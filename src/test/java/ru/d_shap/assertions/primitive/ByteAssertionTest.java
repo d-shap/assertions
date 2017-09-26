@@ -301,11 +301,17 @@ public final class ByteAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString(null)).isNull();
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 5)).isEqualTo("5");
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 60)).isEqualTo("60");
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 244)).isEqualTo("-12");
-        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 5, true)).isEqualTo("5");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 60, true)).isEqualTo("60");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 244, true)).isEqualTo("-12");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString("test", true)).isEqualTo("test");
+
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 5, false)).isEqualTo("5");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 60, false)).isEqualTo("60");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString((byte) 244, false)).isEqualTo("-12");
+        Assertions.assertThat(new ByteAssertion((byte) 5, new FailDescription()).asString("test", false)).isEqualTo("test");
     }
 
 }

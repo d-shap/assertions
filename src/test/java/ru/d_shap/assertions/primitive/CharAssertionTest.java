@@ -658,14 +658,23 @@ public final class CharAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(null)).isNull();
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('a')).isEqualTo("a(97)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('7')).isEqualTo("7(55)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('F')).isEqualTo("F(70)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(10)).isEqualTo(" (10)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(100000)).isEqualTo(" (100000)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(Integer.MAX_VALUE)).isEqualTo(" (2147483647)");
-        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('a', true)).isEqualTo("a(97)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('7', true)).isEqualTo("7(55)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('F', true)).isEqualTo("F(70)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(10, true)).isEqualTo(" (10)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(100000, true)).isEqualTo(" (100000)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(Integer.MAX_VALUE, true)).isEqualTo(" (2147483647)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString("test", true)).isEqualTo("test");
+
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('a', false)).isEqualTo("a(97)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('7', false)).isEqualTo("7(55)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString('F', false)).isEqualTo("F(70)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(10, false)).isEqualTo(" (10)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(100000, false)).isEqualTo(" (100000)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString(Integer.MAX_VALUE, false)).isEqualTo(" (2147483647)");
+        Assertions.assertThat(new CharAssertion('a', new FailDescription()).asString("test", false)).isEqualTo("test");
     }
 
 }

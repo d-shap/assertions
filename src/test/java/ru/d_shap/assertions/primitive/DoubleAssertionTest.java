@@ -769,11 +769,17 @@ public final class DoubleAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(null)).isNull();
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(5.0)).isEqualTo("5.0");
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(60.0)).isEqualTo("60.0");
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(244.0)).isEqualTo("244.0");
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(5.0, true)).isEqualTo("5.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(60.0, true)).isEqualTo("60.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(244.0, true)).isEqualTo("244.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString("test", true)).isEqualTo("test");
+
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(5.0, false)).isEqualTo("5.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(60.0, false)).isEqualTo("60.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(244.0, false)).isEqualTo("244.0");
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString("test", false)).isEqualTo("test");
     }
 
 }

@@ -301,11 +301,17 @@ public final class ShortAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString(null)).isNull();
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 5)).isEqualTo("5");
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 60)).isEqualTo("60");
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 244)).isEqualTo("244");
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 5, true)).isEqualTo("5");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 60, true)).isEqualTo("60");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 244, true)).isEqualTo("244");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString("test", true)).isEqualTo("test");
+
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 5, false)).isEqualTo("5");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 60, false)).isEqualTo("60");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 244, false)).isEqualTo("244");
+        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString("test", false)).isEqualTo("test");
     }
 
 }
