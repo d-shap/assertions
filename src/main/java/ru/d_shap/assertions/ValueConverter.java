@@ -643,7 +643,6 @@ public final class ValueConverter {
      * @param list the object list.
      * @return the object array.
      */
-    @SuppressWarnings("unchecked")
     public static Object[] toObjectArray(final List<Object> list) {
         Object[] array = new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
