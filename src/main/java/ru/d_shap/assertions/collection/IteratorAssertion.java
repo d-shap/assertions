@@ -77,7 +77,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void isNextValuesEqualTo(final Object... expected) {
+    public final void isNextElementsEqualTo(final Object... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -89,7 +89,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void isNextValuesEqualTo(final Iterable<Object> expected) {
+    public final void isNextElementsEqualTo(final Iterable<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Object[] expectedArray = ValueConverter.toObjectArray(expected);
