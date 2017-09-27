@@ -318,7 +318,7 @@ public class CollectionAssertion extends ReferenceAssertion {
         if (value == null) {
             return null;
         } else {
-            return String.valueOf(value);
+            return value.toString();
         }
     }
 
