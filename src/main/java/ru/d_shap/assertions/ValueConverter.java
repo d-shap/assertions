@@ -263,9 +263,11 @@ public final class ValueConverter {
      * Convert the object array to the object list.
      *
      * @param array the object array.
+     * @param <T>   the object type.
      * @return the object list.
      */
-    public static List<Object> toObjectList(final Object... array) {
+    @SafeVarargs
+    public static <T> List<T> toObjectList(final T... array) {
         return Arrays.asList(array);
     }
 
@@ -273,11 +275,12 @@ public final class ValueConverter {
      * Convert the object iterable to the object list.
      *
      * @param iterable the object iterable.
+     * @param <T>      the object type.
      * @return the object list.
      */
-    public static List<Object> toObjectList(final Iterable<Object> iterable) {
-        List<Object> list = new ArrayList<>();
-        for (Object value : iterable) {
+    public static <T> List<T> toObjectList(final Iterable<T> iterable) {
+        List<T> list = new ArrayList<>();
+        for (T value : iterable) {
             list.add(value);
         }
         return list;
@@ -643,7 +646,7 @@ public final class ValueConverter {
      * @param list the object list.
      * @return the object array.
      */
-    public static Object[] toObjectArray(final List<Object> list) {
+    public static Object[] toObjectArray(final List<?> list) {
         Object[] array = new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
@@ -657,8 +660,8 @@ public final class ValueConverter {
      * @param iterable the object iterable.
      * @return the object array.
      */
-    public static Object[] toObjectArray(final Iterable<Object> iterable) {
-        List<Object> list = toObjectList(iterable);
+    public static Object[] toObjectArray(final Iterable<?> iterable) {
+        List<?> list = toObjectList(iterable);
         return toObjectArray(list);
     }
 
