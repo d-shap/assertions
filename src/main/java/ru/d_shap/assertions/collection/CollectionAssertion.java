@@ -27,6 +27,7 @@ import java.util.List;
 import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -129,7 +130,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsAll(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsAll(iterableToArray(expected));
+        containsAll(ValueConverter.toObjectArray(expected));
     }
 
     /**
@@ -160,7 +161,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsAllInOrder(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsAllInOrder(iterableToArray(expected));
+        containsAllInOrder(ValueConverter.toObjectArray(expected));
     }
 
     /**
@@ -193,7 +194,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsExactly(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsExactly(iterableToArray(expected));
+        containsExactly(ValueConverter.toObjectArray(expected));
     }
 
     /**
@@ -227,7 +228,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsExactlyInOrder(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsExactlyInOrder(iterableToArray(expected));
+        containsExactlyInOrder(ValueConverter.toObjectArray(expected));
     }
 
     /**
@@ -261,7 +262,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsAny(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsAny(iterableToArray(expected));
+        containsAny(ValueConverter.toObjectArray(expected));
     }
 
     /**
@@ -290,15 +291,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void containsNone(final Iterable<?> expected) {
         checkArgumentIsNotNull(expected);
-        containsNone(iterableToArray(expected));
-    }
-
-    private Object[] iterableToArray(final Iterable<?> expected) {
-        List<Object> list = new ArrayList<>();
-        for (Object value : expected) {
-            list.add(value);
-        }
-        return list.toArray();
+        containsNone(ValueConverter.toObjectArray(expected));
     }
 
     /**
