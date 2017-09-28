@@ -22,6 +22,7 @@ package ru.d_shap.assertions.core;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link ObjectAssertion}.
@@ -42,25 +43,25 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new ObjectAssertion("value", null).isEqualTo("value");
+        new ObjectAssertion("value", new FailDescription()).isEqualTo("value");
 
         try {
-            new ObjectAssertion(null, null).isEqualTo("value");
+            new ObjectAssertion(null, new FailDescription()).isEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectAssertion("value", null).isEqualTo(null);
+            new ObjectAssertion("value", new FailDescription()).isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectAssertion("value1", null).isEqualTo("value2");
+            new ObjectAssertion("value1", new FailDescription()).isEqualTo("value2");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>.");
         }
     }
 
@@ -69,26 +70,26 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new ObjectAssertion("value1", null).isNotEqualTo("value2");
-        new ObjectAssertion("value2", null).isNotEqualTo("value1");
+        new ObjectAssertion("value1", new FailDescription()).isNotEqualTo("value2");
+        new ObjectAssertion("value2", new FailDescription()).isNotEqualTo("value1");
 
         try {
-            new ObjectAssertion(null, null).isNotEqualTo("value");
+            new ObjectAssertion(null, new FailDescription()).isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectAssertion("value", null).isNotEqualTo(null);
+            new ObjectAssertion("value", new FailDescription()).isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectAssertion("value", null).isNotEqualTo("value");
+            new ObjectAssertion("value", new FailDescription()).isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>.");
         }
     }
 
@@ -97,10 +98,15 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(null)).isNull();
-        Assertions.assertThat(new ObjectAssertion(new Object(), null).asString("value")).isEqualTo("value");
-        Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(1)).isEqualTo("1");
-        Assertions.assertThat(new ObjectAssertion(new Object(), null).asString(new StringBuilder("builder"))).isEqualTo("builder");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value", true)).isEqualTo("value");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1, true)).isEqualTo("1");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"), true)).isEqualTo("builder");
+
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value", false)).isEqualTo("value");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1, false)).isEqualTo("1");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"), false)).isEqualTo("builder");
     }
 
 }

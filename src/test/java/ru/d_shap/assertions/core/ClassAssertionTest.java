@@ -25,6 +25,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link ClassAssertion}.
@@ -45,26 +46,26 @@ public final class ClassAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new ClassAssertion(Integer.class, null).isEqualTo(Integer.class);
-        new ClassAssertion(String.class, null).isEqualTo(String.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isEqualTo(Integer.class);
+        new ClassAssertion(String.class, new FailDescription()).isEqualTo(String.class);
 
         try {
-            new ClassAssertion(null, null).isEqualTo(Object.class);
+            new ClassAssertion(null, new FailDescription()).isEqualTo(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ClassAssertion(Object.class, null).isEqualTo(null);
+            new ClassAssertion(Object.class, new FailDescription()).isEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ClassAssertion(String.class, null).isEqualTo(Integer.class);
+            new ClassAssertion(String.class, new FailDescription()).isEqualTo(Integer.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.Integer> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<java.lang.Integer> but was:<java.lang.String>.");
         }
     }
 
@@ -73,26 +74,26 @@ public final class ClassAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new ClassAssertion(Integer.class, null).isNotEqualTo(String.class);
-        new ClassAssertion(String.class, null).isNotEqualTo(Object.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isNotEqualTo(String.class);
+        new ClassAssertion(String.class, new FailDescription()).isNotEqualTo(Object.class);
 
         try {
-            new ClassAssertion(null, null).isNotEqualTo(Object.class);
+            new ClassAssertion(null, new FailDescription()).isNotEqualTo(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ClassAssertion(Object.class, null).isNotEqualTo(null);
+            new ClassAssertion(Object.class, new FailDescription()).isNotEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ClassAssertion(String.class, null).isNotEqualTo(String.class);
+            new ClassAssertion(String.class, new FailDescription()).isNotEqualTo(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<java.lang.String>.");
         }
     }
 
@@ -101,68 +102,68 @@ public final class ClassAssertionTest {
      */
     @Test
     public void isSubtypeOfTest() {
-        new ClassAssertion(Integer.class, null).isSubtypeOf(Integer.class);
-        new ClassAssertion(Integer.class, null).isSubtypeOf(Object.class);
-        new ClassAssertion(Integer.class, null).isSubtypeOf(Comparable.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isSubtypeOf(Integer.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isSubtypeOf(Object.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isSubtypeOf(Comparable.class);
 
-        new ClassAssertion(String.class, null).isSubtypeOf(String.class);
-        new ClassAssertion(String.class, null).isSubtypeOf(Object.class);
-        new ClassAssertion(String.class, null).isSubtypeOf(Serializable.class);
-        new ClassAssertion(String.class, null).isSubtypeOf(CharSequence.class);
+        new ClassAssertion(String.class, new FailDescription()).isSubtypeOf(String.class);
+        new ClassAssertion(String.class, new FailDescription()).isSubtypeOf(Object.class);
+        new ClassAssertion(String.class, new FailDescription()).isSubtypeOf(Serializable.class);
+        new ClassAssertion(String.class, new FailDescription()).isSubtypeOf(CharSequence.class);
 
         try {
-            new ClassAssertion(null, null).isSubtypeOf(Object.class);
+            new ClassAssertion(null, new FailDescription()).isSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ClassAssertion(Object.class, null).isSubtypeOf(null);
+            new ClassAssertion(Object.class, new FailDescription()).isSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ClassAssertion(String.class, null).isSubtypeOf(Integer.class);
+            new ClassAssertion(String.class, new FailDescription()).isSubtypeOf(Integer.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.String>.");
         }
         try {
-            new ClassAssertion(Integer.class, null).isSubtypeOf(String.class);
+            new ClassAssertion(Integer.class, new FailDescription()).isSubtypeOf(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.Integer>.");
         }
         try {
-            new ClassAssertion(Object.class, null).isSubtypeOf(Integer.class);
+            new ClassAssertion(Object.class, new FailDescription()).isSubtypeOf(Integer.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Object>.");
         }
         try {
-            new ClassAssertion(Comparable.class, null).isSubtypeOf(Integer.class);
+            new ClassAssertion(Comparable.class, new FailDescription()).isSubtypeOf(Integer.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Comparable>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Comparable>.");
         }
         try {
-            new ClassAssertion(Object.class, null).isSubtypeOf(String.class);
+            new ClassAssertion(Object.class, new FailDescription()).isSubtypeOf(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.Object>.");
         }
         try {
-            new ClassAssertion(Serializable.class, null).isSubtypeOf(String.class);
+            new ClassAssertion(Serializable.class, new FailDescription()).isSubtypeOf(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.io.Serializable>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.io.Serializable>.");
         }
         try {
-            new ClassAssertion(CharSequence.class, null).isSubtypeOf(String.class);
+            new ClassAssertion(CharSequence.class, new FailDescription()).isSubtypeOf(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.CharSequence>");
+            Assertions.assertThat(ex).hasMessage("Value should be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.CharSequence>.");
         }
     }
 
@@ -171,67 +172,67 @@ public final class ClassAssertionTest {
      */
     @Test
     public void isNotSubtypeOfTest() {
-        new ClassAssertion(String.class, null).isNotSubtypeOf(Integer.class);
-        new ClassAssertion(Integer.class, null).isNotSubtypeOf(String.class);
-        new ClassAssertion(Object.class, null).isNotSubtypeOf(Integer.class);
-        new ClassAssertion(Comparable.class, null).isNotSubtypeOf(Integer.class);
-        new ClassAssertion(Object.class, null).isNotSubtypeOf(String.class);
-        new ClassAssertion(Serializable.class, null).isNotSubtypeOf(String.class);
-        new ClassAssertion(CharSequence.class, null).isNotSubtypeOf(String.class);
+        new ClassAssertion(String.class, new FailDescription()).isNotSubtypeOf(Integer.class);
+        new ClassAssertion(Integer.class, new FailDescription()).isNotSubtypeOf(String.class);
+        new ClassAssertion(Object.class, new FailDescription()).isNotSubtypeOf(Integer.class);
+        new ClassAssertion(Comparable.class, new FailDescription()).isNotSubtypeOf(Integer.class);
+        new ClassAssertion(Object.class, new FailDescription()).isNotSubtypeOf(String.class);
+        new ClassAssertion(Serializable.class, new FailDescription()).isNotSubtypeOf(String.class);
+        new ClassAssertion(CharSequence.class, new FailDescription()).isNotSubtypeOf(String.class);
 
         try {
-            new ClassAssertion(null, null).isNotSubtypeOf(Object.class);
+            new ClassAssertion(null, new FailDescription()).isNotSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ClassAssertion(Object.class, null).isNotSubtypeOf(null);
+            new ClassAssertion(Object.class, new FailDescription()).isNotSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ClassAssertion(Integer.class, null).isNotSubtypeOf(Integer.class);
+            new ClassAssertion(Integer.class, new FailDescription()).isNotSubtypeOf(Integer.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Integer> but was:<java.lang.Integer>.");
         }
         try {
-            new ClassAssertion(Integer.class, null).isNotSubtypeOf(Object.class);
+            new ClassAssertion(Integer.class, new FailDescription()).isNotSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.Integer>.");
         }
         try {
-            new ClassAssertion(Integer.class, null).isNotSubtypeOf(Comparable.class);
+            new ClassAssertion(Integer.class, new FailDescription()).isNotSubtypeOf(Comparable.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Comparable> but was:<java.lang.Integer>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Comparable> but was:<java.lang.Integer>.");
         }
         try {
-            new ClassAssertion(String.class, null).isNotSubtypeOf(String.class);
+            new ClassAssertion(String.class, new FailDescription()).isNotSubtypeOf(String.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.String> but was:<java.lang.String>.");
         }
         try {
-            new ClassAssertion(String.class, null).isNotSubtypeOf(Object.class);
+            new ClassAssertion(String.class, new FailDescription()).isNotSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.Object> but was:<java.lang.String>.");
         }
         try {
-            new ClassAssertion(String.class, null).isNotSubtypeOf(Serializable.class);
+            new ClassAssertion(String.class, new FailDescription()).isNotSubtypeOf(Serializable.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.io.Serializable> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.io.Serializable> but was:<java.lang.String>.");
         }
         try {
-            new ClassAssertion(String.class, null).isNotSubtypeOf(CharSequence.class);
+            new ClassAssertion(String.class, new FailDescription()).isNotSubtypeOf(CharSequence.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.CharSequence> but was:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should not be the subtype of the expected value. Expected:<java.lang.CharSequence> but was:<java.lang.String>.");
         }
     }
 
@@ -240,58 +241,58 @@ public final class ClassAssertionTest {
      */
     @Test
     public void hasOnePrivateConstructorTest() {
-        new ClassAssertion(Math.class, null).hasOnePrivateConstructor();
+        new ClassAssertion(Math.class, new FailDescription()).hasOnePrivateConstructor();
 
         try {
-            new ClassAssertion(null, null).hasOnePrivateConstructor();
+            new ClassAssertion(null, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ClassAssertion(int.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(int.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<int>");
+            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<int>.");
         }
         try {
-            new ClassAssertion(Appendable.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(Appendable.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.Appendable>");
+            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.Appendable>.");
         }
         try {
-            new ClassAssertion(String.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(String.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.String>");
+            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.String>.");
         }
         try {
-            new ClassAssertion(Character.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(Character.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.Character>");
+            Assertions.assertThat(ex).hasMessage("Value should have one default constructor. Actual:<java.lang.Character>.");
         }
         try {
-            new ClassAssertion(Object.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(Object.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value constructor should not be acccessible. Actual:<java.lang.Object>");
+            Assertions.assertThat(ex).hasMessage("Value constructor should not be acccessible. Actual:<java.lang.Object>.");
         }
         try {
-            new ClassAssertion(Number.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(Number.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value constructor should not be acccessible. Actual:<java.lang.Number>");
+            Assertions.assertThat(ex).hasMessage("Value constructor should not be acccessible. Actual:<java.lang.Number>.");
         }
         try {
-            new ClassAssertion(AbstractClass.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(AbstractClass.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).isCauseInstanceOf(InstantiationException.class);
         }
         try {
-            new ClassAssertion(FailConstructorClass.class, null).hasOnePrivateConstructor();
+            new ClassAssertion(FailConstructorClass.class, new FailDescription()).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).isCauseInstanceOf(InvocationTargetException.class);
@@ -303,20 +304,20 @@ public final class ClassAssertionTest {
      */
     @Test
     public void asEnumTest() {
-        new ClassAssertion(null, null).asEnum().isNull();
-        new ClassAssertion(Values.class, null).asEnum().hasValueCount(3);
+        new ClassAssertion(null, new FailDescription()).asEnum().isNull();
+        new ClassAssertion(Values.class, new FailDescription()).asEnum().hasValueCount(3);
 
         try {
-            new ClassAssertion(Values.class, null).asEnum().hasValueCount(4);
+            new ClassAssertion(Values.class, new FailDescription()).asEnum().hasValueCount(4);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new ClassAssertion(Values.class, "Message").asEnum().hasValueCount(4);
+            new ClassAssertion(Values.class, new FailDescription().addMessage("Message")).asEnum().hasValueCount(4);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
         }
     }
 
@@ -325,10 +326,15 @@ public final class ClassAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(null)).isNull();
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Object.class)).isEqualTo("java.lang.Object");
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
-        Assertions.assertThat(new ClassAssertion(Values.class, null).asString("test")).isEqualTo("test");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class, true)).isEqualTo("java.lang.Object");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class, true)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test", true)).isEqualTo("test");
+
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class, false)).isEqualTo("java.lang.Object");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class, false)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test", false)).isEqualTo("test");
     }
 
     /**
