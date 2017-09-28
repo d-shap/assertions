@@ -27,6 +27,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link CharBufferAssertion}.
@@ -47,38 +48,38 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).contains('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).contains('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).contains('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).contains('2');
 
         try {
-            new CharBufferAssertion(null, null).contains('1');
+            new CharBufferAssertion(null, new FailDescription()).contains('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).contains('2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).contains('2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).contains('4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).contains('4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).contains('3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).contains('3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").contains('3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).contains('3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -87,33 +88,33 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContains('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContains('2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContains('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContains('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContains('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContains('2');
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContains('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContains('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContains('4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContains('4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContains('3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContains('3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContains('3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContains('3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -122,33 +123,33 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).doesNotContain('3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).doesNotContain('2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).doesNotContain('5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).doesNotContain('3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).doesNotContain('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).doesNotContain('5');
 
         try {
-            new CharBufferAssertion(null, null).doesNotContain('1');
+            new CharBufferAssertion(null, new FailDescription()).doesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).doesNotContain('2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).doesNotContain('2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).doesNotContain('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).doesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").doesNotContain('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).doesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -157,38 +158,38 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndDoesNotContainTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndDoesNotContain('3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndDoesNotContain('5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndDoesNotContain('3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndDoesNotContain('5');
 
         try {
-            new CharBufferAssertion(null, null).rewindAndDoesNotContain('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndDoesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndDoesNotContain('2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndDoesNotContain('2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndDoesNotContain('2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndDoesNotContain('2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndDoesNotContain('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndDoesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndDoesNotContain('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndDoesNotContain('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -197,137 +198,137 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAll('1', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAll('4', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAll(52, 50);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAll(Arrays.asList('4', '2'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAll('1', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAll('4', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAll(52, 50);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAll(Arrays.asList('4', '2'));
 
         try {
-            new CharBufferAssertion(null, null).containsAll('1');
+            new CharBufferAssertion(null, new FailDescription()).containsAll('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAll(49);
+            new CharBufferAssertion(null, new FailDescription()).containsAll(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAll(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsAll(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAll('1', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAll('1', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAll(49, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAll(49, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAll(Arrays.asList('1', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAll(Arrays.asList('1', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAll('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAll('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAll(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAll(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAll(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAll(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAll('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAll('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll(50, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll(50, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAll(50, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAll(50, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAll(Arrays.asList('2', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll(Arrays.asList('2', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAll(Arrays.asList('2', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAll(Arrays.asList('2', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -336,122 +337,122 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAll('1', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAll('4', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAll(52, 50);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAll(Arrays.asList('4', '2'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAll('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAll(49, 50);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAll(Arrays.asList('1', '2'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAll('1', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAll('4', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAll(52, 50);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAll(Arrays.asList('4', '2'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAll('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAll(49, 50);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList('1', '2'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAll('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAll(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAll(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAll('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAll('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAll(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAll(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAll(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAll('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAll('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll(50, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll(50, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAll(50, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAll(50, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAll(Arrays.asList('2', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll(Arrays.asList('2', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAll(Arrays.asList('2', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAll(Arrays.asList('2', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -460,142 +461,142 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAllInOrder('1', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAllInOrder(49, 51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAllInOrder(Arrays.asList('1', '3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAllInOrder('1', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAllInOrder(49, 51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAllInOrder(Arrays.asList('1', '3', '4'));
 
         try {
-            new CharBufferAssertion(null, null).containsAllInOrder('1');
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAllInOrder(49);
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAllInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAllInOrder('1', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAllInOrder('1', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAllInOrder(49, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAllInOrder(49, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAllInOrder(Arrays.asList('1', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAllInOrder(Arrays.asList('1', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAllInOrder('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAllInOrder('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAllInOrder(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAllInOrder(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAllInOrder(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAllInOrder(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAllInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAllInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAllInOrder(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAllInOrder(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAllInOrder(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAllInOrder(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAllInOrder(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAllInOrder(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -604,127 +605,127 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllInOrderTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder('1');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAllInOrder('1', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAllInOrder(49, 51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAllInOrder(Arrays.asList('1', '3', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAllInOrder('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAllInOrder(49, 50);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAllInOrder(Arrays.asList('1', '2'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder('1');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAllInOrder('1', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAllInOrder(49, 51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList('1', '3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAllInOrder('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAllInOrder(49, 50);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList('1', '2'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAllInOrder('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAllInOrder(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAllInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAllInOrder('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAllInOrder(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAllInOrder(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAllInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAllInOrder(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAllInOrder(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAllInOrder(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -733,152 +734,152 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly('1', '2', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly('1', '3', '2', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly(49, 51, 50, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly(Arrays.asList('1', '3', '2', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactly();
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactly(new int[0]);
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactly(new ArrayList<Character>());
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly('1', '2', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly('1', '3', '2', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly(49, 51, 50, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly(Arrays.asList('1', '3', '2', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactly();
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactly(new int[0]);
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactly(new ArrayList<Character>());
 
         try {
-            new CharBufferAssertion(null, null).containsExactly('1');
+            new CharBufferAssertion(null, new FailDescription()).containsExactly('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsExactly(49);
+            new CharBufferAssertion(null, new FailDescription()).containsExactly(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsExactly(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactly(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactly('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactly('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactly(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactly(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactly(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactly(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactly('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactly('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactly(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactly(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactly(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactly(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly('1', '1', '3', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly('1', '1', '3', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactly('1', '1', '3', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactly('1', '1', '3', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly(49, 49, 51, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly(49, 49, 51, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactly(49, 49, 51, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactly(49, 49, 51, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactly(Arrays.asList('1', '1', '3', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactly(Arrays.asList('1', '1', '3', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactly(Arrays.asList('1', '1', '3', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactly(Arrays.asList('1', '1', '3', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -887,137 +888,137 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly('1', '2', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly('1', '3', '2', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly(49, 51, 50, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly(Arrays.asList('1', '3', '2', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactly();
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactly(new int[0]);
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactly(new ArrayList<Character>());
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactly('1', '2', '3', '4', '5');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactly(49, 50, 51, 52, 53);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly('1', '2', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly('1', '3', '2', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly(49, 51, 50, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly(Arrays.asList('1', '3', '2', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactly();
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactly(new int[0]);
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactly(new ArrayList<Character>());
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactly('1', '2', '3', '4', '5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactly(49, 50, 51, 52, 53);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactly('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactly(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactly(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly('2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly('2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactly(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactly('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactly('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactly(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactly(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly('1', '1', '3', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly('1', '1', '3', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactly('1', '1', '3', '2');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactly('1', '1', '3', '2');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly(49, 49, 51, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly(49, 49, 51, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactly(49, 49, 51, 50);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(49, 49, 51, 50);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactly(Arrays.asList('1', '1', '3', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactly(Arrays.asList('1', '1', '3', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactly(Arrays.asList('1', '1', '3', '2'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(Arrays.asList('1', '1', '3', '2'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1026,157 +1027,157 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder('1', '2', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder(49, 50, 51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactlyInOrder();
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactlyInOrder(new int[0]);
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).containsExactlyInOrder(new ArrayList<Character>());
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder('1', '2', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder(49, 50, 51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactlyInOrder();
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactlyInOrder(new int[0]);
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).containsExactlyInOrder(new ArrayList<Character>());
 
         try {
-            new CharBufferAssertion(null, null).containsExactlyInOrder('1');
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsExactlyInOrder(49);
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsExactlyInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder('1', '2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder('1', '2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsExactlyInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactlyInOrder('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactlyInOrder('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactlyInOrder(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactlyInOrder(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactlyInOrder('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactlyInOrder('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactlyInOrder(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactlyInOrder(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder('2', '3', '1', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder('2', '3', '1', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactlyInOrder('2', '3', '1', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactlyInOrder('2', '3', '1', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder(50, 51, 49, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder(50, 51, 49, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactlyInOrder(50, 51, 49, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactlyInOrder(50, 51, 49, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).containsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1185,142 +1186,142 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyInOrderTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder('1', '2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder('1', '2', '3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder(49, 50, 51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactlyInOrder();
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactlyInOrder(new int[0]);
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2', '3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder(49, 50, 51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactlyInOrder();
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new int[0]);
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactlyInOrder('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactlyInOrder(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder('1', '2', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder('2', '3', '1', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder('2', '3', '1', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactlyInOrder('2', '3', '1', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder('2', '3', '1', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder(50, 51, 49, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder(50, 51, 49, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactlyInOrder(50, 51, 49, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(50, 51, 49, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(Arrays.asList('2', '3', '1', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1329,138 +1330,138 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny('2', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAny('2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAny('4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAny('5', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAny(53, 51);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).containsAny(Arrays.asList('5', '3'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny('2', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAny('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAny('4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAny('5', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAny(53, 51);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).containsAny(Arrays.asList('5', '3'));
 
         try {
-            new CharBufferAssertion(null, null).containsAny('1');
+            new CharBufferAssertion(null, new FailDescription()).containsAny('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAny(49);
+            new CharBufferAssertion(null, new FailDescription()).containsAny(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsAny(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAny('1', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAny('1', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAny(49, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAny(49, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsAny(Arrays.asList('1', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsAny(Arrays.asList('1', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAny('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAny('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAny(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAny(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsAny(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsAny(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny('3', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny('3', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAny('3', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAny('3', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny(51, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny(51, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAny(51, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAny(51, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsAny(Arrays.asList('3', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAny(Arrays.asList('3', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsAny(Arrays.asList('3', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsAny(Arrays.asList('3', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1469,123 +1470,123 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAnyTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny('2', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAny('2');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAny('4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAny('5', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAny(53, 51);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), null).rewindAndContainsAny(Arrays.asList('5', '3'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAny('1', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAny(49, 51);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsAny(Arrays.asList('1', '3'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny('2', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAny('2');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAny('4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAny('5', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAny(53, 51);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4'}), new FailDescription()).rewindAndContainsAny(Arrays.asList('5', '3'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAny('1', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAny(49, 51);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList('1', '3'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAny('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAny(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsAny(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAny('4', '5');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAny('4', '5');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAny(52, 53);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAny(52, 53);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsAny(Arrays.asList('4', '5'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList('4', '5'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny('3', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny('3', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAny('3', '4');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAny('3', '4');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny(51, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny(51, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAny(51, 52);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAny(51, 52);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsAny(Arrays.asList('3', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny(Arrays.asList('3', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAny(Arrays.asList('3', '4'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsAny(Arrays.asList('3', '4'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1594,112 +1595,112 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone('3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone('3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(Arrays.asList('3', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsNone('1', '3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsNone(49, 51);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).containsNone(Arrays.asList('1', '3'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsNone('4', '5');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsNone(52, 53);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).containsNone(Arrays.asList('4', '5'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone('3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone('3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(Arrays.asList('3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsNone('1', '3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsNone(49, 51);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).containsNone(Arrays.asList('1', '3'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsNone('4', '5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsNone(52, 53);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).containsNone(Arrays.asList('4', '5'));
 
         try {
-            new CharBufferAssertion(null, null).containsNone('1');
+            new CharBufferAssertion(null, new FailDescription()).containsNone('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsNone(49);
+            new CharBufferAssertion(null, new FailDescription()).containsNone(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).containsNone(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).containsNone(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsNone('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsNone('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsNone(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsNone(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).containsNone(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").containsNone(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).containsNone(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1708,127 +1709,127 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsNoneTest() {
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone('3');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone('3', '4');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(51, 52);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(Arrays.asList('3', '4'));
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsNone('4', '5');
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsNone(52, 53);
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), null).rewindAndContainsNone(Arrays.asList('4', '5'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone('3');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone('3', '4');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(51, 52);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(Arrays.asList('3', '4'));
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsNone('4', '5');
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsNone(52, 53);
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList('4', '5'));
 
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsNone('1');
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsNone(49);
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone(49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(null, null).rewindAndContainsNone(new ArrayList<Character>());
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone((char[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone((int[]) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone((int[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone((Iterable<Character>) null);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(new int[0]);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(new int[0]);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(new ArrayList<Character>());
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone('1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone('1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsNone('1', '3');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsNone('1', '3');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsNone(49, 51);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsNone(49, 51);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), null).rewindAndContainsNone(Arrays.asList('1', '3'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList('1', '3'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsNone('2', '1');
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsNone('2', '1');
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsNone(50, 49);
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsNone(50, 49);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).rewindAndContainsNone(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsNone(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsNone(Arrays.asList('2', '1'));
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).rewindAndContainsNone(Arrays.asList('2', '1'));
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1837,20 +1838,20 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void createCollectionAssertionTest() {
-        new CharBufferAssertion(createCharBuffer(new char[0]), null).createCollectionAssertion(false).isEmpty();
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).createCollectionAssertion(false).isNotEmpty();
+        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
+        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
 
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), null).createCollectionAssertion(false).isEmpty();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).createCollectionAssertion(false).isEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
         }
         try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), "Message").createCollectionAssertion(false).isEmpty();
+            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription().addMessage("Message")).createCollectionAssertion(false).isEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
         }
     }
 

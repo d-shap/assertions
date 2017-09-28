@@ -27,6 +27,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link IntBufferAssertion}.
@@ -47,38 +48,38 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).contains(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).contains(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).contains(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).contains(2);
 
         try {
-            new IntBufferAssertion(null, null).contains(1);
+            new IntBufferAssertion(null, new FailDescription()).contains(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).contains(2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).contains(2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).contains(4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).contains(4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).contains(3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).contains(3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").contains(3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).contains(3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -87,33 +88,33 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContains(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContains(2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContains(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContains(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContains(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContains(2);
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContains(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContains(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContains(4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContains(4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContains(3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContains(3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContains(3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContains(3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -122,33 +123,33 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).doesNotContain(3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).doesNotContain(2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).doesNotContain(5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).doesNotContain(3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).doesNotContain(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).doesNotContain(5);
 
         try {
-            new IntBufferAssertion(null, null).doesNotContain(1);
+            new IntBufferAssertion(null, new FailDescription()).doesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).doesNotContain(2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).doesNotContain(2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).doesNotContain(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).doesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").doesNotContain(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).doesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -157,38 +158,38 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndDoesNotContainTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndDoesNotContain(3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndDoesNotContain(5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndDoesNotContain(3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndDoesNotContain(5);
 
         try {
-            new IntBufferAssertion(null, null).rewindAndDoesNotContain(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndDoesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndDoesNotContain(2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndDoesNotContain(2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndDoesNotContain(2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndDoesNotContain(2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndDoesNotContain(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndDoesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndDoesNotContain(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndDoesNotContain(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -197,94 +198,94 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAll(1, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAll(4, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAll(Arrays.asList(4, 2));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAll(1, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAll(4, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAll(Arrays.asList(4, 2));
 
         try {
-            new IntBufferAssertion(null, null).containsAll(1);
+            new IntBufferAssertion(null, new FailDescription()).containsAll(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsAll(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsAll(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAll(1, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAll(1, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAll(Arrays.asList(1, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAll(Arrays.asList(1, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAll(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAll(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAll(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAll(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAll(Arrays.asList(2, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAll(Arrays.asList(2, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAll(Arrays.asList(2, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAll(Arrays.asList(2, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -293,84 +294,84 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAll(1, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAll(4, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAll(Arrays.asList(4, 2));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAll(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAll(Arrays.asList(1, 2));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(1, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(4, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(Arrays.asList(4, 2));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAll(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList(1, 2));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAll(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAll(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAll(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAll(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAll(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAll(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAll(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAll(Arrays.asList(2, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAll(Arrays.asList(2, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAll(Arrays.asList(2, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAll(Arrays.asList(2, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -379,99 +380,99 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAllInOrder(1, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAllInOrder(Arrays.asList(1, 3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(1, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(Arrays.asList(1, 3, 4));
 
         try {
-            new IntBufferAssertion(null, null).containsAllInOrder(1);
+            new IntBufferAssertion(null, new FailDescription()).containsAllInOrder(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsAllInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(1, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAllInOrder(1, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(Arrays.asList(1, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAllInOrder(Arrays.asList(1, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAllInOrder(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAllInOrder(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAllInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAllInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAllInOrder(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAllInOrder(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAllInOrder(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAllInOrder(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -480,89 +481,89 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllInOrderTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder(1);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAllInOrder(1, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAllInOrder(Arrays.asList(1, 3, 4));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAllInOrder(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAllInOrder(Arrays.asList(1, 2));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(1);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(1, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(1, 3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAllInOrder(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(1, 2));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAllInOrder(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAllInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAllInOrder(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAllInOrder(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -571,108 +572,108 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(1, 2, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(1, 3, 2, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(Arrays.asList(1, 3, 2, 4));
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).containsExactly();
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).containsExactly(new ArrayList<Integer>());
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 2, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 3, 2, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList(1, 3, 2, 4));
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).containsExactly();
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).containsExactly(new ArrayList<Integer>());
 
         try {
-            new IntBufferAssertion(null, null).containsExactly(1);
+            new IntBufferAssertion(null, new FailDescription()).containsExactly(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsExactly(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactly(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactly(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsExactly(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsExactly(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactly(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactly(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(1, 1, 3, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 1, 3, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").containsExactly(1, 1, 3, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(1, 1, 3, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactly(Arrays.asList(1, 1, 3, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList(1, 1, 3, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList(1, 1, 3, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(Arrays.asList(1, 1, 3, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -681,98 +682,98 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 2, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 3, 2, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(Arrays.asList(1, 3, 2, 4));
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).rewindAndContainsExactly();
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).rewindAndContainsExactly(new ArrayList<Integer>());
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4, 5));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 3, 2, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1, 3, 2, 4));
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).rewindAndContainsExactly();
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).rewindAndContainsExactly(new ArrayList<Integer>());
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4, 5));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsExactly(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsExactly(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly(2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly(2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactly(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactly(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 1, 3, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1, 1, 3, 2);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactly(Arrays.asList(1, 1, 3, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1, 1, 3, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList(1, 1, 3, 2));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(Arrays.asList(1, 1, 3, 2));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -781,113 +782,113 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(1, 2, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).containsExactlyInOrder();
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).containsExactlyInOrder(new ArrayList<Integer>());
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).containsExactlyInOrder();
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).containsExactlyInOrder(new ArrayList<Integer>());
 
         try {
-            new IntBufferAssertion(null, null).containsExactlyInOrder(1);
+            new IntBufferAssertion(null, new FailDescription()).containsExactlyInOrder(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsExactlyInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(1, 2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1, 2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsExactlyInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsExactlyInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(2, 3, 1, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2, 3, 1, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -896,103 +897,103 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyInOrderTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder(1, 2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).rewindAndContainsExactlyInOrder();
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).rewindAndContainsExactlyInOrder();
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsExactlyInOrder(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(1, 2, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2, 3, 1, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(Arrays.asList(2, 3, 1, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1001,95 +1002,95 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny(2, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAny(2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAny(4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAny(5, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).containsAny(Arrays.asList(5, 3));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny(2, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAny(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAny(4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAny(5, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).containsAny(Arrays.asList(5, 3));
 
         try {
-            new IntBufferAssertion(null, null).containsAny(1);
+            new IntBufferAssertion(null, new FailDescription()).containsAny(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsAny(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAny(1, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAny(1, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsAny(Arrays.asList(1, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAny(Arrays.asList(1, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAny(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAny(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny(3, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny(3, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAny(3, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAny(3, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsAny(Arrays.asList(3, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsAny(Arrays.asList(3, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsAny(Arrays.asList(3, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsAny(Arrays.asList(3, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1098,85 +1099,85 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAnyTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny(2, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAny(2);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAny(4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAny(5, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), null).rewindAndContainsAny(Arrays.asList(5, 3));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAny(1, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAny(Arrays.asList(1, 3));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny(2, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(2);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(5, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(Arrays.asList(5, 3));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAny(1, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList(1, 3));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAny(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAny(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsAny(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsAny(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(4, 5);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAny(4, 5);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(Arrays.asList(4, 5));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList(4, 5));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny(3, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny(3, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAny(3, 4);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAny(3, 4);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsAny(Arrays.asList(3, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsAny(Arrays.asList(3, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsAny(Arrays.asList(3, 4));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAny(Arrays.asList(3, 4));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1185,79 +1186,79 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(Arrays.asList(3, 4));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsNone(1, 3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).containsNone(Arrays.asList(1, 3));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsNone(4, 5);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).containsNone(Arrays.asList(4, 5));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(Arrays.asList(3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsNone(1, 3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsNone(Arrays.asList(1, 3));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsNone(4, 5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsNone(Arrays.asList(4, 5));
 
         try {
-            new IntBufferAssertion(null, null).containsNone(1);
+            new IntBufferAssertion(null, new FailDescription()).containsNone(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).containsNone(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).containsNone(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsNone(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsNone(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).containsNone(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).containsNone(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").containsNone(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).containsNone(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1266,89 +1267,89 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsNoneTest() {
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(3);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(3, 4);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(Arrays.asList(3, 4));
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsNone(4, 5);
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsNone(Arrays.asList(4, 5));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(3);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(3, 4);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(Arrays.asList(3, 4));
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsNone(4, 5);
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList(4, 5));
 
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsNone(1);
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsNone(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(null, null).rewindAndContainsNone(new ArrayList<Integer>());
+            new IntBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone((int[]) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone((int[]) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone((Iterable<Integer>) null);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone((Iterable<Integer>) null);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(new ArrayList<Integer>());
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(new ArrayList<Integer>());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(1, 3);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsNone(1, 3);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(Arrays.asList(1, 3));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList(1, 3));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsNone(2, 1);
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsNone(2, 1);
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).rewindAndContainsNone(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).rewindAndContainsNone(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").rewindAndContainsNone(Arrays.asList(2, 1));
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsNone(Arrays.asList(2, 1));
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1357,20 +1358,20 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void createCollectionAssertionTest() {
-        new IntBufferAssertion(createIntBuffer(new int[0]), null).createCollectionAssertion(false).isEmpty();
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).createCollectionAssertion(false).isNotEmpty();
+        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
+        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
 
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), null).createCollectionAssertion(false).isEmpty();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
         }
         try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), "Message").createCollectionAssertion(false).isEmpty();
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription().addMessage("Message")).createCollectionAssertion(false).isEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
         }
     }
 

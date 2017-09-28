@@ -26,6 +26,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.FailDescription;
 
 /**
  * Tests for {@link ByteBufferAssertion}.
@@ -46,38 +47,38 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).contains(1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).contains(2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).contains(1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).contains(2);
 
         try {
-            new ByteBufferAssertion(null, null).contains(1);
+            new ByteBufferAssertion(null, new FailDescription()).contains(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).contains(2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).contains(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).contains(4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).contains(4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).contains(3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).contains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").contains(3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).contains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -86,33 +87,33 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContains(1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContains(2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContains(2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContains(1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContains(2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContains(2);
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContains(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContains(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContains(4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContains(4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContains(3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContains(3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3> but was:<[1, 2]>.");
         }
     }
 
@@ -121,33 +122,33 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).doesNotContain(3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).doesNotContain(2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).doesNotContain(5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).doesNotContain(3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).doesNotContain(2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).doesNotContain(5);
 
         try {
-            new ByteBufferAssertion(null, null).doesNotContain(1);
+            new ByteBufferAssertion(null, new FailDescription()).doesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).doesNotContain(2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).doesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).doesNotContain(1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).doesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").doesNotContain(1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).doesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -156,38 +157,38 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndDoesNotContainTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndDoesNotContain(3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndDoesNotContain(5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndDoesNotContain(3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndDoesNotContain(5);
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndDoesNotContain(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndDoesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndDoesNotContain(2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndDoesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndDoesNotContain(2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndDoesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndDoesNotContain(1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndDoesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndDoesNotContain(1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndDoesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1> but was:<[1, 2]>.");
         }
     }
 
@@ -196,137 +197,137 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll((byte) 1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAll((byte) 1, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAll((byte) 4, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAll(4, 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAll(Arrays.asList((byte) 4, (byte) 2));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll((byte) 1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAll((byte) 1, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAll((byte) 4, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAll(4, 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAll(Arrays.asList((byte) 4, (byte) 2));
 
         try {
-            new ByteBufferAssertion(null, null).containsAll((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAll((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAll(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAll(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAll(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAll((byte) 1, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAll((byte) 1, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAll(1, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAll(1, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAll(Arrays.asList((byte) 1, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAll(Arrays.asList((byte) 1, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAll((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAll(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAll(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAll(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAll((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll(2, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAll(2, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAll(Arrays.asList((byte) 2, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAll(Arrays.asList((byte) 2, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -335,122 +336,122 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll((byte) 1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAll((byte) 1, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAll((byte) 4, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAll(4, 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 2));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAll((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAll(1, 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAll(Arrays.asList((byte) 1, (byte) 2));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll((byte) 1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll((byte) 1, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll((byte) 4, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(4, 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 2));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAll((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAll(1, 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList((byte) 1, (byte) 2));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAll((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAll((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAll(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAll(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAll(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAll((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAll(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll(2, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll(2, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
     }
 
@@ -459,142 +460,142 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((byte) 1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAllInOrder(1, 3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((byte) 1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(1, 3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
 
         try {
-            new ByteBufferAssertion(null, null).containsAllInOrder((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAllInOrder((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAllInOrder(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAllInOrder(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAllInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder((byte) 1, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAllInOrder((byte) 1, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(1, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAllInOrder(1, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1, 2]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAllInOrder((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAllInOrder(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -603,127 +604,127 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllInOrderTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((byte) 1);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAllInOrder((byte) 1, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAllInOrder(1, 3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAllInOrder((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAllInOrder(1, 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((byte) 1);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder((byte) 1, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(1, 3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAllInOrder((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAllInOrder(1, 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAllInOrder((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAllInOrder(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAllInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -732,152 +733,152 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly(1, 3, 2, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly(Arrays.asList((byte) 1, (byte) 3, (byte) 2, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactly();
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactly(new int[0]);
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactly(new ArrayList<Byte>());
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 3, 2, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList((byte) 1, (byte) 3, (byte) 2, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactly();
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactly(new int[0]);
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactly(new ArrayList<Byte>());
 
         try {
-            new ByteBufferAssertion(null, null).containsExactly((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsExactly((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsExactly(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsExactly(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsExactly(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactly(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactly(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly(1, 1, 3, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly(1, 1, 3, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -886,137 +887,137 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 3, 2, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 3, (byte) 2, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactly();
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactly(new int[0]);
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactly(new ArrayList<Byte>());
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 3, 2, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 3, (byte) 2, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactly();
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactly(new int[0]);
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactly(new ArrayList<Byte>());
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactly((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactly(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactly(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly((byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2, 3]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactly(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly(1, 1, 3, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1, 1, 3, 2);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1025,157 +1026,157 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder(1, 2, 3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactlyInOrder();
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactlyInOrder(new int[0]);
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).containsExactlyInOrder(new ArrayList<Byte>());
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactlyInOrder();
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactlyInOrder(new int[0]);
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).containsExactlyInOrder(new ArrayList<Byte>());
 
         try {
-            new ByteBufferAssertion(null, null).containsExactlyInOrder((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsExactlyInOrder((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsExactlyInOrder(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsExactlyInOrder(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsExactlyInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsExactlyInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder(2, 3, 1, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2, 3, 1, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1184,142 +1185,142 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyInOrderTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactlyInOrder();
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactlyInOrder(new int[0]);
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactlyInOrder();
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new int[0]);
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactlyInOrder((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactlyInOrder(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2, 3, 1, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>.");
         }
     }
 
@@ -1328,138 +1329,138 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny((byte) 2, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAny((byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAny((byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAny((byte) 5, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAny(5, 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).containsAny(Arrays.asList((byte) 5, (byte) 3));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny((byte) 2, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAny((byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAny((byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAny((byte) 5, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAny(5, 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).containsAny(Arrays.asList((byte) 5, (byte) 3));
 
         try {
-            new ByteBufferAssertion(null, null).containsAny((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAny((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAny(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsAny(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsAny(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAny((byte) 1, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAny((byte) 1, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAny(1, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAny(1, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsAny(Arrays.asList((byte) 1, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsAny(Arrays.asList((byte) 1, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1, 3]> but was:<[4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAny((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAny(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsAny(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsAny(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny((byte) 3, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAny((byte) 3, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny(3, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAny(3, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsAny(Arrays.asList((byte) 3, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsAny(Arrays.asList((byte) 3, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1468,123 +1469,123 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAnyTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny((byte) 2, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAny((byte) 2);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAny((byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAny((byte) 5, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAny(5, 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), null).rewindAndContainsAny(Arrays.asList((byte) 5, (byte) 3));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAny((byte) 1, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAny(1, 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsAny(Arrays.asList((byte) 1, (byte) 3));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny((byte) 2, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny((byte) 2);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny((byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny((byte) 5, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(5, 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(Arrays.asList((byte) 5, (byte) 3));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAny((byte) 1, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAny(1, 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList((byte) 1, (byte) 3));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAny((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAny((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAny(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAny(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsAny(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny((byte) 4, (byte) 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAny((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(4, 5);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAny(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsAny(Arrays.asList((byte) 4, (byte) 5));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4, 5]> but was:<[1, 2, 3]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny((byte) 3, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny((byte) 3, (byte) 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny(3, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny(3, 4);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3, 4]> but was:<[1, 2]>.");
         }
     }
 
@@ -1593,112 +1594,112 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(Arrays.asList((byte) 3, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsNone((byte) 1, (byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsNone(1, 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).containsNone(Arrays.asList((byte) 1, (byte) 3));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsNone((byte) 4, (byte) 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsNone(4, 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).containsNone(Arrays.asList((byte) 4, (byte) 5));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(Arrays.asList((byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsNone((byte) 1, (byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsNone(1, 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).containsNone(Arrays.asList((byte) 1, (byte) 3));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsNone((byte) 4, (byte) 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsNone(4, 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).containsNone(Arrays.asList((byte) 4, (byte) 5));
 
         try {
-            new ByteBufferAssertion(null, null).containsNone((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).containsNone((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsNone(1);
+            new ByteBufferAssertion(null, new FailDescription()).containsNone(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).containsNone(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).containsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsNone((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsNone(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).containsNone(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).containsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").containsNone(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).containsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1707,127 +1708,127 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsNoneTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((byte) 3);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((byte) 3, (byte) 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(3, 4);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(Arrays.asList((byte) 3, (byte) 4));
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsNone((byte) 4, (byte) 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsNone(4, 5);
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), null).rewindAndContainsNone(Arrays.asList((byte) 4, (byte) 5));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((byte) 3);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((byte) 3, (byte) 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(3, 4);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(Arrays.asList((byte) 3, (byte) 4));
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsNone((byte) 4, (byte) 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsNone(4, 5);
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList((byte) 4, (byte) 5));
 
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsNone((byte) 1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsNone((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsNone(1);
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsNone(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(null, null).rewindAndContainsNone(new ArrayList<Byte>());
+            new ByteBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((byte[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((int[]) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((Iterable<Byte>) null);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(new int[0]);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(new int[0]);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(new ArrayList<Byte>());
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone((byte) 1, (byte) 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsNone((byte) 1, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(1, 3);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsNone(1, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), null).rewindAndContainsNone(Arrays.asList((byte) 1, (byte) 3));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList((byte) 1, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone((byte) 2, (byte) 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone(2, 1);
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2, 1]> but was:<[1, 2]>.");
         }
     }
 
@@ -1836,20 +1837,20 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void createCollectionAssertionTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), null).createCollectionAssertion(false).isEmpty();
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).createCollectionAssertion(false).isNotEmpty();
+        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
+        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
 
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), null).createCollectionAssertion(false).isEmpty();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
         }
         try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), "Message").createCollectionAssertion(false).isEmpty();
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription().addMessage("Message")).createCollectionAssertion(false).isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
         }
     }
 
