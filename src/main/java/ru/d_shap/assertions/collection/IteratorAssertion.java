@@ -269,7 +269,7 @@ public class IteratorAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value, final boolean actual) {
-        if (value == null) {
+        if (value == null || actual && getActual() == null) {
             return null;
         } else if (actual) {
             return _iteratorCollector.toString();
