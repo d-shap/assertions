@@ -47,7 +47,7 @@ public final class FieldAccessActionTest {
     @Test
     public void getAccessTest() throws NoSuchFieldException, IllegalAccessException {
         Object object = new Object();
-        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, "message");
+        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, new FailDescription().addMessage("message"));
 
         Field actualField = baseAssertion.getClass().getSuperclass().getDeclaredField("_actual");
         try {
@@ -60,16 +60,17 @@ public final class FieldAccessActionTest {
         Object actualValue = actualField.get(baseAssertion);
         Assertions.assertThat(actualValue).isSameAs(object);
 
-        Field messageField = baseAssertion.getClass().getSuperclass().getDeclaredField("_message");
+        Field failDescriptionField = baseAssertion.getClass().getSuperclass().getDeclaredField("_failDescription");
         try {
-            messageField.get(baseAssertion);
+            failDescriptionField.get(baseAssertion);
             Assertions.fail("FieldAccessAction test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).toMessage().contains("private");
         }
-        AccessController.doPrivileged(new FieldAccessAction(messageField));
-        Object messageValue = messageField.get(baseAssertion);
-        Assertions.assertThat(messageValue).isEqualTo("message");
+        AccessController.doPrivileged(new FieldAccessAction(failDescriptionField));
+        Object failDescriptionValue = failDescriptionField.get(baseAssertion);
+        Assertions.assertThat(failDescriptionValue).isInstanceOf(FailDescription.class);
+        Assertions.assertThat(((FailDescription) failDescriptionValue).createAssertionError()).hasMessage("message.");
     }
 
     /**
@@ -79,13 +80,13 @@ public final class FieldAccessActionTest {
      */
     private static final class BaseAssertionImpl extends BaseAssertion {
 
-        BaseAssertionImpl(final Object actual, final String message) {
-            super(actual, message);
+        BaseAssertionImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }

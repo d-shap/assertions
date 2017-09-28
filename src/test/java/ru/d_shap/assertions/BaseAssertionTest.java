@@ -70,9 +70,9 @@ public final class BaseAssertionTest {
     public void asTest() {
         Object object = new Object();
 
-        Assertions.assertThat(new BaseAssertionImpl(null, null).as(BaseAssertionImpl.class).getActual()).isNull();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).as(BaseAssertionImpl.class).getActual()).isNull();
         try {
-            new BaseAssertionImpl(object, null).as(null);
+            new BaseAssertionImpl(object, new FailDescription()).as(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -94,39 +94,39 @@ public final class BaseAssertionTest {
      */
     @Test
     public void asPrimitiveByteAssertionTest() {
-        new BaseAssertionImpl((byte) 10, null).as(ByteAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl((byte) 10, null).as(ShortAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl((byte) 10, null).as(IntAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl((byte) 10, null).as(LongAssertion.class).isEqualTo(10L);
-        new BaseAssertionImpl((byte) 10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new BaseAssertionImpl((byte) 10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(ByteAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(ShortAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new BaseAssertionImpl((byte) 10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl((byte) 10, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl((byte) 10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Byte, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl((byte) 10, null).as(CharAssertion.class);
+            new BaseAssertionImpl((byte) 10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Byte, java.lang.String)");
         }
-        Assertions.assertThat(new ByteAssertion((byte) 10, null).as(BaseAssertionImpl.class).getActual()).hasClass(Byte.class);
-        new ByteAssertion((byte) 10, null).as(ByteAssertion.class).isEqualTo(10);
-        new ByteAssertion((byte) 10, null).as(ShortAssertion.class).isEqualTo(10);
-        new ByteAssertion((byte) 10, null).as(IntAssertion.class).isEqualTo(10);
-        new ByteAssertion((byte) 10, null).as(LongAssertion.class).isEqualTo(10L);
-        new ByteAssertion((byte) 10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new ByteAssertion((byte) 10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        Assertions.assertThat(new ByteAssertion((byte) 10, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Byte.class);
+        new ByteAssertion((byte) 10, new FailDescription()).as(ByteAssertion.class).isEqualTo(10);
+        new ByteAssertion((byte) 10, new FailDescription()).as(ShortAssertion.class).isEqualTo(10);
+        new ByteAssertion((byte) 10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new ByteAssertion((byte) 10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new ByteAssertion((byte) 10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new ByteAssertion((byte) 10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new ByteAssertion((byte) 10, null).as(BooleanAssertion.class);
+            new ByteAssertion((byte) 10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Byte, java.lang.String)");
         }
         try {
-            new ByteAssertion((byte) 10, null).as(CharAssertion.class);
+            new ByteAssertion((byte) 10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Byte, java.lang.String)");
@@ -139,48 +139,48 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveShortAssertionTest() {
         try {
-            new BaseAssertionImpl((short) 10, null).as(ByteAssertion.class);
+            new BaseAssertionImpl((short) 10, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Short, java.lang.String)");
         }
-        new BaseAssertionImpl((short) 10, null).as(ShortAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl((short) 10, null).as(IntAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl((short) 10, null).as(LongAssertion.class).isEqualTo(10L);
-        new BaseAssertionImpl((short) 10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new BaseAssertionImpl((short) 10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl((short) 10, new FailDescription()).as(ShortAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl((short) 10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl((short) 10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new BaseAssertionImpl((short) 10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new BaseAssertionImpl((short) 10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl((short) 10, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl((short) 10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Short, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl((short) 10, null).as(CharAssertion.class);
+            new BaseAssertionImpl((short) 10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Short, java.lang.String)");
         }
-        Assertions.assertThat(new ShortAssertion((short) 10, null).as(BaseAssertionImpl.class).getActual()).hasClass(Short.class);
+        Assertions.assertThat(new ShortAssertion((short) 10, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Short.class);
         try {
-            new ShortAssertion((short) 10, null).as(ByteAssertion.class);
+            new ShortAssertion((short) 10, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Short, java.lang.String)");
         }
-        new ShortAssertion((short) 10, null).as(ShortAssertion.class).isEqualTo(10);
-        new ShortAssertion((short) 10, null).as(IntAssertion.class).isEqualTo(10);
-        new ShortAssertion((short) 10, null).as(LongAssertion.class).isEqualTo(10L);
-        new ShortAssertion((short) 10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new ShortAssertion((short) 10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new ShortAssertion((short) 10, new FailDescription()).as(ShortAssertion.class).isEqualTo(10);
+        new ShortAssertion((short) 10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new ShortAssertion((short) 10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new ShortAssertion((short) 10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new ShortAssertion((short) 10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new ShortAssertion((short) 10, null).as(BooleanAssertion.class);
+            new ShortAssertion((short) 10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Short, java.lang.String)");
         }
         try {
-            new ShortAssertion((short) 10, null).as(CharAssertion.class);
+            new ShortAssertion((short) 10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Short, java.lang.String)");
@@ -193,58 +193,58 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveIntAssertionTest() {
         try {
-            new BaseAssertionImpl(10, null).as(ByteAssertion.class);
+            new BaseAssertionImpl(10, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Integer, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10, null).as(ShortAssertion.class);
+            new BaseAssertionImpl(10, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Integer, java.lang.String)");
         }
-        new BaseAssertionImpl(10, null).as(IntAssertion.class).isEqualTo(10);
-        new BaseAssertionImpl(10, null).as(LongAssertion.class).isEqualTo(10L);
-        new BaseAssertionImpl(10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new BaseAssertionImpl(10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl(10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new BaseAssertionImpl(10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new BaseAssertionImpl(10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new BaseAssertionImpl(10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl(10, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl(10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Integer, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10, null).as(CharAssertion.class);
+            new BaseAssertionImpl(10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Integer, java.lang.String)");
         }
-        Assertions.assertThat(new IntAssertion(10, null).as(BaseAssertionImpl.class).getActual()).hasClass(Integer.class);
+        Assertions.assertThat(new IntAssertion(10, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Integer.class);
         try {
-            new IntAssertion(10, null).as(ByteAssertion.class);
+            new IntAssertion(10, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Integer, java.lang.String)");
         }
         try {
-            new IntAssertion(10, null).as(ShortAssertion.class);
+            new IntAssertion(10, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Integer, java.lang.String)");
         }
-        new IntAssertion(10, null).as(IntAssertion.class).isEqualTo(10);
-        new IntAssertion(10, null).as(LongAssertion.class).isEqualTo(10L);
-        new IntAssertion(10, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new IntAssertion(10, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new IntAssertion(10, new FailDescription()).as(IntAssertion.class).isEqualTo(10);
+        new IntAssertion(10, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new IntAssertion(10, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new IntAssertion(10, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new IntAssertion(10, null).as(BooleanAssertion.class);
+            new IntAssertion(10, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Integer, java.lang.String)");
         }
         try {
-            new IntAssertion(10, null).as(CharAssertion.class);
+            new IntAssertion(10, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Integer, java.lang.String)");
@@ -257,68 +257,68 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveLongAssertionTest() {
         try {
-            new BaseAssertionImpl(10L, null).as(ByteAssertion.class);
+            new BaseAssertionImpl(10L, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10L, null).as(ShortAssertion.class);
+            new BaseAssertionImpl(10L, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10L, null).as(IntAssertion.class);
+            new BaseAssertionImpl(10L, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Long, java.lang.String)");
         }
-        new BaseAssertionImpl(10L, null).as(LongAssertion.class).isEqualTo(10L);
-        new BaseAssertionImpl(10L, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new BaseAssertionImpl(10L, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl(10L, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new BaseAssertionImpl(10L, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new BaseAssertionImpl(10L, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl(10L, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl(10L, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10L, null).as(CharAssertion.class);
+            new BaseAssertionImpl(10L, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Long, java.lang.String)");
         }
-        Assertions.assertThat(new LongAssertion(10L, null).as(BaseAssertionImpl.class).getActual()).hasClass(Long.class);
+        Assertions.assertThat(new LongAssertion(10L, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Long.class);
         try {
-            new LongAssertion(10L, null).as(ByteAssertion.class);
+            new LongAssertion(10L, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new LongAssertion(10L, null).as(ShortAssertion.class);
+            new LongAssertion(10L, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new LongAssertion(10L, null).as(IntAssertion.class);
+            new LongAssertion(10L, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Long, java.lang.String)");
         }
-        new LongAssertion(10L, null).as(LongAssertion.class).isEqualTo(10L);
-        new LongAssertion(10L, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new LongAssertion(10L, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new LongAssertion(10L, new FailDescription()).as(LongAssertion.class).isEqualTo(10L);
+        new LongAssertion(10L, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new LongAssertion(10L, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new LongAssertion(10L, null).as(BooleanAssertion.class);
+            new LongAssertion(10L, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Long, java.lang.String)");
         }
         try {
-            new LongAssertion(10L, null).as(CharAssertion.class);
+            new LongAssertion(10L, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Long, java.lang.String)");
@@ -331,78 +331,78 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveFloatAssertionTest() {
         try {
-            new BaseAssertionImpl(10.0f, null).as(ByteAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0f, null).as(ShortAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0f, null).as(IntAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0f, null).as(LongAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Float, java.lang.String)");
         }
-        new BaseAssertionImpl(10.0f, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new BaseAssertionImpl(10.0f, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl(10.0f, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new BaseAssertionImpl(10.0f, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl(10.0f, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0f, null).as(CharAssertion.class);
+            new BaseAssertionImpl(10.0f, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Float, java.lang.String)");
         }
-        Assertions.assertThat(new FloatAssertion(10.0f, null).as(BaseAssertionImpl.class).getActual()).hasClass(Float.class);
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Float.class);
         try {
-            new FloatAssertion(10.0f, null).as(ByteAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new FloatAssertion(10.0f, null).as(ShortAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new FloatAssertion(10.0f, null).as(IntAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new FloatAssertion(10.0f, null).as(LongAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Float, java.lang.String)");
         }
-        new FloatAssertion(10.0f, null).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
-        new FloatAssertion(10.0f, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new FloatAssertion(10.0f, new FailDescription()).as(FloatAssertion.class).isEqualTo(10.0f, 0.01f);
+        new FloatAssertion(10.0f, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new FloatAssertion(10.0f, null).as(BooleanAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Float, java.lang.String)");
         }
         try {
-            new FloatAssertion(10.0f, null).as(CharAssertion.class);
+            new FloatAssertion(10.0f, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Float, java.lang.String)");
@@ -415,88 +415,88 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveDoubleAssertionTest() {
         try {
-            new BaseAssertionImpl(10.0, null).as(ByteAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0, null).as(ShortAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0, null).as(IntAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0, null).as(LongAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0, null).as(FloatAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(FloatAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Double, java.lang.String)");
         }
-        new BaseAssertionImpl(10.0, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new BaseAssertionImpl(10.0, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new BaseAssertionImpl(10.0, null).as(BooleanAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(10.0, null).as(CharAssertion.class);
+            new BaseAssertionImpl(10.0, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Double, java.lang.String)");
         }
-        Assertions.assertThat(new DoubleAssertion(10.0, null).as(BaseAssertionImpl.class).getActual()).hasClass(Double.class);
+        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Double.class);
         try {
-            new DoubleAssertion(10.0, null).as(ByteAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new DoubleAssertion(10.0, null).as(ShortAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new DoubleAssertion(10.0, null).as(IntAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new DoubleAssertion(10.0, null).as(LongAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new DoubleAssertion(10.0, null).as(FloatAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(FloatAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Double, java.lang.String)");
         }
-        new DoubleAssertion(10.0, null).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
+        new DoubleAssertion(10.0, new FailDescription()).as(DoubleAssertion.class).isEqualTo(10.0, 0.01);
         try {
-            new DoubleAssertion(10.0, null).as(BooleanAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Double, java.lang.String)");
         }
         try {
-            new DoubleAssertion(10.0, null).as(CharAssertion.class);
+            new DoubleAssertion(10.0, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Double, java.lang.String)");
@@ -509,88 +509,88 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveBooleanAssertionTest() {
         try {
-            new BaseAssertionImpl(true, null).as(ByteAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(true, null).as(ShortAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(true, null).as(IntAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(true, null).as(LongAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(true, null).as(FloatAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(FloatAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(true, null).as(DoubleAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(DoubleAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Boolean, java.lang.String)");
         }
-        new BaseAssertionImpl(true, null).as(BooleanAssertion.class).isTrue();
+        new BaseAssertionImpl(true, new FailDescription()).as(BooleanAssertion.class).isTrue();
         try {
-            new BaseAssertionImpl(true, null).as(CharAssertion.class);
+            new BaseAssertionImpl(true, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Boolean, java.lang.String)");
         }
-        Assertions.assertThat(new BooleanAssertion(true, null).as(BaseAssertionImpl.class).getActual()).hasClass(Boolean.class);
+        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Boolean.class);
         try {
-            new BooleanAssertion(true, null).as(ByteAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BooleanAssertion(true, null).as(ShortAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BooleanAssertion(true, null).as(IntAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(IntAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BooleanAssertion(true, null).as(LongAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(LongAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BooleanAssertion(true, null).as(FloatAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(FloatAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Boolean, java.lang.String)");
         }
         try {
-            new BooleanAssertion(true, null).as(DoubleAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(DoubleAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Boolean, java.lang.String)");
         }
-        new BooleanAssertion(true, null).as(BooleanAssertion.class).isTrue();
+        new BooleanAssertion(true, new FailDescription()).as(BooleanAssertion.class).isTrue();
         try {
-            new BooleanAssertion(true, null).as(CharAssertion.class);
+            new BooleanAssertion(true, new FailDescription()).as(CharAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Boolean, java.lang.String)");
@@ -603,52 +603,52 @@ public final class BaseAssertionTest {
     @Test
     public void asPrimitiveCharAssertionTest() {
         try {
-            new BaseAssertionImpl('c', null).as(ByteAssertion.class);
+            new BaseAssertionImpl('c', new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Character, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl('c', null).as(ShortAssertion.class);
+            new BaseAssertionImpl('c', new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Character, java.lang.String)");
         }
-        new BaseAssertionImpl('c', null).as(IntAssertion.class).isEqualTo(99);
-        new BaseAssertionImpl('c', null).as(LongAssertion.class).isEqualTo(99L);
-        new BaseAssertionImpl('c', null).as(FloatAssertion.class).isEqualTo(99.0f, 0.01f);
-        new BaseAssertionImpl('c', null).as(DoubleAssertion.class).isEqualTo(99.0, 0.01);
+        new BaseAssertionImpl('c', new FailDescription()).as(IntAssertion.class).isEqualTo(99);
+        new BaseAssertionImpl('c', new FailDescription()).as(LongAssertion.class).isEqualTo(99L);
+        new BaseAssertionImpl('c', new FailDescription()).as(FloatAssertion.class).isEqualTo(99.0f, 0.01f);
+        new BaseAssertionImpl('c', new FailDescription()).as(DoubleAssertion.class).isEqualTo(99.0, 0.01);
         try {
-            new BaseAssertionImpl('c', null).as(BooleanAssertion.class);
+            new BaseAssertionImpl('c', new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Character, java.lang.String)");
         }
-        new BaseAssertionImpl('c', null).as(CharAssertion.class).isAlphabetic();
-        Assertions.assertThat(new CharAssertion('c', null).as(BaseAssertionImpl.class).getActual()).hasClass(Character.class);
+        new BaseAssertionImpl('c', new FailDescription()).as(CharAssertion.class).isAlphabetic();
+        Assertions.assertThat(new CharAssertion('c', new FailDescription()).as(BaseAssertionImpl.class).getActual()).hasClass(Character.class);
         try {
-            new CharAssertion('c', null).as(ByteAssertion.class);
+            new CharAssertion('c', new FailDescription()).as(ByteAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Character, java.lang.String)");
         }
         try {
-            new CharAssertion('c', null).as(ShortAssertion.class);
+            new CharAssertion('c', new FailDescription()).as(ShortAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Character, java.lang.String)");
         }
-        new CharAssertion('c', null).as(IntAssertion.class).isEqualTo(99);
-        new CharAssertion('c', null).as(LongAssertion.class).isEqualTo(99L);
-        new CharAssertion('c', null).as(FloatAssertion.class).isEqualTo(99.0f, 0.01f);
-        new CharAssertion('c', null).as(DoubleAssertion.class).isEqualTo(99.0, 0.01);
+        new CharAssertion('c', new FailDescription()).as(IntAssertion.class).isEqualTo(99);
+        new CharAssertion('c', new FailDescription()).as(LongAssertion.class).isEqualTo(99L);
+        new CharAssertion('c', new FailDescription()).as(FloatAssertion.class).isEqualTo(99.0f, 0.01f);
+        new CharAssertion('c', new FailDescription()).as(DoubleAssertion.class).isEqualTo(99.0, 0.01);
         try {
-            new CharAssertion('c', null).as(BooleanAssertion.class);
+            new CharAssertion('c', new FailDescription()).as(BooleanAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Character, java.lang.String)");
         }
-        new CharAssertion('c', null).as(CharAssertion.class).isAlphabetic();
+        new CharAssertion('c', new FailDescription()).as(CharAssertion.class).isAlphabetic();
     }
 
     /**
@@ -656,91 +656,91 @@ public final class BaseAssertionTest {
      */
     @Test
     public void asArrayAssertionTest() {
-        new BaseAssertionImpl(new byte[0], null).as(ByteArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new byte[0], null).as(ByteArrayAssertion.class).getActual()).hasClass(byte[].class);
-        new ByteArrayAssertion(new byte[0], null).as(ByteArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new byte[0], new FailDescription()).as(ByteArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new byte[0], new FailDescription()).as(ByteArrayAssertion.class).getActual()).hasClass(byte[].class);
+        new ByteArrayAssertion(new byte[0], new FailDescription()).as(ByteArrayAssertion.class).hasLength(0);
         try {
-            new ByteArrayAssertion(new byte[0], null).as(IterableAssertion.class);
+            new ByteArrayAssertion(new byte[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([B, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new short[0], null).as(ShortArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new short[0], null).as(ShortArrayAssertion.class).getActual()).hasClass(short[].class);
-        new ShortArrayAssertion(new short[0], null).as(ShortArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new short[0], new FailDescription()).as(ShortArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new short[0], new FailDescription()).as(ShortArrayAssertion.class).getActual()).hasClass(short[].class);
+        new ShortArrayAssertion(new short[0], new FailDescription()).as(ShortArrayAssertion.class).hasLength(0);
         try {
-            new ShortArrayAssertion(new short[0], null).as(IterableAssertion.class);
+            new ShortArrayAssertion(new short[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([S, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new int[0], null).as(IntArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new int[0], null).as(IntArrayAssertion.class).getActual()).hasClass(int[].class);
-        new IntArrayAssertion(new int[0], null).as(IntArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new int[0], new FailDescription()).as(IntArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new int[0], new FailDescription()).as(IntArrayAssertion.class).getActual()).hasClass(int[].class);
+        new IntArrayAssertion(new int[0], new FailDescription()).as(IntArrayAssertion.class).hasLength(0);
         try {
-            new IntArrayAssertion(new int[0], null).as(IterableAssertion.class);
+            new IntArrayAssertion(new int[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([I, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new long[0], null).as(LongArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new long[0], null).as(LongArrayAssertion.class).getActual()).hasClass(long[].class);
-        new LongArrayAssertion(new long[0], null).as(LongArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new long[0], new FailDescription()).as(LongArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new long[0], new FailDescription()).as(LongArrayAssertion.class).getActual()).hasClass(long[].class);
+        new LongArrayAssertion(new long[0], new FailDescription()).as(LongArrayAssertion.class).hasLength(0);
         try {
-            new LongArrayAssertion(new long[0], null).as(IterableAssertion.class);
+            new LongArrayAssertion(new long[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([J, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new float[0], null).as(FloatArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new float[0], null).as(FloatArrayAssertion.class).getActual()).hasClass(float[].class);
-        new FloatArrayAssertion(new float[0], null).as(FloatArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new float[0], new FailDescription()).as(FloatArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new float[0], new FailDescription()).as(FloatArrayAssertion.class).getActual()).hasClass(float[].class);
+        new FloatArrayAssertion(new float[0], new FailDescription()).as(FloatArrayAssertion.class).hasLength(0);
         try {
-            new FloatArrayAssertion(new float[0], null).as(IterableAssertion.class);
+            new FloatArrayAssertion(new float[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([F, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new double[0], null).as(DoubleArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new double[0], null).as(DoubleArrayAssertion.class).getActual()).hasClass(double[].class);
-        new DoubleArrayAssertion(new double[0], null).as(DoubleArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new double[0], new FailDescription()).as(DoubleArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new double[0], new FailDescription()).as(DoubleArrayAssertion.class).getActual()).hasClass(double[].class);
+        new DoubleArrayAssertion(new double[0], new FailDescription()).as(DoubleArrayAssertion.class).hasLength(0);
         try {
-            new DoubleArrayAssertion(new double[0], null).as(IterableAssertion.class);
+            new DoubleArrayAssertion(new double[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([D, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new boolean[0], null).as(BooleanArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new boolean[0], null).as(BooleanArrayAssertion.class).getActual()).hasClass(boolean[].class);
-        new BooleanArrayAssertion(new boolean[0], null).as(BooleanArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new boolean[0], new FailDescription()).as(BooleanArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new boolean[0], new FailDescription()).as(BooleanArrayAssertion.class).getActual()).hasClass(boolean[].class);
+        new BooleanArrayAssertion(new boolean[0], new FailDescription()).as(BooleanArrayAssertion.class).hasLength(0);
         try {
-            new BooleanArrayAssertion(new boolean[0], null).as(IterableAssertion.class);
+            new BooleanArrayAssertion(new boolean[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([Z, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new char[0], null).as(CharArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new char[0], null).as(CharArrayAssertion.class).getActual()).hasClass(char[].class);
-        new CharArrayAssertion(new char[0], null).as(CharArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new char[0], new FailDescription()).as(CharArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new char[0], new FailDescription()).as(CharArrayAssertion.class).getActual()).hasClass(char[].class);
+        new CharArrayAssertion(new char[0], new FailDescription()).as(CharArrayAssertion.class).hasLength(0);
         try {
-            new CharArrayAssertion(new char[0], null).as(IterableAssertion.class);
+            new CharArrayAssertion(new char[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([C, java.lang.String)");
         }
 
-        new BaseAssertionImpl(new String[0], null).as(ObjectArrayAssertion.class).hasLength(0);
-        Assertions.assertThat(new BaseAssertionImpl(new String[0], null).as(ObjectArrayAssertion.class).getActual()).hasClass(String[].class);
-        new ObjectArrayAssertion(new String[0], null).as(ObjectArrayAssertion.class).hasLength(0);
+        new BaseAssertionImpl(new String[0], new FailDescription()).as(ObjectArrayAssertion.class).hasLength(0);
+        Assertions.assertThat(new BaseAssertionImpl(new String[0], new FailDescription()).as(ObjectArrayAssertion.class).getActual()).hasClass(String[].class);
+        new ObjectArrayAssertion(new String[0], new FailDescription()).as(ObjectArrayAssertion.class).hasLength(0);
         try {
-            new ObjectArrayAssertion(new String[0], null).as(IterableAssertion.class);
+            new ObjectArrayAssertion(new String[0], new FailDescription()).as(IterableAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([Ljava.lang.String;, java.lang.String)");
@@ -752,21 +752,21 @@ public final class BaseAssertionTest {
      */
     @Test
     public void asCollectionAssertionTest() {
-        new BaseAssertionImpl(new ArrayList<String>(), null).as(ListAssertion.class).isEmpty();
-        new BaseAssertionImpl(new ArrayList<String>(), null).as(CollectionAssertion.class).isEmpty();
-        new BaseAssertionImpl(new ArrayList<String>(), null).as(IterableAssertion.class).isEmpty();
+        new BaseAssertionImpl(new ArrayList<String>(), new FailDescription()).as(ListAssertion.class).isEmpty();
+        new BaseAssertionImpl(new ArrayList<String>(), new FailDescription()).as(CollectionAssertion.class).isEmpty();
+        new BaseAssertionImpl(new ArrayList<String>(), new FailDescription()).as(IterableAssertion.class).isEmpty();
 
-        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), null).as(ListAssertion.class)).hasClass(ListAssertion.class);
-        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), null).as(CollectionAssertion.class)).hasClass(CollectionAssertion.class);
-        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), null).as(IterableAssertion.class)).hasClass(IterableAssertion.class);
+        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), new FailDescription()).as(ListAssertion.class)).hasClass(ListAssertion.class);
+        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), new FailDescription()).as(CollectionAssertion.class)).hasClass(CollectionAssertion.class);
+        Assertions.assertThat(new ListAssertion(new ArrayList<String>(), new FailDescription()).as(IterableAssertion.class)).hasClass(IterableAssertion.class);
 
-        new BaseAssertionImpl(new HashSet<String>(), null).as(SetAssertion.class).isEmpty();
-        new BaseAssertionImpl(new HashSet<String>(), null).as(CollectionAssertion.class).isEmpty();
-        new BaseAssertionImpl(new HashSet<String>(), null).as(IterableAssertion.class).isEmpty();
+        new BaseAssertionImpl(new HashSet<String>(), new FailDescription()).as(SetAssertion.class).isEmpty();
+        new BaseAssertionImpl(new HashSet<String>(), new FailDescription()).as(CollectionAssertion.class).isEmpty();
+        new BaseAssertionImpl(new HashSet<String>(), new FailDescription()).as(IterableAssertion.class).isEmpty();
 
-        Assertions.assertThat(new SetAssertion(new HashSet<String>(), null).as(SetAssertion.class)).hasClass(SetAssertion.class);
-        Assertions.assertThat(new SetAssertion(new HashSet<String>(), null).as(CollectionAssertion.class)).hasClass(CollectionAssertion.class);
-        Assertions.assertThat(new SetAssertion(new HashSet<String>(), null).as(IterableAssertion.class)).hasClass(IterableAssertion.class);
+        Assertions.assertThat(new SetAssertion(new HashSet<String>(), new FailDescription()).as(SetAssertion.class)).hasClass(SetAssertion.class);
+        Assertions.assertThat(new SetAssertion(new HashSet<String>(), new FailDescription()).as(CollectionAssertion.class)).hasClass(CollectionAssertion.class);
+        Assertions.assertThat(new SetAssertion(new HashSet<String>(), new FailDescription()).as(IterableAssertion.class)).hasClass(IterableAssertion.class);
     }
 
     /**
@@ -775,43 +775,43 @@ public final class BaseAssertionTest {
     @Test
     public void asWrongConstructorFailTest() {
         try {
-            new ListAssertion(new ArrayList<String>(), null).as(MapAssertion.class);
+            new ListAssertion(new ArrayList<String>(), new FailDescription()).as(MapAssertion.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.collection.MapAssertion - class should have one constructor MapAssertion(java.util.ArrayList, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, null).as(BaseAssertionWrongParameterCountConstructorImpl.class);
+            new BaseAssertionImpl(null, new FailDescription()).as(BaseAssertionWrongParameterCountConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructorImpl - class should have one constructor BaseAssertionWrongParameterCountConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionWrongParameterCountConstructorImpl.class);
+            new BaseAssertionImpl("value", new FailDescription()).as(BaseAssertionWrongParameterCountConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructorImpl - class should have one constructor BaseAssertionWrongParameterCountConstructorImpl(java.lang.String, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, "message").as(BaseAssertionWrongParameterTypeConstructorImpl.class);
+            new BaseAssertionImpl(null, new FailDescription().addMessage("message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", "message").as(BaseAssertionWrongParameterTypeConstructorImpl.class);
+            new BaseAssertionImpl("value", new FailDescription().addMessage("message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.String, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, null).as(BaseAssertionMultipleConstructorsImpl.class);
+            new BaseAssertionImpl(null, new FailDescription()).as(BaseAssertionMultipleConstructorsImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructorsImpl - class should have one constructor BaseAssertionMultipleConstructorsImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionMultipleConstructorsImpl.class);
+            new BaseAssertionImpl("value", new FailDescription()).as(BaseAssertionMultipleConstructorsImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionMultipleConstructorsImpl - class should have one constructor BaseAssertionMultipleConstructorsImpl(java.lang.String, java.lang.String)");
@@ -824,7 +824,7 @@ public final class BaseAssertionTest {
     @Test
     public void asInvocationTargetFailTest() {
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionInvocationRuntimeExceptionImpl.class);
+            new BaseAssertionImpl("value", new FailDescription()).as(BaseAssertionInvocationRuntimeExceptionImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInvocationRuntimeExceptionImpl");
@@ -833,7 +833,7 @@ public final class BaseAssertionTest {
             Assertions.assertThat(ex).toCause().hasCauseMessage("ERROR");
         }
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionInvocationAssertionErrorImpl.class);
+            new BaseAssertionImpl("value", new FailDescription()).as(BaseAssertionInvocationAssertionErrorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("ERROR");
@@ -846,7 +846,7 @@ public final class BaseAssertionTest {
     @Test
     public void asInstantiationFailTest() {
         try {
-            new BaseAssertionImpl("value", null).as(BaseAssertionInstantiationExceptionImpl.class);
+            new BaseAssertionImpl("value", new FailDescription()).as(BaseAssertionInstantiationExceptionImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionInstantiationExceptionImpl");
@@ -859,24 +859,8 @@ public final class BaseAssertionTest {
     @Test
     public void getActualTest() {
         Object object = new Object();
-        Assertions.assertThat(new BaseAssertionImpl(object, null).getActual()).isNotNull();
-        Assertions.assertThat(new BaseAssertionImpl(object, null).getActual()).isSameAs(object);
-    }
-
-    /**
-     * {@link BaseAssertion} class test.
-     */
-    @Test
-    public void getMessageTest() {
-        Assertions.assertThat(new BaseAssertionImpl(null, null).getMessage()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "some message").getMessage()).isEqualTo("some message");
-
-        try {
-            Assertions.assertThat(new BaseAssertionImpl(null, "some message").getMessage()).isEqualTo("some other message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<some other message> but was:<some message>");
-        }
+        Assertions.assertThat(new BaseAssertionImpl(object, new FailDescription()).getActual()).isNotNull();
+        Assertions.assertThat(new BaseAssertionImpl(object, new FailDescription()).getActual()).isSameAs(object);
     }
 
     /**
@@ -884,11 +868,11 @@ public final class BaseAssertionTest {
      */
     @Test
     public void checkActualIsNotNullTest() {
-        new BaseAssertionImpl(new Object(), null).checkActualIsNotNull();
-        new BaseAssertionImpl("test", null).checkActualIsNotNull();
+        new BaseAssertionImpl(new Object(), new FailDescription()).checkActualIsNotNull();
+        new BaseAssertionImpl("test", new FailDescription()).checkActualIsNotNull();
 
         try {
-            new BaseAssertionImpl(null, null).checkActualIsNotNull();
+            new BaseAssertionImpl(null, new FailDescription()).checkActualIsNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -900,12 +884,12 @@ public final class BaseAssertionTest {
      */
     @Test
     public void checkArgumentIsNotNullTest() {
-        new BaseAssertionImpl(null, null).checkArgumentIsNotNull(new Object());
-        new BaseAssertionImpl(null, null).checkArgumentIsNotNull("test");
-        new BaseAssertionImpl(null, null).checkArgumentIsNotNull(1);
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotNull(new Object());
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotNull("test");
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotNull(1);
 
         try {
-            new BaseAssertionImpl(null, null).checkArgumentIsNotNull(null);
+            new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotNull(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -917,10 +901,10 @@ public final class BaseAssertionTest {
      */
     @Test
     public void checkArgumentIsNotEmptyTrueTest() {
-        new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyTrue(false);
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotEmptyTrue(false);
 
         try {
-            new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyTrue(true);
+            new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
@@ -932,10 +916,10 @@ public final class BaseAssertionTest {
      */
     @Test
     public void checkArgumentIsNotEmptyFalseTest() {
-        new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyFalse(false);
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotEmptyFalse(false);
 
         try {
-            new BaseAssertionImpl(null, null).checkArgumentIsNotEmptyFalse(true);
+            new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsNotEmptyFalse(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
@@ -947,21 +931,21 @@ public final class BaseAssertionTest {
      */
     @Test
     public void createAssertionErrorWithFailMessageTest() {
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((String) null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("").getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message").getMessage()).isEqualTo("fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError((String) null).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError("").getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError("fail message").getMessage()).isEqualTo("fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError((String) null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("").getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message").getMessage()).isEqualTo("fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError((String) null).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError("").getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError("fail message").getMessage()).isEqualTo("fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
     }
 
     /**
@@ -969,148 +953,29 @@ public final class BaseAssertionTest {
      */
     @Test
     public void createAssertionErrorWithThrowableTest() {
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((Throwable) null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError((Throwable) null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException()).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEmpty();
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError((Throwable) null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError((Throwable) null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException()).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEmpty();
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError((Throwable) null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError((Throwable) null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError((Throwable) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
-    }
-
-    /**
-     * {@link BaseAssertion} class test.
-     */
-    @Test
-    public void createAssertionErrorWithFailMessageAndThrowableTest() {
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError(null, new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", null).getMessage()).isEqualTo("fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", new RuntimeException()).getMessage()).isEqualTo("fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, null).createAssertionError("fail message", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("fail message");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError(null, new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", new RuntimeException()).getMessage()).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", null).getMessage()).isEqualTo("fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", new RuntimeException()).getMessage()).isEqualTo("fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "").createAssertionError("fail message", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("fail message");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError(null, new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", null).getMessage()).isEqualTo("assertion message. fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", new RuntimeException()).getMessage()).isEqualTo("assertion message. fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message").createAssertionError("fail message", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. fail message");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError(null, new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", new RuntimeException()).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. java.lang.RuntimeException: some runtime exception");
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", null).getCause()).isNull();
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
-
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", null).getMessage()).isEqualTo("assertion message. fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", new RuntimeException()).getMessage()).isEqualTo("assertion message. fail message");
-        Assertions.assertThat(new BaseAssertionImpl(null, "assertion message.").createAssertionError("fail message", new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message. fail message");
-    }
-
-    /**
-     * {@link BaseAssertion} class test.
-     */
-    @Test
-    public void actualAsStringTest() {
-        Assertions.assertThat(new BaseAssertionImpl("value", null).actualAsString()).isEqualTo("value");
-        Assertions.assertThat(new BaseAssertionImpl(1, null).actualAsString()).isEqualTo("1");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
     }
 
     /**
@@ -1123,16 +988,16 @@ public final class BaseAssertionTest {
         /**
          * Create new object.
          *
-         * @param actual  the actual value.
-         * @param message the assertion message.
+         * @param actual          the actual value.
+         * @param failDescription the fail description.
          */
-        public BaseAssertionImpl(final Object actual, final String message) {
-            super(actual, message);
+        public BaseAssertionImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1154,8 +1019,8 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1174,12 +1039,12 @@ public final class BaseAssertionTest {
          * @param message the assertion message.
          */
         public BaseAssertionWrongParameterTypeConstructorImpl(final Object actual, final StringBuilder message) {
-            super(actual, message.toString());
+            super(actual, new FailDescription().addMessage(message.toString()));
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1194,11 +1059,11 @@ public final class BaseAssertionTest {
         /**
          * Create new object.
          *
-         * @param actual  the actual value.
-         * @param message the assertion message.
+         * @param actual          the actual value.
+         * @param failDescription the fail description.
          */
-        public BaseAssertionMultipleConstructorsImpl(final Object actual, final String message) {
-            super(actual, message);
+        public BaseAssertionMultipleConstructorsImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
         }
 
         /**
@@ -1208,12 +1073,12 @@ public final class BaseAssertionTest {
          * @param message the assertion message.
          */
         public BaseAssertionMultipleConstructorsImpl(final Object actual, final Object message) {
-            super(actual, message.toString());
+            super(actual, new FailDescription().addMessage(message.toString()));
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1228,17 +1093,17 @@ public final class BaseAssertionTest {
         /**
          * Create new object.
          *
-         * @param actual  the actual value.
-         * @param message the assertion message.
+         * @param actual          the actual value.
+         * @param failDescription the fail description.
          */
-        public BaseAssertionInvocationRuntimeExceptionImpl(final Object actual, final String message) {
-            super(actual, message);
+        public BaseAssertionInvocationRuntimeExceptionImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
             throw new RuntimeException("ERROR");
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1253,17 +1118,17 @@ public final class BaseAssertionTest {
         /**
          * Create new object.
          *
-         * @param actual  the actual value.
-         * @param message the assertion message.
+         * @param actual          the actual value.
+         * @param failDescription the fail description.
          */
-        public BaseAssertionInvocationAssertionErrorImpl(final Object actual, final String message) {
-            super(actual, message);
+        public BaseAssertionInvocationAssertionErrorImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
             throw new AssertionError("ERROR");
         }
 
         @Override
-        protected String asString(final Object value) {
-            return String.valueOf(value);
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
@@ -1278,16 +1143,16 @@ public final class BaseAssertionTest {
         /**
          * Create new object.
          *
-         * @param actual  the actual value.
-         * @param message the assertion message.
+         * @param actual          the actual value.
+         * @param failDescription the fail description.
          */
-        public BaseAssertionInstantiationExceptionImpl(final Object actual, final String message) {
-            super(actual, message);
+        public BaseAssertionInstantiationExceptionImpl(final Object actual, final FailDescription failDescription) {
+            super(actual, failDescription);
         }
 
         @Override
-        protected final String asString(final Object value) {
-            return String.valueOf(value);
+        protected final String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }
