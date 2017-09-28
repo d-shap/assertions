@@ -19,7 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -32,11 +33,11 @@ public class ObjectAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ObjectAssertion(final Object actual, final String message) {
-        super(actual, message);
+    public ObjectAssertion(final Object actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -48,7 +49,7 @@ public class ObjectAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -61,16 +62,16 @@ public class ObjectAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
-            return String.valueOf(value);
+            return value.toString();
         }
     }
 
