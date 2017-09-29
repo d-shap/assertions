@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.Arrays;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the object array.
@@ -35,11 +34,11 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ObjectArrayAssertion(final Object[] actual, final String message) {
-        super(actual, message);
+    public ObjectArrayAssertion(final Object[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -175,10 +174,9 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Object> createList() {
         Object[] array = (Object[]) getActual();
-        List<Object> result = Arrays.asList(array);
-        return new ListAssertion(result, getMessage());
+        return ValueConverter.toObjectList(array);
     }
 
 }

@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the short array.
@@ -35,11 +34,11 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ShortArrayAssertion(final short[] actual, final String message) {
-        super(actual, message);
+    public ShortArrayAssertion(final short[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAll(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -77,7 +76,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAll(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -96,7 +95,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAllInOrder(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -106,7 +105,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAllInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -125,7 +124,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsExactly(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -135,7 +134,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsExactly(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -154,7 +153,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsExactlyInOrder(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -164,7 +163,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsExactlyInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -183,7 +182,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAny(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -193,7 +192,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsAny(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -212,7 +211,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsNone(final short... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -222,7 +221,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
      */
     public final void containsNone(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -235,29 +234,9 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Short> createList() {
         short[] array = (short[]) getActual();
-        List<Short> result = new LinkedList<>();
-        for (short value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Short[] createArgumentArray(final short... array) {
-        Short[] result = new Short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
-    }
-
-    private Short[] createArgumentArray(final int... array) {
-        Short[] result = new Short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = (short) array[i];
-        }
-        return result;
+        return ValueConverter.toShortList(array);
     }
 
 }

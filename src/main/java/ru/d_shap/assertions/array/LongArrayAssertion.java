@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the long array.
@@ -35,11 +34,11 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public LongArrayAssertion(final long[] actual, final String message) {
-        super(actual, message);
+    public LongArrayAssertion(final long[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsAll(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -86,7 +85,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsAllInOrder(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -105,7 +104,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsExactly(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -124,7 +123,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsExactlyInOrder(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -143,7 +142,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsAny(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -162,7 +161,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      */
     public final void containsNone(final long... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -175,21 +174,9 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Long> createList() {
         long[] array = (long[]) getActual();
-        List<Long> result = new LinkedList<>();
-        for (long value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Long[] createArgumentArray(final long... array) {
-        Long[] result = new Long[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
+        return ValueConverter.toLongList(array);
     }
 
 }

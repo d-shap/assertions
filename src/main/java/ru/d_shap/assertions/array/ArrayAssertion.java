@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
+import java.util.List;
+
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.CollectionAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -31,8 +35,8 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 abstract class ArrayAssertion<T> extends ReferenceAssertion {
 
-    ArrayAssertion(final Object actual, final String message) {
-        super(actual, message);
+    ArrayAssertion(final Object actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -40,7 +44,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      */
     public final void isEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion().isEmpty();
+        createListAssertion().isEmpty();
     }
 
     /**
@@ -48,7 +52,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null) {
-            createCollectionAssertion().isNullOrEmpty();
+            createListAssertion().isNullOrEmpty();
         }
     }
 
@@ -57,83 +61,83 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion().isNotEmpty();
+        createListAssertion().isNotEmpty();
     }
 
     final void doContains(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().contains(expected);
+        createListAssertion().contains(expected);
     }
 
     final void doDoesNotContain(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().doesNotContain(expected);
+        createListAssertion().doesNotContain(expected);
     }
 
     @SafeVarargs
     final void doContainsAll(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAll((Object[]) expected);
+        createListAssertion().containsAll((Object[]) expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAll(expected);
+        createListAssertion().containsAll(expected);
     }
 
     @SafeVarargs
     final void doContainsAllInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAllInOrder((Object[]) expected);
+        createListAssertion().containsAllInOrder((Object[]) expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAllInOrder(expected);
+        createListAssertion().containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsExactly(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsExactly((Object[]) expected);
+        createListAssertion().containsExactly((Object[]) expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsExactly(expected);
+        createListAssertion().containsExactly(expected);
     }
 
     @SafeVarargs
     final void doContainsExactlyInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsExactlyInOrder((Object[]) expected);
+        createListAssertion().containsExactlyInOrder((Object[]) expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsExactlyInOrder(expected);
+        createListAssertion().containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsAny(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAny((Object[]) expected);
+        createListAssertion().containsAny((Object[]) expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsAny(expected);
+        createListAssertion().containsAny(expected);
     }
 
     @SafeVarargs
     final void doContainsNone(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsNone((Object[]) expected);
+        createListAssertion().containsNone((Object[]) expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion().containsNone(expected);
+        createListAssertion().containsNone(expected);
     }
 
     /**
@@ -143,7 +147,8 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      */
     public final IntAssertion toLength() {
         checkActualIsNotNull();
-        return createCollectionAssertion().toSize();
+        List<T> list = createList();
+        return new IntAssertion(list.size(), getFailDescription(Messages.Check.ACTUAL_VALUE_LENGTH));
     }
 
     /**
@@ -152,14 +157,18 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      * @param expected the expected length.
      */
     public final void hasLength(final int expected) {
-        checkActualIsNotNull();
-        createCollectionAssertion().hasSize(expected);
+        toLength().isEqualTo(expected);
     }
 
-    abstract CollectionAssertion createCollectionAssertion();
+    final ListAssertion createListAssertion() {
+        List<T> list = createList();
+        return new ListAssertion(list, getFailDescription());
+    }
+
+    abstract List<T> createList();
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         return null;
     }
 

@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions the char array.
@@ -35,11 +34,11 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public CharArrayAssertion(final char[] actual, final String message) {
-        super(actual, message);
+    public CharArrayAssertion(final char[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAll(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -77,7 +76,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAll(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -96,7 +95,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAllInOrder(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -106,7 +105,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAllInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -125,7 +124,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsExactly(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -135,7 +134,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsExactly(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -154,7 +153,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsExactlyInOrder(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -164,7 +163,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsExactlyInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -183,7 +182,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAny(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -193,7 +192,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsAny(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -212,7 +211,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsNone(final char... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -222,7 +221,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      */
     public final void containsNone(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -235,29 +234,9 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Character> createList() {
         char[] array = (char[]) getActual();
-        List<Character> result = new LinkedList<>();
-        for (char value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Character[] createArgumentArray(final char... array) {
-        Character[] result = new Character[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
-    }
-
-    private Character[] createArgumentArray(final int... array) {
-        Character[] result = new Character[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = (char) array[i];
-        }
-        return result;
+        return ValueConverter.toCharacterList(array);
     }
 
 }

@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the float array.
@@ -35,11 +34,11 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public FloatArrayAssertion(final float[] actual, final String message) {
-        super(actual, message);
+    public FloatArrayAssertion(final float[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsAll(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -86,7 +85,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsAllInOrder(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -105,7 +104,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsExactly(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -124,7 +123,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsExactlyInOrder(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -143,7 +142,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsAny(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -162,7 +161,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      */
     public final void containsNone(final float... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toFloatObjectArray(expected));
     }
 
     /**
@@ -175,21 +174,9 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Float> createList() {
         float[] array = (float[]) getActual();
-        List<Float> result = new LinkedList<>();
-        for (float value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Float[] createArgumentArray(final float... array) {
-        Float[] result = new Float[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
+        return ValueConverter.toFloatList(array);
     }
 
 }

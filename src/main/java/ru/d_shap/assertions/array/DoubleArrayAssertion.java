@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the double array.
@@ -35,11 +34,11 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public DoubleArrayAssertion(final double[] actual, final String message) {
-        super(actual, message);
+    public DoubleArrayAssertion(final double[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsAll(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -86,7 +85,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsAllInOrder(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -105,7 +104,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsExactly(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -124,7 +123,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsExactlyInOrder(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -143,7 +142,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsAny(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -162,7 +161,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      */
     public final void containsNone(final double... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -175,21 +174,9 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Double> createList() {
         double[] array = (double[]) getActual();
-        List<Double> result = new LinkedList<>();
-        for (double value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Double[] createArgumentArray(final double... array) {
-        Double[] result = new Double[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
+        return ValueConverter.toDoubleList(array);
     }
 
 }

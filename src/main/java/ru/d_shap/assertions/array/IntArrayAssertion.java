@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the int array.
@@ -35,11 +34,11 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public IntArrayAssertion(final int[] actual, final String message) {
-        super(actual, message);
+    public IntArrayAssertion(final int[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsAll(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -86,7 +85,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsAllInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -105,7 +104,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsExactly(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -124,7 +123,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsExactlyInOrder(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -143,7 +142,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsAny(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -162,7 +161,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      */
     public final void containsNone(final int... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toIntegerObjectArray(expected));
     }
 
     /**
@@ -175,21 +174,9 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Integer> createList() {
         int[] array = (int[]) getActual();
-        List<Integer> result = new LinkedList<>();
-        for (int value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Integer[] createArgumentArray(final int... array) {
-        Integer[] result = new Integer[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
+        return ValueConverter.toIntegerList(array);
     }
 
 }

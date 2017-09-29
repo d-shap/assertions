@@ -19,11 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.array;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the boolean array.
@@ -35,11 +34,11 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public BooleanArrayAssertion(final boolean[] actual, final String message) {
-        super(actual, message);
+    public BooleanArrayAssertion(final boolean[] actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -67,7 +66,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsAll(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -86,7 +85,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsAllInOrder(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -105,7 +104,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsExactly(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -124,7 +123,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsExactlyInOrder(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -143,7 +142,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsAny(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -162,7 +161,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      */
     public final void containsNone(final boolean... expected) {
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toBooleanObjectArray(expected));
     }
 
     /**
@@ -175,21 +174,9 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion() {
+    final List<Boolean> createList() {
         boolean[] array = (boolean[]) getActual();
-        List<Boolean> result = new LinkedList<>();
-        for (boolean value : array) {
-            result.add(value);
-        }
-        return new ListAssertion(result, getMessage());
-    }
-
-    private Boolean[] createArgumentArray(final boolean... array) {
-        Boolean[] result = new Boolean[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
-        return result;
+        return ValueConverter.toBooleanList(array);
     }
 
 }
