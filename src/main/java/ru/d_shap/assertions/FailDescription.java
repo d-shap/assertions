@@ -49,12 +49,37 @@ public final class FailDescription {
     }
 
     /**
-     * Add the message to the fail description.
+     * Create new object.
      *
      * @param message the message.
-     * @return current object for the chain call.
      */
-    public FailDescription addMessage(final String message) {
+    public FailDescription(final String message) {
+        this();
+        addMessage(message);
+    }
+
+    /**
+     * Create new object.
+     *
+     * @param failDescription the fail description.
+     */
+    public FailDescription(final FailDescription failDescription) {
+        this();
+        _messages.addAll(failDescription._messages);
+    }
+
+    /**
+     * Create new object.
+     *
+     * @param failDescription the fail description.
+     * @param message         the message.
+     */
+    public FailDescription(final FailDescription failDescription, final String message) {
+        this(failDescription);
+        addMessage(message);
+    }
+
+    private void addMessage(final String message) {
         if (message != null && !"".equals(message)) {
             if (message.endsWith(".") || message.endsWith("?") || message.endsWith("!")) {
                 _messages.add(message);
@@ -62,7 +87,6 @@ public final class FailDescription {
                 _messages.add(message + ".");
             }
         }
-        return this;
     }
 
     /**
@@ -121,20 +145,6 @@ public final class FailDescription {
      * @return current object for the chain call.
      */
     public FailDescription addThrowable(final Throwable throwable) {
-        addMessage(throwable.toString());
-        _throwable = throwable;
-        return this;
-    }
-
-    /**
-     * Add the throwabe with the message to the fail description.
-     *
-     * @param message   the message.
-     * @param throwable the throwabe.
-     * @return current object for the chain call.
-     */
-    public FailDescription addThrowable(final String message, final Throwable throwable) {
-        addMessage(message);
         _throwable = throwable;
         return this;
     }
@@ -145,8 +155,9 @@ public final class FailDescription {
      * @return the assertion error.
      */
     public AssertionError createAssertionError() {
-        addValuesMessage();
+        boolean messageAdded = addValuesMessage();
         String fullMessage = getFullMessage();
+        removeLastMessage(messageAdded);
         if (_throwable == null) {
             return new AssertionError(fullMessage);
         } else {
@@ -154,16 +165,21 @@ public final class FailDescription {
         }
     }
 
-    private void addValuesMessage() {
+    private boolean addValuesMessage() {
         if (_actual == null) {
-            if (_expected != null) {
+            if (_expected == null) {
+                return false;
+            } else {
                 addMessage("Expected:" + _expected);
+                return true;
             }
         } else {
             if (_expected == null) {
                 addMessage("Actual:" + _actual);
+                return true;
             } else {
                 addMessage("Expected:" + _expected + " but was:" + _actual);
+                return true;
             }
         }
     }
@@ -177,6 +193,12 @@ public final class FailDescription {
             fullMessage.append(_messages.get(i));
         }
         return fullMessage.toString();
+    }
+
+    private void removeLastMessage(final boolean messageAdded) {
+        if (messageAdded) {
+            _messages.remove(_messages.size() - 1);
+        }
     }
 
 }
