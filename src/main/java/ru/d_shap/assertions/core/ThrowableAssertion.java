@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -31,21 +33,21 @@ public class ThrowableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ThrowableAssertion(final Throwable actual, final String message) {
-        super(actual, message);
+    public ThrowableAssertion(final Throwable actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
-     * Make assertion about the message of the throwable.
+     * Make assertion about the actual throwable message.
      *
      * @return the assertion.
      */
     public final StringAssertion toMessage() {
         checkActualIsNotNull();
-        return new StringAssertion(((Throwable) getActual()).getMessage(), getMessage());
+        return new StringAssertion(((Throwable) getActual()).getMessage(), getFailDescription(Messages.Check.ACTUAL_THROWABLE_MESSAGE));
     }
 
     /**
@@ -58,13 +60,13 @@ public class ThrowableAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the cause of the throwable.
+     * Make assertion about the actual throwable cause.
      *
      * @return the assertion.
      */
     public final ThrowableAssertion toCause() {
         checkActualIsNotNull();
-        return new ThrowableAssertion(((Throwable) getActual()).getCause(), getMessage());
+        return new ThrowableAssertion(((Throwable) getActual()).getCause(), getFailDescription(Messages.Check.ACTUAL_THROWABLE_CAUSE));
     }
 
     /**
@@ -86,11 +88,11 @@ public class ThrowableAssertion extends ReferenceAssertion {
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
-            return String.valueOf(value);
+            return value.toString();
         }
     }
 

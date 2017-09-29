@@ -21,7 +21,8 @@ package ru.d_shap.assertions.core;
 
 import java.lang.reflect.Method;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -42,17 +43,17 @@ public class EnumAssertion extends ClassAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public EnumAssertion(final Class<?> actual, final String message) {
-        this(actual, message, VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
+    public EnumAssertion(final Class<?> actual, final FailDescription failDescription) {
+        this(actual, failDescription, VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
     }
 
-    EnumAssertion(final Class<?> actual, final String message, final String valuesMethodName, final String valueOfMethodName) {
-        super(actual, message);
+    EnumAssertion(final Class<?> actual, final FailDescription failDescription, final String valuesMethodName, final String valueOfMethodName) {
+        super(actual, failDescription);
         if (actual != null && !Enum.class.isAssignableFrom(actual)) {
-            throw createAssertionError(FailMessages.getIsEnum(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_ENUM);
         }
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
@@ -65,7 +66,7 @@ public class EnumAssertion extends ClassAssertion {
      */
     public final IntAssertion toValueCount() {
         checkActualIsNotNull();
-        return new IntAssertion(getValueCount(), getMessage());
+        return new IntAssertion(getValueCount(), getFailDescription(Messages.Check.ACTUAL_ENUM_VALUE_COUNT));
     }
 
     private int getValueCount() {

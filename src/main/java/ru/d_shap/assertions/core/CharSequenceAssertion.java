@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -33,11 +34,11 @@ public class CharSequenceAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public CharSequenceAssertion(final CharSequence actual, final String message) {
-        super(actual, message);
+    public CharSequenceAssertion(final CharSequence actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -45,7 +46,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isEmpty();
+        new StringAssertion(getActual().toString(), getFailDescription()).isEmpty();
     }
 
     /**
@@ -53,7 +54,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null) {
-            new StringAssertion(getActual().toString(), getMessage()).isNullOrEmpty();
+            new StringAssertion(getActual().toString(), getFailDescription()).isNullOrEmpty();
         }
     }
 
@@ -62,7 +63,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotEmpty();
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotEmpty();
     }
 
     /**
@@ -70,7 +71,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isBlank() {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isBlank();
+        new StringAssertion(getActual().toString(), getFailDescription()).isBlank();
     }
 
     /**
@@ -78,7 +79,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNullOrBlank() {
         if (getActual() != null) {
-            new StringAssertion(getActual().toString(), getMessage()).isNullOrBlank();
+            new StringAssertion(getActual().toString(), getFailDescription()).isNullOrBlank();
         }
     }
 
@@ -87,7 +88,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotBlank() {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotBlank();
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotBlank();
     }
 
     /**
@@ -97,7 +98,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isEqualTo(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isEqualTo(expected);
     }
 
     /**
@@ -107,7 +108,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isEqualToIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isEqualToIgnoreCase(expected);
     }
 
     /**
@@ -117,7 +118,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotEqualTo(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotEqualTo(expected);
     }
 
     /**
@@ -127,7 +128,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotEqualToIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotEqualToIgnoreCase(expected);
     }
 
     /**
@@ -137,7 +138,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isGreaterThan(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isGreaterThan(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isGreaterThan(expected);
     }
 
     /**
@@ -147,7 +148,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isGreaterThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isGreaterThanIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isGreaterThanIgnoreCase(expected);
     }
 
     /**
@@ -157,7 +158,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isGreaterThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isGreaterThanOrEqualTo(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isGreaterThanOrEqualTo(expected);
     }
 
     /**
@@ -167,7 +168,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isGreaterThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isGreaterThanOrEqualToIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isGreaterThanOrEqualToIgnoreCase(expected);
     }
 
     /**
@@ -177,7 +178,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isLessThan(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isLessThan(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isLessThan(expected);
     }
 
     /**
@@ -187,7 +188,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isLessThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isLessThanIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isLessThanIgnoreCase(expected);
     }
 
     /**
@@ -197,7 +198,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isLessThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isLessThanOrEqualTo(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isLessThanOrEqualTo(expected);
     }
 
     /**
@@ -207,51 +208,51 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isLessThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isLessThanOrEqualToIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isLessThanOrEqualToIgnoreCase(expected);
     }
 
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isInRange(expectedFrom, expectedTo);
+        new StringAssertion(getActual().toString(), getFailDescription()).isInRange(expectedFrom, expectedTo);
     }
 
     /**
      * Check if the actual value is in the expected range ignoring case.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isInRangeIgnoreCase(expectedFrom, expectedTo);
+        new StringAssertion(getActual().toString(), getFailDescription()).isInRangeIgnoreCase(expectedFrom, expectedTo);
     }
 
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotInRange(expectedFrom, expectedTo);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotInRange(expectedFrom, expectedTo);
     }
 
     /**
      * Check if the actual value is NOT in the expected range ignoring case.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotInRangeIgnoreCase(expectedFrom, expectedTo);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotInRangeIgnoreCase(expectedFrom, expectedTo);
     }
 
     /**
@@ -261,7 +262,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void contains(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).contains(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).contains(expected);
     }
 
     /**
@@ -271,7 +272,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void containsIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).containsIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).containsIgnoreCase(expected);
     }
 
     /**
@@ -281,7 +282,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotContain(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotContain(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotContain(expected);
     }
 
     /**
@@ -291,7 +292,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotContainIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotContainIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotContainIgnoreCase(expected);
     }
 
     /**
@@ -301,7 +302,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isPartOf(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isPartOf(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isPartOf(expected);
     }
 
     /**
@@ -311,7 +312,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isPartOfIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isPartOfIgnoreCase(expected);
     }
 
     /**
@@ -321,7 +322,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotPartOf(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotPartOf(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotPartOf(expected);
     }
 
     /**
@@ -331,7 +332,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void isNotPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).isNotPartOfIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).isNotPartOfIgnoreCase(expected);
     }
 
     /**
@@ -341,7 +342,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void matches(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).matches(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).matches(expected);
     }
 
     /**
@@ -351,7 +352,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotMatch(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotMatch(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotMatch(expected);
     }
 
     /**
@@ -361,7 +362,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void startsWith(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).startsWith(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).startsWith(expected);
     }
 
     /**
@@ -371,7 +372,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void startsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).startsWithIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).startsWithIgnoreCase(expected);
     }
 
     /**
@@ -381,7 +382,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotStartWith(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotStartWith(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotStartWith(expected);
     }
 
     /**
@@ -391,7 +392,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotStartWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotStartWithIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotStartWithIgnoreCase(expected);
     }
 
     /**
@@ -401,7 +402,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void endsWith(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).endsWith(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).endsWith(expected);
     }
 
     /**
@@ -411,7 +412,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void endsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).endsWithIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).endsWithIgnoreCase(expected);
     }
 
     /**
@@ -421,7 +422,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotEndWith(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotEndWith(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotEndWith(expected);
     }
 
     /**
@@ -431,7 +432,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void doesNotEndWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).doesNotEndWithIgnoreCase(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).doesNotEndWithIgnoreCase(expected);
     }
 
     /**
@@ -441,7 +442,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final IntAssertion toLength() {
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getMessage()).toLength();
+        return new StringAssertion(getActual().toString(), getFailDescription()).toLength();
     }
 
     /**
@@ -451,7 +452,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final void hasLength(final int expected) {
         checkActualIsNotNull();
-        new StringAssertion(getActual().toString(), getMessage()).hasLength(expected);
+        new StringAssertion(getActual().toString(), getFailDescription()).hasLength(expected);
     }
 
     /**
@@ -461,7 +462,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final ListAssertion toTokens() {
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getMessage()).toTokens();
+        return new StringAssertion(getActual().toString(), getFailDescription()).toTokens();
     }
 
     /**
@@ -472,7 +473,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final ListAssertion toTokens(final String delimiters) {
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getMessage()).toTokens(delimiters);
+        return new StringAssertion(getActual().toString(), getFailDescription()).toTokens(delimiters);
     }
 
     /**
@@ -484,11 +485,11 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      */
     public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getMessage()).toTokens(delimiters, returnDelimiters);
+        return new StringAssertion(getActual().toString(), getFailDescription()).toTokens(delimiters, returnDelimiters);
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         return null;
     }
 

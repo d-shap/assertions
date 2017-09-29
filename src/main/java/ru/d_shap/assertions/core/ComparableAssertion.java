@@ -19,7 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -32,11 +33,11 @@ public class ComparableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ComparableAssertion(final Comparable<?> actual, final String message) {
-        super(actual, message);
+    public ComparableAssertion(final Comparable<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -49,7 +50,7 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) != 0) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -63,7 +64,7 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) == 0) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -77,7 +78,7 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) <= 0) {
-            throw createAssertionError(FailMessages.getIsGreater(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
 
@@ -91,7 +92,7 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) < 0) {
-            throw createAssertionError(FailMessages.getIsGreaterOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
 
@@ -105,7 +106,7 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) >= 0) {
-            throw createAssertionError(FailMessages.getIsLess(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
 
@@ -119,15 +120,15 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) > 0) {
-            throw createAssertionError(FailMessages.getIsLessOrEqual(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
 
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     @SuppressWarnings("unchecked")
     public final void isInRange(final Object expectedFrom, final Object expectedTo) {
@@ -135,15 +136,15 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (((Comparable<Object>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<Object>) getActual()).compareTo(expectedTo) >= 0) {
-            throw createAssertionError(FailMessages.getIsInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected left bound of the range.
-     * @param expectedTo   the expected right bound of the range.
+     * @param expectedFrom the expected lower bound of the range.
+     * @param expectedTo   the expected upper bound of the range.
      */
     @SuppressWarnings("unchecked")
     public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
@@ -151,16 +152,16 @@ public class ComparableAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (((Comparable<Object>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<Object>) getActual()).compareTo(expectedTo) < 0) {
-            throw createAssertionError(FailMessages.getIsNotInRange(actualAsString(), asString(expectedFrom), asString(expectedTo)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
-            return String.valueOf(value);
+            return value.toString();
         }
     }
 

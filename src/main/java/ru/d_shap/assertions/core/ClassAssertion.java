@@ -23,7 +23,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
 /**
@@ -36,11 +37,11 @@ public class ClassAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ClassAssertion(final Class<?> actual, final String message) {
-        super(actual, message);
+    public ClassAssertion(final Class<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -52,7 +53,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getIsSame(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
 
@@ -65,7 +66,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
-            throw createAssertionError(FailMessages.getIsDifferent(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
 
@@ -78,7 +79,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getIsSubtypeOf(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SUBTYPE_OF, expected);
         }
     }
 
@@ -91,7 +92,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.isAssignableFrom((Class) getActual())) {
-            throw createAssertionError(FailMessages.getIsNotSubtypeOf(actualAsString(), asString(expected)));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUBTYPE_OF, expected);
         }
     }
 
@@ -102,15 +103,15 @@ public class ClassAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw createAssertionError(FailMessages.getIsConstructorDefault(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
         }
         Constructor constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw createAssertionError(FailMessages.getIsConstructorDefault(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw createAssertionError(FailMessages.getIsConstructorNotAccessible(actualAsString()));
+            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_NOT_ACCESSIBLE);
         }
         constructor.setAccessible(true);
         try {
@@ -130,14 +131,14 @@ public class ClassAssertion extends ReferenceAssertion {
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         if (value == null) {
             return null;
         } else {
             if (value instanceof Class) {
                 return ((Class<?>) value).getName();
             } else {
-                return String.valueOf(value);
+                return value.toString();
             }
         }
     }

@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -33,11 +34,11 @@ public class IterableAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public IterableAssertion(final Iterable<?> actual, final String message) {
-        super(actual, message);
+    public IterableAssertion(final Iterable<?> actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -45,7 +46,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void isEmpty() {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isEmpty();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).isEmpty();
     }
 
     /**
@@ -53,7 +54,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null) {
-            new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNullOrEmpty();
+            new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).isNullOrEmpty();
         }
     }
 
@@ -62,7 +63,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).isNotEmpty();
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).isNotEmpty();
     }
 
     /**
@@ -72,7 +73,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void contains(final Object expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).contains(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).contains(expected);
     }
 
     /**
@@ -82,7 +83,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void doesNotContain(final Object expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).doesNotContain(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).doesNotContain(expected);
     }
 
     /**
@@ -92,7 +93,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAll(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAll(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAll(expected);
     }
 
     /**
@@ -102,7 +103,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAll(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAll(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAll(expected);
     }
 
     /**
@@ -112,7 +113,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAllInOrder(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAllInOrder(expected);
     }
 
     /**
@@ -122,7 +123,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAllInOrder(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAllInOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAllInOrder(expected);
     }
 
     /**
@@ -132,7 +133,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsExactly(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactly(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsExactly(expected);
     }
 
     /**
@@ -142,7 +143,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsExactly(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactly(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsExactly(expected);
     }
 
     /**
@@ -152,7 +153,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsExactlyInOrder(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -162,7 +163,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsExactlyInOrder(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsExactlyInOrder(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -172,7 +173,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAny(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAny(expected);
     }
 
     /**
@@ -182,7 +183,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsAny(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsAny(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsAny(expected);
     }
 
     /**
@@ -192,7 +193,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsNone(final Object... expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsNone(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsNone(expected);
     }
 
     /**
@@ -202,7 +203,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void containsNone(final Iterable<?> expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).containsNone(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).containsNone(expected);
     }
 
     /**
@@ -212,7 +213,7 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final IntAssertion toSize() {
         checkActualIsNotNull();
-        return new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).toSize();
+        return new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).toSize();
     }
 
     /**
@@ -222,11 +223,11 @@ public class IterableAssertion extends ReferenceAssertion {
      */
     public final void hasSize(final int expected) {
         checkActualIsNotNull();
-        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getMessage()).hasSize(expected);
+        new IteratorAssertion(((Iterable<?>) getActual()).iterator(), getFailDescription()).hasSize(expected);
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         return null;
     }
 
