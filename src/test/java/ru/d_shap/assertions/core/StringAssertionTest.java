@@ -2152,7 +2152,7 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>.");
         }
         try {
-            new StringAssertion("vAlUe", new FailDescription().addMessage("Message")).toLength().isEqualTo(6);
+            new StringAssertion("vAlUe", new FailDescription("Message")).toLength().isEqualTo(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>.");
@@ -2180,7 +2180,7 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>.");
         }
         try {
-            new StringAssertion("vAlUe", new FailDescription().addMessage("Message")).hasLength(6);
+            new StringAssertion("vAlUe", new FailDescription("Message")).hasLength(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>.");
@@ -2235,7 +2235,7 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new StringAssertion("value1 value2 value3", new FailDescription().addMessage("Message")).toTokens().hasSize(4);
+            new StringAssertion("value1 value2 value3", new FailDescription("Message")).toTokens().hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -2247,7 +2247,7 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new StringAssertion("value1|value2|value3", new FailDescription().addMessage("Message")).toTokens("|").hasSize(4);
+            new StringAssertion("value1|value2|value3", new FailDescription("Message")).toTokens("|").hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -2259,7 +2259,7 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>.");
         }
         try {
-            new StringAssertion("value1|value2|value3", new FailDescription().addMessage("Message")).toTokens("|", true).hasSize(4);
+            new StringAssertion("value1|value2|value3", new FailDescription("Message")).toTokens("|", true).hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>.");

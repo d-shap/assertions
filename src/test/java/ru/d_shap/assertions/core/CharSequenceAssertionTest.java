@@ -64,7 +64,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isEmpty();
+            new CharSequenceAssertion("value", new FailDescription("Message")).isEmpty();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<value>.");
@@ -92,7 +92,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isNullOrEmpty();
+            new CharSequenceAssertion("value", new FailDescription("Message")).isNullOrEmpty();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<value>.");
@@ -120,7 +120,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new CharSequenceAssertion("", new FailDescription().addMessage("Message")).isNotEmpty();
+            new CharSequenceAssertion("", new FailDescription("Message")).isNotEmpty();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -156,7 +156,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<v   >.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isBlank();
+            new CharSequenceAssertion("value", new FailDescription("Message")).isBlank();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be blank. Actual:<value>.");
@@ -187,7 +187,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<v   >.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isNullOrBlank();
+            new CharSequenceAssertion("value", new FailDescription("Message")).isNullOrBlank();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or blank. Actual:<value>.");
@@ -232,7 +232,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
-            new CharSequenceAssertion("   \t   \t", new FailDescription().addMessage("Message")).isNotBlank();
+            new CharSequenceAssertion("   \t   \t", new FailDescription("Message")).isNotBlank();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be blank.");
@@ -298,7 +298,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<значение> but was:<ЗНАЧЕНИЕ>.");
         }
         try {
-            new CharSequenceAssertion("ЗНАЧЕНИЕ", new FailDescription().addMessage("Message")).isEqualTo("значение");
+            new CharSequenceAssertion("ЗНАЧЕНИЕ", new FailDescription("Message")).isEqualTo("значение");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<значение> but was:<ЗНАЧЕНИЕ>.");
@@ -358,7 +358,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<vaLUE> but was:<ЗнаЧеНИЕ>.");
         }
         try {
-            new CharSequenceAssertion("ЗнаЧеНИЕ", new FailDescription().addMessage("Message")).isEqualToIgnoreCase("vaLUE");
+            new CharSequenceAssertion("ЗнаЧеНИЕ", new FailDescription("Message")).isEqualToIgnoreCase("vaLUE");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<vaLUE> but was:<ЗнаЧеНИЕ>.");
@@ -413,7 +413,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<ЗНАЧЕНИЕ>.");
         }
         try {
-            new CharSequenceAssertion("ЗНАЧЕНИЕ", new FailDescription().addMessage("Message")).isNotEqualTo("ЗНАЧЕНИЕ");
+            new CharSequenceAssertion("ЗНАЧЕНИЕ", new FailDescription("Message")).isNotEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<ЗНАЧЕНИЕ>.");
@@ -468,7 +468,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<ЗНачЕНие>.");
         }
         try {
-            new CharSequenceAssertion("ЗНачЕНие", new FailDescription().addMessage("Message")).isNotEqualToIgnoreCase("знАЧенИЕ");
+            new CharSequenceAssertion("ЗНачЕНие", new FailDescription("Message")).isNotEqualToIgnoreCase("знАЧенИЕ");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<ЗНачЕНие>.");
@@ -523,7 +523,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isGreaterThan("x");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isGreaterThan("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<x> but was:<value>.");
@@ -590,7 +590,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<x> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isGreaterThanIgnoreCase("x");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isGreaterThanIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<x> but was:<value>.");
@@ -636,7 +636,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<x> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isGreaterThanOrEqualTo("x");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isGreaterThanOrEqualTo("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then or equal to the expected. Expected:<x> but was:<value>.");
@@ -689,7 +689,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<x> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isGreaterThanOrEqualToIgnoreCase("x");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isGreaterThanOrEqualToIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then or equal to the expected. Expected:<x> but was:<value>.");
@@ -744,7 +744,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<c> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isLessThan("c");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isLessThan("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<c> but was:<value>.");
@@ -811,7 +811,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<c> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isLessThanIgnoreCase("c");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isLessThanIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<c> but was:<value>.");
@@ -862,7 +862,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<c> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isLessThanOrEqualTo("c");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isLessThanOrEqualTo("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<c> but was:<value>.");
@@ -920,7 +920,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<c> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isLessThanOrEqualToIgnoreCase("c");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isLessThanOrEqualToIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<c> but was:<value>.");
@@ -995,7 +995,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<xxx:yyy> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isInRange("xxx", "yyy");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isInRange("xxx", "yyy");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<xxx:yyy> but was:<value>.");
@@ -1074,7 +1074,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<XXX:YYY> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isInRangeIgnoreCase("XXX", "YYY");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isInRangeIgnoreCase("XXX", "YYY");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<XXX:YYY> but was:<value>.");
@@ -1150,7 +1150,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<VALUE:z> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isNotInRange("VALUE", "z");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isNotInRange("VALUE", "z");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<VALUE:z> but was:<value>.");
@@ -1236,7 +1236,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<VALUE:Z> but was:<value>.");
         }
         try {
-            new CharSequenceAssertion("value", new FailDescription().addMessage("Message")).isNotInRangeIgnoreCase("VALUE", "Z");
+            new CharSequenceAssertion("value", new FailDescription("Message")).isNotInRangeIgnoreCase("VALUE", "Z");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<VALUE:Z> but was:<value>.");
@@ -1298,7 +1298,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<value> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).contains("value");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).contains("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<value> but was:<значение>.");
@@ -1360,7 +1360,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<valUE> but was:<знАЧЕние>.");
         }
         try {
-            new CharSequenceAssertion("знАЧЕние", new FailDescription().addMessage("Message")).containsIgnoreCase("valUE");
+            new CharSequenceAssertion("знАЧЕние", new FailDescription("Message")).containsIgnoreCase("valUE");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<valUE> but was:<знАЧЕние>.");
@@ -1428,7 +1428,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<ение> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).doesNotContain("ение");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).doesNotContain("ение");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<ение> but was:<значение>.");
@@ -1496,7 +1496,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<еНИе> but was:<зНАчеНИе>.");
         }
         try {
-            new CharSequenceAssertion("зНАчеНИе", new FailDescription().addMessage("Message")).doesNotContainIgnoreCase("еНИе");
+            new CharSequenceAssertion("зНАчеНИе", new FailDescription("Message")).doesNotContainIgnoreCase("еНИе");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<еНИе> but was:<зНАчеНИе>.");
@@ -1559,7 +1559,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<значение> but was:<чача>.");
         }
         try {
-            new CharSequenceAssertion("чача", new FailDescription().addMessage("Message")).isPartOf("значение");
+            new CharSequenceAssertion("чача", new FailDescription("Message")).isPartOf("значение");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be the part of the expected value. Expected:<значение> but was:<чача>.");
@@ -1622,7 +1622,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<зНАчеНИе> but was:<чача>.");
         }
         try {
-            new CharSequenceAssertion("чача", new FailDescription().addMessage("Message")).isPartOfIgnoreCase("зНАчеНИе");
+            new CharSequenceAssertion("чача", new FailDescription("Message")).isPartOfIgnoreCase("зНАчеНИе");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be the part of the expected value. Expected:<зНАчеНИе> but was:<чача>.");
@@ -1685,7 +1685,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<значение> but was:<ение>.");
         }
         try {
-            new CharSequenceAssertion("ение", new FailDescription().addMessage("Message")).isNotPartOf("значение");
+            new CharSequenceAssertion("ение", new FailDescription("Message")).isNotPartOf("значение");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be the part of the expected value. Expected:<значение> but was:<ение>.");
@@ -1748,7 +1748,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<знАченИе> but was:<ЕниЕ>.");
         }
         try {
-            new CharSequenceAssertion("ЕниЕ", new FailDescription().addMessage("Message")).isNotPartOfIgnoreCase("знАченИе");
+            new CharSequenceAssertion("ЕниЕ", new FailDescription("Message")).isNotPartOfIgnoreCase("знАченИе");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be the part of the expected value. Expected:<знАченИе> but was:<ЕниЕ>.");
@@ -1798,7 +1798,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should match the expected value. Expected:<\\w+> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).matches("\\w+");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).matches("\\w+");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the expected value. Expected:<\\w+> but was:<значение>.");
@@ -1848,7 +1848,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not match the expected value. Expected:<\\p{L}{8}> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).doesNotMatch("\\p{L}{8}");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).doesNotMatch("\\p{L}{8}");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not match the expected value. Expected:<\\p{L}{8}> but was:<значение>.");
@@ -1910,7 +1910,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Знач> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).startsWith("Знач");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).startsWith("Знач");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should start with the expected value. Expected:<Знач> but was:<значение>.");
@@ -1972,7 +1972,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should start with the expected value. Expected:<Значи> but was:<знАчЕнИе>.");
         }
         try {
-            new CharSequenceAssertion("знАчЕнИе", new FailDescription().addMessage("Message")).startsWithIgnoreCase("Значи");
+            new CharSequenceAssertion("знАчЕнИе", new FailDescription("Message")).startsWithIgnoreCase("Значи");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should start with the expected value. Expected:<Значи> but was:<знАчЕнИе>.");
@@ -2034,7 +2034,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<значен> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).doesNotStartWith("значен");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).doesNotStartWith("значен");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not start with the expected value. Expected:<значен> but was:<значение>.");
@@ -2096,7 +2096,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not start with the expected value. Expected:<значение> but was:<знАчЕнИе>.");
         }
         try {
-            new CharSequenceAssertion("знАчЕнИе", new FailDescription().addMessage("Message")).doesNotStartWithIgnoreCase("значение");
+            new CharSequenceAssertion("знАчЕнИе", new FailDescription("Message")).doesNotStartWithIgnoreCase("значение");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not start with the expected value. Expected:<значение> but was:<знАчЕнИе>.");
@@ -2158,7 +2158,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<ЧенИе> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).endsWith("ЧенИе");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).endsWith("ЧенИе");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should end with the expected value. Expected:<ЧенИе> but was:<значение>.");
@@ -2227,7 +2227,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should end with the expected value. Expected:<знАИе> but was:<знАчЕнИе>.");
         }
         try {
-            new CharSequenceAssertion("знАчЕнИе", new FailDescription().addMessage("Message")).endsWithIgnoreCase("знАИе");
+            new CharSequenceAssertion("знАчЕнИе", new FailDescription("Message")).endsWithIgnoreCase("знАИе");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should end with the expected value. Expected:<знАИе> but was:<знАчЕнИе>.");
@@ -2289,7 +2289,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<ие> but was:<значение>.");
         }
         try {
-            new CharSequenceAssertion("значение", new FailDescription().addMessage("Message")).doesNotEndWith("ие");
+            new CharSequenceAssertion("значение", new FailDescription("Message")).doesNotEndWith("ие");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not end with the expected value. Expected:<ие> but was:<значение>.");
@@ -2358,7 +2358,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not end with the expected value. Expected:<xxx> but was:<aaaxxxxx>.");
         }
         try {
-            new CharSequenceAssertion("aaaxxxxx", new FailDescription().addMessage("Message")).doesNotEndWithIgnoreCase("xxx");
+            new CharSequenceAssertion("aaaxxxxx", new FailDescription("Message")).doesNotEndWithIgnoreCase("xxx");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not end with the expected value. Expected:<xxx> but was:<aaaxxxxx>.");
@@ -2391,7 +2391,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>.");
         }
         try {
-            new CharSequenceAssertion("vAlUe", new FailDescription().addMessage("Message")).toLength().isEqualTo(6);
+            new CharSequenceAssertion("vAlUe", new FailDescription("Message")).toLength().isEqualTo(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>.");
@@ -2419,7 +2419,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>.");
         }
         try {
-            new CharSequenceAssertion("vAlUe", new FailDescription().addMessage("Message")).hasLength(6);
+            new CharSequenceAssertion("vAlUe", new FailDescription("Message")).hasLength(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>.");
@@ -2474,7 +2474,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new CharSequenceAssertion("value1 value2 value3", new FailDescription().addMessage("Message")).toTokens().hasSize(4);
+            new CharSequenceAssertion("value1 value2 value3", new FailDescription("Message")).toTokens().hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -2486,7 +2486,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new CharSequenceAssertion("value1|value2|value3", new FailDescription().addMessage("Message")).toTokens("|").hasSize(4);
+            new CharSequenceAssertion("value1|value2|value3", new FailDescription("Message")).toTokens("|").hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -2498,7 +2498,7 @@ public final class CharSequenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>.");
         }
         try {
-            new CharSequenceAssertion("value1|value2|value3", new FailDescription().addMessage("Message")).toTokens("|", true).hasSize(4);
+            new CharSequenceAssertion("value1|value2|value3", new FailDescription("Message")).toTokens("|", true).hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>.");

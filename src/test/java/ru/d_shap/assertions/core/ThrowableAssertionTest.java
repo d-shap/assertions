@@ -62,7 +62,7 @@ public final class ThrowableAssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
         }
         try {
-            new ThrowableAssertion(new Exception("value"), new FailDescription().addMessage("Message")).toMessage().isEqualTo("test");
+            new ThrowableAssertion(new Exception("value"), new FailDescription("Message")).toMessage().isEqualTo("test");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
@@ -90,7 +90,7 @@ public final class ThrowableAssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
         }
         try {
-            new ThrowableAssertion(new Exception("value"), new FailDescription().addMessage("Message")).hasMessage("test");
+            new ThrowableAssertion(new Exception("value"), new FailDescription("Message")).hasMessage("test");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
@@ -126,7 +126,7 @@ public final class ThrowableAssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>.");
         }
         try {
-            new ThrowableAssertion(new Exception(new Error("value")), new FailDescription().addMessage("Message")).toCause().isInstanceOf(RuntimeException.class);
+            new ThrowableAssertion(new Exception(new Error("value")), new FailDescription("Message")).toCause().isInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>.");
@@ -158,7 +158,7 @@ public final class ThrowableAssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>.");
         }
         try {
-            new ThrowableAssertion(new Exception(new Error("value")), new FailDescription().addMessage("Message")).isCauseInstanceOf(RuntimeException.class);
+            new ThrowableAssertion(new Exception(new Error("value")), new FailDescription("Message")).isCauseInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>.");
@@ -186,7 +186,7 @@ public final class ThrowableAssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
         }
         try {
-            new ThrowableAssertion(new Exception(new RuntimeException("value")), new FailDescription().addMessage("Message")).hasCauseMessage("test");
+            new ThrowableAssertion(new Exception(new RuntimeException("value")), new FailDescription("Message")).hasCauseMessage("test");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check throwable message. Values should be the same. Expected:<test> but was:<value>.");
