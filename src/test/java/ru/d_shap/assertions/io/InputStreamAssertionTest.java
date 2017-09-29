@@ -76,7 +76,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check input stream byte read. Value should be less then or equal to the expected. Expected:<-1> but was:<1>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription().addMessage("Message")).isCompleted();
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription("Message")).isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check input stream byte read. Value should be less then or equal to the expected. Expected:<-1> but was:<1>.");
@@ -193,7 +193,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription().addMessage("Message")).isNextBytesEqualTo((byte) 0, (byte) 0, (byte) 0);
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription("Message")).isNextBytesEqualTo((byte) 0, (byte) 0, (byte) 0);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
@@ -205,7 +205,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription().addMessage("Message")).isNextBytesEqualTo(0, 0, 0);
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription("Message")).isNextBytesEqualTo(0, 0, 0);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
@@ -217,7 +217,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription().addMessage("Message")).isNextBytesEqualTo(Arrays.asList((byte) 0, (byte) 0, (byte) 0));
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0}), new FailDescription("Message")).isNextBytesEqualTo(Arrays.asList((byte) 0, (byte) 0, (byte) 0));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0, 0]> but was:<[0, 0]>.");
@@ -326,7 +326,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription().addMessage("Message")).isAllBytesEqualTo((byte) 0, (byte) 0);
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription("Message")).isAllBytesEqualTo((byte) 0, (byte) 0);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
@@ -338,7 +338,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription().addMessage("Message")).isAllBytesEqualTo(0, 0);
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription("Message")).isAllBytesEqualTo(0, 0);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
@@ -350,7 +350,7 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
         }
         try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription().addMessage("Message")).isAllBytesEqualTo(Arrays.asList((byte) 0, (byte) 0));
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription("Message")).isAllBytesEqualTo(Arrays.asList((byte) 0, (byte) 0));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[0, 0]> but was:<[0, 0, 0]>.");
