@@ -76,7 +76,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).contains(3.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).contains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -111,7 +111,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContains(3.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -146,7 +146,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).doesNotContain(1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).doesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -186,7 +186,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndDoesNotContain(1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndDoesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -270,7 +270,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAll(2.0, 3.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -282,7 +282,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAll(Arrays.asList(2.0, 3.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -356,7 +356,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAll(2.0, 3.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -368,7 +368,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAll(Arrays.asList(2.0, 3.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -457,7 +457,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAllInOrder(2.0, 1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -469,7 +469,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -548,7 +548,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(2.0, 1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -560,7 +560,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -658,7 +658,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(1.0, 1.0, 3.0, 2.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -670,7 +670,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -758,7 +758,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -770,7 +770,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -873,7 +873,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -885,7 +885,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -978,7 +978,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -990,7 +990,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription().addMessage("Message")).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -1075,7 +1075,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAny(3.0, 4.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1087,7 +1087,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsAny(Arrays.asList(3.0, 4.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1162,7 +1162,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAny(3.0, 4.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1174,7 +1174,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsAny(Arrays.asList(3.0, 4.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1243,7 +1243,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsNone(2.0, 1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1255,7 +1255,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).containsNone(Arrays.asList(2.0, 1.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1334,7 +1334,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsNone(2.0, 1.0);
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1346,7 +1346,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).rewindAndContainsNone(Arrays.asList(2.0, 1.0));
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1368,7 +1368,7 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription().addMessage("Message")).createCollectionAssertion(false).isEmpty();
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1.0, 2.0]>.");
