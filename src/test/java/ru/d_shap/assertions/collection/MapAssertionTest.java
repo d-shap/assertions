@@ -63,7 +63,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<{key=value}>.");
         }
         try {
-            new MapAssertion(new MapImpl("key", "value"), new FailDescription().addMessage("Message")).isEmpty();
+            new MapAssertion(new MapImpl("key", "value"), new FailDescription("Message")).isEmpty();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<{key=value}>.");
@@ -85,7 +85,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<{key=value}>.");
         }
         try {
-            new MapAssertion(new MapImpl("key", "value"), new FailDescription().addMessage("Message")).isNullOrEmpty();
+            new MapAssertion(new MapImpl("key", "value"), new FailDescription("Message")).isNullOrEmpty();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<{key=value}>.");
@@ -112,7 +112,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new MapAssertion(new MapImpl(), new FailDescription().addMessage("Message")).isNotEmpty();
+            new MapAssertion(new MapImpl(), new FailDescription("Message")).isNotEmpty();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -139,7 +139,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain the expected value. Expected:<key> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).toKeys().contains("key");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).toKeys().contains("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain the expected value. Expected:<key> but was:<[key1, key2]>.");
@@ -173,7 +173,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain the expected value. Expected:<key3> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsKey("key3");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsKey("key3");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain the expected value. Expected:<key3> but was:<[key1, key2]>.");
@@ -207,7 +207,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should not contain the expected value. Expected:<key1> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).doesNotContainKey("key1");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).doesNotContainKey("key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should not contain the expected value. Expected:<key1> but was:<[key1, key2]>.");
@@ -274,7 +274,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain all of the expected values. Expected:<[key3, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAllKeys("key3", "key1");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAllKeys("key3", "key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain all of the expected values. Expected:<[key3, key1]> but was:<[key1, key2]>.");
@@ -286,7 +286,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain all of the expected values. Expected:<[key3, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAllKeys(Arrays.asList("key3", "key1"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAllKeys(Arrays.asList("key3", "key1"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain all of the expected values. Expected:<[key3, key1]> but was:<[key1, key2]>.");
@@ -365,7 +365,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain all of the expected values exactly. Expected:<[key3, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsKeysExactly("key3", "key1");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsKeysExactly("key3", "key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain all of the expected values exactly. Expected:<[key3, key1]> but was:<[key1, key2]>.");
@@ -377,7 +377,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain all of the expected values exactly. Expected:<[key3, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsKeysExactly(Arrays.asList("key3", "key1"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsKeysExactly(Arrays.asList("key3", "key1"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain all of the expected values exactly. Expected:<[key3, key1]> but was:<[key1, key2]>.");
@@ -446,7 +446,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain any of the expected values. Expected:<[key9, key8, key7]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAnyKey("key9", "key8", "key7");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAnyKey("key9", "key8", "key7");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain any of the expected values. Expected:<[key9, key8, key7]> but was:<[key1, key2]>.");
@@ -458,7 +458,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should contain any of the expected values. Expected:<[key9, key8, key7]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAnyKey(Arrays.asList("key9", "key8", "key7"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAnyKey(Arrays.asList("key9", "key8", "key7"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should contain any of the expected values. Expected:<[key9, key8, key7]> but was:<[key1, key2]>.");
@@ -527,7 +527,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should not contain any of the expected values. Expected:<[key3, key2, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsNoKey("key3", "key2", "key1");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsNoKey("key3", "key2", "key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should not contain any of the expected values. Expected:<[key3, key2, key1]> but was:<[key1, key2]>.");
@@ -539,7 +539,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check keys. Value should not contain any of the expected values. Expected:<[key3, key2, key1]> but was:<[key1, key2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsNoKey(Arrays.asList("key3", "key2", "key1"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsNoKey(Arrays.asList("key3", "key2", "key1"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check keys. Value should not contain any of the expected values. Expected:<[key3, key2, key1]> but was:<[key1, key2]>.");
@@ -566,7 +566,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check values. Value should contain the expected value. Expected:<value> but was:<[value1, value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).toValues().contains("value");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).toValues().contains("value");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check values. Value should contain the expected value. Expected:<value> but was:<[value1, value2]>.");
@@ -618,7 +618,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[key3=value3]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsEntry("key3", "value3");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsEntry("key3", "value3");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[key3=value3]> but was:<[key1=value1, key2=value2]>.");
@@ -655,7 +655,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[key2=value2]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).doesNotContainEntry("key2", "value2");
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).doesNotContainEntry("key2", "value2");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[key2=value2]> but was:<[key1=value1, key2=value2]>.");
@@ -708,7 +708,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[key1=value1, key2=value2, key3=value3]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAll(new MapImpl("key1", "value1", "key2", "value2", "key3", "value3"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAll(new MapImpl("key1", "value1", "key2", "value2", "key3", "value3"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[key1=value1, key2=value2, key3=value3]> but was:<[key1=value1, key2=value2]>.");
@@ -773,7 +773,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[key1=value1, key2=value2, key3=value3]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsExactly(new MapImpl("key1", "value1", "key2", "value2", "key3", "value3"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsExactly(new MapImpl("key1", "value1", "key2", "value2", "key3", "value3"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[key1=value1, key2=value2, key3=value3]> but was:<[key1=value1, key2=value2]>.");
@@ -813,7 +813,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[key=value]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsAny(new MapImpl("key", "value"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsAny(new MapImpl("key", "value"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[key=value]> but was:<[key1=value1, key2=value2]>.");
@@ -859,7 +859,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[key1=value1, key2=value2]> but was:<[key1=value1, key2=value2]>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).containsNone(new MapImpl("key1", "value1", "key2", "value2"));
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsNone(new MapImpl("key1", "value1", "key2", "value2"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[key1=value1, key2=value2]> but was:<[key1=value1, key2=value2]>.");
@@ -889,7 +889,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<3> but was:<2>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).toSize().isEqualTo(3);
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).toSize().isEqualTo(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<3> but was:<2>.");
@@ -919,7 +919,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<3> but was:<2>.");
         }
         try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription().addMessage("Message")).hasSize(3);
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).hasSize(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<3> but was:<2>.");
