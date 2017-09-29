@@ -194,7 +194,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             Object value = field.get(getActual());
             return new ObjectAssertion(value, getFailDescription(Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName));
         } catch (ReflectiveOperationException ex) {
-            throw createAssertionError(Messages.Fail.CONTAINS_FIELD + ": " + fieldName, ex);
+            throw createAssertionError(Messages.Fail.CONTAINS_FIELD, fieldName, ex);
         }
     }
 
