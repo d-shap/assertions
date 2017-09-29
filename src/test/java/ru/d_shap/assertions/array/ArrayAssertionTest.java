@@ -62,7 +62,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1, val2]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription().addMessage("Message")).isEmpty();
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription("Message")).isEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[val1, val2]>.");
@@ -84,7 +84,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<[val1, val2]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription().addMessage("Message")).isNullOrEmpty();
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription("Message")).isNullOrEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<[val1, val2]>.");
@@ -112,7 +112,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new ArrayAssertionImpl(new ArrayList<String>(), new FailDescription().addMessage("Message")).isNotEmpty();
+            new ArrayAssertionImpl(new ArrayList<String>(), new FailDescription("Message")).isNotEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -146,7 +146,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription().addMessage("Message")).doContains("val3");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription("Message")).doContains("val3");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
@@ -185,7 +185,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription().addMessage("Message")).doDoesNotContain("val2");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription("Message")).doDoesNotContain("val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
@@ -266,7 +266,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -278,7 +278,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -359,7 +359,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -371,7 +371,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -460,7 +460,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsExactly("val2", "val4", "val1");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsExactly("val2", "val4", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
@@ -472,7 +472,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsExactly(Arrays.asList("val2", "val4", "val1"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
@@ -557,7 +557,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsExactlyInOrder("val3", "val1", "val2");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
@@ -569,7 +569,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
@@ -635,7 +635,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAny("val8", "val7");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAny("val8", "val7");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -647,7 +647,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription().addMessage("Message")).doContainsAny(Arrays.asList("val8", "val7"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).doContainsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -718,7 +718,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsNone("val5", "val4", "val2", "val6");
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
@@ -730,7 +730,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
@@ -763,7 +763,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).toLength().isEqualTo(4);
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<4> but was:<3>.");
@@ -791,7 +791,7 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription().addMessage("Message")).hasLength(4);
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<4> but was:<3>.");

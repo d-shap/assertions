@@ -62,7 +62,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).contains(3.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).contains(3.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -89,7 +89,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).doesNotContain(1.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).doesNotContain(1.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -149,7 +149,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAll(2.0f, 3.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAll(2.0f, 3.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -161,7 +161,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAll(Arrays.asList(2.0f, 3.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAll(Arrays.asList(2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -226,7 +226,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAllInOrder(2.0f, 1.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAllInOrder(2.0f, 1.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -238,7 +238,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAllInOrder(Arrays.asList(2.0f, 1.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAllInOrder(Arrays.asList(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -312,7 +312,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription().addMessage("Message")).containsExactly(1.0f, 1.0f, 3.0f, 2.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription("Message")).containsExactly(1.0f, 1.0f, 3.0f, 2.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -324,7 +324,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription().addMessage("Message")).containsExactly(Arrays.asList(1.0f, 1.0f, 3.0f, 2.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription("Message")).containsExactly(Arrays.asList(1.0f, 1.0f, 3.0f, 2.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -403,7 +403,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription().addMessage("Message")).containsExactlyInOrder(2.0f, 3.0f, 1.0f, 4.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription("Message")).containsExactlyInOrder(2.0f, 3.0f, 1.0f, 4.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -415,7 +415,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription().addMessage("Message")).containsExactlyInOrder(Arrays.asList(2.0f, 3.0f, 1.0f, 4.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new FailDescription("Message")).containsExactlyInOrder(Arrays.asList(2.0f, 3.0f, 1.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -476,7 +476,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAny(3.0f, 4.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAny(3.0f, 4.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -488,7 +488,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsAny(Arrays.asList(3.0f, 4.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsAny(Arrays.asList(3.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -553,7 +553,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsNone(2.0f, 1.0f);
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsNone(2.0f, 1.0f);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -565,7 +565,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).containsNone(Arrays.asList(2.0f, 1.0f));
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).containsNone(Arrays.asList(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -587,7 +587,7 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription().addMessage("Message")).createListAssertion().isEmpty();
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).createListAssertion().isEmpty();
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1.0, 2.0]>.");
