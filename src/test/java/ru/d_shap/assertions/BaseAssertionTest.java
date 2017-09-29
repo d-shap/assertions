@@ -78,7 +78,7 @@ public final class BaseAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
 
-        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, null);
+        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, new FailDescription());
         Assertions.assertThat(baseAssertion.as(BaseAssertionImpl.class)).hasClass(BaseAssertionImpl.class);
         Assertions.assertThat(baseAssertion.as(BaseAssertionImpl.class)).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(BaseAssertionImpl.class).getActual()).isSameAs(object);
@@ -793,13 +793,13 @@ public final class BaseAssertionTest {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterCountConstructorImpl - class should have one constructor BaseAssertionWrongParameterCountConstructorImpl(java.lang.String, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl(null, new FailDescription().addMessage("message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
+            new BaseAssertionImpl(null, new FailDescription("Message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.Object, java.lang.String)");
         }
         try {
-            new BaseAssertionImpl("value", new FailDescription().addMessage("message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
+            new BaseAssertionImpl("value", new FailDescription("Message")).as(BaseAssertionWrongParameterTypeConstructorImpl.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (WrongAssertionClassError ex) {
             Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.BaseAssertionTest$BaseAssertionWrongParameterTypeConstructorImpl - class should have one constructor BaseAssertionWrongParameterTypeConstructorImpl(java.lang.String, java.lang.String)");
@@ -861,6 +861,32 @@ public final class BaseAssertionTest {
         Object object = new Object();
         Assertions.assertThat(new BaseAssertionImpl(object, new FailDescription()).getActual()).isNotNull();
         Assertions.assertThat(new BaseAssertionImpl(object, new FailDescription()).getActual()).isSameAs(object);
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void getFailDescriptionTest() {
+        FailDescription failDescription1 = new FailDescription();
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription1).getFailDescription()).isNotSameAs(failDescription1);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription1).getFailDescription().createAssertionError().getMessage()).isEmpty();
+
+        FailDescription failDescription2 = new FailDescription(failDescription1);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription2).getFailDescription()).isNotSameAs(failDescription1);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription2).getFailDescription()).isNotSameAs(failDescription2);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription2).getFailDescription().createAssertionError().getMessage()).isEmpty();
+
+        FailDescription failDescription3 = new FailDescription(failDescription2, "message");
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription3).getFailDescription()).isNotSameAs(failDescription1);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription3).getFailDescription()).isNotSameAs(failDescription2);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription3).getFailDescription()).isNotSameAs(failDescription3);
+        Assertions.assertThat(new BaseAssertionImpl(null, failDescription3).getFailDescription().createAssertionError().getMessage()).isEqualTo("message.");
+
+        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(null, new FailDescription("message"));
+        Assertions.assertThat(baseAssertion.getFailDescription("message1").createAssertionError().getMessage()).isEqualTo("message. message1.");
+        Assertions.assertThat(baseAssertion.getFailDescription("message2").createAssertionError().getMessage()).isEqualTo("message. message2.");
+        Assertions.assertThat(baseAssertion.getFailDescription().createAssertionError().getMessage()).isEqualTo("message.");
     }
 
     /**
@@ -930,52 +956,52 @@ public final class BaseAssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void createAssertionErrorWithFailMessageTest() {
+    public void createAssertionErrorTest() {
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError((String) null).getMessage()).isEmpty();
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError("").getMessage()).isEmpty();
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError("fail message").getMessage()).isEqualTo("fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError((String) null).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError("").getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError("fail message").getMessage()).isEqualTo("fail message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError((String) null).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError("").getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError("fail message").getMessage()).isEqualTo("fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError((String) null).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError("").getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError("fail message").getMessage()).isEqualTo("assertion message. fail message.");
     }
 
     /**
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void createAssertionErrorWithThrowableTest() {
+    public void createAssertionErrorWithActualTest() {
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException()).getMessage()).isEmpty();
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEmpty();
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException()).getMessage()).isEmpty();
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError(new RuntimeException()).getMessage()).isEmpty();
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEmpty();
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError(new RuntimeException()).getCause()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getCause()).isInstanceOf(RuntimeException.class);
 
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
-        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription().addMessage("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError(new RuntimeException()).getMessage()).isEqualTo("assertion message.");
+        Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription("assertion message.")).createAssertionError(new RuntimeException("some runtime exception")).getMessage()).isEqualTo("assertion message.");
     }
 
     /**
@@ -1015,7 +1041,7 @@ public final class BaseAssertionTest {
          * @param actual the actual value.
          */
         public BaseAssertionWrongParameterCountConstructorImpl(final Object actual) {
-            super(actual, null);
+            super(actual, new FailDescription());
         }
 
         @Override
@@ -1039,7 +1065,7 @@ public final class BaseAssertionTest {
          * @param message the assertion message.
          */
         public BaseAssertionWrongParameterTypeConstructorImpl(final Object actual, final StringBuilder message) {
-            super(actual, new FailDescription().addMessage(message.toString()));
+            super(actual, new FailDescription(message.toString()));
         }
 
         @Override
@@ -1073,7 +1099,7 @@ public final class BaseAssertionTest {
          * @param message the assertion message.
          */
         public BaseAssertionMultipleConstructorsImpl(final Object actual, final Object message) {
-            super(actual, new FailDescription().addMessage(message.toString()));
+            super(actual, new FailDescription(message.toString()));
         }
 
         @Override

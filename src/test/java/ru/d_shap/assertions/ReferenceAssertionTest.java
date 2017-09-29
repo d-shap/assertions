@@ -287,7 +287,7 @@ public final class ReferenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value string representation. Values should be the same. Expected:<value> but was:<reference>.");
         }
         try {
-            new ReferenceAssertionImpl("reference", new FailDescription().addMessage("Message")).isToStringEqualTo("value");
+            new ReferenceAssertionImpl("reference", new FailDescription("Message")).isToStringEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value string representation. Values should be the same. Expected:<value> but was:<reference>.");
@@ -314,7 +314,7 @@ public final class ReferenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value string representation. Argument should not be null.");
         }
         try {
-            new ReferenceAssertionImpl("reference", new FailDescription().addMessage("Message")).toStringContains("FEREN");
+            new ReferenceAssertionImpl("reference", new FailDescription("Message")).toStringContains("FEREN");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value string representation. Value should contain the expected value. Expected:<FEREN> but was:<reference>.");
@@ -352,7 +352,7 @@ public final class ReferenceAssertionTest {
             Assertions.assertThat(ex).hasMessage("Check value hash code. Values should be the same. Expected:<1> but was:<-925155509>.");
         }
         try {
-            new ReferenceAssertionImpl("reference", new FailDescription().addMessage("Message")).isHashCodeEqualTo(1);
+            new ReferenceAssertionImpl("reference", new FailDescription("Message")).isHashCodeEqualTo(1);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value hash code. Values should be the same. Expected:<1> but was:<-925155509>.");

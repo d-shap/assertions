@@ -47,7 +47,7 @@ public final class FieldAccessActionTest {
     @Test
     public void getAccessTest() throws NoSuchFieldException, IllegalAccessException {
         Object object = new Object();
-        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, new FailDescription().addMessage("message"));
+        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, new FailDescription("message"));
 
         Field actualField = baseAssertion.getClass().getSuperclass().getDeclaredField("_actual");
         try {
