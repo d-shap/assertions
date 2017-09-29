@@ -55,7 +55,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20> but was:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isEqualTo(20);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isEqualTo(20);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<20> but was:<10>.");
@@ -79,7 +79,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isNotEqualTo(10);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isNotEqualTo(10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10>.");
@@ -102,7 +102,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isGreaterThan(10);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isGreaterThan(10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<10> but was:<10>.");
@@ -114,7 +114,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11> but was:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isGreaterThan(11);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isGreaterThan(11);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<11> but was:<10>.");
@@ -137,7 +137,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11> but was:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isGreaterThanOrEqualTo(11);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isGreaterThanOrEqualTo(11);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then or equal to the expected. Expected:<11> but was:<10>.");
@@ -160,7 +160,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new ByteAssertion((byte) 10, new FailDescription().addMessage("Message")).isLessThan(10);
+            new ByteAssertion((byte) 10, new FailDescription("Message")).isLessThan(10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<10> but was:<10>.");
@@ -172,7 +172,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<11>.");
         }
         try {
-            new ByteAssertion((byte) 11, new FailDescription().addMessage("Message")).isLessThan(10);
+            new ByteAssertion((byte) 11, new FailDescription("Message")).isLessThan(10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<10> but was:<11>.");
@@ -195,7 +195,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<10> but was:<11>.");
         }
         try {
-            new ByteAssertion((byte) 11, new FailDescription().addMessage("Message")).isLessThanOrEqualTo(10);
+            new ByteAssertion((byte) 11, new FailDescription("Message")).isLessThanOrEqualTo(10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<10> but was:<11>.");
@@ -218,7 +218,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isInRange(1, 5);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isInRange(1, 5);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<1:5> but was:<5>.");
@@ -230,7 +230,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isInRange(6, 10);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isInRange(6, 10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<6:10> but was:<5>.");
@@ -242,7 +242,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isInRange(8, 9);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isInRange(8, 9);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<8:9> but was:<5>.");
@@ -265,7 +265,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isNotInRange(4, 6);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isNotInRange(4, 6);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<4:6> but was:<5>.");
@@ -277,7 +277,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isNotInRange(5, 6);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isNotInRange(5, 6);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<5:6> but was:<5>.");
@@ -289,7 +289,7 @@ public final class ByteAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>.");
         }
         try {
-            new ByteAssertion((byte) 5, new FailDescription().addMessage("Message")).isNotInRange(1, 10);
+            new ByteAssertion((byte) 5, new FailDescription("Message")).isNotInRange(1, 10);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1:10> but was:<5>.");
