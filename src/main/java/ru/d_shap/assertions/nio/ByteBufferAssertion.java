@@ -23,6 +23,7 @@ import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
+import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 
@@ -36,11 +37,11 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ByteBufferAssertion(final ByteBuffer actual, final String message) {
-        super(actual, message);
+    public ByteBufferAssertion(final ByteBuffer actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -440,7 +441,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
             result.add(value);
         }
         buffer.position(position);
-        return new ListAssertion(result, getMessage());
+        return new ListAssertion(result, getFailDescription());
     }
 
     private Byte[] createArgumentArray(final byte... array) {

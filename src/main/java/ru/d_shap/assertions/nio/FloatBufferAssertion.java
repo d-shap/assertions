@@ -23,6 +23,7 @@ import java.nio.FloatBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
+import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 
@@ -36,11 +37,11 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public FloatBufferAssertion(final FloatBuffer actual, final String message) {
-        super(actual, message);
+    public FloatBufferAssertion(final FloatBuffer actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -320,7 +321,7 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
             result.add(value);
         }
         buffer.position(position);
-        return new ListAssertion(result, getMessage());
+        return new ListAssertion(result, getFailDescription());
     }
 
     private Float[] createArgumentArray(final float... array) {

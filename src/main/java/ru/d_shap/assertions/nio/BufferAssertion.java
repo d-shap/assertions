@@ -21,7 +21,8 @@ package ru.d_shap.assertions.nio;
 
 import java.nio.Buffer;
 
-import ru.d_shap.assertions.FailMessages;
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -34,8 +35,8 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 abstract class BufferAssertion<T> extends ReferenceAssertion {
 
-    BufferAssertion(final Buffer actual, final String message) {
-        super(actual, message);
+    BufferAssertion(final Buffer actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -241,13 +242,13 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual value position.
+     * Make assertion about the actual buffer position.
      *
      * @return the assertion.
      */
     public final IntAssertion toPosition() {
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).position(), getMessage());
+        return new IntAssertion(((Buffer) getActual()).position(), getFailDescription(Messages.Check.ACTUAL_BUFFER_POSITION));
     }
 
     /**
@@ -260,13 +261,13 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual value limit.
+     * Make assertion about the actual buffer limit.
      *
      * @return the assertion.
      */
     public final IntAssertion toLimit() {
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).limit(), getMessage());
+        return new IntAssertion(((Buffer) getActual()).limit(), getFailDescription(Messages.Check.ACTUAL_BUFFER_LIMIT));
     }
 
     /**
@@ -279,13 +280,13 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual value capacity.
+     * Make assertion about the actual buffer capacity.
      *
      * @return the assertion.
      */
     public final IntAssertion toCapacity() {
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).capacity(), getMessage());
+        return new IntAssertion(((Buffer) getActual()).capacity(), getFailDescription(Messages.Check.ACTUAL_BUFFER_CAPACITY));
     }
 
     /**
@@ -311,13 +312,13 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the actual value remaining.
+     * Make assertion about the actual buffer remaining.
      *
      * @return the assertion.
      */
     public final IntAssertion toRemaining() {
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).remaining(), getMessage());
+        return new IntAssertion(((Buffer) getActual()).remaining(), getFailDescription(Messages.Check.ACTUAL_BUFFER_REMAINING));
     }
 
     /**
@@ -335,7 +336,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     public final void isDirect() {
         checkActualIsNotNull();
         if (!((Buffer) getActual()).isDirect()) {
-            throw createAssertionError(FailMessages.getIsDirect());
+            throw createAssertionError(Messages.Fail.IS_DIRECT);
         }
     }
 
@@ -345,7 +346,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     public final void isNotDirect() {
         checkActualIsNotNull();
         if (((Buffer) getActual()).isDirect()) {
-            throw createAssertionError(FailMessages.getIsNotDirect());
+            throw createAssertionError(Messages.Fail.IS_NOT_DIRECT);
         }
     }
 
@@ -355,7 +356,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     public final void isReadOnly() {
         checkActualIsNotNull();
         if (!((Buffer) getActual()).isReadOnly()) {
-            throw createAssertionError(FailMessages.getIsReadOnly());
+            throw createAssertionError(Messages.Fail.IS_READ_ONLY);
         }
     }
 
@@ -365,14 +366,14 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     public final void isNotReadOnly() {
         checkActualIsNotNull();
         if (((Buffer) getActual()).isReadOnly()) {
-            throw createAssertionError(FailMessages.getIsNotReadOnly());
+            throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
         }
     }
 
     abstract CollectionAssertion createCollectionAssertion(boolean rewind);
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         return null;
     }
 

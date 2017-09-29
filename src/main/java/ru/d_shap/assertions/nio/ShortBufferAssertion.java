@@ -23,6 +23,7 @@ import java.nio.ShortBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
+import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 
@@ -36,11 +37,11 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ShortBufferAssertion(final ShortBuffer actual, final String message) {
-        super(actual, message);
+    public ShortBufferAssertion(final ShortBuffer actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -440,7 +441,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
             result.add(value);
         }
         buffer.position(position);
-        return new ListAssertion(result, getMessage());
+        return new ListAssertion(result, getFailDescription());
     }
 
     private Short[] createArgumentArray(final short... array) {
