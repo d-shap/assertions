@@ -60,7 +60,7 @@ public abstract class BaseAssertion {
             List<Constructor<T>> constructors = getConstructors(assertionClass);
             if (constructors.size() == 1) {
                 Constructor<T> constructor = constructors.get(0);
-                return constructor.newInstance(_actual, _failDescription);
+                return constructor.newInstance(_actual, getFailDescription());
             } else {
                 if (_actual == null) {
                     throw new WrongAssertionClassError(assertionClass);
@@ -147,7 +147,7 @@ public abstract class BaseAssertion {
      * @return the fail description.
      */
     protected final FailDescription getFailDescription() {
-        return _failDescription;
+        return new FailDescription(_failDescription);
     }
 
     /**
@@ -157,8 +157,7 @@ public abstract class BaseAssertion {
      * @return the fail description.
      */
     protected final FailDescription getFailDescription(final String message) {
-        _failDescription.addMessage(message);
-        return _failDescription;
+        return new FailDescription(_failDescription, message);
     }
 
     /**
@@ -284,7 +283,55 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Throwable throwable) {
-        return getFailDescription().addThrowable(message, throwable).createAssertionError();
+        return getFailDescription(message).addThrowable(throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the expected value and the throwable.
+     *
+     * @param expected  the expected value.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Object expected, final Throwable throwable) {
+        return getFailDescription().addExpected(this, expected).addThrowable(throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message, the expected value and the throwable.
+     *
+     * @param message   the message.
+     * @param expected  the expected value.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message, final Object expected, final Throwable throwable) {
+        return getFailDescription(message).addExpected(this, expected).addThrowable(throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the expected value range and the throwable.
+     *
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @param throwable    the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
+        return getFailDescription().addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the message, the expected value range and the throwable.
+     *
+     * @param message      the message.
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @param throwable    the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
+        return getFailDescription(message).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -347,6 +394,75 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo) {
+        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value and the throwable.
+     *
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final Throwable throwable) {
+        return getFailDescription().addActual(this).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the message and the throwable.
+     *
+     * @param message   the message.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message, final Throwable throwable) {
+        return getFailDescription(message).addActual(this).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the expected value and the throwable.
+     *
+     * @param expected  the expected value.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final Object expected, final Throwable throwable) {
+        return getFailDescription().addActual(this).addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the message, the expected value and the throwable.
+     *
+     * @param message   the message.
+     * @param expected  the expected value.
+     * @param throwable the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message, final Object expected, final Throwable throwable) {
+        return getFailDescription(message).addActual(this).addExpected(this, expected).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the expected value range and the throwable.
+     *
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @param throwable    the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
+        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+    }
+
+    /**
+     * Create the assertion error based on the fail description with the actual value, the message, the expected value range and the throwable.
+     *
+     * @param message      the message.
+     * @param expectedFrom the lower bound of the expected value range.
+     * @param expectedTo   the upper bound of the expected value range.
+     * @param throwable    the throwabe.
+     * @return the assertion error.
+     */
+    protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
         return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
