@@ -91,7 +91,7 @@ public final class Assertions {
      * @return the assertion.
      */
     public static MessageAssertion assertWithMessage(final String message) {
-        return new MessageAssertion(new FailDescription().addMessage(message));
+        return new MessageAssertion(new FailDescription(message));
     }
 
     /**
@@ -516,7 +516,7 @@ public final class Assertions {
      * @param failMessage the fail message.
      */
     public static void fail(final String failMessage) {
-        throw new FailDescription().addMessage(failMessage).createAssertionError();
+        throw new FailDescription(failMessage).createAssertionError();
     }
 
 }
