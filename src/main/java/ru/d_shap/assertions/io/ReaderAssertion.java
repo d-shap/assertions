@@ -22,10 +22,11 @@ package ru.d_shap.assertions.io;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 
+import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.CharArrayAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
@@ -39,11 +40,11 @@ public class ReaderAssertion extends ReferenceAssertion {
     /**
      * Create new object.
      *
-     * @param actual  the actual value.
-     * @param message the assertion message.
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
      */
-    public ReaderAssertion(final Reader actual, final String message) {
-        super(actual, message);
+    public ReaderAssertion(final Reader actual, final FailDescription failDescription) {
+        super(actual, failDescription);
     }
 
     /**
@@ -51,7 +52,7 @@ public class ReaderAssertion extends ReferenceAssertion {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        new IntAssertion(actualAsInt(), getMessage()).isLessThanOrEqualTo(-1);
+        new IntAssertion(actualAsInt(), getFailDescription(Messages.Check.ACTUAL_READER_CHAR_READ)).isLessThanOrEqualTo(-1);
     }
 
     /**
@@ -62,7 +63,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new CharArrayAssertion(actualAsCharArray(expected.length), getMessage()).containsExactlyInOrder(expected);
+        new CharArrayAssertion(actualAsCharArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -73,7 +74,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new CharArrayAssertion(actualAsCharArray(expected.length), getMessage()).containsExactlyInOrder(expected);
+        new CharArrayAssertion(actualAsCharArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -84,8 +85,8 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isNextCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedChars = iterableToArray(expected);
-        new CharArrayAssertion(actualAsCharArray(expectedChars.length), getMessage()).containsExactlyInOrder(expectedChars);
+        char[] expectedChars = ValueConverter.toCharArray(expected);
+        new CharArrayAssertion(actualAsCharArray(expectedChars.length), getFailDescription()).containsExactlyInOrder(expectedChars);
     }
 
     /**
@@ -96,7 +97,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new CharArrayAssertion(actualAsCharArray(expected.length + 1), getMessage()).containsExactlyInOrder(expected);
+        new CharArrayAssertion(actualAsCharArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -107,7 +108,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new CharArrayAssertion(actualAsCharArray(expected.length + 1), getMessage()).containsExactlyInOrder(expected);
+        new CharArrayAssertion(actualAsCharArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
     /**
@@ -118,8 +119,8 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedChars = iterableToArray(expected);
-        new CharArrayAssertion(actualAsCharArray(expectedChars.length + 1), getMessage()).containsExactlyInOrder(expectedChars);
+        char[] expectedChars = ValueConverter.toCharArray(expected);
+        new CharArrayAssertion(actualAsCharArray(expectedChars.length + 1), getFailDescription()).containsExactlyInOrder(expectedChars);
     }
 
     private int actualAsInt() {
@@ -127,7 +128,7 @@ public class ReaderAssertion extends ReferenceAssertion {
             Reader actual = (Reader) getActual();
             return actual.read();
         } catch (IOException ex) {
-            throw createAssertionError(ex);
+            throw createAssertionError(ex.toString(), ex);
         }
     }
 
@@ -149,24 +150,12 @@ public class ReaderAssertion extends ReferenceAssertion {
             }
             return writer.toString().toCharArray();
         } catch (IOException ex) {
-            throw createAssertionError(ex);
+            throw createAssertionError(ex.toString(), ex);
         }
-    }
-
-    private char[] iterableToArray(final Iterable<Character> expected) {
-        List<Character> list = new ArrayList<>();
-        for (Character value : expected) {
-            list.add(value);
-        }
-        char[] chars = new char[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            chars[i] = list.get(i);
-        }
-        return chars;
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected final String asString(final Object value, final boolean actual) {
         return null;
     }
 
