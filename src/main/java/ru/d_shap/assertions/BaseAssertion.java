@@ -404,7 +404,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Throwable throwable) {
-        return getFailDescription().addActual(this).createAssertionError();
+        return getFailDescription().addActual(this).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -415,7 +415,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).createAssertionError();
+        return getFailDescription(message).addActual(this).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -426,7 +426,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expected, final Throwable throwable) {
-        return getFailDescription().addActual(this).addExpected(this, expected).createAssertionError();
+        return getFailDescription().addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -438,7 +438,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expected, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).addExpected(this, expected).createAssertionError();
+        return getFailDescription(message).addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -450,7 +450,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -463,7 +463,7 @@ public abstract class BaseAssertion {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
