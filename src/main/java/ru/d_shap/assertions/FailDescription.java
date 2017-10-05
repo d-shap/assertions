@@ -158,11 +158,7 @@ public final class FailDescription {
         boolean messageAdded = addValuesMessage();
         String fullMessage = getFullMessage();
         removeLastMessage(messageAdded);
-        if (_throwable == null) {
-            return new AssertionError(fullMessage);
-        } else {
-            return new AssertionError(fullMessage, _throwable);
-        }
+        return new AssertionError(fullMessage, _throwable);
     }
 
     private boolean addValuesMessage() {
