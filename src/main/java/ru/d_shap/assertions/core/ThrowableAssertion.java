@@ -53,10 +53,19 @@ public class ThrowableAssertion extends ReferenceAssertion {
     /**
      * Check if the message of the throwable has the expected value.
      *
-     * @param message the expected value.
+     * @param expected the expected value.
      */
-    public final void hasMessage(final String message) {
-        toMessage().isEqualTo(message);
+    public final void hasMessage(final String expected) {
+        toMessage().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the message of the throwable matches the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void messageMatches(final String expected) {
+        toMessage().matches(expected);
     }
 
     /**
@@ -81,10 +90,19 @@ public class ThrowableAssertion extends ReferenceAssertion {
     /**
      * Check if the message of the cause of the throwable has the expected value.
      *
-     * @param message the expected value.
+     * @param expected the expected value.
      */
-    public final void hasCauseMessage(final String message) {
-        toCause().hasMessage(message);
+    public final void hasCauseMessage(final String expected) {
+        toCause().hasMessage(expected);
+    }
+
+    /**
+     * Check if the message of the cause of the throwable matches the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void causeMessageMatches(final String expected) {
+        toCause().messageMatches(expected);
     }
 
     @Override
