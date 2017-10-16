@@ -21,6 +21,7 @@ package ru.d_shap.assertions.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -56,6 +57,12 @@ public final class IteratorAssertionTest {
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, new FailDescription("Message")).isEmpty();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
             new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).isEmpty();
@@ -109,10 +116,22 @@ public final class IteratorAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new IteratorAssertion(null, new FailDescription("Message")).isNotEmpty();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+        }
+        try {
+            new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription("Message")).isNotEmpty();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
         }
         try {
             new IteratorAssertion(new HashSet<String>().iterator(), new FailDescription()).isNotEmpty();
@@ -125,6 +144,94 @@ public final class IteratorAssertionTest {
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
+        }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void isNextElementsEqualToTest() {
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Collections.singletonList("val1"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2", "val3");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2", "val3", "val4");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4"));
+
+        try {
+            new IteratorAssertion(null, new FailDescription()).isNextElementsEqualTo("val1", "val2");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(null, new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2"));
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo((Object[]) null);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo((Iterable<?>) null);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(new ArrayList<String>());
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val2", "val3");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val2", "val3"));
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription("Message")).isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription("Message")).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
         }
     }
 
@@ -825,21 +932,77 @@ public final class IteratorAssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
+    public void isNullTest() {
+        new IteratorAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).isNull();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.util.AbstractList.*>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription("Message")).isNull();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Value should be null. Actual:<java.util.AbstractList.*>.");
+        }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
     public void isSameAsTest() {
         Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
         new IteratorAssertion(iterator, new FailDescription()).isSameAs(iterator);
 
         try {
-            new IteratorAssertion(null, new FailDescription()).isSameAs(iterator);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
             new IteratorAssertion(iterator, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>.");
+        }
+        try {
+            new IteratorAssertion(iterator, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>.");
+        }
+        try {
+            new IteratorAssertion(iterator, new FailDescription()).isSameAs("test");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>.");
+        }
+        try {
+            new IteratorAssertion(iterator, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>.");
+        }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
+        new IteratorAssertion(iterator, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3").iterator());
+        new IteratorAssertion(iterator, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new IteratorAssertion(iterator, new FailDescription()).isNotSameAs(iterator);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.util.AbstractList.*>.");
+        }
+        try {
+            new IteratorAssertion(iterator, new FailDescription("Message")).isNotSameAs(iterator);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.util.AbstractList.*>.");
         }
     }
 
@@ -849,9 +1012,9 @@ public final class IteratorAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isNull();
-        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isNull();
-        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), true)).isNull();
+        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), true)).isEqualTo("[val1, val2, val3, val4, val5]");
 
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(null, false)).isNull();
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
