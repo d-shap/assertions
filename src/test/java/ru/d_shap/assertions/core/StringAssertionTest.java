@@ -1268,6 +1268,18 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<value> but was:<значение>.");
         }
+        try {
+            new StringAssertion("value", new FailDescription()).contains("\\w+");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<\\w+> but was:<value>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription()).contains(".+");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<.+> but was:<value>.");
+        }
     }
 
     /**
@@ -1323,6 +1335,18 @@ public final class StringAssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<valUE> but was:<знАЧЕние>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription()).containsIgnoreCase("\\w+");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<\\w+> but was:<value>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription()).containsIgnoreCase(".+");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<.+> but was:<value>.");
         }
     }
 
@@ -1386,6 +1410,12 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<ение> but was:<значение>.");
         }
+        try {
+            new StringAssertion("...", new FailDescription()).doesNotContain(".");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<.> but was:<...>.");
+        }
     }
 
     /**
@@ -1448,6 +1478,12 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<еНИе> but was:<зНАчеНИе>.");
         }
+        try {
+            new StringAssertion("...", new FailDescription()).doesNotContainIgnoreCase(".");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<.> but was:<...>.");
+        }
     }
 
     /**
@@ -1504,6 +1540,18 @@ public final class StringAssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<значение> but was:<чача>.");
+        }
+        try {
+            new StringAssertion("\\w+", new FailDescription()).isPartOf("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<\\w+>.");
+        }
+        try {
+            new StringAssertion(".+", new FailDescription()).isPartOf("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<.+>.");
         }
     }
 
@@ -1562,6 +1610,18 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<зНАчеНИе> but was:<чача>.");
         }
+        try {
+            new StringAssertion("\\w+", new FailDescription()).isPartOfIgnoreCase("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<\\w+>.");
+        }
+        try {
+            new StringAssertion(".+", new FailDescription()).isPartOfIgnoreCase("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be the part of the expected value. Expected:<value> but was:<.+>.");
+        }
     }
 
     /**
@@ -1619,6 +1679,12 @@ public final class StringAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<значение> but was:<ение>.");
         }
+        try {
+            new StringAssertion(".", new FailDescription()).isNotPartOf("...");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<...> but was:<.>.");
+        }
     }
 
     /**
@@ -1675,6 +1741,12 @@ public final class StringAssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<знАченИе> but was:<ЕниЕ>.");
+        }
+        try {
+            new StringAssertion(".", new FailDescription()).isNotPartOfIgnoreCase("...");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be the part of the expected value. Expected:<...> but was:<.>.");
         }
     }
 
