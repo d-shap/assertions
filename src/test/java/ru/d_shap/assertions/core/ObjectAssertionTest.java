@@ -140,13 +140,13 @@ public final class ObjectAssertionTest {
             new ObjectAssertion("value", new FailDescription()).isNull();
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Value should be null. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<value>.");
         }
         try {
             new ObjectAssertion("value", new FailDescription("Message")).isNull();
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should be null. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<value>.");
         }
     }
 

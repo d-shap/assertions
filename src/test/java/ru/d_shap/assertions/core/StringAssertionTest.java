@@ -2553,13 +2553,13 @@ public final class StringAssertionTest {
             new StringAssertion("value", new FailDescription()).isNull();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Value should be null. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<value>.");
         }
         try {
             new StringAssertion("value", new FailDescription("Message")).isNull();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should be null. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<value>.");
         }
     }
 
@@ -2575,25 +2575,25 @@ public final class StringAssertionTest {
             new StringAssertion(value, new FailDescription()).isSameAs("va" + new StringBuilder("lue"));
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be the same. Expected:<value> but was:<value>.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>.");
         }
         try {
             new StringAssertion(value, new FailDescription("Message")).isSameAs("va" + new StringBuilder("lue"));
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<value> but was:<value>.");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>.");
         }
         try {
             new StringAssertion(value, new FailDescription()).isSameAs(new StringBuilder("value"));
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be the same. Expected:<value> but was:<value>.");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>.");
         }
         try {
             new StringAssertion(value, new FailDescription("Message")).isSameAs(new StringBuilder("value"));
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<value> but was:<value>.");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>.");
         }
     }
 
@@ -2610,13 +2610,13 @@ public final class StringAssertionTest {
             new StringAssertion(value, new FailDescription()).isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be different. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>.");
         }
         try {
             new StringAssertion(value, new FailDescription("Message")).isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be different. Actual:<value>.");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value>.");
         }
     }
 
