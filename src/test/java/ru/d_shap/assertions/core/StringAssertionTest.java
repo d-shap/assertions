@@ -52,16 +52,34 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new StringAssertion(null, new FailDescription("Message")).isEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new StringAssertion(" ", new FailDescription()).isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:< >.");
         }
         try {
+            new StringAssertion(" ", new FailDescription("Message")).isEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:< >.");
+        }
+        try {
             new StringAssertion("value", new FailDescription()).isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<value>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription("Message")).isEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<value>.");
         }
     }
 
@@ -80,10 +98,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:< >.");
         }
         try {
+            new StringAssertion(" ", new FailDescription("Message")).isNullOrEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:< >.");
+        }
+        try {
             new StringAssertion("value", new FailDescription()).isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<value>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription("Message")).isNullOrEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<value>.");
         }
     }
 
@@ -102,10 +132,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new StringAssertion(null, new FailDescription("Message")).isNotEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new StringAssertion("", new FailDescription()).isNotEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
+        }
+        try {
+            new StringAssertion("", new FailDescription("Message")).isNotEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
         }
     }
 
@@ -126,16 +168,34 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new StringAssertion(null, new FailDescription("Message")).isBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new StringAssertion("value", new FailDescription()).isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<value>.");
         }
         try {
+            new StringAssertion("value", new FailDescription("Message")).isBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be blank. Actual:<value>.");
+        }
+        try {
             new StringAssertion("v   ", new FailDescription()).isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be blank. Actual:<v   >.");
+        }
+        try {
+            new StringAssertion("v   ", new FailDescription("Message")).isBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be blank. Actual:<v   >.");
         }
     }
 
@@ -157,10 +217,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<value>.");
         }
         try {
+            new StringAssertion("value", new FailDescription("Message")).isNullOrBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null or blank. Actual:<value>.");
+        }
+        try {
             new StringAssertion("v   ", new FailDescription()).isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or blank. Actual:<v   >.");
+        }
+        try {
+            new StringAssertion("v   ", new FailDescription("Message")).isNullOrBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null or blank. Actual:<v   >.");
         }
     }
 
@@ -179,10 +251,22 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new StringAssertion(null, new FailDescription("Message")).isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new StringAssertion("", new FailDescription()).isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
+        }
+        try {
+            new StringAssertion("", new FailDescription("Message")).isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be blank.");
         }
         try {
             new StringAssertion(" ", new FailDescription()).isNotBlank();
@@ -191,16 +275,34 @@ public final class StringAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
+            new StringAssertion(" ", new FailDescription("Message")).isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be blank.");
+        }
+        try {
             new StringAssertion("\t", new FailDescription()).isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
         }
         try {
+            new StringAssertion("\t", new FailDescription("Message")).isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be blank.");
+        }
+        try {
             new StringAssertion("   \t   \t", new FailDescription()).isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be blank.");
+        }
+        try {
+            new StringAssertion("   \t   \t", new FailDescription("Message")).isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be blank.");
         }
     }
 
@@ -2263,6 +2365,84 @@ public final class StringAssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>.");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        new StringAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new StringAssertion("value", new FailDescription()).isNull();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Value should be null. Actual:<value>.");
+        }
+        try {
+            new StringAssertion("value", new FailDescription("Message")).isNull();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should be null. Actual:<value>.");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        String value = "value";
+        new StringAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new StringAssertion(value, new FailDescription()).isSameAs("va" + new StringBuilder("lue"));
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be the same. Expected:<value> but was:<value>.");
+        }
+        try {
+            new StringAssertion(value, new FailDescription("Message")).isSameAs("va" + new StringBuilder("lue"));
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<value> but was:<value>.");
+        }
+        try {
+            new StringAssertion(value, new FailDescription()).isSameAs(new StringBuilder("value"));
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be the same. Expected:<value> but was:<value>.");
+        }
+        try {
+            new StringAssertion(value, new FailDescription("Message")).isSameAs(new StringBuilder("value"));
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<value> but was:<value>.");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        String value = "value";
+        new StringAssertion(value, new FailDescription()).isNotSameAs("va" + new StringBuilder("lue"));
+        new StringAssertion(value, new FailDescription()).isNotSameAs(new StringBuilder("value"));
+
+        try {
+            new StringAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be different. Actual:<value>.");
+        }
+        try {
+            new StringAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be different. Actual:<value>.");
         }
     }
 
