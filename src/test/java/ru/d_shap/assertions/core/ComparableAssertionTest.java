@@ -324,6 +324,84 @@ public final class ComparableAssertionTest {
      * {@link ComparableAssertion} class test.
      */
     @Test
+    public void isNullTest() {
+        new ComparableAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new ComparableAssertion(5, new FailDescription()).isNull();
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<5>.");
+        }
+        try {
+            new ComparableAssertion(5, new FailDescription("Message")).isNull();
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<5>.");
+        }
+    }
+
+    /**
+     * {@link ComparableAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Comparable<?> value = 5.0;
+        new ComparableAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new ComparableAssertion(value, new FailDescription()).isSameAs(5.0);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5.0> but was:<5.0>.");
+        }
+        try {
+            new ComparableAssertion(value, new FailDescription("Message")).isSameAs(5.0);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<5.0> but was:<5.0>.");
+        }
+        try {
+            new ComparableAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<5.0>.");
+        }
+        try {
+            new ComparableAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<5.0>.");
+        }
+    }
+
+    /**
+     * {@link ComparableAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Comparable<?> value = 5.0;
+        new ComparableAssertion(value, new FailDescription()).isNotSameAs(5.0);
+        new ComparableAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new ComparableAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<5.0>.");
+        }
+        try {
+            new ComparableAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<5.0>.");
+        }
+    }
+
+    /**
+     * {@link ComparableAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(null, true)).isNull();
         Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(5, true)).isEqualTo("5");
