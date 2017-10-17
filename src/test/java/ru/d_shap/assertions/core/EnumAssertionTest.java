@@ -70,6 +70,12 @@ public final class EnumAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new EnumAssertion(null, new FailDescription("Message")).toValueCount();
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new EnumAssertion(Values.class, new FailDescription()).toValueCount().isEqualTo(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
@@ -90,12 +96,6 @@ public final class EnumAssertionTest {
     public void hasValueCountTest() {
         new EnumAssertion(Values.class, new FailDescription()).hasValueCount(3);
 
-        try {
-            new EnumAssertion(null, new FailDescription()).hasValueCount(3);
-            Assertions.fail("EnumAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
         try {
             new EnumAssertion(Values.class, new FailDescription()).hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
