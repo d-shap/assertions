@@ -52,16 +52,34 @@ public final class ObjectAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ObjectAssertion(null, new FailDescription("Message")).isEqualTo("value");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new ObjectAssertion("value", new FailDescription()).isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new ObjectAssertion("value", new FailDescription("Message")).isEqualTo(null);
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+        }
+        try {
             new ObjectAssertion("value1", new FailDescription()).isEqualTo("value2");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>.");
+        }
+        try {
+            new ObjectAssertion("value1", new FailDescription("Message")).isEqualTo("value2");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value2> but was:<value1>.");
         }
     }
 
@@ -80,16 +98,112 @@ public final class ObjectAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ObjectAssertion(null, new FailDescription("Message")).isNotEqualTo("value");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new ObjectAssertion("value", new FailDescription()).isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new ObjectAssertion("value", new FailDescription("Message")).isNotEqualTo(null);
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+        }
+        try {
             new ObjectAssertion("value", new FailDescription()).isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>.");
+        }
+        try {
+            new ObjectAssertion("value", new FailDescription("Message")).isNotEqualTo("value");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value>.");
+        }
+    }
+
+    /**
+     * {@link ObjectAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        new ObjectAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new ObjectAssertion("value", new FailDescription()).isNull();
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Value should be null. Actual:<value>.");
+        }
+        try {
+            new ObjectAssertion("value", new FailDescription("Message")).isNull();
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should be null. Actual:<value>.");
+        }
+    }
+
+    /**
+     * {@link ObjectAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Object value = new Object();
+        new ObjectAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new ObjectAssertion(value, new FailDescription()).isSameAs(new Object());
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>.");
+        }
+        try {
+            new ObjectAssertion(value, new FailDescription("Message")).isSameAs(new Object());
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>.");
+        }
+        try {
+            new ObjectAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.lang.Object@.*>.");
+        }
+        try {
+            new ObjectAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.lang.Object@.*>.");
+        }
+    }
+
+    /**
+     * {@link ObjectAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Object value = new Object();
+        new ObjectAssertion(value, new FailDescription()).isNotSameAs(new Object());
+        new ObjectAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new ObjectAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.lang.Object@.*>.");
+        }
+        try {
+            new ObjectAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object@.*>.");
         }
     }
 
