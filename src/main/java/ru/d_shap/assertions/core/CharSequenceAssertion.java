@@ -490,7 +490,11 @@ public class CharSequenceAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value, final boolean actual) {
-        return null;
+        if (value == null) {
+            return null;
+        } else {
+            return value.toString();
+        }
     }
 
 }
