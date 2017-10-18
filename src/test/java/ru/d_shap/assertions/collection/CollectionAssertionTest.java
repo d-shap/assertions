@@ -865,29 +865,29 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        Collection<String> collection = Arrays.asList("val1", "val2", "val3");
-        new CollectionAssertion(collection, new FailDescription()).isSameAs(collection);
+        Collection<String> value = Arrays.asList("val1", "val2", "val3");
+        new CollectionAssertion(value, new FailDescription()).isSameAs(value);
 
         try {
-            new CollectionAssertion(collection, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            new CollectionAssertion(value, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(collection, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            new CollectionAssertion(value, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(collection, new FailDescription()).isSameAs("test");
+            new CollectionAssertion(value, new FailDescription()).isSameAs("test");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(collection, new FailDescription("Message")).isSameAs("test");
+            new CollectionAssertion(value, new FailDescription("Message")).isSameAs("test");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
@@ -899,18 +899,18 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        Collection<String> collection = Arrays.asList("val1", "val2", "val3");
-        new CollectionAssertion(collection, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
-        new CollectionAssertion(collection, new FailDescription()).isNotSameAs("test");
+        Collection<String> value = Arrays.asList("val1", "val2", "val3");
+        new CollectionAssertion(value, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
+        new CollectionAssertion(value, new FailDescription()).isNotSameAs("test");
 
         try {
-            new CollectionAssertion(collection, new FailDescription()).isNotSameAs(collection);
+            new CollectionAssertion(value, new FailDescription()).isNotSameAs(value);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(collection, new FailDescription("Message")).isNotSameAs(collection);
+            new CollectionAssertion(value, new FailDescription("Message")).isNotSameAs(value);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[val1, val2, val3]>.");

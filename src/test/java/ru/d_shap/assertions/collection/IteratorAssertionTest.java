@@ -954,29 +954,29 @@ public final class IteratorAssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
-        new IteratorAssertion(iterator, new FailDescription()).isSameAs(iterator);
+        Iterator<String> value = Arrays.asList("val1", "val2", "val3").iterator();
+        new IteratorAssertion(value, new FailDescription()).isSameAs(value);
 
         try {
-            new IteratorAssertion(iterator, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
+            new IteratorAssertion(value, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>.");
         }
         try {
-            new IteratorAssertion(iterator, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
+            new IteratorAssertion(value, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>.");
         }
         try {
-            new IteratorAssertion(iterator, new FailDescription()).isSameAs("test");
+            new IteratorAssertion(value, new FailDescription()).isSameAs("test");
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>.");
         }
         try {
-            new IteratorAssertion(iterator, new FailDescription("Message")).isSameAs("test");
+            new IteratorAssertion(value, new FailDescription("Message")).isSameAs("test");
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>.");
@@ -988,18 +988,18 @@ public final class IteratorAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
-        new IteratorAssertion(iterator, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3").iterator());
-        new IteratorAssertion(iterator, new FailDescription()).isNotSameAs("test");
+        Iterator<String> value = Arrays.asList("val1", "val2", "val3").iterator();
+        new IteratorAssertion(value, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3").iterator());
+        new IteratorAssertion(value, new FailDescription()).isNotSameAs("test");
 
         try {
-            new IteratorAssertion(iterator, new FailDescription()).isNotSameAs(iterator);
+            new IteratorAssertion(value, new FailDescription()).isNotSameAs(value);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.util.AbstractList.*>.");
         }
         try {
-            new IteratorAssertion(iterator, new FailDescription("Message")).isNotSameAs(iterator);
+            new IteratorAssertion(value, new FailDescription("Message")).isNotSameAs(value);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.util.AbstractList.*>.");
