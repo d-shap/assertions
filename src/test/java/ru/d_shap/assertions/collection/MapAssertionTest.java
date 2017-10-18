@@ -22,6 +22,7 @@ package ru.d_shap.assertions.collection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.Test;
@@ -57,7 +58,7 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new MapAssertion(null, new FailDescription()).isEmpty();
+            new MapAssertion(null, new FailDescription("Message")).isEmpty();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -989,6 +990,84 @@ public final class MapAssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<3> but was:<2>.");
+        }
+    }
+
+    /**
+     * {@link MapAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        new MapAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new MapAssertion(new MapImpl(), new FailDescription()).isNull();
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<{}>.");
+        }
+        try {
+            new MapAssertion(new MapImpl(), new FailDescription("Message")).isNull();
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<{}>.");
+        }
+    }
+
+    /**
+     * {@link MapAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Map<String, String> value = new MapImpl();
+        new MapAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new MapAssertion(value, new FailDescription()).isSameAs(new MapImpl());
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<{}> but was:<{}>.");
+        }
+        try {
+            new MapAssertion(value, new FailDescription("Message")).isSameAs(new MapImpl());
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<{}> but was:<{}>.");
+        }
+        try {
+            new MapAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<{}>.");
+        }
+        try {
+            new MapAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<{}>.");
+        }
+    }
+
+    /**
+     * {@link MapAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Map<String, String> value = new MapImpl();
+        new MapAssertion(value, new FailDescription()).isNotSameAs(new MapImpl());
+        new MapAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new MapAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<{}>.");
+        }
+        try {
+            new MapAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<{}>.");
         }
     }
 
