@@ -55,7 +55,7 @@ public final class ListAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ListAssertion(null, new FailDescription()).isRandomAccess();
+            new ListAssertion(null, new FailDescription("Message")).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -88,7 +88,7 @@ public final class ListAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ListAssertion(null, new FailDescription()).isNotRandomAccess();
+            new ListAssertion(null, new FailDescription("Message")).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
