@@ -346,7 +346,7 @@ public final class ComparableAssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        Comparable<?> value = 5.0;
+        Comparable<Double> value = 5.0;
         new ComparableAssertion(value, new FailDescription()).isSameAs(value);
 
         try {
@@ -380,7 +380,7 @@ public final class ComparableAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        Comparable<?> value = 5.0;
+        Comparable<Double> value = 5.0;
         new ComparableAssertion(value, new FailDescription()).isNotSameAs(5.0);
         new ComparableAssertion(value, new FailDescription()).isNotSameAs("test");
 

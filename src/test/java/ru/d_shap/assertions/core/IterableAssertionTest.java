@@ -864,7 +864,7 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        Iterable<?> value = Arrays.asList("val1", "val2", "val3");
+        Iterable<String> value = Arrays.asList("val1", "val2", "val3");
         new IterableAssertion(value, new FailDescription()).isSameAs(value);
 
         try {
@@ -898,7 +898,7 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        Iterable<?> value = Arrays.asList("val1", "val2", "val3");
+        Iterable<String> value = Arrays.asList("val1", "val2", "val3");
         new IterableAssertion(value, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
         new IterableAssertion(value, new FailDescription()).isNotSameAs("test");
 
