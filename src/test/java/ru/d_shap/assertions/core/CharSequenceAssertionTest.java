@@ -2511,14 +2511,14 @@ public final class CharSequenceAssertionTest {
     @Test
     public void asStringTest() {
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("vAlUe", true)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", true)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(1, true)).isNull();
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("vAlUe", true)).isEqualTo("vAlUe");
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", true)).isEqualTo("знАчЕнИе");
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(1, true)).isEqualTo("1");
 
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("vAlUe", false)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", false)).isNull();
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(1, false)).isNull();
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("vAlUe", false)).isEqualTo("vAlUe");
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", false)).isEqualTo("знАчЕнИе");
+        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(1, false)).isEqualTo("1");
     }
 
 }
