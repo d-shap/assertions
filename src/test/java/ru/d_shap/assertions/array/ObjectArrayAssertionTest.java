@@ -576,22 +576,94 @@ public final class ObjectArrayAssertionTest {
      * {@link ObjectArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new ObjectArrayAssertion(new String[0], new FailDescription()).createListAssertion().isEmpty();
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new ObjectArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).createListAssertion().isEmpty();
+            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).isNull();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1, val2]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).isNull();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[val1, val2]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[val1, val2]>.");
         }
+    }
+
+    /**
+     * {@link ObjectArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        String[] value = new String[]{"val1", "val2"};
+        new ObjectArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new ObjectArrayAssertion(value, new FailDescription()).isSameAs(new String[]{"val1", "val2"});
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2]> but was:<[val1, val2]>.");
+        }
+        try {
+            new ObjectArrayAssertion(value, new FailDescription("Message")).isSameAs(new String[]{"val1", "val2"});
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2]> but was:<[val1, val2]>.");
+        }
+        try {
+            new ObjectArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2]>.");
+        }
+        try {
+            new ObjectArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2]>.");
+        }
+    }
+
+    /**
+     * {@link ObjectArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        String[] value = new String[]{"val1", "val2"};
+        new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs(new String[]{"val1", "val2"});
+        new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1, val2]>.");
+        }
+        try {
+            new ObjectArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[val1, val2]>.");
+        }
+    }
+
+    /**
+     * {@link ObjectArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new String[]{"val1", "val2"}, true)).isEqualTo("[val1, val2]");
+
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new String[]{"val1", "val2"}, false)).isEqualTo("[val1, val2]");
     }
 
 }

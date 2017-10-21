@@ -576,22 +576,94 @@ public final class IntArrayAssertionTest {
      * {@link IntArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new IntArrayAssertion(new int[0], new FailDescription()).createListAssertion().isEmpty();
-        new IntArrayAssertion(new int[]{1, 2}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new IntArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new IntArrayAssertion(new int[]{1, 2}, new FailDescription()).createListAssertion().isEmpty();
+            new IntArrayAssertion(new int[]{1, 2}, new FailDescription()).isNull();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
         }
         try {
-            new IntArrayAssertion(new int[]{1, 2}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new IntArrayAssertion(new int[]{1, 2}, new FailDescription("Message")).isNull();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
         }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        int[] value = new int[]{1, 2};
+        new IntArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new IntArrayAssertion(value, new FailDescription()).isSameAs(new int[]{1, 2});
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new IntArrayAssertion(value, new FailDescription("Message")).isSameAs(new int[]{1, 2});
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new IntArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new IntArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        int[] value = new int[]{1, 2};
+        new IntArrayAssertion(value, new FailDescription()).isNotSameAs(new int[]{1, 2});
+        new IntArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new IntArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new IntArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new int[]{1, 2}, true)).isEqualTo("[1, 2]");
+
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new int[]{1, 2}, false)).isEqualTo("[1, 2]");
     }
 
 }

@@ -576,22 +576,94 @@ public final class LongArrayAssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new LongArrayAssertion(new long[0], new FailDescription()).createListAssertion().isEmpty();
-        new LongArrayAssertion(new long[]{1L, 2L}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new LongArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new LongArrayAssertion(new long[]{1L, 2L}, new FailDescription()).createListAssertion().isEmpty();
+            new LongArrayAssertion(new long[]{1L, 2L}, new FailDescription()).isNull();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
         }
         try {
-            new LongArrayAssertion(new long[]{1L, 2L}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new LongArrayAssertion(new long[]{1L, 2L}, new FailDescription("Message")).isNull();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
         }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        long[] value = new long[]{1L, 2L};
+        new LongArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new LongArrayAssertion(value, new FailDescription()).isSameAs(new long[]{1L, 2L});
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new LongArrayAssertion(value, new FailDescription("Message")).isSameAs(new long[]{1L, 2L});
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new LongArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new LongArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        long[] value = new long[]{1L, 2L};
+        new LongArrayAssertion(value, new FailDescription()).isNotSameAs(new long[]{1L, 2L});
+        new LongArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new LongArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new LongArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new long[]{1L, 2L}, true)).isEqualTo("[1, 2]");
+
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new long[]{1L, 2L}, false)).isEqualTo("[1, 2]");
     }
 
 }

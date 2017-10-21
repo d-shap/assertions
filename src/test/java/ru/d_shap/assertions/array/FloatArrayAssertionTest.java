@@ -576,22 +576,94 @@ public final class FloatArrayAssertionTest {
      * {@link FloatArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new FloatArrayAssertion(new float[0], new FailDescription()).createListAssertion().isEmpty();
-        new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new FloatArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).createListAssertion().isEmpty();
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).isNull();
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0, 2.0]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription("Message")).isNull();
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1.0, 2.0]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1.0, 2.0]>.");
         }
+    }
+
+    /**
+     * {@link FloatArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        float[] value = new float[]{1.0f, 2.0f};
+        new FloatArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new FloatArrayAssertion(value, new FailDescription()).isSameAs(new float[]{1.0f, 2.0f});
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatArrayAssertion(value, new FailDescription("Message")).isSameAs(new float[]{1.0f, 2.0f});
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
+    }
+
+    /**
+     * {@link FloatArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        float[] value = new float[]{1.0f, 2.0f};
+        new FloatArrayAssertion(value, new FailDescription()).isNotSameAs(new float[]{1.0f, 2.0f});
+        new FloatArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new FloatArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1.0, 2.0]>.");
+        }
+    }
+
+    /**
+     * {@link FloatArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new float[]{1.0f, 2.0f}, true)).isEqualTo("[1.0, 2.0]");
+
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new float[]{1.0f, 2.0f}, false)).isEqualTo("[1.0, 2.0]");
     }
 
 }

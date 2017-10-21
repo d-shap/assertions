@@ -56,6 +56,12 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ArrayAssertionImpl(null, new FailDescription("Message")).isEmpty();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).isEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -104,6 +110,12 @@ public final class ArrayAssertionTest {
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ArrayAssertionImpl(null, new FailDescription("Message")).isNotEmpty();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
             new ArrayAssertionImpl(new ArrayList<String>(), new FailDescription()).isNotEmpty();
@@ -757,6 +769,12 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ArrayAssertionImpl(null, new FailDescription("Message")).toLength();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -779,12 +797,6 @@ public final class ArrayAssertionTest {
         new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).hasLength(5);
 
         try {
-            new ArrayAssertionImpl(null, new FailDescription()).hasLength(3);
-            Assertions.fail("ArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -796,22 +808,6 @@ public final class ArrayAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<4> but was:<3>.");
         }
-    }
-
-    /**
-     * {@link ArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(new StringBuilder("test"), true)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), true)).isNull();
-
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(new StringBuilder("test"), false)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isNull();
-        Assertions.assertThat(new ArrayAssertionImpl(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), false)).isNull();
     }
 
     /**
@@ -827,10 +823,15 @@ public final class ArrayAssertionTest {
 
         @Override
         @SuppressWarnings("unchecked")
-        protected List<String> createList() {
+        protected List<String> createList(final Object value) {
             List<String> copy = new ArrayList<>();
-            copy.addAll((List) getActual());
+            copy.addAll((List) value);
             return copy;
+        }
+
+        @Override
+        protected String asString(final Object value, final boolean actual) {
+            return value.toString();
         }
 
     }

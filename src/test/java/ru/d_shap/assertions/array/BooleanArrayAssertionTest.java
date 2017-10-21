@@ -576,22 +576,94 @@ public final class BooleanArrayAssertionTest {
      * {@link BooleanArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new BooleanArrayAssertion(new boolean[0], new FailDescription()).createListAssertion().isEmpty();
-        new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new BooleanArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).createListAssertion().isEmpty();
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).isNull();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[true, true]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[true, true]>.");
         }
         try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription("Message")).isNull();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[true, true]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[true, true]>.");
         }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        boolean[] value = new boolean[]{true, true};
+        new BooleanArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new BooleanArrayAssertion(value, new FailDescription()).isSameAs(new boolean[]{true, true});
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[true, true]> but was:<[true, true]>.");
+        }
+        try {
+            new BooleanArrayAssertion(value, new FailDescription("Message")).isSameAs(new boolean[]{true, true});
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[true, true]> but was:<[true, true]>.");
+        }
+        try {
+            new BooleanArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[true, true]>.");
+        }
+        try {
+            new BooleanArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[true, true]>.");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        boolean[] value = new boolean[]{true, true};
+        new BooleanArrayAssertion(value, new FailDescription()).isNotSameAs(new boolean[]{true, true});
+        new BooleanArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new BooleanArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[true, true]>.");
+        }
+        try {
+            new BooleanArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[true, true]>.");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(new boolean[]{true, true}, true)).isEqualTo("[true, true]");
+
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new BooleanArrayAssertion(null, new FailDescription()).asString(new boolean[]{true, true}, false)).isEqualTo("[true, true]");
     }
 
 }

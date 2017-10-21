@@ -764,22 +764,94 @@ public final class CharArrayAssertionTest {
      * {@link CharArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new CharArrayAssertion(new char[0], new FailDescription()).createListAssertion().isEmpty();
-        new CharArrayAssertion(new char[]{'1', '2'}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new CharArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new CharArrayAssertion(new char[]{'1', '2'}, new FailDescription()).createListAssertion().isEmpty();
+            new CharArrayAssertion(new char[]{'1', '2'}, new FailDescription()).isNull();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
         }
         try {
-            new CharArrayAssertion(new char[]{'1', '2'}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new CharArrayAssertion(new char[]{'1', '2'}, new FailDescription("Message")).isNull();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
         }
+    }
+
+    /**
+     * {@link CharArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        char[] value = new char[]{'1', '2'};
+        new CharArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new CharArrayAssertion(value, new FailDescription()).isSameAs(new char[]{'1', '2'});
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new CharArrayAssertion(value, new FailDescription("Message")).isSameAs(new char[]{'1', '2'});
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new CharArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new CharArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link CharArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        char[] value = new char[]{'1', '2'};
+        new CharArrayAssertion(value, new FailDescription()).isNotSameAs(new char[]{'1', '2'});
+        new CharArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new CharArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new CharArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link CharArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new char[]{'1', '2'}, true)).isEqualTo("[1, 2]");
+
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new char[]{'1', '2'}, false)).isEqualTo("[1, 2]");
     }
 
 }

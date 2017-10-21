@@ -764,22 +764,94 @@ public final class ByteArrayAssertionTest {
      * {@link ByteArrayAssertion} class test.
      */
     @Test
-    public void createListAssertionTest() {
-        new ByteArrayAssertion(new byte[0], new FailDescription()).createListAssertion().isEmpty();
-        new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).createListAssertion().isNotEmpty();
+    public void isNullTest() {
+        new ByteArrayAssertion(null, new FailDescription()).isNull();
 
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).createListAssertion().isEmpty();
+            new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).isNull();
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
         }
         try {
-            new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription("Message")).createListAssertion().isEmpty();
+            new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription("Message")).isNull();
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
         }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        byte[] value = new byte[]{1, 2};
+        new ByteArrayAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new ByteArrayAssertion(value, new FailDescription()).isSameAs(new byte[]{1, 2});
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteArrayAssertion(value, new FailDescription("Message")).isSameAs(new byte[]{1, 2});
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteArrayAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        byte[] value = new byte[]{1, 2};
+        new ByteArrayAssertion(value, new FailDescription()).isNotSameAs(new byte[]{1, 2});
+        new ByteArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new ByteArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new ByteArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(new byte[]{1, 2}, true)).isEqualTo("[1, 2]");
+
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new ByteArrayAssertion(null, new FailDescription()).asString(new byte[]{1, 2}, false)).isEqualTo("[1, 2]");
     }
 
 }
