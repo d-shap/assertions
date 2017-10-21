@@ -234,9 +234,19 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
     }
 
     @Override
-    final List<Character> createList() {
-        char[] array = (char[]) getActual();
-        return ValueConverter.toCharacterList(array);
+    final List<Character> createList(final Object value) {
+        return ValueConverter.toCharacterList((char[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof char[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

@@ -174,9 +174,19 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
     }
 
     @Override
-    final List<Object> createList() {
-        Object[] array = (Object[]) getActual();
-        return ValueConverter.toObjectList(array);
+    final List<Object> createList(final Object value) {
+        return ValueConverter.toObjectList((Object[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof Object[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

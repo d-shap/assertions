@@ -234,9 +234,19 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
     }
 
     @Override
-    final List<Byte> createList() {
-        byte[] array = (byte[]) getActual();
-        return ValueConverter.toByteList(array);
+    final List<Byte> createList(final Object value) {
+        return ValueConverter.toByteList((byte[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof byte[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

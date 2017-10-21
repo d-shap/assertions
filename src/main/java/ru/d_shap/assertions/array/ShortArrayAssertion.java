@@ -234,9 +234,19 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
     }
 
     @Override
-    final List<Short> createList() {
-        short[] array = (short[]) getActual();
-        return ValueConverter.toShortList(array);
+    final List<Short> createList(final Object value) {
+        return ValueConverter.toShortList((short[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof short[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

@@ -174,9 +174,19 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
     }
 
     @Override
-    final List<Double> createList() {
-        double[] array = (double[]) getActual();
-        return ValueConverter.toDoubleList(array);
+    final List<Double> createList(final Object value) {
+        return ValueConverter.toDoubleList((double[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof double[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

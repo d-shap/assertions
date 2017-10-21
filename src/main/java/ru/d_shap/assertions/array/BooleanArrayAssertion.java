@@ -174,9 +174,19 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
     }
 
     @Override
-    final List<Boolean> createList() {
-        boolean[] array = (boolean[]) getActual();
-        return ValueConverter.toBooleanList(array);
+    final List<Boolean> createList(final Object value) {
+        return ValueConverter.toBooleanList((boolean[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof boolean[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

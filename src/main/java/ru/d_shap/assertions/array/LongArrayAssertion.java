@@ -174,9 +174,19 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
     }
 
     @Override
-    final List<Long> createList() {
-        long[] array = (long[]) getActual();
-        return ValueConverter.toLongList(array);
+    final List<Long> createList(final Object value) {
+        return ValueConverter.toLongList((long[]) value);
+    }
+
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof long[]) {
+            return createList(value).toString();
+        } else {
+            return value.toString();
+        }
     }
 
 }

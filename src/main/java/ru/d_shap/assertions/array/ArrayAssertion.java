@@ -147,7 +147,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      */
     public final IntAssertion toLength() {
         checkActualIsNotNull();
-        List<T> list = createList();
+        List<T> list = createList(getActual());
         return new IntAssertion(list.size(), getFailDescription(Messages.Check.ACTUAL_VALUE_LENGTH));
     }
 
@@ -161,15 +161,10 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     }
 
     final ListAssertion createListAssertion() {
-        List<T> list = createList();
+        List<T> list = createList(getActual());
         return new ListAssertion(list, getFailDescription());
     }
 
-    abstract List<T> createList();
-
-    @Override
-    protected final String asString(final Object value, final boolean actual) {
-        return null;
-    }
+    abstract List<T> createList(Object value);
 
 }
