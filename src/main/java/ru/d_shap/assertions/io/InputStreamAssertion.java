@@ -63,6 +63,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -74,6 +75,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -86,6 +88,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
+        checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expectedBytes.length), getFailDescription()).containsExactlyInOrder(expectedBytes);
     }
 
@@ -97,6 +100,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -108,6 +112,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -120,6 +125,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
+        checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
         new ByteArrayAssertion(actualAsByteArray(expectedBytes.length + 1), getFailDescription()).containsExactlyInOrder(expectedBytes);
     }
 

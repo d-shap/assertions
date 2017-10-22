@@ -63,6 +63,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new CharArrayAssertion(actualAsCharArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -74,6 +75,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new CharArrayAssertion(actualAsCharArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -86,6 +88,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
+        checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
         new CharArrayAssertion(actualAsCharArray(expectedChars.length), getFailDescription()).containsExactlyInOrder(expectedChars);
     }
 
@@ -97,6 +100,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new CharArrayAssertion(actualAsCharArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -108,6 +112,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
         new CharArrayAssertion(actualAsCharArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
     }
 
@@ -120,6 +125,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
+        checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
         new CharArrayAssertion(actualAsCharArray(expectedChars.length + 1), getFailDescription()).containsExactlyInOrder(expectedChars);
     }
 
