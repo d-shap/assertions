@@ -104,10 +104,6 @@ public final class InputStreamAssertionTest {
         new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription()).isNextBytesEqualTo(0, 0);
         new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription()).isNextBytesEqualTo(Arrays.asList((byte) 0, (byte) 0));
 
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isNextBytesEqualTo();
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isNextBytesEqualTo(new int[0]);
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isNextBytesEqualTo(new ArrayList<Byte>());
-
         try {
             new InputStreamAssertion(null, new FailDescription()).isNextBytesEqualTo((byte) 1);
             Assertions.fail("InputStreamAssertion test fail");
@@ -133,16 +129,34 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo((int[]) null);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo(new int[0]);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo((Iterable<Byte>) null);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo(new ArrayList<Byte>());
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isNextBytesEqualTo((byte) 1);
@@ -152,12 +166,6 @@ public final class InputStreamAssertionTest {
         }
         try {
             new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isNextBytesEqualTo(1);
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
-        }
-        try {
-            new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isNextBytesEqualTo(new ArrayList<Byte>());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
@@ -173,12 +181,6 @@ public final class InputStreamAssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>.");
-        }
-        try {
-            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isNextBytesEqualTo();
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1]>.");
         }
         try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[0]), new FailDescription()).isNextBytesEqualTo((byte) 1, (byte) 2);
@@ -237,10 +239,6 @@ public final class InputStreamAssertionTest {
         new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription()).isAllBytesEqualTo(0, 0, 0);
         new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription()).isAllBytesEqualTo(Arrays.asList((byte) 0, (byte) 0, (byte) 0));
 
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isAllBytesEqualTo();
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isAllBytesEqualTo(new int[0]);
-        new InputStreamAssertion(new ByteArrayInputStream(new byte[]{}), new FailDescription()).isAllBytesEqualTo(new ArrayList<Byte>());
-
         try {
             new InputStreamAssertion(null, new FailDescription()).isAllBytesEqualTo((byte) 1);
             Assertions.fail("InputStreamAssertion test fail");
@@ -266,16 +264,34 @@ public final class InputStreamAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isAllBytesEqualTo();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isAllBytesEqualTo((int[]) null);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isAllBytesEqualTo(new int[0]);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+        }
+        try {
             new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isAllBytesEqualTo((Iterable<Byte>) null);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{1, 2, 3}), new FailDescription()).isAllBytesEqualTo(new ArrayList<Byte>());
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isAllBytesEqualTo((byte) 1);
@@ -285,12 +301,6 @@ public final class InputStreamAssertionTest {
         }
         try {
             new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isAllBytesEqualTo(1);
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
-        }
-        try {
-            new InputStreamAssertion(new ErrorInputStream(), new FailDescription()).isAllBytesEqualTo(new ArrayList<Byte>());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
