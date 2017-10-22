@@ -373,16 +373,94 @@ public final class ReaderAssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
+    public void isNullTest() {
+        new ReaderAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), new FailDescription()).isNull();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.io.StringReader.*>.");
+        }
+        try {
+            new ReaderAssertion(new StringReader("\u0000\u0000\u0000"), new FailDescription("Message")).isNull();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Value should be null. Actual:<java.io.StringReader.*>.");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Reader value = new StringReader("\u0000\u0000\u0000");
+        new ReaderAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new ReaderAssertion(value, new FailDescription()).isSameAs(new StringReader("\u0000\u0000\u0000"));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.io.StringReader.*> but was:<java.io.StringReader.*>.");
+        }
+        try {
+            new ReaderAssertion(value, new FailDescription("Message")).isSameAs(new StringReader("\u0000\u0000\u0000"));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.io.StringReader.*> but was:<java.io.StringReader.*>.");
+        }
+        try {
+            new ReaderAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.io.StringReader.*>.");
+        }
+        try {
+            new ReaderAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.io.StringReader.*>.");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Reader value = new StringReader("\u0000\u0000\u0000");
+        new ReaderAssertion(value, new FailDescription()).isNotSameAs(new StringReader("\u0000\u0000\u0000"));
+        new ReaderAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new ReaderAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.io.StringReader.*>.");
+        }
+        try {
+            new ReaderAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.io.StringReader.*>.");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), true)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), true)).isNull();
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), true)).matches("java.io.StringReader.*");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), true)).matches("java.io.StringReader.*");
 
         Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), false)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), false)).isNull();
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), false)).matches("java.io.StringReader.*");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), false)).matches("java.io.StringReader.*");
     }
 
     /**

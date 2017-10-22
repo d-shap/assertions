@@ -371,16 +371,94 @@ public final class InputStreamAssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
+    public void isNullTest() {
+        new InputStreamAssertion(null, new FailDescription()).isNull();
+
+        try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription()).isNull();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.io.ByteArrayInputStream.*>.");
+        }
+        try {
+            new InputStreamAssertion(new ByteArrayInputStream(new byte[]{0, 0, 0}), new FailDescription("Message")).isNull();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Value should be null. Actual:<java.io.ByteArrayInputStream.*>.");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        InputStream value = new ByteArrayInputStream(new byte[]{0, 0, 0});
+        new InputStreamAssertion(value, new FailDescription()).isSameAs(value);
+
+        try {
+            new InputStreamAssertion(value, new FailDescription()).isSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>.");
+        }
+        try {
+            new InputStreamAssertion(value, new FailDescription("Message")).isSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>.");
+        }
+        try {
+            new InputStreamAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.io.ByteArrayInputStream.*>.");
+        }
+        try {
+            new InputStreamAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.io.ByteArrayInputStream.*>.");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        InputStream value = new ByteArrayInputStream(new byte[]{0, 0, 0});
+        new InputStreamAssertion(value, new FailDescription()).isNotSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
+        new InputStreamAssertion(value, new FailDescription()).isNotSameAs("test");
+
+        try {
+            new InputStreamAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.io.ByteArrayInputStream.*>.");
+        }
+        try {
+            new InputStreamAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.io.ByteArrayInputStream.*>.");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
     public void asStringTest() {
         Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), true)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), true)).isNull();
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), true)).matches("java.io.ByteArrayInputStream.*");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), true)).matches("java.io.ByteArrayInputStream.*");
 
         Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), false)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), false)).isNull();
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), false)).matches("java.io.ByteArrayInputStream.*");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), false)).matches("java.io.ByteArrayInputStream.*");
     }
 
     /**
