@@ -143,16 +143,13 @@ public class ReaderAssertion extends ReferenceAssertion {
             Reader actual = (Reader) getActual();
             StringWriter writer = new StringWriter(length);
             int count = 0;
-            while (true) {
+            while (count < length) {
                 int read = actual.read();
                 if (read < 0) {
                     break;
                 }
                 writer.write(read);
                 count++;
-                if (count >= length) {
-                    break;
-                }
             }
             return writer.toString().toCharArray();
         } catch (IOException ex) {

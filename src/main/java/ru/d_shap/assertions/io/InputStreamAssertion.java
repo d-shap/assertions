@@ -143,16 +143,13 @@ public class InputStreamAssertion extends ReferenceAssertion {
             InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
             int count = 0;
-            while (true) {
+            while (count < length) {
                 int read = actual.read();
                 if (read < 0) {
                     break;
                 }
                 baos.write(read);
                 count++;
-                if (count >= length) {
-                    break;
-                }
             }
             return baos.toByteArray();
         } catch (IOException ex) {
