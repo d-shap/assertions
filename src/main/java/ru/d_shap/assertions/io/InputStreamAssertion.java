@@ -52,7 +52,16 @@ public class InputStreamAssertion extends ReferenceAssertion {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        new IntAssertion(actualAsInt(), getFailDescription(Messages.Check.ACTUAL_STREAM_BYTE_READ)).isLessThanOrEqualTo(-1);
+        new IntAssertion(readActual(), getFailDescription(Messages.Check.ACTUAL_STREAM_BYTE_READ)).isLessThanOrEqualTo(-1);
+    }
+
+    private int readActual() {
+        try {
+            InputStream actual = (InputStream) getActual();
+            return actual.read();
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
     }
 
     /**
@@ -64,7 +73,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
+        createByteArrayAssertion(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -76,7 +85,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expected.length), getFailDescription()).containsExactlyInOrder(expected);
+        createByteArrayAssertion(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -89,7 +98,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
         checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expectedBytes.length), getFailDescription()).containsExactlyInOrder(expectedBytes);
+        createByteArrayAssertion(expectedBytes.length).containsExactlyInOrder(expectedBytes);
     }
 
     /**
@@ -101,7 +110,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
+        createByteArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -113,7 +122,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expected.length + 1), getFailDescription()).containsExactlyInOrder(expected);
+        createByteArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -126,19 +135,10 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
         checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        new ByteArrayAssertion(actualAsByteArray(expectedBytes.length + 1), getFailDescription()).containsExactlyInOrder(expectedBytes);
+        createByteArrayAssertion(expectedBytes.length + 1).containsExactlyInOrder(expectedBytes);
     }
 
-    private int actualAsInt() {
-        try {
-            InputStream actual = (InputStream) getActual();
-            return actual.read();
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
-    }
-
-    private byte[] actualAsByteArray(final int length) {
+    private ByteArrayAssertion createByteArrayAssertion(final int length) {
         try {
             InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
@@ -151,7 +151,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
                 baos.write(read);
                 count++;
             }
-            return baos.toByteArray();
+            return new ByteArrayAssertion(baos.toByteArray(), getFailDescription());
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
