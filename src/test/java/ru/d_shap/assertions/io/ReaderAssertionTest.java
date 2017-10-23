@@ -66,10 +66,22 @@ public final class ReaderAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ReaderAssertion(null, new FailDescription("Message")).isCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new ReaderAssertion(new ErrorReader(), new FailDescription()).isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            new ReaderAssertion(new ErrorReader(), new FailDescription("Message")).isCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), new FailDescription()).isCompleted();
@@ -90,7 +102,59 @@ public final class ReaderAssertionTest {
      */
     @Test
     public void toCharArrayTest() {
+        new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(4).containsExactlyInOrder('1', '2', '3');
+        new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(3).containsExactlyInOrder('1', '2', '3');
+        new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(2).containsExactlyInOrder('1', '2');
+        new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(1).containsExactlyInOrder('1');
 
+        try {
+            new ReaderAssertion(null, new FailDescription()).toCharArray(3);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ReaderAssertion(null, new FailDescription("Message")).toCharArray(3);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(0);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            new ReaderAssertion(new StringReader("123"), new FailDescription("Message")).toCharArray(0);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+        }
+        try {
+            new ReaderAssertion(new StringReader("123"), new FailDescription()).toCharArray(-1);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            new ReaderAssertion(new StringReader("123"), new FailDescription("Message")).toCharArray(-1);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+        }
+        try {
+            new ReaderAssertion(new ErrorReader(), new FailDescription()).toCharArray(3);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            new ReaderAssertion(new ErrorReader(), new FailDescription("Message")).toCharArray(3);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
+        }
     }
 
     /**
@@ -167,18 +231,6 @@ public final class ReaderAssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new ReaderAssertion(new ErrorReader(), new FailDescription()).isNextCharsEqualTo('1');
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
-        }
-        try {
-            new ReaderAssertion(new ErrorReader(), new FailDescription()).isNextCharsEqualTo(49);
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), new FailDescription()).isNextCharsEqualTo('1', '3');
@@ -302,18 +354,6 @@ public final class ReaderAssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new ReaderAssertion(new ErrorReader(), new FailDescription()).isAllCharsEqualTo('1');
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
-        }
-        try {
-            new ReaderAssertion(new ErrorReader(), new FailDescription()).isAllCharsEqualTo(49);
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             new ReaderAssertion(new StringReader("123"), new FailDescription()).isAllCharsEqualTo(49);
