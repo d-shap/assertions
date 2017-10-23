@@ -92,6 +92,8 @@ public final class Messages {
 
         public static final String ARGUMENT_IS_NOT_EMPTY_FALSE = "Argument should not be empty. The result is always false";
 
+        public static final String ARGUMENT_IS_NOT_VALID = "Argument should be valid";
+
         public static final String IS_TRUE = "Value should be true";
 
         public static final String IS_FALSE = "Value should be false";
