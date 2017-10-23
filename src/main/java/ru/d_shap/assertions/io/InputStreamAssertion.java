@@ -71,6 +71,8 @@ public class InputStreamAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ByteArrayAssertion toByteArray(final int length) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(length > 0);
         try {
             InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream(length);

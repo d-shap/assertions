@@ -71,6 +71,8 @@ public class ReaderAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray(final int length) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(length > 0);
         try {
             Reader actual = (Reader) getActual();
             StringWriter writer = new StringWriter(length);
