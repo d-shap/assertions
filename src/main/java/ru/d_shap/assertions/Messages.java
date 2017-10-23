@@ -61,9 +61,9 @@ public final class Messages {
 
         public static final String ACTUAL_ENUM_VALUE_COUNT = "Check enum value count";
 
-        public static final String ACTUAL_STREAM_BYTE_READ = "Check input stream byte read";
+        public static final String ACTUAL_STREAM_READ = "Check input stream bytes";
 
-        public static final String ACTUAL_READER_CHAR_READ = "Check reader char read";
+        public static final String ACTUAL_READER_READ = "Check reader chars";
 
         public static final String ACTUAL_BUFFER_POSITION = "Check buffer position";
 
