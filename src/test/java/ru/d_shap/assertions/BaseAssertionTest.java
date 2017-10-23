@@ -986,6 +986,27 @@ public final class BaseAssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void checkArgumentIsValidTest() {
+        new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsValid(true);
+
+        try {
+            new BaseAssertionImpl(null, new FailDescription()).checkArgumentIsValid(false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            new BaseAssertionImpl(null, new FailDescription("Message")).checkArgumentIsValid(false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void createAssertionErrorTest() {
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError()).hasMessage("");
         Assertions.assertThat(new BaseAssertionImpl(null, new FailDescription()).createAssertionError()).toCause().isNull();
