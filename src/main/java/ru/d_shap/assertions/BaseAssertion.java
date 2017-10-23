@@ -203,6 +203,17 @@ public abstract class BaseAssertion {
     }
 
     /**
+     * Check if the argument is valid.
+     *
+     * @param valid is the argument valid.
+     */
+    protected final void checkArgumentIsValid(final boolean valid) {
+        if (!valid) {
+            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_VALID);
+        }
+    }
+
+    /**
      * Create the assertion error based on the fail description.
      *
      * @return the assertion error.
