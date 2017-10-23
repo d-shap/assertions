@@ -70,7 +70,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
      * @param length the number of bytes to read from the actual.
      * @return the assertion.
      */
-    public ByteArrayAssertion toByteArray(final int length) {
+    public final ByteArrayAssertion toByteArray(final int length) {
         try {
             InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
