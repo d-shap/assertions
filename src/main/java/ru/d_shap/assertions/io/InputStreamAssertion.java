@@ -52,13 +52,38 @@ public class InputStreamAssertion extends ReferenceAssertion {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        new IntAssertion(readActual(), getFailDescription(Messages.Check.ACTUAL_STREAM_BYTE_READ)).isLessThanOrEqualTo(-1);
+        new IntAssertion(readActual(), getFailDescription(Messages.Check.ACTUAL_STREAM_READ)).isLessThanOrEqualTo(-1);
     }
 
     private int readActual() {
         try {
             InputStream actual = (InputStream) getActual();
             return actual.read();
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Make assertion about the bytes read from the actual.
+     *
+     * @param length the number of bytes to read from the actual.
+     * @return the assertion.
+     */
+    public ByteArrayAssertion toByteArray(final int length) {
+        try {
+            InputStream actual = (InputStream) getActual();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
+            int count = 0;
+            while (count < length) {
+                int read = actual.read();
+                if (read < 0) {
+                    break;
+                }
+                baos.write(read);
+                count++;
+            }
+            return new ByteArrayAssertion(baos.toByteArray(), getFailDescription(Messages.Check.ACTUAL_STREAM_READ));
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
@@ -73,7 +98,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createByteArrayAssertion(expected.length).containsExactlyInOrder(expected);
+        toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -85,7 +110,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createByteArrayAssertion(expected.length).containsExactlyInOrder(expected);
+        toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -98,7 +123,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
         checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        createByteArrayAssertion(expectedBytes.length).containsExactlyInOrder(expectedBytes);
+        toByteArray(expectedBytes.length).containsExactlyInOrder(expectedBytes);
     }
 
     /**
@@ -110,7 +135,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createByteArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
+        toByteArray(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -122,7 +147,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createByteArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
+        toByteArray(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -135,26 +160,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
         checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        createByteArrayAssertion(expectedBytes.length + 1).containsExactlyInOrder(expectedBytes);
-    }
-
-    private ByteArrayAssertion createByteArrayAssertion(final int length) {
-        try {
-            InputStream actual = (InputStream) getActual();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
-            int count = 0;
-            while (count < length) {
-                int read = actual.read();
-                if (read < 0) {
-                    break;
-                }
-                baos.write(read);
-                count++;
-            }
-            return new ByteArrayAssertion(baos.toByteArray(), getFailDescription());
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        toByteArray(expectedBytes.length + 1).containsExactlyInOrder(expectedBytes);
     }
 
     @Override

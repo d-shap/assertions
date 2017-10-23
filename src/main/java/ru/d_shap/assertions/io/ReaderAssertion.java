@@ -52,13 +52,38 @@ public class ReaderAssertion extends ReferenceAssertion {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        new IntAssertion(readActual(), getFailDescription(Messages.Check.ACTUAL_READER_CHAR_READ)).isLessThanOrEqualTo(-1);
+        new IntAssertion(readActual(), getFailDescription(Messages.Check.ACTUAL_READER_READ)).isLessThanOrEqualTo(-1);
     }
 
     private int readActual() {
         try {
             Reader actual = (Reader) getActual();
             return actual.read();
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Make assertion about the chars read from the actual.
+     *
+     * @param length the number of chars to read from the actual.
+     * @return the assertion.
+     */
+    public final CharArrayAssertion toCharArray(final int length) {
+        try {
+            Reader actual = (Reader) getActual();
+            StringWriter writer = new StringWriter(length);
+            int count = 0;
+            while (count < length) {
+                int read = actual.read();
+                if (read < 0) {
+                    break;
+                }
+                writer.write(read);
+                count++;
+            }
+            return new CharArrayAssertion(writer.toString().toCharArray(), getFailDescription(Messages.Check.ACTUAL_READER_READ));
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
@@ -73,7 +98,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createCharArrayAssertion(expected.length).containsExactlyInOrder(expected);
+        toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -85,7 +110,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createCharArrayAssertion(expected.length).containsExactlyInOrder(expected);
+        toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
     /**
@@ -98,7 +123,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
         checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
-        createCharArrayAssertion(expectedChars.length).containsExactlyInOrder(expectedChars);
+        toCharArray(expectedChars.length).containsExactlyInOrder(expectedChars);
     }
 
     /**
@@ -110,7 +135,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createCharArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
+        toCharArray(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -122,7 +147,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
-        createCharArrayAssertion(expected.length + 1).containsExactlyInOrder(expected);
+        toCharArray(expected.length + 1).containsExactlyInOrder(expected);
     }
 
     /**
@@ -135,26 +160,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
         checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
-        createCharArrayAssertion(expectedChars.length + 1).containsExactlyInOrder(expectedChars);
-    }
-
-    private CharArrayAssertion createCharArrayAssertion(final int length) {
-        try {
-            Reader actual = (Reader) getActual();
-            StringWriter writer = new StringWriter(length);
-            int count = 0;
-            while (count < length) {
-                int read = actual.read();
-                if (read < 0) {
-                    break;
-                }
-                writer.write(read);
-                count++;
-            }
-            return new CharArrayAssertion(writer.toString().toCharArray(), getFailDescription());
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        toCharArray(expectedChars.length + 1).containsExactlyInOrder(expectedChars);
     }
 
     @Override
