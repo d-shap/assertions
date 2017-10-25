@@ -2479,6 +2479,18 @@ public final class CharSequenceAssertionTest {
         new CharSequenceAssertion("знАчЕнИе", new FailDescription()).hasLength(8);
 
         try {
+            new CharSequenceAssertion(null, new FailDescription()).hasLength(6);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharSequenceAssertion(null, new FailDescription("Message")).hasLength(6);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new CharSequenceAssertion("vAlUe", new FailDescription()).hasLength(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
