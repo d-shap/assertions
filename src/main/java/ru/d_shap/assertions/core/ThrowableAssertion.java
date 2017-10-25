@@ -56,6 +56,8 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void hasMessage(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toMessage().isEqualTo(expected);
     }
 
@@ -65,6 +67,8 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void messageMatches(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toMessage().matches(expected);
     }
 
@@ -84,6 +88,8 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected class.
      */
     public final void isCauseInstanceOf(final Class<?> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toCause().isInstanceOf(expected);
     }
 
@@ -93,6 +99,8 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void hasCauseMessage(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toCause().hasMessage(expected);
     }
 
@@ -102,6 +110,8 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void causeMessageMatches(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toCause().messageMatches(expected);
     }
 
