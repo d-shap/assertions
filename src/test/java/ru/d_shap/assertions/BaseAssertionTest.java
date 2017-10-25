@@ -1249,7 +1249,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
@@ -1272,7 +1272,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
@@ -1296,7 +1296,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
@@ -1330,7 +1330,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
@@ -1355,7 +1355,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
@@ -1380,7 +1380,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 
