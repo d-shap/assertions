@@ -48,6 +48,14 @@ public final class IteratorAssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
+    public void toListTest() {
+
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).isEmpty();
         new IteratorAssertion(new HashSet<String>().iterator(), new FailDescription()).isEmpty();
