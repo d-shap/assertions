@@ -65,6 +65,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAll(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toDoubleObjectArray(expected));
     }
@@ -84,6 +85,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
@@ -103,6 +105,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactly(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toDoubleObjectArray(expected));
     }
@@ -122,6 +125,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
@@ -141,6 +145,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAny(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toDoubleObjectArray(expected));
     }
@@ -160,6 +165,7 @@ public class DoubleArrayAssertion extends ArrayAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsNone(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toDoubleObjectArray(expected));
     }

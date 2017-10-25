@@ -65,6 +65,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAll(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -75,6 +76,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -94,6 +96,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -104,6 +107,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -123,6 +127,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactly(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -133,6 +138,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -152,6 +158,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -162,6 +169,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -181,6 +189,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAny(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -191,6 +200,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -210,6 +220,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsNone(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
@@ -220,6 +231,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }

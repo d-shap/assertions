@@ -65,6 +65,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAll(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toFloatObjectArray(expected));
     }
@@ -84,6 +85,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toFloatObjectArray(expected));
     }
@@ -103,6 +105,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsExactly(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toFloatObjectArray(expected));
     }
@@ -122,6 +125,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toFloatObjectArray(expected));
     }
@@ -141,6 +145,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAny(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toFloatObjectArray(expected));
     }
@@ -160,6 +165,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsNone(final float... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toFloatObjectArray(expected));
     }

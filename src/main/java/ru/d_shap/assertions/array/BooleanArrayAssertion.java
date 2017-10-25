@@ -65,6 +65,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsAll(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toBooleanObjectArray(expected));
     }
@@ -84,6 +85,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toBooleanObjectArray(expected));
     }
@@ -103,6 +105,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsExactly(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toBooleanObjectArray(expected));
     }
@@ -122,6 +125,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toBooleanObjectArray(expected));
     }
@@ -141,6 +145,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsAny(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toBooleanObjectArray(expected));
     }
@@ -160,6 +165,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
      * @param expected the expected values.
      */
     public final void containsNone(final boolean... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toBooleanObjectArray(expected));
     }

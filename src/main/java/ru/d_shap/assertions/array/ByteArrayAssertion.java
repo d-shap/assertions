@@ -65,6 +65,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAll(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toByteObjectArray(expected));
     }
@@ -75,6 +76,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toByteObjectArray(expected));
     }
@@ -94,6 +96,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
     }
@@ -104,6 +107,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
     }
@@ -123,6 +127,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactly(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toByteObjectArray(expected));
     }
@@ -133,6 +138,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toByteObjectArray(expected));
     }
@@ -152,6 +158,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
     }
@@ -162,6 +169,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
     }
@@ -181,6 +189,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAny(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toByteObjectArray(expected));
     }
@@ -191,6 +200,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toByteObjectArray(expected));
     }
@@ -210,6 +220,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsNone(final byte... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toByteObjectArray(expected));
     }
@@ -220,6 +231,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toByteObjectArray(expected));
     }

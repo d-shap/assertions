@@ -65,6 +65,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAll(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toLongObjectArray(expected));
     }
@@ -84,6 +85,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
     }
@@ -103,6 +105,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactly(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toLongObjectArray(expected));
     }
@@ -122,6 +125,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
     }
@@ -141,6 +145,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAny(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toLongObjectArray(expected));
     }
@@ -160,6 +165,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsNone(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toLongObjectArray(expected));
     }

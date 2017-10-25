@@ -65,6 +65,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toIntegerObjectArray(expected));
     }
@@ -84,6 +85,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toIntegerObjectArray(expected));
     }
@@ -103,6 +105,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toIntegerObjectArray(expected));
     }
@@ -122,6 +125,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toIntegerObjectArray(expected));
     }
@@ -141,6 +145,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toIntegerObjectArray(expected));
     }
@@ -160,6 +165,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toIntegerObjectArray(expected));
     }
