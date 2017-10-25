@@ -24,8 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.FailDescription;
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the double buffer.
@@ -86,8 +85,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAll(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -105,8 +105,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -124,8 +125,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -143,8 +145,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -162,8 +165,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactly(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -181,8 +185,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -200,8 +205,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -219,8 +225,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -238,8 +245,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsAny(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -257,8 +265,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -276,8 +285,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void containsNone(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -295,8 +305,9 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final double... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toDoubleObjectArray(expected));
     }
 
     /**
@@ -309,7 +320,7 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
+    final List<Double> createList(final Object value, final boolean rewind) {
         DoubleBuffer buffer = (DoubleBuffer) getActual();
         int position = buffer.position();
         if (rewind) {
@@ -317,19 +328,22 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
         }
         List<Double> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
-            double value = buffer.get();
-            result.add(value);
+            double bufferValue = buffer.get();
+            result.add(bufferValue);
         }
         buffer.position(position);
-        return new ListAssertion(result, getFailDescription());
+        return result;
     }
 
-    private Double[] createArgumentArray(final double... array) {
-        Double[] result = new Double[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof DoubleBuffer) {
+            return createList(value, false).toString();
+        } else {
+            return value.toString();
         }
-        return result;
     }
 
 }

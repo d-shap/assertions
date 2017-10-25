@@ -24,8 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.FailDescription;
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the long buffer.
@@ -86,8 +85,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAll(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -105,8 +105,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -124,8 +125,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -143,8 +145,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -162,8 +165,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactly(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -181,8 +185,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -200,8 +205,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -219,8 +225,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -238,8 +245,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAny(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -257,8 +265,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -276,8 +285,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsNone(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -295,8 +305,9 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final long... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toLongObjectArray(expected));
     }
 
     /**
@@ -309,7 +320,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
+    final List<Long> createList(final Object value, final boolean rewind) {
         LongBuffer buffer = (LongBuffer) getActual();
         int position = buffer.position();
         if (rewind) {
@@ -317,19 +328,22 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
         }
         List<Long> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
-            long value = buffer.get();
-            result.add(value);
+            long bufferValue = buffer.get();
+            result.add(bufferValue);
         }
         buffer.position(position);
-        return new ListAssertion(result, getFailDescription());
+        return result;
     }
 
-    private Long[] createArgumentArray(final long... array) {
-        Long[] result = new Long[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof LongBuffer) {
+            return createList(value, false).toString();
+        } else {
+            return value.toString();
         }
-        return result;
     }
 
 }

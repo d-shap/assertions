@@ -24,8 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.FailDescription;
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the short buffer.
@@ -86,8 +85,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAll(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -96,8 +96,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -115,8 +116,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -125,8 +127,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -144,8 +147,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -154,8 +158,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -173,8 +178,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -183,8 +189,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -202,8 +209,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactly(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -212,8 +220,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -231,8 +240,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -241,8 +251,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -260,8 +271,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -270,8 +282,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -289,8 +302,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -299,8 +313,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -318,8 +333,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAny(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -328,8 +344,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -347,8 +364,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -357,8 +375,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -376,8 +395,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsNone(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -386,8 +406,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -405,8 +426,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final short... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -415,8 +437,9 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toShortObjectArray(expected));
     }
 
     /**
@@ -429,7 +452,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
+    final List<Short> createList(final Object value, final boolean rewind) {
         ShortBuffer buffer = (ShortBuffer) getActual();
         int position = buffer.position();
         if (rewind) {
@@ -437,27 +460,22 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
         }
         List<Short> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
-            short value = buffer.get();
-            result.add(value);
+            short bufferValue = buffer.get();
+            result.add(bufferValue);
         }
         buffer.position(position);
-        return new ListAssertion(result, getFailDescription());
-    }
-
-    private Short[] createArgumentArray(final short... array) {
-        Short[] result = new Short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
         return result;
     }
 
-    private Short[] createArgumentArray(final int... array) {
-        Short[] result = new Short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = (short) array[i];
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof ShortBuffer) {
+            return createList(value, false).toString();
+        } else {
+            return value.toString();
         }
-        return result;
     }
 
 }

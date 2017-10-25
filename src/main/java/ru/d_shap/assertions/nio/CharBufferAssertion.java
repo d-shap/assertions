@@ -24,8 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.FailDescription;
-import ru.d_shap.assertions.collection.CollectionAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Assertions for the char buffer.
@@ -86,8 +85,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAll(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -96,8 +96,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(createArgumentArray(expected));
+        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -115,8 +116,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -125,8 +127,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(createArgumentArray(expected));
+        doRewindAndContainsAll(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -144,8 +147,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -154,8 +158,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(createArgumentArray(expected));
+        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -173,8 +178,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -183,8 +189,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(createArgumentArray(expected));
+        doRewindAndContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -202,8 +209,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactly(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -212,8 +220,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(createArgumentArray(expected));
+        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -231,8 +240,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -241,8 +251,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(createArgumentArray(expected));
+        doRewindAndContainsExactly(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -260,8 +271,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -270,8 +282,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(createArgumentArray(expected));
+        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -289,8 +302,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -299,8 +313,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(createArgumentArray(expected));
+        doRewindAndContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -318,8 +333,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAny(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -328,8 +344,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(createArgumentArray(expected));
+        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -347,8 +364,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -357,8 +375,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(createArgumentArray(expected));
+        doRewindAndContainsAny(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -376,8 +395,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsNone(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -386,8 +406,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(createArgumentArray(expected));
+        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -405,8 +426,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final char... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -415,8 +437,9 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final int... expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(createArgumentArray(expected));
+        doRewindAndContainsNone(ValueConverter.toCharacterObjectArray(expected));
     }
 
     /**
@@ -429,7 +452,7 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
     }
 
     @Override
-    final CollectionAssertion createCollectionAssertion(final boolean rewind) {
+    final List<Character> createList(final Object value, final boolean rewind) {
         CharBuffer buffer = (CharBuffer) getActual();
         int position = buffer.position();
         if (rewind) {
@@ -437,27 +460,22 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
         }
         List<Character> result = new LinkedList<>();
         while (buffer.hasRemaining()) {
-            char value = buffer.get();
-            result.add(value);
+            char bufferValue = buffer.get();
+            result.add(bufferValue);
         }
         buffer.position(position);
-        return new ListAssertion(result, getFailDescription());
-    }
-
-    private Character[] createArgumentArray(final char... array) {
-        Character[] result = new Character[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
         return result;
     }
 
-    private Character[] createArgumentArray(final int... array) {
-        Character[] result = new Character[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = (char) array[i];
+    @Override
+    protected final String asString(final Object value, final boolean actual) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof CharBuffer) {
+            return createList(value, false).toString();
+        } else {
+            return value.toString();
         }
-        return result;
     }
 
 }
