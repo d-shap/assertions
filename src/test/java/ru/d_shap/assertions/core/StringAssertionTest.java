@@ -2625,15 +2625,10 @@ public final class StringAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("vAlUe", true)).isEqualTo("vAlUe");
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", true)).isEqualTo("знАчЕнИе");
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(1, true)).isEqualTo("1");
-
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("vAlUe", false)).isEqualTo("vAlUe");
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе", false)).isEqualTo("знАчЕнИе");
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(1, false)).isEqualTo("1");
+        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("vAlUe")).isEqualTo("vAlUe");
+        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
+        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(1)).isEqualTo("1");
     }
 
 }

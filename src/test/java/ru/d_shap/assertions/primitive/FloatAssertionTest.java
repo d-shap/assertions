@@ -769,17 +769,11 @@ public final class FloatAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(5.0f, true)).isEqualTo("5.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(60.0f, true)).isEqualTo("60.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(244.0f, true)).isEqualTo("244.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString("test", true)).isEqualTo("test");
-
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(5.0f, false)).isEqualTo("5.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(60.0f, false)).isEqualTo("60.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(244.0f, false)).isEqualTo("244.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString("test", false)).isEqualTo("test");
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(5.0f)).isEqualTo("5.0");
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(60.0f)).isEqualTo("60.0");
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(244.0f)).isEqualTo("244.0");
+        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString("test")).isEqualTo("test");
     }
 
 }

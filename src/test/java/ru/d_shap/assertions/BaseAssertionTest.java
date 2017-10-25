@@ -1404,7 +1404,7 @@ public final class BaseAssertionTest {
         }
 
         @Override
-        protected final String asString(final Object value, final boolean actual) {
+        protected final String asString(final Object value) {
             return value.toString();
         }
 

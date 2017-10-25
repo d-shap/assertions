@@ -922,15 +922,10 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), true)).isEqualTo("[val1, val2, val3, val4, val5]");
-
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"), false)).isEqualTo("[val1, val2, val3, val4, val5]");
+        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }
 
 }

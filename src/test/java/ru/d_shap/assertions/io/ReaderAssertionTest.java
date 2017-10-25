@@ -500,15 +500,10 @@ public final class ReaderAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), true)).matches("java.io.StringReader.*");
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), true)).matches("java.io.StringReader.*");
-
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""), false)).matches("java.io.StringReader.*");
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"), false)).matches("java.io.StringReader.*");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""))).matches("java.io.StringReader.*");
+        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"))).matches("java.io.StringReader.*");
     }
 
     /**

@@ -212,15 +212,10 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value", true)).isEqualTo("value");
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1, true)).isEqualTo("1");
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"), true)).isEqualTo("builder");
-
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value", false)).isEqualTo("value");
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1, false)).isEqualTo("1");
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"), false)).isEqualTo("builder");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value")).isEqualTo("value");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1)).isEqualTo("1");
+        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"))).isEqualTo("builder");
     }
 
 }

@@ -498,15 +498,10 @@ public final class InputStreamAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), true)).matches("java.io.ByteArrayInputStream.*");
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), true)).matches("java.io.ByteArrayInputStream.*");
-
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]), false)).matches("java.io.ByteArrayInputStream.*");
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}), false)).matches("java.io.ByteArrayInputStream.*");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]))).matches("java.io.ByteArrayInputStream.*");
+        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}))).matches("java.io.ByteArrayInputStream.*");
     }
 
     /**

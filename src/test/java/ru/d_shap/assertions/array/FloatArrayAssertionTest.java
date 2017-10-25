@@ -655,15 +655,10 @@ public final class FloatArrayAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new float[]{1.0f, 2.0f}, true)).isEqualTo("[1.0, 2.0]");
-
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new float[]{1.0f, 2.0f}, false)).isEqualTo("[1.0, 2.0]");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new FloatArrayAssertion(null, new FailDescription()).asString(new float[]{1.0f, 2.0f})).isEqualTo("[1.0, 2.0]");
     }
 
 }

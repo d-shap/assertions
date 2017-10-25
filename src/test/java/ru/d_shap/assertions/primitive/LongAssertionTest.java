@@ -301,17 +301,11 @@ public final class LongAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(5L, true)).isEqualTo("5");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(60L, true)).isEqualTo("60");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(244L, true)).isEqualTo("244");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString("test", true)).isEqualTo("test");
-
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(5L, false)).isEqualTo("5");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(60L, false)).isEqualTo("60");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(244L, false)).isEqualTo("244");
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString("test", false)).isEqualTo("test");
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(5L)).isEqualTo("5");
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(60L)).isEqualTo("60");
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(244L)).isEqualTo("244");
+        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString("test")).isEqualTo("test");
     }
 
 }

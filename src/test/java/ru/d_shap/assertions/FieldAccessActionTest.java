@@ -85,7 +85,7 @@ public final class FieldAccessActionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
+        protected String asString(final Object value) {
             return value.toString();
         }
 

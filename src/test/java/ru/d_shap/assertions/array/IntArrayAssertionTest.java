@@ -655,15 +655,10 @@ public final class IntArrayAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), true)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new int[]{1, 2}, true)).isEqualTo("[1, 2]");
-
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"), false)).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new int[]{1, 2}, false)).isEqualTo("[1, 2]");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IntArrayAssertion(null, new FailDescription()).asString(new int[]{1, 2})).isEqualTo("[1, 2]");
     }
 
 }

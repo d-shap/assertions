@@ -402,15 +402,10 @@ public final class ClassAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class, true)).isEqualTo("java.lang.Object");
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class, true)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test", true)).isEqualTo("test");
-
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class, false)).isEqualTo("java.lang.Object");
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class, false)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test", false)).isEqualTo("test");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class)).isEqualTo("java.lang.Object");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
+        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test")).isEqualTo("test");
     }
 
     /**

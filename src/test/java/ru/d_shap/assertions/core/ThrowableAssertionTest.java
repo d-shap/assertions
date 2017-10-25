@@ -318,17 +318,11 @@ public final class ThrowableAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Throwable(), true)).isEqualTo("java.lang.Throwable");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Exception(), true)).isEqualTo("java.lang.Exception");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException(), true)).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException("exception message"), true)).isEqualTo("java.lang.RuntimeException: exception message");
-
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Throwable(), false)).isEqualTo("java.lang.Throwable");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Exception(), false)).isEqualTo("java.lang.Exception");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException(), false)).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException("exception message"), false)).isEqualTo("java.lang.RuntimeException: exception message");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Throwable())).isEqualTo("java.lang.Throwable");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Exception())).isEqualTo("java.lang.Exception");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");
+        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException("exception message"))).isEqualTo("java.lang.RuntimeException: exception message");
     }
 
 }

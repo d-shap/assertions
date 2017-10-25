@@ -1076,15 +1076,10 @@ public final class MapAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(null, true)).isNull();
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new StringBuilder("test"), true)).isEqualTo("test");
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl(), true)).isEqualTo("{}");
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl("key1", "value1"), true)).isEqualTo("{key1=value1}");
-
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(null, false)).isNull();
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new StringBuilder("test"), false)).isEqualTo("test");
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl(), false)).isEqualTo("{}");
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl("key1", "value1"), false)).isEqualTo("{key1=value1}");
+        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl())).isEqualTo("{}");
+        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl("key1", "value1"))).isEqualTo("{key1=value1}");
     }
 
     /**

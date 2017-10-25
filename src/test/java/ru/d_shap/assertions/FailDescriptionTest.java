@@ -437,12 +437,8 @@ public final class FailDescriptionTest {
         }
 
         @Override
-        protected String asString(final Object value, final boolean actual) {
-            if (actual) {
-                return "actual" + value;
-            } else {
-                return "expected" + value;
-            }
+        protected String asString(final Object value) {
+            return value.toString();
         }
 
     }
