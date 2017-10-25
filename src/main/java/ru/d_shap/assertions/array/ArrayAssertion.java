@@ -160,7 +160,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
         toLength().isEqualTo(expected);
     }
 
-    final ListAssertion createListAssertion() {
+    private ListAssertion createListAssertion() {
         List<T> list = createList(getActual());
         return new ListAssertion(list, getFailDescription());
     }
