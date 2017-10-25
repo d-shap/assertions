@@ -1837,22 +1837,32 @@ public final class ShortBufferAssertionTest {
      * {@link ShortBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new ShortBufferAssertion(createShortBuffer(new short[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("ShortBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
-        }
-        try {
-            new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("ShortBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
-        }
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

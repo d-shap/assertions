@@ -1836,22 +1836,32 @@ public final class ByteBufferAssertionTest {
      * {@link ByteBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new ByteBufferAssertion(createByteBuffer(new byte[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("ByteBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
-        }
-        try {
-            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("ByteBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
-        }
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

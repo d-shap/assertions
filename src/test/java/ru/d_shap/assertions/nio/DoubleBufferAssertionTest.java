@@ -1357,22 +1357,32 @@ public final class DoubleBufferAssertionTest {
      * {@link DoubleBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("DoubleBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0, 2.0]>.");
-        }
-        try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("DoubleBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1.0, 2.0]>.");
-        }
+    }
+
+    /**
+     * {@link DoubleBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link DoubleBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link DoubleBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

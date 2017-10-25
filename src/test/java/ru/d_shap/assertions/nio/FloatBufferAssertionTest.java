@@ -1357,22 +1357,32 @@ public final class FloatBufferAssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new FloatBufferAssertion(createFloatBuffer(new float[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("FloatBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1.0, 2.0]>.");
-        }
-        try {
-            new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("FloatBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1.0, 2.0]>.");
-        }
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

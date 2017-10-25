@@ -1837,22 +1837,32 @@ public final class CharBufferAssertionTest {
      * {@link CharBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new CharBufferAssertion(createCharBuffer(new char[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("CharBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
-        }
-        try {
-            new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("CharBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
-        }
+    }
+
+    /**
+     * {@link CharBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link CharBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link CharBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

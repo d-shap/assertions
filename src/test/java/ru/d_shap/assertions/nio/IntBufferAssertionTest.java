@@ -1357,22 +1357,32 @@ public final class IntBufferAssertionTest {
      * {@link IntBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new IntBufferAssertion(createIntBuffer(new int[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("IntBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
-        }
-        try {
-            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("IntBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
-        }
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**

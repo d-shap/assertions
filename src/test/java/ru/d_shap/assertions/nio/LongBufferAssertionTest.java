@@ -1357,22 +1357,32 @@ public final class LongBufferAssertionTest {
      * {@link LongBufferAssertion} class test.
      */
     @Test
-    public void createCollectionAssertionTest() {
-        new LongBufferAssertion(createLongBuffer(new long[0]), new FailDescription()).createCollectionAssertion(false).isEmpty();
-        new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).createCollectionAssertion(false).isNotEmpty();
+    public void isNullTest() {
 
-        try {
-            new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("LongBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[1, 2]>.");
-        }
-        try {
-            new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription("Message")).createCollectionAssertion(false).isEmpty();
-            Assertions.fail("LongBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[1, 2]>.");
-        }
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void asStringTest() {
+
     }
 
     /**
