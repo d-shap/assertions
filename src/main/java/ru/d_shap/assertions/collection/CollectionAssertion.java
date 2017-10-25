@@ -129,6 +129,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAll(ValueConverter.toObjectArray(expected));
     }
@@ -160,6 +161,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAllInOrder(ValueConverter.toObjectArray(expected));
     }
@@ -193,6 +195,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsExactly(ValueConverter.toObjectArray(expected));
     }
@@ -227,6 +230,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsExactlyInOrder(ValueConverter.toObjectArray(expected));
     }
@@ -261,6 +265,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAny(ValueConverter.toObjectArray(expected));
     }
@@ -290,6 +295,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<?> expected) {
+        checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsNone(ValueConverter.toObjectArray(expected));
     }
