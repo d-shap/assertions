@@ -825,6 +825,18 @@ public final class IterableAssertionTest {
         new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).hasSize(5);
 
         try {
+            new IterableAssertion(null, new FailDescription()).hasSize(4);
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new IterableAssertion(null, new FailDescription("Message")).hasSize(4);
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
