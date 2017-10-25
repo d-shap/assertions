@@ -67,6 +67,29 @@ public class ReaderAssertion extends ReferenceAssertion {
     /**
      * Make assertion about the chars read from the actual.
      *
+     * @return the assertion.
+     */
+    public final CharArrayAssertion toCharArray() {
+        checkActualIsNotNull();
+        try {
+            Reader actual = (Reader) getActual();
+            StringWriter writer = new StringWriter();
+            while (true) {
+                int read = actual.read();
+                if (read < 0) {
+                    break;
+                }
+                writer.write(read);
+            }
+            return new CharArrayAssertion(writer.toString().toCharArray(), getFailDescription(Messages.Check.ACTUAL_READER_READ));
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Make assertion about the chars read from the actual.
+     *
      * @param length the number of chars to read from the actual.
      * @return the assertion.
      */
@@ -136,8 +159,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toCharArray(expected.length + 1).containsExactlyInOrder(expected);
+        toCharArray().containsExactlyInOrder(expected);
     }
 
     /**
@@ -148,8 +170,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toCharArray(expected.length + 1).containsExactlyInOrder(expected);
+        toCharArray().containsExactlyInOrder(expected);
     }
 
     /**
@@ -161,8 +182,7 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
-        toCharArray(expectedChars.length + 1).containsExactlyInOrder(expectedChars);
+        toCharArray().containsExactlyInOrder(expectedChars);
     }
 
     @Override

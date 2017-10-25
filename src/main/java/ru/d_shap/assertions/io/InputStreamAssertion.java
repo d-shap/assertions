@@ -67,6 +67,29 @@ public class InputStreamAssertion extends ReferenceAssertion {
     /**
      * Make assertion about the bytes read from the actual.
      *
+     * @return the assertion.
+     */
+    public final ByteArrayAssertion toByteArray() {
+        checkActualIsNotNull();
+        try {
+            InputStream actual = (InputStream) getActual();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            while (true) {
+                int read = actual.read();
+                if (read < 0) {
+                    break;
+                }
+                baos.write(read);
+            }
+            return new ByteArrayAssertion(baos.toByteArray(), getFailDescription(Messages.Check.ACTUAL_STREAM_READ));
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Make assertion about the bytes read from the actual.
+     *
      * @param length the number of bytes to read from the actual.
      * @return the assertion.
      */
@@ -136,8 +159,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toByteArray(expected.length + 1).containsExactlyInOrder(expected);
+        toByteArray().containsExactlyInOrder(expected);
     }
 
     /**
@@ -148,8 +170,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toByteArray(expected.length + 1).containsExactlyInOrder(expected);
+        toByteArray().containsExactlyInOrder(expected);
     }
 
     /**
@@ -161,8 +182,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        toByteArray(expectedBytes.length + 1).containsExactlyInOrder(expectedBytes);
+        toByteArray().containsExactlyInOrder(expectedBytes);
     }
 
     @Override
