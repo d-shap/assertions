@@ -49,6 +49,8 @@ public final class Messages {
 
         public static final String ACTUAL_VALUE_SIZE = "Check value size";
 
+        public static final String ACTUAL_ITERATOR_ELEMENTS = "Check iterator elements";
+
         public static final String ACTUAL_KEYS = "Check keys";
 
         public static final String ACTUAL_VALUES = "Check values";
