@@ -20,11 +20,12 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.Buffer;
+import java.util.List;
 
 import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.CollectionAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -44,7 +45,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion(false).isEmpty();
+        createListAssertion(false).isEmpty();
     }
 
     /**
@@ -52,7 +53,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isRewindAndEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion(true).isEmpty();
+        createListAssertion(true).isEmpty();
     }
 
     /**
@@ -60,7 +61,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null) {
-            createCollectionAssertion(false).isNullOrEmpty();
+            createListAssertion(false).isNullOrEmpty();
         }
     }
 
@@ -69,7 +70,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isRewindAndNullOrEmpty() {
         if (getActual() != null) {
-            createCollectionAssertion(true).isNullOrEmpty();
+            createListAssertion(true).isNullOrEmpty();
         }
     }
 
@@ -78,7 +79,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isNotEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion(false).isNotEmpty();
+        createListAssertion(false).isNotEmpty();
     }
 
     /**
@@ -86,159 +87,159 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      */
     public final void isRewindAndNotEmpty() {
         checkActualIsNotNull();
-        createCollectionAssertion(true).isNotEmpty();
+        createListAssertion(true).isNotEmpty();
     }
 
     final void doContains(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).contains(expected);
+        createListAssertion(false).contains(expected);
     }
 
     final void doRewindAndContains(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).contains(expected);
+        createListAssertion(true).contains(expected);
     }
 
     final void doDoesNotContain(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).doesNotContain(expected);
+        createListAssertion(false).doesNotContain(expected);
     }
 
     final void doRewindAndDoesNotContain(final T expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).doesNotContain(expected);
+        createListAssertion(true).doesNotContain(expected);
     }
 
     @SafeVarargs
     final void doContainsAll(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAll((Object[]) expected);
+        createListAssertion(false).containsAll((Object[]) expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAll(expected);
+        createListAssertion(false).containsAll(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAll(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAll((Object[]) expected);
+        createListAssertion(true).containsAll((Object[]) expected);
     }
 
     final void doRewindAndContainsAll(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAll(expected);
+        createListAssertion(true).containsAll(expected);
     }
 
     @SafeVarargs
     final void doContainsAllInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAllInOrder((Object[]) expected);
+        createListAssertion(false).containsAllInOrder((Object[]) expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAllInOrder(expected);
+        createListAssertion(false).containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAllInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAllInOrder((Object[]) expected);
+        createListAssertion(true).containsAllInOrder((Object[]) expected);
     }
 
     final void doRewindAndContainsAllInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAllInOrder(expected);
+        createListAssertion(true).containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsExactly(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsExactly((Object[]) expected);
+        createListAssertion(false).containsExactly((Object[]) expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsExactly(expected);
+        createListAssertion(false).containsExactly(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsExactly(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsExactly((Object[]) expected);
+        createListAssertion(true).containsExactly((Object[]) expected);
     }
 
     final void doRewindAndContainsExactly(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsExactly(expected);
+        createListAssertion(true).containsExactly(expected);
     }
 
     @SafeVarargs
     final void doContainsExactlyInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsExactlyInOrder((Object[]) expected);
+        createListAssertion(false).containsExactlyInOrder((Object[]) expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsExactlyInOrder(expected);
+        createListAssertion(false).containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsExactlyInOrder(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsExactlyInOrder((Object[]) expected);
+        createListAssertion(true).containsExactlyInOrder((Object[]) expected);
     }
 
     final void doRewindAndContainsExactlyInOrder(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsExactlyInOrder(expected);
+        createListAssertion(true).containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsAny(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAny((Object[]) expected);
+        createListAssertion(false).containsAny((Object[]) expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsAny(expected);
+        createListAssertion(false).containsAny(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAny(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAny((Object[]) expected);
+        createListAssertion(true).containsAny((Object[]) expected);
     }
 
     final void doRewindAndContainsAny(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsAny(expected);
+        createListAssertion(true).containsAny(expected);
     }
 
     @SafeVarargs
     final void doContainsNone(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsNone((Object[]) expected);
+        createListAssertion(false).containsNone((Object[]) expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(false).containsNone(expected);
+        createListAssertion(false).containsNone(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsNone(final T... expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsNone((Object[]) expected);
+        createListAssertion(true).containsNone((Object[]) expected);
     }
 
     final void doRewindAndContainsNone(final Iterable<T> expected) {
         checkActualIsNotNull();
-        createCollectionAssertion(true).containsNone(expected);
+        createListAssertion(true).containsNone(expected);
     }
 
     /**
@@ -370,11 +371,11 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
         }
     }
 
-    abstract CollectionAssertion createCollectionAssertion(boolean rewind);
-
-    @Override
-    protected final String asString(final Object value, final boolean actual) {
-        return null;
+    private ListAssertion createListAssertion(final boolean rewind) {
+        List<T> list = createList(getActual(), rewind);
+        return new ListAssertion(list, getFailDescription());
     }
+
+    abstract List<T> createList(Object value, boolean rewind);
 
 }
