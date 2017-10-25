@@ -480,10 +480,9 @@ public abstract class BaseAssertion {
     /**
      * Get the string representation of the value.
      *
-     * @param value  the value.
-     * @param actual is the value actual.
+     * @param value the value.
      * @return the string representation of the value.
      */
-    protected abstract String asString(Object value, boolean actual);
+    protected abstract String asString(Object value);
 
 }

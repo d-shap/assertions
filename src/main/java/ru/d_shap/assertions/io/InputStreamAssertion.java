@@ -186,7 +186,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     }
 
     @Override
-    protected final String asString(final Object value, final boolean actual) {
+    protected final String asString(final Object value) {
         if (value == null) {
             return null;
         } else {
