@@ -221,8 +221,6 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expectedValue the value of the expected entry.
      */
     public final void containsEntry(final Object expectedKey, final Object expectedValue) {
-        checkArgumentIsNotNull(expectedKey);
-        checkArgumentIsNotNull(expectedValue);
         Map<Object, Object> expected = new HashMap<>();
         expected.put(expectedKey, expectedValue);
         containsAll(expected);
@@ -235,8 +233,6 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expectedValue the value of the expected entry.
      */
     public final void doesNotContainEntry(final Object expectedKey, final Object expectedValue) {
-        checkArgumentIsNotNull(expectedKey);
-        checkArgumentIsNotNull(expectedValue);
         Map<Object, Object> expected = new HashMap<>();
         expected.put(expectedKey, expectedValue);
         containsNone(expected);
