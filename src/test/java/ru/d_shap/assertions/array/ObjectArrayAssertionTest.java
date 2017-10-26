@@ -56,6 +56,18 @@ public final class ObjectArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ObjectArrayAssertion(null, new FailDescription()).contains(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -81,6 +93,18 @@ public final class ObjectArrayAssertionTest {
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ObjectArrayAssertion(null, new FailDescription()).doesNotContain(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain("val1");
