@@ -161,10 +161,34 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription("Message")).contains("val");
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).contains(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription("Message")).contains(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).contains(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val3");
@@ -208,10 +232,34 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription("Message")).doesNotContain("val");
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).doesNotContain(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription("Message")).doesNotContain(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).doesNotContain(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val1");
@@ -259,7 +307,25 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription()).containsAll((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsAll((Iterable<?>) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -269,12 +335,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Iterable<?>) null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll(new ArrayList<String>());
@@ -352,7 +412,25 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription()).containsAllInOrder((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsAllInOrder((Iterable<?>) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -362,12 +440,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Iterable<?>) null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder(new ArrayList<String>());
@@ -442,6 +514,18 @@ public final class CollectionAssertionTest {
         }
         try {
             new CollectionAssertion(null, new FailDescription()).containsExactly(new ArrayList<String>());
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsExactly((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsExactly((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -544,6 +628,18 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<?>) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactlyInOrder((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
@@ -640,7 +736,25 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription()).containsAny((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsAny((Iterable<?>) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -650,12 +764,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Iterable<?>) null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny(new ArrayList<String>());
@@ -717,7 +825,25 @@ public final class CollectionAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CollectionAssertion(null, new FailDescription()).containsNone((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CollectionAssertion(null, new FailDescription()).containsNone((Iterable<?>) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Object[]) null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -727,12 +853,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Iterable<?>) null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone(new ArrayList<String>());
