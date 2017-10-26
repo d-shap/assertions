@@ -300,7 +300,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
-        checkActualIsNotNull();
         return toList().toSize();
     }
 
@@ -310,7 +309,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
-        checkActualIsNotNull();
         toList().hasSize(expected);
     }
 
