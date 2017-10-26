@@ -119,7 +119,25 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAll((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAll((Iterable<Float>) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAll((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAll((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -129,12 +147,6 @@ public final class FloatArrayAssertionTest {
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAll((Iterable<Float>) null);
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAll(new ArrayList<Float>());
@@ -190,7 +202,25 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAllInOrder((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Float>) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAllInOrder((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -200,12 +230,6 @@ public final class FloatArrayAssertionTest {
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAllInOrder((Iterable<Float>) null);
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAllInOrder(new ArrayList<Float>());
@@ -265,6 +289,18 @@ public final class FloatArrayAssertionTest {
         }
         try {
             new FloatArrayAssertion(null, new FailDescription()).containsExactly(new ArrayList<Float>());
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsExactly((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsExactly((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -350,6 +386,18 @@ public final class FloatArrayAssertionTest {
         }
         try {
             new FloatArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Float>());
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsExactlyInOrder((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -446,7 +494,25 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAny((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsAny((Iterable<Float>) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAny((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAny((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -456,12 +522,6 @@ public final class FloatArrayAssertionTest {
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
-        }
-        try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAny((Iterable<Float>) null);
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsAny(new ArrayList<Float>());
@@ -517,7 +577,25 @@ public final class FloatArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatArrayAssertion(null, new FailDescription()).containsNone((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(null, new FailDescription()).containsNone((Iterable<Float>) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsNone((float[]) null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsNone((Iterable<Float>) null);
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -527,12 +605,6 @@ public final class FloatArrayAssertionTest {
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsNone((Iterable<Float>) null);
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new FloatArrayAssertion(new float[]{1.0f, 2.0f}, new FailDescription()).containsNone(new ArrayList<Float>());

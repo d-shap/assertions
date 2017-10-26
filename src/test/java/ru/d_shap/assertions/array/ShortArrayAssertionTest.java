@@ -126,6 +126,24 @@ public final class ShortArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAll((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAll((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAll((Iterable<Short>) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ShortArrayAssertion(new short[]{1, 2}, new FailDescription()).containsAll((short[]) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -223,6 +241,24 @@ public final class ShortArrayAssertionTest {
         }
         try {
             new ShortArrayAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Short>());
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAllInOrder((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAllInOrder((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Short>) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -340,6 +376,24 @@ public final class ShortArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactly((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactly((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactly((Iterable<Short>) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ShortArrayAssertion(new short[]{1, 2}, new FailDescription()).containsExactly((short[]) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -452,6 +506,24 @@ public final class ShortArrayAssertionTest {
         }
         try {
             new ShortArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Short>());
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactlyInOrder((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactlyInOrder((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Short>) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -579,6 +651,24 @@ public final class ShortArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAny((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAny((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsAny((Iterable<Short>) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ShortArrayAssertion(new short[]{1, 2}, new FailDescription()).containsAny((short[]) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -676,6 +766,24 @@ public final class ShortArrayAssertionTest {
         }
         try {
             new ShortArrayAssertion(null, new FailDescription()).containsNone(new ArrayList<Short>());
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsNone((short[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsNone((int[]) null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ShortArrayAssertion(null, new FailDescription()).containsNone((Iterable<Short>) null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

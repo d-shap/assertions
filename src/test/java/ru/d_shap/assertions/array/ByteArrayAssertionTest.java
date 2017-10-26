@@ -126,6 +126,24 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAll((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAll((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAll((Iterable<Byte>) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).containsAll((byte[]) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -223,6 +241,24 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Byte>());
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAllInOrder((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAllInOrder((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -340,6 +376,24 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactly((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactly((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactly((Iterable<Byte>) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).containsExactly((byte[]) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -452,6 +506,24 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Byte>());
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactlyInOrder((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactlyInOrder((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -579,6 +651,24 @@ public final class ByteArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAny((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAny((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsAny((Iterable<Byte>) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new ByteArrayAssertion(new byte[]{1, 2}, new FailDescription()).containsAny((byte[]) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -676,6 +766,24 @@ public final class ByteArrayAssertionTest {
         }
         try {
             new ByteArrayAssertion(null, new FailDescription()).containsNone(new ArrayList<Byte>());
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsNone((byte[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsNone((int[]) null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new ByteArrayAssertion(null, new FailDescription()).containsNone((Iterable<Byte>) null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

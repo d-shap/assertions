@@ -119,7 +119,25 @@ public final class BooleanArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAll((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAll((Iterable<Boolean>) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAll((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAll((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -129,12 +147,6 @@ public final class BooleanArrayAssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAll((Iterable<Boolean>) null);
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAll(new ArrayList<Boolean>());
@@ -190,7 +202,25 @@ public final class BooleanArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAllInOrder((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Boolean>) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAllInOrder((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAllInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -200,12 +230,6 @@ public final class BooleanArrayAssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAllInOrder((Iterable<Boolean>) null);
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAllInOrder(new ArrayList<Boolean>());
@@ -265,6 +289,18 @@ public final class BooleanArrayAssertionTest {
         }
         try {
             new BooleanArrayAssertion(null, new FailDescription()).containsExactly(new ArrayList<Boolean>());
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsExactly((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsExactly((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -350,6 +386,18 @@ public final class BooleanArrayAssertionTest {
         }
         try {
             new BooleanArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Boolean>());
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsExactlyInOrder((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -446,7 +494,25 @@ public final class BooleanArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAny((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsAny((Iterable<Boolean>) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAny((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAny((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -456,12 +522,6 @@ public final class BooleanArrayAssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
-        }
-        try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAny((Iterable<Boolean>) null);
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsAny(new ArrayList<Boolean>());
@@ -517,7 +577,25 @@ public final class BooleanArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsNone((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(null, new FailDescription()).containsNone((Iterable<Boolean>) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsNone((boolean[]) null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsNone((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
@@ -527,12 +605,6 @@ public final class BooleanArrayAssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
-            new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsNone((Iterable<Boolean>) null);
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new BooleanArrayAssertion(new boolean[]{true, true}, new FailDescription()).containsNone(new ArrayList<Boolean>());

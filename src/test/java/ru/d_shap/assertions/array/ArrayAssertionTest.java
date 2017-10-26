@@ -236,16 +236,16 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAll();
-            Assertions.fail("ArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAll((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAll();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAll(new ArrayList<String>());
@@ -329,16 +329,16 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAllInOrder();
-            Assertions.fail("ArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAllInOrder((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAllInOrder();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAllInOrder(new ArrayList<String>());
@@ -617,16 +617,16 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAny();
-            Assertions.fail("ArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
-        }
-        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAny((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAny();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsAny(new ArrayList<String>());
@@ -694,16 +694,16 @@ public final class ArrayAssertionTest {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsNone();
-            Assertions.fail("ArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
-        }
-        try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsNone((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsNone();
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new ArrayAssertionImpl(Arrays.asList("val1", "val2"), new FailDescription()).doContainsNone(new ArrayList<String>());
