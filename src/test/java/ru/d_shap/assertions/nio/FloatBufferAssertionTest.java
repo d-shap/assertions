@@ -1440,6 +1440,7 @@ public final class FloatBufferAssertionTest {
         Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}))).isEqualTo("[1.0, 2.0, 3.0]");
         Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
+        Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
     }
 
     /**

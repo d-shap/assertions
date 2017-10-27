@@ -1920,6 +1920,7 @@ public final class ShortBufferAssertionTest {
         Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(createShortBuffer(new short[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(createShortBuffer(new short[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 2))).isEqualTo("[3, 4, 5]");
     }
 
     /**

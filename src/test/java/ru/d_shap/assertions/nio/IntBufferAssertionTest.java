@@ -1440,6 +1440,7 @@ public final class IntBufferAssertionTest {
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 2))).isEqualTo("[3, 4, 5]");
     }
 
     /**

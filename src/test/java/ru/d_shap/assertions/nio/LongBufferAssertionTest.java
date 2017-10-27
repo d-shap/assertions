@@ -1440,6 +1440,7 @@ public final class LongBufferAssertionTest {
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}))).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 2))).isEqualTo("[3, 4, 5]");
     }
 
     /**

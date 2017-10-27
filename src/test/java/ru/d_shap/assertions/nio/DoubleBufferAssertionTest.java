@@ -1440,6 +1440,7 @@ public final class DoubleBufferAssertionTest {
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
+        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
     }
 
     /**

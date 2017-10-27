@@ -1919,6 +1919,7 @@ public final class ByteBufferAssertionTest {
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 2))).isEqualTo("[3, 4, 5]");
     }
 
     /**
