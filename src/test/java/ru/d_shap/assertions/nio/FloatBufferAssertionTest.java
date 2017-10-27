@@ -1358,7 +1358,20 @@ public final class FloatBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new FloatBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).isNull();
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription("Message")).isNull();
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1366,7 +1379,33 @@ public final class FloatBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        FloatBuffer value = createFloatBuffer(new float[]{1.0f, 2.0f});
+        new FloatBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new FloatBufferAssertion(value, new FailDescription()).isSameAs(createFloatBuffer(new float[]{1.0f, 2.0f}));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatBufferAssertion(value, new FailDescription("Message")).isSameAs(createFloatBuffer(new float[]{1.0f, 2.0f}));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1374,7 +1413,22 @@ public final class FloatBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        FloatBuffer value = createFloatBuffer(new float[]{1.0f, 2.0f});
+        new FloatBufferAssertion(value, new FailDescription()).isNotSameAs(createFloatBuffer(new float[]{1.0f, 2.0f}));
+        new FloatBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new FloatBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0, 2.0]>.");
+        }
+        try {
+            new FloatBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1382,7 +1436,10 @@ public final class FloatBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}))).isEqualTo("[1.0, 2.0, 3.0]");
+        Assertions.assertThat(new FloatBufferAssertion(null, new FailDescription()).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
     }
 
     /**

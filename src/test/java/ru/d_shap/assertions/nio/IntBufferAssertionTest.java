@@ -1358,7 +1358,20 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new IntBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription()).isNull();
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
+        }
+        try {
+            new IntBufferAssertion(createIntBuffer(new int[]{1, 2}), new FailDescription("Message")).isNull();
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1366,7 +1379,33 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        IntBuffer value = createIntBuffer(new int[]{1, 2});
+        new IntBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new IntBufferAssertion(value, new FailDescription()).isSameAs(createIntBuffer(new int[]{1, 2}));
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new IntBufferAssertion(value, new FailDescription("Message")).isSameAs(createIntBuffer(new int[]{1, 2}));
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new IntBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new IntBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1374,7 +1413,22 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        IntBuffer value = createIntBuffer(new int[]{1, 2});
+        new IntBufferAssertion(value, new FailDescription()).isNotSameAs(createIntBuffer(new int[]{1, 2}));
+        new IntBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new IntBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new IntBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1382,7 +1436,10 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
     /**

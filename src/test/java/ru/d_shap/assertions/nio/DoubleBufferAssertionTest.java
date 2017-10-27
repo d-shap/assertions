@@ -1358,7 +1358,20 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new DoubleBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).isNull();
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1.0, 2.0]>.");
+        }
+        try {
+            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).isNull();
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1366,7 +1379,33 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        DoubleBuffer value = createDoubleBuffer(new double[]{1.0, 2.0});
+        new DoubleBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new DoubleBufferAssertion(value, new FailDescription()).isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new DoubleBufferAssertion(value, new FailDescription("Message")).isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new DoubleBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
+        try {
+            new DoubleBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1374,7 +1413,22 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        DoubleBuffer value = createDoubleBuffer(new double[]{1.0, 2.0});
+        new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+        new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0, 2.0]>.");
+        }
+        try {
+            new DoubleBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1.0, 2.0]>.");
+        }
     }
 
     /**
@@ -1382,7 +1436,10 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
+        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
     }
 
     /**

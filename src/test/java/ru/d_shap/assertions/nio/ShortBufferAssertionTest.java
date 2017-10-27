@@ -1838,7 +1838,20 @@ public final class ShortBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new ShortBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), new FailDescription()).isNull();
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
+        }
+        try {
+            new ShortBufferAssertion(createShortBuffer(new short[]{1, 2}), new FailDescription("Message")).isNull();
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1846,7 +1859,33 @@ public final class ShortBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        ShortBuffer value = createShortBuffer(new short[]{1, 2});
+        new ShortBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new ShortBufferAssertion(value, new FailDescription()).isSameAs(createShortBuffer(new short[]{1, 2}));
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ShortBufferAssertion(value, new FailDescription("Message")).isSameAs(createShortBuffer(new short[]{1, 2}));
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ShortBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new ShortBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1854,7 +1893,22 @@ public final class ShortBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        ShortBuffer value = createShortBuffer(new short[]{1, 2});
+        new ShortBufferAssertion(value, new FailDescription()).isNotSameAs(createShortBuffer(new short[]{1, 2}));
+        new ShortBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new ShortBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new ShortBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1862,7 +1916,10 @@ public final class ShortBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(createShortBuffer(new short[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(new ShortBufferAssertion(null, new FailDescription()).asString(createShortBuffer(new short[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
     /**

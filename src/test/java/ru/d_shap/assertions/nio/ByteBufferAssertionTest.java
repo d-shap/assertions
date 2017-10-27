@@ -1837,7 +1837,20 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new ByteBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription()).isNull();
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
+        }
+        try {
+            new ByteBufferAssertion(createByteBuffer(new byte[]{1, 2}), new FailDescription("Message")).isNull();
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1845,7 +1858,33 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        ByteBuffer value = createByteBuffer(new byte[]{1, 2});
+        new ByteBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new ByteBufferAssertion(value, new FailDescription()).isSameAs(createByteBuffer(new byte[]{1, 2}));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteBufferAssertion(value, new FailDescription("Message")).isSameAs(createByteBuffer(new byte[]{1, 2}));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new ByteBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1853,7 +1892,22 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        ByteBuffer value = createByteBuffer(new byte[]{1, 2});
+        new ByteBufferAssertion(value, new FailDescription()).isNotSameAs(createByteBuffer(new byte[]{1, 2}));
+        new ByteBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new ByteBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new ByteBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1861,7 +1915,10 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
     /**

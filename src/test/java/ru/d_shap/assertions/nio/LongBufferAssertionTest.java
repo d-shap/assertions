@@ -1358,7 +1358,20 @@ public final class LongBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
+        new LongBufferAssertion(null, new FailDescription()).isNull();
 
+        try {
+            new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).isNull();
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1, 2]>.");
+        }
+        try {
+            new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription("Message")).isNull();
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1366,7 +1379,33 @@ public final class LongBufferAssertionTest {
      */
     @Test
     public void isSameAsTest() {
+        LongBuffer value = createLongBuffer(new long[]{1L, 2L});
+        new LongBufferAssertion(value, new FailDescription()).isSameAs(value);
 
+        try {
+            new LongBufferAssertion(value, new FailDescription()).isSameAs(createLongBuffer(new long[]{1L, 2L}));
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new LongBufferAssertion(value, new FailDescription("Message")).isSameAs(createLongBuffer(new long[]{1L, 2L}));
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>.");
+        }
+        try {
+            new LongBufferAssertion(value, new FailDescription()).isSameAs("test");
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
+        try {
+            new LongBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1374,7 +1413,22 @@ public final class LongBufferAssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
+        LongBuffer value = createLongBuffer(new long[]{1L, 2L});
+        new LongBufferAssertion(value, new FailDescription()).isNotSameAs(createLongBuffer(new long[]{1L, 2L}));
+        new LongBufferAssertion(value, new FailDescription()).isNotSameAs("test");
 
+        try {
+            new LongBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1, 2]>.");
+        }
+        try {
+            new LongBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1, 2]>.");
+        }
     }
 
     /**
@@ -1382,7 +1436,10 @@ public final class LongBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-
+        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L}))).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}))).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
     /**
