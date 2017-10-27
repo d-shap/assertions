@@ -246,7 +246,6 @@ public class MapAssertion extends ReferenceAssertion {
     public final void containsAll(final Map<?, ?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.isEmpty());
         new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsAll(expected.entrySet());
     }
 
@@ -269,7 +268,6 @@ public class MapAssertion extends ReferenceAssertion {
     public final void containsAny(final Map<?, ?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.isEmpty());
         new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsAny(expected.entrySet());
     }
 
@@ -281,7 +279,6 @@ public class MapAssertion extends ReferenceAssertion {
     public final void containsNone(final Map<?, ?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.isEmpty());
         new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsNone(expected.entrySet());
     }
 
