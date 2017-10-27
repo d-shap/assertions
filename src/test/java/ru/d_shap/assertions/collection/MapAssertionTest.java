@@ -174,10 +174,40 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey("key2");
 
         try {
+            new MapAssertion(null, new FailDescription()).containsKey("key3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsKey("key3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey("key3");
@@ -202,10 +232,40 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey("key4");
 
         try {
+            new MapAssertion(null, new FailDescription()).doesNotContainKey("key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).doesNotContainKey("key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).doesNotContainKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).doesNotContainKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).doesNotContainKey(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey("key1");
@@ -233,28 +293,52 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys(Arrays.asList("key1", "key2"));
 
         try {
+            new MapAssertion(null, new FailDescription()).containsAllKeys("key1", "key2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAllKeys(Arrays.asList("key1", "key2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAllKeys((Object[]) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAllKeys((Iterable<?>) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys((Object[]) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys();
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys((Iterable<?>) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys();
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys(new ArrayList<String>());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys("key3");
@@ -306,16 +390,40 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl(), new FailDescription()).containsKeysExactly(new ArrayList<String>());
 
         try {
+            new MapAssertion(null, new FailDescription()).containsKeysExactly("key1", "key2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsKeysExactly(Arrays.asList("key1", "key2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsKeysExactly((Object[]) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsKeysExactly((Iterable<?>) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly((Object[]) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly((Iterable<?>) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly("key1");
@@ -393,28 +501,52 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey(Arrays.asList("key1", "key3", "key5"));
 
         try {
+            new MapAssertion(null, new FailDescription()).containsAnyKey("key1", "key2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAnyKey(Arrays.asList("key1", "key2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAnyKey((Object[]) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsAnyKey((Iterable<?>) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey((Object[]) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey();
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey((Iterable<?>) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey();
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey(new ArrayList<String>());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey("key3");
@@ -468,28 +600,52 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey(Arrays.asList("key6", "key7", "key8"));
 
         try {
+            new MapAssertion(null, new FailDescription()).containsNoKey("key1", "key2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsNoKey(Arrays.asList("key1", "key2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsNoKey((Object[]) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsNoKey((Iterable<?>) null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey((Object[]) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey();
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey((Iterable<?>) null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey();
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey(new ArrayList<String>());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey("key1");
@@ -685,6 +841,18 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            new MapAssertion(null, new FailDescription()).containsAll(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsAll(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAll(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -751,6 +919,18 @@ public final class MapAssertionTest {
         }
         try {
             new MapAssertion(null, new FailDescription("Message")).containsExactly(new MapImpl());
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsExactly(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsExactly(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -832,6 +1012,18 @@ public final class MapAssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            new MapAssertion(null, new FailDescription()).containsAny(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsAny(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAny(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -885,6 +1077,18 @@ public final class MapAssertionTest {
         }
         try {
             new MapAssertion(null, new FailDescription("Message")).containsNone(new MapImpl());
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription()).containsNone(null);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new MapAssertion(null, new FailDescription("Message")).containsNone(null);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
