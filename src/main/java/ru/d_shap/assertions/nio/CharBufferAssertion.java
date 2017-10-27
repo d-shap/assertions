@@ -453,7 +453,7 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
 
     @Override
     final List<Character> createList(final Object value, final boolean rewind) {
-        CharBuffer buffer = (CharBuffer) getActual();
+        CharBuffer buffer = (CharBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();

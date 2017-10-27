@@ -321,7 +321,7 @@ public class IntBufferAssertion extends BufferAssertion<Integer> {
 
     @Override
     final List<Integer> createList(final Object value, final boolean rewind) {
-        IntBuffer buffer = (IntBuffer) getActual();
+        IntBuffer buffer = (IntBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();

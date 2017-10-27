@@ -321,7 +321,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
 
     @Override
     final List<Long> createList(final Object value, final boolean rewind) {
-        LongBuffer buffer = (LongBuffer) getActual();
+        LongBuffer buffer = (LongBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();

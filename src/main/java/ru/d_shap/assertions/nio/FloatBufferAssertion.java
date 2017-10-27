@@ -321,7 +321,7 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
 
     @Override
     final List<Float> createList(final Object value, final boolean rewind) {
-        FloatBuffer buffer = (FloatBuffer) getActual();
+        FloatBuffer buffer = (FloatBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();

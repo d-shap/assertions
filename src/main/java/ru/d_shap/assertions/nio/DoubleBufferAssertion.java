@@ -321,7 +321,7 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
 
     @Override
     final List<Double> createList(final Object value, final boolean rewind) {
-        DoubleBuffer buffer = (DoubleBuffer) getActual();
+        DoubleBuffer buffer = (DoubleBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();

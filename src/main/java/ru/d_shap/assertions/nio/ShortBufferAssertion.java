@@ -453,7 +453,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
 
     @Override
     final List<Short> createList(final Object value, final boolean rewind) {
-        ShortBuffer buffer = (ShortBuffer) getActual();
+        ShortBuffer buffer = (ShortBuffer) value;
         int position = buffer.position();
         if (rewind) {
             buffer.rewind();
