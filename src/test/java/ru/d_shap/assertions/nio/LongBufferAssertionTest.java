@@ -216,6 +216,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).containsAll((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsAll((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).containsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -314,6 +326,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAll((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAll((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).rewindAndContainsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -392,6 +416,18 @@ public final class LongBufferAssertionTest {
         }
         try {
             new LongBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Long>());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsAllInOrder((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -500,6 +536,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).rewindAndContainsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -587,6 +635,18 @@ public final class LongBufferAssertionTest {
         }
         try {
             new LongBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Long>());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsExactly((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -704,6 +764,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).rewindAndContainsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -796,6 +868,18 @@ public final class LongBufferAssertionTest {
         }
         try {
             new LongBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Long>());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsExactlyInOrder((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -918,6 +1002,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).rewindAndContainsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1016,6 +1112,18 @@ public final class LongBufferAssertionTest {
         }
         try {
             new LongBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Long>());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsAny((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -1120,6 +1228,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAny((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsAny((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).rewindAndContainsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1207,6 +1327,18 @@ public final class LongBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new LongBufferAssertion(null, new FailDescription()).containsNone((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).containsNone((Iterable<Long>) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new LongBufferAssertion(createLongBuffer(new long[]{1L, 2L}), new FailDescription()).containsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1281,6 +1413,18 @@ public final class LongBufferAssertionTest {
         }
         try {
             new LongBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Long>());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsNone((long[]) null);
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new LongBufferAssertion(null, new FailDescription()).rewindAndContainsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

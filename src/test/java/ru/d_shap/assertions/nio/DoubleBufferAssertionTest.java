@@ -216,6 +216,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAll((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAll((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -314,6 +326,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -392,6 +416,18 @@ public final class DoubleBufferAssertionTest {
         }
         try {
             new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Double>());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -500,6 +536,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -587,6 +635,18 @@ public final class DoubleBufferAssertionTest {
         }
         try {
             new DoubleBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Double>());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsExactly((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -704,6 +764,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -796,6 +868,18 @@ public final class DoubleBufferAssertionTest {
         }
         try {
             new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -918,6 +1002,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1016,6 +1112,18 @@ public final class DoubleBufferAssertionTest {
         }
         try {
             new DoubleBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Double>());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAny((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -1120,6 +1228,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1207,6 +1327,18 @@ public final class DoubleBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsNone((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).containsNone((Iterable<Double>) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1281,6 +1413,18 @@ public final class DoubleBufferAssertionTest {
         }
         try {
             new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Double>());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone((double[]) null);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

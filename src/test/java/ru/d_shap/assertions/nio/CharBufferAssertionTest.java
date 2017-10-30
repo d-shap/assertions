@@ -223,6 +223,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).containsAll((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAll((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAll((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsAll((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -365,6 +383,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAll((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAll((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -480,6 +516,24 @@ public final class CharBufferAssertionTest {
         }
         try {
             new CharBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Character>());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -632,6 +686,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAllInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -757,6 +829,24 @@ public final class CharBufferAssertionTest {
         }
         try {
             new CharBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Character>());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactly((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactly((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactly((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -919,6 +1009,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactly((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1049,6 +1157,24 @@ public final class CharBufferAssertionTest {
         }
         try {
             new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Character>());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -1216,6 +1342,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsExactlyInOrder((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1351,6 +1495,24 @@ public final class CharBufferAssertionTest {
         }
         try {
             new CharBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Character>());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAny((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAny((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsAny((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -1499,6 +1661,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsAny((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).rewindAndContainsAny((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1625,6 +1805,24 @@ public final class CharBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new CharBufferAssertion(null, new FailDescription()).containsNone((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsNone((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).containsNone((Iterable<Character>) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new CharBufferAssertion(createCharBuffer(new char[]{'1', '2'}), new FailDescription()).containsNone((char[]) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1731,6 +1929,24 @@ public final class CharBufferAssertionTest {
         }
         try {
             new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Character>());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone((char[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone((int[]) null);
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new CharBufferAssertion(null, new FailDescription()).rewindAndContainsNone((Iterable<Character>) null);
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

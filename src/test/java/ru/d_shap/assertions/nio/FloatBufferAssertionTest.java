@@ -216,6 +216,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAll((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAll((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).containsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -314,6 +326,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAll((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAll((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).rewindAndContainsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -392,6 +416,18 @@ public final class FloatBufferAssertionTest {
         }
         try {
             new FloatBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Float>());
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAllInOrder((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -500,6 +536,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).rewindAndContainsAllInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -587,6 +635,18 @@ public final class FloatBufferAssertionTest {
         }
         try {
             new FloatBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Float>());
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsExactly((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsExactly((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -704,6 +764,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).rewindAndContainsExactly((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -796,6 +868,18 @@ public final class FloatBufferAssertionTest {
         }
         try {
             new FloatBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Float>());
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsExactlyInOrder((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -918,6 +1002,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).rewindAndContainsExactlyInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1016,6 +1112,18 @@ public final class FloatBufferAssertionTest {
         }
         try {
             new FloatBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Float>());
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAny((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsAny((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -1120,6 +1228,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAny((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsAny((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).rewindAndContainsAny((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1207,6 +1327,18 @@ public final class FloatBufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
+            new FloatBufferAssertion(null, new FailDescription()).containsNone((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).containsNone((Iterable<Float>) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
             new FloatBufferAssertion(createFloatBuffer(new float[]{1.0f, 2.0f}), new FailDescription()).containsNone((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -1281,6 +1413,18 @@ public final class FloatBufferAssertionTest {
         }
         try {
             new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Float>());
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsNone((float[]) null);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            new FloatBufferAssertion(null, new FailDescription()).rewindAndContainsNone((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
