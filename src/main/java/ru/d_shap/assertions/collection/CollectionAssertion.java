@@ -83,7 +83,6 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void contains(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         if (!((Collection) getActual()).contains(expected)) {
             throw createAssertionErrorWithActual(Messages.Fail.CONTAINS, expected);
         }
@@ -96,7 +95,6 @@ public class CollectionAssertion extends ReferenceAssertion {
      */
     public final void doesNotContain(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         if (((Collection) getActual()).contains(expected)) {
             throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN, expected);
         }
