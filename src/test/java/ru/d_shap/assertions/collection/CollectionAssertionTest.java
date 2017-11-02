@@ -153,6 +153,9 @@ public final class CollectionAssertionTest {
     public void containsTest() {
         new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val1");
         new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val2");
+        new CollectionAssertion(Arrays.asList(null, "val1", "val2"), new FailDescription()).contains(null);
+        new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).contains(null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).contains(null);
 
         try {
             new CollectionAssertion(null, new FailDescription()).contains("val");
@@ -165,30 +168,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(null, new FailDescription()).contains(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(null, new FailDescription("Message")).contains(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).contains(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val3");
@@ -224,6 +203,8 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val3");
         new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(1);
         new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(new StringBuilder("test1"));
+        new CollectionAssertion(Arrays.asList("val1", null), new FailDescription()).doesNotContain("val3");
+        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(null);
 
         try {
             new CollectionAssertion(null, new FailDescription()).doesNotContain("val");
@@ -236,30 +217,6 @@ public final class CollectionAssertionTest {
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(null, new FailDescription()).doesNotContain(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(null, new FailDescription("Message")).doesNotContain(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).doesNotContain(null);
-            Assertions.fail("CollectionAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val1");
@@ -279,6 +236,18 @@ public final class CollectionAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).doesNotContain(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
+        }
+        try {
+            new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription("Message")).doesNotContain(null);
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
+        }
     }
 
     /**
@@ -293,6 +262,8 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val5", "val4");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val1", "val4", "val5", "val2");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll("val3", "val1", "val4", null, "val2");
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
             new CollectionAssertion(null, new FailDescription()).containsAll("val");
@@ -398,6 +369,8 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val1", "val1", "val2", "val2"), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
             new CollectionAssertion(null, new FailDescription()).containsAllInOrder("val");
@@ -503,6 +476,8 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val1", "val2", "val3", "val4", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
         new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactly();
         new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactly(new ArrayList<String>());
 
@@ -612,6 +587,8 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
         new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder();
         new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
 
@@ -722,6 +699,10 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val6", "val2", "val4");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny("val7", "val9", "val1", "val5", "val3");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny("val7", "val9", "val1", null, "val3");
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny("val7", "val9", null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny(Arrays.asList("val7", "val9", null));
 
         try {
             new CollectionAssertion(null, new FailDescription()).containsAny("val");
@@ -811,6 +792,10 @@ public final class CollectionAssertionTest {
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val4", "val5", "val6");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", "val4");
         new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone("val8", "val4");
+        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", "val4", null);
+        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", "val4", null));
 
         try {
             new CollectionAssertion(null, new FailDescription()).containsNone("val");
