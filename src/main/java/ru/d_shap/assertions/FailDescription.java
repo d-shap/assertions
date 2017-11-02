@@ -31,7 +31,11 @@ public final class FailDescription {
 
     private final List<String> _messages;
 
+    private boolean _actualDefined;
+
     private String _actual;
+
+    private boolean _expectedDefined;
 
     private String _expected;
 
@@ -43,7 +47,9 @@ public final class FailDescription {
     public FailDescription() {
         super();
         _messages = new ArrayList<>();
+        _actualDefined = false;
         _actual = null;
+        _expectedDefined = false;
         _expected = null;
         _throwable = null;
     }
@@ -96,12 +102,15 @@ public final class FailDescription {
      * @return current object for the chain call.
      */
     public FailDescription addActual(final BaseAssertion assertion) {
+        _actualDefined = true;
         Object actual = assertion.getActual();
+        String actualStr;
         if (actual == null) {
-            _actual = null;
+            actualStr = null;
         } else {
-            _actual = "<" + assertion.asString(actual) + ">";
+            actualStr = assertion.asString(actual);
         }
+        _actual = "<" + actualStr + ">";
         return this;
     }
 
@@ -113,11 +122,14 @@ public final class FailDescription {
      * @return current object for the chain call.
      */
     public FailDescription addExpected(final BaseAssertion assertion, final Object expected) {
+        _expectedDefined = true;
+        String expectedStr;
         if (expected == null) {
-            _expected = null;
+            expectedStr = null;
         } else {
-            _expected = "<" + assertion.asString(expected) + ">";
+            expectedStr = assertion.asString(expected);
         }
+        _expected = "<" + expectedStr + ">";
         return this;
     }
 
@@ -130,11 +142,20 @@ public final class FailDescription {
      * @return current object for the chain call.
      */
     public FailDescription addExpected(final BaseAssertion assertion, final Object expectedFrom, final Object expectedTo) {
-        if (expectedFrom == null || expectedTo == null) {
-            _expected = null;
+        _expectedDefined = true;
+        String expectedFromStr;
+        if (expectedFrom == null) {
+            expectedFromStr = null;
         } else {
-            _expected = "<" + assertion.asString(expectedFrom) + ":" + assertion.asString(expectedTo) + ">";
+            expectedFromStr = assertion.asString(expectedFrom);
         }
+        String expectedToStr;
+        if (expectedTo == null) {
+            expectedToStr = null;
+        } else {
+            expectedToStr = assertion.asString(expectedTo);
+        }
+        _expected = "<" + expectedFromStr + ":" + expectedToStr + ">";
         return this;
     }
 
@@ -162,20 +183,20 @@ public final class FailDescription {
     }
 
     private boolean addValuesMessage() {
-        if (_actual == null) {
-            if (_expected == null) {
-                return false;
+        if (_actualDefined) {
+            if (_expectedDefined) {
+                addMessage("Expected:" + _expected + " but was:" + _actual);
+                return true;
             } else {
-                addMessage("Expected:" + _expected);
+                addMessage("Actual:" + _actual);
                 return true;
             }
         } else {
-            if (_expected == null) {
-                addMessage("Actual:" + _actual);
+            if (_expectedDefined) {
+                addMessage("Expected:" + _expected);
                 return true;
             } else {
-                addMessage("Expected:" + _expected + " but was:" + _actual);
-                return true;
+                return false;
             }
         }
     }
