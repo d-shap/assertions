@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.junit.Test;
 
@@ -172,6 +171,8 @@ public final class MapAssertionTest {
     public void containsKeyTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey("key1");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey("key2");
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsKey(null);
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsKey(null);
 
         try {
             new MapAssertion(null, new FailDescription()).containsKey("key3");
@@ -184,30 +185,6 @@ public final class MapAssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new MapAssertion(null, new FailDescription()).containsKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new MapAssertion(null, new FailDescription("Message")).containsKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).containsKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKey("key3");
@@ -230,6 +207,8 @@ public final class MapAssertionTest {
     public void doesNotContainKeyTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey("key3");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey("key4");
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).doesNotContainKey("key3");
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey(null);
 
         try {
             new MapAssertion(null, new FailDescription()).doesNotContainKey("key1");
@@ -242,30 +221,6 @@ public final class MapAssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new MapAssertion(null, new FailDescription()).doesNotContainKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new MapAssertion(null, new FailDescription("Message")).doesNotContainKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription("Message")).doesNotContainKey(null);
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainKey("key1");
@@ -290,7 +245,9 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys("key2");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys("key1", "key2");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys("key2", "key1");
-        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys(Arrays.asList("key1", "key2"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAllKeys(Arrays.asList("key2", "key1"));
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsAllKeys(null, "key1");
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsAllKeys(Arrays.asList(null, "key1"));
 
         try {
             new MapAssertion(null, new FailDescription()).containsAllKeys("key1", "key2");
@@ -385,7 +342,9 @@ public final class MapAssertionTest {
     public void containsKeysExactlyTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly("key1", "key2");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly("key2", "key1");
-        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly(Arrays.asList("key1", "key2"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsKeysExactly(Arrays.asList("key2", "key1"));
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsKeysExactly(null, "key1");
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsKeysExactly(Arrays.asList(null, "key1"));
         new MapAssertion(new MapImpl(), new FailDescription()).containsKeysExactly();
         new MapAssertion(new MapImpl(), new FailDescription()).containsKeysExactly(new ArrayList<String>());
 
@@ -498,7 +457,9 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey("key2", "key1");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey("key1", "key3", "key5");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey("key6", "key2", "key4");
-        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey(Arrays.asList("key1", "key3", "key5"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAnyKey(Arrays.asList("key6", "key2", "key4"));
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsAnyKey("key6", null, "key4");
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsAnyKey(Arrays.asList("key6", null, "key4"));
 
         try {
             new MapAssertion(null, new FailDescription()).containsAnyKey("key1", "key2");
@@ -597,7 +558,11 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey("key4", "key3");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey("key6", "key7", "key8");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey("key7", "key6", "key8");
-        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey(Arrays.asList("key6", "key7", "key8"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey(Arrays.asList("key7", "key6", "key8"));
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsNoKey("key7", "key6", "key8");
+        new MapAssertion(new MapImpl("key1", "value1", null, "value2"), new FailDescription()).containsNoKey(Arrays.asList("key7", "key6", "key8"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey("key7", null, "key8");
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNoKey(Arrays.asList("key7", null, "key8"));
 
         try {
             new MapAssertion(null, new FailDescription()).containsNoKey("key1", "key2");
@@ -691,6 +656,8 @@ public final class MapAssertionTest {
     @Test
     public void toValuesTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).toValues().isNotEmpty();
+        new MapAssertion(new MapImpl("key1", "value1", "key2", null), new FailDescription()).toValues().contains("value1");
+        new MapAssertion(new MapImpl("key1", "value1", "key2", null), new FailDescription()).toValues().contains(null);
 
         try {
             new MapAssertion(null, new FailDescription()).toValues();
@@ -725,6 +692,8 @@ public final class MapAssertionTest {
     public void containsEntryTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsEntry("key1", "value1");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsEntry("key2", "value2");
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsEntry(null, "value1");
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).containsEntry("key1", null);
 
         try {
             new MapAssertion(null, new FailDescription()).containsEntry("key", "value");
@@ -786,6 +755,8 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainEntry("key2", "value1");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainEntry(null, "value");
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).doesNotContainEntry("key", null);
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).doesNotContainEntry("key1", "value1");
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).doesNotContainEntry("key1", "value1");
 
         try {
             new MapAssertion(null, new FailDescription()).doesNotContainEntry("key", "value");
@@ -827,6 +798,8 @@ public final class MapAssertionTest {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAll(new MapImpl("key1", "value1"));
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAll(new MapImpl("key2", "value2"));
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAll(new MapImpl("key1", "value1", "key2", "value2"));
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsAll(new MapImpl(null, "value1", "key2", "value2"));
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).containsAll(new MapImpl("key1", null, "key2", "value2"));
 
         try {
             new MapAssertion(null, new FailDescription()).containsAll(new MapImpl());
@@ -909,6 +882,8 @@ public final class MapAssertionTest {
     public void containsExactlyTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsExactly(new MapImpl("key1", "value1", "key2", "value2"));
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsExactly(new MapImpl("key2", "value2", "key1", "value1"));
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsExactly(new MapImpl(null, "value1", "key2", "value2"));
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).containsExactly(new MapImpl("key1", null, "key2", "value2"));
         new MapAssertion(new MapImpl(), new FailDescription()).containsExactly(new MapImpl());
 
         try {
@@ -998,6 +973,8 @@ public final class MapAssertionTest {
     public void containsAnyTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAny(new MapImpl("key1", "value1", "key3", "value3", "key5", "value5"));
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsAny(new MapImpl("key4", "value4", "key2", "value2", "key1", "value1"));
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsAny(new MapImpl(null, "value1", "key3", "value3", "key5", "value5"));
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).containsAny(new MapImpl("key1", null, "key3", "value3", "key5", "value5"));
 
         try {
             new MapAssertion(null, new FailDescription()).containsAny(new MapImpl());
@@ -1068,6 +1045,10 @@ public final class MapAssertionTest {
     public void containsNoneTest() {
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNone(new MapImpl("key3", "value3", "key4", "value4", "key5", "value5"));
         new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNone(new MapImpl("key", "value"));
+        new MapAssertion(new MapImpl(null, "value1", "key2", "value2"), new FailDescription()).containsNone(new MapImpl("key1", "value1"));
+        new MapAssertion(new MapImpl("key1", null, "key2", "value2"), new FailDescription()).containsNone(new MapImpl("key1", "value1"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNone(new MapImpl(null, "value1"));
+        new MapAssertion(new MapImpl("key1", "value1", "key2", "value2"), new FailDescription()).containsNone(new MapImpl("key1", null));
 
         try {
             new MapAssertion(null, new FailDescription()).containsNone(new MapImpl());
@@ -1291,7 +1272,7 @@ public final class MapAssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class MapImpl extends TreeMap<String, String> {
+    private static final class MapImpl extends HashMap<String, String> {
 
         private static final long serialVersionUID = 1L;
 

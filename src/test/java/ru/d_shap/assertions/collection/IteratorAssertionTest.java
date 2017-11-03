@@ -222,6 +222,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3"));
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2", "val3", "val4");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", null, "val4").iterator(), new FailDescription()).isNextElementsEqualTo("val1", "val2", null, "val4");
+        new IteratorAssertion(Arrays.asList("val1", "val2", null, "val4").iterator(), new FailDescription()).isNextElementsEqualTo(Arrays.asList("val1", "val2", null, "val4"));
 
         try {
             new IteratorAssertion(null, new FailDescription()).isNextElementsEqualTo("val1", "val2");
@@ -316,6 +318,9 @@ public final class IteratorAssertionTest {
     public void containsTest() {
         new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).contains("val1");
         new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).contains("val2");
+        new IteratorAssertion(Arrays.asList(null, "val1", "val2").iterator(), new FailDescription()).contains(null);
+        new IteratorAssertion(Arrays.asList("val1", null, "val2").iterator(), new FailDescription()).contains(null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", null).iterator(), new FailDescription()).contains(null);
 
         try {
             new IteratorAssertion(null, new FailDescription()).contains("val");
@@ -328,30 +333,6 @@ public final class IteratorAssertionTest {
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(null, new FailDescription()).contains(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(null, new FailDescription("Message")).contains(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).contains(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription("Message")).contains(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).contains("val3");
@@ -387,6 +368,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain("val3");
         new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain(1);
         new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain(new StringBuilder("test1"));
+        new IteratorAssertion(Arrays.asList("val1", null).iterator(), new FailDescription()).doesNotContain("val3");
+        new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain(null);
 
         try {
             new IteratorAssertion(null, new FailDescription()).doesNotContain("val");
@@ -399,30 +382,6 @@ public final class IteratorAssertionTest {
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(null, new FailDescription()).doesNotContain(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(null, new FailDescription("Message")).doesNotContain(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
-        }
-        try {
-            new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription("Message")).doesNotContain(null);
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             new IteratorAssertion(Arrays.asList("val1", "val2").iterator(), new FailDescription()).doesNotContain("val1");
@@ -442,6 +401,18 @@ public final class IteratorAssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", null, "val2").iterator(), new FailDescription()).doesNotContain(null);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check iterator elements. Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
+        }
+        try {
+            new IteratorAssertion(Arrays.asList("val1", null, "val2").iterator(), new FailDescription("Message")).doesNotContain(null);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
+        }
     }
 
     /**
@@ -456,6 +427,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAll("val3", "val5", "val4");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAll("val3", "val1", "val4", "val5", "val2");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAll("val3", "val1", "val4", null, "val2");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
             new IteratorAssertion(null, new FailDescription()).containsAll("val");
@@ -561,6 +534,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val1", "val1", "val2", "val2").iterator(), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
             new IteratorAssertion(null, new FailDescription()).containsAllInOrder("val");
@@ -666,6 +641,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsExactly("val1", "val2", "val3", "val4", "val5");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", "val5");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
         new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).containsExactly();
         new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).containsExactly(new ArrayList<String>());
 
@@ -775,6 +752,8 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
         new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).containsExactlyInOrder();
         new IteratorAssertion(new ArrayList<String>().iterator(), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
 
@@ -885,6 +864,10 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsAny("val6", "val2", "val4");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAny("val7", "val9", "val1", "val5", "val3");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator(), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAny("val7", "val9", "val1", null, "val3");
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAny("val7", "val9", null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3", "val4", null).iterator(), new FailDescription()).containsAny(Arrays.asList("val7", "val9", null));
 
         try {
             new IteratorAssertion(null, new FailDescription()).containsAny("val");
@@ -974,6 +957,10 @@ public final class IteratorAssertionTest {
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsNone("val4", "val5", "val6");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsNone("val8", "val4");
         new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", null).iterator(), new FailDescription()).containsNone("val8", "val4");
+        new IteratorAssertion(Arrays.asList("val1", "val2", null).iterator(), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsNone("val8", "val4", null);
+        new IteratorAssertion(Arrays.asList("val1", "val2", "val3").iterator(), new FailDescription()).containsNone(Arrays.asList("val8", "val4", null));
 
         try {
             new IteratorAssertion(null, new FailDescription()).containsNone("val");
