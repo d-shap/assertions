@@ -133,7 +133,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      */
     public final void contains(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         toList().contains(expected);
     }
 
@@ -144,7 +143,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      */
     public final void doesNotContain(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         toList().doesNotContain(expected);
     }
 
