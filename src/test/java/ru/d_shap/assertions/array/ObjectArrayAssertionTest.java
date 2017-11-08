@@ -48,24 +48,15 @@ public final class ObjectArrayAssertionTest {
     public void containsTest() {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val1");
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val2");
+        new ObjectArrayAssertion(new String[]{null, "val1", "val2"}, new FailDescription()).contains(null);
+        new ObjectArrayAssertion(new String[]{"val1", null, "val2"}, new FailDescription()).contains(null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2", null}, new FailDescription()).contains(null);
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).contains("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new ObjectArrayAssertion(null, new FailDescription()).contains(null);
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains(null);
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val3");
@@ -87,24 +78,14 @@ public final class ObjectArrayAssertionTest {
     @Test
     public void doesNotContainTest() {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain("val3");
+        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).doesNotContain("val3");
+        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain(null);
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).doesNotContain("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new ObjectArrayAssertion(null, new FailDescription()).doesNotContain(null);
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain(null);
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain("val1");
@@ -129,6 +110,8 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll("val1", "val3");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll("val4", "val2");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll(Arrays.asList("val4", "val2"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAll(null, "val2");
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAll(Arrays.asList(null, "val2"));
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).containsAll("val");
@@ -212,6 +195,8 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder("val1");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAllInOrder("val1", "val3", "val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val3", "val4"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAllInOrder("val1", "val3", null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val3", null));
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).containsAllInOrder("val");
@@ -302,6 +287,8 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val2", "val3", "val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val3", "val2", "val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly(Arrays.asList("val1", "val3", "val2", "val4"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactly("val1", "val3", "val2", null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactly(Arrays.asList("val1", "val3", "val2", null));
         new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactly();
         new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactly(new ArrayList<String>());
 
@@ -399,6 +386,8 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder("val1", "val2");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", null));
         new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactlyInOrder();
         new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
 
@@ -504,6 +493,8 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny("val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny("val5", "val3");
         new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny(Arrays.asList("val5", "val3"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAny("val5", null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAny(Arrays.asList("val5", null));
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).containsAny("val");
@@ -587,6 +578,10 @@ public final class ObjectArrayAssertionTest {
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3");
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3", "val4");
         new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(Arrays.asList("val3", "val4"));
+        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).containsNone("val3", "val4");
+        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).containsNone(Arrays.asList("val3", "val4"));
+        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3", null);
+        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(Arrays.asList("val3", null));
 
         try {
             new ObjectArrayAssertion(null, new FailDescription()).containsNone("val");
