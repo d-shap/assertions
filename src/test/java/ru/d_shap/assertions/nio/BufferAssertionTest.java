@@ -284,18 +284,6 @@ public final class BufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new BufferAssertionImpl((ByteBuffer) null, new FailDescription()).doContains(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doContains(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
             new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 1, new FailDescription()).doContains((byte) 1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -337,18 +325,6 @@ public final class BufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new BufferAssertionImpl((ByteBuffer) null, new FailDescription()).doRewindAndContains(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doRewindAndContains(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
             new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, 1, new FailDescription()).doRewindAndContains((byte) 2);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -384,18 +360,6 @@ public final class BufferAssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new BufferAssertionImpl((ByteBuffer) null, new FailDescription()).doDoesNotContain(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doDoesNotContain(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
             new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doDoesNotContain((byte) 1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -428,18 +392,6 @@ public final class BufferAssertionTest {
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BufferAssertionImpl((ByteBuffer) null, new FailDescription()).doRewindAndDoesNotContain(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doRewindAndDoesNotContain(null);
-            Assertions.fail("BufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
             new BufferAssertionImpl(Arrays.asList((byte) 1, (byte) 2), 0, new FailDescription()).doRewindAndDoesNotContain((byte) 1);
