@@ -90,7 +90,6 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected key.
      */
     public final void containsKey(final Object expected) {
-        checkActualIsNotNull();
         toKeys().contains(expected);
     }
 
@@ -100,7 +99,6 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected key.
      */
     public final void doesNotContainKey(final Object expected) {
-        checkActualIsNotNull();
         toKeys().doesNotContain(expected);
     }
 

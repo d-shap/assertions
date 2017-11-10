@@ -132,7 +132,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void contains(final Object expected) {
-        checkActualIsNotNull();
         toList().contains(expected);
     }
 
@@ -142,7 +141,6 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContain(final Object expected) {
-        checkActualIsNotNull();
         toList().doesNotContain(expected);
     }
 
