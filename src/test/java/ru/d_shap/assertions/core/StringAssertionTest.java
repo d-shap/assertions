@@ -2625,7 +2625,12 @@ public final class StringAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(null));
+            Assertions.fail("StringAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("vAlUe")).isEqualTo("vAlUe");
         Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
         Assertions.assertThat(new StringAssertion("vAlUe", new FailDescription()).asString(1)).isEqualTo("1");

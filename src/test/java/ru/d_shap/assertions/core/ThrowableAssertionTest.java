@@ -498,7 +498,12 @@ public final class ThrowableAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(null));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Throwable())).isEqualTo("java.lang.Throwable");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new Exception())).isEqualTo("java.lang.Exception");
         Assertions.assertThat(new ThrowableAssertion(new Throwable(), new FailDescription()).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");

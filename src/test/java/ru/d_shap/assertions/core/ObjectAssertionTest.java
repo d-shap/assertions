@@ -212,7 +212,12 @@ public final class ObjectAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(null));
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString("value")).isEqualTo("value");
         Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(1)).isEqualTo("1");
         Assertions.assertThat(new ObjectAssertion(new Object(), new FailDescription()).asString(new StringBuilder("builder"))).isEqualTo("builder");

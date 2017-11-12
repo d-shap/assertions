@@ -2666,7 +2666,12 @@ public final class CharSequenceAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(null));
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("vAlUe")).isEqualTo("vAlUe");
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
         Assertions.assertThat(new CharSequenceAssertion("vAlUe", new FailDescription()).asString(1)).isEqualTo("1");

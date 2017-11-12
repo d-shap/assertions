@@ -403,7 +403,12 @@ public final class ComparableAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(null));
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(5)).isEqualTo("5");
         Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(60)).isEqualTo("60");
         Assertions.assertThat(new ComparableAssertion(5, new FailDescription()).asString(244)).isEqualTo("244");

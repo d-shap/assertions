@@ -402,7 +402,12 @@ public final class ClassAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(null));
+            Assertions.fail("ClassAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
         Assertions.assertThat(new ClassAssertion(Values.class, new FailDescription()).asString("test")).isEqualTo("test");
