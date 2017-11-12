@@ -206,7 +206,7 @@ public class DoubleAssertion extends BaseAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        return String.valueOf(value);
+        return value.toString();
     }
 
 }
