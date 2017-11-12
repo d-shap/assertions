@@ -2132,7 +2132,12 @@ public final class CharBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new CharBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new CharBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new CharBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new CharBufferAssertion(null, new FailDescription()).asString(createCharBuffer(new char[]{'1', '2', '3'}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new CharBufferAssertion(null, new FailDescription()).asString(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}))).isEqualTo("[1, 2, 3, 4, 5]");

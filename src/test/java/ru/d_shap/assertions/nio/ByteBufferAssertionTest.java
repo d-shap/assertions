@@ -2130,7 +2130,12 @@ public final class ByteBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new ByteBufferAssertion(null, new FailDescription()).asString(createByteBuffer(new byte[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");

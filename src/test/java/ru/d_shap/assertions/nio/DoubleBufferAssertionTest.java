@@ -1580,7 +1580,12 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
         Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");

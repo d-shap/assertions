@@ -1580,7 +1580,12 @@ public final class IntBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new IntBufferAssertion(null, new FailDescription()).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");

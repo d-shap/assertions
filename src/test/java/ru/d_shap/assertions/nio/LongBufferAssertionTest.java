@@ -1580,7 +1580,12 @@ public final class LongBufferAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L}))).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(new LongBufferAssertion(null, new FailDescription()).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}))).isEqualTo("[1, 2, 3, 4, 5]");
