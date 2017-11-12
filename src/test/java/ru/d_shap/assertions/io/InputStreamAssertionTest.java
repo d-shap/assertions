@@ -545,7 +545,12 @@ public final class InputStreamAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[0]))).matches("java.io.ByteArrayInputStream.*");
         Assertions.assertThat(new InputStreamAssertion(null, new FailDescription()).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}))).matches("java.io.ByteArrayInputStream.*");

@@ -547,7 +547,12 @@ public final class ReaderAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader(""))).matches("java.io.StringReader.*");
         Assertions.assertThat(new ReaderAssertion(null, new FailDescription()).asString(new StringReader("\u0000\u0000\u0000"))).matches("java.io.StringReader.*");
