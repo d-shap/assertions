@@ -1192,7 +1192,12 @@ public final class IteratorAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
         Assertions.assertThat(new IteratorAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");

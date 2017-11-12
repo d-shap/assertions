@@ -1261,7 +1261,12 @@ public final class MapAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("MapAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl())).isEqualTo("{}");
         Assertions.assertThat(new MapAssertion(null, new FailDescription()).asString(new MapImpl("key1", "value1"))).isEqualTo("{key1=value1}");
