@@ -727,7 +727,12 @@ public final class LongArrayAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
         Assertions.assertThat(new LongArrayAssertion(null, new FailDescription()).asString(new long[]{1L, 2L})).isEqualTo("[1, 2]");

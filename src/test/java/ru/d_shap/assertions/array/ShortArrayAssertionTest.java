@@ -951,7 +951,12 @@ public final class ShortArrayAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ShortArrayAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ShortArrayAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ShortArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new ShortArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
         Assertions.assertThat(new ShortArrayAssertion(null, new FailDescription()).asString(new short[]{1, 2})).isEqualTo("[1, 2]");

@@ -951,7 +951,12 @@ public final class CharArrayAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(null));
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
         Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
         Assertions.assertThat(new CharArrayAssertion(null, new FailDescription()).asString(new char[]{'1', '2'})).isEqualTo("[1, 2]");
