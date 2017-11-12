@@ -186,9 +186,7 @@ public class IntArrayAssertion extends ArrayAssertion<Integer> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof int[]) {
+        if (value instanceof int[]) {
             return createList(value).toString();
         } else {
             return value.toString();

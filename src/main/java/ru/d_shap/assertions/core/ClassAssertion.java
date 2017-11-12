@@ -132,14 +132,10 @@ public class ClassAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
+        if (value instanceof Class) {
+            return ((Class<?>) value).getName();
         } else {
-            if (value instanceof Class) {
-                return ((Class<?>) value).getName();
-            } else {
-                return value.toString();
-            }
+            return value.toString();
         }
     }
 

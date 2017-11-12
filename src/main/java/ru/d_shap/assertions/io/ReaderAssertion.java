@@ -187,11 +187,7 @@ public class ReaderAssertion extends ReferenceAssertion {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else {
-            return value.toString();
-        }
+        return value.toString();
     }
 
 }

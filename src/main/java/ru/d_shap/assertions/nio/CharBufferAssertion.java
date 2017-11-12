@@ -469,9 +469,7 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof CharBuffer) {
+        if (value instanceof CharBuffer) {
             return createList(value, false).toString();
         } else {
             return value.toString();

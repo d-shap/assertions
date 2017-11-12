@@ -252,9 +252,7 @@ public class ByteArrayAssertion extends ArrayAssertion<Byte> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof byte[]) {
+        if (value instanceof byte[]) {
             return createList(value).toString();
         } else {
             return value.toString();

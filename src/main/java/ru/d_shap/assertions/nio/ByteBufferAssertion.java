@@ -469,9 +469,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof ByteBuffer) {
+        if (value instanceof ByteBuffer) {
             return createList(value, false).toString();
         } else {
             return value.toString();

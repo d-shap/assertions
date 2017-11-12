@@ -186,9 +186,7 @@ public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof boolean[]) {
+        if (value instanceof boolean[]) {
             return createList(value).toString();
         } else {
             return value.toString();

@@ -252,9 +252,7 @@ public class ShortArrayAssertion extends ArrayAssertion<Short> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof short[]) {
+        if (value instanceof short[]) {
             return createList(value).toString();
         } else {
             return value.toString();

@@ -252,9 +252,7 @@ public class CharArrayAssertion extends ArrayAssertion<Character> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof char[]) {
+        if (value instanceof char[]) {
             return createList(value).toString();
         } else {
             return value.toString();

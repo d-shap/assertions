@@ -337,9 +337,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof LongBuffer) {
+        if (value instanceof LongBuffer) {
             return createList(value, false).toString();
         } else {
             return value.toString();

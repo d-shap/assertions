@@ -337,9 +337,7 @@ public class IntBufferAssertion extends BufferAssertion<Integer> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof IntBuffer) {
+        if (value instanceof IntBuffer) {
             return createList(value, false).toString();
         } else {
             return value.toString();

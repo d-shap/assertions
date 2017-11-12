@@ -186,9 +186,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof float[]) {
+        if (value instanceof float[]) {
             return createList(value).toString();
         } else {
             return value.toString();

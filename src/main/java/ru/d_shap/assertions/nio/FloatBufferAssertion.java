@@ -337,9 +337,7 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof FloatBuffer) {
+        if (value instanceof FloatBuffer) {
             return createList(value, false).toString();
         } else {
             return value.toString();

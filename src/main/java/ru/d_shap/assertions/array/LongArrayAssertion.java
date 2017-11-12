@@ -186,9 +186,7 @@ public class LongArrayAssertion extends ArrayAssertion<Long> {
 
     @Override
     protected final String asString(final Object value) {
-        if (value == null) {
-            return null;
-        } else if (value instanceof long[]) {
+        if (value instanceof long[]) {
             return createList(value).toString();
         } else {
             return value.toString();
