@@ -301,7 +301,12 @@ public final class ShortAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString(null));
+            Assertions.fail("ShortAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 5)).isEqualTo("5");
         Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 60)).isEqualTo("60");
         Assertions.assertThat(new ShortAssertion((short) 5, new FailDescription()).asString((short) 244)).isEqualTo("244");

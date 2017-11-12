@@ -301,7 +301,12 @@ public final class LongAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(null));
+            Assertions.fail("LongAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(5L)).isEqualTo("5");
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(60L)).isEqualTo("60");
         Assertions.assertThat(new LongAssertion(5L, new FailDescription()).asString(244L)).isEqualTo("244");

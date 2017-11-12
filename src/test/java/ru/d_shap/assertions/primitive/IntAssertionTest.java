@@ -301,7 +301,12 @@ public final class IntAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(null));
+            Assertions.fail("IntAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(5)).isEqualTo("5");
         Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(60)).isEqualTo("60");
         Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(244)).isEqualTo("244");

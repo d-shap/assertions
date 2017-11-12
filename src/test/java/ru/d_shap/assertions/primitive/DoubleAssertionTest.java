@@ -769,7 +769,12 @@ public final class DoubleAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(null));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(5.0)).isEqualTo("5.0");
         Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(60.0)).isEqualTo("60.0");
         Assertions.assertThat(new DoubleAssertion(10.0, new FailDescription()).asString(244.0)).isEqualTo("244.0");

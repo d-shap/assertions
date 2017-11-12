@@ -769,7 +769,12 @@ public final class FloatAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(5.0f)).isEqualTo("5.0");
         Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(60.0f)).isEqualTo("60.0");
         Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(244.0f)).isEqualTo("244.0");

@@ -85,7 +85,12 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(null)).isNull();
+        try {
+            Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(null));
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (NullPointerException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
         Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(true)).isEqualTo("true");
         Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(false)).isEqualTo("false");
         Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString("test")).isEqualTo("test");
