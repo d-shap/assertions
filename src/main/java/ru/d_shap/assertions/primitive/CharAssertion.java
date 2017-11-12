@@ -215,7 +215,7 @@ public class CharAssertion extends BaseAssertion {
                 return asCodeString(code);
             }
         } else {
-            return String.valueOf(value);
+            return value.toString();
         }
     }
 
