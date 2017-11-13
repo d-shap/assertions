@@ -36,18 +36,16 @@ public abstract class ReferenceAssertion extends BaseAssertion {
 
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    protected ReferenceAssertion(final Object actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    protected ReferenceAssertion() {
+        super();
     }
 
     /**
      * Check if the actual value is null.
      */
     public final void isNull() {
+        checkInitialized();
         if (getActual() != null) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NULL);
         }
@@ -57,6 +55,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * Check if the actual value is NOT null.
      */
     public final void isNotNull() {
+        checkInitialized();
         checkActualIsNotNull();
     }
 
@@ -66,6 +65,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isSameAs(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
@@ -79,6 +79,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotSameAs(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
@@ -92,8 +93,9 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public final ClassAssertion toClass() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new ClassAssertion(getActual().getClass(), getFailDescription(Messages.Check.ACTUAL_VALUE_CLASS));
+        return initialize(new ClassAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
     }
 
     /**
@@ -138,8 +140,9 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public final StringAssertion toToString() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new StringAssertion(getActual().toString(), getFailDescription(Messages.Check.ACTUAL_VALUE_TO_STRING));
+        return initialize(new StringAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
     }
 
     /**
@@ -166,8 +169,9 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public final IntAssertion toHashCode() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(getActual().hashCode(), getFailDescription(Messages.Check.ACTUAL_VALUE_HASH_CODE));
+        return initialize(new IntAssertion(), getActual().hashCode(), Messages.Check.ACTUAL_VALUE_HASH_CODE);
     }
 
     /**
@@ -186,13 +190,14 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      * @return the assertion.
      */
     public final ObjectAssertion toField(final String fieldName) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
         try {
             Field field = getField(fieldName);
             AccessController.doPrivileged(new FieldAccessAction(field));
             Object value = field.get(getActual());
-            return new ObjectAssertion(value, getFailDescription(Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName));
+            return initialize(new ObjectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName);
         } catch (ReflectiveOperationException ex) {
             throw createAssertionError(Messages.Fail.CONTAINS_FIELD, fieldName, ex);
         }
@@ -201,13 +206,13 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     /**
      * Make assertion of specified type about the actual value field.
      *
-     * @param fieldName      the field name.
-     * @param assertionClass class of the assertion.
-     * @param <T>            type of the assertion.
+     * @param fieldName the field name.
+     * @param assertion the assertion.
+     * @param <T>       type of the assertion.
      * @return the assertion.
      */
-    public final <T extends BaseAssertion> T toField(final String fieldName, final Class<T> assertionClass) {
-        return toField(fieldName).as(assertionClass);
+    public final <T extends BaseAssertion> T toField(final String fieldName, final T assertion) {
+        return toField(fieldName).as(assertion);
     }
 
     private Field getField(final String fieldName) throws NoSuchFieldException {
