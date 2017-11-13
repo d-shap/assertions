@@ -19,10 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Base class for all assertions.
@@ -31,105 +31,27 @@ import java.util.List;
  */
 public abstract class BaseAssertion {
 
-    private final Object _actual;
+    private final List<ActualValueValidator> _actualValidators;
 
-    private final FailDescription _failDescription;
+    private Object _actual;
+
+    private FailDescription _failDescription;
 
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    protected BaseAssertion(final Object actual, final FailDescription failDescription) {
+    protected BaseAssertion() {
         super();
-        _actual = actual;
-        _failDescription = failDescription;
+        _actualValidators = new ArrayList<>();
     }
 
     /**
-     * Make assertion of specified type about the same actual.
+     * Add validator for the actual value.
      *
-     * @param assertionClass class of the assertion.
-     * @param <T>            type of the assertion.
-     * @return the assertion.
+     * @param actualValueValidator validator for the actual value.
      */
-    public final <T extends BaseAssertion> T as(final Class<T> assertionClass) {
-        checkArgumentIsNotNull(assertionClass);
-        try {
-            List<Constructor<T>> constructors = getConstructors(assertionClass);
-            if (constructors.size() == 1) {
-                Constructor<T> constructor = constructors.get(0);
-                return constructor.newInstance(_actual, getFailDescription());
-            } else {
-                if (_actual == null) {
-                    throw new WrongAssertionClassError(assertionClass);
-                } else {
-                    throw new WrongAssertionClassError(assertionClass, _actual.getClass());
-                }
-            }
-        } catch (InvocationTargetException ex) {
-            Throwable cause = ex.getCause();
-            if (cause instanceof AssertionError) {
-                throw (AssertionError) cause;
-            } else {
-                throw new WrongAssertionClassError(assertionClass, ex);
-            }
-        } catch (ReflectiveOperationException ex) {
-            throw new WrongAssertionClassError(assertionClass, ex);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T extends BaseAssertion> List<Constructor<T>> getConstructors(final Class<T> assertionClass) {
-        List<Constructor<T>> constructors = new ArrayList<>();
-        for (Constructor constructor : assertionClass.getConstructors()) {
-            Class<?>[] parameterTypes = constructor.getParameterTypes();
-            if (parameterTypes.length == 2 && isCompatibleTypes(_actual, parameterTypes[0]) && parameterTypes[1].isAssignableFrom(FailDescription.class)) {
-                constructors.add((Constructor<T>) constructor);
-            }
-        }
-        return constructors;
-    }
-
-    static boolean isCompatibleTypes(final Object actual, final Class<?> targetClass) {
-        return actual == null && !targetClass.isPrimitive() || actual != null && (targetClass.isAssignableFrom(actual.getClass()) || isActualToPrimitiveAssignable(actual.getClass(), targetClass));
-    }
-
-    private static boolean isActualToPrimitiveAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return isActualToPrimitiveByteAssignable(actualClass, targetClass) || isActualToPrimitiveShortAssignable(actualClass, targetClass) || isActualToPrimitiveIntAssignable(actualClass, targetClass) || isActualToPrimitiveLongAssignable(actualClass, targetClass) || isActualToPrimitiveFloatAssignable(actualClass, targetClass) || isActualToPrimitiveDoubleAssignable(actualClass, targetClass) || isActualToPrimitiveBooleanAssignable(actualClass, targetClass) || isActualToPrimitiveCharAssignable(actualClass, targetClass);
-    }
-
-    private static boolean isActualToPrimitiveByteAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return actualClass.equals(Byte.class) && targetClass.equals(byte.class);
-    }
-
-    private static boolean isActualToPrimitiveShortAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class)) && targetClass.equals(short.class);
-    }
-
-    private static boolean isActualToPrimitiveIntAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Character.class)) && targetClass.equals(int.class);
-    }
-
-    private static boolean isActualToPrimitiveLongAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Character.class)) && targetClass.equals(long.class);
-    }
-
-    private static boolean isActualToPrimitiveFloatAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Float.class) || actualClass.equals(Character.class)) && targetClass.equals(float.class);
-    }
-
-    private static boolean isActualToPrimitiveDoubleAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return (actualClass.equals(Byte.class) || actualClass.equals(Short.class) || actualClass.equals(Integer.class) || actualClass.equals(Long.class) || actualClass.equals(Float.class) || actualClass.equals(Double.class) || actualClass.equals(Character.class)) && targetClass.equals(double.class);
-    }
-
-    private static boolean isActualToPrimitiveBooleanAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return actualClass.equals(Boolean.class) && targetClass.equals(boolean.class);
-    }
-
-    private static boolean isActualToPrimitiveCharAssignable(final Class<?> actualClass, final Class<?> targetClass) {
-        return actualClass.equals(Character.class) && targetClass.equals(char.class);
+    protected final void addActualValueValidator(final ActualValueValidator actualValueValidator) {
+        _actualValidators.add(actualValueValidator);
     }
 
     /**
@@ -158,6 +80,86 @@ public abstract class BaseAssertion {
      */
     protected final FailDescription getFailDescription(final String message) {
         return new FailDescription(_failDescription, message);
+    }
+
+    /**
+     * Initialize the current assertion.
+     *
+     * @param actual          the actual value.
+     * @param failDescription the fail description.
+     */
+    protected final void initialize(final Object actual, final FailDescription failDescription) {
+        if (actual != null) {
+            for (ActualValueValidator actualValidator : _actualValidators) {
+                if (!actualValidator.isValid(actual)) {
+                    throw createAssertionError(Messages.Fail.DOES_NOT_MATCH_THE_ASSERTION);
+                }
+            }
+        }
+        _actual = actual;
+        _failDescription = failDescription;
+    }
+
+    /**
+     * Initialize the specified assertion.
+     *
+     * @param assertion the specified assertion.
+     * @param actual    the actual value.
+     * @param <T>       type of the actual value.
+     * @return the initialized assertion.
+     */
+    protected final <T extends BaseAssertion> T initialize(final T assertion, final Object actual) {
+        assertion.initialize(actual, getFailDescription());
+        return assertion;
+    }
+
+    /**
+     * Initialize the specified assertion.
+     *
+     * @param assertion the specified assertion.
+     * @param actual    the actual value.
+     * @param message   the message.
+     * @param <T>       type of the actual value.
+     * @return the initialized assertion.
+     */
+    protected final <T extends BaseAssertion> T initialize(final T assertion, final Object actual, final String message) {
+        assertion.initialize(actual, getFailDescription(message));
+        return assertion;
+    }
+
+    /**
+     * Make assertion of specified type about the same actual.
+     *
+     * @param assertion the assertion.
+     * @param <T>       type of the assertion.
+     * @return the assertion.
+     */
+    public final <T extends BaseAssertion> T as(final T assertion) {
+        checkInitialized();
+        checkArgumentIsNotNull(assertion);
+        return initialize(assertion, _actual);
+    }
+
+    /**
+     * Make assertion of specified type about the same actual.
+     *
+     * @param assertion the assertion.
+     * @param <T>       type of the assertion.
+     * @return the assertion.
+     */
+    public final <T extends BaseAssertion> T as(final T assertion, final String message) {
+        checkInitialized();
+        checkArgumentIsNotNull(assertion);
+        return initialize(assertion, _actual, message);
+    }
+
+    /**
+     * Check if the current assertion is initialized.
+     */
+    protected final void checkInitialized() {
+        if (_failDescription == null) {
+            throw createAssertionError(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED);
+        }
     }
 
     /**
