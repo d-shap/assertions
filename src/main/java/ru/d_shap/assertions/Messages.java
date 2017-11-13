@@ -88,6 +88,10 @@ public final class Messages {
      */
     public static final class Fail {
 
+        public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should be initialized";
+
+        public static final String DOES_NOT_MATCH_THE_ASSERTION = "Value should match the assertion";
+
         public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null";
 
         public static final String ARGUMENT_IS_NOT_EMPTY_TRUE = "Argument should not be empty. The result is always true";
@@ -171,8 +175,6 @@ public final class Messages {
         public static final String IS_CONSTRUCTOR_DEFAULT = "Value should have one default constructor";
 
         public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Value constructor should not be acccessible";
-
-        public static final String IS_ENUM = "Value should be the enum";
 
         public static final String CONTAINS = "Value should contain the expected value";
 
