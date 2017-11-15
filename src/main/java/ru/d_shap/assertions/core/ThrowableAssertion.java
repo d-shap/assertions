@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.core;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.validator.ActualValueClassValidator;
 import ru.d_shap.assertions.validator.ActualValueValidator;
@@ -49,7 +50,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
     public final StringAssertion toMessage() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new StringAssertion(), ((Throwable) getActual()).getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
+        return initializeAssertion(Raw.stringAssertion(), ((Throwable) getActual()).getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
     }
 
     /**
@@ -84,7 +85,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
     public final ThrowableAssertion toCause() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new ThrowableAssertion(), ((Throwable) getActual()).getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
+        return initializeAssertion(Raw.throwableAssertion(), ((Throwable) getActual()).getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
     }
 
     /**

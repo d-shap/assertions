@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -257,7 +258,7 @@ public class IterableAssertion extends ReferenceAssertion {
             Object element = iterator.next();
             list.add(element);
         }
-        return initializeAssertion(new ListAssertion(), list);
+        return initializeAssertion(Raw.listAssertion(), list);
     }
 
     @Override

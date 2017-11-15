@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -535,7 +536,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
     }
 
     private StringAssertion createStringAssertion() {
-        return initializeAssertion(new StringAssertion(), getActual().toString());
+        return initializeAssertion(Raw.stringAssertion(), getActual().toString());
     }
 
     @Override

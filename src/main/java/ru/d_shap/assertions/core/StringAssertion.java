@@ -26,6 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -660,7 +661,7 @@ public class StringAssertion extends ReferenceAssertion {
     public final IntAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new IntAssertion(), ((String) getActual()).length(), Messages.Check.ACTUAL_VALUE_LENGTH);
+        return initializeAssertion(Raw.intAssertion(), ((String) getActual()).length(), Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
@@ -719,7 +720,7 @@ public class StringAssertion extends ReferenceAssertion {
             String token = stringTokenizer.nextToken();
             tokens.add(token);
         }
-        return initializeAssertion(new ListAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
+        return initializeAssertion(Raw.listAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
     @Override

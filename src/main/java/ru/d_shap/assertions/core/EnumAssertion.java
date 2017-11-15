@@ -22,6 +22,7 @@ package ru.d_shap.assertions.core;
 import java.lang.reflect.Method;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.primitive.IntAssertion;
 import ru.d_shap.assertions.validator.ActualValueEnumValidator;
 import ru.d_shap.assertions.validator.ActualValueValidator;
@@ -65,7 +66,7 @@ public class EnumAssertion extends ClassAssertion {
     public final IntAssertion toValueCount() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new IntAssertion(), getValueCount(), Messages.Check.ACTUAL_ENUM_VALUE_COUNT);
+        return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.ACTUAL_ENUM_VALUE_COUNT);
     }
 
     private int getValueCount() {
