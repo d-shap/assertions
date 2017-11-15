@@ -22,7 +22,8 @@ package ru.d_shap.assertions.collection;
 import java.util.List;
 import java.util.RandomAccess;
 
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the list.
@@ -31,14 +32,14 @@ import ru.d_shap.assertions.FailDescription;
  */
 public class ListAssertion extends CollectionAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(List.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual list.
-     * @param failDescription the fail description.
      */
-    public ListAssertion(final List<?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ListAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**

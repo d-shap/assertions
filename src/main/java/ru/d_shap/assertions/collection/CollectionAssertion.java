@@ -24,11 +24,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the collection.
@@ -37,20 +38,21 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 public class CollectionAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Collection.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public CollectionAssertion(final Collection<?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public CollectionAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if (!((Collection) getActual()).isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
@@ -61,6 +63,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null && !((Collection) getActual()).isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
         }
@@ -70,6 +73,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if (((Collection) getActual()).isEmpty()) {
             throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
@@ -82,6 +86,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void contains(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         if (!((Collection) getActual()).contains(expected)) {
             throw createAssertionErrorWithActual(Messages.Fail.CONTAINS, expected);
@@ -94,6 +99,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContain(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         if (((Collection) getActual()).contains(expected)) {
             throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN, expected);
@@ -106,6 +112,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -127,6 +134,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAll(ValueConverter.toObjectArray(expected));
@@ -138,6 +146,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -159,6 +168,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAllInOrder(ValueConverter.toObjectArray(expected));
@@ -170,6 +180,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
@@ -193,6 +204,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsExactly(ValueConverter.toObjectArray(expected));
@@ -204,6 +216,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<?> actualListCopy = new ArrayList<>((Collection<?>) getActual());
@@ -228,6 +241,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsExactlyInOrder(ValueConverter.toObjectArray(expected));
@@ -239,6 +253,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse(expected.length == 0);
@@ -263,6 +278,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsAny(ValueConverter.toObjectArray(expected));
@@ -274,6 +290,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -293,6 +310,7 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         containsNone(ValueConverter.toObjectArray(expected));
@@ -304,8 +322,9 @@ public class CollectionAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Collection) getActual()).size(), getFailDescription(Messages.Check.ACTUAL_VALUE_SIZE));
+        return initializeAssertion(new IntAssertion(), ((Collection) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**

@@ -22,11 +22,12 @@ package ru.d_shap.assertions.collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the map.
@@ -35,20 +36,21 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 public class MapAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Map.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual map.
-     * @param failDescription the fail description.
      */
-    public MapAssertion(final Map<?, ?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public MapAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if (!((Map<?, ?>) getActual()).isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
@@ -59,6 +61,7 @@ public class MapAssertion extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null && !((Map<?, ?>) getActual()).isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
         }
@@ -68,6 +71,7 @@ public class MapAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if (((Map<?, ?>) getActual()).isEmpty()) {
             throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
@@ -80,8 +84,9 @@ public class MapAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final SetAssertion toKeys() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new SetAssertion(((Map<?, ?>) getActual()).keySet(), getFailDescription(Messages.Check.ACTUAL_KEYS));
+        return initializeAssertion(new SetAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
     }
 
     /**
@@ -108,6 +113,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsAllKeys(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -120,6 +126,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsAllKeys(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Object[] expectedArray = ValueConverter.toObjectArray(expected);
@@ -133,6 +140,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsKeysExactly(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toKeys().containsExactly(expected);
@@ -144,6 +152,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsKeysExactly(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Object[] expectedArray = ValueConverter.toObjectArray(expected);
@@ -156,6 +165,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsAnyKey(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse(expected.length == 0);
@@ -168,6 +178,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsAnyKey(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Object[] expectedArray = ValueConverter.toObjectArray(expected);
@@ -181,6 +192,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsNoKey(final Object... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -193,6 +205,7 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected keys.
      */
     public final void containsNoKey(final Iterable<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Object[] expectedArray = ValueConverter.toObjectArray(expected);
@@ -206,8 +219,9 @@ public class MapAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final CollectionAssertion toValues() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new CollectionAssertion(((Map<?, ?>) getActual()).values(), getFailDescription(Messages.Check.ACTUAL_VALUES));
+        return initializeAssertion(new CollectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -240,9 +254,10 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAll(final Map<?, ?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsAll(expected.entrySet());
+        createEntrySetAssertion().containsAll(expected.entrySet());
     }
 
     /**
@@ -251,9 +266,10 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsExactly(final Map<?, ?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsExactly(expected.entrySet());
+        createEntrySetAssertion().containsExactly(expected.entrySet());
     }
 
     /**
@@ -262,9 +278,10 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsAny(final Map<?, ?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsAny(expected.entrySet());
+        createEntrySetAssertion().containsAny(expected.entrySet());
     }
 
     /**
@@ -273,9 +290,14 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expected the expected values.
      */
     public final void containsNone(final Map<?, ?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        new SetAssertion(((Map<?, ?>) getActual()).entrySet(), getFailDescription()).containsNone(expected.entrySet());
+        createEntrySetAssertion().containsNone(expected.entrySet());
+    }
+
+    private SetAssertion createEntrySetAssertion() {
+        return initializeAssertion(new SetAssertion(), ((Map<?, ?>) getActual()).entrySet());
     }
 
     /**
@@ -284,8 +306,9 @@ public class MapAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Map<?, ?>) getActual()).size(), getFailDescription(Messages.Check.ACTUAL_VALUE_SIZE));
+        return initializeAssertion(new IntAssertion(), ((Map<?, ?>) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**

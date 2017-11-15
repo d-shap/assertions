@@ -21,7 +21,8 @@ package ru.d_shap.assertions.collection;
 
 import java.util.Set;
 
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the set.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.FailDescription;
  */
 public class SetAssertion extends CollectionAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Set.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual set.
-     * @param failDescription the fail description.
      */
-    public SetAssertion(final Set<?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public SetAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
 }
