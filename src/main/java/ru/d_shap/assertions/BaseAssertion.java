@@ -131,7 +131,7 @@ public abstract class BaseAssertion {
      * @return the initialized assertion.
      */
     protected final <T extends BaseAssertion> T initializeAssertion(final T assertion, final Object actual) {
-        assertion.initialize(actual);
+        ((BaseAssertion) assertion).initialize(actual, getFailDescription());
         return assertion;
     }
 
@@ -145,7 +145,7 @@ public abstract class BaseAssertion {
      * @return the initialized assertion.
      */
     protected final <T extends BaseAssertion> T initializeAssertion(final T assertion, final Object actual, final String message) {
-        assertion.initialize(actual, message);
+        ((BaseAssertion) assertion).initialize(actual, getFailDescription(message));
         return assertion;
     }
 
