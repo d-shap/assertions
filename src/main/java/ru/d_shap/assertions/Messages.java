@@ -63,9 +63,9 @@ public final class Messages {
 
         public static final String ACTUAL_ENUM_VALUE_COUNT = "Check enum value count";
 
-        public static final String ACTUAL_STREAM_READ = "Check input stream bytes";
+        public static final String ACTUAL_STREAM_BYTES = "Check input stream bytes";
 
-        public static final String ACTUAL_READER_READ = "Check reader chars";
+        public static final String ACTUAL_READER_CHARS = "Check reader chars";
 
         public static final String ACTUAL_BUFFER_POSITION = "Check buffer position";
 
@@ -88,9 +88,11 @@ public final class Messages {
      */
     public static final class Fail {
 
-        public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should be initialized";
+        public static final String ASSERTION_IS_INITIALIZED = "Assertion should be initialized";
 
-        public static final String DOES_NOT_MATCH_THE_ASSERTION = "Value should match the assertion";
+        public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should not be initialized";
+
+        public static final String ASSERTION_MATCHES = "Value should match the assertion";
 
         public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null";
 
@@ -98,7 +100,7 @@ public final class Messages {
 
         public static final String ARGUMENT_IS_NOT_EMPTY_FALSE = "Argument should not be empty. The result is always false";
 
-        public static final String ARGUMENT_IS_NOT_VALID = "Argument should be valid";
+        public static final String ARGUMENT_IS_VALID = "Argument should be valid";
 
         public static final String IS_TRUE = "Value should be true";
 
