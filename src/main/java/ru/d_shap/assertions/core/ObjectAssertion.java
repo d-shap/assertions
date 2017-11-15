@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 
@@ -32,12 +31,9 @@ public class ObjectAssertion extends ReferenceAssertion {
 
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ObjectAssertion(final Object actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ObjectAssertion() {
+        super();
     }
 
     /**
@@ -46,6 +42,7 @@ public class ObjectAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
@@ -59,6 +56,7 @@ public class ObjectAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {

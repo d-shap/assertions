@@ -21,9 +21,10 @@ package ru.d_shap.assertions.core;
 
 import java.lang.reflect.Method;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.validator.ActualValueEnumValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the enum.
@@ -31,6 +32,8 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * @author Dmitry Shapovalov
  */
 public class EnumAssertion extends ClassAssertion {
+
+    private static final ActualValueValidator ACTUAL_VALUE_ENUM_VALIDATOR = new ActualValueEnumValidator();
 
     private static final String VALUES_METHOD_NAME = "values";
 
@@ -42,19 +45,14 @@ public class EnumAssertion extends ClassAssertion {
 
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public EnumAssertion(final Class<?> actual, final FailDescription failDescription) {
-        this(actual, failDescription, VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
+    public EnumAssertion() {
+        this(VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
     }
 
-    EnumAssertion(final Class<?> actual, final FailDescription failDescription, final String valuesMethodName, final String valueOfMethodName) {
-        super(actual, failDescription);
-        if (actual != null && !Enum.class.isAssignableFrom(actual)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_ENUM);
-        }
+    EnumAssertion(final String valuesMethodName, final String valueOfMethodName) {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_ENUM_VALIDATOR);
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
     }
@@ -65,8 +63,9 @@ public class EnumAssertion extends ClassAssertion {
      * @return the assertion.
      */
     public final IntAssertion toValueCount() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(getValueCount(), getFailDescription(Messages.Check.ACTUAL_ENUM_VALUE_COUNT));
+        return initializeAssertion(new IntAssertion(), getValueCount(), Messages.Check.ACTUAL_ENUM_VALUE_COUNT);
     }
 
     private int getValueCount() {

@@ -25,11 +25,12 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the string.
@@ -38,22 +39,23 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 public class StringAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(String.class);
+
     private static final int PATTERN_FLAGS = Pattern.LITERAL | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
 
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public StringAssertion(final String actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public StringAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if (!"".equals(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
@@ -64,6 +66,7 @@ public class StringAssertion extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null && !"".equals(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
         }
@@ -73,6 +76,7 @@ public class StringAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         if ("".equals(getActual())) {
             throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
@@ -83,6 +87,7 @@ public class StringAssertion extends ReferenceAssertion {
      * Check if the actual value is blank.
      */
     public final void isBlank() {
+        checkInitialized();
         checkActualIsNotNull();
         for (int i = 0; i < ((String) getActual()).length(); i++) {
             if (!Character.isWhitespace(((String) getActual()).charAt(i))) {
@@ -95,6 +100,7 @@ public class StringAssertion extends ReferenceAssertion {
      * Check if the actual value is null or blank.
      */
     public final void isNullOrBlank() {
+        checkInitialized();
         if (getActual() != null) {
             for (int i = 0; i < ((String) getActual()).length(); i++) {
                 if (!Character.isWhitespace(((String) getActual()).charAt(i))) {
@@ -108,6 +114,7 @@ public class StringAssertion extends ReferenceAssertion {
      * Check if the actual value is NOT blank.
      */
     public final void isNotBlank() {
+        checkInitialized();
         checkActualIsNotNull();
         boolean blank = true;
         for (int i = 0; i < ((String) getActual()).length(); i++) {
@@ -127,6 +134,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
@@ -140,6 +148,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isEqualToIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!((String) getActual()).equalsIgnoreCase(expected)) {
@@ -153,6 +162,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
@@ -166,6 +176,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).equalsIgnoreCase(expected)) {
@@ -179,6 +190,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -193,6 +205,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -207,6 +220,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).compareTo(expected) < 0) {
@@ -220,6 +234,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualToIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).compareToIgnoreCase(expected) < 0) {
@@ -233,6 +248,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -247,6 +263,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -261,6 +278,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).compareTo(expected) > 0) {
@@ -274,6 +292,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualToIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).compareToIgnoreCase(expected) > 0) {
@@ -288,6 +307,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final String expectedFrom, final String expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -304,6 +324,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -320,6 +341,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final String expectedFrom, final String expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -336,6 +358,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -351,6 +374,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void contains(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -365,6 +389,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void containsIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -380,6 +405,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContain(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -394,6 +420,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotContainIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -409,6 +436,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isPartOf(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.contains((String) getActual())) {
@@ -422,6 +450,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isPartOfIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
@@ -436,6 +465,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotPartOf(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.contains((String) getActual())) {
@@ -449,6 +479,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotPartOfIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile((String) getActual(), PATTERN_FLAGS).matcher(expected);
@@ -463,6 +494,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void matches(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!((String) getActual()).matches(expected)) {
@@ -476,6 +508,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotMatch(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((String) getActual()).matches(expected)) {
@@ -489,6 +522,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void startsWith(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -503,6 +537,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void startsWithIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -518,6 +553,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotStartWith(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -532,6 +568,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotStartWithIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -547,6 +584,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void endsWith(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -561,6 +599,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void endsWithIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
@@ -582,6 +621,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotEndWith(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -596,6 +636,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void doesNotEndWithIgnoreCase(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
@@ -617,8 +658,9 @@ public class StringAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toLength() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((String) getActual()).length(), getFailDescription(Messages.Check.ACTUAL_VALUE_LENGTH));
+        return initializeAssertion(new IntAssertion(), ((String) getActual()).length(), Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
@@ -636,6 +678,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ListAssertion toTokens() {
+        checkInitialized();
         checkActualIsNotNull();
         StringTokenizer stringTokenizer = new StringTokenizer((String) getActual());
         return toTokens(stringTokenizer);
@@ -648,6 +691,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ListAssertion toTokens(final String delimiters) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer((String) getActual(), delimiters);
@@ -662,6 +706,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer((String) getActual(), delimiters, returnDelimiters);
@@ -674,7 +719,7 @@ public class StringAssertion extends ReferenceAssertion {
             String token = stringTokenizer.nextToken();
             tokens.add(token);
         }
-        return new ListAssertion(tokens, getFailDescription(Messages.Check.ACTUAL_VALUE_TOKENS));
+        return initializeAssertion(new ListAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
     @Override

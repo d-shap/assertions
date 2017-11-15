@@ -19,9 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the throwable.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.ReferenceAssertion;
  */
 public class ThrowableAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Throwable.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ThrowableAssertion(final Throwable actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ThrowableAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -46,8 +47,9 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final StringAssertion toMessage() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new StringAssertion(((Throwable) getActual()).getMessage(), getFailDescription(Messages.Check.ACTUAL_THROWABLE_MESSAGE));
+        return initializeAssertion(new StringAssertion(), ((Throwable) getActual()).getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
     }
 
     /**
@@ -56,6 +58,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void hasMessage(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toMessage().isEqualTo(expected);
@@ -67,6 +70,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void messageMatches(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toMessage().matches(expected);
@@ -78,8 +82,9 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final ThrowableAssertion toCause() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new ThrowableAssertion(((Throwable) getActual()).getCause(), getFailDescription(Messages.Check.ACTUAL_THROWABLE_CAUSE));
+        return initializeAssertion(new ThrowableAssertion(), ((Throwable) getActual()).getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
     }
 
     /**
@@ -88,6 +93,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected class.
      */
     public final void isCauseInstanceOf(final Class<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().isInstanceOf(expected);
@@ -99,6 +105,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void hasCauseMessage(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().hasMessage(expected);
@@ -110,6 +117,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void causeMessageMatches(final String expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().messageMatches(expected);

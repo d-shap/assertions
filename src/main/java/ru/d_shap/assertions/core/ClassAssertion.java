@@ -23,9 +23,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the class.
@@ -34,14 +35,14 @@ import ru.d_shap.assertions.ReferenceAssertion;
  */
 public class ClassAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Class.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ClassAssertion(final Class<?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ClassAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -50,6 +51,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Class<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
@@ -63,6 +65,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Class<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
@@ -76,6 +79,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param expected the expected class.
      */
     public final void isSubtypeOf(final Class<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.isAssignableFrom((Class) getActual())) {
@@ -89,6 +93,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @param expected the expected class.
      */
     public final void isNotSubtypeOf(final Class<?> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.isAssignableFrom((Class) getActual())) {
@@ -100,6 +105,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      */
     public final void hasOnePrivateConstructor() {
+        checkInitialized();
         checkActualIsNotNull();
         Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
@@ -127,7 +133,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
-        return as(EnumAssertion.class);
+        return as(new EnumAssertion());
     }
 
     @Override

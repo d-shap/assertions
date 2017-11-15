@@ -19,9 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the comparable.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.ReferenceAssertion;
  */
 public class ComparableAssertion extends ReferenceAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Comparable.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ComparableAssertion(final Comparable<?> actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ComparableAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -47,6 +48,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) != 0) {
@@ -61,6 +63,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isNotEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) == 0) {
@@ -75,6 +78,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isGreaterThan(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) <= 0) {
@@ -89,6 +93,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isGreaterThanOrEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) < 0) {
@@ -103,6 +108,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isLessThan(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) >= 0) {
@@ -117,6 +123,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isLessThanOrEqualTo(final Object expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (((Comparable<Object>) getActual()).compareTo(expected) > 0) {
@@ -132,6 +139,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isInRange(final Object expectedFrom, final Object expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -148,6 +156,7 @@ public class ComparableAssertion extends ReferenceAssertion {
      */
     @SuppressWarnings("unchecked")
     public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
