@@ -23,8 +23,9 @@ import java.nio.LongBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the long buffer.
@@ -33,14 +34,14 @@ import ru.d_shap.assertions.ValueConverter;
  */
 public class LongBufferAssertion extends BufferAssertion<Long> {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(LongBuffer.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public LongBufferAssertion(final LongBuffer actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public LongBufferAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -85,6 +86,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAll(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toLongObjectArray(expected));
@@ -105,6 +107,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAll(ValueConverter.toLongObjectArray(expected));
@@ -125,6 +128,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
@@ -145,6 +149,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAllInOrder(ValueConverter.toLongObjectArray(expected));
@@ -165,6 +170,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactly(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toLongObjectArray(expected));
@@ -185,6 +191,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactly(ValueConverter.toLongObjectArray(expected));
@@ -205,6 +212,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
@@ -225,6 +233,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactlyInOrder(ValueConverter.toLongObjectArray(expected));
@@ -245,6 +254,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsAny(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toLongObjectArray(expected));
@@ -265,6 +275,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAny(ValueConverter.toLongObjectArray(expected));
@@ -285,6 +296,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void containsNone(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toLongObjectArray(expected));
@@ -305,6 +317,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final long... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsNone(ValueConverter.toLongObjectArray(expected));

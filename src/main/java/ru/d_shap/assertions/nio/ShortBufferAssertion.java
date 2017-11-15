@@ -23,8 +23,9 @@ import java.nio.ShortBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the short buffer.
@@ -33,14 +34,14 @@ import ru.d_shap.assertions.ValueConverter;
  */
 public class ShortBufferAssertion extends BufferAssertion<Short> {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(ShortBuffer.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ShortBufferAssertion(final ShortBuffer actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ShortBufferAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -85,6 +86,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAll(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toShortObjectArray(expected));
@@ -96,6 +98,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toShortObjectArray(expected));
@@ -116,6 +119,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAll(ValueConverter.toShortObjectArray(expected));
@@ -127,6 +131,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAll(ValueConverter.toShortObjectArray(expected));
@@ -147,6 +152,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
@@ -158,6 +164,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
@@ -178,6 +185,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
@@ -189,6 +197,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAllInOrder(ValueConverter.toShortObjectArray(expected));
@@ -209,6 +218,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactly(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toShortObjectArray(expected));
@@ -220,6 +230,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toShortObjectArray(expected));
@@ -240,6 +251,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactly(ValueConverter.toShortObjectArray(expected));
@@ -251,6 +263,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactly(ValueConverter.toShortObjectArray(expected));
@@ -271,6 +284,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
@@ -282,6 +296,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
@@ -302,6 +317,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
@@ -313,6 +329,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactlyInOrder(ValueConverter.toShortObjectArray(expected));
@@ -333,6 +350,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAny(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toShortObjectArray(expected));
@@ -344,6 +362,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toShortObjectArray(expected));
@@ -364,6 +383,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAny(ValueConverter.toShortObjectArray(expected));
@@ -375,6 +395,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAny(ValueConverter.toShortObjectArray(expected));
@@ -395,6 +416,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsNone(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toShortObjectArray(expected));
@@ -406,6 +428,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toShortObjectArray(expected));
@@ -426,6 +449,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final short... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsNone(ValueConverter.toShortObjectArray(expected));
@@ -437,6 +461,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsNone(ValueConverter.toShortObjectArray(expected));

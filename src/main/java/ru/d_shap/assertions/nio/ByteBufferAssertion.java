@@ -23,8 +23,9 @@ import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the byte buffer.
@@ -33,14 +34,14 @@ import ru.d_shap.assertions.ValueConverter;
  */
 public class ByteBufferAssertion extends BufferAssertion<Byte> {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(ByteBuffer.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public ByteBufferAssertion(final ByteBuffer actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public ByteBufferAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -85,6 +86,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAll(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toByteObjectArray(expected));
@@ -96,6 +98,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toByteObjectArray(expected));
@@ -116,6 +119,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAll(ValueConverter.toByteObjectArray(expected));
@@ -127,6 +131,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAll(ValueConverter.toByteObjectArray(expected));
@@ -147,6 +152,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
@@ -158,6 +164,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
@@ -178,6 +185,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
@@ -189,6 +197,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAllInOrder(ValueConverter.toByteObjectArray(expected));
@@ -209,6 +218,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactly(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toByteObjectArray(expected));
@@ -220,6 +230,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toByteObjectArray(expected));
@@ -240,6 +251,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactly(ValueConverter.toByteObjectArray(expected));
@@ -251,6 +263,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactly(ValueConverter.toByteObjectArray(expected));
@@ -271,6 +284,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
@@ -282,6 +296,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
@@ -302,6 +317,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
@@ -313,6 +329,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsExactlyInOrder(ValueConverter.toByteObjectArray(expected));
@@ -333,6 +350,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAny(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toByteObjectArray(expected));
@@ -344,6 +362,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toByteObjectArray(expected));
@@ -364,6 +383,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAny(ValueConverter.toByteObjectArray(expected));
@@ -375,6 +395,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsAny(ValueConverter.toByteObjectArray(expected));
@@ -395,6 +416,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsNone(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toByteObjectArray(expected));
@@ -406,6 +428,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toByteObjectArray(expected));
@@ -426,6 +449,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final byte... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsNone(ValueConverter.toByteObjectArray(expected));
@@ -437,6 +461,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final int... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doRewindAndContainsNone(ValueConverter.toByteObjectArray(expected));
