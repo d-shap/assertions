@@ -27,7 +27,7 @@ import java.util.List;
  *
  * @author Dmitry Shapovalov
  */
-public final class FailDescription {
+final class FailDescription {
 
     private final List<String> _messages;
 
@@ -44,7 +44,7 @@ public final class FailDescription {
     /**
      * Create new object.
      */
-    public FailDescription() {
+    FailDescription() {
         super();
         _messages = new ArrayList<>();
         _actualDefined = false;
@@ -59,7 +59,7 @@ public final class FailDescription {
      *
      * @param message the message.
      */
-    public FailDescription(final String message) {
+    FailDescription(final String message) {
         this();
         addMessage(message);
     }
@@ -69,7 +69,7 @@ public final class FailDescription {
      *
      * @param failDescription the fail description.
      */
-    public FailDescription(final FailDescription failDescription) {
+    FailDescription(final FailDescription failDescription) {
         this();
         _messages.addAll(failDescription._messages);
     }
@@ -80,7 +80,7 @@ public final class FailDescription {
      * @param failDescription the fail description.
      * @param message         the message.
      */
-    public FailDescription(final FailDescription failDescription, final String message) {
+    FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
         addMessage(message);
     }
@@ -101,7 +101,7 @@ public final class FailDescription {
      * @param assertion the assertion.
      * @return current object for the chain call.
      */
-    public FailDescription addActual(final BaseAssertion assertion) {
+    FailDescription addActual(final BaseAssertion assertion) {
         _actualDefined = true;
         Object actual = assertion.getActual();
         String actualStr;
@@ -121,7 +121,7 @@ public final class FailDescription {
      * @param expected  the expected value of the assertion.
      * @return current object for the chain call.
      */
-    public FailDescription addExpected(final BaseAssertion assertion, final Object expected) {
+    FailDescription addExpected(final BaseAssertion assertion, final Object expected) {
         _expectedDefined = true;
         String expectedStr;
         if (expected == null) {
@@ -141,7 +141,7 @@ public final class FailDescription {
      * @param expectedTo   the upper bound of the expected value range of the assertion.
      * @return current object for the chain call.
      */
-    public FailDescription addExpected(final BaseAssertion assertion, final Object expectedFrom, final Object expectedTo) {
+    FailDescription addExpected(final BaseAssertion assertion, final Object expectedFrom, final Object expectedTo) {
         _expectedDefined = true;
         String expectedFromStr;
         if (expectedFrom == null) {
@@ -165,7 +165,7 @@ public final class FailDescription {
      * @param throwable the throwabe.
      * @return current object for the chain call.
      */
-    public FailDescription addThrowable(final Throwable throwable) {
+    FailDescription addThrowable(final Throwable throwable) {
         _throwable = throwable;
         return this;
     }
@@ -175,7 +175,7 @@ public final class FailDescription {
      *
      * @return the assertion error.
      */
-    public AssertionError createAssertionError() {
+    AssertionError createAssertionError() {
         boolean messageAdded = addValuesMessage();
         String fullMessage = getFullMessage();
         removeLastMessage(messageAdded);
