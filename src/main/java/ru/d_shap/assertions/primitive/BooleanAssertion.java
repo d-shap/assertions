@@ -20,8 +20,9 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the boolean.
@@ -30,20 +31,22 @@ import ru.d_shap.assertions.Messages;
  */
 public class BooleanAssertion extends BaseAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Boolean.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public BooleanAssertion(final boolean actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public BooleanAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
      * Check if the actual value is true.
      */
     public final void isTrue() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!((Boolean) getActual())) {
             throw createAssertionError(Messages.Fail.IS_TRUE);
         }
@@ -53,6 +56,8 @@ public class BooleanAssertion extends BaseAssertion {
      * Check if the actual value is false.
      */
     public final void isFalse() {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Boolean) getActual()) {
             throw createAssertionError(Messages.Fail.IS_FALSE);
         }

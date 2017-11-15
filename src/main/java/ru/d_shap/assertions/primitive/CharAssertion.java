@@ -20,8 +20,9 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the char.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.Messages;
  */
 public class CharAssertion extends BaseAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Character.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public CharAssertion(final char actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public CharAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -46,6 +47,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() != expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
@@ -57,6 +60,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() == expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
@@ -68,6 +73,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() <= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
@@ -79,6 +86,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() < expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
@@ -90,6 +99,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() >= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
@@ -101,6 +112,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() > expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
@@ -113,6 +126,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() < expectedFrom || (Character) getActual() >= expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
@@ -125,6 +140,8 @@ public class CharAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Character) getActual() >= expectedFrom && (Character) getActual() < expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
@@ -134,6 +151,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the alphabetic symbol.
      */
     public final void isAlphabetic() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isAlphabetic((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_ALPHABETIC);
         }
@@ -143,6 +162,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the digit.
      */
     public final void isDigit() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isDigit((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIGIT);
         }
@@ -152,6 +173,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the letter.
      */
     public final void isLetter() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isLetter((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER);
         }
@@ -161,6 +184,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the letter or the digit.
      */
     public final void isLetterOrDigit() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isLetterOrDigit((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER_OR_DIGIT);
         }
@@ -170,6 +195,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the control symbol.
      */
     public final void isControl() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isISOControl((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONTROL_SYMBOL);
         }
@@ -179,6 +206,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the lower case symbol.
      */
     public final void isLowerCase() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isLowerCase((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LOWER_CASE);
         }
@@ -188,6 +217,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the upper case symbol.
      */
     public final void isUpperCase() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isUpperCase((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_UPPER_CASE);
         }
@@ -197,6 +228,8 @@ public class CharAssertion extends BaseAssertion {
      * Check if the actual value is the whitespace symbol.
      */
     public final void isWhitespace() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!Character.isWhitespace((Character) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_WHITESPACE);
         }

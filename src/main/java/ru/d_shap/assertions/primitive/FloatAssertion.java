@@ -20,8 +20,9 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the float.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.Messages;
  */
 public class FloatAssertion extends BaseAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Float.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public FloatAssertion(final float actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public FloatAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -47,6 +48,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final float expected, final float delta) {
+        checkInitialized();
+        checkActualIsNotNull();
         if (Math.abs(expected - (Float) getActual()) > delta) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
@@ -59,6 +62,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final float expected, final float delta) {
+        checkInitialized();
+        checkActualIsNotNull();
         if (Math.abs(expected - (Float) getActual()) <= delta) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
@@ -70,6 +75,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final float expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() <= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
@@ -81,6 +88,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final float expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() < expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
@@ -92,6 +101,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final float expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() >= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
@@ -103,6 +114,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final float expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() > expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
@@ -115,6 +128,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final float expectedFrom, final float expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() < expectedFrom || (Float) getActual() >= expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
@@ -127,6 +142,8 @@ public class FloatAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final float expectedFrom, final float expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() >= expectedFrom && (Float) getActual() < expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
@@ -136,6 +153,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is zero.
      */
     public final void isZero() {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() != 0.0f) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_ZERO);
         }
@@ -145,6 +164,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is not zero.
      */
     public final void isNonZero() {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() == 0.0f) {
             throw createAssertionError(Messages.Fail.IS_NON_ZERO);
         }
@@ -154,6 +175,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is positive infinity.
      */
     public final void isPositiveInfinity() {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() != Float.POSITIVE_INFINITY) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_POSITIVE_INFINITY);
         }
@@ -163,6 +186,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is negative infinity.
      */
     public final void isNegativeInfinity() {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Float) getActual() != Float.NEGATIVE_INFINITY) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NEGATIVE_INFINITY);
         }
@@ -172,6 +197,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is infinity.
      */
     public final void isInfinity() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!((Float) getActual()).isInfinite()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_INFINITY);
         }
@@ -181,6 +208,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is NaN.
      */
     public final void isNaN() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (!((Float) getActual()).isNaN()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NAN);
         }
@@ -190,6 +219,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is not NaN.
      */
     public final void isNotNaN() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (((Float) getActual()).isNaN()) {
             throw createAssertionError(Messages.Fail.IS_NOT_NAN);
         }
@@ -199,6 +230,8 @@ public class FloatAssertion extends BaseAssertion {
      * Check if the actual value is finite value.
      */
     public final void isFinite() {
+        checkInitialized();
+        checkActualIsNotNull();
         if (((Float) getActual()).isNaN() || ((Float) getActual()).isInfinite()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_FINITE);
         }

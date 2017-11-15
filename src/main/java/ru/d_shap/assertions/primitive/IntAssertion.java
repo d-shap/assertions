@@ -20,8 +20,9 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAssertion;
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the int.
@@ -30,14 +31,14 @@ import ru.d_shap.assertions.Messages;
  */
 public class IntAssertion extends BaseAssertion {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Integer.class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public IntAssertion(final int actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public IntAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -46,6 +47,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() != expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
@@ -57,6 +60,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() == expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
@@ -68,6 +73,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() <= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
@@ -79,6 +86,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() < expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
@@ -90,6 +99,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThan(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() >= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
@@ -101,6 +112,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final int expected) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() > expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
@@ -113,6 +126,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() < expectedFrom || (Integer) getActual() >= expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
@@ -125,6 +140,8 @@ public class IntAssertion extends BaseAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
+        checkInitialized();
+        checkActualIsNotNull();
         if ((Integer) getActual() >= expectedFrom && (Integer) getActual() < expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
