@@ -22,8 +22,8 @@ package ru.d_shap.assertions.nio;
 import java.nio.Buffer;
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -36,14 +36,15 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 abstract class BufferAssertion<T> extends ReferenceAssertion {
 
-    BufferAssertion(final Buffer actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    BufferAssertion() {
+        super();
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).isEmpty();
     }
@@ -52,6 +53,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).isEmpty();
     }
@@ -60,6 +62,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null) {
             createListAssertion(false).isNullOrEmpty();
         }
@@ -69,6 +72,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null) {
             createListAssertion(true).isNullOrEmpty();
         }
@@ -78,6 +82,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).isNotEmpty();
     }
@@ -86,158 +91,187 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).isNotEmpty();
     }
 
     final void doContains(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).contains(expected);
     }
 
     final void doRewindAndContains(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).contains(expected);
     }
 
     final void doDoesNotContain(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).doesNotContain(expected);
     }
 
     final void doRewindAndDoesNotContain(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).doesNotContain(expected);
     }
 
     @SafeVarargs
     final void doContainsAll(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAll((Object[]) expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAll(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAll(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAll((Object[]) expected);
     }
 
     final void doRewindAndContainsAll(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAll(expected);
     }
 
     @SafeVarargs
     final void doContainsAllInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAllInOrder((Object[]) expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAllInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAllInOrder((Object[]) expected);
     }
 
     final void doRewindAndContainsAllInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsExactly(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsExactly((Object[]) expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsExactly(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsExactly(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsExactly((Object[]) expected);
     }
 
     final void doRewindAndContainsExactly(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsExactly(expected);
     }
 
     @SafeVarargs
     final void doContainsExactlyInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsExactlyInOrder((Object[]) expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsExactlyInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsExactlyInOrder((Object[]) expected);
     }
 
     final void doRewindAndContainsExactlyInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsAny(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAny((Object[]) expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsAny(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsAny(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAny((Object[]) expected);
     }
 
     final void doRewindAndContainsAny(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsAny(expected);
     }
 
     @SafeVarargs
     final void doContainsNone(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsNone((Object[]) expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(false).containsNone(expected);
     }
 
     @SafeVarargs
     final void doRewindAndContainsNone(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsNone((Object[]) expected);
     }
 
     final void doRewindAndContainsNone(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion(true).containsNone(expected);
     }
@@ -248,8 +282,9 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toPosition() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).position(), getFailDescription(Messages.Check.ACTUAL_BUFFER_POSITION));
+        return initializeAssertion(Raw.intAssertion(), ((Buffer) getActual()).position(), Messages.Check.ACTUAL_BUFFER_POSITION);
     }
 
     /**
@@ -267,8 +302,9 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toLimit() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).limit(), getFailDescription(Messages.Check.ACTUAL_BUFFER_LIMIT));
+        return initializeAssertion(Raw.intAssertion(), ((Buffer) getActual()).limit(), Messages.Check.ACTUAL_BUFFER_LIMIT);
     }
 
     /**
@@ -286,8 +322,9 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toCapacity() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).capacity(), getFailDescription(Messages.Check.ACTUAL_BUFFER_CAPACITY));
+        return initializeAssertion(Raw.intAssertion(), ((Buffer) getActual()).capacity(), Messages.Check.ACTUAL_BUFFER_CAPACITY);
     }
 
     /**
@@ -318,8 +355,9 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toRemaining() {
+        checkInitialized();
         checkActualIsNotNull();
-        return new IntAssertion(((Buffer) getActual()).remaining(), getFailDescription(Messages.Check.ACTUAL_BUFFER_REMAINING));
+        return initializeAssertion(Raw.intAssertion(), ((Buffer) getActual()).remaining(), Messages.Check.ACTUAL_BUFFER_REMAINING);
     }
 
     /**
@@ -335,6 +373,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is direct.
      */
     public final void isDirect() {
+        checkInitialized();
         checkActualIsNotNull();
         if (!((Buffer) getActual()).isDirect()) {
             throw createAssertionError(Messages.Fail.IS_DIRECT);
@@ -345,6 +384,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is NOT direct.
      */
     public final void isNotDirect() {
+        checkInitialized();
         checkActualIsNotNull();
         if (((Buffer) getActual()).isDirect()) {
             throw createAssertionError(Messages.Fail.IS_NOT_DIRECT);
@@ -355,6 +395,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is read only.
      */
     public final void isReadOnly() {
+        checkInitialized();
         checkActualIsNotNull();
         if (!((Buffer) getActual()).isReadOnly()) {
             throw createAssertionError(Messages.Fail.IS_READ_ONLY);
@@ -365,6 +406,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is NOT read only.
      */
     public final void isNotReadOnly() {
+        checkInitialized();
         checkActualIsNotNull();
         if (((Buffer) getActual()).isReadOnly()) {
             throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
@@ -373,7 +415,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
 
     private ListAssertion createListAssertion(final boolean rewind) {
         List<T> list = createList(getActual(), rewind);
-        return new ListAssertion(list, getFailDescription());
+        return initializeAssertion(Raw.listAssertion(), list);
     }
 
     abstract List<T> createList(Object value, boolean rewind);
