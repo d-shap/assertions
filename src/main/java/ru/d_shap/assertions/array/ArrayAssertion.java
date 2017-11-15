@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -165,7 +166,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         List<T> list = createList(getActual());
-        return initializeAssertion(new IntAssertion(), list.size(), Messages.Check.ACTUAL_VALUE_LENGTH);
+        return initializeAssertion(Raw.intAssertion(), list.size(), Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
@@ -179,7 +180,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
 
     private ListAssertion createListAssertion() {
         List<T> list = createList(getActual());
-        return initializeAssertion(new ListAssertion(), list);
+        return initializeAssertion(Raw.listAssertion(), list);
     }
 
     abstract List<T> createList(Object value);
