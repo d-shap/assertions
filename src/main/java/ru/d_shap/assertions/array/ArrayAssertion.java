@@ -21,7 +21,6 @@ package ru.d_shap.assertions.array;
 
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
@@ -35,14 +34,15 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  */
 abstract class ArrayAssertion<T> extends ReferenceAssertion {
 
-    ArrayAssertion(final Object actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    ArrayAssertion() {
+        super();
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().isEmpty();
     }
@@ -51,6 +51,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
+        checkInitialized();
         if (getActual() != null) {
             createListAssertion().isNullOrEmpty();
         }
@@ -60,82 +61,97 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().isNotEmpty();
     }
 
     final void doContains(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().contains(expected);
     }
 
     final void doDoesNotContain(final T expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().doesNotContain(expected);
     }
 
     @SafeVarargs
     final void doContainsAll(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAll((Object[]) expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAll(expected);
     }
 
     @SafeVarargs
     final void doContainsAllInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAllInOrder((Object[]) expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAllInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsExactly(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsExactly((Object[]) expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsExactly(expected);
     }
 
     @SafeVarargs
     final void doContainsExactlyInOrder(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder((Object[]) expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder(expected);
     }
 
     @SafeVarargs
     final void doContainsAny(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAny((Object[]) expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsAny(expected);
     }
 
     @SafeVarargs
     final void doContainsNone(final T... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsNone((Object[]) expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
+        checkInitialized();
         checkActualIsNotNull();
         createListAssertion().containsNone(expected);
     }
@@ -146,9 +162,10 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
      * @return the assertion.
      */
     public final IntAssertion toLength() {
+        checkInitialized();
         checkActualIsNotNull();
         List<T> list = createList(getActual());
-        return new IntAssertion(list.size(), getFailDescription(Messages.Check.ACTUAL_VALUE_LENGTH));
+        return initializeAssertion(new IntAssertion(), list.size(), Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
@@ -162,7 +179,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
 
     private ListAssertion createListAssertion() {
         List<T> list = createList(getActual());
-        return new ListAssertion(list, getFailDescription());
+        return initializeAssertion(new ListAssertion(), list);
     }
 
     abstract List<T> createList(Object value);

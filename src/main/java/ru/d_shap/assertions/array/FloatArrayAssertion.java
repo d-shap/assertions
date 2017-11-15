@@ -21,8 +21,9 @@ package ru.d_shap.assertions.array;
 
 import java.util.List;
 
-import ru.d_shap.assertions.FailDescription;
 import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the float array.
@@ -31,14 +32,14 @@ import ru.d_shap.assertions.ValueConverter;
  */
 public class FloatArrayAssertion extends ArrayAssertion<Float> {
 
+    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(float[].class);
+
     /**
      * Create new object.
-     *
-     * @param actual          the actual value.
-     * @param failDescription the fail description.
      */
-    public FloatArrayAssertion(final float[] actual, final FailDescription failDescription) {
-        super(actual, failDescription);
+    public FloatArrayAssertion() {
+        super();
+        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
     }
 
     /**
@@ -65,6 +66,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAll(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAll(ValueConverter.toFloatObjectArray(expected));
@@ -85,6 +87,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAllInOrder(ValueConverter.toFloatObjectArray(expected));
@@ -105,6 +108,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsExactly(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactly(ValueConverter.toFloatObjectArray(expected));
@@ -125,6 +129,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsExactlyInOrder(ValueConverter.toFloatObjectArray(expected));
@@ -145,6 +150,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsAny(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsAny(ValueConverter.toFloatObjectArray(expected));
@@ -165,6 +171,7 @@ public class FloatArrayAssertion extends ArrayAssertion<Float> {
      * @param expected the expected values.
      */
     public final void containsNone(final float... expected) {
+        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         doContainsNone(ValueConverter.toFloatObjectArray(expected));
