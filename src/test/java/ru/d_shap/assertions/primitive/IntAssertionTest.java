@@ -21,15 +21,16 @@ package ru.d_shap.assertions.primitive;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link IntAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class IntAssertionTest {
+public final class IntAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -43,19 +44,19 @@ public final class IntAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new IntAssertion(10, new FailDescription()).isEqualTo(10);
-        new IntAssertion(75, new FailDescription()).isEqualTo(75);
-        new IntAssertion(236, new FailDescription()).isEqualTo(236);
-        new IntAssertion(257, new FailDescription()).isEqualTo(257);
+        initialize(Raw.intAssertion(), 10).isEqualTo(10);
+        initialize(Raw.intAssertion(), 75).isEqualTo(75);
+        initialize(Raw.intAssertion(), 236).isEqualTo(236);
+        initialize(Raw.intAssertion(), 257).isEqualTo(257);
 
         try {
-            new IntAssertion(10, new FailDescription()).isEqualTo(20);
+            initialize(Raw.intAssertion(), 10).isEqualTo(20);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isEqualTo(20);
+            initialize(Raw.intAssertion(), 10, "Message").isEqualTo(20);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<20> but was:<10>.");
@@ -67,19 +68,19 @@ public final class IntAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new IntAssertion(10, new FailDescription()).isNotEqualTo(15);
-        new IntAssertion(75, new FailDescription()).isNotEqualTo(76);
-        new IntAssertion(236, new FailDescription()).isNotEqualTo(143);
-        new IntAssertion(257, new FailDescription()).isNotEqualTo(2);
+        initialize(Raw.intAssertion(), 10).isNotEqualTo(15);
+        initialize(Raw.intAssertion(), 75).isNotEqualTo(76);
+        initialize(Raw.intAssertion(), 236).isNotEqualTo(143);
+        initialize(Raw.intAssertion(), 257).isNotEqualTo(2);
 
         try {
-            new IntAssertion(10, new FailDescription()).isNotEqualTo(10);
+            initialize(Raw.intAssertion(), 10).isNotEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isNotEqualTo(10);
+            initialize(Raw.intAssertion(), 10, "Message").isNotEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10>.");
@@ -91,30 +92,30 @@ public final class IntAssertionTest {
      */
     @Test
     public void isGreaterThanTest() {
-        new IntAssertion(10, new FailDescription()).isGreaterThan(5);
-        new IntAssertion(60, new FailDescription()).isGreaterThan(30);
-        new IntAssertion(245, new FailDescription()).isGreaterThan(244);
+        initialize(Raw.intAssertion(), 10).isGreaterThan(5);
+        initialize(Raw.intAssertion(), 60).isGreaterThan(30);
+        initialize(Raw.intAssertion(), 245).isGreaterThan(244);
 
         try {
-            new IntAssertion(10, new FailDescription()).isGreaterThan(10);
+            initialize(Raw.intAssertion(), 10).isGreaterThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isGreaterThan(10);
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription()).isGreaterThan(11);
+            initialize(Raw.intAssertion(), 10).isGreaterThan(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isGreaterThan(11);
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<11> but was:<10>.");
@@ -126,18 +127,18 @@ public final class IntAssertionTest {
      */
     @Test
     public void isGreaterThanOrEqualToTest() {
-        new IntAssertion(10, new FailDescription()).isGreaterThanOrEqualTo(5);
-        new IntAssertion(60, new FailDescription()).isGreaterThanOrEqualTo(60);
-        new IntAssertion(245, new FailDescription()).isGreaterThanOrEqualTo(244);
+        initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(5);
+        initialize(Raw.intAssertion(), 60).isGreaterThanOrEqualTo(60);
+        initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(244);
 
         try {
-            new IntAssertion(10, new FailDescription()).isGreaterThanOrEqualTo(11);
+            initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isGreaterThanOrEqualTo(11);
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThanOrEqualTo(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then or equal to the expected. Expected:<11> but was:<10>.");
@@ -149,30 +150,30 @@ public final class IntAssertionTest {
      */
     @Test
     public void isLessThanTest() {
-        new IntAssertion(5, new FailDescription()).isLessThan(10);
-        new IntAssertion(30, new FailDescription()).isLessThan(60);
-        new IntAssertion(244, new FailDescription()).isLessThan(245);
+        initialize(Raw.intAssertion(), 5).isLessThan(10);
+        initialize(Raw.intAssertion(), 30).isLessThan(60);
+        initialize(Raw.intAssertion(), 244).isLessThan(245);
 
         try {
-            new IntAssertion(10, new FailDescription()).isLessThan(10);
+            initialize(Raw.intAssertion(), 10).isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new IntAssertion(10, new FailDescription("Message")).isLessThan(10);
+            initialize(Raw.intAssertion(), 10, "Message").isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<10> but was:<10>.");
         }
         try {
-            new IntAssertion(11, new FailDescription()).isLessThan(10);
+            initialize(Raw.intAssertion(), 11).isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10> but was:<11>.");
         }
         try {
-            new IntAssertion(11, new FailDescription("Message")).isLessThan(10);
+            initialize(Raw.intAssertion(), 11, "Message").isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<10> but was:<11>.");
@@ -184,18 +185,18 @@ public final class IntAssertionTest {
      */
     @Test
     public void isLessThanOrEqualToTest() {
-        new IntAssertion(5, new FailDescription()).isLessThanOrEqualTo(10);
-        new IntAssertion(60, new FailDescription()).isLessThanOrEqualTo(60);
-        new IntAssertion(244, new FailDescription()).isLessThanOrEqualTo(245);
+        initialize(Raw.intAssertion(), 5).isLessThanOrEqualTo(10);
+        initialize(Raw.intAssertion(), 60).isLessThanOrEqualTo(60);
+        initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(245);
 
         try {
-            new IntAssertion(11, new FailDescription()).isLessThanOrEqualTo(10);
+            initialize(Raw.intAssertion(), 11).isLessThanOrEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<10> but was:<11>.");
         }
         try {
-            new IntAssertion(11, new FailDescription("Message")).isLessThanOrEqualTo(10);
+            initialize(Raw.intAssertion(), 11, "Message").isLessThanOrEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<10> but was:<11>.");
@@ -207,42 +208,42 @@ public final class IntAssertionTest {
      */
     @Test
     public void isInRangeTest() {
-        new IntAssertion(5, new FailDescription()).isInRange(4, 6);
-        new IntAssertion(5, new FailDescription()).isInRange(5, 6);
-        new IntAssertion(5, new FailDescription()).isInRange(1, 10);
+        initialize(Raw.intAssertion(), 5).isInRange(4, 6);
+        initialize(Raw.intAssertion(), 5).isInRange(5, 6);
+        initialize(Raw.intAssertion(), 5).isInRange(1, 10);
 
         try {
-            new IntAssertion(5, new FailDescription()).isInRange(1, 5);
+            initialize(Raw.intAssertion(), 5).isInRange(1, 5);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1:5> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isInRange(1, 5);
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(1, 5);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<1:5> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription()).isInRange(6, 10);
+            initialize(Raw.intAssertion(), 5).isInRange(6, 10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6:10> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isInRange(6, 10);
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(6, 10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<6:10> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription()).isInRange(8, 9);
+            initialize(Raw.intAssertion(), 5).isInRange(8, 9);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8:9> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isInRange(8, 9);
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(8, 9);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<8:9> but was:<5>.");
@@ -254,42 +255,42 @@ public final class IntAssertionTest {
      */
     @Test
     public void isNotInRangeTest() {
-        new IntAssertion(5, new FailDescription()).isNotInRange(1, 5);
-        new IntAssertion(5, new FailDescription()).isNotInRange(6, 10);
-        new IntAssertion(5, new FailDescription()).isNotInRange(8, 9);
+        initialize(Raw.intAssertion(), 5).isNotInRange(1, 5);
+        initialize(Raw.intAssertion(), 5).isNotInRange(6, 10);
+        initialize(Raw.intAssertion(), 5).isNotInRange(8, 9);
 
         try {
-            new IntAssertion(5, new FailDescription()).isNotInRange(4, 6);
+            initialize(Raw.intAssertion(), 5).isNotInRange(4, 6);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4:6> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isNotInRange(4, 6);
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(4, 6);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<4:6> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription()).isNotInRange(5, 6);
+            initialize(Raw.intAssertion(), 5).isNotInRange(5, 6);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5:6> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isNotInRange(5, 6);
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(5, 6);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<5:6> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription()).isNotInRange(1, 10);
+            initialize(Raw.intAssertion(), 5).isNotInRange(1, 10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1:10> but was:<5>.");
         }
         try {
-            new IntAssertion(5, new FailDescription("Message")).isNotInRange(1, 10);
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(1, 10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1:10> but was:<5>.");
@@ -302,15 +303,15 @@ public final class IntAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(null));
             Assertions.fail("IntAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(5)).isEqualTo("5");
-        Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(60)).isEqualTo("60");
-        Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString(244)).isEqualTo("244");
-        Assertions.assertThat(new IntAssertion(5, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(5)).isEqualTo("5");
+        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(60)).isEqualTo("60");
+        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(244)).isEqualTo("244");
+        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString("test")).isEqualTo("test");
     }
 
 }

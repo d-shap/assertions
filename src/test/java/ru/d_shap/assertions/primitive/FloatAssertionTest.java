@@ -21,15 +21,16 @@ package ru.d_shap.assertions.primitive;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link FloatAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatAssertionTest {
+public final class FloatAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -43,46 +44,46 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isEqualTo(10.0f, 0.01f);
-        new FloatAssertion(10.0f, new FailDescription()).isEqualTo(9.999f, 0.01f);
-        new FloatAssertion(10.0f, new FailDescription()).isEqualTo(10.001f, 0.01f);
-        new FloatAssertion(0.0f, new FailDescription()).isEqualTo(0.0f, 0.01f);
-        new FloatAssertion(Float.MAX_VALUE, new FailDescription()).isEqualTo(Float.MAX_VALUE, 0.01f);
-        new FloatAssertion(-0.0f, new FailDescription()).isEqualTo(+0.0f, 0.0f);
-        new FloatAssertion(+0.0f, new FailDescription()).isEqualTo(-0.0f, 0.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.0f, 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(9.999f, 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.001f, 0.01f);
+        initialize(Raw.floatAssertion(), 0.0f).isEqualTo(0.0f, 0.01f);
+        initialize(Raw.floatAssertion(), Float.MAX_VALUE).isEqualTo(Float.MAX_VALUE, 0.01f);
+        initialize(Raw.floatAssertion(), -0.0f).isEqualTo(+0.0f, 0.0f);
+        initialize(Raw.floatAssertion(), +0.0f).isEqualTo(-0.0f, 0.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isEqualTo(10.01f, 0.001f);
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.01f, 0.001f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<10.01> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isEqualTo(10.01f, 0.001f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(10.01f, 0.001f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10.01> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isEqualTo(9.99f, 0.001f);
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(9.99f, 0.001f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<9.99> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isEqualTo(9.99f, 0.001f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(9.99f, 0.001f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<9.99> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isEqualTo(20.0f, 0.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(20.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<20.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isEqualTo(20.0f, 0.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(20.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<20.0> but was:<10.0>.");
@@ -94,66 +95,66 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(10.01f, 0.001f);
-        new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(9.99f, 0.001f);
-        new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(20.0f, 0.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.01f, 0.001f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(9.99f, 0.001f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(20.0f, 0.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(10.001f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.001f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isNotEqualTo(10.001f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(10.001f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(9.999f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(9.999f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isNotEqualTo(9.999f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(9.999f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isNotEqualTo(10.0f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.0f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isNotEqualTo(10.0f, 0.01f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(10.0f, 0.01f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(+0.0f, new FailDescription()).isNotEqualTo(-0.0f, 0.0f);
+            initialize(Raw.floatAssertion(), +0.0f).isNotEqualTo(-0.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(+0.0f, new FailDescription("Message")).isNotEqualTo(-0.0f, 0.0f);
+            initialize(Raw.floatAssertion(), +0.0f, "Message").isNotEqualTo(-0.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(-0.0f, new FailDescription()).isNotEqualTo(+0.0f, 0.0f);
+            initialize(Raw.floatAssertion(), -0.0f).isNotEqualTo(+0.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<-0.0>.");
         }
         try {
-            new FloatAssertion(-0.0f, new FailDescription("Message")).isNotEqualTo(+0.0f, 0.0f);
+            initialize(Raw.floatAssertion(), -0.0f, "Message").isNotEqualTo(+0.0f, 0.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<-0.0>.");
@@ -165,30 +166,30 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isGreaterThanTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThan(9.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThan(8.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThan(-1.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(9.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(8.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(-1.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isGreaterThan(10.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<10.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isGreaterThan(10.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isGreaterThan(10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<10.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isGreaterThan(11.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(11.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then the expected. Expected:<11.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isGreaterThan(11.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isGreaterThan(11.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then the expected. Expected:<11.0> but was:<10.0>.");
@@ -200,18 +201,18 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isGreaterThanOrEqualToTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThanOrEqualTo(9.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThanOrEqualTo(10.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isGreaterThanOrEqualTo(-1.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(9.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(10.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(-1.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isGreaterThanOrEqualTo(11.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(11.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be greater then or equal to the expected. Expected:<11.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isGreaterThanOrEqualTo(11.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isGreaterThanOrEqualTo(11.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be greater then or equal to the expected. Expected:<11.0> but was:<10.0>.");
@@ -223,30 +224,30 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isLessThanTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isLessThan(11.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isLessThan(12.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isLessThan(100.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThan(11.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThan(12.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThan(100.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isLessThan(10.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isLessThan(10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<10.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isLessThan(10.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isLessThan(10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<10.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isLessThan(9.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isLessThan(9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then the expected. Expected:<9.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isLessThan(9.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isLessThan(9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then the expected. Expected:<9.0> but was:<10.0>.");
@@ -258,18 +259,18 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isLessThanOrEqualToTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isLessThanOrEqualTo(11.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isLessThanOrEqualTo(10.0f);
-        new FloatAssertion(10.0f, new FailDescription()).isLessThanOrEqualTo(100.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(11.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(10.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(100.0f);
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isLessThanOrEqualTo(9.0f);
+            initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be less then or equal to the expected. Expected:<9.0> but was:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isLessThanOrEqualTo(9.0f);
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isLessThanOrEqualTo(9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be less then or equal to the expected. Expected:<9.0> but was:<10.0>.");
@@ -281,42 +282,42 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isInRangeTest() {
-        new FloatAssertion(5.0f, new FailDescription()).isInRange(4.0f, 6.0f);
-        new FloatAssertion(5.0f, new FailDescription()).isInRange(5.0f, 6.0f);
-        new FloatAssertion(5.0f, new FailDescription()).isInRange(1.0f, 10.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(4.0f, 6.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(5.0f, 6.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(1.0f, 10.0f);
 
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isInRange(1.0f, 5.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(1.0f, 5.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<1.0:5.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isInRange(1.0f, 5.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(1.0f, 5.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<1.0:5.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isInRange(6.0f, 10.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(6.0f, 10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<6.0:10.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isInRange(6.0f, 10.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(6.0f, 10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<6.0:10.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isInRange(8.0f, 9.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(8.0f, 9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be in the expected range. Expected:<8.0:9.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isInRange(8.0f, 9.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(8.0f, 9.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be in the expected range. Expected:<8.0:9.0> but was:<5.0>.");
@@ -328,42 +329,42 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNotInRangeTest() {
-        new FloatAssertion(5.0f, new FailDescription()).isNotInRange(1.0f, 5.0f);
-        new FloatAssertion(5.0f, new FailDescription()).isNotInRange(6.0f, 10.0f);
-        new FloatAssertion(5.0f, new FailDescription()).isNotInRange(8.0f, 9.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(1.0f, 5.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(6.0f, 10.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(8.0f, 9.0f);
 
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isNotInRange(4.0f, 6.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(4.0f, 6.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<4.0:6.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isNotInRange(4.0f, 6.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(4.0f, 6.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<4.0:6.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isNotInRange(5.0f, 6.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(5.0f, 6.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<5.0:6.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isNotInRange(5.0f, 6.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(5.0f, 6.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<5.0:6.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription()).isNotInRange(1.0f, 10.0f);
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(1.0f, 10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be in the expected range. Expected:<1.0:10.0> but was:<5.0>.");
         }
         try {
-            new FloatAssertion(5.0f, new FailDescription("Message")).isNotInRange(1.0f, 10.0f);
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(1.0f, 10.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1.0:10.0> but was:<5.0>.");
@@ -375,18 +376,18 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isZeroTest() {
-        new FloatAssertion(0.0f, new FailDescription()).isZero();
-        new FloatAssertion(+0.0f, new FailDescription()).isZero();
-        new FloatAssertion(-0.0f, new FailDescription()).isZero();
+        initialize(Raw.floatAssertion(), 0.0f).isZero();
+        initialize(Raw.floatAssertion(), +0.0f).isZero();
+        initialize(Raw.floatAssertion(), -0.0f).isZero();
 
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isZero();
+            initialize(Raw.floatAssertion(), 10.0f).isZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be zero. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isZero();
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be zero. Actual:<10.0>.");
@@ -398,44 +399,44 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNonZeroTest() {
-        new FloatAssertion(10.0f, new FailDescription()).isNonZero();
-        new FloatAssertion(-10.0f, new FailDescription()).isNonZero();
-        new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isNonZero();
-        new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isNonZero();
-        new FloatAssertion(Float.NaN, new FailDescription()).isNonZero();
+        initialize(Raw.floatAssertion(), 10.0f).isNonZero();
+        initialize(Raw.floatAssertion(), -10.0f).isNonZero();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNonZero();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNonZero();
+        initialize(Raw.floatAssertion(), Float.NaN).isNonZero();
 
         try {
-            new FloatAssertion(0.0f, new FailDescription()).isNonZero();
+            initialize(Raw.floatAssertion(), 0.0f).isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be zero.");
         }
         try {
-            new FloatAssertion(0.0f, new FailDescription("Message")).isNonZero();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be zero.");
         }
         try {
-            new FloatAssertion(+0.0f, new FailDescription()).isNonZero();
+            initialize(Raw.floatAssertion(), +0.0f).isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be zero.");
         }
         try {
-            new FloatAssertion(+0.0f, new FailDescription("Message")).isNonZero();
+            initialize(Raw.floatAssertion(), +0.0f, "Message").isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be zero.");
         }
         try {
-            new FloatAssertion(-0.0f, new FailDescription()).isNonZero();
+            initialize(Raw.floatAssertion(), -0.0f).isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be zero.");
         }
         try {
-            new FloatAssertion(-0.0f, new FailDescription("Message")).isNonZero();
+            initialize(Raw.floatAssertion(), -0.0f, "Message").isNonZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be zero.");
@@ -447,54 +448,54 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isPositiveInfinityTest() {
-        new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isPositiveInfinity();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isPositiveInfinity();
         float val = 0.0f;
-        new FloatAssertion(1.0f / val, new FailDescription()).isPositiveInfinity();
+        initialize(Raw.floatAssertion(), 1.0f / val).isPositiveInfinity();
 
         try {
-            new FloatAssertion(0.0f, new FailDescription()).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), 0.0f).isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be positive infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(0.0f, new FailDescription("Message")).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be positive infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), 10.0f).isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be positive infinity. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be positive infinity. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription()).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN).isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be positive infinity. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription("Message")).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be positive infinity. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be positive infinity. Actual:<-Infinity>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription("Message")).isPositiveInfinity();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY, "Message").isPositiveInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be positive infinity. Actual:<-Infinity>.");
@@ -506,54 +507,54 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNegativeInfinityTest() {
-        new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isNegativeInfinity();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNegativeInfinity();
         float val = 0.0f;
-        new FloatAssertion(-1.0f / val, new FailDescription()).isNegativeInfinity();
+        initialize(Raw.floatAssertion(), -1.0f / val).isNegativeInfinity();
 
         try {
-            new FloatAssertion(0.0f, new FailDescription()).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), 0.0f).isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be negative infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(0.0f, new FailDescription("Message")).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be negative infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription()).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), -10.0f).isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be negative infinity. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription("Message")).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), -10.0f, "Message").isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be negative infinity. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription()).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN).isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be negative infinity. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription("Message")).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be negative infinity. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be negative infinity. Actual:<Infinity>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription("Message")).isNegativeInfinity();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY, "Message").isNegativeInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be negative infinity. Actual:<Infinity>.");
@@ -565,56 +566,56 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isInfinityTest() {
-        new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isInfinity();
-        new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isInfinity();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isInfinity();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isInfinity();
         float val = 0.0f;
-        new FloatAssertion(1.0f / val, new FailDescription()).isInfinity();
-        new FloatAssertion(-1.0f / val, new FailDescription()).isInfinity();
+        initialize(Raw.floatAssertion(), 1.0f / val).isInfinity();
+        initialize(Raw.floatAssertion(), -1.0f / val).isInfinity();
 
         try {
-            new FloatAssertion(0.0f, new FailDescription()).isInfinity();
+            initialize(Raw.floatAssertion(), 0.0f).isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(0.0f, new FailDescription("Message")).isInfinity();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be infinity. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isInfinity();
+            initialize(Raw.floatAssertion(), 10.0f).isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be infinity. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isInfinity();
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be infinity. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription()).isInfinity();
+            initialize(Raw.floatAssertion(), -10.0f).isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be infinity. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription("Message")).isInfinity();
+            initialize(Raw.floatAssertion(), -10.0f, "Message").isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be infinity. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription()).isInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN).isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be infinity. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription("Message")).isInfinity();
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isInfinity();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be infinity. Actual:<NaN>.");
@@ -626,66 +627,66 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNaNTest() {
-        new FloatAssertion(Float.NaN, new FailDescription()).isNaN();
-        new FloatAssertion(0.0f / 0.0f, new FailDescription()).isNaN();
-        new FloatAssertion(Float.POSITIVE_INFINITY / Float.NEGATIVE_INFINITY, new FailDescription()).isNaN();
+        initialize(Raw.floatAssertion(), Float.NaN).isNaN();
+        initialize(Raw.floatAssertion(), 0.0f / 0.0f).isNaN();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY / Float.NEGATIVE_INFINITY).isNaN();
 
         try {
-            new FloatAssertion(0.0f, new FailDescription()).isNaN();
+            initialize(Raw.floatAssertion(), 0.0f).isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be NaN. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(0.0f, new FailDescription("Message")).isNaN();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be NaN. Actual:<0.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription()).isNaN();
+            initialize(Raw.floatAssertion(), 10.0f).isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be NaN. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(10.0f, new FailDescription("Message")).isNaN();
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be NaN. Actual:<10.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription()).isNaN();
+            initialize(Raw.floatAssertion(), -10.0f).isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be NaN. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(-10.0f, new FailDescription("Message")).isNaN();
+            initialize(Raw.floatAssertion(), -10.0f, "Message").isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be NaN. Actual:<-10.0>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isNaN();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be NaN. Actual:<Infinity>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription("Message")).isNaN();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY, "Message").isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be NaN. Actual:<Infinity>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isNaN();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be NaN. Actual:<-Infinity>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription("Message")).isNaN();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY, "Message").isNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be NaN. Actual:<-Infinity>.");
@@ -697,20 +698,20 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isNotNaNTest() {
-        new FloatAssertion(0.0f, new FailDescription()).isNotNaN();
-        new FloatAssertion(10.0f, new FailDescription()).isNotNaN();
-        new FloatAssertion(-10.0f, new FailDescription()).isNotNaN();
-        new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isNotNaN();
-        new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isNotNaN();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNaN();
+        initialize(Raw.floatAssertion(), 10.0f).isNotNaN();
+        initialize(Raw.floatAssertion(), -10.0f).isNotNaN();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotNaN();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotNaN();
 
         try {
-            new FloatAssertion(Float.NaN, new FailDescription()).isNotNaN();
+            initialize(Raw.floatAssertion(), Float.NaN).isNotNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be NaN.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription("Message")).isNotNaN();
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isNotNaN();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be NaN.");
@@ -722,42 +723,42 @@ public final class FloatAssertionTest {
      */
     @Test
     public void isFiniteTest() {
-        new FloatAssertion(0.0f, new FailDescription()).isFinite();
-        new FloatAssertion(10.0f, new FailDescription()).isFinite();
-        new FloatAssertion(-10.0f, new FailDescription()).isFinite();
+        initialize(Raw.floatAssertion(), 0.0f).isFinite();
+        initialize(Raw.floatAssertion(), 10.0f).isFinite();
+        initialize(Raw.floatAssertion(), -10.0f).isFinite();
 
         try {
-            new FloatAssertion(Float.NaN, new FailDescription()).isFinite();
+            initialize(Raw.floatAssertion(), Float.NaN).isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be finite. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.NaN, new FailDescription("Message")).isFinite();
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be finite. Actual:<NaN>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription()).isFinite();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be finite. Actual:<Infinity>.");
         }
         try {
-            new FloatAssertion(Float.POSITIVE_INFINITY, new FailDescription("Message")).isFinite();
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY, "Message").isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be finite. Actual:<Infinity>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription()).isFinite();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be finite. Actual:<-Infinity>.");
         }
         try {
-            new FloatAssertion(Float.NEGATIVE_INFINITY, new FailDescription("Message")).isFinite();
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY, "Message").isFinite();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be finite. Actual:<-Infinity>.");
@@ -770,15 +771,15 @@ public final class FloatAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(null));
             Assertions.fail("FloatAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(5.0f)).isEqualTo("5.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(60.0f)).isEqualTo("60.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString(244.0f)).isEqualTo("244.0");
-        Assertions.assertThat(new FloatAssertion(10.0f, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(5.0f)).isEqualTo("5.0");
+        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(60.0f)).isEqualTo("60.0");
+        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(244.0f)).isEqualTo("244.0");
+        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString("test")).isEqualTo("test");
     }
 
 }

@@ -21,15 +21,16 @@ package ru.d_shap.assertions.primitive;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link BooleanAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanAssertionTest {
+public final class BooleanAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -43,16 +44,16 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void isTrueTest() {
-        new BooleanAssertion(true, new FailDescription()).isTrue();
+        initialize(Raw.booleanAssertion(), true).isTrue();
 
         try {
-            new BooleanAssertion(false, new FailDescription()).isTrue();
+            initialize(Raw.booleanAssertion(), false).isTrue();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be true.");
         }
         try {
-            new BooleanAssertion(false, new FailDescription("Message")).isTrue();
+            initialize(Raw.booleanAssertion(), false, "Message").isTrue();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be true.");
@@ -64,16 +65,16 @@ public final class BooleanAssertionTest {
      */
     @Test
     public void isFalseTest() {
-        new BooleanAssertion(false, new FailDescription()).isFalse();
+        initialize(Raw.booleanAssertion(), false).isFalse();
 
         try {
-            new BooleanAssertion(true, new FailDescription()).isFalse();
+            initialize(Raw.booleanAssertion(), true).isFalse();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
         try {
-            new BooleanAssertion(true, new FailDescription("Message")).isFalse();
+            initialize(Raw.booleanAssertion(), true, "Message").isFalse();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be false.");
@@ -86,14 +87,14 @@ public final class BooleanAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(null));
             Assertions.fail("BooleanAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(true)).isEqualTo("true");
-        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString(false)).isEqualTo("false");
-        Assertions.assertThat(new BooleanAssertion(true, new FailDescription()).asString("test")).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(true)).isEqualTo("true");
+        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(false)).isEqualTo("false");
+        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString("test")).isEqualTo("test");
     }
 
 }
