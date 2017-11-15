@@ -95,7 +95,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     public final ClassAssertion toClass() {
         checkInitialized();
         checkActualIsNotNull();
-        return initialize(new ClassAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
+        return initializeAssertion(new ClassAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
     }
 
     /**
@@ -142,7 +142,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     public final StringAssertion toToString() {
         checkInitialized();
         checkActualIsNotNull();
-        return initialize(new StringAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
+        return initializeAssertion(new StringAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
     }
 
     /**
@@ -171,7 +171,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
     public final IntAssertion toHashCode() {
         checkInitialized();
         checkActualIsNotNull();
-        return initialize(new IntAssertion(), getActual().hashCode(), Messages.Check.ACTUAL_VALUE_HASH_CODE);
+        return initializeAssertion(new IntAssertion(), getActual().hashCode(), Messages.Check.ACTUAL_VALUE_HASH_CODE);
     }
 
     /**
@@ -197,7 +197,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             Field field = getField(fieldName);
             AccessController.doPrivileged(new FieldAccessAction(field));
             Object value = field.get(getActual());
-            return initialize(new ObjectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName);
+            return initializeAssertion(new ObjectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName);
         } catch (ReflectiveOperationException ex) {
             throw createAssertionError(Messages.Fail.CONTAINS_FIELD, fieldName, ex);
         }
@@ -208,7 +208,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
-     * @param <T>       type of the assertion.
+     * @param <T>       generic assertion type.
      * @return the assertion.
      */
     public final <T extends BaseAssertion> T toField(final String fieldName, final T assertion) {
