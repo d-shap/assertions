@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -324,7 +325,7 @@ public class CollectionAssertion extends ReferenceAssertion {
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new IntAssertion(), ((Collection) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), ((Collection) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**

@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -60,7 +61,7 @@ public class IteratorAssertion extends ReferenceAssertion {
             Object element = ((Iterator<?>) getActual()).next();
             list.add(element);
         }
-        return initializeAssertion(new ListAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
     }
 
     /**
@@ -78,7 +79,7 @@ public class IteratorAssertion extends ReferenceAssertion {
             Object element = ((Iterator<?>) getActual()).next();
             list.add(element);
         }
-        return initializeAssertion(new ListAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
     }
 
     /**

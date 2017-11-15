@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -86,7 +87,7 @@ public class MapAssertion extends ReferenceAssertion {
     public final SetAssertion toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new SetAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
+        return initializeAssertion(Raw.setAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
     }
 
     /**
@@ -221,7 +222,7 @@ public class MapAssertion extends ReferenceAssertion {
     public final CollectionAssertion toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new CollectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
+        return initializeAssertion(Raw.collectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -297,7 +298,7 @@ public class MapAssertion extends ReferenceAssertion {
     }
 
     private SetAssertion createEntrySetAssertion() {
-        return initializeAssertion(new SetAssertion(), ((Map<?, ?>) getActual()).entrySet());
+        return initializeAssertion(Raw.setAssertion(), ((Map<?, ?>) getActual()).entrySet());
     }
 
     /**
@@ -308,7 +309,7 @@ public class MapAssertion extends ReferenceAssertion {
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(new IntAssertion(), ((Map<?, ?>) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), ((Map<?, ?>) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**
