@@ -166,6 +166,7 @@ public abstract class BaseAssertion {
      * Make assertion of specified type about the same actual.
      *
      * @param assertion the assertion.
+     * @param message   the message.
      * @param <T>       generic assertion type.
      * @return the assertion.
      */
