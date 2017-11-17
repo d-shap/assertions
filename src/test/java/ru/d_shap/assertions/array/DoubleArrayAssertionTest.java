@@ -24,15 +24,16 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link DoubleArrayAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleArrayAssertionTest {
+public final class DoubleArrayAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -46,23 +47,23 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).contains(1.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).contains(2.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).contains(1.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).contains(2.0);
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).contains(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).contains(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).contains(3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).contains(3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).contains(3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").contains(3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -74,22 +75,22 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).doesNotContain(3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).doesNotContain(3.0);
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).doesNotContain(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).doesNotContain(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).doesNotContain(1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).doesNotContain(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).doesNotContain(1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").doesNotContain(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -101,79 +102,79 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll(1.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAll(1.0, 3.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAll(4.0, 2.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAll(Arrays.asList(4.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(1.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(1.0, 3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(4.0, 2.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(Arrays.asList(4.0, 2.0));
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAll(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsAll(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAll((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAll((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAll((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll(2.0, 3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(2.0, 3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAll(2.0, 3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAll(2.0, 3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -185,84 +186,84 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder(1.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAllInOrder(1.0, 3.0, 4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(1.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(1.0, 3.0, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAllInOrder(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsAllInOrder(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAllInOrder((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAllInOrder((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder(2.0, 3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(2.0, 3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -274,93 +275,93 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly(1.0, 2.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(1.0, 3.0, 2.0, 4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        new DoubleArrayAssertion(new double[0], new FailDescription()).containsExactly();
-        new DoubleArrayAssertion(new double[0], new FailDescription()).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(1.0, 2.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 3.0, 2.0, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactly();
+        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactly(new ArrayList<Double>());
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactly(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactly(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactly((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactly((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly(2.0, 3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(2.0, 3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription("Message")).containsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription("Message")).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -372,98 +373,98 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder(1.0, 2.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        new DoubleArrayAssertion(new double[0], new FailDescription()).containsExactlyInOrder();
-        new DoubleArrayAssertion(new double[0], new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(1.0, 2.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactlyInOrder();
+        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactlyInOrder(new ArrayList<Double>());
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactlyInOrder(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactlyInOrder(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder(2.0, 1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(1.0, 2.0, 3.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription("Message")).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription("Message")).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -475,80 +476,80 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny(2.0, 3.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAny(2.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAny(4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAny(5.0, 3.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0, 3.0, 4.0}, new FailDescription()).containsAny(Arrays.asList(5.0, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(2.0, 3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(2.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(5.0, 3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(Arrays.asList(5.0, 3.0));
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAny(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsAny(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAny((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAny((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsAny((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny(3.0, 4.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(3.0, 4.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAny(3.0, 4.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAny(3.0, 4.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -560,84 +561,84 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(3.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(3.0, 4.0);
-        new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(Arrays.asList(3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(3.0, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(Arrays.asList(3.0, 4.0));
 
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsNone(1.0);
+            initialize(Raw.doubleArrayAssertion(), null).containsNone(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), null).containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsNone((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsNone((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(null, new FailDescription()).containsNone((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), null).containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone((double[]) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone((double[]) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone((Iterable<Double>) null);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(2.0, 1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(2.0, 1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsNone(2.0, 1.0);
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsNone(2.0, 1.0);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -649,16 +650,16 @@ public final class DoubleArrayAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new DoubleArrayAssertion(null, new FailDescription()).isNull();
+        initialize(Raw.doubleArrayAssertion(), null).isNull();
 
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription()).isNull();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNull();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(new double[]{1.0, 2.0}, new FailDescription("Message")).isNull();
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").isNull();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1.0, 2.0]>.");
@@ -671,28 +672,28 @@ public final class DoubleArrayAssertionTest {
     @Test
     public void isSameAsTest() {
         double[] value = new double[]{1.0, 2.0};
-        new DoubleArrayAssertion(value, new FailDescription()).isSameAs(value);
+        initialize(Raw.doubleArrayAssertion(), value).isSameAs(value);
 
         try {
-            new DoubleArrayAssertion(value, new FailDescription()).isSameAs(new double[]{1.0, 2.0});
+            initialize(Raw.doubleArrayAssertion(), value).isSameAs(new double[]{1.0, 2.0});
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(value, new FailDescription("Message")).isSameAs(new double[]{1.0, 2.0});
+            initialize(Raw.doubleArrayAssertion(), value, "Message").isSameAs(new double[]{1.0, 2.0});
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(value, new FailDescription()).isSameAs("test");
+            initialize(Raw.doubleArrayAssertion(), value).isSameAs("test");
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            initialize(Raw.doubleArrayAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
@@ -705,17 +706,17 @@ public final class DoubleArrayAssertionTest {
     @Test
     public void isNotSameAsTest() {
         double[] value = new double[]{1.0, 2.0};
-        new DoubleArrayAssertion(value, new FailDescription()).isNotSameAs(new double[]{1.0, 2.0});
-        new DoubleArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+        initialize(Raw.doubleArrayAssertion(), value).isNotSameAs(new double[]{1.0, 2.0});
+        initialize(Raw.doubleArrayAssertion(), value).isNotSameAs("test");
 
         try {
-            new DoubleArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            initialize(Raw.doubleArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            initialize(Raw.doubleArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1.0, 2.0]>.");
@@ -728,14 +729,14 @@ public final class DoubleArrayAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new DoubleArrayAssertion(null, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(null));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new DoubleArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(new DoubleArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new DoubleArrayAssertion(null, new FailDescription()).asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
+        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
     }
 
 }

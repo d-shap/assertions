@@ -24,15 +24,16 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link ObjectArrayAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class ObjectArrayAssertionTest {
+public final class ObjectArrayAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -46,26 +47,26 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val1");
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val2");
-        new ObjectArrayAssertion(new String[]{null, "val1", "val2"}, new FailDescription()).contains(null);
-        new ObjectArrayAssertion(new String[]{"val1", null, "val2"}, new FailDescription()).contains(null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2", null}, new FailDescription()).contains(null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).contains("val1");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).contains("val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{null, "val1", "val2"}).contains(null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", null, "val2"}).contains(null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", null}).contains(null);
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).contains("val");
+            initialize(Raw.objectArrayAssertion(), null).contains("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).contains("val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).contains("val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).contains("val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").contains("val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
@@ -77,24 +78,24 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain("val3");
-        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).doesNotContain("val3");
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain(null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).doesNotContain("val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", null}).doesNotContain("val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).doesNotContain(null);
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).doesNotContain("val");
+            initialize(Raw.objectArrayAssertion(), null).doesNotContain("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).doesNotContain("val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).doesNotContain("val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).doesNotContain("val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").doesNotContain("val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>.");
@@ -106,81 +107,81 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll("val1");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll("val1", "val3");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll("val4", "val2");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAll(Arrays.asList("val4", "val2"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAll(null, "val2");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAll(Arrays.asList(null, "val2"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll("val1");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll("val1", "val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll("val4", "val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll(Arrays.asList("val4", "val2"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAll(null, "val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAll(Arrays.asList(null, "val2"));
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAll("val");
+            initialize(Raw.objectArrayAssertion(), null).containsAll("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsAll(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAll((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAll((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAll((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll("val2", "val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll("val2", "val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAll("val2", "val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAll("val2", "val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAll(Arrays.asList("val2", "val3"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAll(Arrays.asList("val2", "val3"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAll(Arrays.asList("val2", "val3"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAll(Arrays.asList("val2", "val3"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val2, val3]> but was:<[val1, val2]>.");
@@ -192,86 +193,86 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder("val1");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAllInOrder("val1", "val3", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val3", "val4"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAllInOrder("val1", "val3", null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val3", null));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder("val1");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAllInOrder("val1", "val3", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAllInOrder(Arrays.asList("val1", "val3", "val4"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAllInOrder("val1", "val3", null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAllInOrder(Arrays.asList("val1", "val3", null));
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAllInOrder("val");
+            initialize(Raw.objectArrayAssertion(), null).containsAllInOrder("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAllInOrder((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder("val2", "val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder("val2", "val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val3]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder("val2", "val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder("val2", "val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAllInOrder("val2", "val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAllInOrder("val2", "val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAllInOrder(Arrays.asList("val2", "val1"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder(Arrays.asList("val2", "val1"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAllInOrder(Arrays.asList("val2", "val1"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAllInOrder(Arrays.asList("val2", "val1"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>.");
@@ -283,95 +284,95 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly("val1", "val2");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val2", "val3", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val3", "val2", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly(Arrays.asList("val1", "val3", "val2", "val4"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactly("val1", "val3", "val2", null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactly(Arrays.asList("val1", "val3", "val2", null));
-        new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactly();
-        new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactly(new ArrayList<String>());
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly("val1", "val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val2", "val3", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val3", "val2", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(Arrays.asList("val1", "val3", "val2", "val4"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly("val1", "val3", "val2", null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly(Arrays.asList("val1", "val3", "val2", null));
+        initialize(Raw.objectArrayAssertion(), new String[0]).containsExactly();
+        initialize(Raw.objectArrayAssertion(), new String[0]).containsExactly(new ArrayList<String>());
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactly("val");
+            initialize(Raw.objectArrayAssertion(), null).containsExactly("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsExactly(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsExactly((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactly((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsExactly((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly("val2", "val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly("val2", "val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val3]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val2", "val3", "val4", "val5");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly("val1", "val1", "val3", "val2");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val1", "val3", "val2");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription("Message")).containsExactly("val1", "val1", "val3", "val2");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactly("val1", "val1", "val3", "val2");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription("Message")).containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>.");
@@ -383,100 +384,100 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder("val1", "val2");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", null));
-        new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactlyInOrder();
-        new ObjectArrayAssertion(new String[0], new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder("val1", "val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val1", "val2", "val3", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder("val1", "val2", "val3", null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", null));
+        initialize(Raw.objectArrayAssertion(), new String[0]).containsExactlyInOrder();
+        initialize(Raw.objectArrayAssertion(), new String[0]).containsExactlyInOrder(new ArrayList<String>());
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactlyInOrder("val");
+            initialize(Raw.objectArrayAssertion(), null).containsExactlyInOrder("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsExactlyInOrder((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder("val2", "val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder("val2", "val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val1", "val2", "val3");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder("val2", "val3", "val1", "val4");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val2", "val3", "val1", "val4");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription("Message")).containsExactlyInOrder("val2", "val3", "val1", "val4");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactlyInOrder("val2", "val3", "val1", "val4");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription("Message")).containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}, "Message").containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>.");
@@ -488,82 +489,82 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny("val2", "val3");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny("val2");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny("val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny("val5", "val3");
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", "val4"}, new FailDescription()).containsAny(Arrays.asList("val5", "val3"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAny("val5", null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2", "val3", null}, new FailDescription()).containsAny(Arrays.asList("val5", null));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny("val2", "val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny("val2");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny("val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny("val5", "val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny(Arrays.asList("val5", "val3"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAny("val5", null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAny(Arrays.asList("val5", null));
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAny("val");
+            initialize(Raw.objectArrayAssertion(), null).containsAny("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsAny(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAny((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsAny((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsAny((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny("val3", "val4");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny("val3", "val4");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAny("val3", "val4");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAny("val3", "val4");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsAny(Arrays.asList("val3", "val4"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsAny(Arrays.asList("val3", "val4"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsAny(Arrays.asList("val3", "val4"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsAny(Arrays.asList("val3", "val4"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val3, val4]> but was:<[val1, val2]>.");
@@ -575,88 +576,88 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3");
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(Arrays.asList("val3", "val4"));
-        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).containsNone("val3", "val4");
-        new ObjectArrayAssertion(new String[]{"val1", null}, new FailDescription()).containsNone(Arrays.asList("val3", "val4"));
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val3", null);
-        new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(Arrays.asList("val3", null));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(Arrays.asList("val3", "val4"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", null}).containsNone("val3", "val4");
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", null}).containsNone(Arrays.asList("val3", "val4"));
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3", null);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(Arrays.asList("val3", null));
 
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsNone("val");
+            initialize(Raw.objectArrayAssertion(), null).containsNone("val");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), null).containsNone(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), null).containsNone((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(null, new FailDescription()).containsNone((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), null).containsNone((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone((Object[]) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone((Iterable<String>) null);
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone((Iterable<String>) null);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone("val2", "val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val2", "val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsNone("val2", "val1");
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsNone("val2", "val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).containsNone(Arrays.asList("val2", "val1"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(Arrays.asList("val2", "val1"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).containsNone(Arrays.asList("val2", "val1"));
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").containsNone(Arrays.asList("val2", "val1"));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val2, val1]> but was:<[val1, val2]>.");
@@ -668,16 +669,16 @@ public final class ObjectArrayAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new ObjectArrayAssertion(null, new FailDescription()).isNull();
+        initialize(Raw.objectArrayAssertion(), null).isNull();
 
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription()).isNull();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).isNull();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(new String[]{"val1", "val2"}, new FailDescription("Message")).isNull();
+            initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}, "Message").isNull();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[val1, val2]>.");
@@ -690,28 +691,28 @@ public final class ObjectArrayAssertionTest {
     @Test
     public void isSameAsTest() {
         String[] value = new String[]{"val1", "val2"};
-        new ObjectArrayAssertion(value, new FailDescription()).isSameAs(value);
+        initialize(Raw.objectArrayAssertion(), value).isSameAs(value);
 
         try {
-            new ObjectArrayAssertion(value, new FailDescription()).isSameAs(new String[]{"val1", "val2"});
+            initialize(Raw.objectArrayAssertion(), value).isSameAs(new String[]{"val1", "val2"});
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(value, new FailDescription("Message")).isSameAs(new String[]{"val1", "val2"});
+            initialize(Raw.objectArrayAssertion(), value, "Message").isSameAs(new String[]{"val1", "val2"});
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2]> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(value, new FailDescription()).isSameAs("test");
+            initialize(Raw.objectArrayAssertion(), value).isSameAs("test");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(value, new FailDescription("Message")).isSameAs("test");
+            initialize(Raw.objectArrayAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2]>.");
@@ -724,17 +725,17 @@ public final class ObjectArrayAssertionTest {
     @Test
     public void isNotSameAsTest() {
         String[] value = new String[]{"val1", "val2"};
-        new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs(new String[]{"val1", "val2"});
-        new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs("test");
+        initialize(Raw.objectArrayAssertion(), value).isNotSameAs(new String[]{"val1", "val2"});
+        initialize(Raw.objectArrayAssertion(), value).isNotSameAs("test");
 
         try {
-            new ObjectArrayAssertion(value, new FailDescription()).isNotSameAs(value);
+            initialize(Raw.objectArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1, val2]>.");
         }
         try {
-            new ObjectArrayAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            initialize(Raw.objectArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[val1, val2]>.");
@@ -747,14 +748,14 @@ public final class ObjectArrayAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.objectArrayAssertion(), null).asString(null));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new ObjectArrayAssertion(null, new FailDescription()).asString(new String[]{"val1", "val2"})).isEqualTo("[val1, val2]");
+        Assertions.assertThat(initialize(Raw.objectArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.objectArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(initialize(Raw.objectArrayAssertion(), null).asString(new String[]{"val1", "val2"})).isEqualTo("[val1, val2]");
     }
 
 }
