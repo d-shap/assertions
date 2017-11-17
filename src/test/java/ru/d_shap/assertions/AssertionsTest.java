@@ -83,19 +83,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void byteAssertionTest() {
         Assertions.assertThat((byte) 5).isEqualTo(5);
-        try {
-            Assertions.assertThat(null, Raw.byteAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.byteAssertion()).isNull();
         Assertions.assertThat((byte) 5, Raw.byteAssertion()).isEqualTo(5);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.byteAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ByteAssertion - class should have one constructor ByteAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.byteAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byte").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byte", Raw.byteAssertion()).isEqualTo(5);
 
@@ -113,19 +103,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void shortAssertionTest() {
         Assertions.assertThat((short) 5).isEqualTo(5);
-        try {
-            Assertions.assertThat(null, Raw.shortAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.shortAssertion()).isNull();
         Assertions.assertThat((short) 5, Raw.shortAssertion()).isEqualTo(5);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.shortAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.ShortAssertion - class should have one constructor ShortAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.shortAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_short").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_short", Raw.shortAssertion()).isEqualTo(5);
 
@@ -143,19 +123,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void intAssertionTest() {
         Assertions.assertThat(5).isEqualTo(5);
-        try {
-            Assertions.assertThat(null, Raw.intAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.intAssertion()).isNull();
         Assertions.assertThat(5, Raw.intAssertion()).isEqualTo(5);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.intAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.IntAssertion - class should have one constructor IntAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.intAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_int").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_int", Raw.intAssertion()).isEqualTo(5);
 
@@ -173,19 +143,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void longAssertionTest() {
         Assertions.assertThat(5L).isEqualTo(5L);
-        try {
-            Assertions.assertThat(null, Raw.longAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.longAssertion()).isNull();
         Assertions.assertThat(5L, Raw.longAssertion()).isEqualTo(5L);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.longAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.LongAssertion - class should have one constructor LongAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.longAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_long").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_long", Raw.longAssertion()).isEqualTo(5L);
 
@@ -203,19 +163,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void floatAssertionTest() {
         Assertions.assertThat(5.0f).isEqualTo(5.0f, 0.001f);
-        try {
-            Assertions.assertThat(null, Raw.floatAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.floatAssertion()).isNull();
         Assertions.assertThat(5.0f, Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.floatAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.FloatAssertion - class should have one constructor FloatAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.floatAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_float").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_float", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
 
@@ -233,19 +183,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void doubleAssertionTest() {
         Assertions.assertThat(5.0).isEqualTo(5.0, 0.001);
-        try {
-            Assertions.assertThat(null, Raw.doubleAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.doubleAssertion()).isNull();
         Assertions.assertThat(5.0, Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.doubleAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.DoubleAssertion - class should have one constructor DoubleAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.doubleAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_double").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_double", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
 
@@ -263,19 +203,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void booleanAssertionTest() {
         Assertions.assertThat(true).isTrue();
-        try {
-            Assertions.assertThat(null, Raw.booleanAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.booleanAssertion()).isNull();
         Assertions.assertThat(true, Raw.booleanAssertion()).isTrue();
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.booleanAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.BooleanAssertion - class should have one constructor BooleanAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.booleanAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_boolean").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_boolean", Raw.booleanAssertion()).isTrue();
 
@@ -293,19 +223,9 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void charAssertionTest() {
         Assertions.assertThat('5').isEqualTo('5');
-        try {
-            Assertions.assertThat(null, Raw.charAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(null, Raw.charAssertion()).isNull();
         Assertions.assertThat('5', Raw.charAssertion()).isEqualTo('5');
-        try {
-            Assertions.assertThat(new NullFieldClass(), "_field", Raw.charAssertion());
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.primitive.CharAssertion - class should have one constructor CharAssertion(java.lang.Object, java.lang.String)");
-        }
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.charAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_char").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_char", Raw.charAssertion()).isEqualTo('5');
 
