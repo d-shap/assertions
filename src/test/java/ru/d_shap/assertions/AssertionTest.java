@@ -188,7 +188,7 @@ public class AssertionTest {
      * @return the byte buffer.
      */
     public static ByteBuffer createByteBuffer(final byte[] values, final int position) {
-        return createByteBuffer(values, position, getSize(values));
+        return createByteBuffer(values, position, getByteBufferSize(values));
     }
 
     /**
@@ -200,7 +200,7 @@ public class AssertionTest {
      * @return the byte buffer.
      */
     public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
-        return createByteBuffer(values, position, limit, getSize(values));
+        return createByteBuffer(values, position, limit, getByteBufferSize(values));
     }
 
     /**
@@ -226,7 +226,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final byte[] values) {
+    private static int getByteBufferSize(final byte[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -252,7 +252,7 @@ public class AssertionTest {
      * @return the short buffer.
      */
     public static ShortBuffer createShortBuffer(final short[] values, final int position) {
-        return createShortBuffer(values, position, getSize(values));
+        return createShortBuffer(values, position, getShortBufferSize(values));
     }
 
     /**
@@ -264,7 +264,7 @@ public class AssertionTest {
      * @return the short buffer.
      */
     public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
-        return createShortBuffer(values, position, limit, getSize(values));
+        return createShortBuffer(values, position, limit, getShortBufferSize(values));
     }
 
     /**
@@ -291,7 +291,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final short[] values) {
+    private static int getShortBufferSize(final short[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -317,7 +317,7 @@ public class AssertionTest {
      * @return the int buffer.
      */
     public static IntBuffer createIntBuffer(final int[] values, final int position) {
-        return createIntBuffer(values, position, getSize(values));
+        return createIntBuffer(values, position, getIntBufferSize(values));
     }
 
     /**
@@ -329,7 +329,7 @@ public class AssertionTest {
      * @return the int buffer.
      */
     public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
-        return createIntBuffer(values, position, limit, getSize(values));
+        return createIntBuffer(values, position, limit, getIntBufferSize(values));
     }
 
     /**
@@ -356,7 +356,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final int[] values) {
+    private static int getIntBufferSize(final int[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -382,7 +382,7 @@ public class AssertionTest {
      * @return the long buffer.
      */
     public static LongBuffer createLongBuffer(final long[] values, final int position) {
-        return createLongBuffer(values, position, getSize(values));
+        return createLongBuffer(values, position, getLongBufferSize(values));
     }
 
     /**
@@ -394,7 +394,7 @@ public class AssertionTest {
      * @return the long buffer.
      */
     public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
-        return createLongBuffer(values, position, limit, getSize(values));
+        return createLongBuffer(values, position, limit, getLongBufferSize(values));
     }
 
     /**
@@ -421,7 +421,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final long[] values) {
+    private static int getLongBufferSize(final long[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -447,7 +447,7 @@ public class AssertionTest {
      * @return the float buffer.
      */
     public static FloatBuffer createFloatBuffer(final float[] values, final int position) {
-        return createFloatBuffer(values, position, getSize(values));
+        return createFloatBuffer(values, position, getFloatBufferSize(values));
     }
 
     /**
@@ -459,7 +459,7 @@ public class AssertionTest {
      * @return the float buffer.
      */
     public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
-        return createFloatBuffer(values, position, limit, getSize(values));
+        return createFloatBuffer(values, position, limit, getFloatBufferSize(values));
     }
 
     /**
@@ -486,7 +486,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final float[] values) {
+    private static int getFloatBufferSize(final float[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -512,7 +512,7 @@ public class AssertionTest {
      * @return the double buffer.
      */
     public static DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
-        return createDoubleBuffer(values, position, getSize(values));
+        return createDoubleBuffer(values, position, getDoubleBufferSize(values));
     }
 
     /**
@@ -524,7 +524,7 @@ public class AssertionTest {
      * @return the double buffer.
      */
     public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
-        return createDoubleBuffer(values, position, limit, getSize(values));
+        return createDoubleBuffer(values, position, limit, getDoubleBufferSize(values));
     }
 
     /**
@@ -551,7 +551,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final double[] values) {
+    private static int getDoubleBufferSize(final double[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -577,7 +577,7 @@ public class AssertionTest {
      * @return the char buffer.
      */
     public static CharBuffer createCharBuffer(final char[] values, final int position) {
-        return createCharBuffer(values, position, getSize(values));
+        return createCharBuffer(values, position, getCharBufferSize(values));
     }
 
     /**
@@ -589,7 +589,7 @@ public class AssertionTest {
      * @return the char buffer.
      */
     public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
-        return createCharBuffer(values, position, limit, getSize(values));
+        return createCharBuffer(values, position, limit, getCharBufferSize(values));
     }
 
     /**
@@ -616,7 +616,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final char[] values) {
+    private static int getCharBufferSize(final char[] values) {
         if (values == null) {
             return 0;
         } else {
