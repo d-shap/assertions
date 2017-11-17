@@ -19,12 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
+import ru.d_shap.assertions.AssertionTest;
+
 /**
  * Tests for {@link SetAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class SetAssertionTest {
+public final class SetAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.

@@ -26,15 +26,16 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link CollectionAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class CollectionAssertionTest {
+public final class CollectionAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -48,29 +49,29 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).isEmpty();
-        new CollectionAssertion(new HashSet<String>(), new FailDescription()).isEmpty();
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).isEmpty();
+        initialize(Raw.collectionAssertion(), new HashSet<String>()).isEmpty();
 
         try {
-            new CollectionAssertion(null, new FailDescription()).isEmpty();
+            initialize(Raw.collectionAssertion(), null).isEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription("Message")).isEmpty();
+            initialize(Raw.collectionAssertion(), null, "Message").isEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isEmpty();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).isEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).isEmpty();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2"), "Message").isEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[val1, val2]>.");
@@ -82,18 +83,18 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).isNullOrEmpty();
-        new CollectionAssertion(new HashSet<String>(), new FailDescription()).isNullOrEmpty();
-        new CollectionAssertion(null, new FailDescription()).isNullOrEmpty();
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).isNullOrEmpty();
+        initialize(Raw.collectionAssertion(), new HashSet<String>()).isNullOrEmpty();
+        initialize(Raw.collectionAssertion(), null).isNullOrEmpty();
 
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isNullOrEmpty();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).isNullOrEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).isNullOrEmpty();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<[val1, val2]>.");
@@ -105,41 +106,41 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isNotEmptyTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isNotEmpty();
-        new CollectionAssertion(Arrays.asList("test1", "test2"), new FailDescription()).isNotEmpty();
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).isNotEmpty();
+        initialize(Raw.collectionAssertion(), Arrays.asList("test1", "test2")).isNotEmpty();
 
         try {
-            new CollectionAssertion(null, new FailDescription()).isNotEmpty();
+            initialize(Raw.collectionAssertion(), null).isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.collectionAssertion(), null, "Message").isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new CollectionAssertion(new ArrayList<String>(), new FailDescription()).isNotEmpty();
+            initialize(Raw.collectionAssertion(), new ArrayList<String>()).isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new CollectionAssertion(new ArrayList<String>(), new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.collectionAssertion(), new ArrayList<String>(), "Message").isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
         }
         try {
-            new CollectionAssertion(new HashSet<String>(), new FailDescription()).isNotEmpty();
+            initialize(Raw.collectionAssertion(), new HashSet<String>()).isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new CollectionAssertion(new HashSet<String>(), new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.collectionAssertion(), new HashSet<String>(), "Message").isNotEmpty();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -151,44 +152,44 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val1");
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val2");
-        new CollectionAssertion(Arrays.asList(null, "val1", "val2"), new FailDescription()).contains(null);
-        new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).contains(null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).contains(null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).contains("val1");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).contains("val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList(null, "val1", "val2")).contains(null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", null, "val2")).contains(null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", null)).contains(null);
 
         try {
-            new CollectionAssertion(null, new FailDescription()).contains("val");
+            initialize(Raw.collectionAssertion(), null).contains("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription("Message")).contains("val");
+            initialize(Raw.collectionAssertion(), null, "Message").contains("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val3");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).contains("val3");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(1);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).contains(1);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<1> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(new StringBuilder("test1"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).contains(new StringBuilder("test1"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<test1> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).contains(new StringBuilder("test1"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2"), "Message").contains(new StringBuilder("test1"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<test1> but was:<[val1, val2]>.");
@@ -200,50 +201,50 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(1);
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(new StringBuilder("test1"));
-        new CollectionAssertion(Arrays.asList("val1", null), new FailDescription()).doesNotContain("val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain(1);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain(new StringBuilder("test1"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", null)).doesNotContain("val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain(null);
 
         try {
-            new CollectionAssertion(null, new FailDescription()).doesNotContain("val");
+            initialize(Raw.collectionAssertion(), null).doesNotContain("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription("Message")).doesNotContain("val");
+            initialize(Raw.collectionAssertion(), null, "Message").doesNotContain("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).doesNotContain("val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).doesNotContain(null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", null, "val2")).doesNotContain(null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", null, "val2"), new FailDescription("Message")).doesNotContain(null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", null, "val2"), "Message").doesNotContain(null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>.");
@@ -255,102 +256,102 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val2");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val1");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val5", "val1", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val5", "val4");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val1", "val4", "val5", "val2");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll("val3", "val1", "val4", null, "val2");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val5", "val1", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAll("val");
+            initialize(Raw.collectionAssertion(), null).containsAll("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsAll(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsAll((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAll((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsAll((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAll((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAll((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAll();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAll(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val0", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val0", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val1", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val1", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -362,102 +363,102 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val3", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val3", "val4", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val1", "val1", "val2", "val2"), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val1", "val1", "val2", "val2")).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAllInOrder("val");
+            initialize(Raw.collectionAssertion(), null).containsAllInOrder("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsAllInOrder((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAllInOrder((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsAllInOrder((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val3", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val1", "val1"), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -469,110 +470,110 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val1", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val3", "val1");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val3", "val2", "val1");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val1", "val2", "val3", "val4", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactly();
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactly(new ArrayList<String>());
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val1", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val3", "val1");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).containsExactly();
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).containsExactly(new ArrayList<String>());
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactly("val");
+            initialize(Raw.collectionAssertion(), null).containsExactly("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsExactly(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsExactly((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactly((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsExactly((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsExactly((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactly((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsExactly((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2", "val3", "val4");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val3", "val2", "val1", "val4");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1", "val4");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val4", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val4", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactly("val2", "val4", "val1");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
@@ -584,106 +585,106 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder();
-        new CollectionAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).containsExactlyInOrder();
+        initialize(Raw.collectionAssertion(), new ArrayList<String>()).containsExactlyInOrder(new ArrayList<String>());
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder("val");
+            initialize(Raw.collectionAssertion(), null).containsExactlyInOrder("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsExactlyInOrder((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsExactlyInOrder((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsExactlyInOrder((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactlyInOrder((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsExactlyInOrder((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val2", "val3");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val2", "val3");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val4");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val4");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3", "val4");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
@@ -695,89 +696,89 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val1", "val3", "val5");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val6", "val2", "val4");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny("val7", "val9", "val1", "val5", "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny("val7", "val9", "val1", null, "val3");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny("val7", "val9", null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny(Arrays.asList("val7", "val9", null));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val1", "val3", "val5");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val6", "val2", "val4");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", null));
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAny("val");
+            initialize(Raw.collectionAssertion(), null).containsAny("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsAny(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsAny((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsAny((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsAny((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAny((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAny((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAny();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsAny(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val4", "val5", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny("val8", "val7");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny("val8", "val7");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAny("val8", "val7");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -789,94 +790,94 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val4", "val5", "val6");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", "val4");
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone("val8", "val4");
-        new CollectionAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", "val4", null);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", "val4", null));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val5", "val6");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val8", "val4");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", null)).containsNone("val8", "val4");
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", null)).containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val8", "val4", null);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4", null));
 
         try {
-            new CollectionAssertion(null, new FailDescription()).containsNone("val");
+            initialize(Raw.collectionAssertion(), null).containsNone("val");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), null).containsNone(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.collectionAssertion(), null).containsNone((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription()).containsNone((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), null).containsNone((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsNone((Object[]) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Iterable<?>) null);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsNone((Iterable<?>) null);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsNone();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2")).containsNone(new ArrayList<String>());
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val4", "val2");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val2");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
@@ -888,34 +889,34 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void toSizeTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isEqualTo(3);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isGreaterThan(2);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isLessThan(6);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(3);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isGreaterThan(2);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isLessThan(6);
 
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isEqualTo(5);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isGreaterThan(1);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isLessThan(9);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isEqualTo(5);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
         try {
-            new CollectionAssertion(null, new FailDescription()).toSize();
+            initialize(Raw.collectionAssertion(), null).toSize();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new CollectionAssertion(null, new FailDescription("Message")).toSize();
+            initialize(Raw.collectionAssertion(), null, "Message").toSize();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isEqualTo(4);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).toSize().isEqualTo(4);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -927,17 +928,17 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void hasSizeTest() {
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasSize(3);
-        new CollectionAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).hasSize(5);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(3);
+        initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).hasSize(5);
 
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasSize(4);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).hasSize(4);
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -949,16 +950,16 @@ public final class CollectionAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new CollectionAssertion(null, new FailDescription()).isNull();
+        initialize(Raw.collectionAssertion(), null).isNull();
 
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).isNull();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3")).isNull();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).isNull();
+            initialize(Raw.collectionAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").isNull();
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[val1, val2, val3]>.");
@@ -971,28 +972,28 @@ public final class CollectionAssertionTest {
     @Test
     public void isSameAsTest() {
         Collection<String> value = Arrays.asList("val1", "val2", "val3");
-        new CollectionAssertion(value, new FailDescription()).isSameAs(value);
+        initialize(Raw.collectionAssertion(), value).isSameAs(value);
 
         try {
-            new CollectionAssertion(value, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.collectionAssertion(), value).isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(value, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.collectionAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(value, new FailDescription()).isSameAs("test");
+            initialize(Raw.collectionAssertion(), value).isSameAs("test");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(value, new FailDescription("Message")).isSameAs("test");
+            initialize(Raw.collectionAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
@@ -1005,17 +1006,17 @@ public final class CollectionAssertionTest {
     @Test
     public void isNotSameAsTest() {
         Collection<String> value = Arrays.asList("val1", "val2", "val3");
-        new CollectionAssertion(value, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
-        new CollectionAssertion(value, new FailDescription()).isNotSameAs("test");
+        initialize(Raw.collectionAssertion(), value).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
+        initialize(Raw.collectionAssertion(), value).isNotSameAs("test");
 
         try {
-            new CollectionAssertion(value, new FailDescription()).isNotSameAs(value);
+            initialize(Raw.collectionAssertion(), value).isNotSameAs(value);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1, val2, val3]>.");
         }
         try {
-            new CollectionAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            initialize(Raw.collectionAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CollectionAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[val1, val2, val3]>.");
@@ -1028,14 +1029,14 @@ public final class CollectionAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.collectionAssertion(), null).asString(null));
             Assertions.fail("CollectionAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new CollectionAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
+        Assertions.assertThat(initialize(Raw.collectionAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.collectionAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(initialize(Raw.collectionAssertion(), null).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }
 
 }
