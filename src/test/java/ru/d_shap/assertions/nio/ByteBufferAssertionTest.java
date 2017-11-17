@@ -2184,26 +2184,4 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
-    private static ByteBuffer createByteBuffer(final byte[] values) {
-        return createByteBuffer(values, 0);
-    }
-
-    private static ByteBuffer createByteBuffer(final byte[] values, final int position) {
-        return createByteBuffer(values, position, values.length);
-    }
-
-    private static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
-        return createByteBuffer(values, position, limit, values.length);
-    }
-
-    private static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(capacity);
-        for (byte value : values) {
-            byteBuffer.put(value);
-        }
-        byteBuffer.position(position);
-        byteBuffer.limit(limit);
-        return byteBuffer;
-    }
-
 }

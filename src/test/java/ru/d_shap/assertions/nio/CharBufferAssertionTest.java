@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.nio;
 
-import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -2184,29 +2183,6 @@ public final class CharBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
         Assertions.assertThat(buffer).rewindAndContainsNone('7', '9');
         Assertions.assertThat(buffer).hasPosition(3);
-    }
-
-    private static CharBuffer createCharBuffer(final char[] values) {
-        return createCharBuffer(values, 0);
-    }
-
-    private static CharBuffer createCharBuffer(final char[] values, final int position) {
-        return createCharBuffer(values, position, values.length);
-    }
-
-    private static CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
-        return createCharBuffer(values, position, limit, values.length);
-    }
-
-    private static CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
-        CharBuffer charBuffer = byteBuffer.asCharBuffer();
-        for (char value : values) {
-            charBuffer.put(value);
-        }
-        charBuffer.position(position);
-        charBuffer.limit(limit);
-        return charBuffer;
     }
 
 }

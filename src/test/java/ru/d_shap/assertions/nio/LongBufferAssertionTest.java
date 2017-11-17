@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.nio;
 
-import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1632,29 +1631,6 @@ public final class LongBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
         Assertions.assertThat(buffer).rewindAndContainsNone(7, 9);
         Assertions.assertThat(buffer).hasPosition(3);
-    }
-
-    private static LongBuffer createLongBuffer(final long[] values) {
-        return createLongBuffer(values, 0);
-    }
-
-    private static LongBuffer createLongBuffer(final long[] values, final int position) {
-        return createLongBuffer(values, position, values.length);
-    }
-
-    private static LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
-        return createLongBuffer(values, position, limit, values.length);
-    }
-
-    private static LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 8);
-        LongBuffer longBuffer = byteBuffer.asLongBuffer();
-        for (long value : values) {
-            longBuffer.put(value);
-        }
-        longBuffer.position(position);
-        longBuffer.limit(limit);
-        return longBuffer;
     }
 
 }

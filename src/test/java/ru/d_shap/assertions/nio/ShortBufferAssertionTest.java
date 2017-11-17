@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.nio;
 
-import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -2184,29 +2183,6 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
         Assertions.assertThat(buffer).rewindAndContainsNone(7, 9);
         Assertions.assertThat(buffer).hasPosition(3);
-    }
-
-    private static ShortBuffer createShortBuffer(final short[] values) {
-        return createShortBuffer(values, 0);
-    }
-
-    private static ShortBuffer createShortBuffer(final short[] values, final int position) {
-        return createShortBuffer(values, position, values.length);
-    }
-
-    private static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
-        return createShortBuffer(values, position, limit, values.length);
-    }
-
-    private static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
-        ShortBuffer shortBuffer = byteBuffer.asShortBuffer();
-        for (short value : values) {
-            shortBuffer.put(value);
-        }
-        shortBuffer.position(position);
-        shortBuffer.limit(limit);
-        return shortBuffer;
     }
 
 }

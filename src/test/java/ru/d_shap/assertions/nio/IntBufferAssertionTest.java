@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.nio;
 
-import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1632,29 +1631,6 @@ public final class IntBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
         Assertions.assertThat(buffer).rewindAndContainsNone(7, 9);
         Assertions.assertThat(buffer).hasPosition(3);
-    }
-
-    private static IntBuffer createIntBuffer(final int[] values) {
-        return createIntBuffer(values, 0);
-    }
-
-    private static IntBuffer createIntBuffer(final int[] values, final int position) {
-        return createIntBuffer(values, position, values.length);
-    }
-
-    private static IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
-        return createIntBuffer(values, position, limit, values.length);
-    }
-
-    private static IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 4);
-        IntBuffer intBuffer = byteBuffer.asIntBuffer();
-        for (int value : values) {
-            intBuffer.put(value);
-        }
-        intBuffer.position(position);
-        intBuffer.limit(limit);
-        return intBuffer;
     }
 
 }
