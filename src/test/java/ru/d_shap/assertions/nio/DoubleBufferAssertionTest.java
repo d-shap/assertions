@@ -26,15 +26,16 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link DoubleBufferAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleBufferAssertionTest {
+public final class DoubleBufferAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -48,35 +49,35 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).contains(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).contains(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(2.0);
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).contains(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).contains(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).contains(2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).contains(2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<2.0> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).contains(4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).contains(4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4.0> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).contains(3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).contains(3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").contains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -88,30 +89,30 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContains(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContains(2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContains(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContains(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContains(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContains(2.0);
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContains(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContains(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContains(4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContains(4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<4.0> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContains(3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContains(3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContains(3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<3.0> but was:<[1.0, 2.0]>.");
@@ -123,30 +124,30 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).doesNotContain(3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).doesNotContain(2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).doesNotContain(5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).doesNotContain(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).doesNotContain(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).doesNotContain(5.0);
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).doesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).doesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).doesNotContain(2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).doesNotContain(2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2.0> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).doesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).doesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).doesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").doesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -158,35 +159,35 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndDoesNotContainTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndDoesNotContain(3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndDoesNotContain(5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndDoesNotContain(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndDoesNotContain(5.0);
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndDoesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndDoesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndDoesNotContain(2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndDoesNotContain(2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2.0> but was:<[1.0, 2.0, 3.0, 4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndDoesNotContain(2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndDoesNotContain(2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<2.0> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndDoesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndDoesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndDoesNotContain(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndDoesNotContain(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<1.0> but was:<[1.0, 2.0]>.");
@@ -198,103 +199,103 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAll(1.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAll(4.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAll(Arrays.asList(4.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAll(1.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAll(4.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAll(Arrays.asList(4.0, 2.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAll(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsAll(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAll((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAll((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAll(1.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAll(1.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1.0, 2.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAll(Arrays.asList(1.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAll(Arrays.asList(1.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[1.0, 2.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAll(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAll(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAll(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAll(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAll(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -306,93 +307,93 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(1.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(4.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAll(Arrays.asList(4.0, 2.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAll(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList(1.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAll(1.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAll(4.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAll(Arrays.asList(4.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAll(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAll(Arrays.asList(1.0, 2.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAll((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAll(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAll(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAll(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAll(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAll(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAll(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAll(Arrays.asList(2.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
@@ -404,108 +405,108 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(1.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAllInOrder(1.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAllInOrder(1.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAllInOrder(1.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1.0, 2.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAllInOrder(Arrays.asList(1.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAllInOrder(Arrays.asList(1.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[1.0, 2.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAllInOrder(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAllInOrder(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAllInOrder(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAllInOrder(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -517,98 +518,98 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAllInOrderTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder(1.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(1.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAllInOrder(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(1.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(1.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(1.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAllInOrder(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAllInOrder(Arrays.asList(1.0, 2.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAllInOrder(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAllInOrder(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAllInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAllInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAllInOrder(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -620,117 +621,117 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1.0, 3.0, 2.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).containsExactly();
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 3.0, 2.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactly();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactly(new ArrayList<Double>());
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactly(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactly(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactly((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").containsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -742,107 +743,107 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1.0, 3.0, 2.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).rewindAndContainsExactly();
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).rewindAndContainsExactly(new ArrayList<Double>());
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 3.0, 2.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactly();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly(2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[2.0, 3.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1.0, 1.0, 3.0, 2.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -854,122 +855,122 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).containsExactlyInOrder();
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactlyInOrder();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactlyInOrder(new ArrayList<Double>());
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(1.0, 2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -981,112 +982,112 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsExactlyInOrderTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).rewindAndContainsExactlyInOrder();
-        new DoubleBufferAssertion(createDoubleBuffer(new double[0]), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactlyInOrder();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2.0, 3.0, 1.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription("Message")).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>.");
@@ -1098,104 +1099,104 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny(2.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAny(2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAny(4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAny(5.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).containsAny(Arrays.asList(5.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny(2.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAny(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAny(4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAny(5.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsAny(Arrays.asList(5.0, 3.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAny(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsAny(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAny((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsAny((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAny(1.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAny(1.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1.0, 3.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsAny(Arrays.asList(1.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAny(Arrays.asList(1.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[1.0, 3.0]> but was:<[4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAny(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAny(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsAny(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsAny(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny(3.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAny(3.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1207,94 +1208,94 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsAnyTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny(2.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(2.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(5.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1, 2, 3, 4}), new FailDescription()).rewindAndContainsAny(Arrays.asList(5.0, 3.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAny(1.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList(1.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny(2.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAny(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAny(4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAny(5.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsAny(Arrays.asList(5.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAny(1.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAny(Arrays.asList(1.0, 3.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsAny((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAny(4.0, 5.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAny(4.0, 5.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsAny(Arrays.asList(4.0, 5.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAny(Arrays.asList(4.0, 5.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[4.0, 5.0]> but was:<[1.0, 2.0, 3.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny(3.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAny(3.0, 4.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAny(3.0, 4.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsAny(Arrays.asList(3.0, 4.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[3.0, 4.0]> but was:<[1.0, 2.0]>.");
@@ -1306,88 +1307,88 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(Arrays.asList(3.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsNone(1.0, 3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).containsNone(Arrays.asList(1.0, 3.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsNone(4.0, 5.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).containsNone(Arrays.asList(4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(Arrays.asList(3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(1.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(Arrays.asList(1.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(Arrays.asList(4.0, 5.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsNone(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).containsNone(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsNone((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).containsNone((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsNone(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").containsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1399,98 +1400,98 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void rewindAndContainsNoneTest() {
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(3.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(3.0, 4.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(Arrays.asList(3.0, 4.0));
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsNone(4.0, 5.0);
-        new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList(4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(Arrays.asList(3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsNone(4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsNone(Arrays.asList(4.0, 5.0));
 
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone(1.0);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(null, new FailDescription()).rewindAndContainsNone((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone((double[]) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone((Iterable<Double>) null);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsNone(1.0, 3.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsNone(1.0, 3.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), new FailDescription()).rewindAndContainsNone(Arrays.asList(1.0, 3.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsNone(Arrays.asList(1.0, 3.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[1.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0, 5.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsNone(2.0, 1.0);
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsNone(2.0, 1.0);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).rewindAndContainsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).rewindAndContainsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").rewindAndContainsNone(Arrays.asList(2.0, 1.0));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -1502,16 +1503,16 @@ public final class DoubleBufferAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new DoubleBufferAssertion(null, new FailDescription()).isNull();
+        initialize(Raw.doubleBufferAssertion(), null).isNull();
 
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription()).isNull();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNull();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(createDoubleBuffer(new double[]{1.0, 2.0}), new FailDescription("Message")).isNull();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}), "Message").isNull();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[1.0, 2.0]>.");
@@ -1524,28 +1525,28 @@ public final class DoubleBufferAssertionTest {
     @Test
     public void isSameAsTest() {
         DoubleBuffer value = createDoubleBuffer(new double[]{1.0, 2.0});
-        new DoubleBufferAssertion(value, new FailDescription()).isSameAs(value);
+        initialize(Raw.doubleBufferAssertion(), value).isSameAs(value);
 
         try {
-            new DoubleBufferAssertion(value, new FailDescription()).isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+            initialize(Raw.doubleBufferAssertion(), value).isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(value, new FailDescription("Message")).isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+            initialize(Raw.doubleBufferAssertion(), value, "Message").isSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(value, new FailDescription()).isSameAs("test");
+            initialize(Raw.doubleBufferAssertion(), value).isSameAs("test");
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(value, new FailDescription("Message")).isSameAs("test");
+            initialize(Raw.doubleBufferAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>.");
@@ -1558,17 +1559,17 @@ public final class DoubleBufferAssertionTest {
     @Test
     public void isNotSameAsTest() {
         DoubleBuffer value = createDoubleBuffer(new double[]{1.0, 2.0});
-        new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
-        new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs("test");
+        initialize(Raw.doubleBufferAssertion(), value).isNotSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
+        initialize(Raw.doubleBufferAssertion(), value).isNotSameAs("test");
 
         try {
-            new DoubleBufferAssertion(value, new FailDescription()).isNotSameAs(value);
+            initialize(Raw.doubleBufferAssertion(), value).isNotSameAs(value);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[1.0, 2.0]>.");
         }
         try {
-            new DoubleBufferAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            initialize(Raw.doubleBufferAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[1.0, 2.0]>.");
@@ -1581,15 +1582,15 @@ public final class DoubleBufferAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(null));
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
-        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
-        Assertions.assertThat(new DoubleBufferAssertion(null, new FailDescription()).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
+        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
+        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
+        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
     }
 
     /**
