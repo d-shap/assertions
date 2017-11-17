@@ -27,7 +27,6 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -139,25 +138,25 @@ public class AssertionTest {
         return map;
     }
 
-    public static ByteBuffer createByteBuffer(final List<Integer> values) {
+    public static ByteBuffer createByteBuffer(final byte[] values) {
         return createByteBuffer(values, 0);
     }
 
-    public static ByteBuffer createByteBuffer(final List<Integer> values, final int position) {
+    public static ByteBuffer createByteBuffer(final byte[] values, final int position) {
         return createByteBuffer(values, position, getSize(values));
     }
 
-    public static ByteBuffer createByteBuffer(final List<Integer> values, final int position, final int limit) {
+    public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
         return createByteBuffer(values, position, limit, getSize(values));
     }
 
-    public static ByteBuffer createByteBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+    public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity);
-            for (Integer value : values) {
-                byteBuffer.put((byte) value.intValue());
+            for (byte value : values) {
+                byteBuffer.put(value);
             }
             byteBuffer.position(position);
             byteBuffer.limit(limit);
@@ -165,26 +164,34 @@ public class AssertionTest {
         }
     }
 
-    public static ShortBuffer createShortBuffer(final List<Integer> values) {
+    private static int getSize(final byte[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static ShortBuffer createShortBuffer(final short[] values) {
         return createShortBuffer(values, 0);
     }
 
-    public static ShortBuffer createShortBuffer(final List<Integer> values, final int position) {
+    public static ShortBuffer createShortBuffer(final short[] values, final int position) {
         return createShortBuffer(values, position, getSize(values));
     }
 
-    public static ShortBuffer createShortBuffer(final List<Integer> values, final int position, final int limit) {
+    public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
         return createShortBuffer(values, position, limit, getSize(values));
     }
 
-    public static ShortBuffer createShortBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+    public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
             ShortBuffer shortBuffer = byteBuffer.asShortBuffer();
-            for (Integer value : values) {
-                shortBuffer.put((short) value.intValue());
+            for (short value : values) {
+                shortBuffer.put(value);
             }
             shortBuffer.position(position);
             shortBuffer.limit(limit);
@@ -192,25 +199,33 @@ public class AssertionTest {
         }
     }
 
-    public static IntBuffer createIntBuffer(final List<Integer> values) {
+    private static int getSize(final short[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static IntBuffer createIntBuffer(final int[] values) {
         return createIntBuffer(values, 0);
     }
 
-    public static IntBuffer createIntBuffer(final List<Integer> values, final int position) {
+    public static IntBuffer createIntBuffer(final int[] values, final int position) {
         return createIntBuffer(values, position, getSize(values));
     }
 
-    public static IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit) {
+    public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
         return createIntBuffer(values, position, limit, getSize(values));
     }
 
-    public static IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+    public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 4);
             IntBuffer intBuffer = byteBuffer.asIntBuffer();
-            for (Integer value : values) {
+            for (int value : values) {
                 intBuffer.put(value);
             }
             intBuffer.position(position);
@@ -219,25 +234,33 @@ public class AssertionTest {
         }
     }
 
-    public static LongBuffer createLongBuffer(final List<Long> values) {
+    private static int getSize(final int[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static LongBuffer createLongBuffer(final long[] values) {
         return createLongBuffer(values, 0);
     }
 
-    public static LongBuffer createLongBuffer(final List<Long> values, final int position) {
+    public static LongBuffer createLongBuffer(final long[] values, final int position) {
         return createLongBuffer(values, position, getSize(values));
     }
 
-    public static LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit) {
+    public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
         return createLongBuffer(values, position, limit, getSize(values));
     }
 
-    public static LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit, final int capacity) {
+    public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 8);
             LongBuffer longBuffer = byteBuffer.asLongBuffer();
-            for (Long value : values) {
+            for (long value : values) {
                 longBuffer.put(value);
             }
             longBuffer.position(position);
@@ -246,26 +269,34 @@ public class AssertionTest {
         }
     }
 
-    public static FloatBuffer createFloatBuffer(final List<Double> values) {
+    private static int getSize(final long[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static FloatBuffer createFloatBuffer(final float[] values) {
         return createFloatBuffer(values, 0);
     }
 
-    public static FloatBuffer createFloatBuffer(final List<Double> values, final int position) {
+    public static FloatBuffer createFloatBuffer(final float[] values, final int position) {
         return createFloatBuffer(values, position, getSize(values));
     }
 
-    public static FloatBuffer createFloatBuffer(final List<Double> values, final int position, final int limit) {
+    public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
         return createFloatBuffer(values, position, limit, getSize(values));
     }
 
-    public static FloatBuffer createFloatBuffer(final List<Double> values, final int position, final int limit, final int capacity) {
+    public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 4);
             FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
-            for (Double value : values) {
-                floatBuffer.put((float) value.doubleValue());
+            for (float value : values) {
+                floatBuffer.put(value);
             }
             floatBuffer.position(position);
             floatBuffer.limit(limit);
@@ -273,25 +304,33 @@ public class AssertionTest {
         }
     }
 
-    public static DoubleBuffer createDoubleBuffer(final List<Double> values) {
+    private static int getSize(final float[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static DoubleBuffer createDoubleBuffer(final double[] values) {
         return createDoubleBuffer(values, 0);
     }
 
-    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position) {
+    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
         return createDoubleBuffer(values, position, getSize(values));
     }
 
-    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit) {
+    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
         return createDoubleBuffer(values, position, limit, getSize(values));
     }
 
-    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit, final int capacity) {
+    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 8);
             DoubleBuffer doubleBuffer = byteBuffer.asDoubleBuffer();
-            for (Double value : values) {
+            for (double value : values) {
                 doubleBuffer.put(value);
             }
             doubleBuffer.position(position);
@@ -300,26 +339,34 @@ public class AssertionTest {
         }
     }
 
-    public static CharBuffer createCharBuffer(final List<Integer> values) {
+    private static int getSize(final double[] values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.length;
+        }
+    }
+
+    public static CharBuffer createCharBuffer(final char[] values) {
         return createCharBuffer(values, 0);
     }
 
-    public static CharBuffer createCharBuffer(final List<Integer> values, final int position) {
+    public static CharBuffer createCharBuffer(final char[] values, final int position) {
         return createCharBuffer(values, position, getSize(values));
     }
 
-    public static CharBuffer createCharBuffer(final List<Integer> values, final int position, final int limit) {
+    public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
         return createCharBuffer(values, position, limit, getSize(values));
     }
 
-    public static CharBuffer createCharBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+    public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
             ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
             CharBuffer charBuffer = byteBuffer.asCharBuffer();
-            for (Integer value : values) {
-                charBuffer.put((char) value.intValue());
+            for (char value : values) {
+                charBuffer.put(value);
             }
             charBuffer.position(position);
             charBuffer.limit(limit);
@@ -327,11 +374,11 @@ public class AssertionTest {
         }
     }
 
-    private static int getSize(final List<?> values) {
+    private static int getSize(final char[] values) {
         if (values == null) {
             return 0;
         } else {
-            return values.size();
+            return values.length;
         }
     }
 
