@@ -110,16 +110,18 @@ public abstract class BaseAssertion {
         if (_initialized) {
             throw createAssertionError(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED);
         }
-        if (actual != null) {
+        _initialized = true;
+        _failDescription = failDescription;
+        if (actual == null) {
+            _actual = null;
+        } else {
             for (ActualValueValidator actualValidator : _actualValidators) {
                 if (!actualValidator.isValid(actual)) {
                     throw createAssertionError(Messages.Fail.ASSERTION_MATCHES);
                 }
             }
+            _actual = actual;
         }
-        _initialized = true;
-        _actual = actual;
-        _failDescription = failDescription;
     }
 
     /**
