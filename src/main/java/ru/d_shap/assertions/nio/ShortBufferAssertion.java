@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.ShortBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -483,7 +483,7 @@ public class ShortBufferAssertion extends BufferAssertion<Short> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Short> result = new LinkedList<>();
+        List<Short> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             short bufferValue = buffer.get();
             result.add(bufferValue);

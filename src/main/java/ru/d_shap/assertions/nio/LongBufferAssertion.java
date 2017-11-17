@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.LongBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -339,7 +339,7 @@ public class LongBufferAssertion extends BufferAssertion<Long> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Long> result = new LinkedList<>();
+        List<Long> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             long bufferValue = buffer.get();
             result.add(bufferValue);

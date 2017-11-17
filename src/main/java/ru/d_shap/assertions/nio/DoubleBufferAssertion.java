@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.DoubleBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -339,7 +339,7 @@ public class DoubleBufferAssertion extends BufferAssertion<Double> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Double> result = new LinkedList<>();
+        List<Double> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             double bufferValue = buffer.get();
             result.add(bufferValue);

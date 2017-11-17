@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.CharBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -483,7 +483,7 @@ public class CharBufferAssertion extends BufferAssertion<Character> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Character> result = new LinkedList<>();
+        List<Character> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             char bufferValue = buffer.get();
             result.add(bufferValue);

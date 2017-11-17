@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.FloatBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -339,7 +339,7 @@ public class FloatBufferAssertion extends BufferAssertion<Float> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Float> result = new LinkedList<>();
+        List<Float> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             float bufferValue = buffer.get();
             result.add(bufferValue);

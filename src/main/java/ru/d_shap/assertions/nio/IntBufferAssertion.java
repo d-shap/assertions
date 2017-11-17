@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.IntBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -339,7 +339,7 @@ public class IntBufferAssertion extends BufferAssertion<Integer> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Integer> result = new LinkedList<>();
+        List<Integer> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             int bufferValue = buffer.get();
             result.add(bufferValue);

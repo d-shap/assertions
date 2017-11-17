@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.ByteBuffer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
@@ -483,7 +483,7 @@ public class ByteBufferAssertion extends BufferAssertion<Byte> {
         if (rewind) {
             buffer.rewind();
         }
-        List<Byte> result = new LinkedList<>();
+        List<Byte> result = new ArrayList<>(buffer.remaining());
         while (buffer.hasRemaining()) {
             byte bufferValue = buffer.get();
             result.add(bufferValue);
