@@ -47,7 +47,7 @@ public class AssertionTest {
     }
 
     /**
-     * Initialize the specified assertion with the actual value.
+     * Initialize the specified assertion with the actual value and the message.
      *
      * @param assertion the specified assertion.
      * @param actual    the actual value.
@@ -58,6 +58,84 @@ public class AssertionTest {
     public final <T extends BaseAssertion> T initialize(final T assertion, final Object actual, final String message) {
         assertion.initialize(actual, message);
         return assertion;
+    }
+
+    /**
+     * Create initialized base assertion with the actual value.
+     *
+     * @param actual the actual value.
+     * @return the initialized assertion.
+     */
+    public BaseAssertion createBaseAssertion(final Object actual) {
+        return initialize(new BaseAssertionImpl(), actual);
+    }
+
+    /**
+     * Create initialized base assertion with the actual value and the message.
+     *
+     * @param actual  the actual value.
+     * @param message the message.
+     * @return the initialized assertion.
+     */
+    public BaseAssertion createBaseAssertion(final Object actual, final String message) {
+        return initialize(new BaseAssertionImpl(), actual, message);
+    }
+
+    /**
+     * Create initialized reference assertion with the actual value.
+     *
+     * @param actual the actual value.
+     * @return the initialized assertion.
+     */
+    public ReferenceAssertion createReferenceAssertion(final Object actual) {
+        return initialize(new ReferenceAssertionImpl(), actual);
+    }
+
+    /**
+     * Create initialized reference assertion with the actual value and the message.
+     *
+     * @param actual  the actual value.
+     * @param message the message.
+     * @return the initialized assertion.
+     */
+    public ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
+        return initialize(new ReferenceAssertionImpl(), actual, message);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class BaseAssertionImpl extends BaseAssertion {
+
+        BaseAssertionImpl() {
+            super();
+        }
+
+        @Override
+        protected String asString(final Object value) {
+            return value.toString();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class ReferenceAssertionImpl extends ReferenceAssertion {
+
+        ReferenceAssertionImpl() {
+            super();
+        }
+
+        @Override
+        protected String asString(final Object value) {
+            return value.toString();
+        }
+
     }
 
 }
