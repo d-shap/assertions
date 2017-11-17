@@ -51,7 +51,7 @@ public final class EnumAssertionTest extends AssertionTest {
             initialize(Raw.enumAssertion(), String.class);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<java.lang.String>.");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
     }
 
