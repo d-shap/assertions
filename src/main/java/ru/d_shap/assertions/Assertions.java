@@ -107,12 +107,36 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the byte.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static ByteAssertion assertThat(final Byte actual) {
+        ByteAssertion assertion = Raw.byteAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the short.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public static ShortAssertion assertThat(final short actual) {
+        ShortAssertion assertion = Raw.shortAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the short.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static ShortAssertion assertThat(final Short actual) {
         ShortAssertion assertion = Raw.shortAssertion();
         assertion.initialize(actual);
         return assertion;
@@ -131,12 +155,36 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the int.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static IntAssertion assertThat(final Integer actual) {
+        IntAssertion assertion = Raw.intAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the long.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public static LongAssertion assertThat(final long actual) {
+        LongAssertion assertion = Raw.longAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the long.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static LongAssertion assertThat(final Long actual) {
         LongAssertion assertion = Raw.longAssertion();
         assertion.initialize(actual);
         return assertion;
@@ -155,12 +203,36 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the float.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static FloatAssertion assertThat(final Float actual) {
+        FloatAssertion assertion = Raw.floatAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the double.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public static DoubleAssertion assertThat(final double actual) {
+        DoubleAssertion assertion = Raw.doubleAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the double.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static DoubleAssertion assertThat(final Double actual) {
         DoubleAssertion assertion = Raw.doubleAssertion();
         assertion.initialize(actual);
         return assertion;
@@ -179,12 +251,36 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the boolean.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static BooleanAssertion assertThat(final Boolean actual) {
+        BooleanAssertion assertion = Raw.booleanAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the char.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public static CharAssertion assertThat(final char actual) {
+        CharAssertion assertion = Raw.charAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the char.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public static CharAssertion assertThat(final Character actual) {
         CharAssertion assertion = Raw.charAssertion();
         assertion.initialize(actual);
         return assertion;
