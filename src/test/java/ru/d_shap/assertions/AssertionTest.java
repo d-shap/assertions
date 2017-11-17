@@ -112,17 +112,38 @@ public class AssertionTest {
         return initialize(new ReferenceAssertionImpl(), actual, message);
     }
 
+    /**
+     * Create new empty hash map.
+     *
+     * @return the hash map.
+     */
     public static Map<String, String> createHashMap() {
         Map<String, String> map = new HashMap<>();
         return map;
     }
 
+    /**
+     * Create new hash map with the values.
+     *
+     * @param key   the key.
+     * @param value the value.
+     * @return the hash map.
+     */
     public static Map<String, String> createHashMap(final String key, final String value) {
         Map<String, String> map = new HashMap<>();
         map.put(key, value);
         return map;
     }
 
+    /**
+     * Create new hash map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @return the hash map.
+     */
     public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2) {
         Map<String, String> map = new HashMap<>();
         map.put(key1, value1);
@@ -130,6 +151,17 @@ public class AssertionTest {
         return map;
     }
 
+    /**
+     * Create new hash map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @return the hash map.
+     */
     public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
         Map<String, String> map = new HashMap<>();
         map.put(key1, value1);
@@ -138,18 +170,48 @@ public class AssertionTest {
         return map;
     }
 
+    /**
+     * Create the byte buffer.
+     *
+     * @param values the buffer values.
+     * @return the byte buffer.
+     */
     public static ByteBuffer createByteBuffer(final byte[] values) {
         return createByteBuffer(values, 0);
     }
 
+    /**
+     * Create the byte buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the byte buffer.
+     */
     public static ByteBuffer createByteBuffer(final byte[] values, final int position) {
         return createByteBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the byte buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the byte buffer.
+     */
     public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
         return createByteBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the byte buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the byte buffer.
+     */
     public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -172,18 +234,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the short buffer.
+     *
+     * @param values the buffer values.
+     * @return the short buffer.
+     */
     public static ShortBuffer createShortBuffer(final short[] values) {
         return createShortBuffer(values, 0);
     }
 
+    /**
+     * Create the short buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the short buffer.
+     */
     public static ShortBuffer createShortBuffer(final short[] values, final int position) {
         return createShortBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the short buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the short buffer.
+     */
     public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
         return createShortBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the short buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the short buffer.
+     */
     public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -207,18 +299,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the int buffer.
+     *
+     * @param values the buffer values.
+     * @return the int buffer.
+     */
     public static IntBuffer createIntBuffer(final int[] values) {
         return createIntBuffer(values, 0);
     }
 
+    /**
+     * Create the int buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the int buffer.
+     */
     public static IntBuffer createIntBuffer(final int[] values, final int position) {
         return createIntBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the int buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the int buffer.
+     */
     public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
         return createIntBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the int buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the int buffer.
+     */
     public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -242,18 +364,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the long buffer.
+     *
+     * @param values the buffer values.
+     * @return the long buffer.
+     */
     public static LongBuffer createLongBuffer(final long[] values) {
         return createLongBuffer(values, 0);
     }
 
+    /**
+     * Create the long buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the long buffer.
+     */
     public static LongBuffer createLongBuffer(final long[] values, final int position) {
         return createLongBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the long buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the long buffer.
+     */
     public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
         return createLongBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the long buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the long buffer.
+     */
     public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -277,18 +429,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the float buffer.
+     *
+     * @param values the buffer values.
+     * @return the float buffer.
+     */
     public static FloatBuffer createFloatBuffer(final float[] values) {
         return createFloatBuffer(values, 0);
     }
 
+    /**
+     * Create the float buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the float buffer.
+     */
     public static FloatBuffer createFloatBuffer(final float[] values, final int position) {
         return createFloatBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the float buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the float buffer.
+     */
     public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
         return createFloatBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the float buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the float buffer.
+     */
     public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -312,18 +494,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the double buffer.
+     *
+     * @param values the buffer values.
+     * @return the double buffer.
+     */
     public static DoubleBuffer createDoubleBuffer(final double[] values) {
         return createDoubleBuffer(values, 0);
     }
 
+    /**
+     * Create the double buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the double buffer.
+     */
     public static DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
         return createDoubleBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the double buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the double buffer.
+     */
     public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
         return createDoubleBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the double buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the double buffer.
+     */
     public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
@@ -347,18 +559,48 @@ public class AssertionTest {
         }
     }
 
+    /**
+     * Create the char buffer.
+     *
+     * @param values the buffer values.
+     * @return the char buffer.
+     */
     public static CharBuffer createCharBuffer(final char[] values) {
         return createCharBuffer(values, 0);
     }
 
+    /**
+     * Create the char buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @return the char buffer.
+     */
     public static CharBuffer createCharBuffer(final char[] values, final int position) {
         return createCharBuffer(values, position, getSize(values));
     }
 
+    /**
+     * Create the char buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @return the char buffer.
+     */
     public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
         return createCharBuffer(values, position, limit, getSize(values));
     }
 
+    /**
+     * Create the char buffer.
+     *
+     * @param values   the buffer values.
+     * @param position the initial buffer position.
+     * @param limit    the buffer limit.
+     * @param capacity the buffer capacity.
+     * @return the char buffer.
+     */
     public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
