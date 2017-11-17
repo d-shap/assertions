@@ -36,6 +36,7 @@ import ru.d_shap.assertions.collection.SetAssertion;
 import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ComparableAssertion;
+import ru.d_shap.assertions.core.EnumAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.core.StringAssertion;
@@ -238,6 +239,15 @@ public final class Raw {
      */
     public static ClassAssertion classAssertion() {
         return new ClassAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the enum.
+     *
+     * @return the assertion.
+     */
+    public static EnumAssertion enumAssertion() {
+        return new EnumAssertion();
     }
 
     /**
