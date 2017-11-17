@@ -100,12 +100,36 @@ public final class MessageAssertion {
     }
 
     /**
+     * Make assertion about the byte.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public ByteAssertion that(final Byte actual) {
+        ByteAssertion assertion = Raw.byteAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the short.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public ShortAssertion that(final short actual) {
+        ShortAssertion assertion = Raw.shortAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the short.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public ShortAssertion that(final Short actual) {
         ShortAssertion assertion = Raw.shortAssertion();
         assertion.initialize(actual, _message);
         return assertion;
@@ -124,12 +148,36 @@ public final class MessageAssertion {
     }
 
     /**
+     * Make assertion about the int.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public IntAssertion that(final Integer actual) {
+        IntAssertion assertion = Raw.intAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the long.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public LongAssertion that(final long actual) {
+        LongAssertion assertion = Raw.longAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the long.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public LongAssertion that(final Long actual) {
         LongAssertion assertion = Raw.longAssertion();
         assertion.initialize(actual, _message);
         return assertion;
@@ -148,12 +196,36 @@ public final class MessageAssertion {
     }
 
     /**
+     * Make assertion about the float.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public FloatAssertion that(final Float actual) {
+        FloatAssertion assertion = Raw.floatAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the double.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public DoubleAssertion that(final double actual) {
+        DoubleAssertion assertion = Raw.doubleAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the double.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public DoubleAssertion that(final Double actual) {
         DoubleAssertion assertion = Raw.doubleAssertion();
         assertion.initialize(actual, _message);
         return assertion;
@@ -172,12 +244,36 @@ public final class MessageAssertion {
     }
 
     /**
+     * Make assertion about the boolean.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public BooleanAssertion that(final Boolean actual) {
+        BooleanAssertion assertion = Raw.booleanAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the char.
      *
      * @param actual the actual value.
      * @return the assertion.
      */
     public CharAssertion that(final char actual) {
+        CharAssertion assertion = Raw.charAssertion();
+        assertion.initialize(actual, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the char.
+     *
+     * @param actual the actual value.
+     * @return the assertion.
+     */
+    public CharAssertion that(final Character actual) {
         CharAssertion assertion = Raw.charAssertion();
         assertion.initialize(actual, _message);
         return assertion;
