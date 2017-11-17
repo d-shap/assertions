@@ -25,15 +25,16 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link IterableAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class IterableAssertionTest {
+public final class IterableAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -47,29 +48,29 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).isEmpty();
-        new IterableAssertion(new HashSet<String>(), new FailDescription()).isEmpty();
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").isEmpty();
+        initialize(Raw.iterableAssertion(), new HashSet<String>(), "Message").isEmpty();
 
         try {
-            new IterableAssertion(null, new FailDescription()).isEmpty();
+            initialize(Raw.iterableAssertion(), null, "Message").isEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription("Message")).isEmpty();
+            initialize(Raw.iterableAssertion(), null, "Message").isEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isEmpty();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").isEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).isEmpty();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").isEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[val1, val2]>.");
@@ -81,18 +82,18 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).isNullOrEmpty();
-        new IterableAssertion(new HashSet<String>(), new FailDescription()).isNullOrEmpty();
-        new IterableAssertion(null, new FailDescription()).isNullOrEmpty();
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").isNullOrEmpty();
+        initialize(Raw.iterableAssertion(), new HashSet<String>(), "Message").isNullOrEmpty();
+        initialize(Raw.iterableAssertion(), null, "Message").isNullOrEmpty();
 
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isNullOrEmpty();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).isNullOrEmpty();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<[val1, val2]>.");
@@ -104,41 +105,41 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isNotEmptyTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).isNotEmpty();
-        new IterableAssertion(Arrays.asList("test1", "test2"), new FailDescription()).isNotEmpty();
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").isNotEmpty();
+        initialize(Raw.iterableAssertion(), Arrays.asList("test1", "test2"), "Message").isNotEmpty();
 
         try {
-            new IterableAssertion(null, new FailDescription()).isNotEmpty();
+            initialize(Raw.iterableAssertion(), null, "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.iterableAssertion(), null, "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new IterableAssertion(new ArrayList<String>(), new FailDescription()).isNotEmpty();
+            initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new IterableAssertion(new ArrayList<String>(), new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
         }
         try {
-            new IterableAssertion(new HashSet<String>(), new FailDescription()).isNotEmpty();
+            initialize(Raw.iterableAssertion(), new HashSet<String>(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            new IterableAssertion(new HashSet<String>(), new FailDescription("Message")).isNotEmpty();
+            initialize(Raw.iterableAssertion(), new HashSet<String>(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -150,38 +151,38 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val1");
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val2");
-        new IterableAssertion(Arrays.asList(null, "val1", "val2"), new FailDescription()).contains(null);
-        new IterableAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).contains(null);
-        new IterableAssertion(Arrays.asList("val1", null, "val2"), new FailDescription()).contains(null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains("val1");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains("val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList(null, "val1", "val2"), "Message").contains(null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", null, "val2"), "Message").contains(null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", null, "val2"), "Message").contains(null);
 
         try {
-            new IterableAssertion(null, new FailDescription()).contains("val");
+            initialize(Raw.iterableAssertion(), null, "Message").contains("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains("val3");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains("val3");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(1);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains(1);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<1> but was:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).contains(new StringBuilder("test1"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains(new StringBuilder("test1"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<test1> but was:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).contains(new StringBuilder("test1"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").contains(new StringBuilder("test1"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<test1> but was:<[val1, val2]>.");
@@ -193,32 +194,32 @@ public final class IterableAssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val3");
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(1);
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(new StringBuilder("test1"));
-        new IterableAssertion(Arrays.asList("val1", null), new FailDescription()).doesNotContain("val3");
-        new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain(null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain(1);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain(new StringBuilder("test1"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", null), "Message").doesNotContain("val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain(null);
 
         try {
-            new IterableAssertion(null, new FailDescription()).doesNotContain("val");
+            initialize(Raw.iterableAssertion(), null, "Message").doesNotContain("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).doesNotContain("val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription("Message")).doesNotContain("val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>.");
@@ -230,102 +231,102 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsAllTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val2");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val1");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val5", "val1", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val5", "val4");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val3", "val1", "val4", "val5", "val2");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll("val3", "val1", "val4", null, "val2");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val3", "val1");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val5", "val1", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val3", "val5", "val4");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val3", "val1", "val4", "val5", "val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsAll("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsAll("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsAll(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAll((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAll((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAll((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAll(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val0", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val0", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val1", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val1", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -337,102 +338,102 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsAllInOrderTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val3", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val3", "val4", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val1", "val1", "val2", "val2"), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", null);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val3", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val3", "val4", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val1", "val1", "val2", "val2"), "Message").containsAllInOrder("val1", "val1", "val1", "val2", "val2");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsAllInOrder("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsAllInOrder("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAllInOrder((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAllInOrder((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAllInOrder((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val3", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val3", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val1", "val1"), new FailDescription()).containsAllInOrder("val1", "val1", "val1", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val1", "val1"), "Message").containsAllInOrder("val1", "val1", "val1", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -444,110 +445,110 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsExactlyTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val1", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val3", "val1");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val3", "val2", "val1");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val1", "val2", "val3", "val4", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly("val2", "val4", "val1", "val3", null);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).containsExactly();
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).containsExactly(new ArrayList<String>());
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val1", "val2", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val1", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val3", "val1");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val3", "val2", "val1");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsExactly("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsExactly("val2", "val4", "val1", "val3", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsExactly("val2", "val4", "val1", "val3", null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").containsExactly();
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").containsExactly(new ArrayList<String>());
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactly("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactly("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactly(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactly((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactly((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactly((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactly((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactly((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactly((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactly((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2", "val3", "val4");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val1", "val2", "val3", "val4");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val3", "val2", "val1", "val4");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val3", "val2", "val1", "val4");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val1", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val1", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly("val2", "val4", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactly("val2", "val4", "val1");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>.");
@@ -559,106 +560,106 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsExactlyInOrderTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder();
-        new IterableAssertion(new ArrayList<String>(), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val1", "val2", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder();
+        initialize(Raw.iterableAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder(new ArrayList<String>());
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactlyInOrder("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactlyInOrder("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactlyInOrder((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsExactlyInOrder((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsExactlyInOrder((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactlyInOrder((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactlyInOrder((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsExactlyInOrder((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactlyInOrder((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val1", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val2", "val3");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val2", "val3");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val4");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val1", "val2", "val4");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val1", "val2", "val3", "val4");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val1", "val2", "val3", "val4");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>.");
@@ -670,87 +671,87 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsAnyTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val1", "val3", "val5");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val6", "val2", "val4");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny("val7", "val9", "val1", "val5", "val3");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny("val7", "val9", null);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", null), new FailDescription()).containsAny(Arrays.asList("val7", "val9", null));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsAny("val1", "val3", "val5");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsAny("val6", "val2", "val4");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val7", "val9", "val1", "val5", "val3");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAny("val7", "val9", null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null), "Message").containsAny(Arrays.asList("val7", "val9", null));
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsAny("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsAny("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsAny(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAny((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsAny((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsAny((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsAny(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsAny("val4", "val5", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsAny("val4", "val5", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny("val8", "val7");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAny("val8", "val7");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription("Message")).containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>.");
@@ -762,94 +763,94 @@ public final class IterableAssertionTest {
      */
     @Test
     public void containsNoneTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val4", "val5", "val6");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", "val4");
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
-        new IterableAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone("val8", "val4");
-        new IterableAssertion(Arrays.asList("val1", "val2", null), new FailDescription()).containsNone(Arrays.asList("val8", "val4"));
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val8", null);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val8", null));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val4", "val5", "val6");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val8", "val4");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", null), "Message").containsNone("val8", "val4");
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", null), "Message").containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val8", null);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val8", null));
 
         try {
-            new IterableAssertion(null, new FailDescription()).containsNone("val");
+            initialize(Raw.iterableAssertion(), null, "Message").containsNone("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), null, "Message").containsNone(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsNone((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription()).containsNone((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), null, "Message").containsNone((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Object[]) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone((Object[]) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone((Iterable<?>) null);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone((Iterable<?>) null);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2"), new FailDescription()).containsNone(new ArrayList<String>());
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val4", "val2");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val4", "val2");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>.");
@@ -861,34 +862,34 @@ public final class IterableAssertionTest {
      */
     @Test
     public void toSizeTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isEqualTo(3);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isGreaterThan(2);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isLessThan(6);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(3);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isGreaterThan(2);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isLessThan(6);
 
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isEqualTo(5);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isGreaterThan(1);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).toSize().isLessThan(9);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").toSize().isEqualTo(5);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").toSize().isGreaterThan(1);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").toSize().isLessThan(9);
 
         try {
-            new IterableAssertion(null, new FailDescription()).toSize();
+            initialize(Raw.iterableAssertion(), null, "Message").toSize();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription("Message")).toSize();
+            initialize(Raw.iterableAssertion(), null, "Message").toSize();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).toSize().isEqualTo(4);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).toSize().isEqualTo(4);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -900,29 +901,29 @@ public final class IterableAssertionTest {
      */
     @Test
     public void hasSizeTest() {
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasSize(3);
-        new IterableAssertion(Arrays.asList("val1", "val2", "val3", "val4", "val5"), new FailDescription()).hasSize(5);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(3);
+        initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").hasSize(5);
 
         try {
-            new IterableAssertion(null, new FailDescription()).hasSize(4);
+            initialize(Raw.iterableAssertion(), null, "Message").hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new IterableAssertion(null, new FailDescription("Message")).hasSize(4);
+            initialize(Raw.iterableAssertion(), null, "Message").hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).hasSize(4);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).hasSize(4);
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -934,16 +935,16 @@ public final class IterableAssertionTest {
      */
     @Test
     public void isNullTest() {
-        new IterableAssertion(null, new FailDescription()).isNull();
+        initialize(Raw.iterableAssertion(), null, "Message").isNull();
 
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription()).isNull();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").isNull();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(Arrays.asList("val1", "val2", "val3"), new FailDescription("Message")).isNull();
+            initialize(Raw.iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").isNull();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<[val1, val2, val3]>.");
@@ -956,28 +957,28 @@ public final class IterableAssertionTest {
     @Test
     public void isSameAsTest() {
         Iterable<String> value = Arrays.asList("val1", "val2", "val3");
-        new IterableAssertion(value, new FailDescription()).isSameAs(value);
+        initialize(Raw.iterableAssertion(), value, "Message").isSameAs(value);
 
         try {
-            new IterableAssertion(value, new FailDescription()).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.iterableAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(value, new FailDescription("Message")).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.iterableAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(value, new FailDescription()).isSameAs("test");
+            initialize(Raw.iterableAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(value, new FailDescription("Message")).isSameAs("test");
+            initialize(Raw.iterableAssertion(), value, "Message").isSameAs("test");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2, val3]>.");
@@ -990,17 +991,17 @@ public final class IterableAssertionTest {
     @Test
     public void isNotSameAsTest() {
         Iterable<String> value = Arrays.asList("val1", "val2", "val3");
-        new IterableAssertion(value, new FailDescription()).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
-        new IterableAssertion(value, new FailDescription()).isNotSameAs("test");
+        initialize(Raw.iterableAssertion(), value, "Message").isNotSameAs(Arrays.asList("val1", "val2", "val3"));
+        initialize(Raw.iterableAssertion(), value, "Message").isNotSameAs("test");
 
         try {
-            new IterableAssertion(value, new FailDescription()).isNotSameAs(value);
+            initialize(Raw.iterableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<[val1, val2, val3]>.");
         }
         try {
-            new IterableAssertion(value, new FailDescription("Message")).isNotSameAs(value);
+            initialize(Raw.iterableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<[val1, val2, val3]>.");
@@ -1013,14 +1014,14 @@ public final class IterableAssertionTest {
     @Test
     public void asStringTest() {
         try {
-            Assertions.assertThat(new IterableAssertion(null, new FailDescription()).asString(null));
+            Assertions.assertThat(initialize(Raw.iterableAssertion(), null, "Message").asString(null));
             Assertions.fail("IterableAssertion test fail");
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
-        Assertions.assertThat(new IterableAssertion(null, new FailDescription()).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(new IterableAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new IterableAssertion(null, new FailDescription()).asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), null, "Message").asString(new StringBuilder("test"))).isEqualTo("test");
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), null, "Message").asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), null, "Message").asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }
 
 }

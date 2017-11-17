@@ -21,15 +21,16 @@ package ru.d_shap.assertions.core;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.FailDescription;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link EnumAssertion}.
  *
  * @author Dmitry Shapovalov
  */
-public final class EnumAssertionTest {
+public final class EnumAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -43,11 +44,11 @@ public final class EnumAssertionTest {
      */
     @Test
     public void constructorTest() {
-        new EnumAssertion(null, new FailDescription()).isNull();
-        new EnumAssertion(Values.class, new FailDescription()).isNotNull();
+        initialize(Raw.enumAssertion(), null).isNull();
+        initialize(Raw.enumAssertion(), Values.class).isNotNull();
 
         try {
-            new EnumAssertion(String.class, new FailDescription());
+            initialize(Raw.enumAssertion(), String.class);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be the enum. Actual:<java.lang.String>.");
@@ -59,30 +60,30 @@ public final class EnumAssertionTest {
      */
     @Test
     public void toValueCountTest() {
-        new EnumAssertion(Values.class, new FailDescription()).toValueCount().isEqualTo(3);
-        new EnumAssertion(Values.class, new FailDescription()).toValueCount().isGreaterThan(2);
-        new EnumAssertion(Values.class, new FailDescription()).toValueCount().isLessThan(4);
+        initialize(Raw.enumAssertion(), Values.class).toValueCount().isEqualTo(3);
+        initialize(Raw.enumAssertion(), Values.class).toValueCount().isGreaterThan(2);
+        initialize(Raw.enumAssertion(), Values.class).toValueCount().isLessThan(4);
 
         try {
-            new EnumAssertion(null, new FailDescription()).toValueCount();
+            initialize(Raw.enumAssertion(), null).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            new EnumAssertion(null, new FailDescription("Message")).toValueCount();
+            initialize(Raw.enumAssertion(), null, "Message").toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            new EnumAssertion(Values.class, new FailDescription()).toValueCount().isEqualTo(4);
+            initialize(Raw.enumAssertion(), Values.class).toValueCount().isEqualTo(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new EnumAssertion(Values.class, new FailDescription("Message")).toValueCount().isEqualTo(4);
+            initialize(Raw.enumAssertion(), Values.class, "Message").toValueCount().isEqualTo(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
@@ -94,16 +95,16 @@ public final class EnumAssertionTest {
      */
     @Test
     public void hasValueCountTest() {
-        new EnumAssertion(Values.class, new FailDescription()).hasValueCount(3);
+        initialize(Raw.enumAssertion(), Values.class).hasValueCount(3);
 
         try {
-            new EnumAssertion(Values.class, new FailDescription()).hasValueCount(4);
+            initialize(Raw.enumAssertion(), Values.class).hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
         }
         try {
-            new EnumAssertion(Values.class, new FailDescription("Message")).hasValueCount(4);
+            initialize(Raw.enumAssertion(), Values.class, "Message").hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check enum value count. Values should be the same. Expected:<4> but was:<3>.");
@@ -116,13 +117,13 @@ public final class EnumAssertionTest {
     @Test
     public void callReflectionCatchStatemensTest() {
         try {
-            new EnumAssertion(Values.class, new FailDescription(), "wrongMethodName", "valueOf").toValueCount();
+            initialize(new EnumAssertion("wrongMethodName", "valueOf"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
         }
         try {
-            new EnumAssertion(Values.class, new FailDescription(), "values", "wrongMethodName").toValueCount();
+            initialize(new EnumAssertion("values", "wrongMethodName"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
