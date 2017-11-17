@@ -24,6 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.validator.ActualValueClassValidator;
 import ru.d_shap.assertions.validator.ActualValueValidator;
@@ -133,7 +134,7 @@ public class ClassAssertion extends ReferenceAssertion {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
-        return as(new EnumAssertion());
+        return as(Raw.enumAssertion());
     }
 
     @Override
