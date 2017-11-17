@@ -264,7 +264,7 @@ public final class BufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            initialize(new BufferAssertionImpl(), new ArrayList<Integer>(), "Message").isRewindAndNotEmpty();
+            initialize(new BufferAssertionImpl(), createIntBuffer(new int[0]), "Message").isRewindAndNotEmpty();
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
