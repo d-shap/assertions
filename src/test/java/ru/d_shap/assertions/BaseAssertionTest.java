@@ -793,9 +793,9 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(baseAssertion1.getFailDescription().createAssertionError().getMessage()).isEmpty();
 
         BaseAssertion baseAssertion2 = createBaseAssertion(null, "Message");
-        Assertions.assertThat(baseAssertion2.getFailDescription("message1").createAssertionError().getMessage()).isEqualTo("message. message1.");
-        Assertions.assertThat(baseAssertion2.getFailDescription("message2").createAssertionError().getMessage()).isEqualTo("message. message2.");
-        Assertions.assertThat(baseAssertion2.getFailDescription().createAssertionError().getMessage()).isEqualTo("message.");
+        Assertions.assertThat(baseAssertion2.getFailDescription("message1").createAssertionError().getMessage()).isEqualTo("Message. message1.");
+        Assertions.assertThat(baseAssertion2.getFailDescription("message2").createAssertionError().getMessage()).isEqualTo("Message. message2.");
+        Assertions.assertThat(baseAssertion2.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
     }
 
     /**
