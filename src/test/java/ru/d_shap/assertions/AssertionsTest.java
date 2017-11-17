@@ -32,7 +32,6 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -749,15 +748,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void mapAssertionTest() {
         Assertions.assertThat((Map<?, ?>) null).isNull();
-        Assertions.assertThat(createMap()).hasSize(3);
+        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
         Assertions.assertThat(null, Raw.mapAssertion()).isNull();
-        Assertions.assertThat(createMap(), Raw.mapAssertion()).hasSize(3);
+        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.mapAssertion()).hasSize(3);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.mapAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_map").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_map", Raw.mapAssertion()).hasSize(3);
 
         try {
-            Assertions.assertThat(createMap()).hasSize(4);
+            Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>.");
@@ -812,15 +811,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void byteBufferAssertionTest() {
         Assertions.assertThat((ByteBuffer) null).isNull();
-        Assertions.assertThat(createByteBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(1, 2);
         Assertions.assertThat(null, Raw.byteBufferAssertion()).isNull();
-        Assertions.assertThat(createByteBuffer(Arrays.asList(1, 2)), Raw.byteBufferAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createByteBuffer(new byte[]{1, 2}), Raw.byteBufferAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.byteBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byteBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byteBuffer", Raw.byteBufferAssertion()).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertThat(createByteBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(2, 1);
+            Assertions.assertThat(createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
@@ -833,15 +832,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void shortBufferAssertionTest() {
         Assertions.assertThat((ShortBuffer) null).isNull();
-        Assertions.assertThat(createShortBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(1, 2);
         Assertions.assertThat(null, Raw.shortBufferAssertion()).isNull();
-        Assertions.assertThat(createShortBuffer(Arrays.asList(1, 2)), Raw.shortBufferAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createShortBuffer(new short[]{1, 2}), Raw.shortBufferAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.shortBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_shortBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_shortBuffer", Raw.shortBufferAssertion()).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertThat(createShortBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(2, 1);
+            Assertions.assertThat(createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
@@ -854,15 +853,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void intBufferAssertionTest() {
         Assertions.assertThat((IntBuffer) null).isNull();
-        Assertions.assertThat(createIntBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(1, 2);
         Assertions.assertThat(null, Raw.intBufferAssertion()).isNull();
-        Assertions.assertThat(createIntBuffer(Arrays.asList(1, 2)), Raw.intBufferAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createIntBuffer(new int[]{1, 2}), Raw.intBufferAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.intBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_intBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_intBuffer", Raw.intBufferAssertion()).containsExactlyInOrder(1, 2);
 
         try {
-            Assertions.assertThat(createIntBuffer(Arrays.asList(1, 2))).containsExactlyInOrder(2, 1);
+            Assertions.assertThat(createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
@@ -875,15 +874,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void longBufferAssertionTest() {
         Assertions.assertThat((LongBuffer) null).isNull();
-        Assertions.assertThat(createLongBuffer(Arrays.asList(1L, 2L))).containsExactlyInOrder(1L, 2L);
+        Assertions.assertThat(createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(1L, 2L);
         Assertions.assertThat(null, Raw.longBufferAssertion()).isNull();
-        Assertions.assertThat(createLongBuffer(Arrays.asList(1L, 2L)), Raw.longBufferAssertion()).containsExactlyInOrder(1L, 2L);
+        Assertions.assertThat(createLongBuffer(new long[]{1L, 2L}), Raw.longBufferAssertion()).containsExactlyInOrder(1L, 2L);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.longBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_longBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_longBuffer", Raw.longBufferAssertion()).containsExactlyInOrder(1L, 2L);
 
         try {
-            Assertions.assertThat(createLongBuffer(Arrays.asList(1L, 2L))).containsExactlyInOrder(2L, 1L);
+            Assertions.assertThat(createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(2L, 1L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
@@ -896,15 +895,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void floatBufferAssertionTest() {
         Assertions.assertThat((FloatBuffer) null).isNull();
-        Assertions.assertThat(createFloatBuffer(Arrays.asList(1.0, 2.0))).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertThat(createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(null, Raw.floatBufferAssertion()).isNull();
-        Assertions.assertThat(createFloatBuffer(Arrays.asList(1.0, 2.0)), Raw.floatBufferAssertion()).containsExactlyInOrder(1.0f, 2.0f);
+        Assertions.assertThat(createFloatBuffer(new float[]{1.0f, 2.0f}), Raw.floatBufferAssertion()).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.floatBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_floatBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_floatBuffer", Raw.floatBufferAssertion()).containsExactlyInOrder(1.0f, 2.0f);
 
         try {
-            Assertions.assertThat(createFloatBuffer(Arrays.asList(1.0, 2.0))).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.assertThat(createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(2.0f, 1.0f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -917,15 +916,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void doubleBufferAssertionTest() {
         Assertions.assertThat((DoubleBuffer) null).isNull();
-        Assertions.assertThat(createDoubleBuffer(Arrays.asList(1.0, 2.0))).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertThat(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(null, Raw.doubleBufferAssertion()).isNull();
-        Assertions.assertThat(createDoubleBuffer(Arrays.asList(1.0, 2.0)), Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertThat(createDoubleBuffer(new double[]{1.0f, 2.0f}), Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.doubleBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_doubleBuffer", Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
 
         try {
-            Assertions.assertThat(createDoubleBuffer(Arrays.asList(1.0, 2.0))).containsExactlyInOrder(2.0, 1.0);
+            Assertions.assertThat(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>.");
@@ -938,15 +937,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void charBufferAssertionTest() {
         Assertions.assertThat((CharBuffer) null).isNull();
-        Assertions.assertThat(createCharBuffer(Arrays.asList(49, 50))).containsExactlyInOrder(49, 50);
+        Assertions.assertThat(createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(49, 50);
         Assertions.assertThat(null, Raw.charBufferAssertion()).isNull();
-        Assertions.assertThat(createCharBuffer(Arrays.asList(49, 50)), Raw.charBufferAssertion()).containsExactlyInOrder(49, 50);
+        Assertions.assertThat(createCharBuffer(new char[]{'1', '2'}), Raw.charBufferAssertion()).containsExactlyInOrder(49, 50);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.charBufferAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_charBuffer").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_charBuffer", Raw.charBufferAssertion()).containsExactlyInOrder(49, 50);
 
         try {
-            Assertions.assertThat(createCharBuffer(Arrays.asList(49, 50))).containsExactlyInOrder(50, 49);
+            Assertions.assertThat(createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(50, 49);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>.");
@@ -963,14 +962,6 @@ public final class AssertionsTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("fail a test.");
         }
-    }
-
-    private static Map<String, String> createMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("1", "val1");
-        map.put("2", "val2");
-        map.put("3", "val3");
-        return map;
     }
 
     /**
@@ -1051,25 +1042,25 @@ public final class AssertionsTest extends AssertionTest {
 
         private Set<?> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
 
-        private Map<String, String> _map = createMap();
+        private Map<String, String> _map = createHashMap("1", "val1", "2", "val2", "3", "val3");
 
         private InputStream _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
 
         private Reader _reader = new StringReader("123");
 
-        private ByteBuffer _byteBuffer = createByteBuffer(Arrays.asList(1, 2));
+        private ByteBuffer _byteBuffer = createByteBuffer(new byte[]{1, 2});
 
-        private ShortBuffer _shortBuffer = createShortBuffer(Arrays.asList(1, 2));
+        private ShortBuffer _shortBuffer = createShortBuffer(new short[]{1, 2});
 
-        private IntBuffer _intBuffer = createIntBuffer(Arrays.asList(1, 2));
+        private IntBuffer _intBuffer = createIntBuffer(new int[]{1, 2});
 
-        private LongBuffer _longBuffer = createLongBuffer(Arrays.asList(1L, 2L));
+        private LongBuffer _longBuffer = createLongBuffer(new long[]{1L, 2L});
 
-        private FloatBuffer _floatBuffer = createFloatBuffer(Arrays.asList(1.0, 2.0));
+        private FloatBuffer _floatBuffer = createFloatBuffer(new float[]{1.0f, 2.0f});
 
-        private DoubleBuffer _doubleBuffer = createDoubleBuffer(Arrays.asList(1.0, 2.0));
+        private DoubleBuffer _doubleBuffer = createDoubleBuffer(new double[]{1.0f, 2.0f});
 
-        private CharBuffer _charBuffer = createCharBuffer(Arrays.asList(49, 50));
+        private CharBuffer _charBuffer = createCharBuffer(new char[]{'1', '2'});
 
         PrivateFieldsClass() {
             super();
