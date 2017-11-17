@@ -26,7 +26,9 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Base class for all tests.
@@ -109,6 +111,32 @@ public class AssertionTest {
      */
     public static ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
         return initialize(new ReferenceAssertionImpl(), actual, message);
+    }
+
+    public static Map<String, String> createHashMap() {
+        Map<String, String> map = new HashMap<>();
+        return map;
+    }
+
+    public static Map<String, String> createHashMap(final String key, final String value) {
+        Map<String, String> map = new HashMap<>();
+        map.put(key, value);
+        return map;
+    }
+
+    public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2) {
+        Map<String, String> map = new HashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        return map;
+    }
+
+    public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
+        Map<String, String> map = new HashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        return map;
     }
 
     public static ByteBuffer createByteBuffer(final List<Integer> values) {
