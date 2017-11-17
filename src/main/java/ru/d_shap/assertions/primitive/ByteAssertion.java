@@ -19,8 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.primitive;
 
-import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.validator.ActualValueClassValidator;
 import ru.d_shap.assertions.validator.ActualValueValidator;
 
@@ -29,7 +29,7 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
  *
  * @author Dmitry Shapovalov
  */
-public class ByteAssertion extends BaseAssertion {
+public class ByteAssertion extends ReferenceAssertion {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Byte.class);
 
