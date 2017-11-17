@@ -19,6 +19,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.LongBuffer;
+import java.nio.ShortBuffer;
+import java.util.List;
+
 /**
  * Base class for all tests.
  *
@@ -66,7 +75,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public BaseAssertion createBaseAssertion(final Object actual) {
+    public final BaseAssertion createBaseAssertion(final Object actual) {
         return initialize(new BaseAssertionImpl(), actual);
     }
 
@@ -77,7 +86,7 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public BaseAssertion createBaseAssertion(final Object actual, final String message) {
+    public final BaseAssertion createBaseAssertion(final Object actual, final String message) {
         return initialize(new BaseAssertionImpl(), actual, message);
     }
 
@@ -87,7 +96,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public ReferenceAssertion createReferenceAssertion(final Object actual) {
+    public final ReferenceAssertion createReferenceAssertion(final Object actual) {
         return initialize(new ReferenceAssertionImpl(), actual);
     }
 
@@ -98,8 +107,112 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
+    public final ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
         return initialize(new ReferenceAssertionImpl(), actual, message);
+    }
+
+    public final ByteBuffer createByteBuffer(final List<Byte> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity);
+            for (Byte value : values) {
+                byteBuffer.put(value);
+            }
+            byteBuffer.position(position);
+            byteBuffer.limit(limit);
+            return byteBuffer;
+        }
+    }
+
+    public final ShortBuffer createShortBuffer(final List<Short> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
+            ShortBuffer shortBuffer = byteBuffer.asShortBuffer();
+            for (Short value : values) {
+                shortBuffer.put(value);
+            }
+            shortBuffer.position(position);
+            shortBuffer.limit(limit);
+            return shortBuffer;
+        }
+    }
+
+    public final IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 4);
+            IntBuffer intBuffer = byteBuffer.asIntBuffer();
+            for (Integer value : values) {
+                intBuffer.put(value);
+            }
+            intBuffer.position(position);
+            intBuffer.limit(limit);
+            return intBuffer;
+        }
+    }
+
+    public final LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 8);
+            LongBuffer longBuffer = byteBuffer.asLongBuffer();
+            for (Long value : values) {
+                longBuffer.put(value);
+            }
+            longBuffer.position(position);
+            longBuffer.limit(limit);
+            return longBuffer;
+        }
+    }
+
+    public final FloatBuffer createFloatBuffer(final List<Float> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 4);
+            FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
+            for (Float value : values) {
+                floatBuffer.put(value);
+            }
+            floatBuffer.position(position);
+            floatBuffer.limit(limit);
+            return floatBuffer;
+        }
+    }
+
+    public final DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 8);
+            DoubleBuffer doubleBuffer = byteBuffer.asDoubleBuffer();
+            for (Double value : values) {
+                doubleBuffer.put(value);
+            }
+            doubleBuffer.position(position);
+            doubleBuffer.limit(limit);
+            return doubleBuffer;
+        }
+    }
+
+    public final CharBuffer createCharBuffer(final List<Character> values, final int position, final int limit, final int capacity) {
+        if (values == null) {
+            return null;
+        } else {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(capacity * 2);
+            CharBuffer charBuffer = byteBuffer.asCharBuffer();
+            for (Character value : values) {
+                charBuffer.put(value);
+            }
+            charBuffer.position(position);
+            charBuffer.limit(limit);
+            return charBuffer;
+        }
     }
 
     /**
