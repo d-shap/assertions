@@ -60,7 +60,7 @@ import ru.d_shap.assertions.primitive.LongAssertion;
 import ru.d_shap.assertions.primitive.ShortAssertion;
 
 /**
- * Class to create uninitialized assertion objects.
+ * Class to create uninitialized assertions.
  *
  * @author Dmitry Shapovalov
  */
