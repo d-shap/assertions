@@ -29,7 +29,7 @@ import org.junit.Test;
  *
  * @author Dmitry Shapovalov
  */
-public final class FieldAccessActionTest {
+public final class FieldAccessActionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -47,7 +47,7 @@ public final class FieldAccessActionTest {
     @Test
     public void getAccessTest() throws NoSuchFieldException, IllegalAccessException {
         Object object = new Object();
-        BaseAssertionImpl baseAssertion = new BaseAssertionImpl(object, new FailDescription("message"));
+        BaseAssertion baseAssertion = createBaseAssertion(object, "message");
 
         Field actualField = baseAssertion.getClass().getSuperclass().getDeclaredField("_actual");
         try {
@@ -71,24 +71,6 @@ public final class FieldAccessActionTest {
         Object failDescriptionValue = failDescriptionField.get(baseAssertion);
         Assertions.assertThat(failDescriptionValue).isInstanceOf(FailDescription.class);
         Assertions.assertThat(((FailDescription) failDescriptionValue).createAssertionError()).hasMessage("message.");
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class BaseAssertionImpl extends BaseAssertion {
-
-        BaseAssertionImpl(final Object actual, final FailDescription failDescription) {
-            super(actual, failDescription);
-        }
-
-        @Override
-        protected String asString(final Object value) {
-            return value.toString();
-        }
-
     }
 
 }
