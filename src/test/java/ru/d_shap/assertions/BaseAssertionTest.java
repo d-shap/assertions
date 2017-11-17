@@ -667,7 +667,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([B, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new short[0]).as(new ShortArrayAssertion()).hasLength(0);
@@ -677,7 +677,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([S, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new int[0]).as(new IntArrayAssertion()).hasLength(0);
@@ -687,7 +687,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), new int[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([I, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new long[0]).as(new LongArrayAssertion()).hasLength(0);
@@ -697,7 +697,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([J, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new float[0]).as(new FloatArrayAssertion()).hasLength(0);
@@ -707,7 +707,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.floatArrayAssertion(), new float[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([F, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new double[0]).as(new DoubleArrayAssertion()).hasLength(0);
@@ -717,7 +717,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.doubleArrayAssertion(), new double[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([D, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new boolean[0]).as(new BooleanArrayAssertion()).hasLength(0);
@@ -727,7 +727,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([Z, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new char[0]).as(new CharArrayAssertion()).hasLength(0);
@@ -737,7 +737,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.charArrayAssertion(), new char[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([C, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
 
         createBaseAssertion(new String[0]).as(new ObjectArrayAssertion()).hasLength(0);
@@ -747,7 +747,7 @@ public final class BaseAssertionTest extends AssertionTest {
             initialize(Raw.objectArrayAssertion(), new String[0]).as(Raw.iterableAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Wrong assertion class: ru.d_shap.assertions.core.IterableAssertion - class should have one constructor IterableAssertion([Ljava.lang.String;, java.lang.String)");
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
     }
 
