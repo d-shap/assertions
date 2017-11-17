@@ -50,7 +50,7 @@ public class AssertionTest {
      * @param <T>       generic assertion type.
      * @return the initialized assertion.
      */
-    public final <T extends BaseAssertion> T initialize(final T assertion, final Object actual) {
+    public static <T extends BaseAssertion> T initialize(final T assertion, final Object actual) {
         assertion.initialize(actual);
         return assertion;
     }
@@ -64,7 +64,7 @@ public class AssertionTest {
      * @param <T>       generic assertion type.
      * @return the initialized assertion.
      */
-    public final <T extends BaseAssertion> T initialize(final T assertion, final Object actual, final String message) {
+    public static <T extends BaseAssertion> T initialize(final T assertion, final Object actual, final String message) {
         assertion.initialize(actual, message);
         return assertion;
     }
@@ -75,7 +75,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public final BaseAssertion createBaseAssertion(final Object actual) {
+    public static BaseAssertion createBaseAssertion(final Object actual) {
         return initialize(new BaseAssertionImpl(), actual);
     }
 
@@ -96,7 +96,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public final ReferenceAssertion createReferenceAssertion(final Object actual) {
+    public static ReferenceAssertion createReferenceAssertion(final Object actual) {
         return initialize(new ReferenceAssertionImpl(), actual);
     }
 
@@ -107,11 +107,23 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public final ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
+    public static ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
         return initialize(new ReferenceAssertionImpl(), actual, message);
     }
 
-    public final ByteBuffer createByteBuffer(final List<Byte> values, final int position, final int limit, final int capacity) {
+    public static ByteBuffer createByteBuffer(final List<Byte> values) {
+        return createByteBuffer(values, 0);
+    }
+
+    public static ByteBuffer createByteBuffer(final List<Byte> values, final int position) {
+        return createByteBuffer(values, position, getSize(values));
+    }
+
+    public static ByteBuffer createByteBuffer(final List<Byte> values, final int position, final int limit) {
+        return createByteBuffer(values, position, limit, getSize(values));
+    }
+
+    public static ByteBuffer createByteBuffer(final List<Byte> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -125,7 +137,19 @@ public class AssertionTest {
         }
     }
 
-    public final ShortBuffer createShortBuffer(final List<Short> values, final int position, final int limit, final int capacity) {
+    public static ShortBuffer createShortBuffer(final List<Short> values) {
+        return createShortBuffer(values, 0);
+    }
+
+    public static ShortBuffer createShortBuffer(final List<Short> values, final int position) {
+        return createShortBuffer(values, position, getSize(values));
+    }
+
+    public static ShortBuffer createShortBuffer(final List<Short> values, final int position, final int limit) {
+        return createShortBuffer(values, position, limit, getSize(values));
+    }
+
+    public static ShortBuffer createShortBuffer(final List<Short> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -140,7 +164,19 @@ public class AssertionTest {
         }
     }
 
-    public final IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
+    public static IntBuffer createIntBuffer(final List<Integer> values) {
+        return createIntBuffer(values, 0);
+    }
+
+    public static IntBuffer createIntBuffer(final List<Integer> values, final int position) {
+        return createIntBuffer(values, position, getSize(values));
+    }
+
+    public static IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit) {
+        return createIntBuffer(values, position, limit, getSize(values));
+    }
+
+    public static IntBuffer createIntBuffer(final List<Integer> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -155,7 +191,19 @@ public class AssertionTest {
         }
     }
 
-    public final LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit, final int capacity) {
+    public static LongBuffer createLongBuffer(final List<Long> values) {
+        return createLongBuffer(values, 0);
+    }
+
+    public static LongBuffer createLongBuffer(final List<Long> values, final int position) {
+        return createLongBuffer(values, position, getSize(values));
+    }
+
+    public static LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit) {
+        return createLongBuffer(values, position, limit, getSize(values));
+    }
+
+    public static LongBuffer createLongBuffer(final List<Long> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -170,7 +218,19 @@ public class AssertionTest {
         }
     }
 
-    public final FloatBuffer createFloatBuffer(final List<Float> values, final int position, final int limit, final int capacity) {
+    public static FloatBuffer createFloatBuffer(final List<Float> values) {
+        return createFloatBuffer(values, 0);
+    }
+
+    public static FloatBuffer createFloatBuffer(final List<Float> values, final int position) {
+        return createFloatBuffer(values, position, getSize(values));
+    }
+
+    public static FloatBuffer createFloatBuffer(final List<Float> values, final int position, final int limit) {
+        return createFloatBuffer(values, position, limit, getSize(values));
+    }
+
+    public static FloatBuffer createFloatBuffer(final List<Float> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -185,7 +245,19 @@ public class AssertionTest {
         }
     }
 
-    public final DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit, final int capacity) {
+    public static DoubleBuffer createDoubleBuffer(final List<Double> values) {
+        return createDoubleBuffer(values, 0);
+    }
+
+    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position) {
+        return createDoubleBuffer(values, position, getSize(values));
+    }
+
+    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit) {
+        return createDoubleBuffer(values, position, limit, getSize(values));
+    }
+
+    public static DoubleBuffer createDoubleBuffer(final List<Double> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -200,7 +272,19 @@ public class AssertionTest {
         }
     }
 
-    public final CharBuffer createCharBuffer(final List<Character> values, final int position, final int limit, final int capacity) {
+    public static CharBuffer createCharBuffer(final List<Character> values) {
+        return createCharBuffer(values, 0);
+    }
+
+    public static CharBuffer createCharBuffer(final List<Character> values, final int position) {
+        return createCharBuffer(values, position, getSize(values));
+    }
+
+    public static CharBuffer createCharBuffer(final List<Character> values, final int position, final int limit) {
+        return createCharBuffer(values, position, limit, getSize(values));
+    }
+
+    public static CharBuffer createCharBuffer(final List<Character> values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -212,6 +296,14 @@ public class AssertionTest {
             charBuffer.position(position);
             charBuffer.limit(limit);
             return charBuffer;
+        }
+    }
+
+    private static int getSize(final List<?> values) {
+        if (values == null) {
+            return 0;
+        } else {
+            return values.size();
         }
     }
 
