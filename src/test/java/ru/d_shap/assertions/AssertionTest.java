@@ -678,4 +678,15 @@ public class AssertionTest {
 
     }
 
+    /**
+     * Test enum.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public enum Values {
+
+        VALUE_1, VALUE_2, VALUE_3
+
+    }
+
 }
