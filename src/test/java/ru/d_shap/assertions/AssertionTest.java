@@ -71,13 +71,22 @@ public class AssertionTest {
     }
 
     /**
+     * Create uninitialized base assertion.
+     *
+     * @return the initialized assertion.
+     */
+    public static BaseAssertion createBaseAssertion() {
+        return new BaseAssertionImpl();
+    }
+
+    /**
      * Create initialized base assertion with the actual value.
      *
      * @param actual the actual value.
      * @return the initialized assertion.
      */
     public static BaseAssertion createBaseAssertion(final Object actual) {
-        return initialize(new BaseAssertionImpl(), actual);
+        return initialize(createBaseAssertion(), actual);
     }
 
     /**
@@ -88,7 +97,16 @@ public class AssertionTest {
      * @return the initialized assertion.
      */
     public final BaseAssertion createBaseAssertion(final Object actual, final String message) {
-        return initialize(new BaseAssertionImpl(), actual, message);
+        return initialize(createBaseAssertion(), actual, message);
+    }
+
+    /**
+     * Create uninitialized reference assertion.
+     *
+     * @return the initialized assertion.
+     */
+    public static ReferenceAssertion createReferenceAssertion() {
+        return new ReferenceAssertionImpl();
     }
 
     /**
@@ -98,7 +116,7 @@ public class AssertionTest {
      * @return the initialized assertion.
      */
     public static ReferenceAssertion createReferenceAssertion(final Object actual) {
-        return initialize(new ReferenceAssertionImpl(), actual);
+        return initialize(createReferenceAssertion(), actual);
     }
 
     /**
@@ -109,7 +127,7 @@ public class AssertionTest {
      * @return the initialized assertion.
      */
     public static ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
-        return initialize(new ReferenceAssertionImpl(), actual, message);
+        return initialize(createReferenceAssertion(), actual, message);
     }
 
     /**
