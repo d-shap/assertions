@@ -200,9 +200,9 @@
             <property name="classMaximum" value="10000" />
             <property name="fileMaximum" value="10000" />
         </module>
-        <!--module name="NPathComplexity">
+        <!--<module name="NPathComplexity">
             <property name="max" value="50000000" />
-        </module-->
+        </module>-->
 
         <!-- Miscellaneous -->
         <module name="ArrayTypeStyle" />
