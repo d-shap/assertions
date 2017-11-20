@@ -410,7 +410,7 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).isNotNull();
         }
         Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(Object.class)).isEqualTo("java.lang.Object");
-        Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(Values.class)).isEqualTo("ru.d_shap.assertions.core.ClassAssertionTest$Values");
+        Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(Values.class)).isEqualTo("ru.d_shap.assertions.AssertionTest$Values");
         Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString("test")).isEqualTo("test");
     }
 
