@@ -441,15 +441,4 @@ public final class ClassAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test enum.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private enum Values {
-
-        VALUE_1, VALUE_2, VALUE_3
-
-    }
-
 }
