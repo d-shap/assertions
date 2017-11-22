@@ -83,14 +83,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void byteAssertionTest() {
         Assertions.assertThat((byte) 5).isEqualTo(5);
+        Assertions.assertThat((Byte) null).isNull();
+        Assertions.assertThat(Byte.valueOf((byte) 5)).isEqualTo(5);
         Assertions.assertThat(null, Raw.byteAssertion()).isNull();
         Assertions.assertThat((byte) 5, Raw.byteAssertion()).isEqualTo(5);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.byteAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byte").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_byte", Raw.byteAssertion()).isEqualTo(5);
+        Assertions.assertThat(new PrivateFieldsClass(), "_byteObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_byteObj", Raw.byteAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertThat((byte) 5).isEqualTo(6);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
+        }
+        try {
+            Assertions.assertThat(Byte.valueOf((byte) 5)).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
@@ -103,14 +113,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void shortAssertionTest() {
         Assertions.assertThat((short) 5).isEqualTo(5);
+        Assertions.assertThat((Short) null).isNull();
+        Assertions.assertThat(Short.valueOf((short) 5)).isEqualTo(5);
         Assertions.assertThat(null, Raw.shortAssertion()).isNull();
         Assertions.assertThat((short) 5, Raw.shortAssertion()).isEqualTo(5);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.shortAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_short").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_short", Raw.shortAssertion()).isEqualTo(5);
+        Assertions.assertThat(new PrivateFieldsClass(), "_shortObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_shortObj", Raw.shortAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertThat((short) 5).isEqualTo(6);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
+        }
+        try {
+            Assertions.assertThat(Short.valueOf((short) 5)).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
@@ -123,14 +143,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void intAssertionTest() {
         Assertions.assertThat(5).isEqualTo(5);
+        Assertions.assertThat((Integer) null).isNull();
+        Assertions.assertThat(Integer.valueOf(5)).isEqualTo(5);
         Assertions.assertThat(null, Raw.intAssertion()).isNull();
         Assertions.assertThat(5, Raw.intAssertion()).isEqualTo(5);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.intAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_int").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_int", Raw.intAssertion()).isEqualTo(5);
+        Assertions.assertThat(new PrivateFieldsClass(), "_intObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_intObj", Raw.intAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertThat(5).isEqualTo(6);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
+        }
+        try {
+            Assertions.assertThat(Integer.valueOf(5)).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
@@ -143,14 +173,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void longAssertionTest() {
         Assertions.assertThat(5L).isEqualTo(5L);
+        Assertions.assertThat((Long) null).isNull();
+        Assertions.assertThat(Long.valueOf(5L)).isEqualTo(5L);
         Assertions.assertThat(null, Raw.longAssertion()).isNull();
         Assertions.assertThat(5L, Raw.longAssertion()).isEqualTo(5L);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.longAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_long").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_long", Raw.longAssertion()).isEqualTo(5L);
+        Assertions.assertThat(new PrivateFieldsClass(), "_longObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_longObj", Raw.longAssertion()).isEqualTo(5L);
 
         try {
             Assertions.assertThat(5L).isEqualTo(6L);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
+        }
+        try {
+            Assertions.assertThat(Long.valueOf(5L)).isEqualTo(6L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>.");
@@ -163,14 +203,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void floatAssertionTest() {
         Assertions.assertThat(5.0f).isEqualTo(5.0f, 0.001f);
+        Assertions.assertThat((Float) null).isNull();
+        Assertions.assertThat(Float.valueOf(5.0f)).isEqualTo(5.0f, 0.001f);
         Assertions.assertThat(null, Raw.floatAssertion()).isNull();
         Assertions.assertThat(5.0f, Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.floatAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_float").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_float", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
+        Assertions.assertThat(new PrivateFieldsClass(), "_floatObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_floatObj", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
 
         try {
             Assertions.assertThat(5.0f).isEqualTo(6.0f, 0.001f);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>.");
+        }
+        try {
+            Assertions.assertThat(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>.");
@@ -183,14 +233,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void doubleAssertionTest() {
         Assertions.assertThat(5.0).isEqualTo(5.0, 0.001);
+        Assertions.assertThat((Double) null).isNull();
+        Assertions.assertThat(Double.valueOf(5.0)).isEqualTo(5.0, 0.001);
         Assertions.assertThat(null, Raw.doubleAssertion()).isNull();
         Assertions.assertThat(5.0, Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.doubleAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_double").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_double", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
+        Assertions.assertThat(new PrivateFieldsClass(), "_doubleObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_doubleObj", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
 
         try {
             Assertions.assertThat(5.0).isEqualTo(6.0, 0.001);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>.");
+        }
+        try {
+            Assertions.assertThat(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>.");
@@ -203,14 +263,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void booleanAssertionTest() {
         Assertions.assertThat(true).isTrue();
+        Assertions.assertThat((Boolean) null).isNull();
+        Assertions.assertThat(Boolean.TRUE).isTrue();
         Assertions.assertThat(null, Raw.booleanAssertion()).isNull();
         Assertions.assertThat(true, Raw.booleanAssertion()).isTrue();
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.booleanAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_boolean").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_boolean", Raw.booleanAssertion()).isTrue();
+        Assertions.assertThat(new PrivateFieldsClass(), "_booleanObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_booleanObj", Raw.booleanAssertion()).isTrue();
 
         try {
             Assertions.assertThat(true).isFalse();
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be false.");
+        }
+        try {
+            Assertions.assertThat(Boolean.TRUE).isFalse();
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
@@ -223,14 +293,24 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void charAssertionTest() {
         Assertions.assertThat('5').isEqualTo('5');
+        Assertions.assertThat((Character) null).isNull();
+        Assertions.assertThat(Character.valueOf('5')).isEqualTo('5');
         Assertions.assertThat(null, Raw.charAssertion()).isNull();
         Assertions.assertThat('5', Raw.charAssertion()).isEqualTo('5');
         Assertions.assertThat(new NullFieldClass(), "_field", Raw.charAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_char").isNotNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_char", Raw.charAssertion()).isEqualTo('5');
+        Assertions.assertThat(new PrivateFieldsClass(), "_charObj").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_charObj", Raw.charAssertion()).isEqualTo('5');
 
         try {
             Assertions.assertThat('5').isEqualTo('6');
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>.");
+        }
+        try {
+            Assertions.assertThat(Character.valueOf('5')).isEqualTo('6');
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>.");
@@ -908,19 +988,35 @@ public final class AssertionsTest extends AssertionTest {
 
         private byte _byte = 5;
 
+        private Byte _byteObj = 5;
+
         private short _short = 5;
+
+        private Short _shortObj = 5;
 
         private int _int = 5;
 
+        private Integer _intObj = 5;
+
         private long _long = 5L;
+
+        private Long _longObj = 5L;
 
         private float _float = 5.0f;
 
+        private Float _floatObj = 5.0f;
+
         private double _double = 5.0;
+
+        private Double _doubleObj = 5.0;
 
         private boolean _boolean = true;
 
+        private Boolean _booleanObj = true;
+
         private char _char = '5';
+
+        private Character _charObj = '5';
 
         private Object _object = new StringBuilder("value");
 
