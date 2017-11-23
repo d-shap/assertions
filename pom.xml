@@ -92,6 +92,7 @@
                 </executions>
                 <configuration>
                     <printFailingErrors>true</printFailingErrors>
+                    <linkXRef>false</linkXRef>
                     <verbose>true</verbose>
                     <rulesets>
                         <ruleset>pmd-strict.xml</ruleset>
