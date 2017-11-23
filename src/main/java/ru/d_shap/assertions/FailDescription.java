@@ -61,7 +61,7 @@ final class FailDescription {
      */
     FailDescription(final String message) {
         this();
-        addMessage(message);
+        addMessage(message, true);
     }
 
     /**
@@ -84,15 +84,19 @@ final class FailDescription {
      */
     FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
-        addMessage(message);
+        addMessage(message, true);
     }
 
-    private void addMessage(final String message) {
+    private void addMessage(final String message, final boolean checkLastSymbol) {
         if (message != null && !"".equals(message)) {
-            if (message.endsWith(".") || message.endsWith("?") || message.endsWith("!")) {
-                _messages.add(message);
+            if (checkLastSymbol) {
+                if (message.endsWith(".") || message.endsWith("?") || message.endsWith("!")) {
+                    _messages.add(message);
+                } else {
+                    _messages.add(message + ".");
+                }
             } else {
-                _messages.add(message + ".");
+                _messages.add(message);
             }
         }
     }
@@ -187,15 +191,15 @@ final class FailDescription {
     private boolean addValuesMessage() {
         if (_actualDefined) {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected + " but was:" + _actual);
+                addMessage("Expected:" + _expected + " but was:" + _actual, false);
                 return true;
             } else {
-                addMessage("Actual:" + _actual);
+                addMessage("Actual:" + _actual, false);
                 return true;
             }
         } else {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected);
+                addMessage("Expected:" + _expected, false);
                 return true;
             } else {
                 return false;
