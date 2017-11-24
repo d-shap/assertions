@@ -641,27 +641,30 @@ public final class ValueConverter {
     }
 
     /**
-     * Convert the object list to the object array.
+     * Convert the object list to the object array. The result array shoud be used to read values.
      *
      * @param list the object list.
+     * @param <T>  the list element type.
      * @return the object array.
      */
-    public static Object[] toObjectArray(final List<?> list) {
+    @SuppressWarnings("unchecked")
+    public static <T> T[] toObjectArray(final List<T> list) {
         Object[] array = new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }
-        return array;
+        return (T[]) array;
     }
 
     /**
-     * Convert the object iterable to the object array.
+     * Convert the object iterable to the object array. The result array shoud be used to read values.
      *
      * @param iterable the object iterable.
+     * @param <T>      the iterable element type.
      * @return the object array.
      */
-    public static Object[] toObjectArray(final Iterable<?> iterable) {
-        List<?> list = toObjectList(iterable);
+    public static <T> T[] toObjectArray(final Iterable<T> iterable) {
+        List<T> list = toObjectList(iterable);
         return toObjectArray(list);
     }
 
