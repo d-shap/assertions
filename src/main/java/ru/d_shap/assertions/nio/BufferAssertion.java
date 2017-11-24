@@ -124,7 +124,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsAll(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsAll((Object[]) expected);
+        createListAssertion(false).containsAll(expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
@@ -137,7 +137,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsAll(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsAll((Object[]) expected);
+        createListAssertion(true).containsAll(expected);
     }
 
     final void doRewindAndContainsAll(final Iterable<T> expected) {
@@ -150,7 +150,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsAllInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsAllInOrder((Object[]) expected);
+        createListAssertion(false).containsAllInOrder(expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
@@ -163,7 +163,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsAllInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsAllInOrder((Object[]) expected);
+        createListAssertion(true).containsAllInOrder(expected);
     }
 
     final void doRewindAndContainsAllInOrder(final Iterable<T> expected) {
@@ -176,7 +176,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsExactly(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsExactly((Object[]) expected);
+        createListAssertion(false).containsExactly(expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
@@ -189,7 +189,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsExactly(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsExactly((Object[]) expected);
+        createListAssertion(true).containsExactly(expected);
     }
 
     final void doRewindAndContainsExactly(final Iterable<T> expected) {
@@ -202,7 +202,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsExactlyInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsExactlyInOrder((Object[]) expected);
+        createListAssertion(false).containsExactlyInOrder(expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
@@ -215,7 +215,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsExactlyInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsExactlyInOrder((Object[]) expected);
+        createListAssertion(true).containsExactlyInOrder(expected);
     }
 
     final void doRewindAndContainsExactlyInOrder(final Iterable<T> expected) {
@@ -228,7 +228,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsAny(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsAny((Object[]) expected);
+        createListAssertion(false).containsAny(expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
@@ -241,7 +241,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsAny(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsAny((Object[]) expected);
+        createListAssertion(true).containsAny(expected);
     }
 
     final void doRewindAndContainsAny(final Iterable<T> expected) {
@@ -254,7 +254,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doContainsNone(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(false).containsNone((Object[]) expected);
+        createListAssertion(false).containsNone(expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
@@ -267,7 +267,7 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
     final void doRewindAndContainsNone(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion(true).containsNone((Object[]) expected);
+        createListAssertion(true).containsNone(expected);
     }
 
     final void doRewindAndContainsNone(final Iterable<T> expected) {
@@ -413,9 +413,9 @@ abstract class BufferAssertion<T> extends ReferenceAssertion {
         }
     }
 
-    private ListAssertion createListAssertion(final boolean rewind) {
+    private ListAssertion<T> createListAssertion(final boolean rewind) {
         List<T> list = createList(getActual(), rewind);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.<T>listAssertion(), list);
     }
 
     abstract List<T> createList(Object value, boolean rewind);
