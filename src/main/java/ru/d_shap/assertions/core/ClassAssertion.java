@@ -83,7 +83,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (!expected.isAssignableFrom((Class) getActual())) {
+        if (!expected.isAssignableFrom((Class<?>) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SUBTYPE_OF, expected);
         }
     }
@@ -97,7 +97,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (expected.isAssignableFrom((Class) getActual())) {
+        if (expected.isAssignableFrom((Class<?>) getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUBTYPE_OF, expected);
         }
     }
@@ -108,11 +108,11 @@ public class ClassAssertion extends ReferenceAssertion {
     public final void hasOnePrivateConstructor() {
         checkInitialized();
         checkActualIsNotNull();
-        Constructor[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
+        Constructor<?>[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
         if (constructors.length != 1) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
         }
-        Constructor constructor = constructors[0];
+        Constructor<?> constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
         }

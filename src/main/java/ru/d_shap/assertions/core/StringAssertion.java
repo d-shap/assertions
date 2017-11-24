@@ -678,7 +678,7 @@ public class StringAssertion extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final ListAssertion toTokens() {
+    public final ListAssertion<String> toTokens() {
         checkInitialized();
         checkActualIsNotNull();
         StringTokenizer stringTokenizer = new StringTokenizer((String) getActual());
@@ -691,7 +691,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param delimiters the delimiters.
      * @return the assertion.
      */
-    public final ListAssertion toTokens(final String delimiters) {
+    public final ListAssertion<String> toTokens(final String delimiters) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
@@ -706,7 +706,7 @@ public class StringAssertion extends ReferenceAssertion {
      * @param returnDelimiters whether to return the delimiters as tokens.
      * @return the assertion.
      */
-    public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
+    public final ListAssertion<String> toTokens(final String delimiters, final boolean returnDelimiters) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
@@ -714,13 +714,13 @@ public class StringAssertion extends ReferenceAssertion {
         return toTokens(stringTokenizer);
     }
 
-    private ListAssertion toTokens(final StringTokenizer stringTokenizer) {
+    private ListAssertion<String> toTokens(final StringTokenizer stringTokenizer) {
         List<String> tokens = new ArrayList<>();
         while (stringTokenizer.hasMoreTokens()) {
             String token = stringTokenizer.nextToken();
             tokens.add(token);
         }
-        return initializeAssertion(Raw.listAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
+        return initializeAssertion(Raw.<String>listAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
     @Override

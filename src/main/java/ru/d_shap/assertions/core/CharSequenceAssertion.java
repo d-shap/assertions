@@ -504,7 +504,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final ListAssertion toTokens() {
+    public final ListAssertion<String> toTokens() {
         checkInitialized();
         checkActualIsNotNull();
         return createStringAssertion().toTokens();
@@ -516,7 +516,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      * @param delimiters the delimiters.
      * @return the assertion.
      */
-    public final ListAssertion toTokens(final String delimiters) {
+    public final ListAssertion<String> toTokens(final String delimiters) {
         checkInitialized();
         checkActualIsNotNull();
         return createStringAssertion().toTokens(delimiters);
@@ -529,7 +529,7 @@ public class CharSequenceAssertion extends ReferenceAssertion {
      * @param returnDelimiters whether to return the delimiters as tokens.
      * @return the assertion.
      */
-    public final ListAssertion toTokens(final String delimiters, final boolean returnDelimiters) {
+    public final ListAssertion<String> toTokens(final String delimiters, final boolean returnDelimiters) {
         checkInitialized();
         checkActualIsNotNull();
         return createStringAssertion().toTokens(delimiters, returnDelimiters);

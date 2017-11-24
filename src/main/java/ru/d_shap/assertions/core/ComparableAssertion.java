@@ -27,9 +27,10 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the comparable.
  *
+ * @param <T> the comparable type.
  * @author Dmitry Shapovalov
  */
-public class ComparableAssertion extends ReferenceAssertion {
+public class ComparableAssertion<T> extends ReferenceAssertion {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Comparable.class);
 
@@ -47,11 +48,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isEqualTo(final Object expected) {
+    public final void isEqualTo(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) != 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) != 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
@@ -62,11 +63,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isNotEqualTo(final Object expected) {
+    public final void isNotEqualTo(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) == 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) == 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
@@ -77,11 +78,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isGreaterThan(final Object expected) {
+    public final void isGreaterThan(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) <= 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) <= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
@@ -92,11 +93,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isGreaterThanOrEqualTo(final Object expected) {
+    public final void isGreaterThanOrEqualTo(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) < 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) < 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
@@ -107,11 +108,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isLessThan(final Object expected) {
+    public final void isLessThan(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) >= 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) >= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
@@ -122,11 +123,11 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expected the expected value.
      */
     @SuppressWarnings("unchecked")
-    public final void isLessThanOrEqualTo(final Object expected) {
+    public final void isLessThanOrEqualTo(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<Object>) getActual()).compareTo(expected) > 0) {
+        if (((Comparable<T>) getActual()).compareTo(expected) > 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
@@ -138,12 +139,12 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     @SuppressWarnings("unchecked")
-    public final void isInRange(final Object expectedFrom, final Object expectedTo) {
+    public final void isInRange(final T expectedFrom, final T expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
-        if (((Comparable<Object>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<Object>) getActual()).compareTo(expectedTo) >= 0) {
+        if (((Comparable<T>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<T>) getActual()).compareTo(expectedTo) >= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
@@ -155,12 +156,12 @@ public class ComparableAssertion extends ReferenceAssertion {
      * @param expectedTo   the expected upper bound of the range.
      */
     @SuppressWarnings("unchecked")
-    public final void isNotInRange(final Object expectedFrom, final Object expectedTo) {
+    public final void isNotInRange(final T expectedFrom, final T expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
-        if (((Comparable<Object>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<Object>) getActual()).compareTo(expectedTo) < 0) {
+        if (((Comparable<T>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<T>) getActual()).compareTo(expectedTo) < 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
