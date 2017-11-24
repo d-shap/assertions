@@ -226,10 +226,11 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the object array.
      *
+     * @param <T> the array element type.
      * @return the assertion.
      */
-    public static ObjectArrayAssertion objectArrayAssertion() {
-        return new ObjectArrayAssertion();
+    public static <T> ObjectArrayAssertion<T> objectArrayAssertion() {
+        return new ObjectArrayAssertion<>();
     }
 
     /**
@@ -271,19 +272,21 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the comparable.
      *
+     * @param <T> the comparable type.
      * @return the assertion.
      */
-    public static ComparableAssertion comparableAssertion() {
-        return new ComparableAssertion();
+    public static <T> ComparableAssertion<T> comparableAssertion() {
+        return new ComparableAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the iterable.
      *
+     * @param <T> the iterable element type.
      * @return the assertion.
      */
-    public static IterableAssertion iterableAssertion() {
-        return new IterableAssertion();
+    public static <T> IterableAssertion<T> iterableAssertion() {
+        return new IterableAssertion<>();
     }
 
     /**
@@ -298,46 +301,52 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the collection.
      *
+     * @param <T> the collection element type.
      * @return the assertion.
      */
-    public static CollectionAssertion collectionAssertion() {
-        return new CollectionAssertion();
+    public static <T> CollectionAssertion<T> collectionAssertion() {
+        return new CollectionAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the iterator.
      *
+     * @param <T> the iterator element type.
      * @return the assertion.
      */
-    public static IteratorAssertion iteratorAssertion() {
-        return new IteratorAssertion();
+    public static <T> IteratorAssertion<T> iteratorAssertion() {
+        return new IteratorAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the list.
      *
+     * @param <T> the list element type.
      * @return the assertion.
      */
-    public static ListAssertion listAssertion() {
-        return new ListAssertion();
+    public static <T> ListAssertion<T> listAssertion() {
+        return new ListAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the set.
      *
+     * @param <T> the set element type.
      * @return the assertion.
      */
-    public static SetAssertion setAssertion() {
-        return new SetAssertion();
+    public static <T> SetAssertion<T> setAssertion() {
+        return new SetAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the map.
      *
+     * @param <K> the map key type.
+     * @param <V> the map value type.
      * @return the assertion.
      */
-    public static MapAssertion mapAssertion() {
-        return new MapAssertion();
+    public static <K, V> MapAssertion<K, V> mapAssertion() {
+        return new MapAssertion<>();
     }
 
     /**

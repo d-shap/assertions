@@ -434,10 +434,11 @@ public final class Assertions {
      * Make assertion about the object array.
      *
      * @param actual the actual value.
+     * @param <T>    the array element type.
      * @return the assertion.
      */
-    public static ObjectArrayAssertion assertThat(final Object[] actual) {
-        ObjectArrayAssertion assertion = Raw.objectArrayAssertion();
+    public static <T> ObjectArrayAssertion<T> assertThat(final T[] actual) {
+        ObjectArrayAssertion<T> assertion = Raw.objectArrayAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -482,10 +483,11 @@ public final class Assertions {
      * Make assertion about the comparable.
      *
      * @param actual the actual value.
+     * @param <T>    the comparable type.
      * @return the assertion.
      */
-    public static ComparableAssertion assertThat(final Comparable<?> actual) {
-        ComparableAssertion assertion = Raw.comparableAssertion();
+    public static <T> ComparableAssertion<T> assertThat(final Comparable<T> actual) {
+        ComparableAssertion<T> assertion = Raw.comparableAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -494,10 +496,11 @@ public final class Assertions {
      * Make assertion about the iterable.
      *
      * @param actual the actual value.
+     * @param <T>    the iterable element type.
      * @return the assertion.
      */
-    public static IterableAssertion assertThat(final Iterable<?> actual) {
-        IterableAssertion assertion = Raw.iterableAssertion();
+    public static <T> IterableAssertion<T> assertThat(final Iterable<T> actual) {
+        IterableAssertion<T> assertion = Raw.iterableAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -518,10 +521,11 @@ public final class Assertions {
      * Make assertion about the collection.
      *
      * @param actual the actual value.
+     * @param <T>    the collection element type.
      * @return the assertion.
      */
-    public static CollectionAssertion assertThat(final Collection<?> actual) {
-        CollectionAssertion assertion = Raw.collectionAssertion();
+    public static <T> CollectionAssertion<T> assertThat(final Collection<T> actual) {
+        CollectionAssertion<T> assertion = Raw.collectionAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -530,10 +534,11 @@ public final class Assertions {
      * Make assertion about the iterator.
      *
      * @param actual the actual value.
+     * @param <T>    the iterator element type.
      * @return the assertion.
      */
-    public static IteratorAssertion assertThat(final Iterator<?> actual) {
-        IteratorAssertion assertion = Raw.iteratorAssertion();
+    public static <T> IteratorAssertion<T> assertThat(final Iterator<T> actual) {
+        IteratorAssertion<T> assertion = Raw.iteratorAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -542,10 +547,11 @@ public final class Assertions {
      * Make assertion about the list.
      *
      * @param actual the actual value.
+     * @param <T>    the list element type.
      * @return the assertion.
      */
-    public static ListAssertion assertThat(final List<?> actual) {
-        ListAssertion assertion = Raw.listAssertion();
+    public static <T> ListAssertion<T> assertThat(final List<T> actual) {
+        ListAssertion<T> assertion = Raw.listAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -554,10 +560,11 @@ public final class Assertions {
      * Make assertion about the set.
      *
      * @param actual the actual value.
+     * @param <T>    the set element type.
      * @return the assertion.
      */
-    public static SetAssertion assertThat(final Set<?> actual) {
-        SetAssertion assertion = Raw.setAssertion();
+    public static <T> SetAssertion<T> assertThat(final Set<T> actual) {
+        SetAssertion<T> assertion = Raw.setAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -566,10 +573,12 @@ public final class Assertions {
      * Make assertion about the map.
      *
      * @param actual the actual value.
+     * @param <K>    the map key type.
+     * @param <V>    the map value type.
      * @return the assertion.
      */
-    public static MapAssertion assertThat(final Map<?, ?> actual) {
-        MapAssertion assertion = Raw.mapAssertion();
+    public static <K, V> MapAssertion<K, V> assertThat(final Map<K, V> actual) {
+        MapAssertion<K, V> assertion = Raw.mapAssertion();
         assertion.initialize(actual);
         return assertion;
     }

@@ -427,10 +427,11 @@ public final class MessageAssertion {
      * Make assertion about the object array.
      *
      * @param actual the actual value.
+     * @param <T>    the array element type.
      * @return the assertion.
      */
-    public ObjectArrayAssertion that(final Object[] actual) {
-        ObjectArrayAssertion assertion = Raw.objectArrayAssertion();
+    public <T> ObjectArrayAssertion<T> that(final T[] actual) {
+        ObjectArrayAssertion<T> assertion = Raw.objectArrayAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -475,10 +476,11 @@ public final class MessageAssertion {
      * Make assertion about the comparable.
      *
      * @param actual the actual value.
+     * @param <T>    the comparable type.
      * @return the assertion.
      */
-    public ComparableAssertion that(final Comparable<?> actual) {
-        ComparableAssertion assertion = Raw.comparableAssertion();
+    public <T> ComparableAssertion<T> that(final Comparable<T> actual) {
+        ComparableAssertion<T> assertion = Raw.comparableAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -487,10 +489,11 @@ public final class MessageAssertion {
      * Make assertion about the iterable.
      *
      * @param actual the actual value.
+     * @param <T>    the iterable element type.
      * @return the assertion.
      */
-    public IterableAssertion that(final Iterable<?> actual) {
-        IterableAssertion assertion = Raw.iterableAssertion();
+    public <T> IterableAssertion<T> that(final Iterable<T> actual) {
+        IterableAssertion<T> assertion = Raw.iterableAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -511,10 +514,11 @@ public final class MessageAssertion {
      * Make assertion about the collection.
      *
      * @param actual the actual value.
+     * @param <T>    the collection element type.
      * @return the assertion.
      */
-    public CollectionAssertion that(final Collection<?> actual) {
-        CollectionAssertion assertion = Raw.collectionAssertion();
+    public <T> CollectionAssertion<T> that(final Collection<T> actual) {
+        CollectionAssertion<T> assertion = Raw.collectionAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -523,10 +527,11 @@ public final class MessageAssertion {
      * Make assertion about the iterator.
      *
      * @param actual the actual value.
+     * @param <T>    the iterator element type.
      * @return the assertion.
      */
-    public IteratorAssertion that(final Iterator<?> actual) {
-        IteratorAssertion assertion = Raw.iteratorAssertion();
+    public <T> IteratorAssertion<T> that(final Iterator<T> actual) {
+        IteratorAssertion<T> assertion = Raw.iteratorAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -535,10 +540,11 @@ public final class MessageAssertion {
      * Make assertion about the list.
      *
      * @param actual the actual value.
+     * @param <T>    the list element type.
      * @return the assertion.
      */
-    public ListAssertion that(final List<?> actual) {
-        ListAssertion assertion = Raw.listAssertion();
+    public <T> ListAssertion<T> that(final List<T> actual) {
+        ListAssertion<T> assertion = Raw.listAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -547,10 +553,11 @@ public final class MessageAssertion {
      * Make assertion about the set.
      *
      * @param actual the actual value.
+     * @param <T>    the set element type.
      * @return the assertion.
      */
-    public SetAssertion that(final Set<?> actual) {
-        SetAssertion assertion = Raw.setAssertion();
+    public <T> SetAssertion<T> that(final Set<T> actual) {
+        SetAssertion<T> assertion = Raw.setAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
@@ -559,10 +566,12 @@ public final class MessageAssertion {
      * Make assertion about the map.
      *
      * @param actual the actual value.
+     * @param <K>    the map key type.
+     * @param <V>    the map value type.
      * @return the assertion.
      */
-    public MapAssertion that(final Map<?, ?> actual) {
-        MapAssertion assertion = Raw.mapAssertion();
+    public <K, V> MapAssertion<K, V> that(final Map<K, V> actual) {
+        MapAssertion<K, V> assertion = Raw.mapAssertion();
         assertion.initialize(actual, _message);
         return assertion;
     }
