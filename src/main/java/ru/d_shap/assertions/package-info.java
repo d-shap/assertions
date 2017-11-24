@@ -73,7 +73,7 @@
  * assertThat(longArrayValue).containsAny(1L, 2L, 3L);
  * assertThat(floatArrayValue).containsNone(10.0f, 20.0f);
  * assertThat(charArrayValue).doesNotContain('c');
- * assertThat(objectArrayValue).containsAllInOrder("val1", "val2", "val3");
+ * assertThat(stringArrayValue).containsAllInOrder("val1", "val2", "val3");
  * }</pre>
  * <p>
  * Assertion examples for the collection data types:
