@@ -83,7 +83,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsAll(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAll((Object[]) expected);
+        createListAssertion().containsAll(expected);
     }
 
     final void doContainsAll(final Iterable<T> expected) {
@@ -96,7 +96,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsAllInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAllInOrder((Object[]) expected);
+        createListAssertion().containsAllInOrder(expected);
     }
 
     final void doContainsAllInOrder(final Iterable<T> expected) {
@@ -109,7 +109,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsExactly(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactly((Object[]) expected);
+        createListAssertion().containsExactly(expected);
     }
 
     final void doContainsExactly(final Iterable<T> expected) {
@@ -122,7 +122,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsExactlyInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactlyInOrder((Object[]) expected);
+        createListAssertion().containsExactlyInOrder(expected);
     }
 
     final void doContainsExactlyInOrder(final Iterable<T> expected) {
@@ -135,7 +135,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsAny(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAny((Object[]) expected);
+        createListAssertion().containsAny(expected);
     }
 
     final void doContainsAny(final Iterable<T> expected) {
@@ -148,7 +148,7 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
     final void doContainsNone(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsNone((Object[]) expected);
+        createListAssertion().containsNone(expected);
     }
 
     final void doContainsNone(final Iterable<T> expected) {
@@ -178,9 +178,9 @@ abstract class ArrayAssertion<T> extends ReferenceAssertion {
         toLength().isEqualTo(expected);
     }
 
-    private ListAssertion createListAssertion() {
+    private ListAssertion<T> createListAssertion() {
         List<T> list = createList(getActual());
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.<T>listAssertion(), list);
     }
 
     abstract List<T> createList(Object value);

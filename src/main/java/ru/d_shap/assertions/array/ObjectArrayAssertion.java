@@ -28,9 +28,10 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the object array.
  *
+ * @param <T> the array element type.
  * @author Dmitry Shapovalov
  */
-public class ObjectArrayAssertion extends ArrayAssertion<Object> {
+public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Object[].class);
 
@@ -47,7 +48,7 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final Object expected) {
+    public final void contains(final T expected) {
         doContains(expected);
     }
 
@@ -56,7 +57,7 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final Object expected) {
+    public final void doesNotContain(final T expected) {
         doDoesNotContain(expected);
     }
 
@@ -65,7 +66,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Object... expected) {
+    @SafeVarargs
+    public final void containsAll(final T... expected) {
         doContainsAll(expected);
     }
 
@@ -74,9 +76,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsAll(final Iterable<?> expected) {
-        doContainsAll((Iterable<Object>) expected);
+    public final void containsAll(final Iterable<T> expected) {
+        doContainsAll(expected);
     }
 
     /**
@@ -84,7 +85,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Object... expected) {
+    @SafeVarargs
+    public final void containsAllInOrder(final T... expected) {
         doContainsAllInOrder(expected);
     }
 
@@ -93,9 +95,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsAllInOrder(final Iterable<?> expected) {
-        doContainsAllInOrder((Iterable<Object>) expected);
+    public final void containsAllInOrder(final Iterable<T> expected) {
+        doContainsAllInOrder(expected);
     }
 
     /**
@@ -103,7 +104,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Object... expected) {
+    @SafeVarargs
+    public final void containsExactly(final T... expected) {
         doContainsExactly(expected);
     }
 
@@ -112,9 +114,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsExactly(final Iterable<?> expected) {
-        doContainsExactly((Iterable<Object>) expected);
+    public final void containsExactly(final Iterable<T> expected) {
+        doContainsExactly(expected);
     }
 
     /**
@@ -122,7 +123,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Object... expected) {
+    @SafeVarargs
+    public final void containsExactlyInOrder(final T... expected) {
         doContainsExactlyInOrder(expected);
     }
 
@@ -131,9 +133,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsExactlyInOrder(final Iterable<?> expected) {
-        doContainsExactlyInOrder((Iterable<Object>) expected);
+    public final void containsExactlyInOrder(final Iterable<T> expected) {
+        doContainsExactlyInOrder(expected);
     }
 
     /**
@@ -141,7 +142,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Object... expected) {
+    @SafeVarargs
+    public final void containsAny(final T... expected) {
         doContainsAny(expected);
     }
 
@@ -150,9 +152,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsAny(final Iterable<?> expected) {
-        doContainsAny((Iterable<Object>) expected);
+    public final void containsAny(final Iterable<T> expected) {
+        doContainsAny(expected);
     }
 
     /**
@@ -160,7 +161,8 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Object... expected) {
+    @SafeVarargs
+    public final void containsNone(final T... expected) {
         doContainsNone(expected);
     }
 
@@ -169,14 +171,14 @@ public class ObjectArrayAssertion extends ArrayAssertion<Object> {
      *
      * @param expected the expected values.
      */
-    @SuppressWarnings("unchecked")
-    public final void containsNone(final Iterable<?> expected) {
-        doContainsNone((Iterable<Object>) expected);
+    public final void containsNone(final Iterable<T> expected) {
+        doContainsNone(expected);
     }
 
     @Override
-    final List<Object> createList(final Object value) {
-        return ValueConverter.toObjectList((Object[]) value);
+    @SuppressWarnings("unchecked")
+    final List<T> createList(final Object value) {
+        return ValueConverter.toObjectList((T[]) value);
     }
 
     @Override
