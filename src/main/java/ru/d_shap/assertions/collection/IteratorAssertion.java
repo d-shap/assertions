@@ -34,9 +34,10 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the iterator.
  *
+ * @param <T> the iterator element type.
  * @author Dmitry Shapovalov
  */
-public class IteratorAssertion extends ReferenceAssertion {
+public class IteratorAssertion<T> extends ReferenceAssertion {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Iterator.class);
 
@@ -53,15 +54,16 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final ListAssertion toList() {
+    @SuppressWarnings("unchecked")
+    public final ListAssertion<T> toList() {
         checkInitialized();
         checkActualIsNotNull();
-        List<Object> list = new ArrayList<>();
-        while (((Iterator<?>) getActual()).hasNext()) {
-            Object element = ((Iterator<?>) getActual()).next();
+        List<T> list = new ArrayList<>();
+        while (((Iterator<T>) getActual()).hasNext()) {
+            T element = ((Iterator<T>) getActual()).next();
             list.add(element);
         }
-        return initializeAssertion(Raw.listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.<T>listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
     }
 
     /**
@@ -70,16 +72,17 @@ public class IteratorAssertion extends ReferenceAssertion {
      * @param size the number of elements to get from the iterator.
      * @return the assertion.
      */
-    public final ListAssertion toList(final int size) {
+    @SuppressWarnings("unchecked")
+    public final ListAssertion<T> toList(final int size) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(size > 0);
-        List<Object> list = new ArrayList<>();
-        for (int i = 0; i < size && ((Iterator<?>) getActual()).hasNext(); i++) {
-            Object element = ((Iterator<?>) getActual()).next();
+        List<T> list = new ArrayList<>();
+        for (int i = 0; i < size && ((Iterator<T>) getActual()).hasNext(); i++) {
+            T element = ((Iterator<T>) getActual()).next();
             list.add(element);
         }
-        return initializeAssertion(Raw.listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.<T>listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
     }
 
     /**
@@ -111,7 +114,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void isNextElementsEqualTo(final Object... expected) {
+    @SafeVarargs
+    public final void isNextElementsEqualTo(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -124,11 +128,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void isNextElementsEqualTo(final Iterable<?> expected) {
+    public final void isNextElementsEqualTo(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toList(expectedArray.length).containsExactlyInOrder(expectedArray);
     }
@@ -138,7 +142,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    public final void contains(final Object expected) {
+    public final void contains(final T expected) {
         toList().contains(expected);
     }
 
@@ -147,7 +151,7 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final Object expected) {
+    public final void doesNotContain(final T expected) {
         toList().doesNotContain(expected);
     }
 
@@ -156,7 +160,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Object... expected) {
+    @SafeVarargs
+    public final void containsAll(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -169,11 +174,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<?> expected) {
+    public final void containsAll(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toList().containsAll(expectedArray);
     }
@@ -183,7 +188,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Object... expected) {
+    @SafeVarargs
+    public final void containsAllInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -196,11 +202,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<?> expected) {
+    public final void containsAllInOrder(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toList().containsAllInOrder(expectedArray);
     }
@@ -210,7 +216,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Object... expected) {
+    @SafeVarargs
+    public final void containsExactly(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -222,11 +229,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<?> expected) {
+    public final void containsExactly(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         toList().containsExactly(expectedArray);
     }
 
@@ -235,7 +242,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Object... expected) {
+    @SafeVarargs
+    public final void containsExactlyInOrder(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -247,11 +255,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<?> expected) {
+    public final void containsExactlyInOrder(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         toList().containsExactlyInOrder(expectedArray);
     }
 
@@ -260,7 +268,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Object... expected) {
+    @SafeVarargs
+    public final void containsAny(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -273,11 +282,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<?> expected) {
+    public final void containsAny(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyFalse(expectedArray.length == 0);
         toList().containsAny(expectedArray);
     }
@@ -287,7 +296,8 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Object... expected) {
+    @SafeVarargs
+    public final void containsNone(final T... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -300,11 +310,11 @@ public class IteratorAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<?> expected) {
+    public final void containsNone(final Iterable<T> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        T[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toList().containsNone(expectedArray);
     }

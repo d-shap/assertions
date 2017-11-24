@@ -33,9 +33,11 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the map.
  *
+ * @param <K> the map key type.
+ * @param <V> the map value type.
  * @author Dmitry Shapovalov
  */
-public class MapAssertion extends ReferenceAssertion {
+public class MapAssertion<K, V> extends ReferenceAssertion {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Map.class);
 
@@ -84,10 +86,10 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final SetAssertion toKeys() {
+    public final SetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.setAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
+        return initializeAssertion(Raw.<K>setAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
     }
 
     /**
@@ -95,7 +97,7 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected key.
      */
-    public final void containsKey(final Object expected) {
+    public final void containsKey(final K expected) {
         toKeys().contains(expected);
     }
 
@@ -104,7 +106,7 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected key.
      */
-    public final void doesNotContainKey(final Object expected) {
+    public final void doesNotContainKey(final K expected) {
         toKeys().doesNotContain(expected);
     }
 
@@ -113,7 +115,8 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsAllKeys(final Object... expected) {
+    @SafeVarargs
+    public final void containsAllKeys(final K... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -126,11 +129,11 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsAllKeys(final Iterable<?> expected) {
+    public final void containsAllKeys(final Iterable<K> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toKeys().containsAll(expectedArray);
     }
@@ -140,7 +143,8 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsKeysExactly(final Object... expected) {
+    @SafeVarargs
+    public final void containsKeysExactly(final K... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -152,11 +156,11 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsKeysExactly(final Iterable<?> expected) {
+    public final void containsKeysExactly(final Iterable<K> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
         toKeys().containsExactly(expectedArray);
     }
 
@@ -165,7 +169,8 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsAnyKey(final Object... expected) {
+    @SafeVarargs
+    public final void containsAnyKey(final K... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -178,11 +183,11 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsAnyKey(final Iterable<?> expected) {
+    public final void containsAnyKey(final Iterable<K> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyFalse(expectedArray.length == 0);
         toKeys().containsAny(expectedArray);
     }
@@ -192,7 +197,8 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsNoKey(final Object... expected) {
+    @SafeVarargs
+    public final void containsNoKey(final K... expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -205,11 +211,11 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected keys.
      */
-    public final void containsNoKey(final Iterable<?> expected) {
+    public final void containsNoKey(final Iterable<K> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        Object[] expectedArray = ValueConverter.toObjectArray(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
         checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
         toKeys().containsNone(expectedArray);
     }
@@ -219,10 +225,10 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final CollectionAssertion toValues() {
+    public final CollectionAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.collectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
+        return initializeAssertion(Raw.<V>collectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -231,8 +237,8 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expectedKey   the key of the expected entry.
      * @param expectedValue the value of the expected entry.
      */
-    public final void containsEntry(final Object expectedKey, final Object expectedValue) {
-        Map<Object, Object> expected = new HashMap<>();
+    public final void containsEntry(final K expectedKey, final V expectedValue) {
+        Map<K, V> expected = new HashMap<>();
         expected.put(expectedKey, expectedValue);
         containsAll(expected);
     }
@@ -243,8 +249,8 @@ public class MapAssertion extends ReferenceAssertion {
      * @param expectedKey   the key of the expected entry.
      * @param expectedValue the value of the expected entry.
      */
-    public final void doesNotContainEntry(final Object expectedKey, final Object expectedValue) {
-        Map<Object, Object> expected = new HashMap<>();
+    public final void doesNotContainEntry(final K expectedKey, final V expectedValue) {
+        Map<K, V> expected = new HashMap<>();
         expected.put(expectedKey, expectedValue);
         containsNone(expected);
     }
@@ -254,7 +260,7 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Map<?, ?> expected) {
+    public final void containsAll(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -266,7 +272,7 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Map<?, ?> expected) {
+    public final void containsExactly(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -278,7 +284,7 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Map<?, ?> expected) {
+    public final void containsAny(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -290,15 +296,15 @@ public class MapAssertion extends ReferenceAssertion {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Map<?, ?> expected) {
+    public final void containsNone(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         createEntrySetAssertion().containsNone(expected.entrySet());
     }
 
-    private SetAssertion createEntrySetAssertion() {
-        return initializeAssertion(Raw.setAssertion(), ((Map<?, ?>) getActual()).entrySet());
+    private SetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
+        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), ((Map<?, ?>) getActual()).entrySet());
     }
 
     /**

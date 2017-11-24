@@ -27,9 +27,10 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the set.
  *
+ * @param <T> the set element type.
  * @author Dmitry Shapovalov
  */
-public class SetAssertion extends CollectionAssertion {
+public class SetAssertion<T> extends CollectionAssertion<T> {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Set.class);
 

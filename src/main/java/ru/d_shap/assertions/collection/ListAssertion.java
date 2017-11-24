@@ -28,9 +28,10 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
 /**
  * Assertions for the list.
  *
+ * @param <T> the list element type.
  * @author Dmitry Shapovalov
  */
-public class ListAssertion extends CollectionAssertion {
+public class ListAssertion<T> extends CollectionAssertion<T> {
 
     private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(List.class);
 
