@@ -641,7 +641,7 @@ public final class ValueConverter {
     }
 
     /**
-     * Convert the object list to the object array. The result array shoud be used to read values.
+     * Convert the object list to the object array. The result array shoud be used only to read values.
      *
      * @param list the object list.
      * @param <T>  the list element type.
@@ -657,7 +657,7 @@ public final class ValueConverter {
     }
 
     /**
-     * Convert the object iterable to the object array. The result array shoud be used to read values.
+     * Convert the object iterable to the object array. The result array shoud be used only to read values.
      *
      * @param iterable the object iterable.
      * @param <T>      the iterable element type.
