@@ -47,28 +47,28 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isRandomAccessTest() {
-        initialize(Raw.listAssertion(), new ArrayList<String>()).isRandomAccess();
+        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isRandomAccess();
 
         try {
-            initialize(Raw.listAssertion(), null).isRandomAccess();
+            initialize(Raw.<String>listAssertion(), null).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.listAssertion(), null, "Message").isRandomAccess();
+            initialize(Raw.<String>listAssertion(), null, "Message").isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(Raw.listAssertion(), new LinkedList<String>()).isRandomAccess();
+            initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
         try {
-            initialize(Raw.listAssertion(), new LinkedList<String>(), "Message").isRandomAccess();
+            initialize(Raw.<String>listAssertion(), new LinkedList<String>(), "Message").isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
@@ -80,28 +80,28 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotRandomAccessTest() {
-        initialize(Raw.listAssertion(), new LinkedList<String>()).isNotRandomAccess();
+        initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isNotRandomAccess();
 
         try {
-            initialize(Raw.listAssertion(), null).isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), null).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.listAssertion(), null, "Message").isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), null, "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(Raw.listAssertion(), new ArrayList<String>()).isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
         try {
-            initialize(Raw.listAssertion(), new ArrayList<String>(), "Message").isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
