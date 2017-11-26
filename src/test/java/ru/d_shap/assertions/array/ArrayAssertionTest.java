@@ -916,7 +916,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         @SuppressWarnings("unchecked")
         protected List<String> createList(final Object value) {
             List<String> copy = new ArrayList<>();
-            copy.addAll((List) value);
+            copy.addAll((List<String>) value);
             return copy;
         }
 
