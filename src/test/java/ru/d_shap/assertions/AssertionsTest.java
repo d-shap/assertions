@@ -513,16 +513,16 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void objectArrayAssertionTest() {
-        Assertions.assertThat((Object[]) null).isNull();
-        Assertions.assertThat(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(null, Raw.objectArrayAssertion()).isNull();
-        Assertions.assertThat(new Object[]{"1", "2", "3"}, Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.objectArrayAssertion()).isNull();
+        Assertions.assertThat((String[]) null).isNull();
+        Assertions.assertThat(new String[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(null, Raw.<String>objectArrayAssertion()).isNull();
+        Assertions.assertThat(new String[]{"1", "2", "3"}, Raw.<String>objectArrayAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>objectArrayAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_objectArray").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_objectArray", Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new PrivateFieldsClass(), "_objectArray", Raw.<String>objectArrayAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertThat(new Object[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertThat(new String[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
@@ -534,7 +534,7 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void classAssertionTest() {
-        Assertions.assertThat((Class<?>) null).isNull();
+        Assertions.assertThat((Class<String>) null).isNull();
         Assertions.assertThat(String.class).isSubtypeOf(Object.class);
         Assertions.assertThat(null, Raw.classAssertion()).isNull();
         Assertions.assertThat(String.class, Raw.classAssertion()).isSubtypeOf(Object.class);
@@ -597,14 +597,14 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void comparableAssertionTest() {
-        Comparable<?> comparable = Integer.valueOf("5");
-        Assertions.assertThat((Comparable<?>) null).isNull();
+        Comparable<Integer> comparable = Integer.valueOf("5");
+        Assertions.assertThat((Comparable<Integer>) null).isNull();
         Assertions.assertThat(comparable).isEqualTo(5);
-        Assertions.assertThat(null, Raw.comparableAssertion()).isNull();
-        Assertions.assertThat(comparable, Raw.comparableAssertion()).isEqualTo(5);
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.comparableAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<Integer>comparableAssertion()).isNull();
+        Assertions.assertThat(comparable, Raw.<Integer>comparableAssertion()).isEqualTo(5);
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<Integer>comparableAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_comparable").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_comparable", Raw.comparableAssertion()).isEqualTo(5);
+        Assertions.assertThat(new PrivateFieldsClass(), "_comparable", Raw.<Integer>comparableAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertThat(comparable).isEqualTo(6);
@@ -619,14 +619,14 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void iterableAssertionTest() {
-        Iterable<?> iterable = Arrays.asList("1", "2", "3");
-        Assertions.assertThat((Iterable<?>) null).isNull();
+        Iterable<String> iterable = Arrays.asList("1", "2", "3");
+        Assertions.assertThat((Iterable<String>) null).isNull();
         Assertions.assertThat(iterable).hasSize(3);
-        Assertions.assertThat(null, Raw.iterableAssertion()).isNull();
-        Assertions.assertThat(iterable, Raw.iterableAssertion()).hasSize(3);
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.iterableAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String>iterableAssertion()).isNull();
+        Assertions.assertThat(iterable, Raw.<String>iterableAssertion()).hasSize(3);
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>iterableAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_iterable").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_iterable", Raw.iterableAssertion()).hasSize(3);
+        Assertions.assertThat(new PrivateFieldsClass(), "_iterable", Raw.<String>iterableAssertion()).hasSize(3);
 
         try {
             Assertions.assertThat(iterable).hasSize(4);
@@ -662,14 +662,14 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void collectionAssertionTest() {
-        Collection<?> collection = Arrays.asList("1", "2", "3");
-        Assertions.assertThat((Collection<?>) null).isNull();
+        Collection<String> collection = Arrays.asList("1", "2", "3");
+        Assertions.assertThat((Collection<String>) null).isNull();
         Assertions.assertThat(collection).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(null, Raw.collectionAssertion()).isNull();
-        Assertions.assertThat(collection, Raw.collectionAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.collectionAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String>collectionAssertion()).isNull();
+        Assertions.assertThat(collection, Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>collectionAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_collection").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_collection", Raw.collectionAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new PrivateFieldsClass(), "_collection", Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
             Assertions.assertThat(collection).containsExactlyInOrder("1", "2", "3", "4");
@@ -684,13 +684,13 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void iteratorAssertionTest() {
-        Assertions.assertThat((Iterator<?>) null).isNull();
+        Assertions.assertThat((Iterator<String>) null).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(null, Raw.iteratorAssertion()).isNull();
-        Assertions.assertThat(Arrays.asList("1", "2", "3").iterator(), Raw.iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.iteratorAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String>iteratorAssertion()).isNull();
+        Assertions.assertThat(Arrays.asList("1", "2", "3").iterator(), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_iterator").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_iterator", Raw.iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new PrivateFieldsClass(), "_iterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
             Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
@@ -705,13 +705,13 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void listAssertionTest() {
-        Assertions.assertThat((List<?>) null).isNull();
+        Assertions.assertThat((List<String>) null).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(null, Raw.listAssertion()).isNull();
-        Assertions.assertThat(Arrays.asList("1", "2", "3"), Raw.listAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.listAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String>listAssertion()).isNull();
+        Assertions.assertThat(Arrays.asList("1", "2", "3"), Raw.<String>listAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>listAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_list").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_list", Raw.listAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(new PrivateFieldsClass(), "_list", Raw.<String>listAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
             Assertions.assertThat(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
@@ -726,13 +726,13 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void setAssertionTest() {
-        Assertions.assertThat((Set<?>) null).isNull();
+        Assertions.assertThat((Set<String>) null).isNull();
         Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
-        Assertions.assertThat(null, Raw.setAssertion()).isNull();
-        Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3")), Raw.setAssertion()).containsExactly("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.setAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String>setAssertion()).isNull();
+        Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3")), Raw.<String>setAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>setAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_set").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_set", Raw.setAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertThat(new PrivateFieldsClass(), "_set", Raw.<String>setAssertion()).containsExactly("1", "2", "3");
 
         try {
             Assertions.assertThat(new HashSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
@@ -747,13 +747,13 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void mapAssertionTest() {
-        Assertions.assertThat((Map<?, ?>) null).isNull();
+        Assertions.assertThat((Map<String, String>) null).isNull();
         Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
-        Assertions.assertThat(null, Raw.mapAssertion()).isNull();
-        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.mapAssertion()).hasSize(3);
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.mapAssertion()).isNull();
+        Assertions.assertThat(null, Raw.<String, String>mapAssertion()).isNull();
+        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>mapAssertion()).hasSize(3);
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String, String>mapAssertion()).isNull();
         Assertions.assertThat(new PrivateFieldsClass(), "_map").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_map", Raw.mapAssertion()).hasSize(3);
+        Assertions.assertThat(new PrivateFieldsClass(), "_map", Raw.<String, String>mapAssertion()).hasSize(3);
 
         try {
             Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
@@ -1036,27 +1036,27 @@ public final class AssertionsTest extends AssertionTest {
 
         private char[] _charArray = new char[]{'1', '2', '3'};
 
-        private Object[] _objectArray = new Object[]{"1", "2", "3"};
+        private String[] _objectArray = new String[]{"1", "2", "3"};
 
-        private Class<?> _class = String.class;
+        private Class<String> _class = String.class;
 
         private CharSequence _charSequence = new StringBuilder("test");
 
         private String _string = "test";
 
-        private Comparable<?> _comparable = Integer.valueOf("5");
+        private Comparable<Integer> _comparable = Integer.valueOf("5");
 
-        private Iterable<?> _iterable = Arrays.asList("1", "2", "3");
+        private Iterable<String> _iterable = Arrays.asList("1", "2", "3");
 
         private Throwable _throwable = new AssertionError("error");
 
-        private Collection<?> _collection = Arrays.asList("1", "2", "3");
+        private Collection<String> _collection = Arrays.asList("1", "2", "3");
 
-        private Iterator<?> _iterator = Arrays.asList("1", "2", "3").iterator();
+        private Iterator<String> _iterator = Arrays.asList("1", "2", "3").iterator();
 
-        private List<?> _list = Arrays.asList("1", "2", "3");
+        private List<String> _list = Arrays.asList("1", "2", "3");
 
-        private Set<?> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
+        private Set<String> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
 
         private Map<String, String> _map = createHashMap("1", "val1", "2", "val2", "3", "val3");
 
