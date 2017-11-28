@@ -43,6 +43,27 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.charAssertion(), 'a');
+
+        try {
+            initialize(Raw.charAssertion(), new Object());
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.charAssertion(), new Object(), "Message");
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.charAssertion(), 'a').isEqualTo('a');
         initialize(Raw.charAssertion(), 'Z').isEqualTo('Z');
@@ -651,6 +672,84 @@ public final class CharAssertionTest extends AssertionTest {
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be the whitespace symbol. Actual:<7(55)>");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.charAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.charAssertion(), 'a').isNull();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<a(97)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), 'a', "Message").isNull();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<a(97)>");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Character value = (char) 10000;
+        initialize(Raw.charAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.charAssertion(), value).isSameAs((char) 10000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:< (10000)> but was:< (10000)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), value, "Message").isSameAs((char) 10000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:< (10000)> but was:< (10000)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), value).isSameAs("test");
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:< (10000)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:< (10000)>");
+        }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Character value = (char) 10000;
+        initialize(Raw.charAssertion(), value).isNotSameAs((char) 10000);
+        initialize(Raw.charAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.charAssertion(), value).isNotSameAs(value);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:< (10000)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:< (10000)>");
         }
     }
 

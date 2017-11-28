@@ -43,6 +43,27 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.shortAssertion(), (short) 10);
+
+        try {
+            initialize(Raw.shortAssertion(), new Object());
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), new Object(), "Message");
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.shortAssertion(), (short) 10).isEqualTo(10);
         initialize(Raw.shortAssertion(), (short) 75).isEqualTo(75);
@@ -294,6 +315,84 @@ public final class ShortAssertionTest extends AssertionTest {
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1:10> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.shortAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.shortAssertion(), (short) 10).isNull();
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<10>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), (short) 10, "Message").isNull();
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<10>");
+        }
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Short value = (short) 10000;
+        initialize(Raw.shortAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.shortAssertion(), value).isSameAs((short) 10000);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<10000> but was:<10000>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), value, "Message").isSameAs((short) 10000);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000> but was:<10000>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), value).isSameAs("test");
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000>");
+        }
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Short value = (short) 10000;
+        initialize(Raw.shortAssertion(), value).isNotSameAs((short) 10000);
+        initialize(Raw.shortAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.shortAssertion(), value).isNotSameAs(value);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10000>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10000>");
         }
     }
 

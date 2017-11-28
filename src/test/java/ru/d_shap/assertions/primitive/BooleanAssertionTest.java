@@ -43,6 +43,27 @@ public final class BooleanAssertionTest extends AssertionTest {
      * {@link BooleanAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.booleanAssertion(), true);
+
+        try {
+            initialize(Raw.booleanAssertion(), new Object());
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), new Object(), "Message");
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link BooleanAssertion} class test.
+     */
+    @Test
     public void isTrueTest() {
         initialize(Raw.booleanAssertion(), true).isTrue();
 
@@ -78,6 +99,71 @@ public final class BooleanAssertionTest extends AssertionTest {
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be false.");
+        }
+    }
+
+    /**
+     * {@link BooleanAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.booleanAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.booleanAssertion(), true).isNull();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<true>");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), true, "Message").isNull();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<true>");
+        }
+    }
+
+    /**
+     * {@link BooleanAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Boolean value = true;
+        initialize(Raw.booleanAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.booleanAssertion(), value).isSameAs("test");
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<true>");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<true>");
+        }
+    }
+
+    /**
+     * {@link BooleanAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Boolean value = true;
+        initialize(Raw.booleanAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.booleanAssertion(), value).isNotSameAs(value);
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<true>");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<true>");
         }
     }
 

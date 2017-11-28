@@ -43,6 +43,27 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.floatAssertion(), 10.0f);
+
+        try {
+            initialize(Raw.floatAssertion(), new Object());
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), new Object(), "Message");
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.0f, 0.01f);
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(9.999f, 0.01f);
@@ -762,6 +783,84 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be finite. Actual:<-Infinity>");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.floatAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isNull();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<10.0>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNull();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<10.0>");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Float value = 10000.0f;
+        initialize(Raw.floatAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.floatAssertion(), value).isSameAs(10000.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<10000.0> but was:<10000.0>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), value, "Message").isSameAs(10000.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000.0> but was:<10000.0>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), value).isSameAs("test");
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000.0>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000.0>");
+        }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Float value = 10000.0f;
+        initialize(Raw.floatAssertion(), value).isNotSameAs(10000.0f);
+        initialize(Raw.floatAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.floatAssertion(), value).isNotSameAs(value);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10000.0>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10000.0>");
         }
     }
 

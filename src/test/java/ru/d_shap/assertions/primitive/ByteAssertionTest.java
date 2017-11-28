@@ -43,6 +43,27 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.byteAssertion(), (byte) 10);
+
+        try {
+            initialize(Raw.byteAssertion(), new Object());
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), new Object(), "Message");
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(10);
         initialize(Raw.byteAssertion(), (byte) 75).isEqualTo(75);
@@ -294,6 +315,71 @@ public final class ByteAssertionTest extends AssertionTest {
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1:10> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.byteAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10).isNull();
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<10>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10, "Message").isNull();
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<10>");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Byte value = 100;
+        initialize(Raw.byteAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.byteAssertion(), value).isSameAs("test");
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<100>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<100>");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Byte value = 100;
+        initialize(Raw.byteAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.byteAssertion(), value).isNotSameAs(value);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<100>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<100>");
         }
     }
 

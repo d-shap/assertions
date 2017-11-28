@@ -43,6 +43,27 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.longAssertion(), 10L);
+
+        try {
+            initialize(Raw.longAssertion(), new Object());
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.longAssertion(), new Object(), "Message");
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.longAssertion(), 10L).isEqualTo(10L);
         initialize(Raw.longAssertion(), 75L).isEqualTo(75L);
@@ -294,6 +315,84 @@ public final class LongAssertionTest extends AssertionTest {
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be in the expected range. Expected:<1:10> but was:<5>");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        initialize(Raw.longAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.longAssertion(), 10L).isNull();
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<10>");
+        }
+        try {
+            initialize(Raw.longAssertion(), 10L, "Message").isNull();
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<10>");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        Long value = 10000L;
+        initialize(Raw.longAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.longAssertion(), value).isSameAs(10000L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<10000> but was:<10000>");
+        }
+        try {
+            initialize(Raw.longAssertion(), value, "Message").isSameAs(10000L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000> but was:<10000>");
+        }
+        try {
+            initialize(Raw.longAssertion(), value).isSameAs("test");
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000>");
+        }
+        try {
+            initialize(Raw.longAssertion(), value, "Message").isSameAs("test");
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000>");
+        }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        Long value = 10000L;
+        initialize(Raw.longAssertion(), value).isNotSameAs(10000L);
+        initialize(Raw.longAssertion(), value).isNotSameAs("test");
+
+        try {
+            initialize(Raw.longAssertion(), value).isNotSameAs(value);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<10000>");
+        }
+        try {
+            initialize(Raw.longAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<10000>");
         }
     }
 
