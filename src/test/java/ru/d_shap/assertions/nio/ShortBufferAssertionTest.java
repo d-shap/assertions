@@ -47,6 +47,27 @@ public final class ShortBufferAssertionTest extends AssertionTest {
      * {@link ShortBufferAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[0]));
+
+        try {
+            initialize(Raw.shortBufferAssertion(), new Object());
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.shortBufferAssertion(), new Object(), "Message");
+            Assertions.fail("ShortBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).contains(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).contains(2);

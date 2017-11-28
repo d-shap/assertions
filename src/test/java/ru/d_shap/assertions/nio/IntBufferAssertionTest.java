@@ -47,6 +47,27 @@ public final class IntBufferAssertionTest extends AssertionTest {
      * {@link IntBufferAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0]));
+
+        try {
+            initialize(Raw.intBufferAssertion(), new Object());
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.intBufferAssertion(), new Object(), "Message");
+            Assertions.fail("IntBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).contains(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).contains(2);

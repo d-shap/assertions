@@ -47,6 +47,27 @@ public final class LongBufferAssertionTest extends AssertionTest {
      * {@link LongBufferAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0]));
+
+        try {
+            initialize(Raw.longBufferAssertion(), new Object());
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.longBufferAssertion(), new Object(), "Message");
+            Assertions.fail("LongBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).contains(1L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).contains(2L);

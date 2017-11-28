@@ -47,6 +47,27 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      * {@link DoubleBufferAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0]));
+
+        try {
+            initialize(Raw.doubleBufferAssertion(), new Object());
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), new Object(), "Message");
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link DoubleBufferAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(2.0);

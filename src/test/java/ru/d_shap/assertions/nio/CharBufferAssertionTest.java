@@ -47,6 +47,27 @@ public final class CharBufferAssertionTest extends AssertionTest {
      * {@link CharBufferAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0]));
+
+        try {
+            initialize(Raw.charBufferAssertion(), new Object());
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.charBufferAssertion(), new Object(), "Message");
+            Assertions.fail("CharBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link CharBufferAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).contains('1');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).contains('2');
