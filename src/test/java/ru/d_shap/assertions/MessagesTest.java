@@ -26,7 +26,7 @@ import org.junit.Test;
  *
  * @author Dmitry Shapovalov
  */
-public final class MessagesTest {
+public final class MessagesTest extends AssertionTest {
 
     /**
      * Test class constructor.

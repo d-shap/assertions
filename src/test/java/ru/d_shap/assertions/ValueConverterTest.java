@@ -29,7 +29,7 @@ import org.junit.Test;
  *
  * @author Dmitry Shapovalov
  */
-public final class ValueConverterTest {
+public final class ValueConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
