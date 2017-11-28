@@ -43,6 +43,27 @@ public final class ComparableAssertionTest extends AssertionTest {
      * {@link ComparableAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<Integer>comparableAssertion(), 10);
+
+        try {
+            initialize(Raw.<Integer>comparableAssertion(), new Object());
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<Integer>comparableAssertion(), new Object(), "Message");
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ComparableAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.<Integer>comparableAssertion(), 10).isEqualTo(10);
         initialize(Raw.<Integer>comparableAssertion(), 75).isEqualTo(75);

@@ -46,6 +46,27 @@ public final class ClassAssertionTest extends AssertionTest {
      * {@link ClassAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.classAssertion(), String.class);
+
+        try {
+            initialize(Raw.classAssertion(), new Object());
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.classAssertion(), new Object(), "Message");
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
     public void isEqualToTest() {
         initialize(Raw.classAssertion(), Integer.class).isEqualTo(Integer.class);
         initialize(Raw.classAssertion(), String.class).isEqualTo(String.class);

@@ -43,6 +43,27 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.charSequenceAssertion(), "");
+
+        try {
+            initialize(Raw.charSequenceAssertion(), new Object());
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), new Object(), "Message");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link CharSequenceAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         initialize(Raw.charSequenceAssertion(), "").isEmpty();
 

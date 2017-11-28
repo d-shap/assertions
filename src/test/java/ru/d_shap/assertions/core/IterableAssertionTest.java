@@ -47,6 +47,27 @@ public final class IterableAssertionTest extends AssertionTest {
      * {@link IterableAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String>iterableAssertion(), new ArrayList<String>());
+
+        try {
+            initialize(Raw.<String>iterableAssertion(), new Object());
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String>iterableAssertion(), new Object(), "Message");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link IterableAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).isEmpty();
         initialize(Raw.<String>iterableAssertion(), new HashSet<String>()).isEmpty();

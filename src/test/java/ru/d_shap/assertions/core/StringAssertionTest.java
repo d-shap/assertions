@@ -43,6 +43,27 @@ public final class StringAssertionTest extends AssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.stringAssertion(), "");
+
+        try {
+            initialize(Raw.stringAssertion(), new Object());
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), new Object(), "Message");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         initialize(Raw.stringAssertion(), "").isEmpty();
 

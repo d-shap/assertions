@@ -43,6 +43,27 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.throwableAssertion(), new Exception("value"));
+
+        try {
+            initialize(Raw.throwableAssertion(), new Object());
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Object(), "Message");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void toMessageTest() {
         initialize(Raw.throwableAssertion(), new Exception("value")).toMessage().isEqualTo("value");
         initialize(Raw.throwableAssertion(), new Exception("value")).toMessage().contains("alu");
