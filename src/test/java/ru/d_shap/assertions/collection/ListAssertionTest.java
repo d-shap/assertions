@@ -46,6 +46,27 @@ public final class ListAssertionTest extends AssertionTest {
      * {@link ListAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String>listAssertion(), new ArrayList<String>());
+
+        try {
+            initialize(Raw.<String>listAssertion(), new Object());
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String>listAssertion(), new Object(), "Message");
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ListAssertion} class test.
+     */
+    @Test
     public void isRandomAccessTest() {
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isRandomAccess();
 

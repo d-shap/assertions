@@ -48,6 +48,27 @@ public final class MapAssertionTest extends AssertionTest {
      * {@link MapAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String, String>mapAssertion(), createHashMap());
+
+        try {
+            initialize(Raw.<String, String>mapAssertion(), new Object());
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), new Object(), "Message");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link MapAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         initialize(Raw.<String, String>mapAssertion(), createHashMap()).isEmpty();
 

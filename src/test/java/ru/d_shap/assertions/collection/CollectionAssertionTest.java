@@ -48,6 +48,27 @@ public final class CollectionAssertionTest extends AssertionTest {
      * {@link CollectionAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String>collectionAssertion(), new ArrayList<String>());
+
+        try {
+            initialize(Raw.<String>collectionAssertion(), new Object());
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String>collectionAssertion(), new Object(), "Message");
+            Assertions.fail("CollectionAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link CollectionAssertion} class test.
+     */
+    @Test
     public void isEmptyTest() {
         initialize(Raw.<String>collectionAssertion(), new ArrayList<String>()).isEmpty();
         initialize(Raw.<String>collectionAssertion(), new HashSet<String>()).isEmpty();

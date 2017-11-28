@@ -19,7 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
+import java.util.HashSet;
+
+import org.junit.Test;
+
 import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link SetAssertion}.
@@ -33,6 +39,27 @@ public final class SetAssertionTest extends AssertionTest {
      */
     public SetAssertionTest() {
         super();
+    }
+
+    /**
+     * {@link SetAssertion} class test.
+     */
+    @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String>setAssertion(), new HashSet<String>());
+
+        try {
+            initialize(Raw.<String>setAssertion(), new Object());
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), new Object(), "Message");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
     }
 
 }
