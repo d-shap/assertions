@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.collection;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 import org.junit.Test;
@@ -50,13 +51,13 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), new ArrayList<String>());
 
         try {
-            initialize(Raw.<String>listAssertion(), new Object());
+            initialize(Raw.<String>listAssertion(), new HashSet<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new Object(), "Message");
+            initialize(Raw.<String>listAssertion(), new HashSet<String>(), "Message");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");

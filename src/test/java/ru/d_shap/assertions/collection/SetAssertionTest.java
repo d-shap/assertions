@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.junit.Test;
@@ -49,13 +50,13 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), new HashSet<String>());
 
         try {
-            initialize(Raw.<String>setAssertion(), new Object());
+            initialize(Raw.<String>setAssertion(), new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), new Object(), "Message");
+            initialize(Raw.<String>setAssertion(), new ArrayList<String>(), "Message");
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
