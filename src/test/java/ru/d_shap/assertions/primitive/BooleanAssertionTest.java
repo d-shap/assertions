@@ -68,6 +68,24 @@ public final class BooleanAssertionTest extends AssertionTest {
         initialize(Raw.booleanAssertion(), true).isTrue();
 
         try {
+            Raw.booleanAssertion().isTrue();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), null).isTrue();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), null, "Message").isTrue();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.booleanAssertion(), false).isTrue();
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
@@ -88,6 +106,24 @@ public final class BooleanAssertionTest extends AssertionTest {
     public void isFalseTest() {
         initialize(Raw.booleanAssertion(), false).isFalse();
 
+        try {
+            Raw.booleanAssertion().isFalse();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), null).isFalse();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), null, "Message").isFalse();
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.booleanAssertion(), true).isFalse();
             Assertions.fail("BooleanAssertion test fail");

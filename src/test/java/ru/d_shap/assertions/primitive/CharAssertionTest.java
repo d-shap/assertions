@@ -71,6 +71,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '5').isEqualTo('5');
 
         try {
+            Raw.charAssertion().isEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), 'a').isEqualTo('Z');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -95,6 +113,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Й').isNotEqualTo('Ё');
 
         try {
+            Raw.charAssertion().isNotEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isNotEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isNotEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), 'a').isNotEqualTo('a');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -117,6 +153,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '7').isGreaterThan('0');
         initialize(Raw.charAssertion(), 'Z').isGreaterThan('F');
 
+        try {
+            Raw.charAssertion().isGreaterThan('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isGreaterThan('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isGreaterThan('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'x').isGreaterThan('x');
             Assertions.fail("CharAssertion test fail");
@@ -153,6 +207,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Z').isGreaterThanOrEqualTo('F');
 
         try {
+            Raw.charAssertion().isGreaterThanOrEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isGreaterThanOrEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isGreaterThanOrEqualTo('a');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), 'x').isGreaterThanOrEqualTo('y');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -175,6 +247,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '0').isLessThan('7');
         initialize(Raw.charAssertion(), 'F').isLessThan('Z');
 
+        try {
+            Raw.charAssertion().isLessThan('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isLessThan('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isLessThan('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'x').isLessThan('x');
             Assertions.fail("CharAssertion test fail");
@@ -211,6 +301,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'F').isLessThanOrEqualTo('Z');
 
         try {
+            Raw.charAssertion().isLessThanOrEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isLessThanOrEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isLessThanOrEqualTo('b');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), 'y').isLessThanOrEqualTo('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -233,6 +341,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isInRange('s', 'x');
         initialize(Raw.charAssertion(), 's').isInRange('a', 'x');
 
+        try {
+            Raw.charAssertion().isInRange('p', 'x');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isInRange('p', 'x');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isInRange('p', 'x');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 's').isInRange('a', 's');
             Assertions.fail("CharAssertion test fail");
@@ -280,6 +406,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isNotInRange('t', 'x');
         initialize(Raw.charAssertion(), 's').isNotInRange('a', 'c');
 
+        try {
+            Raw.charAssertion().isNotInRange('a', 's');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isNotInRange('a', 's');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isNotInRange('a', 's');
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 's').isNotInRange('p', 'x');
             Assertions.fail("CharAssertion test fail");
@@ -329,6 +473,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'ё').isAlphabetic();
 
         try {
+            Raw.charAssertion().isAlphabetic();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isAlphabetic();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isAlphabetic();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), '7').isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -363,6 +525,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '7').isDigit();
         initialize(Raw.charAssertion(), '0').isDigit();
 
+        try {
+            Raw.charAssertion().isDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'a').isDigit();
             Assertions.fail("CharAssertion test fail");
@@ -412,6 +592,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'ё').isLetter();
 
         try {
+            Raw.charAssertion().isLetter();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isLetter();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isLetter();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), '7').isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -449,6 +647,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '7').isLetterOrDigit();
 
         try {
+            Raw.charAssertion().isLetterOrDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isLetterOrDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isLetterOrDigit();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), '\n').isLetterOrDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -470,6 +686,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '\n').isControl();
         initialize(Raw.charAssertion(), '\r').isControl();
 
+        try {
+            Raw.charAssertion().isControl();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isControl();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isControl();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'a').isControl();
             Assertions.fail("CharAssertion test fail");
@@ -518,6 +752,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'й').isLowerCase();
         initialize(Raw.charAssertion(), 'ё').isLowerCase();
 
+        try {
+            Raw.charAssertion().isLowerCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isLowerCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isLowerCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'A').isLowerCase();
             Assertions.fail("CharAssertion test fail");
@@ -579,6 +831,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Ё').isUpperCase();
 
         try {
+            Raw.charAssertion().isUpperCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isUpperCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isUpperCase();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.charAssertion(), 'a').isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
@@ -637,6 +907,24 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '\t').isWhitespace();
         initialize(Raw.charAssertion(), '\n').isWhitespace();
 
+        try {
+            Raw.charAssertion().isWhitespace();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null).isWhitespace();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charAssertion(), null, "Message").isWhitespace();
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.charAssertion(), 'a').isWhitespace();
             Assertions.fail("CharAssertion test fail");

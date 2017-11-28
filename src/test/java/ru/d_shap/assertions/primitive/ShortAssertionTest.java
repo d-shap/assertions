@@ -71,6 +71,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 257).isEqualTo(257);
 
         try {
+            Raw.shortAssertion().isEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.shortAssertion(), (short) 10).isEqualTo(20);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
@@ -95,6 +113,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 257).isNotEqualTo(2);
 
         try {
+            Raw.shortAssertion().isNotEqualTo(15);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isNotEqualTo(15);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isNotEqualTo(15);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
@@ -117,6 +153,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThan(30);
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThan(244);
 
+        try {
+            Raw.shortAssertion().isGreaterThan(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isGreaterThan(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isGreaterThan(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(10);
             Assertions.fail("ShortAssertion test fail");
@@ -153,6 +207,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThanOrEqualTo(244);
 
         try {
+            Raw.shortAssertion().isGreaterThanOrEqualTo(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isGreaterThanOrEqualTo(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isGreaterThanOrEqualTo(5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
@@ -175,6 +247,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 30).isLessThan(60);
         initialize(Raw.shortAssertion(), (short) 244).isLessThan(245);
 
+        try {
+            Raw.shortAssertion().isLessThan(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isLessThan(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isLessThan(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
@@ -211,6 +301,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 244).isLessThanOrEqualTo(245);
 
         try {
+            Raw.shortAssertion().isLessThanOrEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isLessThanOrEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isLessThanOrEqualTo(10);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.shortAssertion(), (short) 11).isLessThanOrEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
@@ -233,6 +341,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isInRange(5, 6);
         initialize(Raw.shortAssertion(), (short) 5).isInRange(1, 10);
 
+        try {
+            Raw.shortAssertion().isInRange(4, 6);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isInRange(4, 6);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isInRange(4, 6);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isInRange(1, 5);
             Assertions.fail("ShortAssertion test fail");
@@ -280,6 +406,24 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(6, 10);
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(8, 9);
 
+        try {
+            Raw.shortAssertion().isNotInRange(1, 5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null).isNotInRange(1, 5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").isNotInRange(1, 5);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isNotInRange(4, 6);
             Assertions.fail("ShortAssertion test fail");

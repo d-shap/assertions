@@ -71,6 +71,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 257L).isEqualTo(257L);
 
         try {
+            Raw.longAssertion().isEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.longAssertion(), 10L).isEqualTo(20L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
@@ -95,6 +113,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 257L).isNotEqualTo(2L);
 
         try {
+            Raw.longAssertion().isNotEqualTo(15L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isNotEqualTo(15L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isNotEqualTo(15L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.longAssertion(), 10L).isNotEqualTo(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
@@ -117,6 +153,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 60L).isGreaterThan(30L);
         initialize(Raw.longAssertion(), 245L).isGreaterThan(244L);
 
+        try {
+            Raw.longAssertion().isGreaterThan(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isGreaterThan(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isGreaterThan(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.longAssertion(), 10L).isGreaterThan(10L);
             Assertions.fail("LongAssertion test fail");
@@ -153,6 +207,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 245L).isGreaterThanOrEqualTo(244L);
 
         try {
+            Raw.longAssertion().isGreaterThanOrEqualTo(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isGreaterThanOrEqualTo(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isGreaterThanOrEqualTo(5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.longAssertion(), 10L).isGreaterThanOrEqualTo(11L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
@@ -175,6 +247,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 30L).isLessThan(60L);
         initialize(Raw.longAssertion(), 244L).isLessThan(245L);
 
+        try {
+            Raw.longAssertion().isLessThan(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isLessThan(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isLessThan(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.longAssertion(), 10L).isLessThan(10L);
             Assertions.fail("LongAssertion test fail");
@@ -211,6 +301,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 244L).isLessThanOrEqualTo(245L);
 
         try {
+            Raw.longAssertion().isLessThanOrEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isLessThanOrEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isLessThanOrEqualTo(10L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.longAssertion(), 11L).isLessThanOrEqualTo(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
@@ -233,6 +341,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isInRange(5L, 6L);
         initialize(Raw.longAssertion(), 5L).isInRange(1L, 10L);
 
+        try {
+            Raw.longAssertion().isInRange(4L, 6L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isInRange(4L, 6L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isInRange(4L, 6L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.longAssertion(), 5L).isInRange(1L, 5L);
             Assertions.fail("LongAssertion test fail");
@@ -280,6 +406,24 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isNotInRange(6L, 10L);
         initialize(Raw.longAssertion(), 5L).isNotInRange(8L, 9L);
 
+        try {
+            Raw.longAssertion().isNotInRange(1L, 5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null).isNotInRange(1L, 5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").isNotInRange(1L, 5L);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.longAssertion(), 5L).isNotInRange(4L, 6L);
             Assertions.fail("LongAssertion test fail");

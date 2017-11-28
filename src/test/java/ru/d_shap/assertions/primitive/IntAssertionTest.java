@@ -71,6 +71,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 257).isEqualTo(257);
 
         try {
+            Raw.intAssertion().isEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.intAssertion(), 10).isEqualTo(20);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
@@ -95,6 +113,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 257).isNotEqualTo(2);
 
         try {
+            Raw.intAssertion().isNotEqualTo(15);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isNotEqualTo(15);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isNotEqualTo(15);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.intAssertion(), 10).isNotEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
@@ -117,6 +153,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 60).isGreaterThan(30);
         initialize(Raw.intAssertion(), 245).isGreaterThan(244);
 
+        try {
+            Raw.intAssertion().isGreaterThan(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThan(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThan(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.intAssertion(), 10).isGreaterThan(10);
             Assertions.fail("IntAssertion test fail");
@@ -153,6 +207,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(244);
 
         try {
+            Raw.intAssertion().isGreaterThanOrEqualTo(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThanOrEqualTo(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThanOrEqualTo(5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
@@ -175,6 +247,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 30).isLessThan(60);
         initialize(Raw.intAssertion(), 244).isLessThan(245);
 
+        try {
+            Raw.intAssertion().isLessThan(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThan(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThan(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.intAssertion(), 10).isLessThan(10);
             Assertions.fail("IntAssertion test fail");
@@ -211,6 +301,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(245);
 
         try {
+            Raw.intAssertion().isLessThanOrEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThanOrEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThanOrEqualTo(10);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.intAssertion(), 11).isLessThanOrEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
@@ -233,6 +341,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isInRange(5, 6);
         initialize(Raw.intAssertion(), 5).isInRange(1, 10);
 
+        try {
+            Raw.intAssertion().isInRange(4, 6);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isInRange(4, 6);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isInRange(4, 6);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.intAssertion(), 5).isInRange(1, 5);
             Assertions.fail("IntAssertion test fail");
@@ -280,6 +406,24 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isNotInRange(6, 10);
         initialize(Raw.intAssertion(), 5).isNotInRange(8, 9);
 
+        try {
+            Raw.intAssertion().isNotInRange(1, 5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isNotInRange(1, 5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isNotInRange(1, 5);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
         try {
             initialize(Raw.intAssertion(), 5).isNotInRange(4, 6);
             Assertions.fail("IntAssertion test fail");
