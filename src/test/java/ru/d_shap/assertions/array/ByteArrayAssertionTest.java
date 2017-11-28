@@ -46,6 +46,27 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      * {@link ByteArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[0]);
+
+        try {
+            initialize(Raw.byteArrayAssertion(), new Object());
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new Object(), "Message");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).contains(1);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).contains(2);

@@ -46,6 +46,27 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
      * {@link BooleanArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[0]);
+
+        try {
+            initialize(Raw.booleanArrayAssertion(), new Object());
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new Object(), "Message");
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).contains(true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).contains(false);

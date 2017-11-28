@@ -46,6 +46,27 @@ public final class CharArrayAssertionTest extends AssertionTest {
      * {@link CharArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.charArrayAssertion(), new char[0]);
+
+        try {
+            initialize(Raw.charArrayAssertion(), new Object());
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.charArrayAssertion(), new Object(), "Message");
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link CharArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('1');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('2');

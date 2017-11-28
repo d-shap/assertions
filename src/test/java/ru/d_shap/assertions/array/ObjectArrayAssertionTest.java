@@ -46,6 +46,27 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
      * {@link ObjectArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.<String>objectArrayAssertion(), new String[0]);
+
+        try {
+            initialize(Raw.<String>objectArrayAssertion(), new Object());
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.<String>objectArrayAssertion(), new Object(), "Message");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ObjectArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).contains("val1");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).contains("val2");

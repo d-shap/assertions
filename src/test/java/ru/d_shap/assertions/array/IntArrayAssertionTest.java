@@ -46,6 +46,27 @@ public final class IntArrayAssertionTest extends AssertionTest {
      * {@link IntArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.intArrayAssertion(), new int[0]);
+
+        try {
+            initialize(Raw.intArrayAssertion(), new Object());
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new Object(), "Message");
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).contains(1);
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).contains(2);

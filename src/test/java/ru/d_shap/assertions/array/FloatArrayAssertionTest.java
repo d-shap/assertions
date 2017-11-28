@@ -46,6 +46,27 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      * {@link FloatArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.floatArrayAssertion(), new float[0]);
+
+        try {
+            initialize(Raw.floatArrayAssertion(), new Object());
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.floatArrayAssertion(), new Object(), "Message");
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link FloatArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).contains(1.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).contains(2.0f);

@@ -46,6 +46,27 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.shortArrayAssertion(), new short[0]);
+
+        try {
+            initialize(Raw.shortArrayAssertion(), new Object());
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new Object(), "Message");
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).contains(1);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).contains(2);

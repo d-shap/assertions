@@ -46,6 +46,27 @@ public final class LongArrayAssertionTest extends AssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.longArrayAssertion(), new long[0]);
+
+        try {
+            initialize(Raw.longArrayAssertion(), new Object());
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new Object(), "Message");
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
     public void containsTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).contains(1L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).contains(2L);
