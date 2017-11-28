@@ -50,6 +50,27 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}));
+
+        try {
+            initialize(Raw.inputStreamAssertion(), new Object());
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new Object(), "Message");
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
     public void isCompletedTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isCompleted();
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});

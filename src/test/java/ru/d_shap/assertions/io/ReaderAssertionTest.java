@@ -48,6 +48,27 @@ public final class ReaderAssertionTest extends AssertionTest {
 
     /**
      * {@link ReaderAssertion} class test.
+     */
+    @Test
+    public void actualValueValidatorTest() {
+        initialize(Raw.readerAssertion(), new StringReader(""));
+
+        try {
+            initialize(Raw.readerAssertion(), new Object());
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new Object(), "Message");
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
      *
      * @throws IOException IO exception.
      */
