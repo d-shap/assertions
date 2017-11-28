@@ -168,6 +168,18 @@ public final class BooleanAssertionTest extends AssertionTest {
         initialize(Raw.booleanAssertion(), value).isSameAs(value);
 
         try {
+            initialize(Raw.booleanAssertion(), value).isSameAs(false);
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<false> but was:<true>");
+        }
+        try {
+            initialize(Raw.booleanAssertion(), value, "Message").isSameAs(false);
+            Assertions.fail("BooleanAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<false> but was:<true>");
+        }
+        try {
             initialize(Raw.booleanAssertion(), value).isSameAs("test");
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
@@ -187,6 +199,7 @@ public final class BooleanAssertionTest extends AssertionTest {
     @Test
     public void isNotSameAsTest() {
         Boolean value = true;
+        initialize(Raw.booleanAssertion(), value).isNotSameAs(false);
         initialize(Raw.booleanAssertion(), value).isNotSameAs("test");
 
         try {

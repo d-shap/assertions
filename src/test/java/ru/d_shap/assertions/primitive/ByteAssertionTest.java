@@ -492,6 +492,18 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), value).isSameAs(value);
 
         try {
+            initialize(Raw.byteAssertion(), value).isSameAs((byte) 101);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<101> but was:<100>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), value, "Message").isSameAs((byte) 101);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<101> but was:<100>");
+        }
+        try {
             initialize(Raw.byteAssertion(), value).isSameAs("test");
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
@@ -511,6 +523,7 @@ public final class ByteAssertionTest extends AssertionTest {
     @Test
     public void isNotSameAsTest() {
         Byte value = 100;
+        initialize(Raw.byteAssertion(), value).isNotSameAs((byte) 101);
         initialize(Raw.byteAssertion(), value).isNotSameAs("test");
 
         try {
