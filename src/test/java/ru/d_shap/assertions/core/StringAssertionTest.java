@@ -68,6 +68,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isEmpty();
 
         try {
+            Raw.stringAssertion().isEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -114,6 +120,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isNullOrEmpty();
 
         try {
+            Raw.stringAssertion().isNullOrEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), " ").isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -147,6 +159,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), " ").isNotEmpty();
         initialize(Raw.stringAssertion(), "value").isNotEmpty();
 
+        try {
+            Raw.stringAssertion().isNotEmpty();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isNotEmpty();
             Assertions.fail("StringAssertion test fail");
@@ -183,6 +201,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "\t").isBlank();
         initialize(Raw.stringAssertion(), "   \t   \t").isBlank();
 
+        try {
+            Raw.stringAssertion().isBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isBlank();
             Assertions.fail("StringAssertion test fail");
@@ -233,6 +257,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "   \t   \t").isNullOrBlank();
 
         try {
+            Raw.stringAssertion().isNullOrBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), "value").isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -266,6 +296,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isNotBlank();
         initialize(Raw.stringAssertion(), "v   ").isNotBlank();
 
+        try {
+            Raw.stringAssertion().isNotBlank();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isNotBlank();
             Assertions.fail("StringAssertion test fail");
@@ -339,6 +375,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isEqualTo("");
 
         try {
+            Raw.stringAssertion().isEqualTo("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -366,7 +408,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualTo("ЗНАЧЕНИЕ");
@@ -392,12 +434,31 @@ public final class StringAssertionTest extends AssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
+    public void isEqualToMutationTest() {
+        try {
+            initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Values should be the same. Expected:<value2> but was:<value1>");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
     public void isEqualToIgnoreCaseTest() {
         initialize(Raw.stringAssertion(), "valUe").isEqualToIgnoreCase("vALue");
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isEqualToIgnoreCase("значение");
         initialize(Raw.stringAssertion(), "значение").isEqualToIgnoreCase("ЗНАЧЕНИЕ");
         initialize(Raw.stringAssertion(), "").isEqualToIgnoreCase("");
 
+        try {
+            Raw.stringAssertion().isEqualToIgnoreCase("vALue");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isEqualToIgnoreCase("vALue");
             Assertions.fail("StringAssertion test fail");
@@ -454,6 +515,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isNotEqualTo("");
 
         try {
+            Raw.stringAssertion().isNotEqualTo("значение");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isNotEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -502,6 +569,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("VAluE");
         initialize(Raw.stringAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("");
 
+        try {
+            Raw.stringAssertion().isNotEqualToIgnoreCase("знАЧенИЕ");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isNotEqualToIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
@@ -552,6 +625,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isGreaterThan("XYZ");
 
         try {
+            Raw.stringAssertion().isGreaterThan("aaa");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isGreaterThan("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -600,6 +679,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("valuazzz");
         initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("vAlUazzz");
 
+        try {
+            Raw.stringAssertion().isGreaterThanIgnoreCase("aaa");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
@@ -665,6 +750,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isGreaterThanOrEqualTo("");
 
         try {
+            Raw.stringAssertion().isGreaterThanOrEqualTo("aaa");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isGreaterThanOrEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -705,6 +796,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("");
         initialize(Raw.stringAssertion(), "").isGreaterThanOrEqualToIgnoreCase("");
 
+        try {
+            Raw.stringAssertion().isGreaterThanOrEqualToIgnoreCase("aaa");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThanOrEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
@@ -748,6 +845,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "VALUE").isLessThan("value");
         initialize(Raw.stringAssertion(), "XYZ").isLessThan("value");
 
+        try {
+            Raw.stringAssertion().isLessThan("yyy");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isLessThan("value");
             Assertions.fail("StringAssertion test fail");
@@ -797,6 +900,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase("valuezzz");
         initialize(Raw.stringAssertion(), "vAlUe").isLessThanIgnoreCase("valuezzz");
 
+        try {
+            Raw.stringAssertion().isLessThanIgnoreCase("yyy");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isLessThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
@@ -861,6 +970,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isLessThanOrEqualTo("");
 
         try {
+            Raw.stringAssertion().isLessThanOrEqualTo("yyy");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isLessThanOrEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -906,6 +1021,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "VALUE").isLessThanOrEqualToIgnoreCase("value");
         initialize(Raw.stringAssertion(), "").isLessThanOrEqualToIgnoreCase("");
 
+        try {
+            Raw.stringAssertion().isLessThanOrEqualToIgnoreCase("yyy");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isLessThanOrEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
@@ -957,6 +1078,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isInRange("", "z");
         initialize(Raw.stringAssertion(), "").isInRange("", "z");
 
+        try {
+            Raw.stringAssertion().isInRange("v", "valuex");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isInRange("value", "value");
             Assertions.fail("StringAssertion test fail");
@@ -1031,6 +1158,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isInRangeIgnoreCase("", "Z");
 
         try {
+            Raw.stringAssertion().isInRangeIgnoreCase("v", "valuex");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isInRangeIgnoreCase("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1101,6 +1234,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isNotInRange("", "aaa");
 
         try {
+            Raw.stringAssertion().isNotInRange("A", "Z");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isNotInRange("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1168,6 +1307,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("XXX", "YYY");
         initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("", "AAA");
 
+        try {
+            Raw.stringAssertion().isNotInRangeIgnoreCase("a", "test");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isNotInRangeIgnoreCase("value", "value");
             Assertions.fail("StringAssertion test fail");
@@ -1249,6 +1394,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").contains("ие");
 
         try {
+            Raw.stringAssertion().contains("val");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).contains("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1316,6 +1467,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "ЗНАчЕнИЕ").containsIgnoreCase("еН");
         initialize(Raw.stringAssertion(), "ЗНАЧЕние").containsIgnoreCase("Ие");
 
+        try {
+            Raw.stringAssertion().containsIgnoreCase("VAL");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).containsIgnoreCase("VAlue");
             Assertions.fail("StringAssertion test fail");
@@ -1385,6 +1542,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").doesNotContain("НИЕ");
 
         try {
+            Raw.stringAssertion().doesNotContain("vaue");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).doesNotContain("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1452,6 +1615,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчеНие").doesNotContainIgnoreCase("кени");
         initialize(Raw.stringAssertion(), "знАчеНие").doesNotContainIgnoreCase("чИЕ");
 
+        try {
+            Raw.stringAssertion().doesNotContainIgnoreCase("vaUE");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).doesNotContainIgnoreCase("valUE");
             Assertions.fail("StringAssertion test fail");
@@ -1522,6 +1691,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").isPartOf("");
 
         try {
+            Raw.stringAssertion().isPartOf("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1590,6 +1765,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "иЕ").isPartOfIgnoreCase("зНАчеНИе");
         initialize(Raw.stringAssertion(), "").isPartOfIgnoreCase("");
 
+        try {
+            Raw.stringAssertion().isPartOfIgnoreCase("vaLUe");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).isPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
@@ -1660,6 +1841,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "чие").isNotPartOf("");
 
         try {
+            Raw.stringAssertion().isNotPartOf("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isNotPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1723,6 +1910,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "чИЕ").isNotPartOfIgnoreCase("");
 
         try {
+            Raw.stringAssertion().isNotPartOfIgnoreCase("vaLUe");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).isNotPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1785,6 +1978,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "").matches("");
 
         try {
+            Raw.stringAssertion().matches("v.*e");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).matches("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1829,6 +2028,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").doesNotMatch("");
 
         try {
+            Raw.stringAssertion().doesNotMatch("valu.+e");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).doesNotMatch("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -1872,6 +2077,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").startsWith("значе");
         initialize(Raw.stringAssertion(), "значение").startsWith("значение");
 
+        try {
+            Raw.stringAssertion().startsWith("va");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).startsWith("value");
             Assertions.fail("StringAssertion test fail");
@@ -1941,6 +2152,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").startsWithIgnoreCase("зНачение");
 
         try {
+            Raw.stringAssertion().startsWithIgnoreCase("vA");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).startsWithIgnoreCase("vAlUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2009,6 +2226,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").doesNotStartWith("чение");
 
         try {
+            Raw.stringAssertion().doesNotStartWith("VA");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).doesNotStartWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2071,6 +2294,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("чние");
 
         try {
+            Raw.stringAssertion().doesNotStartWithIgnoreCase("Vu");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).doesNotStartWithIgnoreCase("vAlUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2132,6 +2361,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").endsWith("ние");
         initialize(Raw.stringAssertion(), "значение").endsWith("е");
 
+        try {
+            Raw.stringAssertion().endsWith("alue");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).endsWith("value");
             Assertions.fail("StringAssertion test fail");
@@ -2201,6 +2436,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").endsWithIgnoreCase("Е");
         initialize(Raw.stringAssertion(), "aaaxxxxx").endsWithIgnoreCase("xxx");
 
+        try {
+            Raw.stringAssertion().endsWithIgnoreCase("vaLue");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).endsWithIgnoreCase("vAlUe");
             Assertions.fail("StringAssertion test fail");
@@ -2276,6 +2517,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").doesNotEndWith("зна");
 
         try {
+            Raw.stringAssertion().doesNotEndWith("aLue");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).doesNotEndWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2338,6 +2585,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotEndWithIgnoreCase("зна");
         initialize(Raw.stringAssertion(), "").doesNotEndWithIgnoreCase("val");
 
+        try {
+            Raw.stringAssertion().doesNotEndWithIgnoreCase("aLe");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).doesNotEndWithIgnoreCase("vAlUe");
             Assertions.fail("StringAssertion test fail");
@@ -2408,6 +2661,12 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").toLength().isLessThan(10);
 
         try {
+            Raw.stringAssertion().toLength();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).toLength();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2466,6 +2725,24 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
         initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
 
+        try {
+            Raw.stringAssertion().toTokens();
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.stringAssertion().toTokens("|");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.stringAssertion().toTokens("|", false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.stringAssertion(), null).toTokens();
             Assertions.fail("StringAssertion test fail");

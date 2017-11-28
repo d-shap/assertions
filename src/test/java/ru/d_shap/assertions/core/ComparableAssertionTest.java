@@ -71,6 +71,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 257).isEqualTo(257);
 
         try {
+            Raw.<Integer>comparableAssertion().isEqualTo(10);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<Integer>comparableAssertion(), null).isEqualTo(10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
@@ -101,6 +107,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 257).isNotEqualTo(2);
 
         try {
+            Raw.<Integer>comparableAssertion().isNotEqualTo(15);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<Integer>comparableAssertion(), null).isNotEqualTo(10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
@@ -129,6 +141,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 60).isGreaterThan(30);
         initialize(Raw.<Integer>comparableAssertion(), 245).isGreaterThan(244);
 
+        try {
+            Raw.<Integer>comparableAssertion().isGreaterThan(5);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<Integer>comparableAssertion(), null).isGreaterThan(10);
             Assertions.fail("ComparableAssertion test fail");
@@ -165,6 +183,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 245).isGreaterThanOrEqualTo(244);
 
         try {
+            Raw.<Integer>comparableAssertion().isGreaterThanOrEqualTo(5);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<Integer>comparableAssertion(), null).isGreaterThanOrEqualTo(10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
@@ -193,6 +217,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 30).isLessThan(60);
         initialize(Raw.<Integer>comparableAssertion(), 244).isLessThan(245);
 
+        try {
+            Raw.<Integer>comparableAssertion().isLessThan(10);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<Integer>comparableAssertion(), null).isLessThan(10);
             Assertions.fail("ComparableAssertion test fail");
@@ -229,6 +259,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 244).isLessThanOrEqualTo(245);
 
         try {
+            Raw.<Integer>comparableAssertion().isLessThanOrEqualTo(10);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<Integer>comparableAssertion(), null).isLessThanOrEqualTo(10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
@@ -257,6 +293,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isInRange(5, 6);
         initialize(Raw.<Integer>comparableAssertion(), 5).isInRange(1, 10);
 
+        try {
+            Raw.<Integer>comparableAssertion().isInRange(4, 6);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<Integer>comparableAssertion(), null).isInRange(10, 10);
             Assertions.fail("ComparableAssertion test fail");
@@ -304,6 +346,12 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isNotInRange(6, 10);
         initialize(Raw.<Integer>comparableAssertion(), 5).isNotInRange(8, 9);
 
+        try {
+            Raw.<Integer>comparableAssertion().isNotInRange(1, 5);
+            Assertions.fail("ComparableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<Integer>comparableAssertion(), null).isNotInRange(10, 10);
             Assertions.fail("ComparableAssertion test fail");

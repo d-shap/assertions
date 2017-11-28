@@ -47,6 +47,12 @@ public final class ObjectAssertionTest extends AssertionTest {
         initialize(Raw.objectAssertion(), "value").isEqualTo("value");
 
         try {
+            Raw.objectAssertion().isEqualTo("value");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.objectAssertion(), null).isEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
@@ -92,6 +98,12 @@ public final class ObjectAssertionTest extends AssertionTest {
         initialize(Raw.objectAssertion(), "value1").isNotEqualTo("value2");
         initialize(Raw.objectAssertion(), "value2").isNotEqualTo("value1");
 
+        try {
+            Raw.objectAssertion().isNotEqualTo("value2");
+            Assertions.fail("ObjectAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.objectAssertion(), null).isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");

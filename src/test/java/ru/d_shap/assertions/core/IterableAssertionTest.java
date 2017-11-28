@@ -73,6 +73,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), new HashSet<String>()).isEmpty();
 
         try {
+            Raw.<String>iterableAssertion().isEmpty();
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), null).isEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -108,6 +114,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), null).isNullOrEmpty();
 
         try {
+            Raw.<String>iterableAssertion().isNullOrEmpty();
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2")).isNullOrEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -129,6 +141,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2")).isNotEmpty();
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("test1", "test2")).isNotEmpty();
 
+        try {
+            Raw.<String>iterableAssertion().isNotEmpty();
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
@@ -179,6 +197,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", null, "val2")).contains(null);
 
         try {
+            Raw.<String>iterableAssertion().contains("val1");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), null).contains("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -207,6 +231,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", null)).doesNotContain("val3");
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2")).doesNotContain(null);
 
+        try {
+            Raw.<String>iterableAssertion().doesNotContain("val3");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).doesNotContain("val");
             Assertions.fail("IterableAssertion test fail");
@@ -248,6 +278,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
+        try {
+            Raw.<String>iterableAssertion().containsAll("val1", "val2");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).containsAll("val");
             Assertions.fail("IterableAssertion test fail");
@@ -355,6 +397,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
+        try {
+            Raw.<String>iterableAssertion().containsAllInOrder("val1", "val2");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).containsAllInOrder("val");
             Assertions.fail("IterableAssertion test fail");
@@ -464,6 +518,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).containsExactly();
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).containsExactly(new ArrayList<String>());
 
+        try {
+            Raw.<String>iterableAssertion().containsExactly("val1", "val2", "val3");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).containsExactly("val");
             Assertions.fail("IterableAssertion test fail");
@@ -576,6 +642,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).containsExactlyInOrder(new ArrayList<String>());
 
         try {
+            Raw.<String>iterableAssertion().containsExactlyInOrder("val1", "val2", "val3");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), null).containsExactlyInOrder("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -686,6 +764,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", null));
 
         try {
+            Raw.<String>iterableAssertion().containsAny("val1", "val3", "val5");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), null).containsAny("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -778,6 +868,18 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val8", null);
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val8", null));
 
+        try {
+            Raw.<String>iterableAssertion().containsNone("val4", "val5", "val6");
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            Raw.<String>iterableAssertion().containsNone(Arrays.asList("val8", "val4"));
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).containsNone("val");
             Assertions.fail("IterableAssertion test fail");
@@ -878,6 +980,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
         try {
+            Raw.<String>iterableAssertion().toSize();
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>iterableAssertion(), null).toSize();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
@@ -911,6 +1019,12 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(3);
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).hasSize(5);
 
+        try {
+            Raw.<String>iterableAssertion().hasSize(3);
+            Assertions.fail("IterableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>iterableAssertion(), null).hasSize(4);
             Assertions.fail("IterableAssertion test fail");

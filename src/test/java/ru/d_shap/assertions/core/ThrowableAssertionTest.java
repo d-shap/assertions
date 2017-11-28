@@ -72,6 +72,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).toMessage().contains("exception");
 
         try {
+            Raw.throwableAssertion().toMessage();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), null).toMessage();
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
@@ -105,6 +111,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("value")).hasMessage("value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).hasMessage("some exception value");
 
+        try {
+            Raw.throwableAssertion().hasMessage("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.throwableAssertion(), null).hasMessage("value");
             Assertions.fail("ThrowableAssertion test fail");
@@ -165,6 +177,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).messageMatches("some exception value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).messageMatches("some\\s+\\w+\\s+\\w+\\s*");
 
+        try {
+            Raw.throwableAssertion().messageMatches("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.throwableAssertion(), null).messageMatches("value");
             Assertions.fail("ThrowableAssertion test fail");
@@ -232,6 +250,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception()).toCause().isNull();
 
         try {
+            Raw.throwableAssertion().toCause();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), null).toCause();
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
@@ -269,6 +293,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isCauseInstanceOf(Error.class);
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isCauseInstanceOf(Throwable.class);
 
+        try {
+            Raw.throwableAssertion().isCauseInstanceOf(RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.throwableAssertion(), null).isCauseInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
@@ -327,6 +357,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).hasCauseMessage("value");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).hasCauseMessage("some exception value");
 
+        try {
+            Raw.throwableAssertion().hasCauseMessage("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.throwableAssertion(), null).hasCauseMessage("test");
             Assertions.fail("ThrowableAssertion test fail");
@@ -387,6 +423,12 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).causeMessageMatches("some exception value");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).causeMessageMatches("some\\s+\\w+\\s+\\w+\\s*");
 
+        try {
+            Raw.throwableAssertion().causeMessageMatches("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.throwableAssertion(), null).causeMessageMatches("va\\s*");
             Assertions.fail("ThrowableAssertion test fail");

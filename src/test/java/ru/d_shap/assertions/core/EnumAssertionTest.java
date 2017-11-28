@@ -64,27 +64,17 @@ public final class EnumAssertionTest extends AssertionTest {
      * {@link EnumAssertion} class test.
      */
     @Test
-    public void constructorTest() {
-        initialize(Raw.enumAssertion(), null).isNull();
-        initialize(Raw.enumAssertion(), Values.class).isNotNull();
-
-        try {
-            initialize(Raw.enumAssertion(), String.class);
-            Assertions.fail("EnumAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-    }
-
-    /**
-     * {@link EnumAssertion} class test.
-     */
-    @Test
     public void toValueCountTest() {
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isEqualTo(3);
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isGreaterThan(2);
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isLessThan(4);
 
+        try {
+            Raw.enumAssertion().toValueCount();
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.enumAssertion(), null).toValueCount();
             Assertions.fail("EnumAssertion test fail");
