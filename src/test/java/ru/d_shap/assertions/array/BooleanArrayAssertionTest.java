@@ -776,7 +776,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(true, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[true, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(false, true);
@@ -834,7 +834,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(Arrays.asList(true, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[true, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(Arrays.asList(false, true));
