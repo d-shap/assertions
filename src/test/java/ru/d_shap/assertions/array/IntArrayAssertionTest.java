@@ -740,7 +740,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
     @Test
     public void containsNoneArrayTest() {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(3, 7);
-        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(3, 4);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(3, 4, 5);
 
         try {
             Raw.intArrayAssertion().containsNone(1);
@@ -792,7 +792,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
     @Test
     public void containsNoneIterableTest() {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(Arrays.asList(3, 7));
-        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(Arrays.asList(3, 4));
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(Arrays.asList(3, 4, 5));
 
         try {
             Raw.intArrayAssertion().containsNone(new ArrayList<Integer>());
