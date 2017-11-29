@@ -253,7 +253,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAll("val3", "val1", "val4", null, "val2");
 
         try {
-            new ArrayAssertionImpl().doContainsAll("val1", "val2");
+            new ArrayAssertionImpl().doContainsAll("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -328,7 +328,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
-            new ArrayAssertionImpl().doContainsAll(Arrays.asList("val1", "val2"));
+            new ArrayAssertionImpl().doContainsAll(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -403,7 +403,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAllInOrder("val1", "val2", "val3", "val4", null);
 
         try {
-            new ArrayAssertionImpl().doContainsAllInOrder("val1", "val2");
+            new ArrayAssertionImpl().doContainsAllInOrder("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -478,7 +478,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
-            new ArrayAssertionImpl().doContainsAllInOrder(Arrays.asList("val1", "val2"));
+            new ArrayAssertionImpl().doContainsAllInOrder(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -554,7 +554,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactly();
 
         try {
-            new ArrayAssertionImpl().doContainsExactly("val1", "val2", "val3");
+            new ArrayAssertionImpl().doContainsExactly("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -636,7 +636,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactly(new ArrayList<String>());
 
         try {
-            new ArrayAssertionImpl().doContainsExactly(Arrays.asList("val1", "val2", "val3"));
+            new ArrayAssertionImpl().doContainsExactly(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -714,7 +714,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactlyInOrder();
 
         try {
-            new ArrayAssertionImpl().doContainsExactlyInOrder("val1", "val2", "val3");
+            new ArrayAssertionImpl().doContainsExactlyInOrder("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -792,7 +792,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactlyInOrder(new ArrayList<String>());
 
         try {
-            new ArrayAssertionImpl().doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
+            new ArrayAssertionImpl().doContainsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -870,7 +870,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAny("val7", "val9", null);
 
         try {
-            new ArrayAssertionImpl().doContainsAny("val1", "val3", "val5");
+            new ArrayAssertionImpl().doContainsAny("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -930,7 +930,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAny(Arrays.asList("val7", "val9", null));
 
         try {
-            new ArrayAssertionImpl().doContainsAny(Arrays.asList("val1", "val3", "val5"));
+            new ArrayAssertionImpl().doContainsAny(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -990,7 +990,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val8", "val4", null);
 
         try {
-            new ArrayAssertionImpl().doContainsNone("val4", "val5", "val6");
+            new ArrayAssertionImpl().doContainsNone("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -1050,7 +1050,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val8", "val4", null));
 
         try {
-            new ArrayAssertionImpl().doContainsNone(Arrays.asList("val4", "val5", "val6"));
+            new ArrayAssertionImpl().doContainsNone(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
