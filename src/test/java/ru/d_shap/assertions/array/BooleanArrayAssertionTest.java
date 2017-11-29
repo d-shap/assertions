@@ -140,7 +140,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(false, true);
 
         try {
-            Raw.booleanArrayAssertion().containsAll(true, true);
+            Raw.booleanArrayAssertion().containsAll(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -193,7 +193,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(Arrays.asList(false, true));
 
         try {
-            Raw.booleanArrayAssertion().containsAll(Arrays.asList(true, true));
+            Raw.booleanArrayAssertion().containsAll(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -245,7 +245,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAllInOrder(true, false);
 
         try {
-            Raw.booleanArrayAssertion().containsAllInOrder(true, true);
+            Raw.booleanArrayAssertion().containsAllInOrder(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -303,7 +303,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAllInOrder(Arrays.asList(true, false));
 
         try {
-            Raw.booleanArrayAssertion().containsAllInOrder(Arrays.asList(true, true));
+            Raw.booleanArrayAssertion().containsAllInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -363,7 +363,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactly();
 
         try {
-            Raw.booleanArrayAssertion().containsExactly(true, true);
+            Raw.booleanArrayAssertion().containsExactly(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -429,7 +429,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactly(new ArrayList<Boolean>());
 
         try {
-            Raw.booleanArrayAssertion().containsExactly(Arrays.asList(true, true));
+            Raw.booleanArrayAssertion().containsExactly(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -494,7 +494,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactlyInOrder();
 
         try {
-            Raw.booleanArrayAssertion().containsExactlyInOrder(true, true);
+            Raw.booleanArrayAssertion().containsExactlyInOrder(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -565,7 +565,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactlyInOrder(new ArrayList<Boolean>());
 
         try {
-            Raw.booleanArrayAssertion().containsExactlyInOrder(Arrays.asList(true, true));
+            Raw.booleanArrayAssertion().containsExactlyInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -637,7 +637,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(true, false);
 
         try {
-            Raw.booleanArrayAssertion().containsAny(true, true);
+            Raw.booleanArrayAssertion().containsAny(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -691,7 +691,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(Arrays.asList(true, false));
 
         try {
-            Raw.booleanArrayAssertion().containsAny(Arrays.asList(true, true));
+            Raw.booleanArrayAssertion().containsAny(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -743,7 +743,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(false, false, false);
 
         try {
-            Raw.booleanArrayAssertion().containsNone(false, false);
+            Raw.booleanArrayAssertion().containsNone(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -801,7 +801,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(Arrays.asList(false, false, false));
 
         try {
-            Raw.booleanArrayAssertion().containsNone(Arrays.asList(false, false));
+            Raw.booleanArrayAssertion().containsNone(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
