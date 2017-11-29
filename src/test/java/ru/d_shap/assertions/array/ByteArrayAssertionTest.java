@@ -140,7 +140,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll((byte) 4, (byte) 2);
 
         try {
-            Raw.byteArrayAssertion().containsAll((byte) 1, (byte) 2);
+            Raw.byteArrayAssertion().containsAll((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -193,7 +193,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(4, 2);
 
         try {
-            Raw.byteArrayAssertion().containsAll(1, 2);
+            Raw.byteArrayAssertion().containsAll(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -246,7 +246,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(Arrays.asList((byte) 4, (byte) 2));
 
         try {
-            Raw.byteArrayAssertion().containsAll(Arrays.asList((byte) 1, (byte) 2));
+            Raw.byteArrayAssertion().containsAll(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -298,7 +298,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
 
         try {
-            Raw.byteArrayAssertion().containsAllInOrder((byte) 1, (byte) 2);
+            Raw.byteArrayAssertion().containsAllInOrder((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -356,7 +356,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder(1, 3, 4);
 
         try {
-            Raw.byteArrayAssertion().containsAllInOrder(1, 2);
+            Raw.byteArrayAssertion().containsAllInOrder(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -414,7 +414,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder(Arrays.asList((byte) 1, (byte) 3, (byte) 4));
 
         try {
-            Raw.byteArrayAssertion().containsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
+            Raw.byteArrayAssertion().containsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -474,7 +474,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactly();
 
         try {
-            Raw.byteArrayAssertion().containsExactly((byte) 1, (byte) 2);
+            Raw.byteArrayAssertion().containsExactly((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -540,7 +540,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactly(new int[0]);
 
         try {
-            Raw.byteArrayAssertion().containsExactly(1, 2);
+            Raw.byteArrayAssertion().containsExactly(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -606,7 +606,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactly(new ArrayList<Byte>());
 
         try {
-            Raw.byteArrayAssertion().containsExactly(Arrays.asList((byte) 1, (byte) 2));
+            Raw.byteArrayAssertion().containsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -671,7 +671,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactlyInOrder();
 
         try {
-            Raw.byteArrayAssertion().containsExactlyInOrder((byte) 1, (byte) 2);
+            Raw.byteArrayAssertion().containsExactlyInOrder((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -742,7 +742,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactlyInOrder(new int[0]);
 
         try {
-            Raw.byteArrayAssertion().containsExactlyInOrder(1, 2);
+            Raw.byteArrayAssertion().containsExactlyInOrder(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -813,7 +813,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]).containsExactlyInOrder(new ArrayList<Byte>());
 
         try {
-            Raw.byteArrayAssertion().containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2));
+            Raw.byteArrayAssertion().containsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -885,7 +885,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny((byte) 5, (byte) 3);
 
         try {
-            Raw.byteArrayAssertion().containsAny((byte) 2, (byte) 3);
+            Raw.byteArrayAssertion().containsAny((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -939,7 +939,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(5, 3);
 
         try {
-            Raw.byteArrayAssertion().containsAny(2, 3);
+            Raw.byteArrayAssertion().containsAny(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -993,7 +993,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(Arrays.asList((byte) 5, (byte) 3));
 
         try {
-            Raw.byteArrayAssertion().containsAny(Arrays.asList((byte) 2, (byte) 3));
+            Raw.byteArrayAssertion().containsAny(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -1045,7 +1045,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone((byte) 3, (byte) 4, (byte) 5);
 
         try {
-            Raw.byteArrayAssertion().containsNone((byte) 3, (byte) 5);
+            Raw.byteArrayAssertion().containsNone((byte) 1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -1097,7 +1097,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(3, 4, 5);
 
         try {
-            Raw.byteArrayAssertion().containsNone(3, 5);
+            Raw.byteArrayAssertion().containsNone(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -1149,7 +1149,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(Arrays.asList((byte) 3, (byte) 4, (byte) 5));
 
         try {
-            Raw.byteArrayAssertion().containsNone(Arrays.asList((byte) 3, (byte) 5));
+            Raw.byteArrayAssertion().containsNone(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
