@@ -2810,4 +2810,20 @@ public final class CharBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
+    /**
+     * {@link CharBufferAssertion} class test.
+     */
+    @Test
+    public void listCapacityTest() {
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}), false), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 1, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
+
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).createList(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 1, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+    }
+
 }

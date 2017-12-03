@@ -1998,4 +1998,20 @@ public final class LongBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void listCapacityTest() {
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}), false), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 1, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
+
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).createList(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 1, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
+    }
+
 }
