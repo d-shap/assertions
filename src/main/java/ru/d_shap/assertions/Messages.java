@@ -37,17 +37,17 @@ public final class Messages {
      */
     public static final class Check {
 
-        public static final String ACTUAL_VALUE_CLASS = "Check value class";
+        public static final String ACTUAL_VALUE_CLASS = "Check value's class";
 
-        public static final String ACTUAL_VALUE_TO_STRING = "Check value string representation";
+        public static final String ACTUAL_VALUE_TO_STRING = "Check value's string representation";
 
-        public static final String ACTUAL_VALUE_HASH_CODE = "Check value hash code";
+        public static final String ACTUAL_VALUE_HASH_CODE = "Check value's hash code";
 
-        public static final String ACTUAL_VALUE_FIELD = "Check value field";
+        public static final String ACTUAL_VALUE_FIELD = "Check value's field";
 
-        public static final String ACTUAL_VALUE_LENGTH = "Check value length";
+        public static final String ACTUAL_VALUE_LENGTH = "Check value's length";
 
-        public static final String ACTUAL_VALUE_SIZE = "Check value size";
+        public static final String ACTUAL_VALUE_SIZE = "Check value's size";
 
         public static final String ACTUAL_ITERATOR_ELEMENTS = "Check iterator elements";
 
@@ -55,7 +55,7 @@ public final class Messages {
 
         public static final String ACTUAL_VALUES = "Check values";
 
-        public static final String ACTUAL_VALUE_TOKENS = "Check value tokens";
+        public static final String ACTUAL_VALUE_TOKENS = "Check value's tokens";
 
         public static final String ACTUAL_THROWABLE_MESSAGE = "Check throwable message";
 
