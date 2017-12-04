@@ -1085,13 +1085,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).toSize().isEqualTo(4);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check iterator elements. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check iterator elements. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator(), "Message").toSize().isEqualTo(4);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1107,13 +1107,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).hasSize(4);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check iterator elements. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check iterator elements. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator(), "Message").hasSize(4);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

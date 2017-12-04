@@ -271,13 +271,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().isInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(new Error("value")), "Message").toCause().isInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
         }
     }
 
@@ -339,13 +339,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isCauseInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check throwable cause. Check value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(new Error("value")), "Message").isCauseInstanceOf(RuntimeException.class);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Check throwable cause. Check value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.Error>");
         }
     }
 

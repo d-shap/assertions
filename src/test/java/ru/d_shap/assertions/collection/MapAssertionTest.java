@@ -1166,13 +1166,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).toSize().isEqualTo(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<3> but was:<2>");
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<3> but was:<2>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2"), "Message").toSize().isEqualTo(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<3> but was:<2>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<3> but was:<2>");
         }
     }
 
@@ -1190,13 +1190,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).hasSize(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<3> but was:<2>");
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<3> but was:<2>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2"), "Message").hasSize(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<3> but was:<2>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<3> but was:<2>");
         }
     }
 

@@ -2728,13 +2728,13 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "vAlUe").toLength().isEqualTo(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "vAlUe", "Message").toLength().isEqualTo(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
@@ -2768,13 +2768,13 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "vAlUe").hasLength(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "vAlUe", "Message").hasLength(6);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
@@ -2841,37 +2841,37 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens().hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1 value2 value3", "Message").toTokens().hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|").hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true).hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<5>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|", true).hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<5>");
         }
     }
 

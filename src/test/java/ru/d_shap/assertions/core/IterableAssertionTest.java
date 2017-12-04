@@ -1001,13 +1001,13 @@ public final class IterableAssertionTest extends AssertionTest {
             initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1041,13 +1041,13 @@ public final class IterableAssertionTest extends AssertionTest {
             initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

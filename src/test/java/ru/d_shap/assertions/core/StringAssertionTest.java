@@ -2682,13 +2682,13 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe").toLength().isEqualTo(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").toLength().isEqualTo(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
@@ -2704,13 +2704,13 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe").hasLength(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").hasLength(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value length. Values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
@@ -2807,37 +2807,37 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens().hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1 value2 value3", "Message").toTokens().hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|").hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|", true).hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value tokens. Check value size. Values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<5>");
         }
     }
 
