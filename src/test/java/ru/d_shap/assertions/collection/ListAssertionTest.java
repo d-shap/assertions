@@ -72,6 +72,12 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isRandomAccess();
 
         try {
+            Raw.<String>listAssertion().isRandomAccess();
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.<String>listAssertion(), null).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
@@ -104,6 +110,12 @@ public final class ListAssertionTest extends AssertionTest {
     public void isNotRandomAccessTest() {
         initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isNotRandomAccess();
 
+        try {
+            Raw.<String>listAssertion().isNotRandomAccess();
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             initialize(Raw.<String>listAssertion(), null).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
