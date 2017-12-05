@@ -263,11 +263,11 @@ public final class ValueConverter {
      * Convert the object array to the object list.
      *
      * @param array the object array.
-     * @param <T>   the object type.
+     * @param <E>   the generic type of the array element.
      * @return the object list.
      */
     @SafeVarargs
-    public static <T> List<T> toObjectList(final T... array) {
+    public static <E> List<E> toObjectList(final E... array) {
         return Arrays.asList(array);
     }
 
@@ -275,12 +275,12 @@ public final class ValueConverter {
      * Convert the object iterable to the object list.
      *
      * @param iterable the object iterable.
-     * @param <T>      the object type.
+     * @param <E>      the generic type of the iterable element.
      * @return the object list.
      */
-    public static <T> List<T> toObjectList(final Iterable<T> iterable) {
-        List<T> list = new ArrayList<>();
-        for (T value : iterable) {
+    public static <E> List<E> toObjectList(final Iterable<E> iterable) {
+        List<E> list = new ArrayList<>();
+        for (E value : iterable) {
             list.add(value);
         }
         return list;
@@ -644,27 +644,27 @@ public final class ValueConverter {
      * Convert the object list to the object array. The result array shoud be used only to read values.
      *
      * @param list the object list.
-     * @param <T>  the list element type.
+     * @param <E>  the generic type of the array element.
      * @return the object array.
      */
     @SuppressWarnings("unchecked")
-    public static <T> T[] toObjectArray(final List<T> list) {
+    public static <E> E[] toObjectArray(final List<E> list) {
         Object[] array = new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }
-        return (T[]) array;
+        return (E[]) array;
     }
 
     /**
      * Convert the object iterable to the object array. The result array shoud be used only to read values.
      *
      * @param iterable the object iterable.
-     * @param <T>      the iterable element type.
+     * @param <E>      the generic type of the iterable element.
      * @return the object array.
      */
-    public static <T> T[] toObjectArray(final Iterable<T> iterable) {
-        List<T> list = toObjectList(iterable);
+    public static <E> E[] toObjectArray(final Iterable<E> iterable) {
+        List<E> list = toObjectList(iterable);
         return toObjectArray(list);
     }
 
