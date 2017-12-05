@@ -504,8 +504,6 @@ public final class BaseAssertionTest extends AssertionTest {
 
         Assertions.assertThat(createBaseAssertion(null).as(createBaseAssertion()).getActual()).isNull();
         Assertions.assertThat(createBaseAssertion(null, "Message").as(createBaseAssertion()).getActual()).isNull();
-        Assertions.assertThat(createBaseAssertion(null).as(createBaseAssertion(), "As message").getActual()).isNull();
-        Assertions.assertThat(createBaseAssertion(null, "Message").as(createBaseAssertion(), "As message").getActual()).isNull();
         try {
             createBaseAssertion().as(null);
             Assertions.fail("BaseAssertion test fail");
@@ -524,6 +522,48 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
+
+        createBaseAssertion(object).as(Raw.objectAssertion()).isSameAs(object);
+        createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isSameAs(object);
+        try {
+            createBaseAssertion(object).as(Raw.objectAssertion()).isNotSameAs(object);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.lang.Object.*>");
+        }
+        try {
+            createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isNotSameAs(object);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object.*>");
+        }
+
+        BaseAssertion baseAssertion = createBaseAssertion(object);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).hasClass(BaseAssertionImpl.class);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).isNotSameAs(baseAssertion);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion()).getActual()).isSameAs(object);
+
+        ObjectAssertion objectAssertion = createBaseAssertion(object).as(Raw.objectAssertion());
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion())).hasClass(ObjectAssertion.class);
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion())).isNotSameAs(objectAssertion);
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion()).getActual()).isSameAs(object);
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void asWithMessageTest() {
+        Object object = new Object();
+
+        Assertions.assertThat(createBaseAssertion(null).as(createBaseAssertion(), "As message").getActual()).isNull();
+        Assertions.assertThat(createBaseAssertion(null, "Message").as(createBaseAssertion(), "As message").getActual()).isNull();
+        try {
+            createBaseAssertion().as(null, "As message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(object).as(null, "As message");
             Assertions.fail("BaseAssertion test fail");
@@ -537,22 +577,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
 
-        createBaseAssertion(object).as(Raw.objectAssertion()).isSameAs(object);
-        createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isSameAs(object);
         createBaseAssertion(object).as(Raw.objectAssertion(), "As message").isSameAs(object);
         createBaseAssertion(object, "Message").as(Raw.objectAssertion(), "As message").isSameAs(object);
-        try {
-            createBaseAssertion(object).as(Raw.objectAssertion()).isNotSameAs(object);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.lang.Object.*>");
-        }
-        try {
-            createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isNotSameAs(object);
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object.*>");
-        }
         try {
             createBaseAssertion(object).as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
@@ -567,14 +593,14 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion baseAssertion = createBaseAssertion(object);
-        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).hasClass(BaseAssertionImpl.class);
-        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).isNotSameAs(baseAssertion);
-        Assertions.assertThat(baseAssertion.as(createBaseAssertion()).getActual()).isSameAs(object);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).hasClass(BaseAssertionImpl.class);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).isNotSameAs(baseAssertion);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message").getActual()).isSameAs(object);
 
-        ObjectAssertion objectAssertion = createBaseAssertion(object).as(Raw.objectAssertion());
-        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion())).hasClass(ObjectAssertion.class);
-        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion())).isNotSameAs(objectAssertion);
-        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion()).getActual()).isSameAs(object);
+        ObjectAssertion objectAssertion = createBaseAssertion(object).as(Raw.objectAssertion(), "As message");
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion(), "As message")).hasClass(ObjectAssertion.class);
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion(), "As message")).isNotSameAs(objectAssertion);
+        Assertions.assertThat(objectAssertion.as(Raw.objectAssertion(), "As message").getActual()).isSameAs(object);
     }
 
     /**
