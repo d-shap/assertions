@@ -21,24 +21,24 @@ package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the char.
  *
  * @author Dmitry Shapovalov
  */
-public class CharAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Character.class);
+public class CharAssertion extends ReferenceAssertion<Character> {
 
     /**
      * Create new object.
      */
     public CharAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<Character> getActualValueClass() {
+        return Character.class;
     }
 
     /**
@@ -49,7 +49,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isEqualTo(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() != expected) {
+        if (getActual() != expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
@@ -62,7 +62,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isNotEqualTo(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() == expected) {
+        if (getActual() == expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
@@ -75,7 +75,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isGreaterThan(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() <= expected) {
+        if (getActual() <= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
@@ -88,7 +88,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isGreaterThanOrEqualTo(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() < expected) {
+        if (getActual() < expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
@@ -101,7 +101,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isLessThan(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() >= expected) {
+        if (getActual() >= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
@@ -114,7 +114,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isLessThanOrEqualTo(final int expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() > expected) {
+        if (getActual() > expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
@@ -128,7 +128,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isInRange(final int expectedFrom, final int expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() < expectedFrom || (Character) getActual() >= expectedTo) {
+        if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
@@ -142,7 +142,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Character) getActual() >= expectedFrom && (Character) getActual() < expectedTo) {
+        if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
@@ -153,7 +153,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isAlphabetic() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isAlphabetic((Character) getActual())) {
+        if (!Character.isAlphabetic(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_ALPHABETIC);
         }
     }
@@ -164,7 +164,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isDigit() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isDigit((Character) getActual())) {
+        if (!Character.isDigit(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIGIT);
         }
     }
@@ -175,7 +175,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isLetter() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isLetter((Character) getActual())) {
+        if (!Character.isLetter(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER);
         }
     }
@@ -186,7 +186,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isLetterOrDigit() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isLetterOrDigit((Character) getActual())) {
+        if (!Character.isLetterOrDigit(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LETTER_OR_DIGIT);
         }
     }
@@ -197,7 +197,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isControl() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isISOControl((Character) getActual())) {
+        if (!Character.isISOControl(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONTROL_SYMBOL);
         }
     }
@@ -208,7 +208,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isLowerCase() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isLowerCase((Character) getActual())) {
+        if (!Character.isLowerCase(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LOWER_CASE);
         }
     }
@@ -219,7 +219,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isUpperCase() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isUpperCase((Character) getActual())) {
+        if (!Character.isUpperCase(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_UPPER_CASE);
         }
     }
@@ -230,7 +230,7 @@ public class CharAssertion extends ReferenceAssertion {
     public final void isWhitespace() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isWhitespace((Character) getActual())) {
+        if (!Character.isWhitespace(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_WHITESPACE);
         }
     }

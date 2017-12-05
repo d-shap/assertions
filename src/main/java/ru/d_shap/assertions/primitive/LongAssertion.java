@@ -21,24 +21,24 @@ package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the long.
  *
  * @author Dmitry Shapovalov
  */
-public class LongAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Long.class);
+public class LongAssertion extends ReferenceAssertion<Long> {
 
     /**
      * Create new object.
      */
     public LongAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<Long> getActualValueClass() {
+        return Long.class;
     }
 
     /**
@@ -49,7 +49,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isEqualTo(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() != expected) {
+        if (getActual() != expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
@@ -62,7 +62,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isNotEqualTo(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() == expected) {
+        if (getActual() == expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
@@ -75,7 +75,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isGreaterThan(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() <= expected) {
+        if (getActual() <= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
@@ -88,7 +88,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isGreaterThanOrEqualTo(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() < expected) {
+        if (getActual() < expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
@@ -101,7 +101,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isLessThan(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() >= expected) {
+        if (getActual() >= expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
@@ -114,7 +114,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isLessThanOrEqualTo(final long expected) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() > expected) {
+        if (getActual() > expected) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
@@ -128,7 +128,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isInRange(final long expectedFrom, final long expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() < expectedFrom || (Long) getActual() >= expectedTo) {
+        if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
@@ -142,7 +142,7 @@ public class LongAssertion extends ReferenceAssertion {
     public final void isNotInRange(final long expectedFrom, final long expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Long) getActual() >= expectedFrom && (Long) getActual() < expectedTo) {
+        if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }

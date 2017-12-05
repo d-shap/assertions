@@ -21,24 +21,24 @@ package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the boolean.
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Boolean.class);
+public class BooleanAssertion extends ReferenceAssertion<Boolean> {
 
     /**
      * Create new object.
      */
     public BooleanAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<Boolean> getActualValueClass() {
+        return Boolean.class;
     }
 
     /**
@@ -47,7 +47,7 @@ public class BooleanAssertion extends ReferenceAssertion {
     public final void isTrue() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!((Boolean) getActual())) {
+        if (!getActual()) {
             throw createAssertionError(Messages.Fail.IS_TRUE);
         }
     }
@@ -58,7 +58,7 @@ public class BooleanAssertion extends ReferenceAssertion {
     public final void isFalse() {
         checkInitialized();
         checkActualIsNotNull();
-        if ((Boolean) getActual()) {
+        if (getActual()) {
             throw createAssertionError(Messages.Fail.IS_FALSE);
         }
     }
