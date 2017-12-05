@@ -22,20 +22,22 @@ package ru.d_shap.assertions;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.d_shap.assertions.validator.ActualValueClassValidator;
 import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Base class for all assertions.
  *
+ * @param <T> the generic type of the actual value.
  * @author Dmitry Shapovalov
  */
-public abstract class BaseAssertion {
+public abstract class BaseAssertion<T> {
 
     private final List<ActualValueValidator> _actualValidators;
 
     private boolean _initialized;
 
-    private Object _actual;
+    private T _actual;
 
     private FailDescription _failDescription;
 
@@ -45,10 +47,19 @@ public abstract class BaseAssertion {
     protected BaseAssertion() {
         super();
         _actualValidators = new ArrayList<>();
+        ActualValueValidator actualValueValidator = new ActualValueClassValidator(getActualValueClass());
+        addActualValueValidator(actualValueValidator);
         _initialized = false;
         _actual = null;
         _failDescription = null;
     }
+
+    /**
+     * Get the actual value class.
+     *
+     * @return the actual value class.
+     */
+    protected abstract Class<T> getActualValueClass();
 
     /**
      * Add validator for the actual value.
@@ -64,7 +75,7 @@ public abstract class BaseAssertion {
      *
      * @return the actual value.
      */
-    protected final Object getActual() {
+    protected final T getActual() {
         return _actual;
     }
 
@@ -92,7 +103,7 @@ public abstract class BaseAssertion {
      *
      * @param actual the actual value.
      */
-    protected final void initialize(final Object actual) {
+    protected final void initialize(final T actual) {
         initialize(actual, new FailDescription());
     }
 
@@ -102,11 +113,11 @@ public abstract class BaseAssertion {
      * @param actual  the actual value.
      * @param message the message.
      */
-    protected final void initialize(final Object actual, final String message) {
+    protected final void initialize(final T actual, final String message) {
         initialize(actual, new FailDescription(message));
     }
 
-    private void initialize(final Object actual, final FailDescription failDescription) {
+    private void initialize(final T actual, final FailDescription failDescription) {
         if (_initialized) {
             throw createAssertionError(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED);
         }
@@ -129,11 +140,12 @@ public abstract class BaseAssertion {
      *
      * @param assertion the specified assertion.
      * @param actual    the actual value.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    protected final <T extends BaseAssertion> T initializeAssertion(final T assertion, final Object actual) {
-        ((BaseAssertion) assertion).initialize(actual, getFailDescription());
+    protected final <U, V extends BaseAssertion<U>> V initializeAssertion(final V assertion, final U actual) {
+        ((BaseAssertion<U>) assertion).initialize(actual, getFailDescription());
         return assertion;
     }
 
@@ -143,11 +155,12 @@ public abstract class BaseAssertion {
      * @param assertion the specified assertion.
      * @param actual    the actual value.
      * @param message   the message.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    protected final <T extends BaseAssertion> T initializeAssertion(final T assertion, final Object actual, final String message) {
-        ((BaseAssertion) assertion).initialize(actual, getFailDescription(message));
+    protected final <U, V extends BaseAssertion<U>> V initializeAssertion(final V assertion, final U actual, final String message) {
+        ((BaseAssertion<U>) assertion).initialize(actual, getFailDescription(message));
         return assertion;
     }
 
@@ -155,13 +168,15 @@ public abstract class BaseAssertion {
      * Make assertion of specified type about the same actual.
      *
      * @param assertion the assertion.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <T extends BaseAssertion> T as(final T assertion) {
+    @SuppressWarnings("unchecked")
+    public final <U extends T, V extends BaseAssertion<U>> V as(final V assertion) {
         checkInitialized();
         checkArgumentIsNotNull(assertion);
-        return initializeAssertion(assertion, _actual);
+        return initializeAssertion(assertion, (U) _actual);
     }
 
     /**
@@ -169,13 +184,15 @@ public abstract class BaseAssertion {
      *
      * @param assertion the assertion.
      * @param message   the message.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <T extends BaseAssertion> T as(final T assertion, final String message) {
+    @SuppressWarnings("unchecked")
+    public final <U extends T, V extends BaseAssertion<U>> V as(final V assertion, final String message) {
         checkInitialized();
         checkArgumentIsNotNull(assertion);
-        return initializeAssertion(assertion, _actual, message);
+        return initializeAssertion(assertion, (U) _actual, message);
     }
 
     /**
