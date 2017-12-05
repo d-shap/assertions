@@ -30,9 +30,10 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Base class for all reference type assertions.
  *
+ * @param <T> the generic type of the actual value.
  * @author Dmitry Shapovalov
  */
-public abstract class ReferenceAssertion extends BaseAssertion {
+public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
 
     /**
      * Create new object.
@@ -64,7 +65,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isSameAs(final Object expected) {
+    public final void isSameAs(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -78,7 +79,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      *
      * @param expected the expected value.
      */
-    public final void isNotSameAs(final Object expected) {
+    public final void isNotSameAs(final T expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -92,10 +93,13 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      *
      * @return the assertion.
      */
+    @SuppressWarnings("unchecked")
     public final ClassAssertion toClass() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.classAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
+        BaseAssertion<Class<Object>> classAssertion = (BaseAssertion<Class<Object>>) (BaseAssertion<?>) Raw.classAssertion();
+        Class<Object> actualClass = (Class<Object>) getActual().getClass();
+        return (ClassAssertion) (BaseAssertion<?>) initializeAssertion(classAssertion, actualClass, Messages.Check.ACTUAL_VALUE_CLASS);
     }
 
     /**
@@ -208,10 +212,11 @@ public abstract class ReferenceAssertion extends BaseAssertion {
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <T extends BaseAssertion> T toField(final String fieldName, final T assertion) {
+    public final <U, V extends BaseAssertion<U>> V toField(final String fieldName, final V assertion) {
         return toField(fieldName).as(assertion);
     }
 
