@@ -27,13 +27,18 @@ import ru.d_shap.assertions.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ObjectAssertion extends ReferenceAssertion {
+public class ObjectAssertion extends ReferenceAssertion<Object> {
 
     /**
      * Create new object.
      */
     public ObjectAssertion() {
         super();
+    }
+
+    @Override
+    protected final Class<Object> getActualValueClass() {
+        return Object.class;
     }
 
     /**

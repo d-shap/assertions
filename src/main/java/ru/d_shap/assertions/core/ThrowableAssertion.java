@@ -22,24 +22,24 @@ package ru.d_shap.assertions.core;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the throwable.
  *
  * @author Dmitry Shapovalov
  */
-public class ThrowableAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Throwable.class);
+public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
 
     /**
      * Create new object.
      */
     public ThrowableAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<Throwable> getActualValueClass() {
+        return Throwable.class;
     }
 
     /**
@@ -50,7 +50,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
     public final StringAssertion toMessage() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.stringAssertion(), ((Throwable) getActual()).getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
+        return initializeAssertion(Raw.stringAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
     }
 
     /**
@@ -85,7 +85,7 @@ public class ThrowableAssertion extends ReferenceAssertion {
     public final ThrowableAssertion toCause() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.throwableAssertion(), ((Throwable) getActual()).getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
+        return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
     }
 
     /**

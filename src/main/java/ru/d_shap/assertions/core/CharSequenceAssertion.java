@@ -23,24 +23,24 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the char sequence.
  *
  * @author Dmitry Shapovalov
  */
-public class CharSequenceAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(CharSequence.class);
+public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
 
     /**
      * Create new object.
      */
     public CharSequenceAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<CharSequence> getActualValueClass() {
+        return CharSequence.class;
     }
 
     /**
