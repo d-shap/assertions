@@ -107,7 +107,7 @@ final class FailDescription {
      * @param assertion the assertion.
      * @return current object for the chain call.
      */
-    FailDescription addActual(final BaseAssertion assertion) {
+    FailDescription addActual(final BaseAssertion<?> assertion) {
         _actualDefined = true;
         Object actual = assertion.getActual();
         String actualStr;
@@ -127,7 +127,7 @@ final class FailDescription {
      * @param expected  the expected value of the assertion.
      * @return current object for the chain call.
      */
-    FailDescription addExpected(final BaseAssertion assertion, final Object expected) {
+    FailDescription addExpected(final BaseAssertion<?> assertion, final Object expected) {
         _expectedDefined = true;
         String expectedStr;
         if (expected == null) {
@@ -147,7 +147,7 @@ final class FailDescription {
      * @param expectedTo   the upper bound of the expected value range of the assertion.
      * @return current object for the chain call.
      */
-    FailDescription addExpected(final BaseAssertion assertion, final Object expectedFrom, final Object expectedTo) {
+    FailDescription addExpected(final BaseAssertion<?> assertion, final Object expectedFrom, final Object expectedTo) {
         _expectedDefined = true;
         String expectedFromStr;
         if (expectedFrom == null) {
