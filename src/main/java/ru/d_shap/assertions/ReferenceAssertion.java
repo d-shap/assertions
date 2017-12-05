@@ -222,9 +222,7 @@ public abstract class ReferenceAssertion extends BaseAssertion {
             try {
                 return currentClass.getDeclaredField(fieldName);
             } catch (NoSuchFieldException ex) {
-                if (noSuchFieldException == null) {
-                    noSuchFieldException = ex;
-                }
+                noSuchFieldException = ex;
                 currentClass = currentClass.getSuperclass();
             }
         }
