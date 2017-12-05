@@ -78,6 +78,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion1.initialize(null);
         Assertions.assertThat(baseAssertion1.getActual()).isNull();
         Assertions.assertThat(baseAssertion1.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion1, "_failDescription").isNotNull();
         try {
             baseAssertion1.initialize(null);
             Assertions.fail("BaseAssertion test fail");
@@ -96,6 +97,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion2.initialize(new Object());
         Assertions.assertThat(baseAssertion2.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion2.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion2, "_failDescription").isNotNull();
         try {
             baseAssertion2.initialize(new Object());
             Assertions.fail("BaseAssertion test fail");
@@ -114,6 +116,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion3.initialize(null, null);
         Assertions.assertThat(baseAssertion3.getActual()).isNull();
         Assertions.assertThat(baseAssertion3.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion3, "_failDescription").isNotNull();
         try {
             baseAssertion3.initialize(null, null);
             Assertions.fail("BaseAssertion test fail");
@@ -132,6 +135,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion4.initialize(new Object(), null);
         Assertions.assertThat(baseAssertion4.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion4.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion4, "_failDescription").isNotNull();
         try {
             baseAssertion4.initialize(new Object(), null);
             Assertions.fail("BaseAssertion test fail");
@@ -150,6 +154,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion5.initialize(null, "");
         Assertions.assertThat(baseAssertion5.getActual()).isNull();
         Assertions.assertThat(baseAssertion5.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion5, "_failDescription").isNotNull();
         try {
             baseAssertion5.initialize(null, "");
             Assertions.fail("BaseAssertion test fail");
@@ -168,6 +173,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion6.initialize(new Object(), "");
         Assertions.assertThat(baseAssertion6.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion6.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion6, "_failDescription").isNotNull();
         try {
             baseAssertion6.initialize(new Object(), "");
             Assertions.fail("BaseAssertion test fail");
@@ -186,6 +192,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion7.initialize(null, "Message");
         Assertions.assertThat(baseAssertion7.getActual()).isNull();
         Assertions.assertThat(baseAssertion7.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion7, "_failDescription").isNotNull();
         try {
             baseAssertion7.initialize(null, "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -204,6 +211,7 @@ public final class BaseAssertionTest extends AssertionTest {
         baseAssertion8.initialize(new Object(), "Message");
         Assertions.assertThat(baseAssertion8.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion8.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion8, "_failDescription").isNotNull();
         try {
             baseAssertion8.initialize(new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
