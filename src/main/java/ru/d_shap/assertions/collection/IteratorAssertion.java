@@ -55,7 +55,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     }
 
     /**
-     * Make assertion about the iterator elements.
+     * Make assertion about the iterator elements from the current position.
      *
      * @return the assertion.
      */
@@ -71,7 +71,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     }
 
     /**
-     * Make assertion about the iterator elements.
+     * Make assertion about the iterator elements from the current position.
      *
      * @param size the number of elements to get from the iterator.
      * @return the assertion.
