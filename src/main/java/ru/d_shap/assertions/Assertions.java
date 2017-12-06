@@ -28,11 +28,12 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
 
 import ru.d_shap.assertions.array.BooleanArrayAssertion;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
@@ -43,11 +44,12 @@ import ru.d_shap.assertions.array.IntArrayAssertion;
 import ru.d_shap.assertions.array.LongArrayAssertion;
 import ru.d_shap.assertions.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.array.ShortArrayAssertion;
-import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
+import ru.d_shap.assertions.collection.SortedMapAssertion;
+import ru.d_shap.assertions.collection.SortedSetAssertion;
 import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ComparableAssertion;
@@ -303,10 +305,11 @@ public final class Assertions {
      *
      * @param actual    the actual value.
      * @param assertion the assertion.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public static <T extends BaseAssertion> T assertThat(final Object actual, final T assertion) {
+    public static <U, V extends BaseAssertion<U>> V assertThat(final U actual, final V assertion) {
         return assertThat(actual).as(assertion);
     }
 
@@ -327,10 +330,11 @@ public final class Assertions {
      * @param actual    the actual value.
      * @param fieldName the field name.
      * @param assertion the assertion.
-     * @param <T>       generic assertion type.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public static <T extends BaseAssertion> T assertThat(final Object actual, final String fieldName, final T assertion) {
+    public static <U, V extends BaseAssertion<U>> V assertThat(final Object actual, final String fieldName, final V assertion) {
         return assertThat(actual).toField(fieldName, assertion);
     }
 
@@ -434,11 +438,11 @@ public final class Assertions {
      * Make assertion about the object array.
      *
      * @param actual the actual value.
-     * @param <T>    the array element type.
+     * @param <E>    the generic type of the array element.
      * @return the assertion.
      */
-    public static <T> ObjectArrayAssertion<T> assertThat(final T[] actual) {
-        ObjectArrayAssertion<T> assertion = Raw.objectArrayAssertion();
+    public static <E> ObjectArrayAssertion<E> assertThat(final E[] actual) {
+        ObjectArrayAssertion<E> assertion = Raw.objectArrayAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -483,11 +487,11 @@ public final class Assertions {
      * Make assertion about the comparable.
      *
      * @param actual the actual value.
-     * @param <T>    the comparable type.
+     * @param <E>    the generic type of the comparable.
      * @return the assertion.
      */
-    public static <T> ComparableAssertion<T> assertThat(final Comparable<T> actual) {
-        ComparableAssertion<T> assertion = Raw.comparableAssertion();
+    public static <E> ComparableAssertion<E> assertThat(final Comparable<E> actual) {
+        ComparableAssertion<E> assertion = Raw.comparableAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -496,11 +500,11 @@ public final class Assertions {
      * Make assertion about the iterable.
      *
      * @param actual the actual value.
-     * @param <T>    the iterable element type.
+     * @param <E>    the generic type of the iterable element.
      * @return the assertion.
      */
-    public static <T> IterableAssertion<T> assertThat(final Iterable<T> actual) {
-        IterableAssertion<T> assertion = Raw.iterableAssertion();
+    public static <E> IterableAssertion<E> assertThat(final Iterable<E> actual) {
+        IterableAssertion<E> assertion = Raw.iterableAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -518,27 +522,14 @@ public final class Assertions {
     }
 
     /**
-     * Make assertion about the collection.
-     *
-     * @param actual the actual value.
-     * @param <T>    the collection element type.
-     * @return the assertion.
-     */
-    public static <T> CollectionAssertion<T> assertThat(final Collection<T> actual) {
-        CollectionAssertion<T> assertion = Raw.collectionAssertion();
-        assertion.initialize(actual);
-        return assertion;
-    }
-
-    /**
      * Make assertion about the iterator.
      *
      * @param actual the actual value.
-     * @param <T>    the iterator element type.
+     * @param <E>    the generic type of the iterator element.
      * @return the assertion.
      */
-    public static <T> IteratorAssertion<T> assertThat(final Iterator<T> actual) {
-        IteratorAssertion<T> assertion = Raw.iteratorAssertion();
+    public static <E> IteratorAssertion<E> assertThat(final Iterator<E> actual) {
+        IteratorAssertion<E> assertion = Raw.iteratorAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -547,11 +538,11 @@ public final class Assertions {
      * Make assertion about the list.
      *
      * @param actual the actual value.
-     * @param <T>    the list element type.
+     * @param <E>    the generic type of the list element.
      * @return the assertion.
      */
-    public static <T> ListAssertion<T> assertThat(final List<T> actual) {
-        ListAssertion<T> assertion = Raw.listAssertion();
+    public static <E> ListAssertion<E> assertThat(final List<E> actual) {
+        ListAssertion<E> assertion = Raw.listAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -560,11 +551,24 @@ public final class Assertions {
      * Make assertion about the set.
      *
      * @param actual the actual value.
-     * @param <T>    the set element type.
+     * @param <E>    the generic type of the set element.
      * @return the assertion.
      */
-    public static <T> SetAssertion<T> assertThat(final Set<T> actual) {
-        SetAssertion<T> assertion = Raw.setAssertion();
+    public static <E> SetAssertion<E> assertThat(final Set<E> actual) {
+        SetAssertion<E> assertion = Raw.setAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the sorted set.
+     *
+     * @param actual the actual value.
+     * @param <E>    the generic type of the sorted set element.
+     * @return the assertion.
+     */
+    public static <E> SortedSetAssertion<E> assertThat(final SortedSet<E> actual) {
+        SortedSetAssertion<E> assertion = Raw.sortedSetAssertion();
         assertion.initialize(actual);
         return assertion;
     }
@@ -573,12 +577,26 @@ public final class Assertions {
      * Make assertion about the map.
      *
      * @param actual the actual value.
-     * @param <K>    the map key type.
-     * @param <V>    the map value type.
+     * @param <K>    the generic type of the map key.
+     * @param <V>    the generic type of the map value.
      * @return the assertion.
      */
     public static <K, V> MapAssertion<K, V> assertThat(final Map<K, V> actual) {
         MapAssertion<K, V> assertion = Raw.mapAssertion();
+        assertion.initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the sorted map.
+     *
+     * @param actual the actual value.
+     * @param <K>    the generic type of the sorted map key.
+     * @param <V>    the generic type of the sorted map value.
+     * @return the assertion.
+     */
+    public static <K, V> SortedMapAssertion<K, V> assertThat(final SortedMap<K, V> actual) {
+        SortedMapAssertion<K, V> assertion = Raw.sortedMapAssertion();
         assertion.initialize(actual);
         return assertion;
     }
