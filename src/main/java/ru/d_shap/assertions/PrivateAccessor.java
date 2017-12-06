@@ -19,27 +19,45 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.AccessibleObject;
+import java.security.AccessController;
 import java.security.PrivilegedAction;
 
 /**
- * Field access privileged action.
+ * Class to make the private class elements accessible.
  *
  * @author Dmitry Shapovalov
  */
-final class FieldAccessAction implements PrivilegedAction<Void> {
+final class PrivateAccessor {
 
-    private final Field _field;
-
-    FieldAccessAction(final Field field) {
+    private PrivateAccessor() {
         super();
-        _field = field;
     }
 
-    @Override
-    public Void run() {
-        _field.setAccessible(true);
-        return null;
+    static void setAccessible(final AccessibleObject accessibleObject) {
+        AccessController.doPrivileged(new PrivilegedAccessAction(accessibleObject));
+    }
+
+    /**
+     * Privileged action to make the private class element accessible.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivilegedAccessAction implements PrivilegedAction<Void> {
+
+        private final AccessibleObject _accessibleObject;
+
+        PrivilegedAccessAction(final AccessibleObject accessibleObject) {
+            super();
+            _accessibleObject = accessibleObject;
+        }
+
+        @Override
+        public Void run() {
+            _accessibleObject.setAccessible(true);
+            return null;
+        }
+
     }
 
 }
