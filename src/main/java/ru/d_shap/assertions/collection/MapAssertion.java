@@ -26,27 +26,33 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the map.
  *
- * @param <K> the map key type.
- * @param <V> the map value type.
+ * @param <K> the generic type of the map key.
+ * @param <V> the generic type of the map value.
  * @author Dmitry Shapovalov
  */
-public class MapAssertion<K, V> extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Map.class);
+public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
 
     /**
      * Create new object.
      */
     public MapAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected final Class<Map<K, V>> getActualValueClass() {
+        return (Class<Map<K, V>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Map.class;
     }
 
     /**
@@ -55,7 +61,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
     public final void isEmpty() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!((Map<?, ?>) getActual()).isEmpty()) {
+        if (!getActual().isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
         }
     }
@@ -65,7 +71,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
      */
     public final void isNullOrEmpty() {
         checkInitialized();
-        if (getActual() != null && !((Map<?, ?>) getActual()).isEmpty()) {
+        if (getActual() != null && !getActual().isEmpty()) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
         }
     }
@@ -76,7 +82,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
     public final void isNotEmpty() {
         checkInitialized();
         checkActualIsNotNull();
-        if (((Map<?, ?>) getActual()).isEmpty()) {
+        if (getActual().isEmpty()) {
             throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
         }
     }
@@ -89,7 +95,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
     public final SetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K>setAssertion(), ((Map<?, ?>) getActual()).keySet(), Messages.Check.ACTUAL_KEYS);
+        return initializeAssertion(Raw.<K>setAssertion(), getActual().keySet(), Messages.Check.ACTUAL_KEYS);
     }
 
     /**
@@ -225,10 +231,11 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
      *
      * @return the assertion.
      */
-    public final CollectionAssertion<V> toValues() {
+    public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<V>collectionAssertion(), ((Map<?, ?>) getActual()).values(), Messages.Check.ACTUAL_VALUES);
+        Iterable<V> values = getActual().values();
+        return initializeAssertion(Raw.<V>iterableAssertion(), values, Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -304,7 +311,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
     }
 
     private SetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
-        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), ((Map<?, ?>) getActual()).entrySet());
+        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), getActual().entrySet());
     }
 
     /**
@@ -315,7 +322,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion {
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), ((Map<?, ?>) getActual()).size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**
