@@ -28,11 +28,12 @@ import ru.d_shap.assertions.array.IntArrayAssertion;
 import ru.d_shap.assertions.array.LongArrayAssertion;
 import ru.d_shap.assertions.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.array.ShortArrayAssertion;
-import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.IteratorAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.MapAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
+import ru.d_shap.assertions.collection.SortedMapAssertion;
+import ru.d_shap.assertions.collection.SortedSetAssertion;
 import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ComparableAssertion;
@@ -226,10 +227,10 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the object array.
      *
-     * @param <T> the array element type.
+     * @param <E> the generic type of the array element.
      * @return the assertion.
      */
-    public static <T> ObjectArrayAssertion<T> objectArrayAssertion() {
+    public static <E> ObjectArrayAssertion<E> objectArrayAssertion() {
         return new ObjectArrayAssertion<>();
     }
 
@@ -272,20 +273,20 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the comparable.
      *
-     * @param <T> the comparable type.
+     * @param <E> the generic type of the comparable.
      * @return the assertion.
      */
-    public static <T> ComparableAssertion<T> comparableAssertion() {
+    public static <E> ComparableAssertion<E> comparableAssertion() {
         return new ComparableAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the iterable.
      *
-     * @param <T> the iterable element type.
+     * @param <E> the generic type of the iterable element.
      * @return the assertion.
      */
-    public static <T> IterableAssertion<T> iterableAssertion() {
+    public static <E> IterableAssertion<E> iterableAssertion() {
         return new IterableAssertion<>();
     }
 
@@ -299,54 +300,65 @@ public final class Raw {
     }
 
     /**
-     * Create uninitialized assertion about the collection.
-     *
-     * @param <T> the collection element type.
-     * @return the assertion.
-     */
-    public static <T> CollectionAssertion<T> collectionAssertion() {
-        return new CollectionAssertion<>();
-    }
-
-    /**
      * Create uninitialized assertion about the iterator.
      *
-     * @param <T> the iterator element type.
+     * @param <E> the generic type of the iterator element.
      * @return the assertion.
      */
-    public static <T> IteratorAssertion<T> iteratorAssertion() {
+    public static <E> IteratorAssertion<E> iteratorAssertion() {
         return new IteratorAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the list.
      *
-     * @param <T> the list element type.
+     * @param <E> the generic type of the list element.
      * @return the assertion.
      */
-    public static <T> ListAssertion<T> listAssertion() {
+    public static <E> ListAssertion<E> listAssertion() {
         return new ListAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the set.
      *
-     * @param <T> the set element type.
+     * @param <E> the generic type of the set element.
      * @return the assertion.
      */
-    public static <T> SetAssertion<T> setAssertion() {
+    public static <E> SetAssertion<E> setAssertion() {
         return new SetAssertion<>();
+    }
+
+    /**
+     * Create uninitialized assertion about the sorted set.
+     *
+     * @param <E> the generic type of the sorted set element.
+     * @return the assertion.
+     */
+    public static <E> SortedSetAssertion<E> sortedSetAssertion() {
+        return new SortedSetAssertion<>();
     }
 
     /**
      * Create uninitialized assertion about the map.
      *
-     * @param <K> the map key type.
-     * @param <V> the map value type.
+     * @param <K> the generic type of the map key.
+     * @param <V> the generic type of the map value.
      * @return the assertion.
      */
     public static <K, V> MapAssertion<K, V> mapAssertion() {
         return new MapAssertion<>();
+    }
+
+    /**
+     * Create uninitialized assertion about the sorted map.
+     *
+     * @param <K> the generic type of the sorted map key.
+     * @param <V> the generic type of the sorted map value.
+     * @return the assertion.
+     */
+    public static <K, V> SortedMapAssertion<K, V> sortedMapAssertion() {
+        return new SortedMapAssertion<>();
     }
 
     /**
