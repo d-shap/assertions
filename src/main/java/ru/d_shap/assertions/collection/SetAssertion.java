@@ -276,6 +276,11 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
         createListAssertion().containsNone(expectedArray);
     }
 
+    private ListAssertion<E> createListAssertion() {
+        List<E> list = new ArrayList<>(getActual());
+        return initializeAssertion(Raw.<E>listAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value size.
      *
@@ -294,11 +299,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    private ListAssertion<E> createListAssertion() {
-        List<E> list = new ArrayList<>(getActual());
-        return initializeAssertion(Raw.<E>listAssertion(), list);
     }
 
     @Override
