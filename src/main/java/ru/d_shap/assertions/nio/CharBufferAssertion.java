@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the char buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class CharBufferAssertion extends BufferAssertion<Character> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(CharBuffer.class);
+public class CharBufferAssertion extends BufferAssertion<CharBuffer, Character> {
 
     /**
      * Create new object.
      */
     public CharBufferAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<CharBuffer> getActualValueClass() {
+        return CharBuffer.class;
     }
 
     /**

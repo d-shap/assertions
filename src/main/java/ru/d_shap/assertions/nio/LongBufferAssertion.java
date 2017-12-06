@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the long buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class LongBufferAssertion extends BufferAssertion<Long> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(LongBuffer.class);
+public class LongBufferAssertion extends BufferAssertion<LongBuffer, Long> {
 
     /**
      * Create new object.
      */
     public LongBufferAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<LongBuffer> getActualValueClass() {
+        return LongBuffer.class;
     }
 
     /**

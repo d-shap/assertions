@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the byte buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class ByteBufferAssertion extends BufferAssertion<Byte> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(ByteBuffer.class);
+public class ByteBufferAssertion extends BufferAssertion<ByteBuffer, Byte> {
 
     /**
      * Create new object.
      */
     public ByteBufferAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<ByteBuffer> getActualValueClass() {
+        return ByteBuffer.class;
     }
 
     /**

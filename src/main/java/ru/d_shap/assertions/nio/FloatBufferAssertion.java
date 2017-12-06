@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the float buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class FloatBufferAssertion extends BufferAssertion<Float> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(FloatBuffer.class);
+public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
 
     /**
      * Create new object.
      */
     public FloatBufferAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<FloatBuffer> getActualValueClass() {
+        return FloatBuffer.class;
     }
 
     /**

@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the short buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class ShortBufferAssertion extends BufferAssertion<Short> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(ShortBuffer.class);
+public class ShortBufferAssertion extends BufferAssertion<ShortBuffer, Short> {
 
     /**
      * Create new object.
      */
     public ShortBufferAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<ShortBuffer> getActualValueClass() {
+        return ShortBuffer.class;
     }
 
     /**
