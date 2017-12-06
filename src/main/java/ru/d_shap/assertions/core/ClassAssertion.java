@@ -125,7 +125,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         if (!Modifier.isPrivate(modifiers)) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_NOT_ACCESSIBLE);
         }
-        constructor.setAccessible(true);
+        setAccessible(constructor);
         try {
             constructor.newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException ex) {
