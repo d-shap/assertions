@@ -28,24 +28,24 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.CharArrayAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the reader.
  *
  * @author Dmitry Shapovalov
  */
-public class ReaderAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Reader.class);
+public class ReaderAssertion extends ReferenceAssertion<Reader> {
 
     /**
      * Create new object.
      */
     public ReaderAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<Reader> getActualValueClass() {
+        return Reader.class;
     }
 
     /**
@@ -54,20 +54,19 @@ public class ReaderAssertion extends ReferenceAssertion {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_READER_CHARS).isLessThanOrEqualTo(-1);
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_READER_CHARS).isLessThan(0);
     }
 
     private int readActual() {
         try {
-            Reader actual = (Reader) getActual();
-            return actual.read();
+            return getActual().read();
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
     }
 
     /**
-     * Make assertion about the chars read from the actual.
+     * Make assertion about the chars read from the actual from the current position.
      *
      * @return the assertion.
      */
@@ -75,10 +74,9 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            Reader actual = (Reader) getActual();
             StringWriter writer = new StringWriter();
             while (true) {
-                int read = actual.read();
+                int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
@@ -91,7 +89,7 @@ public class ReaderAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the chars read from the actual.
+     * Make assertion about the chars read from the actual from the current position.
      *
      * @param length the number of chars to read from the actual.
      * @return the assertion.
@@ -101,11 +99,10 @@ public class ReaderAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsValid(length > 0);
         try {
-            Reader actual = (Reader) getActual();
             StringWriter writer = new StringWriter(length);
             int count = 0;
             while (count < length) {
-                int read = actual.read();
+                int read = getActual().read();
                 if (read < 0) {
                     break;
                 }

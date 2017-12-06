@@ -28,24 +28,24 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the input stream.
  *
  * @author Dmitry Shapovalov
  */
-public class InputStreamAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(InputStream.class);
+public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
 
     /**
      * Create new object.
      */
     public InputStreamAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<InputStream> getActualValueClass() {
+        return InputStream.class;
     }
 
     /**
@@ -54,20 +54,19 @@ public class InputStreamAssertion extends ReferenceAssertion {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_STREAM_BYTES).isLessThanOrEqualTo(-1);
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_STREAM_BYTES).isLessThan(0);
     }
 
     private int readActual() {
         try {
-            InputStream actual = (InputStream) getActual();
-            return actual.read();
+            return getActual().read();
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
     }
 
     /**
-     * Make assertion about the bytes read from the actual.
+     * Make assertion about the bytes read from the actual from the current position.
      *
      * @return the assertion.
      */
@@ -75,10 +74,9 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             while (true) {
-                int read = actual.read();
+                int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
@@ -91,7 +89,7 @@ public class InputStreamAssertion extends ReferenceAssertion {
     }
 
     /**
-     * Make assertion about the bytes read from the actual.
+     * Make assertion about the bytes read from the actual from the current position.
      *
      * @param length the number of bytes to read from the actual.
      * @return the assertion.
@@ -101,11 +99,10 @@ public class InputStreamAssertion extends ReferenceAssertion {
         checkActualIsNotNull();
         checkArgumentIsValid(length > 0);
         try {
-            InputStream actual = (InputStream) getActual();
             ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
             int count = 0;
             while (count < length) {
-                int read = actual.read();
+                int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
