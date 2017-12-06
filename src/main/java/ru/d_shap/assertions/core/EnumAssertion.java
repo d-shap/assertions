@@ -25,7 +25,6 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.primitive.IntAssertion;
 import ru.d_shap.assertions.validator.ActualValueEnumValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the enum.
@@ -33,8 +32,6 @@ import ru.d_shap.assertions.validator.ActualValueValidator;
  * @author Dmitry Shapovalov
  */
 public class EnumAssertion extends ClassAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_ENUM_VALIDATOR = new ActualValueEnumValidator();
 
     private static final String VALUES_METHOD_NAME = "values";
 
@@ -53,7 +50,7 @@ public class EnumAssertion extends ClassAssertion {
 
     EnumAssertion(final String valuesMethodName, final String valueOfMethodName) {
         super();
-        addActualValueValidator(ACTUAL_VALUE_ENUM_VALIDATOR);
+        addActualValueValidator(new ActualValueEnumValidator());
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
     }
@@ -71,15 +68,13 @@ public class EnumAssertion extends ClassAssertion {
 
     private int getValueCount() {
         try {
-            Class<?> actualClass = (Class<?>) getActual();
+            Method valuesMethod = getActual().getDeclaredMethod(_valuesMethodName);
+            Object[] values = (Object[]) valuesMethod.invoke(getActual());
 
-            Method valuesMethod = actualClass.getDeclaredMethod(_valuesMethodName);
-            Object[] values = (Object[]) valuesMethod.invoke(actualClass);
-
-            Method valueOfMethod = actualClass.getDeclaredMethod(_valueOfMethodName, String.class);
+            Method valueOfMethod = getActual().getDeclaredMethod(_valueOfMethodName, String.class);
             for (Object value : values) {
                 String valueName = value.toString();
-                valueOfMethod.invoke(actualClass, valueName);
+                valueOfMethod.invoke(getActual(), valueName);
             }
 
             return values.length;

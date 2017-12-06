@@ -26,24 +26,29 @@ import java.lang.reflect.Modifier;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the class.
  *
  * @author Dmitry Shapovalov
  */
-public class ClassAssertion extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Class.class);
+public class ClassAssertion extends ReferenceAssertion<Class<?>> {
 
     /**
      * Create new object.
      */
     public ClassAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected final Class<Class<?>> getActualValueClass() {
+        return (Class<Class<?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Class.class;
     }
 
     /**
@@ -83,7 +88,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (!expected.isAssignableFrom((Class<?>) getActual())) {
+        if (!expected.isAssignableFrom(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SUBTYPE_OF, expected);
         }
     }
@@ -97,7 +102,7 @@ public class ClassAssertion extends ReferenceAssertion {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (expected.isAssignableFrom((Class<?>) getActual())) {
+        if (expected.isAssignableFrom(getActual())) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUBTYPE_OF, expected);
         }
     }
@@ -108,7 +113,7 @@ public class ClassAssertion extends ReferenceAssertion {
     public final void hasOnePrivateConstructor() {
         checkInitialized();
         checkActualIsNotNull();
-        Constructor<?>[] constructors = ((Class<?>) getActual()).getDeclaredConstructors();
+        Constructor<?>[] constructors = getActual().getDeclaredConstructors();
         if (constructors.length != 1) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
         }
