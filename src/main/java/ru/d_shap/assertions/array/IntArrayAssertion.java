@@ -22,24 +22,24 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the int array.
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayAssertion extends ArrayAssertion<Integer> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(int[].class);
+public class IntArrayAssertion extends ArrayAssertion<int[], Integer> {
 
     /**
      * Create new object.
      */
     public IntArrayAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<int[]> getActualValueClass() {
+        return int[].class;
     }
 
     /**

@@ -22,24 +22,24 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the short array.
  *
  * @author Dmitry Shapovalov
  */
-public class ShortArrayAssertion extends ArrayAssertion<Short> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(short[].class);
+public class ShortArrayAssertion extends ArrayAssertion<short[], Short> {
 
     /**
      * Create new object.
      */
     public ShortArrayAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<short[]> getActualValueClass() {
+        return short[].class;
     }
 
     /**

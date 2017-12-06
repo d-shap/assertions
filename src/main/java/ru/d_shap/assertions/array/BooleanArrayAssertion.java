@@ -22,24 +22,24 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the boolean array.
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanArrayAssertion extends ArrayAssertion<Boolean> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(boolean[].class);
+public class BooleanArrayAssertion extends ArrayAssertion<boolean[], Boolean> {
 
     /**
      * Create new object.
      */
     public BooleanArrayAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<boolean[]> getActualValueClass() {
+        return boolean[].class;
     }
 
     /**

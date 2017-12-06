@@ -22,25 +22,30 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the object array.
  *
- * @param <T> the array element type.
+ * @param <E> the generic type of the array element.
  * @author Dmitry Shapovalov
  */
-public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Object[].class);
+public class ObjectArrayAssertion<E> extends ArrayAssertion<E[], E> {
 
     /**
      * Create new object.
      */
     public ObjectArrayAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected final Class<E[]> getActualValueClass() {
+        return (Class<E[]>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Object[].class;
     }
 
     /**
@@ -48,7 +53,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final T expected) {
+    public final void contains(final E expected) {
         doContains(expected);
     }
 
@@ -57,7 +62,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final T expected) {
+    public final void doesNotContain(final E expected) {
         doDoesNotContain(expected);
     }
 
@@ -67,7 +72,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsAll(final T... expected) {
+    public final void containsAll(final E... expected) {
         doContainsAll(expected);
     }
 
@@ -76,7 +81,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<T> expected) {
+    public final void containsAll(final Iterable<E> expected) {
         doContainsAll(expected);
     }
 
@@ -86,7 +91,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsAllInOrder(final T... expected) {
+    public final void containsAllInOrder(final E... expected) {
         doContainsAllInOrder(expected);
     }
 
@@ -95,7 +100,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<T> expected) {
+    public final void containsAllInOrder(final Iterable<E> expected) {
         doContainsAllInOrder(expected);
     }
 
@@ -105,7 +110,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsExactly(final T... expected) {
+    public final void containsExactly(final E... expected) {
         doContainsExactly(expected);
     }
 
@@ -114,7 +119,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<T> expected) {
+    public final void containsExactly(final Iterable<E> expected) {
         doContainsExactly(expected);
     }
 
@@ -124,7 +129,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsExactlyInOrder(final T... expected) {
+    public final void containsExactlyInOrder(final E... expected) {
         doContainsExactlyInOrder(expected);
     }
 
@@ -133,7 +138,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<T> expected) {
+    public final void containsExactlyInOrder(final Iterable<E> expected) {
         doContainsExactlyInOrder(expected);
     }
 
@@ -143,7 +148,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsAny(final T... expected) {
+    public final void containsAny(final E... expected) {
         doContainsAny(expected);
     }
 
@@ -152,7 +157,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<T> expected) {
+    public final void containsAny(final Iterable<E> expected) {
         doContainsAny(expected);
     }
 
@@ -162,7 +167,7 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      * @param expected the expected values.
      */
     @SafeVarargs
-    public final void containsNone(final T... expected) {
+    public final void containsNone(final E... expected) {
         doContainsNone(expected);
     }
 
@@ -171,14 +176,14 @@ public class ObjectArrayAssertion<T> extends ArrayAssertion<T> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<T> expected) {
+    public final void containsNone(final Iterable<E> expected) {
         doContainsNone(expected);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    final List<T> createList(final Object value) {
-        return ValueConverter.toObjectList((T[]) value);
+    final List<E> createList(final Object value) {
+        return ValueConverter.toObjectList((E[]) value);
     }
 
     @Override

@@ -22,24 +22,24 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.ValueConverter;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the float array.
  *
  * @author Dmitry Shapovalov
  */
-public class FloatArrayAssertion extends ArrayAssertion<Float> {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(float[].class);
+public class FloatArrayAssertion extends ArrayAssertion<float[], Float> {
 
     /**
      * Create new object.
      */
     public FloatArrayAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    protected final Class<float[]> getActualValueClass() {
+        return float[].class;
     }
 
     /**
