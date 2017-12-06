@@ -51,6 +51,14 @@ public final class Messages {
 
         public static final String ACTUAL_ITERATOR_ELEMENTS = "Check iterator elements";
 
+        public static final String ACTUAL_HEAD_ELEMENT = "Check head elements to element";
+
+        public static final String ACTUAL_HEAD_COUNT = "Check head n elements";
+
+        public static final String ACTUAL_TAIL_ELEMENT = "Check tail elements from element";
+
+        public static final String ACTUAL_TAIL_COUNT = "Check tail n elements";
+
         public static final String ACTUAL_KEYS = "Check keys";
 
         public static final String ACTUAL_VALUES = "Check values";
