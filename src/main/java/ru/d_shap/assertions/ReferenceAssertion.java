@@ -19,8 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
-import java.security.AccessController;
 
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
@@ -199,7 +199,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(fieldName);
         try {
             Field field = getField(fieldName);
-            AccessController.doPrivileged(new FieldAccessAction(field));
+            setAccessible(field);
             Object value = field.get(getActual());
             return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName);
         } catch (ReflectiveOperationException ex) {
@@ -232,6 +232,15 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             }
         }
         throw noSuchFieldException;
+    }
+
+    /**
+     * Make the private class element accessible.
+     *
+     * @param accessibleObject the private class element.
+     */
+    protected final void setAccessible(final AccessibleObject accessibleObject) {
+        PrivateAccessor.setAccessible(accessibleObject);
     }
 
 }
