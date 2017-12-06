@@ -145,6 +145,34 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     }
 
     /**
+     * Check if the actual value contains all of the expected keys in the specified order.
+     *
+     * @param expected the expected keys.
+     */
+    @SafeVarargs
+    public final void containsAllKeysInOrder(final K... expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        toKeys().containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected keys in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllKeysInOrder(final Iterable<K> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
+        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
+        toKeys().containsAllInOrder(expectedArray);
+    }
+
+    /**
      * Check if the actual value contains all of the expected keys exactly.
      *
      * @param expected the expected keys.
@@ -168,6 +196,32 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotNull(expected);
         K[] expectedArray = ValueConverter.toObjectArray(expected);
         toKeys().containsExactly(expectedArray);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected keys exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    @SafeVarargs
+    public final void containsKeysExactlyInOrder(final K... expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        toKeys().containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected keys exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsKeysExactlyInOrder(final Iterable<K> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        K[] expectedArray = ValueConverter.toObjectArray(expected);
+        toKeys().containsExactlyInOrder(expectedArray);
     }
 
     /**
@@ -275,6 +329,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     }
 
     /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Map<K, V> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        createEntrySetAssertion().containsAllInOrder(expected.entrySet());
+    }
+
+    /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
@@ -284,6 +350,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         createEntrySetAssertion().containsExactly(expected.entrySet());
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Map<K, V> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        createEntrySetAssertion().containsExactlyInOrder(expected.entrySet());
     }
 
     /**
