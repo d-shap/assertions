@@ -21,25 +21,30 @@ package ru.d_shap.assertions.core;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
 
 /**
  * Assertions for the comparable.
  *
- * @param <T> the comparable type.
+ * @param <E> the generic type of the comparable.
  * @author Dmitry Shapovalov
  */
-public class ComparableAssertion<T> extends ReferenceAssertion {
-
-    private static final ActualValueValidator ACTUAL_VALUE_CLASS_VALIDATOR = new ActualValueClassValidator(Comparable.class);
+public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
 
     /**
      * Create new object.
      */
     public ComparableAssertion() {
         super();
-        addActualValueValidator(ACTUAL_VALUE_CLASS_VALIDATOR);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected final Class<Comparable<E>> getActualValueClass() {
+        return (Class<Comparable<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Comparable.class;
     }
 
     /**
@@ -47,12 +52,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isEqualTo(final T expected) {
+    public final void isEqualTo(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) != 0) {
+        if (getActual().compareTo(expected) != 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
         }
     }
@@ -62,12 +66,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isNotEqualTo(final T expected) {
+    public final void isNotEqualTo(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) == 0) {
+        if (getActual().compareTo(expected) == 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
         }
     }
@@ -77,12 +80,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isGreaterThan(final T expected) {
+    public final void isGreaterThan(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) <= 0) {
+        if (getActual().compareTo(expected) <= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
         }
     }
@@ -92,12 +94,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isGreaterThanOrEqualTo(final T expected) {
+    public final void isGreaterThanOrEqualTo(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) < 0) {
+        if (getActual().compareTo(expected) < 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
         }
     }
@@ -107,12 +108,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isLessThan(final T expected) {
+    public final void isLessThan(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) >= 0) {
+        if (getActual().compareTo(expected) >= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
         }
     }
@@ -122,12 +122,11 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      *
      * @param expected the expected value.
      */
-    @SuppressWarnings("unchecked")
-    public final void isLessThanOrEqualTo(final T expected) {
+    public final void isLessThanOrEqualTo(final E expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        if (((Comparable<T>) getActual()).compareTo(expected) > 0) {
+        if (getActual().compareTo(expected) > 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
         }
     }
@@ -138,13 +137,12 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      * @param expectedFrom the expected lower bound of the range.
      * @param expectedTo   the expected upper bound of the range.
      */
-    @SuppressWarnings("unchecked")
-    public final void isInRange(final T expectedFrom, final T expectedTo) {
+    public final void isInRange(final E expectedFrom, final E expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
-        if (((Comparable<T>) getActual()).compareTo(expectedFrom) < 0 || ((Comparable<T>) getActual()).compareTo(expectedTo) >= 0) {
+        if (getActual().compareTo(expectedFrom) < 0 || getActual().compareTo(expectedTo) >= 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
         }
     }
@@ -155,13 +153,12 @@ public class ComparableAssertion<T> extends ReferenceAssertion {
      * @param expectedFrom the expected lower bound of the range.
      * @param expectedTo   the expected upper bound of the range.
      */
-    @SuppressWarnings("unchecked")
-    public final void isNotInRange(final T expectedFrom, final T expectedTo) {
+    public final void isNotInRange(final E expectedFrom, final E expectedTo) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
-        if (((Comparable<T>) getActual()).compareTo(expectedFrom) >= 0 && ((Comparable<T>) getActual()).compareTo(expectedTo) < 0) {
+        if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
     }
