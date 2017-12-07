@@ -93,13 +93,10 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @return the assertion.
      */
-    @SuppressWarnings("unchecked")
     public final ClassAssertion toClass() {
         checkInitialized();
         checkActualIsNotNull();
-        BaseAssertion<Class<Object>> classAssertion = (BaseAssertion<Class<Object>>) (BaseAssertion<?>) Raw.classAssertion();
-        Class<Object> actualClass = (Class<Object>) getActual().getClass();
-        return (ClassAssertion) (BaseAssertion<?>) initializeAssertion(classAssertion, actualClass, Messages.Check.ACTUAL_VALUE_CLASS);
+        return initializeAssertion(Raw.classAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
     }
 
     /**
@@ -201,7 +198,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             Field field = getField(fieldName);
             setAccessible(field);
             Object value = field.get(getActual());
-            return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD + ": " + fieldName);
+            return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw createAssertionError(Messages.Fail.CONTAINS_FIELD, fieldName, ex);
         }
@@ -212,11 +209,10 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
-     * @param <U>       the generic type of the actual value.
      * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <U, V extends BaseAssertion<U>> V toField(final String fieldName, final V assertion) {
+    public final <V extends BaseAssertion<?>> V toField(final String fieldName, final V assertion) {
         return toField(fieldName).as(assertion);
     }
 
