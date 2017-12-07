@@ -304,8 +304,8 @@ public class StringAssertion extends ReferenceAssertion<String> {
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final String expectedFrom, final String expectedTo) {
         checkInitialized();
@@ -321,8 +321,8 @@ public class StringAssertion extends ReferenceAssertion<String> {
     /**
      * Check if the actual value is in the expected range ignoring case.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkInitialized();
@@ -338,8 +338,8 @@ public class StringAssertion extends ReferenceAssertion<String> {
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final String expectedFrom, final String expectedTo) {
         checkInitialized();
@@ -355,8 +355,8 @@ public class StringAssertion extends ReferenceAssertion<String> {
     /**
      * Check if the actual value is NOT in the expected range ignoring case.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkInitialized();
