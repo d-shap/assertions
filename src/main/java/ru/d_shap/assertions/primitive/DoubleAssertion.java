@@ -124,8 +124,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final double expectedFrom, final double expectedTo) {
         checkInitialized();
@@ -138,8 +138,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final double expectedFrom, final double expectedTo) {
         checkInitialized();

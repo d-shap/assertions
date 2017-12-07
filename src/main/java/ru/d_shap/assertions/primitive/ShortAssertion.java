@@ -122,8 +122,8 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     /**
      * Check if the actual value is in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
         checkInitialized();
@@ -136,8 +136,8 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     /**
      * Check if the actual value is NOT in the expected range.
      *
-     * @param expectedFrom the expected lower bound of the range.
-     * @param expectedTo   the expected upper bound of the range.
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkInitialized();
