@@ -117,6 +117,17 @@ public abstract class BaseAssertion<T> {
         initialize(actual, new FailDescription(message));
     }
 
+    /**
+     * Initialize assertion with the actual value and the message.
+     *
+     * @param actual    the actual value.
+     * @param message   the message.
+     * @param parameter the message parameter.
+     */
+    protected final void initialize(final T actual, final String message, final String parameter) {
+        initialize(actual, new FailDescription(message + ": " + parameter));
+    }
+
     private void initialize(final T actual, final FailDescription failDescription) {
         if (_initialized) {
             throw createAssertionError(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED);
@@ -161,6 +172,22 @@ public abstract class BaseAssertion<T> {
      */
     protected final <U, V extends BaseAssertion<U>> V initializeAssertion(final V assertion, final U actual, final String message) {
         ((BaseAssertion<U>) assertion).initialize(actual, getFailDescription(message));
+        return assertion;
+    }
+
+    /**
+     * Initialize the specified assertion with the actual value and the message.
+     *
+     * @param assertion the specified assertion.
+     * @param actual    the actual value.
+     * @param message   the message.
+     * @param parameter the message parameter.
+     * @param <U>       the generic type of the actual value.
+     * @param <V>       the generic type of the assertion.
+     * @return the initialized assertion.
+     */
+    protected final <U, V extends BaseAssertion<U>> V initializeAssertion(final V assertion, final U actual, final String message, final String parameter) {
+        ((BaseAssertion<U>) assertion).initialize(actual, getFailDescription(message + ": " + parameter));
         return assertion;
     }
 
