@@ -209,10 +209,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
+     * @param <U>       the generic type of the actual value.
      * @param <V>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <V extends BaseAssertion<?>> V toField(final String fieldName, final V assertion) {
+    public final <U, V extends BaseAssertion<U>> V toField(final String fieldName, final V assertion) {
         return toField(fieldName).as(assertion);
     }
 
