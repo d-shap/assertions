@@ -71,9 +71,7 @@ final class FailDescription {
      */
     FailDescription(final FailDescription failDescription) {
         this();
-        if (failDescription != null) {
-            _messages.addAll(failDescription._messages);
-        }
+        _messages.addAll(failDescription._messages);
     }
 
     /**
