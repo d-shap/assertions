@@ -143,8 +143,8 @@ final class FailDescription {
      * Add the expected value range of the assertion to the fail description.
      *
      * @param assertion    the assertion.
-     * @param expectedFrom the lower bound of the expected value range of the assertion.
-     * @param expectedTo   the upper bound of the expected value range of the assertion.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range of the assertion.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range of the assertion.
      * @return current object for the chain call.
      */
     FailDescription addExpected(final BaseAssertion<?> assertion, final Object expectedFrom, final Object expectedTo) {

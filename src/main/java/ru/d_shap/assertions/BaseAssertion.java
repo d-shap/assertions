@@ -300,8 +300,8 @@ public abstract class BaseAssertion<T> {
     /**
      * Create the assertion error based on the fail description with the expected value range.
      *
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Object expectedFrom, final Object expectedTo) {
@@ -312,8 +312,8 @@ public abstract class BaseAssertion<T> {
      * Create the assertion error based on the fail description with the message and the expected value range.
      *
      * @param message      the message.
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo) {
@@ -367,8 +367,8 @@ public abstract class BaseAssertion<T> {
     /**
      * Create the assertion error based on the fail description with the expected value range and the throwable.
      *
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @param throwable    the throwabe.
      * @return the assertion error.
      */
@@ -380,8 +380,8 @@ public abstract class BaseAssertion<T> {
      * Create the assertion error based on the fail description with the message, the expected value range and the throwable.
      *
      * @param message      the message.
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @param throwable    the throwabe.
      * @return the assertion error.
      */
@@ -432,8 +432,8 @@ public abstract class BaseAssertion<T> {
     /**
      * Create the assertion error based on the fail description with the actual value and the expected value range.
      *
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo) {
@@ -444,8 +444,8 @@ public abstract class BaseAssertion<T> {
      * Create the assertion error based on the fail description with the actual value, the message and the expected value range.
      *
      * @param message      the message.
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo) {
@@ -499,8 +499,8 @@ public abstract class BaseAssertion<T> {
     /**
      * Create the assertion error based on the fail description with the actual value, the expected value range and the throwable.
      *
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @param throwable    the throwabe.
      * @return the assertion error.
      */
@@ -512,8 +512,8 @@ public abstract class BaseAssertion<T> {
      * Create the assertion error based on the fail description with the actual value, the message, the expected value range and the throwable.
      *
      * @param message      the message.
-     * @param expectedFrom the lower bound of the expected value range.
-     * @param expectedTo   the upper bound of the expected value range.
+     * @param expectedFrom the lower (inclusive) bound of the expected value range.
+     * @param expectedTo   the upper (exclusive) bound of the expected value range.
      * @param throwable    the throwabe.
      * @return the assertion error.
      */
