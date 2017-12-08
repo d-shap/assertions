@@ -26,7 +26,7 @@ import ru.d_shap.assertions.ValueConverter;
 /**
  * Assertions for the object array.
  *
- * @param <E> the generic type of the array element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 public class ObjectArrayAssertion<E> extends ArrayAssertion<E[], E> {
