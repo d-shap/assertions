@@ -654,7 +654,7 @@ public class StringAssertion extends ReferenceAssertion<String> {
     }
 
     /**
-     * Make assertion about the actual value length.
+     * Make assertion about the actual value's length.
      *
      * @return the assertion.
      */
@@ -674,7 +674,7 @@ public class StringAssertion extends ReferenceAssertion<String> {
     }
 
     /**
-     * Make assertion about the actual value tokens.
+     * Make assertion about the actual value's tokens.
      *
      * @return the assertion.
      */
@@ -686,7 +686,7 @@ public class StringAssertion extends ReferenceAssertion<String> {
     }
 
     /**
-     * Make assertion about the actual value tokens.
+     * Make assertion about the actual value's tokens.
      *
      * @param delimiters the delimiters.
      * @return the assertion.
@@ -700,7 +700,7 @@ public class StringAssertion extends ReferenceAssertion<String> {
     }
 
     /**
-     * Make assertion about the actual value tokens.
+     * Make assertion about the actual value's tokens.
      *
      * @param delimiters       the delimiters.
      * @param returnDelimiters whether to return the delimiters as tokens.
