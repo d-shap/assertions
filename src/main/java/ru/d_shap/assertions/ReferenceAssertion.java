@@ -89,7 +89,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Make assertion about the actual value class.
+     * Make assertion about the actual value's class.
      *
      * @return the assertion.
      */
@@ -136,7 +136,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Make assertion about the actual value string representation.
+     * Make assertion about the actual value's string representation.
      *
      * @return the assertion.
      */
@@ -165,7 +165,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Make assertion about the actual value hash code.
+     * Make assertion about the actual value's hash code.
      *
      * @return the assertion.
      */
@@ -185,7 +185,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Make assertion about the actual value field.
+     * Make assertion about the actual value's field.
      *
      * @param fieldName the field name.
      * @return the assertion.
@@ -205,15 +205,15 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Make assertion of specified type about the actual value field.
+     * Make assertion of the specified type about the actual value's field.
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
-     * @param <U>       the generic type of the actual value.
-     * @param <V>       the generic type of the assertion.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
-    public final <U, V extends BaseAssertion<U>> V toField(final String fieldName, final V assertion) {
+    public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {
         return toField(fieldName).as(assertion);
     }
 
