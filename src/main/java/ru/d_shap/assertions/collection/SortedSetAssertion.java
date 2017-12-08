@@ -33,7 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the sorted set.
  *
- * @param <E> the generic type of the sorted set element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
@@ -123,7 +123,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(element);
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_ELEMENT + ": " + element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_ELEMENT, element);
     }
 
     /**
@@ -137,10 +137,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_HEAD_COUNT + ": " + count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_HEAD_COUNT, count);
         } else {
             E element = getNthElement(count + 1);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_COUNT + ": " + count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_COUNT, count);
         }
     }
 
@@ -154,7 +154,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(element);
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_ELEMENT + ": " + element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_ELEMENT, element);
     }
 
     /**
@@ -168,10 +168,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT + ": " + count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT, count);
         } else {
             E element = getNthElement(getActual().size() - count);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_COUNT + ": " + count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_COUNT, count);
         }
     }
 
@@ -353,7 +353,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
