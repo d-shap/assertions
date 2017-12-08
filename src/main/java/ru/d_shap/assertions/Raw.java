@@ -227,7 +227,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the object array.
      *
-     * @param <E> the generic type of the array element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> ObjectArrayAssertion<E> objectArrayAssertion() {
@@ -273,7 +273,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the comparable.
      *
-     * @param <E> the generic type of the comparable.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> ComparableAssertion<E> comparableAssertion() {
@@ -283,7 +283,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the iterable.
      *
-     * @param <E> the generic type of the iterable element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> IterableAssertion<E> iterableAssertion() {
@@ -302,7 +302,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the iterator.
      *
-     * @param <E> the generic type of the iterator element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> IteratorAssertion<E> iteratorAssertion() {
@@ -312,7 +312,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the list.
      *
-     * @param <E> the generic type of the list element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> ListAssertion<E> listAssertion() {
@@ -322,7 +322,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the set.
      *
-     * @param <E> the generic type of the set element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> SetAssertion<E> setAssertion() {
@@ -332,7 +332,7 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the sorted set.
      *
-     * @param <E> the generic type of the sorted set element.
+     * @param <E> the generic type of the element.
      * @return the assertion.
      */
     public static <E> SortedSetAssertion<E> sortedSetAssertion() {
@@ -342,8 +342,8 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the map.
      *
-     * @param <K> the generic type of the map key.
-     * @param <V> the generic type of the map value.
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
      * @return the assertion.
      */
     public static <K, V> MapAssertion<K, V> mapAssertion() {
@@ -353,8 +353,8 @@ public final class Raw {
     /**
      * Create uninitialized assertion about the sorted map.
      *
-     * @param <K> the generic type of the sorted map key.
-     * @param <V> the generic type of the sorted map value.
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
      * @return the assertion.
      */
     public static <K, V> SortedMapAssertion<K, V> sortedMapAssertion() {
