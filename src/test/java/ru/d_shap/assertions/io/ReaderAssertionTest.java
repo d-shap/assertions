@@ -53,13 +53,13 @@ public final class ReaderAssertionTest extends AssertionTest {
         initialize(Raw.readerAssertion(), new StringReader(""));
 
         try {
-            initialize(Raw.readerAssertion(), new Object());
+            initializeWithRawActual(Raw.readerAssertion(), new Object());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.readerAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.readerAssertion(), new Object(), "Message");
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -678,18 +678,6 @@ public final class ReaderAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
         }
-        try {
-            initialize(Raw.readerAssertion(), value).isSameAs("test");
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.io.StringReader.*>");
-        }
-        try {
-            initialize(Raw.readerAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.io.StringReader.*>");
-        }
     }
 
     /**
@@ -699,7 +687,6 @@ public final class ReaderAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Reader value = new StringReader("\u0000\u0000\u0000");
         initialize(Raw.readerAssertion(), value).isNotSameAs(new StringReader("\u0000\u0000\u0000"));
-        initialize(Raw.readerAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.readerAssertion(), value).isNotSameAs(value);

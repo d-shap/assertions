@@ -53,13 +53,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}));
 
         try {
-            initialize(Raw.inputStreamAssertion(), new Object());
+            initializeWithRawActual(Raw.inputStreamAssertion(), new Object());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.inputStreamAssertion(), new Object(), "Message");
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -676,18 +676,6 @@ public final class InputStreamAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>");
         }
-        try {
-            initialize(Raw.inputStreamAssertion(), value).isSameAs("test");
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.io.ByteArrayInputStream.*>");
-        }
-        try {
-            initialize(Raw.inputStreamAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.io.ByteArrayInputStream.*>");
-        }
     }
 
     /**
@@ -697,7 +685,6 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         InputStream value = new ByteArrayInputStream(new byte[]{0, 0, 0});
         initialize(Raw.inputStreamAssertion(), value).isNotSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
-        initialize(Raw.inputStreamAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.inputStreamAssertion(), value).isNotSameAs(value);
