@@ -32,7 +32,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Base class for all buffer type assertions.
  *
  * @param <T> the generic type of the actual value.
- * @param <E> the generic type of the buffer element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T> {
@@ -278,7 +278,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     }
 
     /**
-     * Make assertion about the actual buffer position.
+     * Make assertion about the actual buffer's position.
      *
      * @return the assertion.
      */
@@ -298,7 +298,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     }
 
     /**
-     * Make assertion about the actual buffer limit.
+     * Make assertion about the actual buffer's limit.
      *
      * @return the assertion.
      */
@@ -318,7 +318,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     }
 
     /**
-     * Make assertion about the actual buffer capacity.
+     * Make assertion about the actual buffer's capacity.
      *
      * @return the assertion.
      */
@@ -351,7 +351,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     }
 
     /**
-     * Make assertion about the actual buffer remaining.
+     * Make assertion about the actual buffer's remaining.
      *
      * @return the assertion.
      */
