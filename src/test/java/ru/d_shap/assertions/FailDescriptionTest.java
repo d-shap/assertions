@@ -71,7 +71,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).createAssertionError()).toCause().isNull();
@@ -107,7 +107,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithExpectedTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
@@ -143,7 +143,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithExpectedRangeTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
@@ -181,7 +181,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualAndExpectedTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
@@ -219,7 +219,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualAndExpectedRangeTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
@@ -290,7 +290,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualAndThrowableTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
@@ -326,7 +326,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithExpectedAndThrowableTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
@@ -362,7 +362,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithExpectedRangeAndThrowableTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
@@ -400,7 +400,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualAndExpectedAndThrowableTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
@@ -438,7 +438,7 @@ public final class FailDescriptionTest extends AssertionTest {
      */
     @Test
     public void createAssertionErrorWithActualAndExpectedRangeAndThrowableTest() {
-        BaseAssertion baseAssertion = createBaseAssertion("actualValue");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion("actualValue");
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
