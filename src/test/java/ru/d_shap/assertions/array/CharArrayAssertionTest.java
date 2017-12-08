@@ -50,13 +50,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[0]);
 
         try {
-            initialize(Raw.charArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.charArrayAssertion(), new Object());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.charArrayAssertion(), new Object(), "Message");
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1233,18 +1233,6 @@ public final class CharArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.charArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("CharArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.charArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("CharArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -1254,7 +1242,6 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         char[] value = new char[]{'1', '2'};
         initialize(Raw.charArrayAssertion(), value).isNotSameAs(new char[]{'1', '2'});
-        initialize(Raw.charArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.charArrayAssertion(), value).isNotSameAs(value);

@@ -50,13 +50,13 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[0]);
 
         try {
-            initialize(Raw.byteArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.byteArrayAssertion(), new Object());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.byteArrayAssertion(), new Object(), "Message");
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1233,18 +1233,6 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.byteArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("ByteArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.byteArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ByteArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -1254,7 +1242,6 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         byte[] value = new byte[]{1, 2};
         initialize(Raw.byteArrayAssertion(), value).isNotSameAs(new byte[]{1, 2});
-        initialize(Raw.byteArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.byteArrayAssertion(), value).isNotSameAs(value);

@@ -50,13 +50,13 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[0]);
 
         try {
-            initialize(Raw.doubleArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.doubleArrayAssertion(), new Object());
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.doubleArrayAssertion(), new Object(), "Message");
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -879,18 +879,6 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
-        try {
-            initialize(Raw.doubleArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("DoubleArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
-        try {
-            initialize(Raw.doubleArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("DoubleArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
     }
 
     /**
@@ -900,7 +888,6 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         double[] value = new double[]{1.0, 2.0};
         initialize(Raw.doubleArrayAssertion(), value).isNotSameAs(new double[]{1.0, 2.0});
-        initialize(Raw.doubleArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.doubleArrayAssertion(), value).isNotSameAs(value);

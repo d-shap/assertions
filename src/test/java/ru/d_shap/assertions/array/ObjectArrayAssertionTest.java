@@ -50,13 +50,13 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[0]);
 
         try {
-            initialize(Raw.<String>objectArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.<String>objectArrayAssertion(), new Object());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String>objectArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.<String>objectArrayAssertion(), new Object(), "Message");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -898,18 +898,6 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2]> but was:<[val1, val2]>");
         }
-        try {
-            initialize(Raw.<String>objectArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2]>");
-        }
-        try {
-            initialize(Raw.<String>objectArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ObjectArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2]>");
-        }
     }
 
     /**
@@ -919,7 +907,6 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         String[] value = new String[]{"val1", "val2"};
         initialize(Raw.<String>objectArrayAssertion(), value).isNotSameAs(new String[]{"val1", "val2"});
-        initialize(Raw.<String>objectArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.<String>objectArrayAssertion(), value).isNotSameAs(value);

@@ -50,13 +50,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[0]);
 
         try {
-            initialize(Raw.longArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.longArrayAssertion(), new Object());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.longArrayAssertion(), new Object(), "Message");
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -879,18 +879,6 @@ public final class LongArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.longArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("LongArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.longArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("LongArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -900,7 +888,6 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         long[] value = new long[]{1L, 2L};
         initialize(Raw.longArrayAssertion(), value).isNotSameAs(new long[]{1L, 2L});
-        initialize(Raw.longArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.longArrayAssertion(), value).isNotSameAs(value);

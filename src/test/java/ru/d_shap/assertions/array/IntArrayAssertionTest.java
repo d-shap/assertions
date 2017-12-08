@@ -50,13 +50,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
         initialize(Raw.intArrayAssertion(), new int[0]);
 
         try {
-            initialize(Raw.intArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.intArrayAssertion(), new Object());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.intArrayAssertion(), new Object(), "Message");
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -879,18 +879,6 @@ public final class IntArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.intArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("IntArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.intArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("IntArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -900,7 +888,6 @@ public final class IntArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         int[] value = new int[]{1, 2};
         initialize(Raw.intArrayAssertion(), value).isNotSameAs(new int[]{1, 2});
-        initialize(Raw.intArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.intArrayAssertion(), value).isNotSameAs(value);

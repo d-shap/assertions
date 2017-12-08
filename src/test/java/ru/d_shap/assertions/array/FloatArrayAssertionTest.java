@@ -50,13 +50,13 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[0]);
 
         try {
-            initialize(Raw.floatArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.floatArrayAssertion(), new Object());
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.floatArrayAssertion(), new Object(), "Message");
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -879,18 +879,6 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
-        try {
-            initialize(Raw.floatArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
-        try {
-            initialize(Raw.floatArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
     }
 
     /**
@@ -900,7 +888,6 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         float[] value = new float[]{1.0f, 2.0f};
         initialize(Raw.floatArrayAssertion(), value).isNotSameAs(new float[]{1.0f, 2.0f});
-        initialize(Raw.floatArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.floatArrayAssertion(), value).isNotSameAs(value);

@@ -50,13 +50,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[0]);
 
         try {
-            initialize(Raw.booleanArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.booleanArrayAssertion(), new Object());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.booleanArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.booleanArrayAssertion(), new Object(), "Message");
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -891,18 +891,6 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[true, true]> but was:<[true, true]>");
         }
-        try {
-            initialize(Raw.booleanArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[true, true]>");
-        }
-        try {
-            initialize(Raw.booleanArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[true, true]>");
-        }
     }
 
     /**
@@ -912,7 +900,6 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         boolean[] value = new boolean[]{true, true};
         initialize(Raw.booleanArrayAssertion(), value).isNotSameAs(new boolean[]{true, true});
-        initialize(Raw.booleanArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.booleanArrayAssertion(), value).isNotSameAs(value);

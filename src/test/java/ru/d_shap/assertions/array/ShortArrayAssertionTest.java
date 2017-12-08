@@ -50,13 +50,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[0]);
 
         try {
-            initialize(Raw.shortArrayAssertion(), new Object());
+            initializeWithRawActual(Raw.shortArrayAssertion(), new Object());
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.shortArrayAssertion(), new Object(), "Message");
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1233,18 +1233,6 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.shortArrayAssertion(), value).isSameAs("test");
-            Assertions.fail("ShortArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.shortArrayAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ShortArrayAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -1254,7 +1242,6 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         short[] value = new short[]{1, 2};
         initialize(Raw.shortArrayAssertion(), value).isNotSameAs(new short[]{1, 2});
-        initialize(Raw.shortArrayAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.shortArrayAssertion(), value).isNotSameAs(value);
