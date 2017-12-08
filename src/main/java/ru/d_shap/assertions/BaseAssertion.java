@@ -188,7 +188,7 @@ public abstract class BaseAssertion<T> {
      * Make assertion of the specified type about the same actual.
      *
      * @param assertion the assertion.
-     * @param <W>       the generic type of the actual value.
+     * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
@@ -204,7 +204,7 @@ public abstract class BaseAssertion<T> {
      *
      * @param assertion the assertion.
      * @param message   the message.
-     * @param <W>       the generic type of the actual value.
+     * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
@@ -221,7 +221,7 @@ public abstract class BaseAssertion<T> {
      * @param assertion the assertion.
      * @param message   the message.
      * @param parameter the message parameter.
-     * @param <W>       the generic type of the actual value.
+     * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
