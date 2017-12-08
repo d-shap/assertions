@@ -32,7 +32,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the set.
  *
- * @param <E> the generic type of the set element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
@@ -282,7 +282,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
