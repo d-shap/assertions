@@ -37,8 +37,8 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the sorted map.
  *
- * @param <K> the generic type of the sorted map key.
- * @param <V> the generic type of the sorted map value.
+ * @param <K> the generic type of the key.
+ * @param <V> the generic type of the value.
  * @author Dmitry Shapovalov
  */
 public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>> {
@@ -104,7 +104,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         if (keys instanceof SortedSet) {
             return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) keys, Messages.Check.ACTUAL_KEYS);
         } else {
-            return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) new TreeSet<>(keys), Messages.Check.ACTUAL_KEYS);
+            return initializeAssertion(Raw.<K>sortedSetAssertion(), new TreeSet<>(keys), Messages.Check.ACTUAL_KEYS);
         }
     }
 
@@ -338,8 +338,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        Iterable<V> values = getActual().values();
-        return initializeAssertion(Raw.<V>iterableAssertion(), values, Messages.Check.ACTUAL_VALUES);
+        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -376,7 +375,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(key);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_HEAD_ELEMENT + ": " + key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_HEAD_ELEMENT, key);
     }
 
     /**
@@ -390,10 +389,10 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_HEAD_COUNT + ": " + count);
+            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_HEAD_COUNT, count);
         } else {
             K key = getNthKey(count + 1);
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_HEAD_COUNT + ": " + count);
+            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_HEAD_COUNT, count);
         }
     }
 
@@ -407,7 +406,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(key);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_ELEMENT + ": " + key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_ELEMENT, key);
     }
 
     /**
@@ -421,10 +420,10 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT + ": " + count);
+            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT, count);
         } else {
             K key = getNthKey(getActual().size() - count);
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_COUNT + ": " + count);
+            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_COUNT, count);
         }
     }
 
@@ -508,17 +507,12 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         createEntrySetAssertion().containsNone(expected.entrySet());
     }
 
-    private SortedSetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
-        Set<Map.Entry<K, V>> entries = getActual().entrySet();
-        if (entries instanceof SortedSet) {
-            return initializeAssertion(Raw.<Map.Entry<K, V>>sortedSetAssertion(), (SortedSet<Map.Entry<K, V>>) entries);
-        } else {
-            return initializeAssertion(Raw.<Map.Entry<K, V>>sortedSetAssertion(), (SortedSet<Map.Entry<K, V>>) new TreeSet<>(entries));
-        }
+    private SetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
+        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), getActual().entrySet());
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
