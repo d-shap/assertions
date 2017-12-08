@@ -51,13 +51,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0]));
 
         try {
-            initialize(Raw.longBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.longBufferAssertion(), new Object());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.longBufferAssertion(), new Object(), "Message");
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1903,18 +1903,6 @@ public final class LongBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.longBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("LongBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.longBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("LongBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -1924,7 +1912,6 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         LongBuffer value = createLongBuffer(new long[]{1L, 2L});
         initialize(Raw.longBufferAssertion(), value).isNotSameAs(createLongBuffer(new long[]{1L, 2L}));
-        initialize(Raw.longBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.longBufferAssertion(), value).isNotSameAs(value);

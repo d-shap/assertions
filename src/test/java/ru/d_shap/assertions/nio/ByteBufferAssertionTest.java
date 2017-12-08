@@ -51,13 +51,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[0]));
 
         try {
-            initialize(Raw.byteBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.byteBufferAssertion(), new Object());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.byteBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.byteBufferAssertion(), new Object(), "Message");
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -2715,18 +2715,6 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.byteBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("ByteBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.byteBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ByteBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -2736,7 +2724,6 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         ByteBuffer value = createByteBuffer(new byte[]{1, 2});
         initialize(Raw.byteBufferAssertion(), value).isNotSameAs(createByteBuffer(new byte[]{1, 2}));
-        initialize(Raw.byteBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.byteBufferAssertion(), value).isNotSameAs(value);

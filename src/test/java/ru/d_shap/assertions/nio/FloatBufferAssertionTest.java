@@ -51,13 +51,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[0]));
 
         try {
-            initialize(Raw.floatBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.floatBufferAssertion(), new Object());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.floatBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.floatBufferAssertion(), new Object(), "Message");
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1903,18 +1903,6 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
-        try {
-            initialize(Raw.floatBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("FloatBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
-        try {
-            initialize(Raw.floatBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("FloatBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
     }
 
     /**
@@ -1924,7 +1912,6 @@ public final class FloatBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         FloatBuffer value = createFloatBuffer(new float[]{1.0f, 2.0f});
         initialize(Raw.floatBufferAssertion(), value).isNotSameAs(createFloatBuffer(new float[]{1.0f, 2.0f}));
-        initialize(Raw.floatBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.floatBufferAssertion(), value).isNotSameAs(value);

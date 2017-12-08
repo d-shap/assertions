@@ -2888,10 +2888,15 @@ public final class BufferAssertionTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class BufferAssertionImpl extends BufferAssertion<Integer> {
+    private static final class BufferAssertionImpl extends BufferAssertion<IntBuffer, Integer> {
 
         BufferAssertionImpl() {
             super();
+        }
+
+        @Override
+        protected Class<IntBuffer> getActualValueClass() {
+            return IntBuffer.class;
         }
 
         @Override

@@ -51,13 +51,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0]));
 
         try {
-            initialize(Raw.doubleBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.doubleBufferAssertion(), new Object());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.doubleBufferAssertion(), new Object(), "Message");
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1903,18 +1903,6 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
-        try {
-            initialize(Raw.doubleBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("DoubleBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
-        try {
-            initialize(Raw.doubleBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("DoubleBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1.0, 2.0]>");
-        }
     }
 
     /**
@@ -1924,7 +1912,6 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         DoubleBuffer value = createDoubleBuffer(new double[]{1.0, 2.0});
         initialize(Raw.doubleBufferAssertion(), value).isNotSameAs(createDoubleBuffer(new double[]{1.0, 2.0}));
-        initialize(Raw.doubleBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.doubleBufferAssertion(), value).isNotSameAs(value);

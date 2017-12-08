@@ -51,13 +51,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[0]));
 
         try {
-            initialize(Raw.shortBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.shortBufferAssertion(), new Object());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.shortBufferAssertion(), new Object(), "Message");
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -2715,18 +2715,6 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.shortBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("ShortBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.shortBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ShortBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -2736,7 +2724,6 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         ShortBuffer value = createShortBuffer(new short[]{1, 2});
         initialize(Raw.shortBufferAssertion(), value).isNotSameAs(createShortBuffer(new short[]{1, 2}));
-        initialize(Raw.shortBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.shortBufferAssertion(), value).isNotSameAs(value);

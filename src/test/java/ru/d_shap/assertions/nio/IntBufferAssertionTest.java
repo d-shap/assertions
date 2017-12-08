@@ -51,13 +51,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0]));
 
         try {
-            initialize(Raw.intBufferAssertion(), new Object());
+            initializeWithRawActual(Raw.intBufferAssertion(), new Object());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.intBufferAssertion(), new Object(), "Message");
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1903,18 +1903,6 @@ public final class IntBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[1, 2]> but was:<[1, 2]>");
         }
-        try {
-            initialize(Raw.intBufferAssertion(), value).isSameAs("test");
-            Assertions.fail("IntBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
-        try {
-            initialize(Raw.intBufferAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("IntBufferAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[1, 2]>");
-        }
     }
 
     /**
@@ -1924,7 +1912,6 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         IntBuffer value = createIntBuffer(new int[]{1, 2});
         initialize(Raw.intBufferAssertion(), value).isNotSameAs(createIntBuffer(new int[]{1, 2}));
-        initialize(Raw.intBufferAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.intBufferAssertion(), value).isNotSameAs(value);
