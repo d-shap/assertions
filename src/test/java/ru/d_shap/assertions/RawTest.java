@@ -397,20 +397,6 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
-    public void collectionAssertionTest() {
-        initialize(Raw.<String>collectionAssertion(), null).isNull();
-        try {
-            Raw.<String>collectionAssertion().isNull();
-            Assertions.fail("Raw test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-    }
-
-    /**
-     * {@link Raw} class test.
-     */
-    @Test
     public void iteratorAssertionTest() {
         initialize(Raw.<String>iteratorAssertion(), null).isNull();
         try {
@@ -453,10 +439,38 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
+    public void sortedSetAssertionTest() {
+        initialize(Raw.<String>sortedSetAssertion(), null).isNull();
+        try {
+            Raw.<String>sortedSetAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
     public void mapAssertionTest() {
         initialize(Raw.<String, String>mapAssertion(), null).isNull();
         try {
             Raw.<String, String>mapAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void sortedMapAssertionTest() {
+        initialize(Raw.<String, String>sortedMapAssertion(), null).isNull();
+        try {
+            Raw.<String, String>sortedMapAssertion().isNull();
             Assertions.fail("Raw test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
