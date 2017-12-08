@@ -263,7 +263,7 @@ public final class ValueConverter {
      * Convert the object array to the object list.
      *
      * @param array the object array.
-     * @param <E>   the generic type of the array element.
+     * @param <E>   the generic type of the element.
      * @return the object list.
      */
     @SafeVarargs
@@ -275,7 +275,7 @@ public final class ValueConverter {
      * Convert the object iterable to the object list.
      *
      * @param iterable the object iterable.
-     * @param <E>      the generic type of the iterable element.
+     * @param <E>      the generic type of the element.
      * @return the object list.
      */
     public static <E> List<E> toObjectList(final Iterable<E> iterable) {
@@ -644,7 +644,7 @@ public final class ValueConverter {
      * Convert the object list to the object array. The result array shoud be used only to read values.
      *
      * @param list the object list.
-     * @param <E>  the generic type of the array element.
+     * @param <E>  the generic type of the element.
      * @return the object array.
      */
     @SuppressWarnings("unchecked")
@@ -660,7 +660,7 @@ public final class ValueConverter {
      * Convert the object iterable to the object array. The result array shoud be used only to read values.
      *
      * @param iterable the object iterable.
-     * @param <E>      the generic type of the iterable element.
+     * @param <E>      the generic type of the element.
      * @return the object array.
      */
     public static <E> E[] toObjectArray(final Iterable<E> iterable) {
