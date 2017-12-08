@@ -32,7 +32,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the iterator.
  *
- * @param <E> the generic type of the iterator element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
@@ -323,7 +323,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
