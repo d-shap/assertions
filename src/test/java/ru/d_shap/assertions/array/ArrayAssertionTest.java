@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.ValueConverter;
 
 /**
  * Tests for {@link ArrayAssertion}.
@@ -47,7 +48,7 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).isEmpty();
+        initialize(new ArrayAssertionImpl(), new String[0]).isEmpty();
 
         try {
             new ArrayAssertionImpl().isEmpty();
@@ -68,13 +69,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).isEmpty();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).isEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be empty. Actual:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2"), "Message").isEmpty();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}, "Message").isEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be empty. Actual:<[val1, val2]>");
@@ -86,7 +87,7 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).isNullOrEmpty();
+        initialize(new ArrayAssertionImpl(), new String[0]).isNullOrEmpty();
         initialize(new ArrayAssertionImpl(), null).isNullOrEmpty();
 
         try {
@@ -96,13 +97,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).isNullOrEmpty();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).isNullOrEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be null or empty. Actual:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}, "Message").isNullOrEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should be null or empty. Actual:<[val1, val2]>");
@@ -114,8 +115,8 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEmptyTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).isNotEmpty();
-        initialize(new ArrayAssertionImpl(), Arrays.asList("test1", "test2")).isNotEmpty();
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).isNotEmpty();
+        initialize(new ArrayAssertionImpl(), new String[]{"test1", "test2"}).isNotEmpty();
 
         try {
             new ArrayAssertionImpl().isNotEmpty();
@@ -136,13 +137,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), new ArrayList<String>()).isNotEmpty();
+            initialize(new ArrayAssertionImpl(), new String[0]).isNotEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be empty.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), new ArrayList<String>(), "Message").isNotEmpty();
+            initialize(new ArrayAssertionImpl(), new String[0], "Message").isNotEmpty();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be empty.");
@@ -154,11 +155,11 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContains("val1");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContains("val2");
-        initialize(new ArrayAssertionImpl(), Arrays.asList(null, "val1", "val2")).doContains(null);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", null, "val2")).doContains(null);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", null)).doContains(null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContains("val1");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContains("val2");
+        initialize(new ArrayAssertionImpl(), new String[]{null, "val1", "val2"}).doContains(null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", null, "val2"}).doContains(null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", null}).doContains(null);
 
         try {
             new ArrayAssertionImpl().doContains("val1");
@@ -179,13 +180,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContains("val3");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContains("val3");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2"), "Message").doContains("val3");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}, "Message").doContains("val3");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected value. Expected:<val3> but was:<[val1, val2]>");
@@ -197,9 +198,9 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doDoesNotContainTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doDoesNotContain("val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", null)).doDoesNotContain("val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doDoesNotContain(null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doDoesNotContain("val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", null}).doDoesNotContain("val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doDoesNotContain(null);
 
         try {
             new ArrayAssertionImpl().doDoesNotContain("val3");
@@ -220,19 +221,19 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doDoesNotContain("val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doDoesNotContain("val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doDoesNotContain("val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doDoesNotContain("val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2"), "Message").doDoesNotContain("val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}, "Message").doDoesNotContain("val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>");
@@ -244,13 +245,13 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAllArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val1", "val2");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val1", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val3", "val1");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val5", "val1", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val3", "val5", "val4");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val3", "val1", "val4", "val5", "val2");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAll("val3", "val1", "val4", null, "val2");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val1", "val2");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val1", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val3", "val1");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val5", "val1", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val3", "val5", "val4");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val3", "val1", "val4", "val5", "val2");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAll("val3", "val1", "val4", null, "val2");
 
         try {
             new ArrayAssertionImpl().doContainsAll("val");
@@ -271,43 +272,43 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAll((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAll((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAll();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAll();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val1", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val1", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val0", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val0", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val1", "val1", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val1", "val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -319,13 +320,13 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAllIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val1", "val2"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val1", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val3", "val1"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val5", "val1", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val3", "val5", "val4"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val1", "val2"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val1", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val3", "val1"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val5", "val1", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val3", "val5", "val4"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
             new ArrayAssertionImpl().doContainsAll(new ArrayList<String>());
@@ -346,43 +347,43 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAll((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAll((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAll(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAll(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val1", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val1", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val0", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val0", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val1", "val1", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val1", "val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -394,13 +395,13 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAllInOrderArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val2");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val3", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val3", "val4", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val1", "val1", "val2", "val2")).doContainsAllInOrder("val1", "val1", "val1", "val2", "val2");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val2");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val3", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val3", "val4", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val1", "val1", "val2", "val2"}).doContainsAllInOrder("val1", "val1", "val1", "val2", "val2");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAllInOrder("val1", "val2", "val3", "val4", null);
 
         try {
             new ArrayAssertionImpl().doContainsAllInOrder("val");
@@ -421,43 +422,43 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAllInOrder((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAllInOrder((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAllInOrder();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAllInOrder();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val3", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val3", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val1", "val1")).doContainsAllInOrder("val1", "val1", "val1", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val1", "val1"}).doContainsAllInOrder("val1", "val1", "val1", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -469,13 +470,13 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAllInOrderIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val2"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val3", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val3", "val4", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val1", "val1", "val2", "val2")).doContainsAllInOrder(Arrays.asList("val1", "val1", "val1", "val2", "val2"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val2"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val3", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val3", "val4", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val1", "val1", "val2", "val2"}).doContainsAllInOrder(Arrays.asList("val1", "val1", "val1", "val2", "val2"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
 
         try {
             new ArrayAssertionImpl().doContainsAllInOrder(new ArrayList<String>());
@@ -496,43 +497,43 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAllInOrder((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAllInOrder((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAllInOrder(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAllInOrder(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val3", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val3", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val1", "val1")).doContainsAllInOrder(Arrays.asList("val1", "val1", "val1", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val1", "val1"}).doContainsAllInOrder(Arrays.asList("val1", "val1", "val1", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -544,14 +545,14 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsExactlyArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val1", "val2", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val2", "val1", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val2", "val3", "val1");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val3", "val2", "val1");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactly("val1", "val2", "val3", "val4", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactly("val2", "val4", "val1", "val3", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsExactly("val2", "val4", "val1", "val3", null);
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactly();
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val1", "val2", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val2", "val1", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val2", "val3", "val1");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val3", "val2", "val1");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactly("val1", "val2", "val3", "val4", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactly("val2", "val4", "val1", "val3", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsExactly("val2", "val4", "val1", "val3", null);
+        initialize(new ArrayAssertionImpl(), new String[0]).doContainsExactly();
 
         try {
             new ArrayAssertionImpl().doContainsExactly("val");
@@ -572,49 +573,49 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactly((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactly((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val1", "val2", "val3", "val4");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val1", "val2", "val3", "val4");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val3", "val2", "val1", "val4");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val3", "val2", "val1", "val4");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val1", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val2", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val2", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactly();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactly();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly("val2", "val4", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly("val2", "val4", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsExactly("val2", "val4", "val1");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsExactly("val2", "val4", "val1");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
@@ -626,14 +627,14 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsExactlyIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val1", "val2", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val2", "val1", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val2", "val3", "val1"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val3", "val2", "val1"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactly(new ArrayList<String>());
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val1", "val2", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val2", "val1", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val2", "val3", "val1"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val3", "val2", "val1"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
+        initialize(new ArrayAssertionImpl(), new String[0]).doContainsExactly(new ArrayList<String>());
 
         try {
             new ArrayAssertionImpl().doContainsExactly(new ArrayList<String>());
@@ -654,49 +655,49 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactly((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactly((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val3", "val2", "val1", "val4"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val3", "val2", "val1", "val4"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val1", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val2", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val2", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactly(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactly(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
@@ -708,10 +709,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsExactlyInOrderArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val1", "val2", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactlyInOrder();
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val1", "val2", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        initialize(new ArrayAssertionImpl(), new String[0]).doContainsExactlyInOrder();
 
         try {
             new ArrayAssertionImpl().doContainsExactlyInOrder("val");
@@ -732,49 +733,49 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactlyInOrder((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactlyInOrder((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val1", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val2", "val3");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val2", "val3");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val1", "val2", "val4");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val1", "val2", "val4");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val1", "val2", "val3", "val4");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val1", "val2", "val3", "val4");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactlyInOrder();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactlyInOrder();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder("val3", "val1", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsExactlyInOrder("val3", "val1", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
@@ -786,10 +787,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsExactlyInOrderIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
-        initialize(new ArrayAssertionImpl(), new ArrayList<String>()).doContainsExactlyInOrder(new ArrayList<String>());
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(new ArrayAssertionImpl(), new String[0]).doContainsExactlyInOrder(new ArrayList<String>());
 
         try {
             new ArrayAssertionImpl().doContainsExactlyInOrder(new ArrayList<String>());
@@ -810,49 +811,49 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactlyInOrder((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val1", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val2", "val3"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val2", "val3"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val4"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val4"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsExactlyInOrder(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
@@ -864,10 +865,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAnyArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny("val1", "val3", "val5");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny("val6", "val2", "val4");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAny("val7", "val9", "val1", "val5", "val3");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAny("val7", "val9", null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny("val1", "val3", "val5");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny("val6", "val2", "val4");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAny("val7", "val9", "val1", "val5", "val3");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAny("val7", "val9", null);
 
         try {
             new ArrayAssertionImpl().doContainsAny("val");
@@ -888,31 +889,31 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAny((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAny((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAny();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAny();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny("val4", "val5", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny("val4", "val5", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAny("val8", "val7");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAny("val8", "val7");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAny("val8", "val7");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAny("val8", "val7");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
@@ -924,10 +925,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsAnyIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny(Arrays.asList("val1", "val3", "val5"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny(Arrays.asList("val6", "val2", "val4"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", null)).doContainsAny(Arrays.asList("val7", "val9", null));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny(Arrays.asList("val1", "val3", "val5"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny(Arrays.asList("val6", "val2", "val4"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", null}).doContainsAny(Arrays.asList("val7", "val9", null));
 
         try {
             new ArrayAssertionImpl().doContainsAny(new ArrayList<String>());
@@ -948,31 +949,31 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAny((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAny((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsAny(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsAny(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsAny(Arrays.asList("val4", "val5", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsAny(Arrays.asList("val4", "val5", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).doContainsAny(Arrays.asList("val8", "val7"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).doContainsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").doContainsAny(Arrays.asList("val8", "val7"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}, "Message").doContainsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
@@ -984,10 +985,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsNoneArrayTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val4", "val5", "val6");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val8", "val4");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", null)).doContainsNone("val8", "val4");
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val8", "val4", null);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone("val4", "val5", "val6");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone("val8", "val4");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", null}).doContainsNone("val8", "val4");
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone("val8", "val4", null);
 
         try {
             new ArrayAssertionImpl().doContainsNone("val");
@@ -1008,31 +1009,31 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsNone((String[]) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsNone((String[]) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsNone();
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsNone();
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val4", "val2");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone("val4", "val2");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone("val5", "val4", "val2", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsNone("val5", "val4", "val2", "val6");
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
@@ -1044,10 +1045,10 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void doContainsNoneIterableTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val4", "val5", "val6"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val8", "val4"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", null)).doContainsNone(Arrays.asList("val8", "val4"));
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val8", "val4", null));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone(Arrays.asList("val4", "val5", "val6"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone(Arrays.asList("val8", "val4"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", null}).doContainsNone(Arrays.asList("val8", "val4"));
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone(Arrays.asList("val8", "val4", null));
 
         try {
             new ArrayAssertionImpl().doContainsNone(new ArrayList<String>());
@@ -1068,31 +1069,31 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsNone((Iterable<String>) null);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsNone((Iterable<String>) null);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2")).doContainsNone(new ArrayList<String>());
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doContainsNone(new ArrayList<String>());
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val4", "val2"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone(Arrays.asList("val4", "val2"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").doContainsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
@@ -1104,13 +1105,13 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void toLengthTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).toLength().isEqualTo(3);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).toLength().isGreaterThan(2);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).toLength().isLessThan(6);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isEqualTo(3);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isGreaterThan(2);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isLessThan(6);
 
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toLength().isEqualTo(5);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toLength().isGreaterThan(1);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toLength().isLessThan(9);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).toLength().isEqualTo(5);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).toLength().isGreaterThan(1);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).toLength().isLessThan(9);
 
         try {
             new ArrayAssertionImpl().toLength();
@@ -1131,13 +1132,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).toLength().isEqualTo(4);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").toLength().isEqualTo(4);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<4> but was:<3>");
@@ -1149,17 +1150,17 @@ public final class ArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void hasLengthTest() {
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).hasLength(3);
-        initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).hasLength(5);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).hasLength(3);
+        initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3", "val4", "val5"}).hasLength(5);
 
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3")).hasLength(4);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
-            initialize(new ArrayAssertionImpl(), Arrays.asList("val1", "val2", "val3"), "Message").hasLength(4);
+            initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<4> but was:<3>");
@@ -1171,18 +1172,20 @@ public final class ArrayAssertionTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ArrayAssertionImpl extends ArrayAssertion<String> {
+    private static final class ArrayAssertionImpl extends ArrayAssertion<String[], String> {
 
         ArrayAssertionImpl() {
             super();
         }
 
         @Override
-        @SuppressWarnings("unchecked")
+        protected Class<String[]> getActualValueClass() {
+            return String[].class;
+        }
+
+        @Override
         protected List<String> createList(final Object value) {
-            List<String> copy = new ArrayList<>();
-            copy.addAll((List<String>) value);
-            return copy;
+            return ValueConverter.toObjectList((String[]) value);
         }
 
         @Override
