@@ -31,7 +31,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Base class for all array type assertions.
  *
  * @param <T> the generic type of the actual value.
- * @param <E> the generic type of the array element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 abstract class ArrayAssertion<T, E> extends ReferenceAssertion<T> {
@@ -159,7 +159,7 @@ abstract class ArrayAssertion<T, E> extends ReferenceAssertion<T> {
     }
 
     /**
-     * Make assertion about the actual value length.
+     * Make assertion about the actual value's length.
      *
      * @return the assertion.
      */
