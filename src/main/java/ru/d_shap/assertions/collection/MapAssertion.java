@@ -32,8 +32,8 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the map.
  *
- * @param <K> the generic type of the map key.
- * @param <V> the generic type of the map value.
+ * @param <K> the generic type of the key.
+ * @param <V> the generic type of the value.
  * @author Dmitry Shapovalov
  */
 public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
@@ -288,8 +288,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        Iterable<V> values = getActual().values();
-        return initializeAssertion(Raw.<V>iterableAssertion(), values, Messages.Check.ACTUAL_VALUES);
+        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUES);
     }
 
     /**
@@ -393,7 +392,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
