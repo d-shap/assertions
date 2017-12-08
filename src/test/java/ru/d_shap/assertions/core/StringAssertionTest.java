@@ -47,13 +47,13 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "");
 
         try {
-            initialize(Raw.stringAssertion(), new Object());
+            initializeWithRawActual(Raw.stringAssertion(), new Object());
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.stringAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.stringAssertion(), new Object(), "Message");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -2867,32 +2867,20 @@ public final class StringAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        String value = "value";
+        String value = "value1";
         initialize(Raw.stringAssertion(), value).isSameAs(value);
 
         try {
-            initialize(Raw.stringAssertion(), value).isSameAs("va" + new StringBuilder("lue"));
+            initialize(Raw.stringAssertion(), value).isSameAs("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
-            initialize(Raw.stringAssertion(), value, "Message").isSameAs("va" + new StringBuilder("lue"));
+            initialize(Raw.stringAssertion(), value, "Message").isSameAs("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>");
-        }
-        try {
-            initialize(Raw.stringAssertion(), value).isSameAs(new StringBuilder("value"));
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>");
-        }
-        try {
-            initialize(Raw.stringAssertion(), value, "Message").isSameAs(new StringBuilder("value"));
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value2> but was:<value1>");
         }
     }
 
@@ -2901,21 +2889,20 @@ public final class StringAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        String value = "value";
-        initialize(Raw.stringAssertion(), value).isNotSameAs("va" + new StringBuilder("lue"));
-        initialize(Raw.stringAssertion(), value).isNotSameAs(new StringBuilder("value"));
+        String value = "value1";
+        initialize(Raw.stringAssertion(), value).isNotSameAs("value2");
 
         try {
             initialize(Raw.stringAssertion(), value).isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value1>");
         }
     }
 

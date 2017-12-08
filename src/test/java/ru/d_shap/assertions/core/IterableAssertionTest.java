@@ -51,13 +51,13 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>());
 
         try {
-            initialize(Raw.<String>iterableAssertion(), new Object());
+            initializeWithRawActual(Raw.<String>iterableAssertion(), new Object());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String>iterableAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.<String>iterableAssertion(), new Object(), "Message");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1092,18 +1092,6 @@ public final class IterableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
-        try {
-            initialize(Raw.<String>iterableAssertion(), value).isSameAs("test");
-            Assertions.fail("IterableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<[val1, val2, val3]>");
-        }
-        try {
-            initialize(Raw.<String>iterableAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("IterableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<[val1, val2, val3]>");
-        }
     }
 
     /**
@@ -1113,7 +1101,6 @@ public final class IterableAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Iterable<String> value = Arrays.asList("val1", "val2", "val3");
         initialize(Raw.<String>iterableAssertion(), value).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
-        initialize(Raw.<String>iterableAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.<String>iterableAssertion(), value).isNotSameAs(value);

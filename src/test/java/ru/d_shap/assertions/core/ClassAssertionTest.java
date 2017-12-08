@@ -50,13 +50,13 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class);
 
         try {
-            initialize(Raw.classAssertion(), new Object());
+            initializeWithRawActual(Raw.classAssertion(), new Object());
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.classAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.classAssertion(), new Object(), "Message");
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -419,18 +419,6 @@ public final class ClassAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<java.lang.String> but was:<java.lang.Object>");
         }
-        try {
-            initialize(Raw.classAssertion(), Object.class).isSameAs("test");
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<java.lang.Object>");
-        }
-        try {
-            initialize(Raw.classAssertion(), Object.class, "Message").isSameAs("test");
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<java.lang.Object>");
-        }
     }
 
     /**
@@ -439,7 +427,6 @@ public final class ClassAssertionTest extends AssertionTest {
     @Test
     public void isNotSameAsTest() {
         initialize(Raw.classAssertion(), Object.class).isNotSameAs(String.class);
-        initialize(Raw.classAssertion(), Object.class).isNotSameAs("test");
 
         try {
             initialize(Raw.classAssertion(), Object.class).isNotSameAs(Object.class);

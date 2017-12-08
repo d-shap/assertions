@@ -47,13 +47,13 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "");
 
         try {
-            initialize(Raw.charSequenceAssertion(), new Object());
+            initializeWithRawActual(Raw.charSequenceAssertion(), new Object());
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.charSequenceAssertion(), new Object(), "Message");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -2901,32 +2901,20 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        String value = "value";
+        String value = "value1";
         initialize(Raw.charSequenceAssertion(), value).isSameAs(value);
 
         try {
-            initialize(Raw.charSequenceAssertion(), value).isSameAs("va" + new StringBuilder("lue"));
+            initialize(Raw.charSequenceAssertion(), value).isSameAs("value2");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), value, "Message").isSameAs("va" + new StringBuilder("lue"));
+            initialize(Raw.charSequenceAssertion(), value, "Message").isSameAs("value2");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), value).isSameAs(new StringBuilder("value"));
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value> but was:<value>");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), value, "Message").isSameAs(new StringBuilder("value"));
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value2> but was:<value1>");
         }
     }
 
@@ -2935,21 +2923,20 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        String value = "value";
-        initialize(Raw.charSequenceAssertion(), value).isNotSameAs("va" + new StringBuilder("lue"));
-        initialize(Raw.charSequenceAssertion(), value).isNotSameAs(new StringBuilder("value"));
+        String value = "value1";
+        initialize(Raw.charSequenceAssertion(), value).isNotSameAs("value2");
 
         try {
             initialize(Raw.charSequenceAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value1>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value1>");
         }
     }
 

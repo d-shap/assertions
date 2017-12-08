@@ -47,13 +47,13 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 10);
 
         try {
-            initialize(Raw.<Integer>comparableAssertion(), new Object());
+            initializeWithRawActual(Raw.<Integer>comparableAssertion(), new Object());
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.<Integer>comparableAssertion(), new Object(), "Message");
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -416,32 +416,20 @@ public final class ComparableAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        Comparable<Double> value = 5.0;
+        Comparable<Integer> value = 1000;
         initialize(Raw.<Integer>comparableAssertion(), value).isSameAs(value);
 
         try {
-            initialize(Raw.<Integer>comparableAssertion(), value).isSameAs(5.0);
+            initialize(Raw.<Integer>comparableAssertion(), value).isSameAs(1000);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<5.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<1000> but was:<1000>");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), value, "Message").isSameAs(5.0);
+            initialize(Raw.<Integer>comparableAssertion(), value, "Message").isSameAs(1000);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<5.0> but was:<5.0>");
-        }
-        try {
-            initialize(Raw.<Integer>comparableAssertion(), value).isSameAs("test");
-            Assertions.fail("ComparableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<5.0>");
-        }
-        try {
-            initialize(Raw.<Integer>comparableAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ComparableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<1000> but was:<1000>");
         }
     }
 
@@ -450,21 +438,20 @@ public final class ComparableAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        Comparable<Double> value = 5.0;
-        initialize(Raw.<Integer>comparableAssertion(), value).isNotSameAs(5.0);
-        initialize(Raw.<Integer>comparableAssertion(), value).isNotSameAs("test");
+        Comparable<Integer> value = 1000;
+        initialize(Raw.<Integer>comparableAssertion(), value).isNotSameAs(1000);
 
         try {
             initialize(Raw.<Integer>comparableAssertion(), value).isNotSameAs(value);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<1000>");
         }
         try {
             initialize(Raw.<Integer>comparableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<1000>");
         }
     }
 

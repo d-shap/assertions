@@ -183,18 +183,6 @@ public final class ObjectAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
         }
-        try {
-            initialize(Raw.objectAssertion(), value).isSameAs("test");
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.lang.Object@.*>");
-        }
-        try {
-            initialize(Raw.objectAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.lang.Object@.*>");
-        }
     }
 
     /**
@@ -204,7 +192,6 @@ public final class ObjectAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Object value = new Object();
         initialize(Raw.objectAssertion(), value).isNotSameAs(new Object());
-        initialize(Raw.objectAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.objectAssertion(), value).isNotSameAs(value);

@@ -47,13 +47,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("value"));
 
         try {
-            initialize(Raw.throwableAssertion(), new Object());
+            initializeWithRawActual(Raw.throwableAssertion(), new Object());
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.throwableAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.throwableAssertion(), new Object(), "Message");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -520,18 +520,6 @@ public final class ThrowableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<java.lang.Exception: value> but was:<java.lang.Exception: value>");
         }
-        try {
-            initialize(Raw.throwableAssertion(), value).isSameAs("test");
-            Assertions.fail("ThrowableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Values should be the same. Expected:<test> but was:<java.lang.Exception: value>");
-        }
-        try {
-            initialize(Raw.throwableAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ThrowableAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message. Values should be the same. Expected:<test> but was:<java.lang.Exception: value>");
-        }
     }
 
     /**
@@ -541,7 +529,6 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Throwable value = new Exception("value");
         initialize(Raw.throwableAssertion(), value).isNotSameAs(new Exception("value"));
-        initialize(Raw.throwableAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.throwableAssertion(), value).isNotSameAs(value);
