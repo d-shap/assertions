@@ -47,13 +47,13 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 10L);
 
         try {
-            initialize(Raw.longAssertion(), new Object());
+            initializeWithRawActual(Raw.longAssertion(), new Object());
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.longAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.longAssertion(), new Object(), "Message");
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -503,18 +503,6 @@ public final class LongAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000> but was:<10000>");
         }
-        try {
-            initialize(Raw.longAssertion(), value).isSameAs("test");
-            Assertions.fail("LongAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000>");
-        }
-        try {
-            initialize(Raw.longAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("LongAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000>");
-        }
     }
 
     /**
@@ -524,7 +512,6 @@ public final class LongAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Long value = 10000L;
         initialize(Raw.longAssertion(), value).isNotSameAs(10000L);
-        initialize(Raw.longAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.longAssertion(), value).isNotSameAs(value);

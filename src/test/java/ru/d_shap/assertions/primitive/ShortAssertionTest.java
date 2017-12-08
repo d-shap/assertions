@@ -47,13 +47,13 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 10);
 
         try {
-            initialize(Raw.shortAssertion(), new Object());
+            initializeWithRawActual(Raw.shortAssertion(), new Object());
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.shortAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.shortAssertion(), new Object(), "Message");
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -503,18 +503,6 @@ public final class ShortAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000> but was:<10000>");
         }
-        try {
-            initialize(Raw.shortAssertion(), value).isSameAs("test");
-            Assertions.fail("ShortAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000>");
-        }
-        try {
-            initialize(Raw.shortAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ShortAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000>");
-        }
     }
 
     /**
@@ -524,7 +512,6 @@ public final class ShortAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Short value = (short) 10000;
         initialize(Raw.shortAssertion(), value).isNotSameAs((short) 10000);
-        initialize(Raw.shortAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.shortAssertion(), value).isNotSameAs(value);

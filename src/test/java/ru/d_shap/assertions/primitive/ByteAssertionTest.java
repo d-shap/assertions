@@ -47,13 +47,13 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 10);
 
         try {
-            initialize(Raw.byteAssertion(), new Object());
+            initializeWithRawActual(Raw.byteAssertion(), new Object());
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.byteAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.byteAssertion(), new Object(), "Message");
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -503,18 +503,6 @@ public final class ByteAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<101> but was:<100>");
         }
-        try {
-            initialize(Raw.byteAssertion(), value).isSameAs("test");
-            Assertions.fail("ByteAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<100>");
-        }
-        try {
-            initialize(Raw.byteAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("ByteAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<100>");
-        }
     }
 
     /**
@@ -524,7 +512,6 @@ public final class ByteAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Byte value = 100;
         initialize(Raw.byteAssertion(), value).isNotSameAs((byte) 101);
-        initialize(Raw.byteAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.byteAssertion(), value).isNotSameAs(value);

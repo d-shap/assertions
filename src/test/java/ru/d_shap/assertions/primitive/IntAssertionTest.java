@@ -47,13 +47,13 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 10);
 
         try {
-            initialize(Raw.intAssertion(), new Object());
+            initializeWithRawActual(Raw.intAssertion(), new Object());
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.intAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.intAssertion(), new Object(), "Message");
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -503,18 +503,6 @@ public final class IntAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000> but was:<10000>");
         }
-        try {
-            initialize(Raw.intAssertion(), value).isSameAs("test");
-            Assertions.fail("IntAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000>");
-        }
-        try {
-            initialize(Raw.intAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("IntAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000>");
-        }
     }
 
     /**
@@ -524,7 +512,6 @@ public final class IntAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Integer value = 10000;
         initialize(Raw.intAssertion(), value).isNotSameAs(10000);
-        initialize(Raw.intAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.intAssertion(), value).isNotSameAs(value);

@@ -47,13 +47,13 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a');
 
         try {
-            initialize(Raw.charAssertion(), new Object());
+            initializeWithRawActual(Raw.charAssertion(), new Object());
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.charAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.charAssertion(), new Object(), "Message");
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1004,18 +1004,6 @@ public final class CharAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:< (10000)> but was:< (10000)>");
         }
-        try {
-            initialize(Raw.charAssertion(), value).isSameAs("test");
-            Assertions.fail("CharAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:< (10000)>");
-        }
-        try {
-            initialize(Raw.charAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("CharAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:< (10000)>");
-        }
     }
 
     /**
@@ -1025,7 +1013,6 @@ public final class CharAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Character value = (char) 10000;
         initialize(Raw.charAssertion(), value).isNotSameAs((char) 10000);
-        initialize(Raw.charAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.charAssertion(), value).isNotSameAs(value);

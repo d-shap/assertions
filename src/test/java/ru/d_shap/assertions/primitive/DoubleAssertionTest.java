@@ -47,13 +47,13 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0);
 
         try {
-            initialize(Raw.doubleAssertion(), new Object());
+            initializeWithRawActual(Raw.doubleAssertion(), new Object());
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.doubleAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.doubleAssertion(), new Object(), "Message");
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1115,18 +1115,6 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000.0> but was:<10000.0>");
         }
-        try {
-            initialize(Raw.doubleAssertion(), value).isSameAs("test");
-            Assertions.fail("DoubleAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000.0>");
-        }
-        try {
-            initialize(Raw.doubleAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("DoubleAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000.0>");
-        }
     }
 
     /**
@@ -1136,7 +1124,6 @@ public final class DoubleAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Double value = 10000.0;
         initialize(Raw.doubleAssertion(), value).isNotSameAs(10000.0);
-        initialize(Raw.doubleAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.doubleAssertion(), value).isNotSameAs(value);

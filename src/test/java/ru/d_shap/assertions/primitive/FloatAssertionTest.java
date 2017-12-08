@@ -47,13 +47,13 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f);
 
         try {
-            initialize(Raw.floatAssertion(), new Object());
+            initializeWithRawActual(Raw.floatAssertion(), new Object());
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.floatAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.floatAssertion(), new Object(), "Message");
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1115,18 +1115,6 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<10000.0> but was:<10000.0>");
         }
-        try {
-            initialize(Raw.floatAssertion(), value).isSameAs("test");
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<10000.0>");
-        }
-        try {
-            initialize(Raw.floatAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<10000.0>");
-        }
     }
 
     /**
@@ -1136,7 +1124,6 @@ public final class FloatAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Float value = 10000.0f;
         initialize(Raw.floatAssertion(), value).isNotSameAs(10000.0f);
-        initialize(Raw.floatAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.floatAssertion(), value).isNotSameAs(value);

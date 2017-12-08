@@ -47,13 +47,13 @@ public final class BooleanAssertionTest extends AssertionTest {
         initialize(Raw.booleanAssertion(), true);
 
         try {
-            initialize(Raw.booleanAssertion(), new Object());
+            initializeWithRawActual(Raw.booleanAssertion(), new Object());
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.booleanAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.booleanAssertion(), new Object(), "Message");
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -179,18 +179,6 @@ public final class BooleanAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<false> but was:<true>");
         }
-        try {
-            initialize(Raw.booleanAssertion(), value).isSameAs("test");
-            Assertions.fail("BooleanAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<true>");
-        }
-        try {
-            initialize(Raw.booleanAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("BooleanAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<true>");
-        }
     }
 
     /**
@@ -200,7 +188,6 @@ public final class BooleanAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Boolean value = true;
         initialize(Raw.booleanAssertion(), value).isNotSameAs(false);
-        initialize(Raw.booleanAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.booleanAssertion(), value).isNotSameAs(value);
