@@ -99,7 +99,7 @@
                     </rulesets>
                     <ignoreIdentifiers>false</ignoreIdentifiers>
                     <ignoreLiterals>true</ignoreLiterals>
-                    <minimumTokens>500</minimumTokens>
+                    <minimumTokens>1000</minimumTokens>
                 </configuration>
             </plugin>
             <plugin>
