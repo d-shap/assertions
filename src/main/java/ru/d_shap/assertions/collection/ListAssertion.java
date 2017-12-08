@@ -33,7 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
 /**
  * Assertions for the list.
  *
- * @param <E> the generic type of the list element.
+ * @param <E> the generic type of the element.
  * @author Dmitry Shapovalov
  */
 public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
@@ -344,7 +344,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
