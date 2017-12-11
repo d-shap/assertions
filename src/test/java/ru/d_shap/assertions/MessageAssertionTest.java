@@ -31,12 +31,14 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -1022,40 +1024,6 @@ public final class MessageAssertionTest extends AssertionTest {
      * {@link MessageAssertion} class test.
      */
     @Test
-    public void collectionAssertionTest() {
-        Collection<String> collection = Arrays.asList("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that((Collection<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(collection).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that(null, Raw.<String>collectionAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(collection, Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", Raw.<String>collectionAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection").isNotNull();
-        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_collection", Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
-
-        try {
-            Assertions.assertWithMessage(null).that(collection).containsExactlyInOrder("1", "2", "3", "4");
-            Assertions.fail("MessageAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
-        }
-        try {
-            Assertions.assertWithMessage("").that(collection).containsExactlyInOrder("1", "2", "3", "4");
-            Assertions.fail("MessageAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
-        }
-        try {
-            Assertions.assertWithMessage("Test message").that(collection).containsExactlyInOrder("1", "2", "3", "4");
-            Assertions.fail("MessageAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
-        }
-    }
-
-    /**
-     * {@link MessageAssertion} class test.
-     */
-    @Test
     public void iteratorAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Iterator<String>) null).isNull();
         Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
@@ -1155,6 +1123,39 @@ public final class MessageAssertionTest extends AssertionTest {
      * {@link MessageAssertion} class test.
      */
     @Test
+    public void sortedSetAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((SortedSet<String>) null).isNull();
+        Assertions.assertWithMessage("Test message").that(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(null, Raw.<String>sortedSetAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(new TreeSet<>(Arrays.asList("1", "2", "3")), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", Raw.<String>sortedSetAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_sortedSet").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_sortedSet", Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+
+        try {
+            Assertions.assertWithMessage(null).that(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
     public void mapAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Map<String, String>) null).isNull();
         Assertions.assertWithMessage("Test message").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
@@ -1178,6 +1179,39 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertWithMessage("Test message").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void sortedMapAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((SortedMap<String, String>) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(null, Raw.<String, String>sortedMapAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(new NullFieldClass(), "_field", Raw.<String, String>sortedMapAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_sortedMap").isNotNull();
+        Assertions.assertWithMessage("Test message").that(new PrivateFieldsClass(), "_sortedMap", Raw.<String, String>sortedMapAssertion()).hasSize(3);
+
+        try {
+            Assertions.assertWithMessage(null).that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
@@ -1567,15 +1601,17 @@ public final class MessageAssertionTest extends AssertionTest {
 
         private Throwable _throwable = new AssertionError("error");
 
-        private Collection<String> _collection = Arrays.asList("1", "2", "3");
-
         private Iterator<String> _iterator = Arrays.asList("1", "2", "3").iterator();
 
         private List<String> _list = Arrays.asList("1", "2", "3");
 
         private Set<String> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
 
+        private SortedSet<String> _sortedSet = new TreeSet<>(Arrays.asList("1", "2", "3"));
+
         private Map<String, String> _map = createHashMap("1", "val1", "2", "val2", "3", "val3");
+
+        private SortedMap<String, String> _sortedMap = createTreeMap("1", "val1", "2", "val2", "3", "val3");
 
         private InputStream _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
 
