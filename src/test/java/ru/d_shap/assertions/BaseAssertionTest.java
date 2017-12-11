@@ -24,10 +24,8 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
-import ru.d_shap.assertions.collection.CollectionAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
 import ru.d_shap.assertions.collection.SetAssertion;
-import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 
 /**
@@ -58,27 +56,12 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void getFailDescriptionTest() {
-        BaseAssertion baseAssertion1 = createBaseAssertion(null);
-        Assertions.assertThat(baseAssertion1.getFailDescription()).isNotSameAs(baseAssertion1.getFailDescription());
-        Assertions.assertThat(baseAssertion1.getFailDescription().createAssertionError().getMessage()).isEmpty();
-
-        BaseAssertion baseAssertion2 = createBaseAssertion(null, "Message");
-        Assertions.assertThat(baseAssertion2.getFailDescription("message1").createAssertionError().getMessage()).isEqualTo("Message. message1.");
-        Assertions.assertThat(baseAssertion2.getFailDescription("message2").createAssertionError().getMessage()).isEqualTo("Message. message2.");
-        Assertions.assertThat(baseAssertion2.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
-    }
-
-    /**
-     * {@link BaseAssertion} class test.
-     */
-    @Test
     public void initializeTest() {
-        BaseAssertion baseAssertion1 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion1 = createBaseAssertion();
         baseAssertion1.initialize(null);
         Assertions.assertThat(baseAssertion1.getActual()).isNull();
-        Assertions.assertThat(baseAssertion1.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion1, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion1.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initialize(null);
             Assertions.fail("BaseAssertion test fail");
@@ -93,11 +76,11 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
 
-        BaseAssertion baseAssertion2 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion2 = createBaseAssertion();
         baseAssertion2.initialize(new Object());
         Assertions.assertThat(baseAssertion2.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion2.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion2, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion2.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initialize(new Object());
             Assertions.fail("BaseAssertion test fail");
@@ -112,11 +95,11 @@ public final class BaseAssertionTest extends AssertionTest {
         }
         baseAssertion2.as(Raw.objectAssertion()).isNotNull();
 
-        BaseAssertion baseAssertion3 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion3 = createBaseAssertion();
         baseAssertion3.initialize(null, null);
         Assertions.assertThat(baseAssertion3.getActual()).isNull();
-        Assertions.assertThat(baseAssertion3.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion3, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion3.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion3.initialize(null, null);
             Assertions.fail("BaseAssertion test fail");
@@ -131,11 +114,11 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
 
-        BaseAssertion baseAssertion4 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion4 = createBaseAssertion();
         baseAssertion4.initialize(new Object(), null);
         Assertions.assertThat(baseAssertion4.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion4.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion4, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion4.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion4.initialize(new Object(), null);
             Assertions.fail("BaseAssertion test fail");
@@ -150,11 +133,11 @@ public final class BaseAssertionTest extends AssertionTest {
         }
         baseAssertion4.as(Raw.objectAssertion()).isNotNull();
 
-        BaseAssertion baseAssertion5 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion5 = createBaseAssertion();
         baseAssertion5.initialize(null, "");
         Assertions.assertThat(baseAssertion5.getActual()).isNull();
-        Assertions.assertThat(baseAssertion5.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion5, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion5.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion5.initialize(null, "");
             Assertions.fail("BaseAssertion test fail");
@@ -169,11 +152,11 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
 
-        BaseAssertion baseAssertion6 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion6 = createBaseAssertion();
         baseAssertion6.initialize(new Object(), "");
         Assertions.assertThat(baseAssertion6.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion6.getFailDescription().createAssertionError().getMessage()).isEmpty();
         Assertions.assertThat(baseAssertion6, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion6.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion6.initialize(new Object(), "");
             Assertions.fail("BaseAssertion test fail");
@@ -188,11 +171,11 @@ public final class BaseAssertionTest extends AssertionTest {
         }
         baseAssertion6.as(Raw.objectAssertion()).isNotNull();
 
-        BaseAssertion baseAssertion7 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion7 = createBaseAssertion();
         baseAssertion7.initialize(null, "Message");
         Assertions.assertThat(baseAssertion7.getActual()).isNull();
-        Assertions.assertThat(baseAssertion7.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
         Assertions.assertThat(baseAssertion7, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion7.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion7.initialize(null, "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -207,11 +190,11 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
 
-        BaseAssertion baseAssertion8 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion8 = createBaseAssertion();
         baseAssertion8.initialize(new Object(), "Message");
         Assertions.assertThat(baseAssertion8.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion8.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
         Assertions.assertThat(baseAssertion8, "_failDescription").isNotNull();
+        Assertions.assertThat(baseAssertion8.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion8.initialize(new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -232,12 +215,12 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void initializeAssertionTest() {
-        BaseAssertion baseAssertion1 = createBaseAssertion(null, null);
+        BaseAssertion<Object> baseAssertion1 = createBaseAssertion(null, null);
 
-        BaseAssertion baseAssertion11 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion11 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion11, null);
         Assertions.assertThat(baseAssertion11.getActual()).isNull();
-        Assertions.assertThat(baseAssertion11.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion11.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion11, null);
             Assertions.fail("BaseAssertion test fail");
@@ -245,10 +228,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion12 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion12 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion12, new Object());
         Assertions.assertThat(baseAssertion12.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion12.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion12.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion12, new Object());
             Assertions.fail("BaseAssertion test fail");
@@ -256,10 +239,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion13 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion13 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion13, null, null);
         Assertions.assertThat(baseAssertion13.getActual()).isNull();
-        Assertions.assertThat(baseAssertion13.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion13.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion13, null, null);
             Assertions.fail("BaseAssertion test fail");
@@ -267,10 +250,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion14 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion14 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion14, new Object(), null);
         Assertions.assertThat(baseAssertion14.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion14.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion14.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion14, new Object(), null);
             Assertions.fail("BaseAssertion test fail");
@@ -278,10 +261,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion15 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion15 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion15, null, "");
         Assertions.assertThat(baseAssertion15.getActual()).isNull();
-        Assertions.assertThat(baseAssertion15.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion15.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion15, null, "");
             Assertions.fail("BaseAssertion test fail");
@@ -289,10 +272,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion16 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion16 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion16, new Object(), "");
         Assertions.assertThat(baseAssertion16.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion16.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion16.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion1.initializeAssertion(baseAssertion16, new Object(), "");
             Assertions.fail("BaseAssertion test fail");
@@ -300,10 +283,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion17 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion17 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion17, null, "Message");
         Assertions.assertThat(baseAssertion17.getActual()).isNull();
-        Assertions.assertThat(baseAssertion17.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion17.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion1.initializeAssertion(baseAssertion17, null, "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -311,10 +294,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion18 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion18 = createBaseAssertion();
         baseAssertion1.initializeAssertion(baseAssertion18, new Object(), "Message");
         Assertions.assertThat(baseAssertion18.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion18.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion18.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion1.initializeAssertion(baseAssertion18, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -322,12 +305,12 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion2 = createBaseAssertion(null, "");
+        BaseAssertion<Object> baseAssertion2 = createBaseAssertion(null, "");
 
-        BaseAssertion baseAssertion21 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion21 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion21, null);
         Assertions.assertThat(baseAssertion21.getActual()).isNull();
-        Assertions.assertThat(baseAssertion21.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion21.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion21, null);
             Assertions.fail("BaseAssertion test fail");
@@ -335,10 +318,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion22 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion22 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion22, new Object());
         Assertions.assertThat(baseAssertion22.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion22.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion22.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion22, new Object());
             Assertions.fail("BaseAssertion test fail");
@@ -346,10 +329,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion23 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion23 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion23, null, null);
         Assertions.assertThat(baseAssertion23.getActual()).isNull();
-        Assertions.assertThat(baseAssertion23.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion23.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion23, null, null);
             Assertions.fail("BaseAssertion test fail");
@@ -357,10 +340,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion24 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion24 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion24, new Object(), null);
         Assertions.assertThat(baseAssertion24.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion24.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion24.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion24, new Object(), null);
             Assertions.fail("BaseAssertion test fail");
@@ -368,10 +351,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion25 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion25 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion25, null, "");
         Assertions.assertThat(baseAssertion25.getActual()).isNull();
-        Assertions.assertThat(baseAssertion25.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion25.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion25, null, "");
             Assertions.fail("BaseAssertion test fail");
@@ -379,10 +362,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion26 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion26 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion26, new Object(), "");
         Assertions.assertThat(baseAssertion26.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion26.getFailDescription().createAssertionError().getMessage()).isEmpty();
+        Assertions.assertThat(baseAssertion26.createAssertionError().getMessage()).isEmpty();
         try {
             baseAssertion2.initializeAssertion(baseAssertion26, new Object(), "");
             Assertions.fail("BaseAssertion test fail");
@@ -390,10 +373,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion27 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion27 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion27, null, "Message");
         Assertions.assertThat(baseAssertion27.getActual()).isNull();
-        Assertions.assertThat(baseAssertion27.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion27.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion2.initializeAssertion(baseAssertion27, null, "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -401,10 +384,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion28 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion28 = createBaseAssertion();
         baseAssertion2.initializeAssertion(baseAssertion28, new Object(), "Message");
         Assertions.assertThat(baseAssertion28.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion28.getFailDescription().createAssertionError().getMessage()).isEqualTo("Message.");
+        Assertions.assertThat(baseAssertion28.createAssertionError().getMessage()).isEqualTo("Message.");
         try {
             baseAssertion2.initializeAssertion(baseAssertion28, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -412,12 +395,12 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion3 = createBaseAssertion(null, "Base message");
+        BaseAssertion<Object> baseAssertion3 = createBaseAssertion(null, "Base message");
 
-        BaseAssertion baseAssertion31 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion31 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion31, null);
         Assertions.assertThat(baseAssertion31.getActual()).isNull();
-        Assertions.assertThat(baseAssertion31.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion31.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion31, null);
             Assertions.fail("BaseAssertion test fail");
@@ -425,10 +408,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion32 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion32 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion32, new Object());
         Assertions.assertThat(baseAssertion32.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion32.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion32.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion32, new Object());
             Assertions.fail("BaseAssertion test fail");
@@ -436,10 +419,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion33 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion33 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion33, null, null);
         Assertions.assertThat(baseAssertion33.getActual()).isNull();
-        Assertions.assertThat(baseAssertion33.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion33.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion33, null, null);
             Assertions.fail("BaseAssertion test fail");
@@ -447,10 +430,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion34 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion34 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion34, new Object(), null);
         Assertions.assertThat(baseAssertion34.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion34.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion34.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion34, new Object(), null);
             Assertions.fail("BaseAssertion test fail");
@@ -458,10 +441,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion35 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion35 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion35, null, "");
         Assertions.assertThat(baseAssertion35.getActual()).isNull();
-        Assertions.assertThat(baseAssertion35.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion35.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion35, null, "");
             Assertions.fail("BaseAssertion test fail");
@@ -469,10 +452,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion36 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion36 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion36, new Object(), "");
         Assertions.assertThat(baseAssertion36.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion36.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message.");
+        Assertions.assertThat(baseAssertion36.createAssertionError().getMessage()).isEqualTo("Base message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion36, new Object(), "");
             Assertions.fail("BaseAssertion test fail");
@@ -480,10 +463,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion37 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion37 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion37, null, "Message");
         Assertions.assertThat(baseAssertion37.getActual()).isNull();
-        Assertions.assertThat(baseAssertion37.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion37.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion37, null, "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -491,10 +474,10 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
         }
 
-        BaseAssertion baseAssertion38 = createBaseAssertion();
+        BaseAssertion<Object> baseAssertion38 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion38, new Object(), "Message");
         Assertions.assertThat(baseAssertion38.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion38.getFailDescription().createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion38.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion38, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
@@ -546,7 +529,7 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object.*>");
         }
 
-        BaseAssertion baseAssertion = createBaseAssertion(object);
+        BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion())).hasClass(BaseAssertionImpl.class);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion())).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion()).getActual()).isSameAs(object);
@@ -600,7 +583,7 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).messageMatches("Message. As message. Values should be different. Actual:<java.lang.Object.*>");
         }
 
-        BaseAssertion baseAssertion = createBaseAssertion(object);
+        BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).hasClass(BaseAssertionImpl.class);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message").getActual()).isSameAs(object);
@@ -619,130 +602,34 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion((byte) 10).as(Raw.byteAssertion()).isEqualTo(10);
         Assertions.assertThat(createBaseAssertion((byte) 10).as(Raw.byteAssertion()).getActual()).hasClass(Byte.class);
         initialize(Raw.byteAssertion(), (byte) 10).as(Raw.byteAssertion()).isEqualTo(10);
-        try {
-            initialize(Raw.byteAssertion(), (byte) 10).as(Raw.byteArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.byteAssertion(), (byte) 10).as(Raw.byteArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion((short) 10).as(Raw.shortAssertion()).isEqualTo(10);
         Assertions.assertThat(createBaseAssertion((short) 10).as(Raw.shortAssertion()).getActual()).hasClass(Short.class);
         initialize(Raw.shortAssertion(), (short) 10).as(Raw.shortAssertion()).isEqualTo(10);
-        try {
-            initialize(Raw.shortAssertion(), (short) 10).as(Raw.shortArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.shortAssertion(), (short) 10).as(Raw.shortArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(10).as(Raw.intAssertion()).isEqualTo(10);
         Assertions.assertThat(createBaseAssertion(10).as(Raw.intAssertion()).getActual()).hasClass(Integer.class);
         initialize(Raw.intAssertion(), 10).as(Raw.intAssertion()).isEqualTo(10);
-        try {
-            initialize(Raw.intAssertion(), 10).as(Raw.intArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.intAssertion(), 10).as(Raw.intArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(10L).as(Raw.longAssertion()).isEqualTo(10L);
         Assertions.assertThat(createBaseAssertion(10L).as(Raw.longAssertion()).getActual()).hasClass(Long.class);
         initialize(Raw.longAssertion(), 10L).as(Raw.longAssertion()).isEqualTo(10L);
-        try {
-            initialize(Raw.longAssertion(), 10L).as(Raw.longArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.longAssertion(), 10L).as(Raw.longArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(10.0f).as(Raw.floatAssertion()).isEqualTo(10.0f, 0.01f);
         Assertions.assertThat(createBaseAssertion(10.0f).as(Raw.floatAssertion()).getActual()).hasClass(Float.class);
         initialize(Raw.floatAssertion(), 10.0f).as(Raw.floatAssertion()).isEqualTo(10.0f, 0.01f);
-        try {
-            initialize(Raw.floatAssertion(), 10.0f).as(Raw.floatArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.floatAssertion(), 10.0f).as(Raw.floatArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(10.0).as(Raw.doubleAssertion()).isEqualTo(10.0, 0.01);
         Assertions.assertThat(createBaseAssertion(10.0).as(Raw.doubleAssertion()).getActual()).hasClass(Double.class);
         initialize(Raw.doubleAssertion(), 10.0).as(Raw.doubleAssertion()).isEqualTo(10.0, 0.01);
-        try {
-            initialize(Raw.doubleAssertion(), 10.0).as(Raw.doubleArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.doubleAssertion(), 10.0).as(Raw.doubleArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(true).as(Raw.booleanAssertion()).isTrue();
         Assertions.assertThat(createBaseAssertion(true).as(Raw.booleanAssertion()).getActual()).hasClass(Boolean.class);
         initialize(Raw.booleanAssertion(), true).as(Raw.booleanAssertion()).isTrue();
-        try {
-            initialize(Raw.booleanAssertion(), true).as(Raw.booleanArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.booleanAssertion(), true).as(Raw.booleanArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion('c').as(Raw.charAssertion()).isEqualTo(99);
         Assertions.assertThat(createBaseAssertion('c').as(Raw.charAssertion()).getActual()).hasClass(Character.class);
         initialize(Raw.charAssertion(), 'c').as(Raw.charAssertion()).isEqualTo(99);
-        try {
-            initialize(Raw.charAssertion(), 'c').as(Raw.charArrayAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.charAssertion(), 'c').as(Raw.charArrayAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
     }
 
     /**
@@ -753,146 +640,38 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(new byte[0]).as(Raw.byteArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new byte[0]).as(Raw.byteArrayAssertion()).getActual()).hasClass(byte[].class);
         initialize(Raw.byteArrayAssertion(), new byte[0]).as(Raw.byteArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.byteArrayAssertion(), new byte[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.byteArrayAssertion(), new byte[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new short[0]).as(Raw.shortArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new short[0]).as(Raw.shortArrayAssertion()).getActual()).hasClass(short[].class);
         initialize(Raw.shortArrayAssertion(), new short[0]).as(Raw.shortArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.shortArrayAssertion(), new short[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.shortArrayAssertion(), new short[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new int[0]).as(Raw.intArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new int[0]).as(Raw.intArrayAssertion()).getActual()).hasClass(int[].class);
         initialize(Raw.intArrayAssertion(), new int[0]).as(Raw.intArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.intArrayAssertion(), new int[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.intArrayAssertion(), new int[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new long[0]).as(Raw.longArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new long[0]).as(Raw.longArrayAssertion()).getActual()).hasClass(long[].class);
         initialize(Raw.longArrayAssertion(), new long[0]).as(Raw.longArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.longArrayAssertion(), new long[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.longArrayAssertion(), new long[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new float[0]).as(Raw.floatArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new float[0]).as(Raw.floatArrayAssertion()).getActual()).hasClass(float[].class);
         initialize(Raw.floatArrayAssertion(), new float[0]).as(Raw.floatArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.floatArrayAssertion(), new float[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.floatArrayAssertion(), new float[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new double[0]).as(Raw.doubleArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new double[0]).as(Raw.doubleArrayAssertion()).getActual()).hasClass(double[].class);
         initialize(Raw.doubleArrayAssertion(), new double[0]).as(Raw.doubleArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.doubleArrayAssertion(), new double[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.doubleArrayAssertion(), new double[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new boolean[0]).as(Raw.booleanArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new boolean[0]).as(Raw.booleanArrayAssertion()).getActual()).hasClass(boolean[].class);
         initialize(Raw.booleanArrayAssertion(), new boolean[0]).as(Raw.booleanArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.booleanArrayAssertion(), new boolean[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.booleanArrayAssertion(), new boolean[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new char[0]).as(Raw.charArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new char[0]).as(Raw.charArrayAssertion()).getActual()).hasClass(char[].class);
         initialize(Raw.charArrayAssertion(), new char[0]).as(Raw.charArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.charArrayAssertion(), new char[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.charArrayAssertion(), new char[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
 
         createBaseAssertion(new String[0]).as(Raw.<String>objectArrayAssertion()).hasLength(0);
         Assertions.assertThat(createBaseAssertion(new String[0]).as(Raw.<String>objectArrayAssertion()).getActual()).hasClass(String[].class);
         initialize(Raw.<String>objectArrayAssertion(), new String[0]).as(Raw.<String>objectArrayAssertion()).hasLength(0);
-        try {
-            initialize(Raw.<String>objectArrayAssertion(), new String[0]).as(Raw.<String>iterableAssertion());
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
-        }
-        try {
-            initialize(Raw.<String>objectArrayAssertion(), new String[0]).as(Raw.<String>iterableAssertion(), "As message");
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("As message. Value should match the assertion.");
-        }
     }
 
     /**
@@ -901,20 +680,16 @@ public final class BaseAssertionTest extends AssertionTest {
     @Test
     public void asCollectionAssertionTest() {
         createBaseAssertion(new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
-        createBaseAssertion(new ArrayList<String>()).as(Raw.<String>collectionAssertion()).isEmpty();
         createBaseAssertion(new ArrayList<String>()).as(Raw.<String>iterableAssertion()).isEmpty();
 
         Assertions.assertThat(initialize(Raw.<String>listAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
-        Assertions.assertThat(initialize(Raw.<String>listAssertion(), new ArrayList<String>()).as(Raw.<String>collectionAssertion())).hasClass(CollectionAssertion.class);
-        Assertions.assertThat(initialize(Raw.<String>listAssertion(), new ArrayList<String>()).as(Raw.<String>iterableAssertion())).hasClass(IterableAssertion.class);
+        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
 
         createBaseAssertion(new HashSet<String>()).as(Raw.<String>setAssertion()).isEmpty();
-        createBaseAssertion(new HashSet<String>()).as(Raw.<String>collectionAssertion()).isEmpty();
         createBaseAssertion(new HashSet<String>()).as(Raw.<String>iterableAssertion()).isEmpty();
 
         Assertions.assertThat(initialize(Raw.<String>setAssertion(), new HashSet<String>()).as(Raw.<String>setAssertion())).hasClass(SetAssertion.class);
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), new HashSet<String>()).as(Raw.<String>collectionAssertion())).hasClass(CollectionAssertion.class);
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), new HashSet<String>()).as(Raw.<String>iterableAssertion())).hasClass(IterableAssertion.class);
+        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), new HashSet<String>()).as(Raw.<String>setAssertion())).hasClass(SetAssertion.class);
     }
 
     /**
