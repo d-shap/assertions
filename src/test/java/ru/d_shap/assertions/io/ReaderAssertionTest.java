@@ -114,13 +114,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check reader chars. Value should be less then or equal to the expected. Expected:<-1> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Check reader chars. Value should be less then the expected. Expected:<0> but was:<49>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check reader chars. Value should be less then or equal to the expected. Expected:<-1> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Message. Check reader chars. Value should be less then the expected. Expected:<0> but was:<49>");
         }
     }
 

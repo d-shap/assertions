@@ -112,13 +112,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check input stream bytes. Value should be less then or equal to the expected. Expected:<-1> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Check input stream bytes. Value should be less then the expected. Expected:<0> but was:<1>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check input stream bytes. Value should be less then or equal to the expected. Expected:<-1> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Message. Check input stream bytes. Value should be less then the expected. Expected:<0> but was:<1>");
         }
     }
 
