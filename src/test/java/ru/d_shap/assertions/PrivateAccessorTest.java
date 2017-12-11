@@ -20,34 +20,33 @@
 package ru.d_shap.assertions;
 
 import java.lang.reflect.Field;
-import java.security.AccessController;
 
 import org.junit.Test;
 
 /**
- * Tests for {@link FieldAccessAction}.
+ * Tests for {@link PrivateAccessor}.
  *
  * @author Dmitry Shapovalov
  */
-public final class FieldAccessActionTest extends AssertionTest {
+public final class PrivateAccessorTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public FieldAccessActionTest() {
+    public PrivateAccessorTest() {
         super();
     }
 
     /**
-     * {@link FieldAccessAction} class test.
+     * {@link PrivateAccessor} class test.
      *
      * @throws NoSuchFieldException   no such field exception.
      * @throws IllegalAccessException illegal access exception.
      */
     @Test
-    public void getAccessTest() throws NoSuchFieldException, IllegalAccessException {
+    public void setAccessibleTest() throws NoSuchFieldException, IllegalAccessException {
         Object object = new Object();
-        BaseAssertion baseAssertion = createBaseAssertion(object, "message");
+        BaseAssertion<Object> baseAssertion = createBaseAssertion(object, "message");
 
         Field actualField = baseAssertion.getClass().getSuperclass().getDeclaredField("_actual");
         try {
@@ -56,7 +55,7 @@ public final class FieldAccessActionTest extends AssertionTest {
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).toMessage().contains("private");
         }
-        AccessController.doPrivileged(new FieldAccessAction(actualField));
+        PrivateAccessor.setAccessible(actualField);
         Object actualValue = actualField.get(baseAssertion);
         Assertions.assertThat(actualValue).isSameAs(object);
 
@@ -67,7 +66,7 @@ public final class FieldAccessActionTest extends AssertionTest {
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).toMessage().contains("private");
         }
-        AccessController.doPrivileged(new FieldAccessAction(failDescriptionField));
+        PrivateAccessor.setAccessible(failDescriptionField);
         Object failDescriptionValue = failDescriptionField.get(baseAssertion);
         Assertions.assertThat(failDescriptionValue).isInstanceOf(FailDescription.class);
         Assertions.assertThat(((FailDescription) failDescriptionValue).createAssertionError()).hasMessage("message.");
