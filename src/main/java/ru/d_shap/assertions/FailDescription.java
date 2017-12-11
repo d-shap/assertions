@@ -61,7 +61,7 @@ final class FailDescription {
      */
     FailDescription(final String message) {
         this();
-        addMessage(message, true);
+        addMessage(message, null, true);
     }
 
     /**
@@ -82,19 +82,42 @@ final class FailDescription {
      */
     FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
-        addMessage(message, true);
+        addMessage(message, null, true);
     }
 
-    private void addMessage(final String message, final boolean checkLastSymbol) {
-        if (message != null && !"".equals(message)) {
+    /**
+     * Create new object.
+     *
+     * @param failDescription the fail description.
+     * @param message         the message.
+     * @param parameter       the message parameter.
+     */
+    FailDescription(final FailDescription failDescription, final String message, final Object parameter) {
+        this(failDescription);
+        addMessage(message, parameter, true);
+    }
+
+    private void addMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
+        String fullMessage;
+        if (message == null || "".equals(message)) {
+            fullMessage = null;
+        } else {
+            if (parameter == null) {
+                fullMessage = message;
+            } else {
+                fullMessage = message + ": " + parameter;
+            }
+        }
+
+        if (fullMessage != null && !"".equals(fullMessage)) {
             if (checkLastSymbol) {
-                if (message.endsWith(".") || message.endsWith("?") || message.endsWith("!")) {
-                    _messages.add(message);
+                if (fullMessage.endsWith(".") || fullMessage.endsWith("?") || fullMessage.endsWith("!")) {
+                    _messages.add(fullMessage);
                 } else {
-                    _messages.add(message + ".");
+                    _messages.add(fullMessage + ".");
                 }
             } else {
-                _messages.add(message);
+                _messages.add(fullMessage);
             }
         }
     }
@@ -189,15 +212,15 @@ final class FailDescription {
     private boolean addValuesMessage() {
         if (_actualDefined) {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected + " but was:" + _actual, false);
+                addMessage("Expected:" + _expected + " but was:" + _actual, null, false);
                 return true;
             } else {
-                addMessage("Actual:" + _actual, false);
+                addMessage("Actual:" + _actual, null, false);
                 return true;
             }
         } else {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected, false);
+                addMessage("Expected:" + _expected, null, false);
                 return true;
             } else {
                 return false;
