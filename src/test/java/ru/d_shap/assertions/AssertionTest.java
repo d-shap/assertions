@@ -28,6 +28,8 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * Base class for all tests.
@@ -48,10 +50,12 @@ public class AssertionTest {
      *
      * @param assertion the specified assertion.
      * @param actual    the actual value.
-     * @param <T>       generic assertion type.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <U>       the generic type of the actual value.
+     * @param <S>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    public static <T extends BaseAssertion> T initialize(final T assertion, final Object actual) {
+    public static <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual) {
         assertion.initialize(actual);
         return assertion;
     }
@@ -62,11 +66,44 @@ public class AssertionTest {
      * @param assertion the specified assertion.
      * @param actual    the actual value.
      * @param message   the message.
-     * @param <T>       generic assertion type.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <U>       the generic type of the actual value.
+     * @param <S>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    public static <T extends BaseAssertion> T initialize(final T assertion, final Object actual, final String message) {
+    public static <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message) {
         assertion.initialize(actual, message);
+        return assertion;
+    }
+
+    /**
+     * Initialize the specified assertion with the actual value.
+     *
+     * @param assertion the specified assertion.
+     * @param actual    the actual value.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <S>       the generic type of the assertion.
+     * @return the initialized assertion.
+     */
+    @SuppressWarnings("unchecked")
+    public static <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual) {
+        assertion.initialize((W) actual);
+        return assertion;
+    }
+
+    /**
+     * Initialize the specified assertion with the actual value and the message.
+     *
+     * @param assertion the specified assertion.
+     * @param actual    the actual value.
+     * @param message   the message.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <S>       the generic type of the assertion.
+     * @return the initialized assertion.
+     */
+    @SuppressWarnings("unchecked")
+    public static <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message) {
+        assertion.initialize((W) actual, message);
         return assertion;
     }
 
@@ -75,7 +112,7 @@ public class AssertionTest {
      *
      * @return the initialized assertion.
      */
-    public static BaseAssertion createBaseAssertion() {
+    public static BaseAssertion<Object> createBaseAssertion() {
         return new BaseAssertionImpl();
     }
 
@@ -85,7 +122,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public static BaseAssertion createBaseAssertion(final Object actual) {
+    public static BaseAssertion<Object> createBaseAssertion(final Object actual) {
         return initialize(createBaseAssertion(), actual);
     }
 
@@ -96,7 +133,7 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public final BaseAssertion createBaseAssertion(final Object actual, final String message) {
+    public final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
         return initialize(createBaseAssertion(), actual, message);
     }
 
@@ -105,7 +142,7 @@ public class AssertionTest {
      *
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion createReferenceAssertion() {
+    public static ReferenceAssertion<Object> createReferenceAssertion() {
         return new ReferenceAssertionImpl();
     }
 
@@ -115,7 +152,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion createReferenceAssertion(final Object actual) {
+    public static ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
         return initialize(createReferenceAssertion(), actual);
     }
 
@@ -126,7 +163,7 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion createReferenceAssertion(final Object actual, final String message) {
+    public static ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
         return initialize(createReferenceAssertion(), actual, message);
     }
 
@@ -186,6 +223,64 @@ public class AssertionTest {
         map.put(key2, value2);
         map.put(key3, value3);
         return map;
+    }
+
+    /**
+     * Create new empty tree map.
+     *
+     * @return the tree map.
+     */
+    public static SortedMap<String, String> createTreeMap() {
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        return sortedMap;
+    }
+
+    /**
+     * Create new tree map with the values.
+     *
+     * @param key   the key.
+     * @param value the value.
+     * @return the tree map.
+     */
+    public static SortedMap<String, String> createTreeMap(final String key, final String value) {
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        sortedMap.put(key, value);
+        return sortedMap;
+    }
+
+    /**
+     * Create new tree map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @return the tree map.
+     */
+    public static SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2) {
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        sortedMap.put(key1, value1);
+        sortedMap.put(key2, value2);
+        return sortedMap;
+    }
+
+    /**
+     * Create new tree map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @return the tree map.
+     */
+    public static SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        sortedMap.put(key1, value1);
+        sortedMap.put(key2, value2);
+        sortedMap.put(key3, value3);
+        return sortedMap;
     }
 
     /**
@@ -647,10 +742,15 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionImpl extends BaseAssertion {
+    public static final class BaseAssertionImpl extends BaseAssertion<Object> {
 
         BaseAssertionImpl() {
             super();
+        }
+
+        @Override
+        protected Class<Object> getActualValueClass() {
+            return Object.class;
         }
 
         @Override
@@ -665,10 +765,15 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class ReferenceAssertionImpl extends ReferenceAssertion {
+    public static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
 
         ReferenceAssertionImpl() {
             super();
+        }
+
+        @Override
+        protected Class<Object> getActualValueClass() {
+            return Object.class;
         }
 
         @Override
