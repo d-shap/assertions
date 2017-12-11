@@ -52,13 +52,13 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator());
 
         try {
-            initialize(Raw.<String>iteratorAssertion(), new Object());
+            initializeWithRawActual(Raw.<String>iteratorAssertion(), new Object());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.<String>iteratorAssertion(), new Object(), "Message");
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1460,18 +1460,6 @@ public final class IteratorAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>");
         }
-        try {
-            initialize(Raw.<String>iteratorAssertion(), value).isSameAs("test");
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>");
-        }
-        try {
-            initialize(Raw.<String>iteratorAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("IteratorAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<test> but was:<java.util.AbstractList.*>");
-        }
     }
 
     /**
@@ -1481,7 +1469,6 @@ public final class IteratorAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Iterator<String> value = Arrays.asList("val1", "val2", "val3").iterator();
         initialize(Raw.<String>iteratorAssertion(), value).isNotSameAs(Arrays.asList("val1", "val2", "val3").iterator());
-        initialize(Raw.<String>iteratorAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.<String>iteratorAssertion(), value).isNotSameAs(value);

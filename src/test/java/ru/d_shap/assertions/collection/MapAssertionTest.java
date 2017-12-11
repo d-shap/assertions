@@ -52,13 +52,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap());
 
         try {
-            initialize(Raw.<String, String>mapAssertion(), new Object());
+            initializeWithRawActual(Raw.<String, String>mapAssertion(), new Object());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), new Object(), "Message");
+            initializeWithRawActual(Raw.<String, String>mapAssertion(), new Object(), "Message");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
@@ -1399,18 +1399,6 @@ public final class MapAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<{}> but was:<{}>");
         }
-        try {
-            initialize(Raw.<String, String>mapAssertion(), value).isSameAs("test");
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<test> but was:<{}>");
-        }
-        try {
-            initialize(Raw.<String, String>mapAssertion(), value, "Message").isSameAs("test");
-            Assertions.fail("MapAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<test> but was:<{}>");
-        }
     }
 
     /**
@@ -1420,7 +1408,6 @@ public final class MapAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         Map<String, String> value = createHashMap();
         initialize(Raw.<String, String>mapAssertion(), value).isNotSameAs(createHashMap());
-        initialize(Raw.<String, String>mapAssertion(), value).isNotSameAs("test");
 
         try {
             initialize(Raw.<String, String>mapAssertion(), value).isNotSameAs(value);
