@@ -31,12 +31,14 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -661,28 +663,6 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
-    public void collectionAssertionTest() {
-        Collection<String> collection = Arrays.asList("1", "2", "3");
-        Assertions.assertThat((Collection<String>) null).isNull();
-        Assertions.assertThat(collection).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(null, Raw.<String>collectionAssertion()).isNull();
-        Assertions.assertThat(collection, Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
-        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>collectionAssertion()).isNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_collection").isNotNull();
-        Assertions.assertThat(new PrivateFieldsClass(), "_collection", Raw.<String>collectionAssertion()).containsExactlyInOrder("1", "2", "3");
-
-        try {
-            Assertions.assertThat(collection).containsExactlyInOrder("1", "2", "3", "4");
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
-        }
-    }
-
-    /**
-     * {@link Assertions} class test.
-     */
-    @Test
     public void iteratorAssertionTest() {
         Assertions.assertThat((Iterator<String>) null).isNull();
         Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
@@ -746,6 +726,27 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
+    public void sortedSetAssertionTest() {
+        Assertions.assertThat((SortedSet<String>) null).isNull();
+        Assertions.assertThat(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3");
+        Assertions.assertThat(null, Raw.<String>sortedSetAssertion()).isNull();
+        Assertions.assertThat(new TreeSet<>(Arrays.asList("1", "2", "3")), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String>sortedSetAssertion()).isNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_sortedSet").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_sortedSet", Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+
+        try {
+            Assertions.assertThat(new TreeSet<>(Arrays.asList("1", "2", "3"))).containsExactly("1", "2", "3", "4");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
     public void mapAssertionTest() {
         Assertions.assertThat((Map<String, String>) null).isNull();
         Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
@@ -757,6 +758,27 @@ public final class AssertionsTest extends AssertionTest {
 
         try {
             Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void sortedMapAssertionTest() {
+        Assertions.assertThat((SortedMap<String, String>) null).isNull();
+        Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertThat(null, Raw.<String, String>sortedMapAssertion()).isNull();
+        Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
+        Assertions.assertThat(new NullFieldClass(), "_field", Raw.<String, String>sortedMapAssertion()).isNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_sortedMap").isNotNull();
+        Assertions.assertThat(new PrivateFieldsClass(), "_sortedMap", Raw.<String, String>sortedMapAssertion()).hasSize(3);
+
+        try {
+            Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
@@ -1050,15 +1072,17 @@ public final class AssertionsTest extends AssertionTest {
 
         private Throwable _throwable = new AssertionError("error");
 
-        private Collection<String> _collection = Arrays.asList("1", "2", "3");
-
         private Iterator<String> _iterator = Arrays.asList("1", "2", "3").iterator();
 
         private List<String> _list = Arrays.asList("1", "2", "3");
 
         private Set<String> _set = new HashSet<>(Arrays.asList("1", "2", "3"));
 
+        private SortedSet<String> _sortedSet = new TreeSet<>(Arrays.asList("1", "2", "3"));
+
         private Map<String, String> _map = createHashMap("1", "val1", "2", "val2", "3", "val3");
+
+        private SortedMap<String, String> _sortedMap = createTreeMap("1", "val1", "2", "val2", "3", "val3");
 
         private InputStream _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
 
