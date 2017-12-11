@@ -81,25 +81,6 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Get the fail description.
-     *
-     * @return the fail description.
-     */
-    protected final FailDescription getFailDescription() {
-        return new FailDescription(_failDescription);
-    }
-
-    /**
-     * Get the fail description with the message.
-     *
-     * @param message the message.
-     * @return the fail description.
-     */
-    protected final FailDescription getFailDescription(final String message) {
-        return new FailDescription(_failDescription, message);
-    }
-
-    /**
      * Initialize assertion with the actual value.
      *
      * @param actual the actual value.
@@ -119,20 +100,22 @@ public abstract class BaseAssertion<T> {
     }
 
     private void initialize(final T actual, final FailDescription failDescription) {
-        _failDescription = failDescription;
         if (_initialized) {
-            throw createAssertionError(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED);
+            throw new FailDescription(_failDescription, Messages.Fail.ASSERTION_IS_NOT_INITIALIZED).createAssertionError();
         }
-        _initialized = true;
         if (actual == null) {
+            _initialized = true;
             _actual = null;
+            _failDescription = failDescription;
         } else {
             for (ActualValueValidator actualValidator : _actualValidators) {
                 if (!actualValidator.isValid(actual)) {
-                    throw createAssertionError(Messages.Fail.ASSERTION_MATCHES);
+                    throw new FailDescription(failDescription, Messages.Fail.ASSERTION_MATCHES).createAssertionError();
                 }
             }
+            _initialized = true;
             _actual = actual;
+            _failDescription = failDescription;
         }
     }
 
@@ -147,7 +130,7 @@ public abstract class BaseAssertion<T> {
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual) {
-        ((BaseAssertion<W>) assertion).initialize(actual, getFailDescription());
+        ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription));
         return assertion;
     }
 
@@ -163,7 +146,7 @@ public abstract class BaseAssertion<T> {
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message) {
-        ((BaseAssertion<W>) assertion).initialize(actual, getFailDescription(message));
+        ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message));
         return assertion;
     }
 
@@ -180,7 +163,7 @@ public abstract class BaseAssertion<T> {
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object parameter) {
-        ((BaseAssertion<W>) assertion).initialize(actual, getFailDescription(message + ": " + parameter));
+        ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message, parameter));
         return assertion;
     }
 
@@ -216,28 +199,11 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Make assertion of the specified type about the same actual with the message and the message parameter.
-     *
-     * @param assertion the assertion.
-     * @param message   the message.
-     * @param parameter the message parameter.
-     * @param <W>       the generic type of the assertion's actual value.
-     * @param <S>       the generic type of the assertion.
-     * @return the assertion.
-     */
-    @SuppressWarnings("unchecked")
-    public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion, final String message, final Object parameter) {
-        checkInitialized();
-        checkArgumentIsNotNull(assertion);
-        return initializeAssertion(assertion, (W) _actual, message, parameter);
-    }
-
-    /**
      * Check if the current assertion is initialized.
      */
     protected final void checkInitialized() {
         if (!_initialized) {
-            throw createAssertionError(Messages.Fail.ASSERTION_IS_INITIALIZED);
+            throw new FailDescription(Messages.Fail.ASSERTION_IS_INITIALIZED).createAssertionError();
         }
     }
 
@@ -246,7 +212,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkActualIsNotNull() {
         if (_actual == null) {
-            throw createAssertionError(Messages.Fail.IS_NOT_NULL);
+            throw new FailDescription(_failDescription, Messages.Fail.IS_NOT_NULL).createAssertionError();
         }
     }
 
@@ -257,7 +223,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsNotNull(final Object argument) {
         if (argument == null) {
-            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_NULL);
+            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_NULL).createAssertionError();
         }
     }
 
@@ -268,7 +234,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         if (isEmpty) {
-            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE);
+            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE).createAssertionError();
         }
     }
 
@@ -279,7 +245,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
         if (isEmpty) {
-            throw createAssertionError(Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE);
+            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE).createAssertionError();
         }
     }
 
@@ -290,7 +256,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsValid(final boolean valid) {
         if (!valid) {
-            throw createAssertionError(Messages.Fail.ARGUMENT_IS_VALID);
+            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_VALID).createAssertionError();
         }
     }
 
@@ -300,7 +266,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError() {
-        return getFailDescription().createAssertionError();
+        return new FailDescription(_failDescription).createAssertionError();
     }
 
     /**
@@ -310,7 +276,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message) {
-        return getFailDescription(message).createAssertionError();
+        return new FailDescription(_failDescription, message).createAssertionError();
     }
 
     /**
@@ -320,7 +286,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Object expected) {
-        return getFailDescription().addExpected(this, expected).createAssertionError();
+        return new FailDescription(_failDescription).addExpected(this, expected).createAssertionError();
     }
 
     /**
@@ -331,7 +297,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Object expected) {
-        return getFailDescription(message).addExpected(this, expected).createAssertionError();
+        return new FailDescription(_failDescription, message).addExpected(this, expected).createAssertionError();
     }
 
     /**
@@ -342,7 +308,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Object expectedFrom, final Object expectedTo) {
-        return getFailDescription().addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return new FailDescription(_failDescription).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
     /**
@@ -354,7 +320,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo) {
-        return getFailDescription(message).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return new FailDescription(_failDescription, message).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
     /**
@@ -364,7 +330,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Throwable throwable) {
-        return getFailDescription().addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -375,7 +341,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Throwable throwable) {
-        return getFailDescription(message).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -386,7 +352,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Object expected, final Throwable throwable) {
-        return getFailDescription().addExpected(this, expected).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -398,7 +364,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Object expected, final Throwable throwable) {
-        return getFailDescription(message).addExpected(this, expected).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -410,7 +376,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription().addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -423,7 +389,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription(message).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -432,7 +398,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual() {
-        return getFailDescription().addActual(this).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).createAssertionError();
     }
 
     /**
@@ -442,7 +408,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message) {
-        return getFailDescription(message).addActual(this).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).createAssertionError();
     }
 
     /**
@@ -452,7 +418,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expected) {
-        return getFailDescription().addActual(this).addExpected(this, expected).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).addExpected(this, expected).createAssertionError();
     }
 
     /**
@@ -463,7 +429,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expected) {
-        return getFailDescription(message).addActual(this).addExpected(this, expected).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).addExpected(this, expected).createAssertionError();
     }
 
     /**
@@ -474,7 +440,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo) {
-        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
     /**
@@ -486,7 +452,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo) {
-        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).addExpected(this, expectedFrom, expectedTo).createAssertionError();
     }
 
     /**
@@ -496,7 +462,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Throwable throwable) {
-        return getFailDescription().addActual(this).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -507,7 +473,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -518,7 +484,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expected, final Throwable throwable) {
-        return getFailDescription().addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -530,7 +496,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expected, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).addExpected(this, expected).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -542,7 +508,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription().addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription).addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
@@ -555,7 +521,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createAssertionErrorWithActual(final String message, final Object expectedFrom, final Object expectedTo, final Throwable throwable) {
-        return getFailDescription(message).addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
+        return new FailDescription(_failDescription, message).addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
     /**
