@@ -19,6 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.DoubleBuffer;
@@ -26,10 +30,17 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Base class for all tests.
@@ -55,7 +66,7 @@ public class AssertionTest {
      * @param <S>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    public static <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual) {
+    protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual) {
         assertion.initialize(actual);
         return assertion;
     }
@@ -71,7 +82,7 @@ public class AssertionTest {
      * @param <S>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    public static <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message) {
+    protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message) {
         assertion.initialize(actual, message);
         return assertion;
     }
@@ -86,7 +97,7 @@ public class AssertionTest {
      * @return the initialized assertion.
      */
     @SuppressWarnings("unchecked")
-    public static <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual) {
+    protected final <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual) {
         assertion.initialize((W) actual);
         return assertion;
     }
@@ -102,7 +113,7 @@ public class AssertionTest {
      * @return the initialized assertion.
      */
     @SuppressWarnings("unchecked")
-    public static <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message) {
+    protected final <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message) {
         assertion.initialize((W) actual, message);
         return assertion;
     }
@@ -112,7 +123,7 @@ public class AssertionTest {
      *
      * @return the initialized assertion.
      */
-    public static BaseAssertion<Object> createBaseAssertion() {
+    protected final BaseAssertion<Object> createBaseAssertion() {
         return new BaseAssertionImpl();
     }
 
@@ -122,7 +133,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public static BaseAssertion<Object> createBaseAssertion(final Object actual) {
+    protected final BaseAssertion<Object> createBaseAssertion(final Object actual) {
         return initialize(createBaseAssertion(), actual);
     }
 
@@ -133,7 +144,7 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
+    protected final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
         return initialize(createBaseAssertion(), actual, message);
     }
 
@@ -142,7 +153,7 @@ public class AssertionTest {
      *
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion<Object> createReferenceAssertion() {
+    protected final ReferenceAssertion<Object> createReferenceAssertion() {
         return new ReferenceAssertionImpl();
     }
 
@@ -152,7 +163,7 @@ public class AssertionTest {
      * @param actual the actual value.
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
+    protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
         return initialize(createReferenceAssertion(), actual);
     }
 
@@ -163,8 +174,50 @@ public class AssertionTest {
      * @param message the message.
      * @return the initialized assertion.
      */
-    public static ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
+    protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
         return initialize(createReferenceAssertion(), actual, message);
+    }
+
+    /**
+     * Create the object with the private field with null value.
+     *
+     * @return the object with the private field with null value.
+     */
+    protected final NullFieldClass createNullFieldClass() {
+        return new NullFieldClass();
+    }
+
+    /**
+     * Create the object with initialized private fields.
+     *
+     * @return the object with initialized private fields.
+     */
+    protected final PrivateFieldsClass createPrivateFieldsClass() {
+        return new PrivateFieldsClass(this);
+    }
+
+    /**
+     * Create new hash set with the values.
+     *
+     * @param values the values.
+     * @return the hash set.
+     */
+    protected final Set<String> createHashSet(final String... values) {
+        Set<String> set = new LinkedHashSet<>();
+        set.addAll(Arrays.asList(values));
+        return set;
+    }
+
+    /**
+     * Create new tree set with the values.
+     *
+     * @param values the values.
+     * @return the tree set.
+     */
+    protected final SortedSet<String> createTreeSet(final String... values) {
+        SortedSet<String> sortedSet = new TreeSet<>();
+        sortedSet.addAll(Arrays.asList(values));
+        return sortedSet;
     }
 
     /**
@@ -172,8 +225,8 @@ public class AssertionTest {
      *
      * @return the hash map.
      */
-    public static Map<String, String> createHashMap() {
-        Map<String, String> map = new HashMap<>();
+    protected final Map<String, String> createHashMap() {
+        Map<String, String> map = new LinkedHashMap<>();
         return map;
     }
 
@@ -184,8 +237,8 @@ public class AssertionTest {
      * @param value the value.
      * @return the hash map.
      */
-    public static Map<String, String> createHashMap(final String key, final String value) {
-        Map<String, String> map = new HashMap<>();
+    protected final Map<String, String> createHashMap(final String key, final String value) {
+        Map<String, String> map = new LinkedHashMap<>();
         map.put(key, value);
         return map;
     }
@@ -199,8 +252,8 @@ public class AssertionTest {
      * @param value2 the second value.
      * @return the hash map.
      */
-    public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2) {
-        Map<String, String> map = new HashMap<>();
+    protected final Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2) {
+        Map<String, String> map = new LinkedHashMap<>();
         map.put(key1, value1);
         map.put(key2, value2);
         return map;
@@ -217,8 +270,8 @@ public class AssertionTest {
      * @param value3 the third value.
      * @return the hash map.
      */
-    public static Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
-        Map<String, String> map = new HashMap<>();
+    protected final Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
+        Map<String, String> map = new LinkedHashMap<>();
         map.put(key1, value1);
         map.put(key2, value2);
         map.put(key3, value3);
@@ -230,7 +283,7 @@ public class AssertionTest {
      *
      * @return the tree map.
      */
-    public static SortedMap<String, String> createTreeMap() {
+    protected final SortedMap<String, String> createTreeMap() {
         SortedMap<String, String> sortedMap = new TreeMap<>();
         return sortedMap;
     }
@@ -242,7 +295,7 @@ public class AssertionTest {
      * @param value the value.
      * @return the tree map.
      */
-    public static SortedMap<String, String> createTreeMap(final String key, final String value) {
+    protected final SortedMap<String, String> createTreeMap(final String key, final String value) {
         SortedMap<String, String> sortedMap = new TreeMap<>();
         sortedMap.put(key, value);
         return sortedMap;
@@ -257,7 +310,7 @@ public class AssertionTest {
      * @param value2 the second value.
      * @return the tree map.
      */
-    public static SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2) {
+    protected final SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2) {
         SortedMap<String, String> sortedMap = new TreeMap<>();
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
@@ -275,7 +328,7 @@ public class AssertionTest {
      * @param value3 the third value.
      * @return the tree map.
      */
-    public static SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
+    protected final SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
         SortedMap<String, String> sortedMap = new TreeMap<>();
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
@@ -289,7 +342,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the byte buffer.
      */
-    public static ByteBuffer createByteBuffer(final byte[] values) {
+    protected final ByteBuffer createByteBuffer(final byte[] values) {
         return createByteBuffer(values, 0);
     }
 
@@ -300,7 +353,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the byte buffer.
      */
-    public static ByteBuffer createByteBuffer(final byte[] values, final int position) {
+    protected final ByteBuffer createByteBuffer(final byte[] values, final int position) {
         return createByteBuffer(values, position, getByteBufferSize(values));
     }
 
@@ -312,7 +365,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the byte buffer.
      */
-    public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
+    protected final ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
         return createByteBuffer(values, position, limit, getByteBufferSize(values));
     }
 
@@ -325,7 +378,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the byte buffer.
      */
-    public static ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
+    protected final ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -339,7 +392,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getByteBufferSize(final byte[] values) {
+    private int getByteBufferSize(final byte[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -353,7 +406,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the short buffer.
      */
-    public static ShortBuffer createShortBuffer(final short[] values) {
+    protected final ShortBuffer createShortBuffer(final short[] values) {
         return createShortBuffer(values, 0);
     }
 
@@ -364,7 +417,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the short buffer.
      */
-    public static ShortBuffer createShortBuffer(final short[] values, final int position) {
+    protected final ShortBuffer createShortBuffer(final short[] values, final int position) {
         return createShortBuffer(values, position, getShortBufferSize(values));
     }
 
@@ -376,7 +429,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the short buffer.
      */
-    public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
+    protected final ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
         return createShortBuffer(values, position, limit, getShortBufferSize(values));
     }
 
@@ -389,7 +442,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the short buffer.
      */
-    public static ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
+    protected final ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -404,7 +457,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getShortBufferSize(final short[] values) {
+    private int getShortBufferSize(final short[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -418,7 +471,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the int buffer.
      */
-    public static IntBuffer createIntBuffer(final int[] values) {
+    protected final IntBuffer createIntBuffer(final int[] values) {
         return createIntBuffer(values, 0);
     }
 
@@ -429,7 +482,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the int buffer.
      */
-    public static IntBuffer createIntBuffer(final int[] values, final int position) {
+    protected final IntBuffer createIntBuffer(final int[] values, final int position) {
         return createIntBuffer(values, position, getIntBufferSize(values));
     }
 
@@ -441,7 +494,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the int buffer.
      */
-    public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
+    protected final IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
         return createIntBuffer(values, position, limit, getIntBufferSize(values));
     }
 
@@ -454,7 +507,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the int buffer.
      */
-    public static IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
+    protected final IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -469,7 +522,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getIntBufferSize(final int[] values) {
+    private int getIntBufferSize(final int[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -483,7 +536,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the long buffer.
      */
-    public static LongBuffer createLongBuffer(final long[] values) {
+    protected final LongBuffer createLongBuffer(final long[] values) {
         return createLongBuffer(values, 0);
     }
 
@@ -494,7 +547,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the long buffer.
      */
-    public static LongBuffer createLongBuffer(final long[] values, final int position) {
+    protected final LongBuffer createLongBuffer(final long[] values, final int position) {
         return createLongBuffer(values, position, getLongBufferSize(values));
     }
 
@@ -506,7 +559,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the long buffer.
      */
-    public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
+    protected final LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
         return createLongBuffer(values, position, limit, getLongBufferSize(values));
     }
 
@@ -519,7 +572,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the long buffer.
      */
-    public static LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
+    protected final LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -534,7 +587,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getLongBufferSize(final long[] values) {
+    private int getLongBufferSize(final long[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -548,7 +601,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the float buffer.
      */
-    public static FloatBuffer createFloatBuffer(final float[] values) {
+    protected final FloatBuffer createFloatBuffer(final float[] values) {
         return createFloatBuffer(values, 0);
     }
 
@@ -559,7 +612,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the float buffer.
      */
-    public static FloatBuffer createFloatBuffer(final float[] values, final int position) {
+    protected final FloatBuffer createFloatBuffer(final float[] values, final int position) {
         return createFloatBuffer(values, position, getFloatBufferSize(values));
     }
 
@@ -571,7 +624,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the float buffer.
      */
-    public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
+    protected final FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
         return createFloatBuffer(values, position, limit, getFloatBufferSize(values));
     }
 
@@ -584,7 +637,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the float buffer.
      */
-    public static FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit, final int capacity) {
+    protected final FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -599,7 +652,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getFloatBufferSize(final float[] values) {
+    private int getFloatBufferSize(final float[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -613,7 +666,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the double buffer.
      */
-    public static DoubleBuffer createDoubleBuffer(final double[] values) {
+    protected final DoubleBuffer createDoubleBuffer(final double[] values) {
         return createDoubleBuffer(values, 0);
     }
 
@@ -624,7 +677,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the double buffer.
      */
-    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
+    protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
         return createDoubleBuffer(values, position, getDoubleBufferSize(values));
     }
 
@@ -636,7 +689,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the double buffer.
      */
-    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
+    protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
         return createDoubleBuffer(values, position, limit, getDoubleBufferSize(values));
     }
 
@@ -649,7 +702,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the double buffer.
      */
-    public static DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit, final int capacity) {
+    protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -664,7 +717,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getDoubleBufferSize(final double[] values) {
+    private int getDoubleBufferSize(final double[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -678,7 +731,7 @@ public class AssertionTest {
      * @param values the buffer values.
      * @return the char buffer.
      */
-    public static CharBuffer createCharBuffer(final char[] values) {
+    protected final CharBuffer createCharBuffer(final char[] values) {
         return createCharBuffer(values, 0);
     }
 
@@ -689,7 +742,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @return the char buffer.
      */
-    public static CharBuffer createCharBuffer(final char[] values, final int position) {
+    protected final CharBuffer createCharBuffer(final char[] values, final int position) {
         return createCharBuffer(values, position, getCharBufferSize(values));
     }
 
@@ -701,7 +754,7 @@ public class AssertionTest {
      * @param limit    the buffer limit.
      * @return the char buffer.
      */
-    public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
+    protected final CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
         return createCharBuffer(values, position, limit, getCharBufferSize(values));
     }
 
@@ -714,7 +767,7 @@ public class AssertionTest {
      * @param capacity the buffer capacity.
      * @return the char buffer.
      */
-    public static CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
+    protected final CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
         if (values == null) {
             return null;
         } else {
@@ -729,7 +782,7 @@ public class AssertionTest {
         }
     }
 
-    private static int getCharBufferSize(final char[] values) {
+    private int getCharBufferSize(final char[] values) {
         if (values == null) {
             return 0;
         } else {
@@ -779,6 +832,175 @@ public class AssertionTest {
         @Override
         protected String asString(final Object value) {
             return value.toString();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class NullFieldClass {
+
+        private Object _field;
+
+        NullFieldClass() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class PrivateFieldsClass {
+
+        private final byte _byte;
+
+        private final Byte _byteObj;
+
+        private final short _short;
+
+        private final Short _shortObj;
+
+        private final int _int;
+
+        private final Integer _intObj;
+
+        private final long _long;
+
+        private final Long _longObj;
+
+        private final float _float;
+
+        private final Float _floatObj;
+
+        private final double _double;
+
+        private final Double _doubleObj;
+
+        private final boolean _boolean;
+
+        private final Boolean _booleanObj;
+
+        private final char _char;
+
+        private final Character _charObj;
+
+        private final Object _object;
+
+        private final byte[] _byteArray;
+
+        private final short[] _shortArray;
+
+        private final int[] _intArray;
+
+        private final long[] _longArray;
+
+        private final float[] _floatArray;
+
+        private final double[] _doubleArray;
+
+        private final boolean[] _booleanArray;
+
+        private final char[] _charArray;
+
+        private final String[] _objectArray;
+
+        private final Class<?> _class;
+
+        private final CharSequence _charSequence;
+
+        private final String _string;
+
+        private final Comparable<Integer> _comparable;
+
+        private final Iterable<String> _iterable;
+
+        private final Throwable _throwable;
+
+        private final Iterator<String> _iterator;
+
+        private final List<String> _list;
+
+        private final Set<String> _set;
+
+        private final SortedSet<String> _sortedSet;
+
+        private final Map<String, String> _map;
+
+        private final SortedMap<String, String> _sortedMap;
+
+        private final InputStream _inputStream;
+
+        private final Reader _reader;
+
+        private final ByteBuffer _byteBuffer;
+
+        private final ShortBuffer _shortBuffer;
+
+        private final IntBuffer _intBuffer;
+
+        private final LongBuffer _longBuffer;
+
+        private final FloatBuffer _floatBuffer;
+
+        private final DoubleBuffer _doubleBuffer;
+
+        private final CharBuffer _charBuffer;
+
+        PrivateFieldsClass(final AssertionTest assertionTest) {
+            super();
+            _byte = 5;
+            _byteObj = 5;
+            _short = 5;
+            _shortObj = 5;
+            _int = 5;
+            _intObj = 5;
+            _long = 5L;
+            _longObj = 5L;
+            _float = 5.0f;
+            _floatObj = 5.0f;
+            _double = 5.0;
+            _doubleObj = 5.0;
+            _boolean = true;
+            _booleanObj = true;
+            _char = '5';
+            _charObj = '5';
+            _object = new StringBuilder("value");
+            _byteArray = new byte[]{1, 2, 3};
+            _shortArray = new short[]{1, 2, 3};
+            _intArray = new int[]{1, 2, 3};
+            _longArray = new long[]{1L, 2L, 3L};
+            _floatArray = new float[]{1.0f, 2.0f, 3.0f};
+            _doubleArray = new double[]{1.0, 2.0, 3.0};
+            _booleanArray = new boolean[]{true, true, false};
+            _charArray = new char[]{'1', '2', '3'};
+            _objectArray = new String[]{"1", "2", "3"};
+            _class = String.class;
+            _charSequence = new StringBuilder("test");
+            _string = "test";
+            _comparable = Integer.valueOf("5");
+            _iterable = Arrays.asList("1", "2", "3");
+            _throwable = new AssertionError("error");
+            _iterator = Arrays.asList("1", "2", "3").iterator();
+            _list = Arrays.asList("1", "2", "3");
+            _set = assertionTest.createHashSet("1", "2", "3");
+            _sortedSet = assertionTest.createTreeSet("1", "2", "3");
+            _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
+            _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
+            _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
+            _reader = new StringReader("123");
+            _byteBuffer = assertionTest.createByteBuffer(new byte[]{1, 2});
+            _shortBuffer = assertionTest.createShortBuffer(new short[]{1, 2});
+            _intBuffer = assertionTest.createIntBuffer(new int[]{1, 2});
+            _longBuffer = assertionTest.createLongBuffer(new long[]{1L, 2L});
+            _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
+            _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
+            _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
         }
 
     }
