@@ -102,7 +102,7 @@ final class FailDescription {
         if (message == null || "".equals(message)) {
             fullMessage = null;
         } else {
-            if (parameter == null) {
+            if (parameter == null || "".equals(String.valueOf(parameter))) {
                 fullMessage = message;
             } else {
                 fullMessage = message + ": " + parameter;
