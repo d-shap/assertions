@@ -289,7 +289,7 @@
             <property name="max" value="40" />
         </module>
         <module name="ExecutableStatementCount">
-            <property name="max" value="300" />
+            <property name="max" value="500" />
         </module>
         <module name="LineLength">
             <property name="max" value="2000" />
