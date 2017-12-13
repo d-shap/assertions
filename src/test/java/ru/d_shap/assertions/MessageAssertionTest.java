@@ -55,432 +55,496 @@ public final class MessageAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void byteAssertionTest() {
+    public void bytePrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that((byte) 5).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that((Byte) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Byte.valueOf((byte) 5)).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(null, Raw.byteAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that((byte) 5, Raw.byteAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.byteAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byte").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byte", Raw.byteAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byteObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byteObj", Raw.byteAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that((byte) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void byteObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Byte) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Byte.valueOf((byte) 5)).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(null, Raw.byteAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that((byte) 5, Raw.byteAssertion()).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.byteAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byteObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_byteObj", Raw.byteAssertion()).isEqualTo(5);
+
         try {
             Assertions.assertWithMessage(null).that(Byte.valueOf((byte) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(Byte.valueOf((byte) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Byte.valueOf((byte) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void shortAssertionTest() {
+    public void shortPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that((short) 5).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that((Short) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Short.valueOf((short) 5)).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(null, Raw.shortAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that((short) 5, Raw.shortAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.shortAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_short").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_short", Raw.shortAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_shortObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_shortObj", Raw.shortAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that((short) 5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void shortObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Short) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Short.valueOf((short) 5)).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(null, Raw.shortAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that((short) 5, Raw.shortAssertion()).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.shortAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_shortObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_shortObj", Raw.shortAssertion()).isEqualTo(5);
+
         try {
             Assertions.assertWithMessage(null).that(Short.valueOf((short) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(Short.valueOf((short) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Short.valueOf((short) 5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void intAssertionTest() {
+    public void intPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that((Integer) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Integer.valueOf(5)).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(null, Raw.intAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(5, Raw.intAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.intAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_int").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_int", Raw.intAssertion()).isEqualTo(5);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_intObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_intObj", Raw.intAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void intObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Integer) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Integer.valueOf(5)).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(null, Raw.intAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(5, Raw.intAssertion()).isEqualTo(5);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.intAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_intObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_intObj", Raw.intAssertion()).isEqualTo(5);
+
         try {
             Assertions.assertWithMessage(null).that(Integer.valueOf(5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(Integer.valueOf(5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Integer.valueOf(5)).isEqualTo(6);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void longAssertionTest() {
+    public void longPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5L).isEqualTo(5L);
-        Assertions.assertWithMessage("Test message").that((Long) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Long.valueOf(5L)).isEqualTo(5L);
-        Assertions.assertWithMessage("Test message").that(null, Raw.longAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(5L, Raw.longAssertion()).isEqualTo(5L);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.longAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_long").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_long", Raw.longAssertion()).isEqualTo(5L);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_longObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_longObj", Raw.longAssertion()).isEqualTo(5L);
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_long", Raw.longAssertion()).isEqualTo(5);
 
         try {
             Assertions.assertWithMessage(null).that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5L).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void longObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Long) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Long.valueOf(5L)).isEqualTo(5L);
+        Assertions.assertWithMessage("Test message").that(null, Raw.longAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(5L, Raw.longAssertion()).isEqualTo(5L);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.longAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_longObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_longObj", Raw.longAssertion()).isEqualTo(5L);
+
         try {
             Assertions.assertWithMessage(null).that(Long.valueOf(5L)).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("").that(Long.valueOf(5L)).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6> but was:<5>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Long.valueOf(5L)).isEqualTo(6L);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6> but was:<5>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void floatAssertionTest() {
+    public void floatPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(5.0f, 0.001f);
-        Assertions.assertWithMessage("Test message").that((Float) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Float.valueOf(5.0f)).isEqualTo(5.0f, 0.001f);
-        Assertions.assertWithMessage("Test message").that(null, Raw.floatAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(5.0f, Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.floatAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_float").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_float", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_floatObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_floatObj", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
 
         try {
             Assertions.assertWithMessage(null).that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void floatObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Float) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Float.valueOf(5.0f)).isEqualTo(5.0f, 0.001f);
+        Assertions.assertWithMessage("Test message").that(null, Raw.floatAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that((float) 5, Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.floatAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_floatObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_floatObj", Raw.floatAssertion()).isEqualTo(5.0f, 0.001f);
+
         try {
             Assertions.assertWithMessage(null).that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void doubleAssertionTest() {
+    public void doublePrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(5.0, 0.001);
-        Assertions.assertWithMessage("Test message").that((Double) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Double.valueOf(5.0)).isEqualTo(5.0, 0.001);
-        Assertions.assertWithMessage("Test message").that(null, Raw.doubleAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(5.0, Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.doubleAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_double").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_double", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleObj", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
 
         try {
             Assertions.assertWithMessage(null).that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void doubleObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Double) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Double.valueOf(5.0)).isEqualTo(5.0, 0.001);
+        Assertions.assertWithMessage("Test message").that(null, Raw.doubleAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(5.0, Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.doubleAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleObj", Raw.doubleAssertion()).isEqualTo(5.0, 0.001);
+
         try {
             Assertions.assertWithMessage(null).that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6.0> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6.0> but was:<5.0>");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void booleanAssertionTest() {
+    public void booleanPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that(true).isTrue();
-        Assertions.assertWithMessage("Test message").that((Boolean) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Boolean.TRUE).isTrue();
-        Assertions.assertWithMessage("Test message").that(null, Raw.booleanAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(true, Raw.booleanAssertion()).isTrue();
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.booleanAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_boolean").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_boolean", Raw.booleanAssertion()).isTrue();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_booleanObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_booleanObj", Raw.booleanAssertion()).isTrue();
 
         try {
             Assertions.assertWithMessage(null).that(true).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
         try {
             Assertions.assertWithMessage("").that(true).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should be false.");
         }
         try {
             Assertions.assertWithMessage("Test message").that(true).isFalse();
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message. Value should be false.");
-        }
-        try {
-            Assertions.assertWithMessage(null).that(Boolean.TRUE).isFalse();
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be false.");
-        }
-        try {
-            Assertions.assertWithMessage("").that(Boolean.TRUE).isFalse();
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be false.");
-        }
-        try {
-            Assertions.assertWithMessage("Test message").that(Boolean.TRUE).isFalse();
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should be false.");
         }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
-    public void charAssertionTest() {
+    public void booleanObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Boolean) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Boolean.TRUE).isTrue();
+        Assertions.assertWithMessage("Test message").that(null, Raw.booleanAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(true, Raw.booleanAssertion()).isTrue();
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.booleanAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_booleanObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_booleanObj", Raw.booleanAssertion()).isTrue();
+
+        try {
+            Assertions.assertWithMessage(null).that(Boolean.TRUE).isFalse();
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be false.");
+        }
+        try {
+            Assertions.assertWithMessage("").that(Boolean.TRUE).isFalse();
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should be false.");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(Boolean.TRUE).isFalse();
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message. Value should be false.");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void charPrimitiveAssertionTest() {
         Assertions.assertWithMessage("Test message").that('5').isEqualTo('5');
-        Assertions.assertWithMessage("Test message").that((Character) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Character.valueOf('5')).isEqualTo('5');
-        Assertions.assertWithMessage("Test message").that(null, Raw.charAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that('5', Raw.charAssertion()).isEqualTo('5');
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.charAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_char").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_char", Raw.charAssertion()).isEqualTo('5');
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_charObj").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_charObj", Raw.charAssertion()).isEqualTo('5');
 
         try {
             Assertions.assertWithMessage(null).that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("").that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("Test message").that('5').isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void charObjectAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Character) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Character.valueOf('5')).isEqualTo('5');
+        Assertions.assertWithMessage("Test message").that(null, Raw.charAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that('5', Raw.charAssertion()).isEqualTo('5');
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.charAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_charObj").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_charObj", Raw.charAssertion()).isEqualTo('5');
+
         try {
             Assertions.assertWithMessage(null).that(Character.valueOf('5')).isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("").that(Character.valueOf('5')).isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Character.valueOf('5')).isEqualTo('6');
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Values should be the same. Expected:<6(54)> but was:<5(53)>");
         }
@@ -1453,27 +1517,27 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void doubleBufferAssertionTest() {
         Assertions.assertWithMessage("Test message").that((DoubleBuffer) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertWithMessage("Test message").that(null, Raw.doubleBufferAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0, 2.0}), Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0f, 2.0f}), Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.doubleBufferAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleBuffer").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_doubleBuffer", Raw.doubleBufferAssertion()).containsExactlyInOrder(1.0, 2.0);
 
         try {
-            Assertions.assertWithMessage(null).that(createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(2.0, 1.0);
+            Assertions.assertWithMessage(null).that(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("").that(createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(2.0, 1.0);
+            Assertions.assertWithMessage("").that(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(2.0, 1.0);
+            Assertions.assertWithMessage("Test message").that(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(2.0, 1.0);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
