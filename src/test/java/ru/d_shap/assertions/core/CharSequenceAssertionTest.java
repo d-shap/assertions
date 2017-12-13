@@ -2782,27 +2782,12 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensTest() {
+    public void toTokensDefaultTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens().containsAll("value1", "value2", "value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens().containsAll("value1|value2|value3");
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|").containsAll("value1", "value2", "value3");
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
 
         try {
             Raw.charSequenceAssertion().toTokens();
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            Raw.charSequenceAssertion().toTokens("|");
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            Raw.charSequenceAssertion().toTokens("|", false);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -2814,28 +2799,10 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens("|");
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens();
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens("|", false);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, false);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens().hasSize(4);
@@ -2849,6 +2816,58 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
+    }
+
+    /**
+     * {@link CharSequenceAssertion} class test.
+     */
+    @Test
+    public void toTokensSpecifiedTest() {
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|").containsAll("value1 value2 value3");
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|").containsAll("value1", "value2", "value3");
+
+        try {
+            Raw.charSequenceAssertion().toTokens("|");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null).toTokens("|");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens("|");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null).toTokens(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+        }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
             Assertions.fail("CharSequenceAssertion test fail");
@@ -2860,6 +2879,60 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link CharSequenceAssertion} class test.
+     */
+    @Test
+    public void toTokensWithDelimitersTest() {
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", false).containsAll("value1 value2 value3");
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", true).containsAll("value1 value2 value3");
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
+
+        try {
+            Raw.charSequenceAssertion().toTokens("|", false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null).toTokens("|", false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens("|", false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null).toTokens(null, false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(null, false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, false);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true).hasSize(4);

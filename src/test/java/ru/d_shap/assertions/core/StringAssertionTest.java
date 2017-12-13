@@ -2718,27 +2718,12 @@ public final class StringAssertionTest extends AssertionTest {
      * {@link StringAssertion} class test.
      */
     @Test
-    public void toTokensTest() {
+    public void toTokensDefaultTest() {
         initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens().containsAll("value1", "value2", "value3");
         initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens().containsAll("value1|value2|value3");
-        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").containsAll("value1", "value2", "value3");
-        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
-        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
 
         try {
             Raw.stringAssertion().toTokens();
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            Raw.stringAssertion().toTokens("|");
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            Raw.stringAssertion().toTokens("|", false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -2756,6 +2741,34 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens().hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "value1 value2 value3", "Message").toTokens().hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void toTokensSpecifiedTest() {
+        initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens("|").containsAll("value1 value2 value3");
+        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").containsAll("value1", "value2", "value3");
+
+        try {
+            Raw.stringAssertion().toTokens("|");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).toTokens("|");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2763,6 +2776,18 @@ public final class StringAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.stringAssertion(), null, "Message").toTokens("|");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null).toTokens(null);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null, "Message").toTokens(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -2780,6 +2805,36 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
+            initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|").hasSize(4);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link StringAssertion} class test.
+     */
+    @Test
+    public void toTokensWithDelimitersTest() {
+        initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens("|", false).containsAll("value1 value2 value3");
+        initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens("|", true).containsAll("value1 value2 value3");
+        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
+        initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
+
+        try {
+            Raw.stringAssertion().toTokens("|", false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             initialize(Raw.stringAssertion(), null).toTokens("|", false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2787,6 +2842,18 @@ public final class StringAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.stringAssertion(), null, "Message").toTokens("|", false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null).toTokens(null, false);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null, "Message").toTokens(null, false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -2802,30 +2869,6 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
-        }
-        try {
-            initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens().hasSize(4);
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
-        }
-        try {
-            initialize(Raw.stringAssertion(), "value1 value2 value3", "Message").toTokens().hasSize(4);
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
-        }
-        try {
-            initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
-        }
-        try {
-            initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|").hasSize(4);
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's tokens. Check value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).hasSize(4);
