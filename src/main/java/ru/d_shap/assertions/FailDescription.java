@@ -109,7 +109,7 @@ final class FailDescription {
             }
         }
 
-        if (fullMessage != null && !"".equals(fullMessage)) {
+        if (fullMessage != null) {
             if (checkLastSymbol) {
                 if (fullMessage.endsWith(".") || fullMessage.endsWith("?") || fullMessage.endsWith("!")) {
                     _messages.add(fullMessage);
