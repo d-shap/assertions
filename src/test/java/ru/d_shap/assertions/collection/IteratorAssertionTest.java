@@ -21,7 +21,6 @@ package ru.d_shap.assertions.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
 
 import org.junit.Test;
@@ -153,7 +152,8 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator()).isEmpty();
-        initialize(Raw.<String>iteratorAssertion(), new HashSet<String>().iterator()).isEmpty();
+        initialize(Raw.<String>iteratorAssertion(), createHashSet().iterator()).isEmpty();
+        initialize(Raw.<String>iteratorAssertion(), createTreeSet().iterator()).isEmpty();
 
         try {
             Raw.<String>iteratorAssertion().isEmpty();
@@ -193,7 +193,8 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator()).isNullOrEmpty();
-        initialize(Raw.<String>iteratorAssertion(), new HashSet<String>().iterator()).isNullOrEmpty();
+        initialize(Raw.<String>iteratorAssertion(), createHashSet().iterator()).isNullOrEmpty();
+        initialize(Raw.<String>iteratorAssertion(), createTreeSet().iterator()).isNullOrEmpty();
         initialize(Raw.<String>iteratorAssertion(), null).isNullOrEmpty();
 
         try {
@@ -255,13 +256,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Value should not be empty.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), new HashSet<String>().iterator()).isNotEmpty();
+            initialize(Raw.<String>iteratorAssertion(), createHashSet().iterator()).isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check iterator elements. Value should not be empty.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), new HashSet<String>().iterator(), "Message").isNotEmpty();
+            initialize(Raw.<String>iteratorAssertion(), createHashSet().iterator(), "Message").isNotEmpty();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Value should not be empty.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), createTreeSet().iterator()).isNotEmpty();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check iterator elements. Value should not be empty.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), createTreeSet().iterator(), "Message").isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check iterator elements. Value should not be empty.");
