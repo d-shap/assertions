@@ -19,7 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import org.junit.Test;
 
@@ -39,37 +42,121 @@ public final class PrivateAccessorTest extends AssertionTest {
 
     /**
      * {@link PrivateAccessor} class test.
+     */
+    @Test
+    public void constructorTest() {
+        Assertions.assertThat(PrivateAccessor.class).hasOnePrivateConstructor();
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
      *
      * @throws NoSuchFieldException   no such field exception.
      * @throws IllegalAccessException illegal access exception.
      */
     @Test
-    public void setAccessibleTest() throws NoSuchFieldException, IllegalAccessException {
-        Object object = new Object();
-        BaseAssertion<Object> baseAssertion = createBaseAssertion(object, "message");
-
-        Field actualField = baseAssertion.getClass().getSuperclass().getDeclaredField("_actual");
+    public void setAccessibleFieldTest() throws NoSuchFieldException, IllegalAccessException {
+        PrivateFieldClass privateField = new PrivateFieldClass();
+        Field field = privateField.getClass().getDeclaredField("_value");
         try {
-            actualField.get(baseAssertion);
-            Assertions.fail("FieldAccessAction test fail");
+            field.get(privateField);
+            Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("private");
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
         }
-        PrivateAccessor.setAccessible(actualField);
-        Object actualValue = actualField.get(baseAssertion);
-        Assertions.assertThat(actualValue).isSameAs(object);
+        PrivateAccessor.setAccessible(field);
+        Object value = field.get(privateField);
+        Assertions.assertThat(value).isEqualTo("value");
+    }
 
-        Field failDescriptionField = baseAssertion.getClass().getSuperclass().getDeclaredField("_failDescription");
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws NoSuchMethodException     no such method exception.
+     * @throws InvocationTargetException invocation target exception.
+     * @throws IllegalAccessException    illegal access exception.
+     */
+    @Test
+    public void setAccessibleMethodTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        PrivateMethodClass privateMethod = new PrivateMethodClass();
+        Method method = privateMethod.getClass().getDeclaredMethod("getValue");
         try {
-            failDescriptionField.get(baseAssertion);
-            Assertions.fail("FieldAccessAction test fail");
+            method.invoke(privateMethod);
+            Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("private");
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
         }
-        PrivateAccessor.setAccessible(failDescriptionField);
-        Object failDescriptionValue = failDescriptionField.get(baseAssertion);
-        Assertions.assertThat(failDescriptionValue).isInstanceOf(FailDescription.class);
-        Assertions.assertThat(((FailDescription) failDescriptionValue).createAssertionError()).hasMessage("message.");
+        PrivateAccessor.setAccessible(method);
+        Object value = method.invoke(privateMethod);
+        Assertions.assertThat(value).isEqualTo("value");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws NoSuchMethodException     no such method exception.
+     * @throws InvocationTargetException invocation target exception.
+     * @throws InstantiationException    instantiation exception.
+     * @throws IllegalAccessException    illegal access exception.
+     */
+    @Test
+    public void setAccessibleConstructorTest() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Constructor<PrivateConstructorClass> constructor = PrivateConstructorClass.class.getDeclaredConstructor();
+        try {
+            constructor.newInstance();
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (IllegalAccessException ex) {
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
+        }
+        PrivateAccessor.setAccessible(constructor);
+        PrivateConstructorClass privateConstructor = constructor.newInstance();
+        Assertions.assertThat(privateConstructor).isNotNull();
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivateFieldClass {
+
+        private final String _value;
+
+        PrivateFieldClass() {
+            super();
+            _value = "value";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivateMethodClass {
+
+        PrivateMethodClass() {
+            super();
+        }
+
+        private String getValue() {
+            return "value";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivateConstructorClass {
+
+        private PrivateConstructorClass() {
+            super();
+        }
+
     }
 
 }
