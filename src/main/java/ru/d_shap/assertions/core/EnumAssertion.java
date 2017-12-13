@@ -57,6 +57,7 @@ public class EnumAssertion extends ClassAssertion {
 
     /**
      * Make assertion about the actual enum value count.
+     * Side-effect: invokes the methods "values" and "valueOf" for the code coverage.
      *
      * @return the assertion.
      */

@@ -109,6 +109,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
 
     /**
      * Check if the actual value has one private no-arg constructor (utility class constructor).
+     * Side-effect: invokes the private constractor for the code coverage.
      */
     public final void hasOnePrivateConstructor() {
         checkInitialized();
