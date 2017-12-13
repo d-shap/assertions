@@ -23,7 +23,6 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -2906,7 +2905,7 @@ public final class BufferAssertionTest extends AssertionTest {
             if (rewind) {
                 buffer.rewind();
             }
-            List<Integer> result = new LinkedList<>();
+            List<Integer> result = new ArrayList<>(buffer.remaining());
             while (buffer.hasRemaining()) {
                 int bufferValue = buffer.get();
                 result.add(bufferValue);
