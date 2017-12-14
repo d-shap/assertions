@@ -422,7 +422,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         if (getActual().size() <= count) {
             return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT, count);
         } else {
-            K key = getNthKey(getActual().size() - count);
+            K key = getNthKey(getActual().size() - count + 1);
             return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_COUNT, count);
         }
     }

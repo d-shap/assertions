@@ -170,7 +170,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         if (getActual().size() <= count) {
             return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT, count);
         } else {
-            E element = getNthElement(getActual().size() - count);
+            E element = getNthElement(getActual().size() - count + 1);
             return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_COUNT, count);
         }
     }
