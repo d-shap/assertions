@@ -122,7 +122,6 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toHeadSet(final E element) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(element);
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_ELEMENT, element);
     }
 
@@ -153,7 +152,6 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toTailSet(final E element) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(element);
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_ELEMENT, element);
     }
 
