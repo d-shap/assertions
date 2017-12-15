@@ -143,6 +143,9 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toHeadKeys(final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
         return toKeys().toHeadSet(count);
     }
 
@@ -163,6 +166,9 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toTailKeys(final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
         return toKeys().toTailSet(count);
     }
 
@@ -374,7 +380,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(key);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_HEAD_ELEMENT, key);
     }
 
@@ -405,7 +410,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(key);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_TAIL_ELEMENT, key);
     }
 
