@@ -571,6 +571,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            createReferenceAssertion(null).toField(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toField(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             createReferenceAssertion(new ToFieldParentClass()).toField(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
