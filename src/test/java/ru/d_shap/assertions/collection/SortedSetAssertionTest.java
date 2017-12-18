@@ -172,6 +172,9 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2")).contains("val1");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2")).contains("val2");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet(null, "val1", "val2")).contains(null);
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null, "val2")).contains(null);
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", null)).contains(null);
 
         try {
             Raw.<String>sortedSetAssertion().contains("val");
@@ -211,6 +214,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2")).doesNotContain("val3");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null)).doesNotContain("val3");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2")).doesNotContain(null);
 
         try {
             Raw.<String>sortedSetAssertion().doesNotContain("val");
@@ -248,6 +253,18 @@ public final class SortedSetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>");
         }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null, "val2")).doesNotContain(null);
+            Assertions.fail("SortedSetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not contain the expected value. Expected:<null> but was:<[null, val1, val2]>");
+        }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null, "val2"), "Message").doesNotContain(null);
+            Assertions.fail("SortedSetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not contain the expected value. Expected:<null> but was:<[null, val1, val2]>");
+        }
     }
 
     /**
@@ -262,6 +279,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val4").containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val5").containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val6").containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet(null, "val1", "val2", "val3", "val4")).toHeadSet("val2").containsExactlyInOrder(null, "val1");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(null).containsExactlyInOrder();
 
         try {
             Raw.<String>sortedSetAssertion().toHeadSet("val");
@@ -387,6 +406,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val4").containsExactlyInOrder("val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val5").containsExactlyInOrder("val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val6").containsExactlyInOrder();
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet(null, "val1", "val2", "val3", "val4")).toTailSet("val2").containsExactlyInOrder("val2", "val3", "val4");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(null).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
 
         try {
             Raw.<String>sortedSetAssertion().toTailSet("val");
@@ -511,6 +532,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val5", "val1", "val3");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
 
         try {
             Raw.<String>sortedSetAssertion().containsAll("val");
@@ -585,6 +607,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val5", "val1", "val3"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val5", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
 
         try {
             Raw.<String>sortedSetAssertion().containsAll(new ArrayList<String>());
@@ -658,6 +681,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(null, "val1", "val2", "val3", "val4");
 
         try {
             Raw.<String>sortedSetAssertion().containsAllInOrder("val");
@@ -731,6 +755,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val3", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(Arrays.asList(null, "val1", "val2", "val3", "val4"));
 
         try {
             Raw.<String>sortedSetAssertion().containsAllInOrder(new ArrayList<String>());
@@ -805,6 +830,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactly("val3", "val2", "val1");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).containsExactly();
 
         try {
@@ -886,6 +912,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val3", "val2", "val1"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).containsExactly(new ArrayList<String>());
 
         try {
@@ -963,6 +990,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(null, "val1", "val2", "val3", "val4");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).containsExactlyInOrder();
 
         try {
@@ -1040,6 +1068,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList(null, "val1", "val2", "val3", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).containsExactlyInOrder(new ArrayList<String>());
 
         try {
@@ -1118,6 +1147,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny("val1", "val3", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny("val6", "val2", "val4");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
 
         try {
             Raw.<String>sortedSetAssertion().containsAny("val");
@@ -1177,6 +1208,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val1", "val3", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val6", "val2", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", null));
 
         try {
             Raw.<String>sortedSetAssertion().containsAny(new ArrayList<String>());
@@ -1235,6 +1268,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void containsNoneArrayTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone("val4", "val5", "val6");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone("val8", "val4");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", null)).containsNone("val8", "val4");
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone("val8", "val4", null);
 
         try {
             Raw.<String>sortedSetAssertion().containsNone("val");
@@ -1293,6 +1328,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val5", "val6"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", null)).containsNone(Arrays.asList("val8", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4", null));
 
         try {
             Raw.<String>sortedSetAssertion().containsNone(new ArrayList<String>());
