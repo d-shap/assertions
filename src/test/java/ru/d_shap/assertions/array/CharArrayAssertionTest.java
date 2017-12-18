@@ -105,7 +105,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).doesNotContain('3');
 
         try {
-            Raw.charArrayAssertion().doesNotContain('3');
+            Raw.charArrayAssertion().doesNotContain('1');
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

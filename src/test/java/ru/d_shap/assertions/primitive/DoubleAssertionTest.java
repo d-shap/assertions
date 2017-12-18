@@ -74,19 +74,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), +0.0).isEqualTo(-0.0, 0.0);
 
         try {
-            Raw.doubleAssertion().isEqualTo(10.0, 0.01);
+            Raw.doubleAssertion().isEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isEqualTo(10.0, 0.01);
+            initialize(Raw.doubleAssertion(), null).isEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(10.0, 0.01);
+            initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -139,19 +139,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(20.0, 0.0);
 
         try {
-            Raw.doubleAssertion().isNotEqualTo(10.01, 0.001);
+            Raw.doubleAssertion().isNotEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isNotEqualTo(10.01, 0.001);
+            initialize(Raw.doubleAssertion(), null).isNotEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isNotEqualTo(10.01, 0.001);
+            initialize(Raw.doubleAssertion(), null, "Message").isNotEqualTo(1.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -228,19 +228,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(-1.0);
 
         try {
-            Raw.doubleAssertion().isGreaterThan(9.0);
+            Raw.doubleAssertion().isGreaterThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isGreaterThan(9.0);
+            initialize(Raw.doubleAssertion(), null).isGreaterThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(9.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -281,19 +281,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(-1.0);
 
         try {
-            Raw.doubleAssertion().isGreaterThanOrEqualTo(9.0);
+            Raw.doubleAssertion().isGreaterThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(9.0);
+            initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(9.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -322,19 +322,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(100.0);
 
         try {
-            Raw.doubleAssertion().isLessThan(11.0);
+            Raw.doubleAssertion().isLessThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isLessThan(11.0);
+            initialize(Raw.doubleAssertion(), null).isLessThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isLessThan(11.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThan(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -375,19 +375,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(100.0);
 
         try {
-            Raw.doubleAssertion().isLessThanOrEqualTo(11.0);
+            Raw.doubleAssertion().isLessThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(11.0);
+            initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(11.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -416,19 +416,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isInRange(1.0, 10.0);
 
         try {
-            Raw.doubleAssertion().isInRange(4.0, 6.0);
+            Raw.doubleAssertion().isInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isInRange(4.0, 6.0);
+            initialize(Raw.doubleAssertion(), null).isInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isInRange(4.0, 6.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -481,19 +481,19 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(8.0, 9.0);
 
         try {
-            Raw.doubleAssertion().isNotInRange(1.0, 5.0);
+            Raw.doubleAssertion().isNotInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isNotInRange(1.0, 5.0);
+            initialize(Raw.doubleAssertion(), null).isNotInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(1.0, 5.0);
+            initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(1.0, 1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");

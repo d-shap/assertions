@@ -220,19 +220,19 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2")).containsKey(null);
 
         try {
-            Raw.<String, String>mapAssertion().containsKey("key3");
+            Raw.<String, String>mapAssertion().containsKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsKey("key3");
+            initialize(Raw.<String, String>mapAssertion(), null).containsKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null, "Message").containsKey("key3");
+            initialize(Raw.<String, String>mapAssertion(), null, "Message").containsKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -262,19 +262,19 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).doesNotContainKey(null);
 
         try {
-            Raw.<String, String>mapAssertion().doesNotContainKey("key1");
+            Raw.<String, String>mapAssertion().doesNotContainKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).doesNotContainKey("key1");
+            initialize(Raw.<String, String>mapAssertion(), null).doesNotContainKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null, "Message").doesNotContainKey("key1");
+            initialize(Raw.<String, String>mapAssertion(), null, "Message").doesNotContainKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -305,13 +305,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeys(null, "key1");
 
         try {
-            Raw.<String, String>mapAssertion().containsAllKeys("key1", "key2");
+            Raw.<String, String>mapAssertion().containsAllKeys("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsAllKeys("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsAllKeys("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -428,13 +428,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(null, "key3");
 
         try {
-            Raw.<String, String>mapAssertion().containsAllKeysInOrder("key1", "key2");
+            Raw.<String, String>mapAssertion().containsAllKeysInOrder("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsAllKeysInOrder("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsAllKeysInOrder("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -586,13 +586,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap()).containsKeysExactly();
 
         try {
-            Raw.<String, String>mapAssertion().containsKeysExactly("key1", "key2");
+            Raw.<String, String>mapAssertion().containsKeysExactly("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsKeysExactly("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsKeysExactly("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -705,13 +705,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap()).containsKeysExactlyInOrder();
 
         try {
-            Raw.<String, String>mapAssertion().containsKeysExactlyInOrder("key1", "key2");
+            Raw.<String, String>mapAssertion().containsKeysExactlyInOrder("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsKeysExactlyInOrder("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsKeysExactlyInOrder("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -861,13 +861,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2")).containsAnyKey("key6", null, "key4");
 
         try {
-            Raw.<String, String>mapAssertion().containsAnyKey("key1", "key2");
+            Raw.<String, String>mapAssertion().containsAnyKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsAnyKey("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsAnyKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
@@ -984,13 +984,13 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsNoKey("key7", null, "key8");
 
         try {
-            Raw.<String, String>mapAssertion().containsNoKey("key1", "key2");
+            Raw.<String, String>mapAssertion().containsNoKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String, String>mapAssertion(), null).containsNoKey("key1", "key2");
+            initialize(Raw.<String, String>mapAssertion(), null).containsNoKey("key");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

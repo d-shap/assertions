@@ -103,19 +103,19 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator()).toList(1).containsExactlyInOrder("val1");
 
         try {
-            Raw.<String>iteratorAssertion().toList(5);
+            Raw.<String>iteratorAssertion().toList(1);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).toList(5);
+            initialize(Raw.<String>iteratorAssertion(), null).toList(1);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").toList(5);
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").toList(1);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -292,13 +292,13 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", null, "val4").iterator()).isNextElementsEqualTo("val1", "val2", null, "val4");
 
         try {
-            Raw.<String>iteratorAssertion().isNextElementsEqualTo("val1", "val2");
+            Raw.<String>iteratorAssertion().isNextElementsEqualTo("val");
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo("val1", "val2");
+            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo("val");
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");

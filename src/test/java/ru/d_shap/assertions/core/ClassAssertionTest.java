@@ -72,7 +72,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isEqualTo(String.class);
 
         try {
-            Raw.classAssertion().isEqualTo(Integer.class);
+            Raw.classAssertion().isEqualTo(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -106,7 +106,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isNotEqualTo(Object.class);
 
         try {
-            Raw.classAssertion().isNotEqualTo(String.class);
+            Raw.classAssertion().isNotEqualTo(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -146,7 +146,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isSubtypeOf(CharSequence.class);
 
         try {
-            Raw.classAssertion().isSubtypeOf(Integer.class);
+            Raw.classAssertion().isSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -221,7 +221,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), CharSequence.class).isNotSubtypeOf(String.class);
 
         try {
-            Raw.classAssertion().isNotSubtypeOf(Integer.class);
+            Raw.classAssertion().isNotSubtypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

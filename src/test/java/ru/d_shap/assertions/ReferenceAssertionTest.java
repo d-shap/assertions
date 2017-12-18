@@ -99,19 +99,19 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(object).isSameAs(object);
 
         try {
-            createReferenceAssertion().isSameAs(new StringBuilder("value"));
+            createReferenceAssertion().isSameAs(new Object());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).isSameAs(new StringBuilder("value"));
+            createReferenceAssertion(null).isSameAs(new Object());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isSameAs(new StringBuilder("value"));
+            createReferenceAssertion(null, "Message").isSameAs(new Object());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
@@ -553,19 +553,19 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new ToFieldChildClass()).toField("_childField").isEqualTo("childField");
 
         try {
-            createReferenceAssertion().toField("_parentField");
+            createReferenceAssertion().toField("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).toField("_parentField");
+            createReferenceAssertion(null).toField("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").toField("_parentField");
+            createReferenceAssertion(null, "Message").toField("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");

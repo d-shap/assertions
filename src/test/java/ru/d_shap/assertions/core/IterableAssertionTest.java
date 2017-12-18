@@ -210,7 +210,7 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", null, "val2")).contains(null);
 
         try {
-            Raw.<String>iterableAssertion().contains("val1");
+            Raw.<String>iterableAssertion().contains("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -245,7 +245,7 @@ public final class IterableAssertionTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), Arrays.asList("val1", "val2")).doesNotContain(null);
 
         try {
-            Raw.<String>iterableAssertion().doesNotContain("val3");
+            Raw.<String>iterableAssertion().doesNotContain("val");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

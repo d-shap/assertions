@@ -162,7 +162,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", null}).doContains(null);
 
         try {
-            new ArrayAssertionImpl().doContains("val1");
+            new ArrayAssertionImpl().doContains("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -203,7 +203,7 @@ public final class ArrayAssertionTest extends AssertionTest {
         initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2"}).doDoesNotContain(null);
 
         try {
-            new ArrayAssertionImpl().doDoesNotContain("val3");
+            new ArrayAssertionImpl().doDoesNotContain("val");
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

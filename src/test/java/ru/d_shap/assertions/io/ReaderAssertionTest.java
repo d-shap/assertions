@@ -174,19 +174,19 @@ public final class ReaderAssertionTest extends AssertionTest {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(1).containsExactlyInOrder('1');
 
         try {
-            Raw.readerAssertion().toCharArray(3);
+            Raw.readerAssertion().toCharArray(1);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.readerAssertion(), null).toCharArray(3);
+            initialize(Raw.readerAssertion(), null).toCharArray(1);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), null, "Message").toCharArray(3);
+            initialize(Raw.readerAssertion(), null, "Message").toCharArray(1);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");

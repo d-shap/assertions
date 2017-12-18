@@ -99,7 +99,7 @@ public final class ObjectAssertionTest extends AssertionTest {
         initialize(Raw.objectAssertion(), "value2").isNotEqualTo("value1");
 
         try {
-            Raw.objectAssertion().isNotEqualTo("value2");
+            Raw.objectAssertion().isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

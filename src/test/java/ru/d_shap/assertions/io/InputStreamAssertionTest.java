@@ -172,19 +172,19 @@ public final class InputStreamAssertionTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(1).containsExactlyInOrder(1);
 
         try {
-            Raw.inputStreamAssertion().toByteArray(3);
+            Raw.inputStreamAssertion().toByteArray(1);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null).toByteArray(3);
+            initialize(Raw.inputStreamAssertion(), null).toByteArray(1);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null, "Message").toByteArray(3);
+            initialize(Raw.inputStreamAssertion(), null, "Message").toByteArray(1);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");

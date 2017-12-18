@@ -105,7 +105,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).doesNotContain(3);
 
         try {
-            Raw.byteArrayAssertion().doesNotContain(3);
+            Raw.byteArrayAssertion().doesNotContain(1);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

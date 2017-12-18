@@ -364,13 +364,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null).hasCauseMessage("test");
+            initialize(Raw.throwableAssertion(), null).hasCauseMessage("value");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Value should not be null.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null, "Message").hasCauseMessage("test");
+            initialize(Raw.throwableAssertion(), null, "Message").hasCauseMessage("value");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should not be null.");
@@ -430,13 +430,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null).causeMessageMatches("va\\s*");
+            initialize(Raw.throwableAssertion(), null).causeMessageMatches("value");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Value should not be null.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null, "Message").causeMessageMatches("va\\s*");
+            initialize(Raw.throwableAssertion(), null, "Message").causeMessageMatches("value");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message. Value should not be null.");
