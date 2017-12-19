@@ -1419,6 +1419,24 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).hasSize(5);
 
         try {
+            Raw.<String>iteratorAssertion().hasSize(1);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null).hasSize(1);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").hasSize(1);
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).hasSize(4);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {

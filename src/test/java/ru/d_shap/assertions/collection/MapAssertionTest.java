@@ -1884,6 +1884,24 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3);
 
         try {
+            Raw.<String, String>mapAssertion().hasSize(1);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), null).hasSize(1);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), null, "Message").hasSize(1);
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).hasSize(3);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {

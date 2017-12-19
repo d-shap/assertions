@@ -1536,6 +1536,24 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).hasSize(5);
 
         try {
+            Raw.<String>sortedSetAssertion().hasSize(1);
+            Assertions.fail("SortedSetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), null).hasSize(1);
+            Assertions.fail("SortedSetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), null, "Message").hasSize(1);
+            Assertions.fail("SortedSetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {

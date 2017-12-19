@@ -2550,6 +2550,24 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3);
 
         try {
+            Raw.<String, String>sortedMapAssertion().hasSize(1);
+            Assertions.fail("SortedMapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String, String>sortedMapAssertion(), null).hasSize(1);
+            Assertions.fail("SortedMapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>sortedMapAssertion(), null, "Message").hasSize(1);
+            Assertions.fail("SortedMapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).hasSize(3);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
