@@ -70,12 +70,12 @@ public class EnumAssertion extends ClassAssertion {
     private int getValueCount() {
         try {
             Method valuesMethod = getActual().getDeclaredMethod(_valuesMethodName);
-            Object[] values = (Object[]) valuesMethod.invoke(getActual());
+            Object[] values = (Object[]) valuesMethod.invoke(null);
 
             Method valueOfMethod = getActual().getDeclaredMethod(_valueOfMethodName, String.class);
             for (Object value : values) {
                 String valueName = value.toString();
-                valueOfMethod.invoke(getActual(), valueName);
+                valueOfMethod.invoke(null, valueName);
             }
 
             return values.length;
