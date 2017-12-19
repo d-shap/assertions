@@ -513,6 +513,11 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(5).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(6).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
 
+        SortedSet<String> sortedSet = createTreeSet("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(4).isNotSameAs(sortedSet);
+        initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(5).isSameAs(sortedSet);
+        initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(6).isSameAs(sortedSet);
+
         try {
             Raw.<String>sortedSetAssertion().toTailSet(1);
             Assertions.fail("SortedSetAssertion test fail");

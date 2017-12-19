@@ -1810,6 +1810,11 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(3).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(4).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
 
+        SortedMap<String, String> sortedMap = createTreeMap("key1", "value1", "key2", "value2", "key3", "value3");
+        initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(2).isNotSameAs(sortedMap);
+        initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(3).isSameAs(sortedMap);
+        initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(4).isSameAs(sortedMap);
+
         try {
             Raw.<String, String>sortedMapAssertion().toTailMap(1);
             Assertions.fail("SortedMapAssertion test fail");
