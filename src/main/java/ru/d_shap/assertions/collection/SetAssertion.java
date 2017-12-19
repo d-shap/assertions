@@ -26,7 +26,6 @@ import java.util.Set;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -121,8 +120,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAll(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
         createListAssertion().containsAll(expected);
     }
 
@@ -134,10 +131,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAll(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        createListAssertion().containsAll(expectedArray);
+        createListAssertion().containsAll(expected);
     }
 
     /**
@@ -149,8 +143,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAllInOrder(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
         createListAssertion().containsAllInOrder(expected);
     }
 
@@ -162,10 +154,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAllInOrder(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        createListAssertion().containsAllInOrder(expectedArray);
+        createListAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -177,7 +166,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsExactly(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         createListAssertion().containsExactly(expected);
     }
 
@@ -189,9 +177,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsExactly(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        createListAssertion().containsExactly(expectedArray);
+        createListAssertion().containsExactly(expected);
     }
 
     /**
@@ -203,7 +189,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsExactlyInOrder(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         createListAssertion().containsExactlyInOrder(expected);
     }
 
@@ -215,9 +200,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsExactlyInOrder(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        createListAssertion().containsExactlyInOrder(expectedArray);
+        createListAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -229,8 +212,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAny(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.length == 0);
         createListAssertion().containsAny(expected);
     }
 
@@ -242,10 +223,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsAny(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyFalse(expectedArray.length == 0);
-        createListAssertion().containsAny(expectedArray);
+        createListAssertion().containsAny(expected);
     }
 
     /**
@@ -257,8 +235,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsNone(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
         createListAssertion().containsNone(expected);
     }
 
@@ -270,10 +246,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void containsNone(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        createListAssertion().containsNone(expectedArray);
+        createListAssertion().containsNone(expected);
     }
 
     private ListAssertion<E> createListAssertion() {
