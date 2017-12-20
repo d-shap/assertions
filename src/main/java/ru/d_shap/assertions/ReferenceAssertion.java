@@ -105,6 +105,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected class.
      */
     public final void hasClass(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toClass().isEqualTo(expected);
     }
 
@@ -114,6 +117,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected class.
      */
     public final void hasNotClass(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toClass().isNotEqualTo(expected);
     }
 
@@ -123,6 +129,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected class.
      */
     public final void isInstanceOf(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toClass().isSubtypeOf(expected);
     }
 
@@ -132,6 +141,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected class.
      */
     public final void isNotInstanceOf(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toClass().isNotSubtypeOf(expected);
     }
 
@@ -152,6 +164,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected value.
      */
     public final void isToStringEqualTo(final String expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toToString().isEqualTo(expected);
     }
 
@@ -161,6 +176,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param expected the expected value.
      */
     public final void toStringContains(final String expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
         toToString().contains(expected);
     }
 
