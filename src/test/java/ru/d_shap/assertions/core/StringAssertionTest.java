@@ -2701,7 +2701,7 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАчЕнИе").hasLength(8);
 
         try {
-            Raw.stringAssertion().toLength();
+            Raw.stringAssertion().hasLength(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
@@ -2719,7 +2719,7 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            initialize(Raw.stringAssertion(), "vAlUe").hasLength(1);
+            initialize(Raw.stringAssertion(), "vAlUe").hasLength(5);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<6> but was:<5>");
