@@ -624,13 +624,13 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            createReferenceAssertion("reference").isToStringEqualTo("value");
+            createReferenceAssertion("reference").toToString().isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check value's string representation. Values should be the same. Expected:<value> but was:<reference>");
         }
         try {
-            createReferenceAssertion("reference", "Message").isToStringEqualTo("value");
+            createReferenceAssertion("reference", "Message").toToString().isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Check value's string representation. Values should be the same. Expected:<value> but was:<reference>");
@@ -708,43 +708,43 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion("reference").toStringContains("feren");
 
         try {
-            createReferenceAssertion().isToStringEqualTo("value");
+            createReferenceAssertion().toStringContains("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).isToStringEqualTo("value");
+            createReferenceAssertion(null).toStringContains("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isToStringEqualTo("value");
+            createReferenceAssertion(null, "Message").toStringContains("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            createReferenceAssertion(null).isToStringEqualTo(null);
+            createReferenceAssertion(null).toStringContains(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isToStringEqualTo(null);
+            createReferenceAssertion(null, "Message").toStringContains(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            createReferenceAssertion("value").isToStringEqualTo(null);
+            createReferenceAssertion("value").toStringContains(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createReferenceAssertion("value", "Message").isToStringEqualTo(null);
+            createReferenceAssertion("value", "Message").toStringContains(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
