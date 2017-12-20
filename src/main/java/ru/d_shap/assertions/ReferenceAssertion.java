@@ -234,7 +234,6 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(fieldName);
         checkArgumentIsNotNull(assertion);
         return toField(fieldName).as(assertion);
     }
