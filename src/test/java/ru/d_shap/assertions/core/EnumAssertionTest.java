@@ -109,6 +109,24 @@ public final class EnumAssertionTest extends AssertionTest {
         initialize(Raw.enumAssertion(), Values.class).hasValueCount(3);
 
         try {
+            Raw.enumAssertion().hasValueCount(1);
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.enumAssertion(), null).hasValueCount(1);
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.enumAssertion(), null, "Message").hasValueCount(1);
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.enumAssertion(), Values.class).hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
