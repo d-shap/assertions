@@ -1007,25 +1007,25 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField(null, Raw.objectAssertion());
+            createReferenceAssertion(new Object()).toField(null, Raw.objectAssertion());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField(null, Raw.objectAssertion());
+            createReferenceAssertion(new Object(), "Message").toField(null, Raw.objectAssertion());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", null);
+            createReferenceAssertion(new Object()).toField("value", null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", null);
+            createReferenceAssertion(new Object(), "Message").toField("value", null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
