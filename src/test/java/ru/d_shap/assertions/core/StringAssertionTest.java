@@ -2663,6 +2663,18 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            initialize(Raw.stringAssertion(), null).isNotPartOf(null);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null, "Message").isNotPartOf(null);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
             initialize(Raw.stringAssertion(), "value").isNotPartOf(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -2745,6 +2757,18 @@ public final class StringAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.stringAssertion(), null, "Message").isNotPartOfIgnoreCase("value");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null).isNotPartOfIgnoreCase(null);
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+        }
+        try {
+            initialize(Raw.stringAssertion(), null, "Message").isNotPartOfIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
