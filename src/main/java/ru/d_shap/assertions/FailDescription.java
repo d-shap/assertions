@@ -98,9 +98,20 @@ final class FailDescription {
     }
 
     private void addMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
+        String fullMessage = getFullMessage(message, parameter, checkLastSymbol);
+        if (fullMessage != null) {
+            _messages.add(fullMessage);
+        }
+    }
+
+    static String getFullMessage(final String message) {
+        return getFullMessage(message, null, true);
+    }
+
+    private static String getFullMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
         String fullMessage;
         if (message == null || "".equals(message)) {
-            fullMessage = null;
+            return null;
         } else {
             if (parameter == null || "".equals(String.valueOf(parameter))) {
                 fullMessage = message;
@@ -109,16 +120,14 @@ final class FailDescription {
             }
         }
 
-        if (fullMessage != null) {
-            if (checkLastSymbol) {
-                if (fullMessage.endsWith(".") || fullMessage.endsWith("?") || fullMessage.endsWith("!")) {
-                    _messages.add(fullMessage);
-                } else {
-                    _messages.add(fullMessage + ".");
-                }
+        if (checkLastSymbol) {
+            if (fullMessage.endsWith(".") || fullMessage.endsWith("?") || fullMessage.endsWith("!")) {
+                return fullMessage;
             } else {
-                _messages.add(fullMessage);
+                return fullMessage + ".";
             }
+        } else {
+            return fullMessage;
         }
     }
 
@@ -204,9 +213,9 @@ final class FailDescription {
      */
     AssertionError createAssertionError() {
         boolean messageAdded = addValuesMessage();
-        String fullMessage = getFullMessage();
+        String assertionErrorMessage = getAssertionErrorMessage();
         removeLastMessage(messageAdded);
-        return new AssertionError(fullMessage, _throwable);
+        return new AssertionError(assertionErrorMessage, _throwable);
     }
 
     private boolean addValuesMessage() {
@@ -228,15 +237,15 @@ final class FailDescription {
         }
     }
 
-    private String getFullMessage() {
-        StringBuilder fullMessage = new StringBuilder();
+    private String getAssertionErrorMessage() {
+        StringBuilder assertionErrorMessage = new StringBuilder();
         for (int i = 0; i < _messages.size(); i++) {
             if (i > 0) {
-                fullMessage.append(" ");
+                assertionErrorMessage.append(" ");
             }
-            fullMessage.append(_messages.get(i));
+            assertionErrorMessage.append(_messages.get(i));
         }
-        return fullMessage.toString();
+        return assertionErrorMessage.toString();
     }
 
     private void removeLastMessage(final boolean messageAdded) {
