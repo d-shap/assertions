@@ -35,6 +35,9 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+
 import ru.d_shap.assertions.array.BooleanArrayAssertion;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
 import ru.d_shap.assertions.array.CharArrayAssertion;
@@ -708,6 +711,18 @@ public final class Assertions {
         CharBufferAssertion assertion = Raw.charBufferAssertion();
         ((BaseAssertion<CharBuffer>) assertion).initialize(actual);
         return assertion;
+    }
+
+    /**
+     * Make assertion with the hamcrest matcher.
+     *
+     * @param actual  the actual value.
+     * @param matcher the hamcrest matcher.
+     * @param <W>     the generic type of the matcher's actual value.
+     * @param <U>     the generic type of the actual value.
+     */
+    public static <W, U extends W> void assertThat(final U actual, final Matcher<W> matcher) {
+        MatcherAssert.assertThat(actual, matcher);
     }
 
     /**
