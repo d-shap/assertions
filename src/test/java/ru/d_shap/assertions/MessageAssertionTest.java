@@ -1589,7 +1589,7 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("null\nExpected: is <11>\n     but: was <10>");
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
         }
         try {
             Assertions.assertWithMessage("").that(10, Matchers.is(Matchers.equalTo(11)));
@@ -1601,7 +1601,7 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(11)));
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message\nExpected: is <11>\n     but: was <10>");
+            Assertions.assertThat(ex).hasMessage("Test message.\nExpected: is <11>\n     but: was <10>");
         }
     }
 
