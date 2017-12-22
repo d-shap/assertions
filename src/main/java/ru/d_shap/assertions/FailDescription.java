@@ -99,7 +99,7 @@ final class FailDescription {
 
     private void addMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
         String fullMessage = getFullMessage(message, parameter, checkLastSymbol);
-        if (fullMessage != null) {
+        if (!"".equals(fullMessage)) {
             _messages.add(fullMessage);
         }
     }
@@ -109,15 +109,14 @@ final class FailDescription {
     }
 
     private static String getFullMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
-        String fullMessage;
         if (message == null || "".equals(message)) {
-            return null;
+            return "";
+        }
+        String fullMessage;
+        if (parameter == null || "".equals(String.valueOf(parameter))) {
+            fullMessage = message;
         } else {
-            if (parameter == null || "".equals(String.valueOf(parameter))) {
-                fullMessage = message;
-            } else {
-                fullMessage = message + ": " + parameter;
-            }
+            fullMessage = message + ": " + parameter;
         }
 
         if (checkLastSymbol) {
