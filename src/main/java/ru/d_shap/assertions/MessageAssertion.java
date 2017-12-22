@@ -715,7 +715,8 @@ public final class MessageAssertion {
      * @param <U>     the generic type of the actual value.
      */
     public <W, U extends W> void that(final U actual, final Matcher<W> matcher) {
-        MatcherAssert.assertThat(_message, actual, matcher);
+        String fullMessage = FailDescription.getFullMessage(_message);
+        MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
 
 }
