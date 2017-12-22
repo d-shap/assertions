@@ -38,6 +38,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 /**
@@ -1574,6 +1575,33 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void matcherAssertionTest() {
+        Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(10)));
+
+        try {
+            Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("null\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message\nExpected: is <11>\n     but: was <10>");
         }
     }
 
