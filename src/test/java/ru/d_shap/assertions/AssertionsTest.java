@@ -38,6 +38,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 /**
@@ -1033,6 +1034,21 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Value should contain all of the expected values exactly in the specified order. Expected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void matcherAssertionTest() {
+        Assertions.assertThat(10, Matchers.is(Matchers.equalTo(10)));
+
+        try {
+            Assertions.assertThat(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
         }
     }
 
