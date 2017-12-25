@@ -1516,6 +1516,18 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize()).isEqualTo(1);
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's size. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
+            Assertions.fail("ListAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Value should not be null.");
+        }
+        try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
