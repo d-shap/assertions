@@ -20,8 +20,8 @@
 /**
  * <p>
  * Assertions framework provides facilities for the unit testing. Assertions framework allows checking of conditions
- * via existing assertion classes. This assertion classes make the tests more readable, understandable and maintainable.
- * Also this assertion classes reduce the amount of code needed to perform some complicated checks.
+ * using predefined assertions. This assertions make tests more readable, understandable and maintainable.
+ * Also this assertions reduce the amount of code needed to perform some complicated checks.
  * </p>
  * <p>
  * Import declaration for all the following examples:
@@ -119,14 +119,36 @@
  * assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
  * }</pre>
  * <p>
+ * Assertion examples for the Hamcrest matchers:
+ * </p>
+ * <pre>{@code
+ * assertThat(intValue, is(equalTo(10)));
+ *
+ * assertThat(longValue, instanceOf(Long.class));
+ * assertThat(longValue, isA(Long.class));
+ *
+ * assertThat(stringValue, isEmptyString());
+ * assertThat(stringValue, isEmptyOrNullString());
+ *
+ * assertThat(intArrayValue, arrayWithSize(4));
+ * assertThat(intArrayValue, arrayContaining(7, 5, 12, 16));
+ *
+ * assertThat(listValue, hasSize(3));
+ * assertThat(listValue, contains(5, 2, 4));
+ * assertThat(listValue, containsInAnyOrder(2, 4, 5));
+ * assertThat(listValue, everyItem(greaterThan(1)));
+ * }</pre>
+ * <p>
  * Custom assertion classes can be used in the next extension points:
  * </p>
  * <ul>
  * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
+ * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, org.hamcrest.Matcher)}</li>
  * <li>{@link ru.d_shap.assertions.BaseAssertion#as(ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
+ * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, org.hamcrest.Matcher)}</li>
  * <li>{@link ru.d_shap.assertions.ReferenceAssertion#toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
  * </ul>
  */
