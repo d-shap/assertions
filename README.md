@@ -177,15 +177,16 @@ Assertions framework provides methods for specific combinations of matchers:
 ```
 assertThat(intValue).isInRange(1, 4);
 assertThat(intValue).isNotInRange(1, 4);
+
 assertThat(stringValue).isNullOrBlank();
 assertThat(stringValue).isNullOrEmpty();
 ```
 This prevents creation of the error prone combinations of matchers.
 
-Custom matchers
+Custom assertions and matchers
 ---------------
 Custom Hamcrest matchers can be easily developed and used in assertions.
-Assertions framework's support for custom matchers is rather awkward.
+Assertions framework's support for custom assertions is rather awkward.
 
 But Assertions framework can use Hamcrest matchers.
 In this case Assertions framework can be used as a main framework for the unit testing.
