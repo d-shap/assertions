@@ -341,13 +341,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toHeadKeys("key")).containsExactlyInOrder("key");
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Check head elements up to element: key2. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check keys. Check head elements up to element: key. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap(), "Message").toHeadKeys("key")).containsExactlyInOrder("key");
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check keys. Check head elements up to element: key2. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check keys. Check head elements up to element: key. Value should not be null.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toHeadKeys("key2").containsExactlyInOrder("key2", "key3");
@@ -524,13 +524,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toTailKeys("key")).containsExactlyInOrder("key");
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check keys. Check tail elements from element: key3. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check keys. Check tail elements from element: key. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap(), "Message").toTailKeys("key")).containsExactlyInOrder("key");
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check keys. Check tail elements from element: key3. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check keys. Check tail elements from element: key. Value should not be null.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toTailKeys("key3").containsExactlyInOrder("key2", "key3");
@@ -1943,13 +1943,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toHeadMap("key")).containsExactlyInOrder(createHashMap("key", "value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head elements up to element: key2. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check head elements up to element: key. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap(), "Message").toHeadMap("key")).containsExactlyInOrder(createHashMap("key", "value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head elements up to element: key2. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check head elements up to element: key. Value should not be null.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toHeadMap("key2").containsExactlyInOrder(createHashMap("key2", "value2", "key3", "value3"));
@@ -2138,13 +2138,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toTailMap("key")).containsExactlyInOrder(createHashMap("key", "value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail elements from element: key3. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check tail elements from element: key. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap(), "Message").toTailMap("key")).containsExactlyInOrder(createHashMap("key", "value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail elements from element: key3. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check tail elements from element: key. Value should not be null.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap()).toTailMap("key3").containsExactlyInOrder(createHashMap("key2", "value2", "key3", "value3"));
