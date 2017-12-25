@@ -1584,6 +1584,16 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void matcherAssertionTest() {
         Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(10)));
+        Assertions.assertWithMessage("Test message").that(1L, Matchers.instanceOf(Long.class));
+        Assertions.assertWithMessage("Test message").that(1L, Matchers.isA(Long.class));
+        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyString());
+        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyOrNullString());
+        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
+        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
 
         try {
             Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));

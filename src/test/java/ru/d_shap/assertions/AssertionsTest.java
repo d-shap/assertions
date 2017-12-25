@@ -1043,6 +1043,16 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void matcherAssertionTest() {
         Assertions.assertThat(10, Matchers.is(Matchers.equalTo(10)));
+        Assertions.assertThat(1L, Matchers.instanceOf(Long.class));
+        Assertions.assertThat(1L, Matchers.isA(Long.class));
+        Assertions.assertThat("", Matchers.isEmptyString());
+        Assertions.assertThat("", Matchers.isEmptyOrNullString());
+        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
+        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
 
         try {
             Assertions.assertThat(10, Matchers.is(Matchers.equalTo(11)));
