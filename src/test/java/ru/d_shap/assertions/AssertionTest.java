@@ -23,6 +23,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.DoubleBuffer;
@@ -119,6 +120,25 @@ public class AssertionTest {
     protected final <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message) {
         assertion.initialize((W) actual, message);
         return assertion;
+    }
+
+    /**
+     * Clear the actual value of  the specified assertion.
+     *
+     * @param assertion the specified assertion.
+     * @param <W>       the generic type of the assertion's actual value.
+     * @param <S>       the generic type of the assertion.
+     * @return the assertion with null actual value.
+     */
+    protected final <W, S extends BaseAssertion<W>> S clearActual(final S assertion) {
+        try {
+            Field field = BaseAssertion.class.getDeclaredField("_actual");
+            PrivateAccessor.setAccessible(field);
+            field.set(assertion, null);
+            return assertion;
+        } catch (NoSuchFieldException | IllegalAccessException ex) {
+            throw new AssertionError(ex);
+        }
     }
 
     /**
