@@ -2992,6 +2992,18 @@ public final class BufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check buffer position. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toPosition()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check buffer position. Value should not be null.");
+        }
+        try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -3082,6 +3094,18 @@ public final class BufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toLimit()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check buffer limit. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toLimit()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check buffer limit. Value should not be null.");
+        }
+        try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toLimit().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
@@ -3170,6 +3194,18 @@ public final class BufferAssertionTest extends AssertionTest {
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toCapacity()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check buffer capacity. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toCapacity()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check buffer capacity. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toCapacity().isEqualTo(4);
@@ -3329,6 +3365,18 @@ public final class BufferAssertionTest extends AssertionTest {
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3)).toRemaining()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check buffer remaining. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
+            Assertions.fail("BufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check buffer remaining. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3)).toRemaining().isEqualTo(4);
