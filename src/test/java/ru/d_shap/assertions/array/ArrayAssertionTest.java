@@ -1396,6 +1396,18 @@ public final class ArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength()).isEqualTo(1);
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's length. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").toLength()).isEqualTo(1);
+            Assertions.fail("ArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Value should not be null.");
+        }
+        try {
             initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
