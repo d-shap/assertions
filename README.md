@@ -1,9 +1,9 @@
 Assertions framework
 ====================
 Assertions framework provides facilities for the unit testing.
-Assertions framework allows checking of conditions via existing assertion classes.
-This assertion classes make the tests more readable, understandable and maintainable.
-Also this assertion classes reduce the amount of code needed to perform some complicated checks.
+Assertions framework allows checking of conditions using predefined assertions.
+This assertions make tests more readable, understandable and maintainable.
+Also this assertions reduce the amount of code needed to perform some complicated checks.
 
 Import declaration for all the following examples:
 ```
@@ -93,12 +93,34 @@ assertThat(doubleBufferValue).rewindAndContainsAll(5.0, 10.0, 15.0);
 assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
 ```
 
+Assertion examples for the Hamcrest matchers:
+```
+assertThat(intValue, is(equalTo(10)));
+
+assertThat(longValue, instanceOf(Long.class));
+assertThat(longValue, isA(Long.class));
+
+assertThat(stringValue, isEmptyString());
+assertThat(stringValue, isEmptyOrNullString());
+
+assertThat(intArrayValue, arrayWithSize(4));
+assertThat(intArrayValue, arrayContaining(7, 5, 12, 16));
+
+assertThat(listValue, hasSize(3));
+assertThat(listValue, contains(5, 2, 4));
+assertThat(listValue, containsInAnyOrder(2, 4, 5));
+assertThat(listValue, everyItem(greaterThan(1)));
+```
+
 Custom assertion classes can be used in the next extension points:
-* Assertions.assertThat(java.lang.Object, java.lang.Class)
-* Assertions.assertThat(java.lang.Object, java.lang.String, java.lang.Class)
-* BaseAssertion.as(java.lang.Class)
-* MessageAssertion.that(java.lang.Object, java.lang.Class)
-* MessageAssertion.that(java.lang.Object, java.lang.String, java.lang.Class)
+* Assertions.assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
+* Assertions.assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
+* Assertions.assertThat(java.lang.Object, org.hamcrest.Matcher)
+* BaseAssertion.as(ru.d_shap.assertions.BaseAssertion)
+* MessageAssertion.that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
+* MessageAssertion.that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
+* MessageAssertion.that(java.lang.Object, org.hamcrest.Matcher)
+* ReferenceAssertion.toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)
 
 Assertions framework and Hamcrest
 =================================
@@ -148,17 +170,23 @@ assertThat("value", anyOf(nullValue(), equalTo("test"), allOf(containsString("al
 ```
 But some combinations of matchers do not make sense.
 Also it is too difficult to understand some complicated combinations of matchers.
-The test should be as simple as possible - to prevent bugs in the tests itself.
+The test should be as simple as possible - to prevent mistakes in the tests itself.
 And too difficult combinations of matchers are error prone.
 
-Assertions framework provides methods for specific combinations of matchers.
+Assertions framework provides methods for specific combinations of matchers:
 ```
+assertThat(intValue).isInRange(1, 4);
+assertThat(intValue).isNotInRange(1, 4);
 assertThat(stringValue).isNullOrBlank();
 assertThat(stringValue).isNullOrEmpty();
 ```
-There are few of them, but the more will be developed.
+This prevents creation of the error prone combinations of matchers.
 
 Custom matchers
 ---------------
 Custom Hamcrest matchers can be easily developed and used in assertions.
-Assertions framework support for custom matchers is rather awkward.
+Assertions framework's support for custom matchers is rather awkward.
+
+But Assertions framework can use Hamcrest matchers.
+In this case Assertions framework can be used as a main framework for the unit testing.
+And in case of some specific assertions custom Hamcrest matchers can be used.
