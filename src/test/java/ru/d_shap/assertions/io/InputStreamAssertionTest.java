@@ -160,6 +160,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
         }
         try {
+            clearActual(initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray()).containsExactlyInOrder(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check input stream bytes. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray()).containsExactlyInOrder(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check input stream bytes. Value should not be null.");
+        }
+        try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray().containsExactlyInOrder(1, 2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
@@ -248,6 +260,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
+        }
+        try {
+            clearActual(initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(1)).containsExactlyInOrder(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check input stream bytes. Value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(1)).containsExactlyInOrder(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check input stream bytes. Value should not be null.");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4).containsExactlyInOrder(1, 2);
