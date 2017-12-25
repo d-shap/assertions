@@ -252,6 +252,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(createReferenceAssertion(new StringBuilder("value")).toClass()).isSameAs(Object.class);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's class. Value should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion(new StringBuilder("value"), "Message").toClass()).isSameAs(Object.class);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's class. Value should not be null.");
+        }
+        try {
             createReferenceAssertion(new StringBuilder("value")).toClass().isSameAs(String.class);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -624,6 +636,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(createReferenceAssertion("reference").toToString()).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's string representation. Value should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion("reference", "Message").toToString()).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's string representation. Value should not be null.");
+        }
+        try {
             createReferenceAssertion("reference").toToString().isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -791,6 +815,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
         }
         try {
+            clearActual(createReferenceAssertion("reference").toHashCode()).isEqualTo(1);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's hash code. Value should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion("reference", "Message").toHashCode()).isEqualTo(1);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's hash code. Value should not be null.");
+        }
+        try {
             createReferenceAssertion("reference").toHashCode().isEqualTo(1);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -925,6 +961,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message. Value should contain the expected field. Expected:<wrongFieldName>");
         }
         try {
+            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField")).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's field: _parentField. Value should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField")).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's field: _parentField. Value should not be null.");
+        }
+        try {
             createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isEqualTo("wrongFieldValue");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -1029,6 +1077,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.stringAssertion())).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check value's field: _parentField. Value should not be null.");
+        }
+        try {
+            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField", Raw.stringAssertion())).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message. Check value's field: _parentField. Value should not be null.");
         }
         try {
             createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.stringAssertion()).isNotNull();
