@@ -285,7 +285,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     public final IntAssertion toPosition() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.ACTUAL_BUFFER_POSITION);
+        return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.ACTUAL_VALUE_POSITION);
     }
 
     /**
@@ -305,7 +305,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     public final IntAssertion toLimit() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.ACTUAL_BUFFER_LIMIT);
+        return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.ACTUAL_VALUE_LIMIT);
     }
 
     /**
@@ -325,7 +325,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     public final IntAssertion toCapacity() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.ACTUAL_BUFFER_CAPACITY);
+        return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.ACTUAL_VALUE_CAPACITY);
     }
 
     /**
@@ -358,7 +358,7 @@ abstract class BufferAssertion<T extends Buffer, E> extends ReferenceAssertion<T
     public final IntAssertion toRemaining() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.ACTUAL_BUFFER_REMAINING);
+        return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.ACTUAL_VALUE_REMAINING);
     }
 
     /**
