@@ -121,7 +121,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toHeadSet(final E element) {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_ELEMENT, element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_VALUE_HEAD_ELEMENT, element);
     }
 
     /**
@@ -135,10 +135,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_HEAD_COUNT, count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
         } else {
             E element = getNthElement(count + 1);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_HEAD_COUNT, count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
         }
     }
 
@@ -151,7 +151,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toTailSet(final E element) {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_ELEMENT, element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_VALUE_TAIL_ELEMENT, element);
     }
 
     /**
@@ -165,10 +165,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_TAIL_COUNT, count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
         } else {
             E element = getNthElement(getActual().size() - count + 1);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_TAIL_COUNT, count);
+            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
         }
     }
 
