@@ -54,7 +54,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_READER_CHARS).isLessThan(0);
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_CHAR).isLessThan(0);
     }
 
     private int readActual() {
@@ -82,7 +82,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
                 }
                 writer.write(read);
             }
-            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_READER_CHARS);
+            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_VALUE_CHARS_ALL);
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
@@ -91,25 +91,25 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     /**
      * Make assertion about the chars read from the actual from the current position.
      *
-     * @param length the number of chars to read from the actual.
+     * @param count the number of chars to read from the actual.
      * @return the assertion.
      */
-    public final CharArrayAssertion toCharArray(final int length) {
+    public final CharArrayAssertion toCharArray(final int count) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsValid(length > 0);
+        checkArgumentIsValid(count > 0);
         try {
-            StringWriter writer = new StringWriter(length);
-            int count = 0;
-            while (count < length) {
+            StringWriter writer = new StringWriter(count);
+            int readCount = 0;
+            while (readCount < count) {
                 int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
                 writer.write(read);
-                count++;
+                readCount++;
             }
-            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_READER_CHARS);
+            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
