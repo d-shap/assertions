@@ -50,7 +50,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     public final StringAssertion toMessage() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.stringAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_THROWABLE_MESSAGE);
+        return initializeAssertion(Raw.stringAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_VALUE_MESSAGE);
     }
 
     /**
@@ -85,7 +85,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     public final ThrowableAssertion toCause() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.ACTUAL_THROWABLE_CAUSE);
+        return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.ACTUAL_VALUE_CAUSE);
     }
 
     /**
