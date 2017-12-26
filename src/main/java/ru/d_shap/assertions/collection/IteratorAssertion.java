@@ -67,25 +67,25 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
             E element = getActual().next();
             list.add(element);
         }
-        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
     }
 
     /**
      * Make assertion about the iterator elements from the current position.
      *
-     * @param size the number of elements to get from the iterator.
+     * @param count the number of elements to get from the iterator.
      * @return the assertion.
      */
-    public final ListAssertion<E> toList(final int size) {
+    public final ListAssertion<E> toList(final int count) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsValid(size > 0);
+        checkArgumentIsValid(count > 0);
         List<E> list = new ArrayList<>();
-        for (int i = 0; i < size && getActual().hasNext(); i++) {
+        for (int i = 0; i < count && getActual().hasNext(); i++) {
             E element = getActual().next();
             list.add(element);
         }
-        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_ITERATOR_ELEMENTS);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
     }
 
     /**
