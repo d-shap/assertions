@@ -37,51 +37,61 @@ public final class Messages {
      */
     public static final class Check {
 
-        public static final String ACTUAL_VALUE_CLASS = "Check value's class";
+        public static final String ACTUAL_VALUE_CLASS = "Check actual value's class";
 
-        public static final String ACTUAL_VALUE_TO_STRING = "Check value's string representation";
+        public static final String ACTUAL_VALUE_TO_STRING = "Check actual value's string representation";
 
-        public static final String ACTUAL_VALUE_HASH_CODE = "Check value's hash code";
+        public static final String ACTUAL_VALUE_HASH_CODE = "Check actual value's hash code";
 
-        public static final String ACTUAL_VALUE_FIELD = "Check value's field";
+        public static final String ACTUAL_VALUE_FIELD = "Check actual value's field";
 
-        public static final String ACTUAL_VALUE_LENGTH = "Check value's length";
+        public static final String ACTUAL_VALUE_LENGTH = "Check actual value's length";
 
-        public static final String ACTUAL_VALUE_SIZE = "Check value's size";
+        public static final String ACTUAL_VALUE_SIZE = "Check actual value's size";
 
-        public static final String ACTUAL_ITERATOR_ELEMENTS = "Check iterator elements";
+        public static final String ACTUAL_VALUE_ELEMENTS_ALL = "Check all actual value's elements";
 
-        public static final String ACTUAL_HEAD_ELEMENT = "Check head elements up to element";
+        public static final String ACTUAL_VALUE_ELEMENTS_COUNT = "Check next N actual value's elements";
 
-        public static final String ACTUAL_HEAD_COUNT = "Check head n elements";
+        public static final String ACTUAL_VALUE_HEAD_ELEMENT = "Check actual value's head elements up to element";
 
-        public static final String ACTUAL_TAIL_ELEMENT = "Check tail elements from element";
+        public static final String ACTUAL_VALUE_HEAD_COUNT = "Check actual value's N head elements";
 
-        public static final String ACTUAL_TAIL_COUNT = "Check tail n elements";
+        public static final String ACTUAL_VALUE_TAIL_ELEMENT = "Check actual value's tail elements from element";
 
-        public static final String ACTUAL_KEYS = "Check keys";
+        public static final String ACTUAL_VALUE_TAIL_COUNT = "Check actual value's N tail elements";
 
-        public static final String ACTUAL_VALUES = "Check values";
+        public static final String ACTUAL_VALUE_KEYS = "Check actual value's keys";
 
-        public static final String ACTUAL_VALUE_TOKENS = "Check value's tokens";
+        public static final String ACTUAL_VALUE_VALUES = "Check actual value's values";
 
-        public static final String ACTUAL_THROWABLE_MESSAGE = "Check throwable message";
+        public static final String ACTUAL_VALUE_TOKENS = "Check actual value's tokens";
 
-        public static final String ACTUAL_THROWABLE_CAUSE = "Check throwable cause";
+        public static final String ACTUAL_VALUE_MESSAGE = "Check actual value's message";
 
-        public static final String ACTUAL_ENUM_VALUE_COUNT = "Check enum value count";
+        public static final String ACTUAL_VALUE_CAUSE = "Check actual value's cause";
 
-        public static final String ACTUAL_STREAM_BYTES = "Check input stream bytes";
+        public static final String ACTUAL_VALUE_CONSTANT_COUNT = "Check actual value's constant count";
 
-        public static final String ACTUAL_READER_CHARS = "Check reader chars";
+        public static final String ACTUAL_VALUE_BYTE = "Check next actual value's byte";
 
-        public static final String ACTUAL_BUFFER_POSITION = "Check buffer position";
+        public static final String ACTUAL_VALUE_BYTES_ALL = "Check all actual value's bytes";
 
-        public static final String ACTUAL_BUFFER_LIMIT = "Check buffer limit";
+        public static final String ACTUAL_VALUE_BYTES_COUNT = "Check next N actual value's bytes";
 
-        public static final String ACTUAL_BUFFER_CAPACITY = "Check buffer capacity";
+        public static final String ACTUAL_VALUE_CHAR = "Check next actual value's char";
 
-        public static final String ACTUAL_BUFFER_REMAINING = "Check buffer remaining";
+        public static final String ACTUAL_VALUE_CHARS_ALL = "Check all actual value's chars";
+
+        public static final String ACTUAL_VALUE_CHARS_COUNT = "Check next N actual value's chars";
+
+        public static final String ACTUAL_VALUE_POSITION = "Check actual value's position";
+
+        public static final String ACTUAL_VALUE_LIMIT = "Check actual value's limit";
+
+        public static final String ACTUAL_VALUE_CAPACITY = "Check actual value's capacity";
+
+        public static final String ACTUAL_VALUE_REMAINING = "Check actual value's remaining";
 
         private Check() {
             super();
@@ -116,19 +126,35 @@ public final class Messages {
 
         public static final String IS_SAME = "Values should be the same";
 
+        public static final String IS_SAME_IGNORE_CASE = "Values should be the same ignore case";
+
         public static final String IS_DIFFERENT = "Values should be different";
+
+        public static final String IS_DIFFERENT_IGNORE_CASE = "Values should be different ignore case";
 
         public static final String IS_GREATER = "Value should be greater then the expected";
 
+        public static final String IS_GREATER_IGNORE_CASE = "Value should be greater then the expected ignore case";
+
         public static final String IS_GREATER_OR_EQUAL = "Value should be greater then or equal to the expected";
+
+        public static final String IS_GREATER_OR_EQUAL_IGNORE_CASE = "Value should be greater then or equal to the expected ignore case";
 
         public static final String IS_LESS = "Value should be less then the expected";
 
+        public static final String IS_LESS_IGNORE_CASE = "Value should be less then the expected ignore case";
+
         public static final String IS_LESS_OR_EQUAL = "Value should be less then or equal to the expected";
+
+        public static final String IS_LESS_OR_EQUAL_IGNORE_CASE = "Value should be less then or equal to the expected ignore case";
 
         public static final String IS_IN_RANGE = "Value should be in the expected range";
 
+        public static final String IS_IN_RANGE_IGNORE_CASE = "Value should be in the expected range ignore case";
+
         public static final String IS_NOT_IN_RANGE = "Value should not be in the expected range";
+
+        public static final String IS_NOT_IN_RANGE_IGNORE_CASE = "Value should not be in the expected range ignore case";
 
         public static final String IS_ZERO = "Value should be zero";
 
@@ -188,7 +214,11 @@ public final class Messages {
 
         public static final String CONTAINS = "Value should contain the expected value";
 
+        public static final String CONTAINS_IGNORE_CASE = "Value should contain the expected value ignore case";
+
         public static final String DOES_NOT_CONTAIN = "Value should not contain the expected value";
+
+        public static final String DOES_NOT_CONTAIN_IGNORE_CASE = "Value should not contain the expected value ignore case";
 
         public static final String CONTAINS_ALL = "Value should contain all of the expected values";
 
@@ -204,7 +234,11 @@ public final class Messages {
 
         public static final String IS_PART_OF = "Value should be the part of the expected value";
 
+        public static final String IS_PART_OF_IGNORE_CASE = "Value should be the part of the expected value ignore case";
+
         public static final String IS_NOT_PART_OF = "Value should not be the part of the expected value";
+
+        public static final String IS_NOT_PART_OF_IGNORE_CASE = "Value should not be the part of the expected value ignore case";
 
         public static final String MATCHES = "Value should match the expected value";
 
@@ -212,11 +246,19 @@ public final class Messages {
 
         public static final String STARTS_WITH = "Value should start with the expected value";
 
+        public static final String STARTS_WITH_IGNORE_CASE = "Value should start with the expected value ignore case";
+
         public static final String DOES_NOT_START_WITH = "Value should not start with the expected value";
+
+        public static final String DOES_NOT_START_WITH_IGNORE_CASE = "Value should not start with the expected value ignore case";
 
         public static final String ENDS_WITH = "Value should end with the expected value";
 
+        public static final String ENDS_WITH_IGNORE_CASE = "Value should end with the expected value ignore case";
+
         public static final String DOES_NOT_END_WITH = "Value should not end with the expected value";
+
+        public static final String DOES_NOT_END_WITH_IGNORE_CASE = "Value should not end with the expected value ignore case";
 
         public static final String IS_DIRECT = "Value should be direct";
 
