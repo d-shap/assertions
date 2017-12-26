@@ -632,7 +632,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new StringBuilder("test")).hasLength(5);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<5> but was:<4>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length. Values should be the same. Expected:<5> but was:<4>");
         }
     }
 
@@ -653,7 +653,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat("test").hasLength(5);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<5> but was:<4>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length. Values should be the same. Expected:<5> but was:<4>");
         }
     }
 
@@ -697,7 +697,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(iterable).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -718,7 +718,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new AssertionError("error")).isInstanceOf(RuntimeException.class);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class. Value should be the subtype of the expected value. Expected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
         }
     }
 
@@ -739,7 +739,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check iterator elements. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's elements. Value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -823,7 +823,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -844,7 +844,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -865,7 +865,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check input stream bytes. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 
@@ -886,7 +886,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new StringReader("123")).isNextCharsEqualTo('2', '3');
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check reader chars. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Value should contain all of the expected values exactly in the specified order. Expected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 

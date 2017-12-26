@@ -310,37 +310,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toHeadSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head elements up to element: val. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toHeadSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head elements up to element: val. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's head elements up to element: val. Value should not be null.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's head elements up to element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2]>");
         }
     }
 
@@ -414,61 +414,61 @@ public final class SortedSetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toHeadSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head n elements: 1. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 1. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toHeadSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head n elements: 1. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N head elements: 1. Value should not be null.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N head elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N head elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(5).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head n elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(5).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head n elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N head elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(6).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check head n elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(6).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check head n elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N head elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -509,37 +509,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toTailSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail elements from element: val. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toTailSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail elements from element: val. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tail elements from element: val. Value should not be null.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tail elements from element: val3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
         }
     }
 
@@ -618,61 +618,61 @@ public final class SortedSetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toTailSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail n elements: 1. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 1. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toTailSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail n elements: 1. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N tail elements: 1. Value should not be null.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(), "Message").toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N tail elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail n elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N tail elements: 3. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(5).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail n elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(5).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail n elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N tail elements: 5. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(6).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check tail n elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(6).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check tail n elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's N tail elements: 6. Value should contain all of the expected values exactly in the specified order. Expected:<[val4, val5]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -1835,25 +1835,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).toSize()).isEqualTo(1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Value should not be null.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1887,13 +1887,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

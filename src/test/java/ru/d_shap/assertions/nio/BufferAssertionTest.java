@@ -2995,25 +2995,25 @@ public final class BufferAssertionTest extends AssertionTest {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer position. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's position. Value should not be null.");
         }
         try {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toPosition()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer position. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's position. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toPosition().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3048,13 +3048,13 @@ public final class BufferAssertionTest extends AssertionTest {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasPosition(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasPosition(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3097,25 +3097,25 @@ public final class BufferAssertionTest extends AssertionTest {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toLimit()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer limit. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's limit. Value should not be null.");
         }
         try {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toLimit()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer limit. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's limit. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toLimit().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toLimit().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3150,13 +3150,13 @@ public final class BufferAssertionTest extends AssertionTest {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasLimit(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasLimit(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3199,25 +3199,25 @@ public final class BufferAssertionTest extends AssertionTest {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toCapacity()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer capacity. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's capacity. Value should not be null.");
         }
         try {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toCapacity()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer capacity. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's capacity. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).toCapacity().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").toCapacity().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3252,13 +3252,13 @@ public final class BufferAssertionTest extends AssertionTest {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasCapacity(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasCapacity(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3293,37 +3293,37 @@ public final class BufferAssertionTest extends AssertionTest {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasProperties(4, 3, 3);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasProperties(4, 3, 3);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer position. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's position. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasProperties(3, 4, 3);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasProperties(3, 4, 3);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer limit. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's limit. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasProperties(3, 3, 4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 3), "Message").hasProperties(3, 3, 4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer capacity. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's capacity. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3370,25 +3370,25 @@ public final class BufferAssertionTest extends AssertionTest {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3)).toRemaining()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer remaining. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's remaining. Value should not be null.");
         }
         try {
             clearActual(initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer remaining. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's remaining. Value should not be null.");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3)).toRemaining().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer remaining. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's remaining. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer remaining. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's remaining. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -3424,13 +3424,13 @@ public final class BufferAssertionTest extends AssertionTest {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3)).hasRemaining(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check buffer remaining. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's remaining. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new BufferAssertionImpl(), createIntBuffer(new int[]{1, 2, 3}, 0, 3, 3), "Message").hasRemaining(4);
             Assertions.fail("BufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check buffer remaining. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's remaining. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

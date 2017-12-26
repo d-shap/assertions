@@ -1399,25 +1399,25 @@ public final class ArrayAssertionTest extends AssertionTest {
             clearActual(initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength()).isEqualTo(1);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's length. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length. Value should not be null.");
         }
         try {
             clearActual(initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").toLength()).isEqualTo(1);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Value should not be null.");
         }
         try {
             initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").toLength().isEqualTo(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1451,13 +1451,13 @@ public final class ArrayAssertionTest extends AssertionTest {
             initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}).hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's length. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(new ArrayAssertionImpl(), new String[]{"val1", "val2", "val3"}, "Message").hasLength(4);
             Assertions.fail("ArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's length. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

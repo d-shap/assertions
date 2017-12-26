@@ -1432,25 +1432,25 @@ public final class SetAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize()).isEqualTo(1);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Value should not be null.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1484,13 +1484,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

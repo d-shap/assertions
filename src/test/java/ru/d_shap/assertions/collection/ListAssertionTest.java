@@ -201,13 +201,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
         try {
             initialize(Raw.<String>listAssertion(), new LinkedList<String>(), "Message").isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's class. Value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
     }
 
@@ -240,13 +240,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's class. Value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
     }
 
@@ -1519,25 +1519,25 @@ public final class ListAssertionTest extends AssertionTest {
             clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -1571,13 +1571,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check value's size. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 

@@ -507,13 +507,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Values.class).asEnum().hasValueCount(4);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check enum value count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.classAssertion(), Values.class, "Message").asEnum().hasValueCount(4);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check enum value count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
         }
     }
 
