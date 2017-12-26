@@ -95,7 +95,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final SetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K>setAssertion(), getActual().keySet(), Messages.Check.ACTUAL_KEYS);
+        return initializeAssertion(Raw.<K>setAssertion(), getActual().keySet(), Messages.Check.ACTUAL_VALUE_KEYS);
     }
 
     /**
@@ -288,7 +288,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUES);
+        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUE_VALUES);
     }
 
     /**
