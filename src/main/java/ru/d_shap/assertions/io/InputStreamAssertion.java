@@ -54,7 +54,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_STREAM_BYTES).isLessThan(0);
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_BYTE).isLessThan(0);
     }
 
     private int readActual() {
@@ -82,7 +82,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
                 }
                 baos.write(read);
             }
-            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_STREAM_BYTES);
+            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_VALUE_BYTES_ALL);
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
@@ -91,25 +91,25 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     /**
      * Make assertion about the bytes read from the actual from the current position.
      *
-     * @param length the number of bytes to read from the actual.
+     * @param count the number of bytes to read from the actual.
      * @return the assertion.
      */
-    public final ByteArrayAssertion toByteArray(final int length) {
+    public final ByteArrayAssertion toByteArray(final int count) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsValid(length > 0);
+        checkArgumentIsValid(count > 0);
         try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(length);
-            int count = 0;
-            while (count < length) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(count);
+            int readCount = 0;
+            while (readCount < count) {
                 int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
                 baos.write(read);
-                count++;
+                readCount++;
             }
-            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_STREAM_BYTES);
+            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
