@@ -64,7 +64,7 @@ public class EnumAssertion extends ClassAssertion {
     public final IntAssertion toValueCount() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.ACTUAL_ENUM_VALUE_COUNT);
+        return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.ACTUAL_VALUE_CONSTANT_COUNT);
     }
 
     private int getValueCount() {
