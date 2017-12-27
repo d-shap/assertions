@@ -151,19 +151,19 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Initialize the specified assertion with the actual value and the message with the message parameter.
+     * Initialize the specified assertion with the actual value and the message with the message arguments.
      *
      * @param assertion the specified assertion.
      * @param actual    the actual value.
      * @param message   the message.
-     * @param parameter the message parameter.
+     * @param arguments the message arguments.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
      * @return the initialized assertion.
      */
-    protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object parameter) {
-        ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message, parameter));
+    protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object... arguments) {
+        ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message, arguments));
         return assertion;
     }
 
