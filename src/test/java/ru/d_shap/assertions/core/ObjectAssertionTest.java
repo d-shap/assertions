@@ -56,25 +56,25 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), null).isEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null, "Message").isEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null).isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null, "Message").isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), "value").isEqualTo(null);
@@ -92,13 +92,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), "value1").isEqualTo("value2");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.objectAssertion(), "value1", "Message").isEqualTo("value2");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<value2> but was:<value1>");
         }
     }
 
@@ -120,25 +120,25 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), null).isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null, "Message").isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null).isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null, "Message").isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), "value").isNotEqualTo(null);
@@ -156,13 +156,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), "value").isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<value>");
         }
         try {
             initialize(Raw.objectAssertion(), "value", "Message").isNotEqualTo("value");
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<value>");
         }
     }
 
@@ -177,13 +177,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), "value").isNull();
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should be null. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null. Actual:<value>");
         }
         try {
             initialize(Raw.objectAssertion(), "value", "Message").isNull();
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should be null. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null. Actual:<value>");
         }
     }
 
@@ -199,13 +199,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), value).isSameAs(new Object());
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
         }
         try {
             initialize(Raw.objectAssertion(), value, "Message").isSameAs(new Object());
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be the same. Expected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
         }
     }
 
@@ -221,13 +221,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), value).isNotSameAs(value);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different. Actual:<java.lang.Object@.*>");
         }
         try {
             initialize(Raw.objectAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be different. Actual:<java.lang.Object@.*>");
         }
     }
 

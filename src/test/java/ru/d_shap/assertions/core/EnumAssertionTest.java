@@ -50,13 +50,13 @@ public final class EnumAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.enumAssertion(), String.class);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
         try {
             initializeWithRawActual(Raw.enumAssertion(), String.class, "Message");
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
         }
     }
 
@@ -79,37 +79,37 @@ public final class EnumAssertionTest extends AssertionTest {
             initialize(Raw.enumAssertion(), null).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.enumAssertion(), null, "Message").toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.enumAssertion(), Values.class).toValueCount()).isEqualTo(1);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's constant count. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's value count. Actual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.enumAssertion(), Values.class, "Message").toValueCount()).isEqualTo(1);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's constant count. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's value count. Actual value should not be null.");
         }
         try {
             initialize(Raw.enumAssertion(), Values.class).toValueCount().isEqualTo(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's value count. Actual and expected values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.enumAssertion(), Values.class, "Message").toValueCount().isEqualTo(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's value count. Actual and expected values should be the same. Expected:<4> but was:<3>");
         }
     }
 
@@ -130,25 +130,25 @@ public final class EnumAssertionTest extends AssertionTest {
             initialize(Raw.enumAssertion(), null).hasValueCount(1);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.enumAssertion(), null, "Message").hasValueCount(1);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
         try {
             initialize(Raw.enumAssertion(), Values.class).hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's value count. Actual and expected values should be the same. Expected:<4> but was:<3>");
         }
         try {
             initialize(Raw.enumAssertion(), Values.class, "Message").hasValueCount(4);
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's constant count. Values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message. Check actual value's value count. Actual and expected values should be the same. Expected:<4> but was:<3>");
         }
     }
 

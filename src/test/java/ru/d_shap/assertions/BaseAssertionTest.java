@@ -73,7 +73,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.as(Raw.objectAssertion()).isNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
 
         BaseAssertion<Object> baseAssertion2 = createBaseAssertion();
@@ -91,7 +91,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
         }
         baseAssertion2.as(Raw.objectAssertion()).isNotNull();
     }
@@ -117,7 +117,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.as(Raw.objectAssertion()).isNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
 
         BaseAssertion<Object> baseAssertion2 = createBaseAssertion();
@@ -135,7 +135,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
         }
         baseAssertion2.as(Raw.objectAssertion()).isNotNull();
 
@@ -155,7 +155,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.as(Raw.objectAssertion()).isNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
 
         BaseAssertion<Object> baseAssertion4 = createBaseAssertion();
@@ -173,7 +173,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion4.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
         }
         baseAssertion4.as(Raw.objectAssertion()).isNotNull();
 
@@ -193,7 +193,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion5.as(Raw.objectAssertion()).isNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
 
         BaseAssertion<Object> baseAssertion6 = createBaseAssertion();
@@ -211,7 +211,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion6.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message. Actual value should be null. Actual:<java.lang.Object@.*>");
         }
         baseAssertion6.as(Raw.objectAssertion()).isNotNull();
     }
@@ -1144,13 +1144,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object).as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different. Actual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
@@ -1198,13 +1198,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object).as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("As message. Values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("As message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertion(object, "Message").as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. As message. Values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message. As message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
@@ -1230,7 +1230,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.byteAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion((short) 10).as(Raw.shortAssertion()).isEqualTo(10);
@@ -1240,7 +1240,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.shortAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(10).as(Raw.intAssertion()).isEqualTo(10);
@@ -1250,7 +1250,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.intAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(10L).as(Raw.longAssertion()).isEqualTo(10L);
@@ -1260,7 +1260,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.longAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(10.0f).as(Raw.floatAssertion()).isEqualTo(10.0f, 0.01f);
@@ -1270,7 +1270,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.floatAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(10.0).as(Raw.doubleAssertion()).isEqualTo(10.0, 0.01);
@@ -1280,7 +1280,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.doubleAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(true).as(Raw.booleanAssertion()).isTrue();
@@ -1290,7 +1290,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.booleanAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion('c').as(Raw.charAssertion()).isEqualTo(99);
@@ -1300,7 +1300,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.charAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
     }
 
@@ -1316,7 +1316,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.byteArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new short[0]).as(Raw.shortArrayAssertion()).hasLength(0);
@@ -1326,7 +1326,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.shortArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new int[0]).as(Raw.intArrayAssertion()).hasLength(0);
@@ -1336,7 +1336,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.intArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new long[0]).as(Raw.longArrayAssertion()).hasLength(0);
@@ -1346,7 +1346,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.longArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new float[0]).as(Raw.floatArrayAssertion()).hasLength(0);
@@ -1356,7 +1356,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.floatArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new double[0]).as(Raw.doubleArrayAssertion()).hasLength(0);
@@ -1366,7 +1366,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.doubleArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new boolean[0]).as(Raw.booleanArrayAssertion()).hasLength(0);
@@ -1376,7 +1376,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.booleanArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new char[0]).as(Raw.charArrayAssertion()).hasLength(0);
@@ -1386,7 +1386,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.charArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new String[0]).as(Raw.<String>objectArrayAssertion()).hasLength(0);
@@ -1396,7 +1396,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>objectArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
     }
 
@@ -1412,7 +1412,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>listAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(new ArrayList<String>()).as(Raw.<String>iterableAssertion()).isEmpty();
@@ -1426,7 +1426,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>setAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(createHashSet()).as(Raw.<String>iterableAssertion()).isEmpty();
@@ -1440,7 +1440,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>sortedSetAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
         createBaseAssertion(createTreeSet()).as(Raw.<String>iterableAssertion()).isEmpty();
@@ -1474,13 +1474,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null).checkActualIsNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             createBaseAssertion(null, "Message").checkActualIsNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
         }
     }
 
