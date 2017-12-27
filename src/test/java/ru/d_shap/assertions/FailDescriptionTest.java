@@ -57,20 +57,24 @@ public final class FailDescriptionTest extends AssertionTest {
     public void createAssertionErrorTest() {
         Assertions.assertThat(new FailDescription().createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription().createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription((String) null).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription("").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").createAssertionError()).hasMessage("message.");
         Assertions.assertThat(new FailDescription("message").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).createAssertionError()).hasMessage("message.");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").createAssertionError()).hasMessage("message1.\n\tmessage2.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").createAssertionError()).hasMessage("message1.");
@@ -83,10 +87,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).createAssertionError()).hasMessage("message1.\n\tmessage2.");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").createAssertionError()).hasMessage("message1.\n\tmessage2.");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").createAssertionError()).hasMessage("message1.\n\tmessage2: .");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").createAssertionError()).toCause().isNull();
 
@@ -104,20 +108,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).createAssertionError()).hasMessage("message.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).createAssertionError()).hasMessage("message.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
@@ -130,10 +138,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tActual:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tActual:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).createAssertionError()).toCause().isNull();
 
@@ -154,20 +162,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
@@ -180,10 +192,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
 
@@ -204,20 +216,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
@@ -230,10 +246,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
 
@@ -256,20 +272,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
@@ -282,10 +302,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").createAssertionError()).toCause().isNull();
 
@@ -308,20 +328,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
@@ -334,10 +358,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").createAssertionError()).toCause().isNull();
 
@@ -360,20 +384,24 @@ public final class FailDescriptionTest extends AssertionTest {
     public void createAssertionErrorWithThrowableTest() {
         Assertions.assertThat(new FailDescription().addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription().addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription((String) null).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("");
         Assertions.assertThat(new FailDescription("").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.");
         Assertions.assertThat(new FailDescription("message").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.");
@@ -386,10 +414,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
@@ -407,20 +435,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
@@ -433,10 +465,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tActual:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tActual:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tActual:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tActual:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
@@ -457,20 +489,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
@@ -483,10 +519,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
@@ -507,20 +543,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription().addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription((String) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription("").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription("message").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
@@ -533,10 +573,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
@@ -559,20 +599,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
@@ -585,10 +629,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
@@ -611,20 +655,24 @@ public final class FailDescriptionTest extends AssertionTest {
 
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription().addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription((String) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription("message").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message")).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), null, "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
@@ -637,10 +685,10 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
-        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: {0}.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", (Object[]) null).addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: .\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).hasMessage("message1.\n\tmessage2: parameter.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(new FailDescription(new FailDescription("message1"), "message2: {0}", "parameter").addActual(baseAssertion).addExpected(baseAssertion, "expectedValue1", "expectedValue2").addThrowable(new RuntimeException("error")).createAssertionError()).isCauseInstanceOf(RuntimeException.class);
 
