@@ -114,9 +114,11 @@ public final class Messages {
 
         public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null";
 
-        public static final String ARGUMENT_IS_NOT_EMPTY_TRUE = "Argument should not be empty. The result is always true";
+        public static final String ARGUMENT_IS_NOT_EMPTY = "Argument should not be empty";
 
-        public static final String ARGUMENT_IS_NOT_EMPTY_FALSE = "Argument should not be empty. The result is always false";
+        public static final String RESULT_IS_TRUE = "The result is always true";
+
+        public static final String RESULT_IS_FALSE = "The result is always false";
 
         public static final String ARGUMENT_IS_VALID = "Argument should be valid";
 
