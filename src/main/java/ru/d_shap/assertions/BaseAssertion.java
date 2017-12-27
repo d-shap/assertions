@@ -234,7 +234,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         if (isEmpty) {
-            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY_TRUE).createAssertionError();
+            throw new FailDescription(new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY), Messages.Fail.RESULT_IS_ALWAYS_TRUE).createAssertionError();
         }
     }
 
@@ -245,7 +245,7 @@ public abstract class BaseAssertion<T> {
      */
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
         if (isEmpty) {
-            throw new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY_FALSE).createAssertionError();
+            throw new FailDescription(new FailDescription(_failDescription, Messages.Fail.ARGUMENT_IS_NOT_EMPTY), Messages.Fail.RESULT_IS_ALWAYS_FALSE).createAssertionError();
         }
     }
 
