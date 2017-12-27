@@ -91,7 +91,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null.\n\tActual:<java.lang.Object@.*>");
         }
         baseAssertion2.as(Raw.objectAssertion()).isNotNull();
     }
@@ -135,7 +135,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null.\n\tActual:<java.lang.Object@.*>");
         }
         baseAssertion2.as(Raw.objectAssertion()).isNotNull();
 
@@ -173,7 +173,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion4.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null.\n\tActual:<java.lang.Object@.*>");
         }
         baseAssertion4.as(Raw.objectAssertion()).isNotNull();
 
@@ -186,14 +186,14 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion5.initialize(null, "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
         baseAssertion5.as(Raw.objectAssertion()).isNull();
         try {
             baseAssertion5.as(Raw.objectAssertion()).isNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
 
         BaseAssertion<Object> baseAssertion6 = createBaseAssertion();
@@ -205,13 +205,13 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion6.initialize(new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
         try {
             baseAssertion6.as(Raw.objectAssertion()).isNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Actual value should be null. Actual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual value should be null.\n\tActual:<java.lang.Object@.*>");
         }
         baseAssertion6.as(Raw.objectAssertion()).isNotNull();
     }
@@ -279,7 +279,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion31, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion32 = createBaseAssertion();
@@ -290,7 +290,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion32, new Object());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
     }
 
@@ -353,7 +353,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion15, null, "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion16 = createBaseAssertion();
@@ -364,7 +364,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion16, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion2 = createBaseAssertion(null, "");
@@ -421,7 +421,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion25, null, "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion26 = createBaseAssertion();
@@ -432,7 +432,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion26, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion3 = createBaseAssertion(null, "Base message");
@@ -445,7 +445,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion31, null, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion32 = createBaseAssertion();
@@ -456,7 +456,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion32, new Object(), null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion33 = createBaseAssertion();
@@ -467,7 +467,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion33, null, "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion34 = createBaseAssertion();
@@ -478,29 +478,29 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion34, new Object(), "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion35 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion35, null, "Message");
         Assertions.assertThat(baseAssertion35.getActual()).isNull();
-        Assertions.assertThat(baseAssertion35.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion35.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion35, null, "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion36 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion36, new Object(), "Message");
         Assertions.assertThat(baseAssertion36.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion36.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion36.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion36, new Object(), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
     }
 
@@ -563,7 +563,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion115, null, "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion116 = createBaseAssertion();
@@ -574,7 +574,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion116, new Object(), "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion121 = createBaseAssertion();
@@ -629,7 +629,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion125, null, "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion126 = createBaseAssertion();
@@ -640,7 +640,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion126, new Object(), "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion131 = createBaseAssertion();
@@ -695,7 +695,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion135, null, "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message: param.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion136 = createBaseAssertion();
@@ -706,7 +706,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion1.initializeAssertion(baseAssertion136, new Object(), "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message: param.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion2 = createBaseAssertion(null, "");
@@ -763,7 +763,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion215, null, "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion216 = createBaseAssertion();
@@ -774,7 +774,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion216, new Object(), "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion221 = createBaseAssertion();
@@ -829,7 +829,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion225, null, "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion226 = createBaseAssertion();
@@ -840,7 +840,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion226, new Object(), "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion231 = createBaseAssertion();
@@ -895,7 +895,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion235, null, "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message: param.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion236 = createBaseAssertion();
@@ -906,7 +906,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion2.initializeAssertion(baseAssertion236, new Object(), "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Message: param.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion3 = createBaseAssertion(null, "Base message");
@@ -919,7 +919,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion311, null, null, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion312 = createBaseAssertion();
@@ -930,7 +930,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion312, new Object(), null, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion313 = createBaseAssertion();
@@ -941,7 +941,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion313, null, "", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion314 = createBaseAssertion();
@@ -952,29 +952,29 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion314, new Object(), "", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion315 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion315, null, "Message", null);
         Assertions.assertThat(baseAssertion315.getActual()).isNull();
-        Assertions.assertThat(baseAssertion315.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion315.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion315, null, "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion316 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion316, new Object(), "Message", null);
         Assertions.assertThat(baseAssertion316.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion316.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion316.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion316, new Object(), "Message", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion321 = createBaseAssertion();
@@ -985,7 +985,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion321, null, null, "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion322 = createBaseAssertion();
@@ -996,7 +996,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion322, new Object(), null, "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion323 = createBaseAssertion();
@@ -1007,7 +1007,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion323, null, "", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion324 = createBaseAssertion();
@@ -1018,29 +1018,29 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion324, new Object(), "", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion325 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion325, null, "Message", "");
         Assertions.assertThat(baseAssertion325.getActual()).isNull();
-        Assertions.assertThat(baseAssertion325.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion325.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion325, null, "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion326 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion326, new Object(), "Message", "");
         Assertions.assertThat(baseAssertion326.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion326.createAssertionError().getMessage()).isEqualTo("Base message. Message.");
+        Assertions.assertThat(baseAssertion326.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion326, new Object(), "Message", "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion331 = createBaseAssertion();
@@ -1051,7 +1051,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion331, null, null, "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion332 = createBaseAssertion();
@@ -1062,7 +1062,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion332, new Object(), null, "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion333 = createBaseAssertion();
@@ -1073,7 +1073,7 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion333, null, "", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion334 = createBaseAssertion();
@@ -1084,29 +1084,29 @@ public final class BaseAssertionTest extends AssertionTest {
             baseAssertion3.initializeAssertion(baseAssertion334, new Object(), "", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion335 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion335, null, "Message", "param");
         Assertions.assertThat(baseAssertion335.getActual()).isNull();
-        Assertions.assertThat(baseAssertion335.createAssertionError().getMessage()).isEqualTo("Base message. Message: param.");
+        Assertions.assertThat(baseAssertion335.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage: param.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion335, null, "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage: param.\n\tAssertion should not be initialized.");
         }
 
         BaseAssertion<Object> baseAssertion336 = createBaseAssertion();
         baseAssertion3.initializeAssertion(baseAssertion336, new Object(), "Message", "param");
         Assertions.assertThat(baseAssertion336.getActual()).isNotNull();
-        Assertions.assertThat(baseAssertion336.createAssertionError().getMessage()).isEqualTo("Base message. Message: param.");
+        Assertions.assertThat(baseAssertion336.createAssertionError().getMessage()).isEqualTo("Base message.\n\tMessage: param.");
         try {
             baseAssertion3.initializeAssertion(baseAssertion336, new Object(), "Message", "param");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Base message. Message: param. Assertion should not be initialized.");
+            Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage: param.\n\tAssertion should not be initialized.");
         }
     }
 
@@ -1135,7 +1135,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object, "Message").as(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
 
         createBaseAssertion(object).as(Raw.objectAssertion()).isSameAs(object);
@@ -1144,13 +1144,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object).as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertion(object, "Message").as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
@@ -1189,7 +1189,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object, "Message").as(null, "As message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
 
         createBaseAssertion(object).as(Raw.objectAssertion(), "As message").isSameAs(object);
@@ -1198,13 +1198,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(object).as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("As message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("As message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertion(object, "Message").as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. As message. Actual and expected values should be different. Actual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tAs message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
@@ -1480,7 +1480,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null, "Message").checkActualIsNotNull();
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
     }
 
@@ -1503,7 +1503,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null, "Message").checkArgumentIsNotNull(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
     }
 
@@ -1518,13 +1518,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null).checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             createBaseAssertion(null, "Message").checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
     }
 
@@ -1539,13 +1539,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null).checkArgumentIsNotEmptyFalse(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             createBaseAssertion(null, "Message").checkArgumentIsNotEmptyFalse(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
     }
 
@@ -1566,7 +1566,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(null, "Message").checkArgumentIsValid(false);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
         }
     }
 
@@ -1608,9 +1608,9 @@ public final class BaseAssertionTest extends AssertionTest {
     public void createAssertionErrorWithMessageAndExpectedTest() {
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue")).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue")).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue")).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue")).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue")).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue")).toCause().isNull();
     }
 
@@ -1630,9 +1630,9 @@ public final class BaseAssertionTest extends AssertionTest {
     public void createAssertionErrorWithMessageAndExpectedRangeTest() {
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue1", "expectedValue2")).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue1", "expectedValue2")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2")).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2")).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2")).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2")).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2")).toCause().isNull();
     }
 
@@ -1698,16 +1698,16 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("Expected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
     }
@@ -1736,16 +1736,16 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("Expected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue1:expectedValue2>");
+        Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2>");
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion(null).createAssertionError("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
     }
@@ -1766,9 +1766,9 @@ public final class BaseAssertionTest extends AssertionTest {
     public void createAssertionErrorWithActualAndMessageTest() {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("")).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message")).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message")).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.")).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.")).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.")).toCause().isNull();
     }
 
@@ -1788,9 +1788,9 @@ public final class BaseAssertionTest extends AssertionTest {
     public void createAssertionErrorWithActualAndMessageAndExpectedTest() {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue")).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue")).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue")).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue")).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue")).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue")).toCause().isNull();
     }
 
@@ -1810,9 +1810,9 @@ public final class BaseAssertionTest extends AssertionTest {
     public void createAssertionErrorWithActualAndMessageAndExpectedRangeTest() {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue1", "expectedValue2")).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue1", "expectedValue2")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2")).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2")).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2")).toCause().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2")).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2")).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2")).toCause().isNull();
     }
 
@@ -1840,16 +1840,16 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", new RuntimeException("some runtime exception"))).hasMessage("Actual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException())).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException())).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException("some runtime exception"))).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException())).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException())).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException("some runtime exception"))).hasMessage("fail message. Actual:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tActual:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
     }
@@ -1878,16 +1878,16 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("Expected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
     }
@@ -1916,16 +1916,16 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException())).toCause().toMessage().isNull();
-        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message. Expected:<expectedValue1:expectedValue2> but was:<actualValue>");
+        Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasMessage("fail message.\n\tExpected:<expectedValue1:expectedValue2> but was:<actualValue>");
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).isCauseInstanceOf(RuntimeException.class);
         Assertions.assertThat(createBaseAssertion("actualValue").createAssertionErrorWithActual("fail message.", "expectedValue1", "expectedValue2", new RuntimeException("some runtime exception"))).hasCauseMessage("some runtime exception");
     }

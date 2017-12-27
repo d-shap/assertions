@@ -62,7 +62,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.readerAssertion(), new Object(), "Message");
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
         }
     }
 
@@ -96,7 +96,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new ErrorReader()).isCompleted();
@@ -108,19 +108,19 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new ErrorReader(), "Message").isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's char. Actual value should be less then the expected. Expected:<0> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<49>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next actual value's char. Actual value should be less then the expected. Expected:<0> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<49>");
         }
     }
 
@@ -147,7 +147,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").toCharArray();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new ErrorReader()).toCharArray();
@@ -159,31 +159,31 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new ErrorReader(), "Message").toCharArray();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray()).containsExactlyInOrder('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray()).containsExactlyInOrder('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check all actual value's chars. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray().containsExactlyInOrder('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray().containsExactlyInOrder('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -213,7 +213,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").toCharArray(1);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).toCharArray(0);
@@ -225,7 +225,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").toCharArray(0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(0);
@@ -237,7 +237,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(-1);
@@ -249,7 +249,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(-1);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
         }
         try {
             initialize(Raw.readerAssertion(), new ErrorReader()).toCharArray(3);
@@ -261,31 +261,31 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new ErrorReader(), "Message").toCharArray(3);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. java.io.IOException: read exception.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(1)).containsExactlyInOrder('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 1. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 1.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(1)).containsExactlyInOrder('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next N actual value's chars: 1. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 1.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4).containsExactlyInOrder('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(4).containsExactlyInOrder('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next N actual value's chars: 4. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -314,7 +314,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isNextCharsEqualTo((char[]) null);
@@ -326,7 +326,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo((char[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo((char[]) null);
@@ -338,49 +338,49 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo((char[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo('1', '3');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo('1', '2', '3', '4');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("")).isNextCharsEqualTo('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000")).isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
     }
 
@@ -409,7 +409,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo(49);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isNextCharsEqualTo((int[]) null);
@@ -421,7 +421,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo((int[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo((int[]) null);
@@ -433,49 +433,49 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo((int[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(new int[0]);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo(new int[0]);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(49, 51);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(49, 50, 51, 52);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("")).isNextCharsEqualTo(49, 50);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000")).isNextCharsEqualTo(0, 0, 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo(0, 0, 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
     }
 
@@ -504,7 +504,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo(new ArrayList<Character>());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isNextCharsEqualTo((Iterable<Character>) null);
@@ -516,7 +516,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo((Iterable<Character>) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo((Iterable<Character>) null);
@@ -528,49 +528,49 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo((Iterable<Character>) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(new ArrayList<Character>());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo(new ArrayList<Character>());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(Arrays.asList('1', '3'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(Arrays.asList('1', '2', '3', '4'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("")).isNextCharsEqualTo(Arrays.asList('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000")).isNextCharsEqualTo(Arrays.asList((char) 0, (char) 0, (char) 0));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000"), "Message").isNextCharsEqualTo(Arrays.asList((char) 0, (char) 0, (char) 0));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check next N actual value's chars: 3. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
     }
 
@@ -599,7 +599,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo('1');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isAllCharsEqualTo((char[]) null);
@@ -611,7 +611,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo((char[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo((char[]) null);
@@ -623,37 +623,37 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isAllCharsEqualTo((char[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo('1', '2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo('1', '2', '4');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo('1', '2', '3', '4');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isAllCharsEqualTo((char) 0, (char) 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo((char) 0, (char) 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
     }
 
@@ -682,7 +682,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo(49);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isAllCharsEqualTo((int[]) null);
@@ -694,7 +694,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo((int[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo((int[]) null);
@@ -706,37 +706,37 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isAllCharsEqualTo((int[]) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(49, 50);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(49, 50, 52);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(49, 50, 51, 52);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isAllCharsEqualTo(0, 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo(0, 0);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
     }
 
@@ -765,7 +765,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo(new ArrayList<Character>());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), null).isAllCharsEqualTo((Iterable<Character>) null);
@@ -777,7 +777,7 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo((Iterable<Character>) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo((Iterable<Character>) null);
@@ -789,37 +789,37 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isAllCharsEqualTo((Iterable<Character>) null);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(Arrays.asList('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(Arrays.asList('1', '2', '4'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(Arrays.asList('1', '2', '3', '4'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isAllCharsEqualTo(Arrays.asList((char) 0, (char) 0));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000"), "Message").isAllCharsEqualTo(Arrays.asList((char) 0, (char) 0));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check all actual value's chars. Actual value should contain all of the expected values exactly in the specified order. Expected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
     }
 
@@ -834,13 +834,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isNull();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual value should be null. Actual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual value should be null.\n\tActual:<java.io.StringReader.*>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000"), "Message").isNull();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Actual value should be null. Actual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual value should be null.\n\tActual:<java.io.StringReader.*>");
         }
     }
 
@@ -856,13 +856,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), value).isSameAs(new StringReader("\u0000\u0000\u0000"));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same. Expected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
         }
         try {
             initialize(Raw.readerAssertion(), value, "Message").isSameAs(new StringReader("\u0000\u0000\u0000"));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be the same. Expected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
         }
     }
 
@@ -878,13 +878,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), value).isNotSameAs(value);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different. Actual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.io.StringReader.*>");
         }
         try {
             initialize(Raw.readerAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message. Actual and expected values should be different. Actual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.io.StringReader.*>");
         }
     }
 

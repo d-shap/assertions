@@ -61,7 +61,7 @@ public final class ListAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.<String>listAssertion(), new Object(), "Message");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
         }
     }
 
@@ -88,19 +88,19 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").isEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).isEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty. Actual:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").isEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be empty. Actual:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[val1, val2]>");
         }
     }
 
@@ -122,13 +122,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).isNullOrEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty. Actual:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null or empty. Actual:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[val1, val2]>");
         }
     }
 
@@ -156,7 +156,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").isNotEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotEmpty();
@@ -168,7 +168,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -195,19 +195,19 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's class. Actual value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
         try {
             initialize(Raw.<String>listAssertion(), new LinkedList<String>(), "Message").isRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's class. Actual value should be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.LinkedList>");
         }
     }
 
@@ -234,19 +234,19 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's class. Actual value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should not be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's class. Actual value should not be the subtype of the expected value. Expected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual value should not be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
     }
 
@@ -277,19 +277,19 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").contains("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<val3> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain the expected value. Expected:<val3> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, val2]>");
         }
     }
 
@@ -318,43 +318,43 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").doesNotContain("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value. Expected:<val1> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val2> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value. Expected:<val2> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val2> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2")).doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2"), "Message").doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value. Expected:<null> but was:<[val1, null, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
         }
     }
 
@@ -387,7 +387,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAll("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAll((String[]) null);
@@ -399,7 +399,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAll((String[]) null);
@@ -411,49 +411,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val0", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -486,7 +486,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAll(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAll((Iterable<String>) null);
@@ -498,7 +498,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAll((Iterable<String>) null);
@@ -510,49 +510,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAll(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val0", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -585,7 +585,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAllInOrder((String[]) null);
@@ -597,7 +597,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder((String[]) null);
@@ -609,49 +609,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -684,7 +684,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAllInOrder((Iterable<String>) null);
@@ -696,7 +696,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder((Iterable<String>) null);
@@ -708,49 +708,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val3", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1")).containsAllInOrder(Arrays.asList("val1", "val1", "val1", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values in the specified order. Expected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -784,7 +784,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactly("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsExactly((String[]) null);
@@ -796,7 +796,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsExactly((String[]) null);
@@ -808,49 +808,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -884,7 +884,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactly(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsExactly((Iterable<String>) null);
@@ -896,7 +896,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsExactly((Iterable<String>) null);
@@ -908,49 +908,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val3", "val2", "val1", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val2, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly. Expected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -980,7 +980,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsExactlyInOrder((String[]) null);
@@ -992,7 +992,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsExactlyInOrder((String[]) null);
@@ -1004,49 +1004,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val2", "val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1076,7 +1076,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsExactlyInOrder((Iterable<String>) null);
@@ -1088,7 +1088,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsExactlyInOrder((Iterable<String>) null);
@@ -1100,49 +1100,49 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly in the specified order. Expected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1173,7 +1173,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAny("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAny((String[]) null);
@@ -1185,7 +1185,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAny((String[]) null);
@@ -1197,37 +1197,37 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -1258,7 +1258,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAny(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsAny((Iterable<String>) null);
@@ -1270,7 +1270,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAny((Iterable<String>) null);
@@ -1282,37 +1282,37 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsAny(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny(Arrays.asList("val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val8", "val7"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain any of the expected values. Expected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
     }
 
@@ -1342,7 +1342,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsNone("val");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsNone((String[]) null);
@@ -1354,7 +1354,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsNone((String[]) null);
@@ -1366,37 +1366,37 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1426,7 +1426,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsNone(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), null).containsNone((Iterable<String>) null);
@@ -1438,7 +1438,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsNone((Iterable<String>) null);
@@ -1450,37 +1450,37 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).containsNone(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[val4, val2]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain any of the expected values. Expected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1513,31 +1513,31 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").toSize();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's size. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
     }
 
@@ -1565,19 +1565,19 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), null, "Message").hasSize(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
     }
 
@@ -1592,13 +1592,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).isNull();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null. Actual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").isNull();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null. Actual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[val1, val2, val3]>");
         }
     }
 
@@ -1614,13 +1614,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), value).isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1636,13 +1636,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), value).isNotSameAs(value);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[val1, val2, val3]>");
         }
     }
 

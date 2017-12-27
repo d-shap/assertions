@@ -59,7 +59,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.booleanArrayAssertion(), new Object(), "Message");
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
         }
     }
 
@@ -87,19 +87,19 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").contains(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).contains(false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<false> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<false> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").contains(false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain the expected value. Expected:<false> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<false> but was:<[true, true]>");
         }
     }
 
@@ -126,19 +126,19 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").doesNotContain(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).doesNotContain(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<true> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<true> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").doesNotContain(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value. Expected:<true> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<true> but was:<[true, true]>");
         }
     }
 
@@ -167,7 +167,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAll(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAll((boolean[]) null);
@@ -179,7 +179,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAll((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll((boolean[]) null);
@@ -191,31 +191,31 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
     }
 
@@ -244,7 +244,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAll(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAll((Iterable<Boolean>) null);
@@ -256,7 +256,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAll((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll((Iterable<Boolean>) null);
@@ -268,31 +268,31 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAll(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
     }
 
@@ -320,7 +320,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAllInOrder(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAllInOrder((boolean[]) null);
@@ -332,7 +332,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAllInOrder((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder((boolean[]) null);
@@ -344,37 +344,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAllInOrder((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAllInOrder();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).containsAllInOrder(false, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[false, true]> but was:<[true, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[false, true]> but was:<[true, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}, "Message").containsAllInOrder(false, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values in the specified order. Expected:<[false, true]> but was:<[true, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[false, true]> but was:<[true, false]>");
         }
     }
 
@@ -402,7 +402,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAllInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAllInOrder((Iterable<Boolean>) null);
@@ -414,7 +414,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAllInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder((Iterable<Boolean>) null);
@@ -426,37 +426,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAllInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAllInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).containsAllInOrder(Arrays.asList(false, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order. Expected:<[false, true]> but was:<[true, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[false, true]> but was:<[true, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}, "Message").containsAllInOrder(Arrays.asList(false, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values in the specified order. Expected:<[false, true]> but was:<[true, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[false, true]> but was:<[true, false]>");
         }
     }
 
@@ -486,7 +486,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactly(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsExactly((boolean[]) null);
@@ -498,7 +498,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactly((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly((boolean[]) null);
@@ -510,37 +510,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsExactly((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(true, true, false, false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(true, true, true, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[true, true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[true, true, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}, "Message").containsExactly(true, true, true, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly. Expected:<[true, true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[true, true, true, false]> but was:<[true, true, false, false]>");
         }
     }
 
@@ -570,7 +570,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactly(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsExactly((Iterable<Boolean>) null);
@@ -582,7 +582,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactly((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly((Iterable<Boolean>) null);
@@ -594,37 +594,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsExactly((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(Arrays.asList(true, true, false, false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(Arrays.asList(true, true, true, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly. Expected:<[true, true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[true, true, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}, "Message").containsExactly(Arrays.asList(true, true, true, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly. Expected:<[true, true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[true, true, true, false]> but was:<[true, true, false, false]>");
         }
     }
 
@@ -653,7 +653,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactlyInOrder(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsExactlyInOrder((boolean[]) null);
@@ -665,7 +665,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactlyInOrder((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder((boolean[]) null);
@@ -677,43 +677,43 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsExactlyInOrder((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(true, true, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(true, true, false, false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(true, false, true, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, false, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, false, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}, "Message").containsExactlyInOrder(true, false, true, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, false, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, false, true, false]> but was:<[true, true, false, false]>");
         }
     }
 
@@ -742,7 +742,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsExactlyInOrder((Iterable<Boolean>) null);
@@ -754,7 +754,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsExactlyInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder((Iterable<Boolean>) null);
@@ -766,43 +766,43 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsExactlyInOrder((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(Arrays.asList(true, true, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(Arrays.asList(true, true, false, false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, false, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(Arrays.asList(true, false, true, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, false, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, false, true, false]> but was:<[true, true, false, false]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}, "Message").containsExactlyInOrder(Arrays.asList(true, false, true, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain all of the expected values exactly in the specified order. Expected:<[true, false, true, false]> but was:<[true, true, false, false]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, false, true, false]> but was:<[true, true, false, false]>");
         }
     }
 
@@ -832,7 +832,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAny(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAny((boolean[]) null);
@@ -844,7 +844,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAny((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny((boolean[]) null);
@@ -856,31 +856,31 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny(false, false);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain any of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
     }
 
@@ -910,7 +910,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAny(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsAny((Iterable<Boolean>) null);
@@ -922,7 +922,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsAny((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny((Iterable<Boolean>) null);
@@ -934,31 +934,31 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAny(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsAny(Arrays.asList(false, false));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain any of the expected values. Expected:<[false, false]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[false, false]> but was:<[true, true]>");
         }
     }
 
@@ -986,7 +986,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsNone(true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsNone((boolean[]) null);
@@ -998,7 +998,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsNone((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone((boolean[]) null);
@@ -1010,37 +1010,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone((boolean[]) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(true, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[true, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[true, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(false, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[false, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[false, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone(false, true);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain any of the expected values. Expected:<[false, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[false, true]> but was:<[true, true]>");
         }
     }
 
@@ -1068,7 +1068,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsNone(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), null).containsNone((Iterable<Boolean>) null);
@@ -1080,7 +1080,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), null, "Message").containsNone((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone((Iterable<Boolean>) null);
@@ -1092,37 +1092,37 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone((Iterable<Boolean>) null);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone(new ArrayList<Boolean>());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(Arrays.asList(true, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[true, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[true, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(Arrays.asList(false, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values. Expected:<[false, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[false, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").containsNone(Arrays.asList(false, true));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain any of the expected values. Expected:<[false, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[false, true]> but was:<[true, true]>");
         }
     }
 
@@ -1137,13 +1137,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNull();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null. Actual:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").isNull();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null. Actual:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[true, true]>");
         }
     }
 
@@ -1159,13 +1159,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), value).isSameAs(new boolean[]{true, true});
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<[true, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[true, true]> but was:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), value, "Message").isSameAs(new boolean[]{true, true});
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<[true, true]> but was:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[true, true]> but was:<[true, true]>");
         }
     }
 
@@ -1181,13 +1181,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initialize(Raw.booleanArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[true, true]>");
         }
         try {
             initialize(Raw.booleanArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<[true, true]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[true, true]>");
         }
     }
 

@@ -56,7 +56,7 @@ public final class StringAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.stringAssertion(), new Object(), "Message");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
         }
     }
 
@@ -83,31 +83,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), " ").isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty. Actual:< >");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:< >");
         }
         try {
             initialize(Raw.stringAssertion(), " ", "Message").isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be empty. Actual:< >");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:< >");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be empty. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<value>");
         }
     }
 
@@ -129,25 +129,25 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), " ").isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty. Actual:< >");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:< >");
         }
         try {
             initialize(Raw.stringAssertion(), " ", "Message").isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null or empty. Actual:< >");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:< >");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNullOrEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null or empty. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<value>");
         }
     }
 
@@ -175,7 +175,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotEmpty();
@@ -187,7 +187,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "", "Message").isNotEmpty();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be empty.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -217,31 +217,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be blank. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be blank.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be blank. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be blank.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "v   ").isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be blank. Actual:<v   >");
+            Assertions.assertThat(ex).hasMessage("Actual value should be blank.\n\tActual:<v   >");
         }
         try {
             initialize(Raw.stringAssertion(), "v   ", "Message").isBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be blank. Actual:<v   >");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be blank.\n\tActual:<v   >");
         }
     }
 
@@ -266,25 +266,25 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value").isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or blank. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or blank.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null or blank. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or blank.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "v   ").isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or blank. Actual:<v   >");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or blank.\n\tActual:<v   >");
         }
         try {
             initialize(Raw.stringAssertion(), "v   ", "Message").isNullOrBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null or blank. Actual:<v   >");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or blank.\n\tActual:<v   >");
         }
     }
 
@@ -312,7 +312,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotBlank();
@@ -324,7 +324,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "", "Message").isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be blank.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be blank.");
         }
         try {
             initialize(Raw.stringAssertion(), " ").isNotBlank();
@@ -336,7 +336,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), " ", "Message").isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be blank.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be blank.");
         }
         try {
             initialize(Raw.stringAssertion(), "\t").isNotBlank();
@@ -348,7 +348,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "\t", "Message").isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be blank.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be blank.");
         }
         try {
             initialize(Raw.stringAssertion(), "   \t   \t").isNotBlank();
@@ -360,7 +360,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "   \t   \t", "Message").isNotBlank();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be blank.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be blank.");
         }
     }
 
@@ -390,7 +390,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isEqualTo(null);
@@ -402,7 +402,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualTo(null);
@@ -414,49 +414,49 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualTo("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<ЗНАЧЕНИЕ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<ЗНАЧЕНИЕ> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").isEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<ЗНАЧЕНИЕ> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<ЗНАЧЕНИЕ> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isEqualTo("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<значение> but was:<ЗНАЧЕНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<значение> but was:<ЗНАЧЕНИЕ>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ", "Message").isEqualTo("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<значение> but was:<ЗНАЧЕНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<значение> but was:<ЗНАЧЕНИЕ>");
         }
     }
 
@@ -469,7 +469,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Actual and expected values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
     }
 
@@ -499,7 +499,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isEqualToIgnoreCase(null);
@@ -511,7 +511,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vALue").isEqualToIgnoreCase(null);
@@ -523,43 +523,43 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vALue", "Message").isEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vALue").isEqualToIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case. Expected:<> but was:<vALue>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<> but was:<vALue>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1").isEqualToIgnoreCase("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualToIgnoreCase("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case. Expected:<ЗНАЧЕНИЕ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<ЗНАЧЕНИЕ> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isEqualToIgnoreCase("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case. Expected:<значение> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<значение> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗнаЧеНИЕ").isEqualToIgnoreCase("vaLUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case. Expected:<vaLUE> but was:<ЗнаЧеНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<vaLUE> but was:<ЗнаЧеНИЕ>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗнаЧеНИЕ", "Message").isEqualToIgnoreCase("vaLUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same ignoring case. Expected:<vaLUE> but was:<ЗнаЧеНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same ignoring case.\n\tExpected:<vaLUE> but was:<ЗнаЧеНИЕ>");
         }
     }
 
@@ -590,7 +590,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotEqualTo(null);
@@ -602,7 +602,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotEqualTo(null);
@@ -614,37 +614,37 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotEqualTo("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").isNotEqualTo("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isNotEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<ЗНАЧЕНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<ЗНАЧЕНИЕ>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ", "Message").isNotEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<ЗНАЧЕНИЕ>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<ЗНАЧЕНИЕ>");
         }
     }
 
@@ -675,7 +675,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotEqualToIgnoreCase(null);
@@ -687,7 +687,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").isNotEqualToIgnoreCase(null);
@@ -699,37 +699,37 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vaLUe", "Message").isNotEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotEqualToIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case. Actual:<>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАЧенИЕ").isNotEqualToIgnoreCase("ЗНачЕНие");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case. Actual:<знАЧенИЕ>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<знАЧенИЕ>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("знАЧенИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case. Actual:<ЗНачЕНие>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<ЗНачЕНие>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНачЕНие", "Message").isNotEqualToIgnoreCase("знАЧенИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different ignoring case. Actual:<ЗНачЕНие>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different ignoring case.\n\tActual:<ЗНачЕНие>");
         }
     }
 
@@ -760,7 +760,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThan("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThan(null);
@@ -772,7 +772,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThan(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThan(null);
@@ -784,43 +784,43 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThan(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThan("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThan("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThan("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThan("valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected. Expected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThan("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThan("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then the expected. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -851,7 +851,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThanIgnoreCase(null);
@@ -863,7 +863,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase(null);
@@ -875,55 +875,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("VALUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case. Expected:<VALUE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<VALUE> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("XYZ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case. Expected:<XYZ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case. Expected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanIgnoreCase("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanIgnoreCase("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then the expected ignoring case. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -957,7 +957,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanOrEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThanOrEqualTo(null);
@@ -969,7 +969,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanOrEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualTo(null);
@@ -981,25 +981,25 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanOrEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualTo("valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected. Expected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualTo("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanOrEqualTo("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then or equal to the expected. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -1034,7 +1034,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanOrEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isGreaterThanOrEqualToIgnoreCase(null);
@@ -1046,7 +1046,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isGreaterThanOrEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualToIgnoreCase(null);
@@ -1058,31 +1058,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanOrEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("XYZ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case. Expected:<XYZ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case. Expected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isGreaterThanOrEqualToIgnoreCase("x");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then or equal to the expected ignoring case. Expected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -1113,7 +1113,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThan("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isLessThan(null);
@@ -1125,7 +1125,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThan(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThan(null);
@@ -1137,43 +1137,43 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThan(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThan("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThan("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThan("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThan("valu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected. Expected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThan("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThan("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then the expected. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1204,7 +1204,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isLessThanIgnoreCase(null);
@@ -1216,7 +1216,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase(null);
@@ -1228,55 +1228,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "VALUE").isLessThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case. Expected:<value> but was:<VALUE>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<VALUE>");
         }
         try {
             initialize(Raw.stringAssertion(), "XYZ").isLessThanIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case. Expected:<value> but was:<XYZ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase("valu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case. Expected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanIgnoreCase("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanIgnoreCase("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then the expected ignoring case. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1309,7 +1309,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanOrEqualTo("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isLessThanOrEqualTo(null);
@@ -1321,7 +1321,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanOrEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualTo(null);
@@ -1333,31 +1333,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanOrEqualTo(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualTo("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected. Expected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualTo("valu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected. Expected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualTo("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanOrEqualTo("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then or equal to the expected. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1391,7 +1391,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanOrEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isLessThanOrEqualToIgnoreCase(null);
@@ -1403,7 +1403,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isLessThanOrEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualToIgnoreCase(null);
@@ -1415,37 +1415,37 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanOrEqualToIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualToIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case. Expected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "XYZ").isLessThanOrEqualToIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case. Expected:<value> but was:<XYZ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualToIgnoreCase("valu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case. Expected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isLessThanOrEqualToIgnoreCase("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isLessThanOrEqualToIgnoreCase("c");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then or equal to the expected ignoring case. Expected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1478,7 +1478,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRange("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isInRange(null, "value");
@@ -1490,7 +1490,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRange(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isInRange("value", null);
@@ -1502,7 +1502,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRange("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange(null, "value");
@@ -1514,7 +1514,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isInRange(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("value", null);
@@ -1526,55 +1526,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isInRange("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isInRange("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("A", "Z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<A:Z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<A:Z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("a", "test");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<a:test> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<a:test> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("A", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<A:value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<A:value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("A", "vaLUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<A:vaLUE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<A:vaLUE> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRange("xxx", "yyy");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<xxx:yyy> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isInRange("xxx", "yyy");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be in the expected range. Expected:<xxx:yyy> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<xxx:yyy> but was:<value>");
         }
     }
 
@@ -1611,7 +1611,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRangeIgnoreCase("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isInRangeIgnoreCase(null, "value");
@@ -1623,7 +1623,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRangeIgnoreCase(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isInRangeIgnoreCase("value", null);
@@ -1635,7 +1635,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isInRangeIgnoreCase("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase(null, "value");
@@ -1647,7 +1647,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isInRangeIgnoreCase(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("value", null);
@@ -1659,55 +1659,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isInRangeIgnoreCase("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isInRangeIgnoreCase("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("a", "test");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case. Expected:<a:test> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case.\n\tExpected:<a:test> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("A", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case. Expected:<A:value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case.\n\tExpected:<A:value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("A", "vaLUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case. Expected:<A:vaLUE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case.\n\tExpected:<A:vaLUE> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("xxx", "yyy");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case. Expected:<xxx:yyy> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case.\n\tExpected:<xxx:yyy> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isInRangeIgnoreCase("XXX", "YYY");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case. Expected:<XXX:YYY> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range ignoring case.\n\tExpected:<XXX:YYY> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isInRangeIgnoreCase("XXX", "YYY");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be in the expected range ignoring case. Expected:<XXX:YYY> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range ignoring case.\n\tExpected:<XXX:YYY> but was:<value>");
         }
     }
 
@@ -1741,7 +1741,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRange("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotInRange(null, "value");
@@ -1753,7 +1753,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRange(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotInRange("value", null);
@@ -1765,7 +1765,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRange("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange(null, "value");
@@ -1777,7 +1777,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRange(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("value", null);
@@ -1789,55 +1789,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRange("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRange("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("v", "valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<v:valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<v:valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("a", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<a:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<a:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("A", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<A:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<A:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("value", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<value:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<value:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRange("VALUE", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<VALUE:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<VALUE:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRange("VALUE", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be in the expected range. Expected:<VALUE:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<VALUE:z> but was:<value>");
         }
     }
 
@@ -1869,7 +1869,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRangeIgnoreCase("value", "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotInRangeIgnoreCase(null, "value");
@@ -1881,7 +1881,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRangeIgnoreCase(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotInRangeIgnoreCase("value", null);
@@ -1893,7 +1893,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotInRangeIgnoreCase("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase(null, "value");
@@ -1905,7 +1905,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRangeIgnoreCase(null, "value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("value", null);
@@ -1917,67 +1917,67 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRangeIgnoreCase("value", null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRangeIgnoreCase("value", "");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("A", "Z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<A:Z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<A:Z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("v", "valuea");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<v:valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<v:valuea> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("a", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<a:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<a:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("A", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<A:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<A:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("value", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<value:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<value:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("VALUE", "z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<VALUE:z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<VALUE:z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotInRangeIgnoreCase("VALUE", "Z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case. Expected:<VALUE:Z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range ignoring case.\n\tExpected:<VALUE:Z> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNotInRangeIgnoreCase("VALUE", "Z");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be in the expected range ignoring case. Expected:<VALUE:Z> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range ignoring case.\n\tExpected:<VALUE:Z> but was:<value>");
         }
     }
 
@@ -2009,7 +2009,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").contains("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).contains(null);
@@ -2021,7 +2021,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").contains(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains(null);
@@ -2033,61 +2033,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").contains(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").contains("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains("VAL");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<VAL> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<VAL> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains("v.*ue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<v.*ue> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<v.*ue> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains("знач");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<знач> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<знач> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").contains("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<value> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<value> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains("\\w+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<\\w+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<\\w+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").contains(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").contains(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -2119,7 +2119,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").containsIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).containsIgnoreCase(null);
@@ -2131,7 +2131,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").containsIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "VAlue").containsIgnoreCase(null);
@@ -2143,61 +2143,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "VAlue", "Message").containsIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "VAlue").containsIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "VAlue", "Message").containsIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").containsIgnoreCase("VAE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<VAE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<VAE> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").containsIgnoreCase("v.*ue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<v.*ue> but was:<vaLUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<v.*ue> but was:<vaLUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLue").containsIgnoreCase("зНАч");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<зНАч> but was:<vaLue>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<зНАч> but was:<vaLue>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАЧЕние").containsIgnoreCase("valUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<valUE> but was:<знАЧЕние>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<valUE> but was:<знАЧЕние>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").containsIgnoreCase("\\w+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<\\w+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<\\w+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").containsIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").containsIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should contain the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -2229,7 +2229,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotContain("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotContain(null);
@@ -2241,7 +2241,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotContain(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotContain(null);
@@ -2253,61 +2253,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotContain(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotContain("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotContain("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotContain("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<val> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotContain("alu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<alu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<alu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotContain("lue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<lue> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<lue> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotContain("знач");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<знач> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<знач> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotContain("ение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<ение> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<ение> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotContain(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotContain(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -2339,7 +2339,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotContainIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotContainIgnoreCase(null);
@@ -2351,7 +2351,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotContainIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "valUE").doesNotContainIgnoreCase(null);
@@ -2363,61 +2363,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "valUE", "Message").doesNotContainIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "valUE").doesNotContainIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "valUE", "Message").doesNotContainIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").doesNotContainIgnoreCase("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<val> but was:<vaLUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<val> but was:<vaLUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").doesNotContainIgnoreCase("VAL");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<VAL> but was:<vaLUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<VAL> but was:<vaLUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").doesNotContainIgnoreCase("lUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<lUE> but was:<vaLUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<lUE> but was:<vaLUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "зНАчеНИе").doesNotContainIgnoreCase("знач");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<знач> but was:<зНАчеНИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<знач> but was:<зНАчеНИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "зНАчеНИе").doesNotContainIgnoreCase("еНИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<еНИе> but was:<зНАчеНИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<еНИе> but was:<зНАчеНИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotContainIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotContainIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not contain the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -2450,7 +2450,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isPartOf(null);
@@ -2462,7 +2462,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isPartOf(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isPartOf(null);
@@ -2474,55 +2474,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isPartOf(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isPartOf("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "VAL").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<value> but was:<VAL>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<value> but was:<VAL>");
         }
         try {
             initialize(Raw.stringAssertion(), "vue").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<value> but was:<vue>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<value> but was:<vue>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗнАЧ").isPartOf("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<значение> but was:<ЗнАЧ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<значение> but was:<ЗнАЧ>");
         }
         try {
             initialize(Raw.stringAssertion(), "чача").isPartOf("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<значение> but was:<чача>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<значение> but was:<чача>");
         }
         try {
             initialize(Raw.stringAssertion(), "\\w+").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<value> but was:<\\w+>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<value> but was:<\\w+>");
         }
         try {
             initialize(Raw.stringAssertion(), ".+").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value. Expected:<value> but was:<.+>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value.\n\tExpected:<value> but was:<.+>");
         }
         try {
             initialize(Raw.stringAssertion(), ".+", "Message").isPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the part of the expected value. Expected:<value> but was:<.+>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the part of the expected value.\n\tExpected:<value> but was:<.+>");
         }
     }
 
@@ -2555,7 +2555,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isPartOfIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isPartOfIgnoreCase(null);
@@ -2567,7 +2567,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isPartOfIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").isPartOfIgnoreCase(null);
@@ -2579,55 +2579,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vaLUe", "Message").isPartOfIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").isPartOfIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<> but was:<vaLUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<> but was:<vaLUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "VAe").isPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<vaLUe> but was:<VAe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<vaLUe> but was:<VAe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vUe").isPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<vaLUe> but was:<vUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<vaLUe> but was:<vUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗАЧ").isPartOfIgnoreCase("зНАчеНИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<зНАчеНИе> but was:<ЗАЧ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<зНАчеНИе> but was:<ЗАЧ>");
         }
         try {
             initialize(Raw.stringAssertion(), "чача").isPartOfIgnoreCase("зНАчеНИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<зНАчеНИе> but was:<чача>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<зНАчеНИе> but was:<чача>");
         }
         try {
             initialize(Raw.stringAssertion(), "\\w+").isPartOfIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<value> but was:<\\w+>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<value> but was:<\\w+>");
         }
         try {
             initialize(Raw.stringAssertion(), ".+").isPartOfIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case. Expected:<value> but was:<.+>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the part of the expected value ignoring case.\n\tExpected:<value> but was:<.+>");
         }
         try {
             initialize(Raw.stringAssertion(), ".+", "Message").isPartOfIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the part of the expected value ignoring case. Expected:<value> but was:<.+>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the part of the expected value ignoring case.\n\tExpected:<value> but was:<.+>");
         }
     }
 
@@ -2660,7 +2660,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotPartOf(null);
@@ -2672,7 +2672,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotPartOf(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").isNotPartOf(null);
@@ -2684,49 +2684,49 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").isNotPartOf(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotPartOf("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<> but was:<>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<> but was:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "val").isNotPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<value> but was:<val>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<value> but was:<val>");
         }
         try {
             initialize(Raw.stringAssertion(), "lue").isNotPartOf("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<value> but was:<lue>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<value> but was:<lue>");
         }
         try {
             initialize(Raw.stringAssertion(), "знач").isNotPartOf("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<значение> but was:<знач>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<значение> but was:<знач>");
         }
         try {
             initialize(Raw.stringAssertion(), "ение").isNotPartOf("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<значение> but was:<ение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<значение> but was:<ение>");
         }
         try {
             initialize(Raw.stringAssertion(), ".").isNotPartOf("...");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value. Expected:<...> but was:<.>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value.\n\tExpected:<...> but was:<.>");
         }
         try {
             initialize(Raw.stringAssertion(), ".", "Message").isNotPartOf("...");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be the part of the expected value. Expected:<...> but was:<.>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the part of the expected value.\n\tExpected:<...> but was:<.>");
         }
     }
 
@@ -2759,7 +2759,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotPartOfIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).isNotPartOfIgnoreCase(null);
@@ -2771,7 +2771,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").isNotPartOfIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vaLUe").isNotPartOfIgnoreCase(null);
@@ -2783,49 +2783,49 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vaLUe", "Message").isNotPartOfIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").isNotPartOfIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<> but was:<>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<> but was:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "VAL").isNotPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<vaLUe> but was:<VAL>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<vaLUe> but was:<VAL>");
         }
         try {
             initialize(Raw.stringAssertion(), "LuE").isNotPartOfIgnoreCase("vaLUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<vaLUe> but was:<LuE>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<vaLUe> but was:<LuE>");
         }
         try {
             initialize(Raw.stringAssertion(), "зНАч").isNotPartOfIgnoreCase("знАченИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<знАченИе> but was:<зНАч>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<знАченИе> but was:<зНАч>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЕниЕ").isNotPartOfIgnoreCase("знАченИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<знАченИе> but was:<ЕниЕ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<знАченИе> but was:<ЕниЕ>");
         }
         try {
             initialize(Raw.stringAssertion(), ".").isNotPartOfIgnoreCase("...");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case. Expected:<...> but was:<.>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the part of the expected value ignoring case.\n\tExpected:<...> but was:<.>");
         }
         try {
             initialize(Raw.stringAssertion(), ".", "Message").isNotPartOfIgnoreCase("...");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be the part of the expected value ignoring case. Expected:<...> but was:<.>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the part of the expected value ignoring case.\n\tExpected:<...> but was:<.>");
         }
     }
 
@@ -2857,7 +2857,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").matches("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).matches(null);
@@ -2869,7 +2869,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").matches(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").matches(null);
@@ -2881,31 +2881,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").matches(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").matches("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value. Expected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").matches("\\d+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value. Expected:<\\d+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value.\n\tExpected:<\\d+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").matches("\\w+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value. Expected:<\\w+> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the expected value.\n\tExpected:<\\w+> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение", "Message").matches("\\w+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the expected value. Expected:<\\w+> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the expected value.\n\tExpected:<\\w+> but was:<значение>");
         }
     }
 
@@ -2937,7 +2937,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotMatch("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotMatch(null);
@@ -2949,7 +2949,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotMatch(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotMatch(null);
@@ -2961,31 +2961,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotMatch(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "").doesNotMatch("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value. Expected:<> but was:<>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value.\n\tExpected:<> but was:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotMatch("\\w+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value. Expected:<\\w+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value.\n\tExpected:<\\w+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotMatch("\\p{L}{8}");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value. Expected:<\\p{L}{8}> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not match the expected value.\n\tExpected:<\\p{L}{8}> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение", "Message").doesNotMatch("\\p{L}{8}");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not match the expected value. Expected:<\\p{L}{8}> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not match the expected value.\n\tExpected:<\\p{L}{8}> but was:<значение>");
         }
     }
 
@@ -3017,7 +3017,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").startsWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).startsWith(null);
@@ -3029,7 +3029,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").startsWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith(null);
@@ -3041,61 +3041,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").startsWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").startsWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith("lue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<lue> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<lue> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith("Val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<Val> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<Val> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").startsWith("ачен");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<ачен> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<ачен> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").startsWith("Знач");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<Знач> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<Знач> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith("va?");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<va?> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<va?> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWith(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").startsWith(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should start with the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should start with the expected value.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -3127,7 +3127,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").startsWithIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).startsWithIgnoreCase(null);
@@ -3139,7 +3139,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").startsWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").startsWithIgnoreCase(null);
@@ -3151,61 +3151,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").startsWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").startsWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").startsWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").startsWithIgnoreCase("lUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<lUe> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<lUe> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").startsWithIgnoreCase("Vau");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<Vau> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<Vau> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").startsWithIgnoreCase("аЧен");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<аЧен> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<аЧен> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").startsWithIgnoreCase("Значи");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<Значи> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<Значи> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWithIgnoreCase("va?");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<va?> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<va?> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").startsWithIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should start with the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").startsWithIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should start with the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should start with the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -3237,7 +3237,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotStartWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotStartWith(null);
@@ -3249,7 +3249,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotStartWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotStartWith(null);
@@ -3261,55 +3261,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotStartWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotStartWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotStartWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotStartWith("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value. Expected:<val> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value.\n\tExpected:<val> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotStartWith("valu");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value. Expected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotStartWith("зн");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value. Expected:<зн> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value.\n\tExpected:<зн> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotStartWith("значен");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value. Expected:<значен> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value.\n\tExpected:<значен> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotStartWith(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotStartWith(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not start with the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not start with the expected value.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -3341,7 +3341,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotStartWithIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotStartWithIgnoreCase(null);
@@ -3353,7 +3353,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotStartWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotStartWithIgnoreCase(null);
@@ -3365,55 +3365,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").doesNotStartWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotStartWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").doesNotStartWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotStartWithIgnoreCase("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case. Expected:<val> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case.\n\tExpected:<val> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotStartWithIgnoreCase("VALUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case. Expected:<VALUe> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case.\n\tExpected:<VALUe> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("зн");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case. Expected:<зн> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case.\n\tExpected:<зн> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case. Expected:<значение> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case.\n\tExpected:<значение> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotStartWithIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not start with the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotStartWithIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not start with the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not start with the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -3445,7 +3445,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").endsWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).endsWith(null);
@@ -3457,7 +3457,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").endsWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith(null);
@@ -3469,61 +3469,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").endsWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").endsWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<val> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<val> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith("LuE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<LuE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<LuE> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").endsWith("значе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<значе> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<значе> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").endsWith("ЧенИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<ЧенИе> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<ЧенИе> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith("ue?");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<ue?> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<ue?> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWith(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").endsWith(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should end with the expected value. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should end with the expected value.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -3556,7 +3556,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").endsWithIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).endsWithIgnoreCase(null);
@@ -3568,7 +3568,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").endsWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").endsWithIgnoreCase(null);
@@ -3580,67 +3580,67 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").endsWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").endsWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").endsWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").endsWithIgnoreCase("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<val> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<val> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").endsWithIgnoreCase("vUe");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<vUe> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<vUe> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "").endsWithIgnoreCase("val");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<val> but was:<>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<val> but was:<>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").endsWithIgnoreCase("знАчЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<знАчЕ> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<знАчЕ> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").endsWithIgnoreCase("знАИе");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<знАИе> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<знАИе> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWithIgnoreCase("ue?");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<ue?> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<ue?> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").endsWithIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should end with the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").endsWithIgnoreCase(".+");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should end with the expected value ignoring case. Expected:<.+> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should end with the expected value ignoring case.\n\tExpected:<.+> but was:<value>");
         }
     }
 
@@ -3672,7 +3672,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotEndWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotEndWith(null);
@@ -3684,7 +3684,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotEndWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotEndWith(null);
@@ -3696,55 +3696,55 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotEndWith(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotEndWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").doesNotEndWith("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotEndWith("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value. Expected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value").doesNotEndWith("alue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value. Expected:<alue> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value.\n\tExpected:<alue> but was:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotEndWith("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value. Expected:<значение> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value.\n\tExpected:<значение> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "значение").doesNotEndWith("ие");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value. Expected:<ие> but was:<значение>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value.\n\tExpected:<ие> but was:<значение>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotEndWith(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotEndWith(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not end with the expected value. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not end with the expected value.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -3777,7 +3777,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotEndWithIgnoreCase("value");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).doesNotEndWithIgnoreCase(null);
@@ -3789,7 +3789,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").doesNotEndWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotEndWithIgnoreCase(null);
@@ -3801,61 +3801,61 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").doesNotEndWithIgnoreCase(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotEndWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").doesNotEndWithIgnoreCase("");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be empty. The result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotEndWithIgnoreCase("vaLue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<vaLue> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<vaLue> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").doesNotEndWithIgnoreCase("aLue");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<aLue> but was:<vAlUe>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<aLue> but was:<vAlUe>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotEndWithIgnoreCase("знАчение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<знАчение> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<знАчение> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАчЕнИе").doesNotEndWithIgnoreCase("е");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<е> but was:<знАчЕнИе>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<е> but was:<знАчЕнИе>");
         }
         try {
             initialize(Raw.stringAssertion(), "aaaxxxxx").doesNotEndWithIgnoreCase("xxx");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<xxx> but was:<aaaxxxxx>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<xxx> but was:<aaaxxxxx>");
         }
         try {
             initialize(Raw.stringAssertion(), "...").doesNotEndWithIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not end with the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
         try {
             initialize(Raw.stringAssertion(), "...", "Message").doesNotEndWithIgnoreCase(".");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not end with the expected value ignoring case. Expected:<.> but was:<...>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not end with the expected value ignoring case.\n\tExpected:<.> but was:<...>");
         }
     }
 
@@ -3888,31 +3888,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toLength();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "vAlUe").toLength()).isEqualTo(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's length. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "vAlUe", "Message").toLength()).isEqualTo(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").toLength().isEqualTo(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's length. Actual and expected values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").toLength().isEqualTo(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Actual and expected values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
     }
 
@@ -3940,19 +3940,19 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").hasLength(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe").hasLength(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's length. Actual and expected values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "vAlUe", "Message").hasLength(6);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's length. Actual and expected values should be the same. Expected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
     }
 
@@ -3980,31 +3980,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toTokens();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens()).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1 value2 value3", "Message").toTokens()).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value1 value2 value3").toTokens().hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1 value2 value3", "Message").toTokens().hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
     }
 
@@ -4032,7 +4032,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toTokens("|");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).toTokens(null);
@@ -4044,7 +4044,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toTokens(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens(null);
@@ -4056,31 +4056,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens(null);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|")).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|")).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|").hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|").hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
     }
 
@@ -4110,7 +4110,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toTokens("|", false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), null).toTokens(null, false);
@@ -4122,7 +4122,7 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), null, "Message").toTokens(null, false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens(null, false);
@@ -4134,31 +4134,31 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens(null, false);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true)).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|", true)).hasSize(1);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3").toTokens("|", true).hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<5>");
         }
         try {
             initialize(Raw.stringAssertion(), "value1|value2|value3", "Message").toTokens("|", true).hasSize(4);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Check actual value's tokens. Check actual value's size. Actual and expected values should be the same. Expected:<4> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<5>");
         }
     }
 
@@ -4173,13 +4173,13 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), "value").isNull();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<value>");
         }
         try {
             initialize(Raw.stringAssertion(), "value", "Message").isNull();
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null. Actual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<value>");
         }
     }
 
@@ -4195,13 +4195,13 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), value).isSameAs("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), value, "Message").isSameAs("value2");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
     }
 
@@ -4217,13 +4217,13 @@ public final class StringAssertionTest extends AssertionTest {
             initialize(Raw.stringAssertion(), value).isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value1>");
         }
         try {
             initialize(Raw.stringAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<value1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<value1>");
         }
     }
 

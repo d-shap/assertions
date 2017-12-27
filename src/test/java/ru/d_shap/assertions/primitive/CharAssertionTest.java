@@ -56,7 +56,7 @@ public final class CharAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.charAssertion(), new Object(), "Message");
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
         }
     }
 
@@ -86,19 +86,19 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isEqualTo('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isEqualTo('Z');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:<Z(90)> but was:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Z(90)> but was:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isEqualTo('Z');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:<Z(90)> but was:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<Z(90)> but was:<a(97)>");
         }
     }
 
@@ -128,19 +128,19 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isNotEqualTo('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isNotEqualTo('a');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isNotEqualTo('a');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<a(97)>");
         }
     }
 
@@ -169,31 +169,31 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isGreaterThan('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'x').isGreaterThan('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected. Expected:<x(120)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<x(120)> but was:<x(120)>");
         }
         try {
             initialize(Raw.charAssertion(), 'x', "Message").isGreaterThan('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then the expected. Expected:<x(120)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<x(120)> but was:<x(120)>");
         }
         try {
             initialize(Raw.charAssertion(), 's').isGreaterThan('t');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected. Expected:<t(116)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<t(116)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isGreaterThan('t');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then the expected. Expected:<t(116)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<t(116)> but was:<s(115)>");
         }
     }
 
@@ -222,19 +222,19 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isGreaterThanOrEqualTo('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'x').isGreaterThanOrEqualTo('y');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected. Expected:<y(121)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<y(121)> but was:<x(120)>");
         }
         try {
             initialize(Raw.charAssertion(), 'x', "Message").isGreaterThanOrEqualTo('y');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be greater then or equal to the expected. Expected:<y(121)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<y(121)> but was:<x(120)>");
         }
     }
 
@@ -263,31 +263,31 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isLessThan('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'x').isLessThan('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected. Expected:<x(120)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<x(120)> but was:<x(120)>");
         }
         try {
             initialize(Raw.charAssertion(), 'x', "Message").isLessThan('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then the expected. Expected:<x(120)> but was:<x(120)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<x(120)> but was:<x(120)>");
         }
         try {
             initialize(Raw.charAssertion(), 't').isLessThan('s');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected. Expected:<s(115)> but was:<t(116)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<s(115)> but was:<t(116)>");
         }
         try {
             initialize(Raw.charAssertion(), 't', "Message").isLessThan('s');
             Assertions.fail("Byte assertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then the expected. Expected:<s(115)> but was:<t(116)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<s(115)> but was:<t(116)>");
         }
     }
 
@@ -316,19 +316,19 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isLessThanOrEqualTo('1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'y').isLessThanOrEqualTo('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected. Expected:<x(120)> but was:<y(121)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<x(120)> but was:<y(121)>");
         }
         try {
             initialize(Raw.charAssertion(), 'y', "Message").isLessThanOrEqualTo('x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be less then or equal to the expected. Expected:<x(120)> but was:<y(121)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<x(120)> but was:<y(121)>");
         }
     }
 
@@ -357,43 +357,43 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isInRange('1', '1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 's').isInRange('a', 's');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<a(97):s(115)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<a(97):s(115)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isInRange('a', 's');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be in the expected range. Expected:<a(97):s(115)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<a(97):s(115)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's').isInRange('t', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<t(116):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<t(116):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isInRange('t', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be in the expected range. Expected:<t(116):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<t(116):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's').isInRange('a', 'c');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range. Expected:<a(97):c(99)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<a(97):c(99)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isInRange('a', 'c');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be in the expected range. Expected:<a(97):c(99)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<a(97):c(99)> but was:<s(115)>");
         }
     }
 
@@ -422,43 +422,43 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isNotInRange('1', '1');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 's').isNotInRange('p', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<p(112):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<p(112):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isNotInRange('p', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be in the expected range. Expected:<p(112):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<p(112):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's').isNotInRange('s', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<s(115):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<s(115):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isNotInRange('s', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be in the expected range. Expected:<s(115):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<s(115):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's').isNotInRange('a', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range. Expected:<a(97):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<a(97):x(120)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isNotInRange('a', 'x');
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be in the expected range. Expected:<a(97):x(120)> but was:<s(115)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<a(97):x(120)> but was:<s(115)>");
         }
     }
 
@@ -488,31 +488,31 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), '7').isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the alphabetic symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the alphabetic symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the alphabetic symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the alphabetic symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the alphabetic symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the alphabetic symbol.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isAlphabetic();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the alphabetic symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the alphabetic symbol.\n\tActual:< (10)>");
         }
     }
 
@@ -541,43 +541,43 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the digit. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the digit.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the digit. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the digit.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й').isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the digit. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the digit.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й', "Message").isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the digit. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the digit.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the digit. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the digit.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the digit. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the digit.\n\tActual:< (10)>");
         }
     }
 
@@ -607,31 +607,31 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), '7').isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the letter. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the letter.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the letter. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the letter.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the letter. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the letter.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isLetter();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the letter. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the letter.\n\tActual:< (10)>");
         }
     }
 
@@ -662,19 +662,19 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isLetterOrDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isLetterOrDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the letter or the digit. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the letter or the digit.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isLetterOrDigit();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the letter or the digit. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the letter or the digit.\n\tActual:< (10)>");
         }
     }
 
@@ -702,43 +702,43 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the control symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the control symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й').isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й', "Message").isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the control symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the control symbol.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), '7').isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the control symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isControl();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the control symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the control symbol.\n\tActual:<7(55)>");
         }
     }
 
@@ -768,55 +768,55 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'A').isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol. Actual:<A(65)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol.\n\tActual:<A(65)>");
         }
         try {
             initialize(Raw.charAssertion(), 'A', "Message").isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the lower case symbol. Actual:<A(65)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the lower case symbol.\n\tActual:<A(65)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й').isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), 'Й', "Message").isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the lower case symbol. Actual:<Й(1049)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the lower case symbol.\n\tActual:<Й(1049)>");
         }
         try {
             initialize(Raw.charAssertion(), '7').isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the lower case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the lower case symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the lower case symbol.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isLowerCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the lower case symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the lower case symbol.\n\tActual:< (10)>");
         }
     }
 
@@ -846,55 +846,55 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the upper case symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the upper case symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'й').isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol.\n\tActual:<й(1081)>");
         }
         try {
             initialize(Raw.charAssertion(), 'й', "Message").isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the upper case symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the upper case symbol.\n\tActual:<й(1081)>");
         }
         try {
             initialize(Raw.charAssertion(), '7').isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the upper case symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the upper case symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n').isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the upper case symbol.\n\tActual:< (10)>");
         }
         try {
             initialize(Raw.charAssertion(), '\n', "Message").isUpperCase();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the upper case symbol. Actual:< (10)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the upper case symbol.\n\tActual:< (10)>");
         }
     }
 
@@ -923,43 +923,43 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), null, "Message").isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the whitespace symbol. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the whitespace symbol.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'й').isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol.\n\tActual:<й(1081)>");
         }
         try {
             initialize(Raw.charAssertion(), 'й', "Message").isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the whitespace symbol. Actual:<й(1081)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the whitespace symbol.\n\tActual:<й(1081)>");
         }
         try {
             initialize(Raw.charAssertion(), '7').isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the whitespace symbol.\n\tActual:<7(55)>");
         }
         try {
             initialize(Raw.charAssertion(), '7', "Message").isWhitespace();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be the whitespace symbol. Actual:<7(55)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the whitespace symbol.\n\tActual:<7(55)>");
         }
     }
 
@@ -974,13 +974,13 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), 'a').isNull();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<a(97)>");
         }
         try {
             initialize(Raw.charAssertion(), 'a', "Message").isNull();
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual value should be null. Actual:<a(97)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<a(97)>");
         }
     }
 
@@ -996,13 +996,13 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), value).isSameAs((char) 10000);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same. Expected:< (10000)> but was:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:< (10000)> but was:< (10000)>");
         }
         try {
             initialize(Raw.charAssertion(), value, "Message").isSameAs((char) 10000);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be the same. Expected:< (10000)> but was:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:< (10000)> but was:< (10000)>");
         }
     }
 
@@ -1018,13 +1018,13 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different. Actual:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:< (10000)>");
         }
         try {
             initialize(Raw.charAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message. Actual and expected values should be different. Actual:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:< (10000)>");
         }
     }
 
