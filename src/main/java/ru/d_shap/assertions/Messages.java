@@ -71,7 +71,7 @@ public final class Messages {
 
         public static final String ACTUAL_VALUE_CAUSE = "Check actual value's cause";
 
-        public static final String ACTUAL_VALUE_CONSTANT_COUNT = "Check actual value's constant count";
+        public static final String ACTUAL_VALUE_VALUE_COUNT = "Check actual value's value count";
 
         public static final String ACTUAL_VALUE_BYTE = "Check next actual value's byte";
 
