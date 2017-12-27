@@ -119,7 +119,12 @@ final class FailDescription {
         if (arguments == null || arguments.length == 0) {
             fullMessage = message;
         } else {
-            fullMessage = MessageFormat.format(message, arguments);
+            String pattern = message.replace("'", "''");
+            String[] argumentsStr = new String[arguments.length];
+            for (int i = 0; i < arguments.length; i++) {
+                argumentsStr[i] = String.valueOf(arguments[i]);
+            }
+            fullMessage = MessageFormat.format(pattern, (Object[]) argumentsStr);
         }
 
         if (checkLastSymbol) {
