@@ -110,7 +110,7 @@ public final class Messages {
 
         public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should not be initialized";
 
-        public static final String ASSERTION_MATCHES = "Value should match the assertion";
+        public static final String ASSERTION_MATCHES = "Actual value should match the assertion";
 
         public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null";
 
@@ -120,155 +120,155 @@ public final class Messages {
 
         public static final String ARGUMENT_IS_VALID = "Argument should be valid";
 
-        public static final String IS_TRUE = "Value should be true";
+        public static final String IS_TRUE = "Actual value should be true";
 
-        public static final String IS_FALSE = "Value should be false";
+        public static final String IS_FALSE = "Actual value should be false";
 
-        public static final String IS_SAME = "Values should be the same";
+        public static final String IS_SAME = "Actual and expected values should be the same";
 
-        public static final String IS_SAME_IGNORE_CASE = "Values should be the same ignore case";
+        public static final String IS_SAME_IGNORE_CASE = "Actual and expected values should be the same ignoring case";
 
-        public static final String IS_DIFFERENT = "Values should be different";
+        public static final String IS_DIFFERENT = "Actual and expected values should be different";
 
-        public static final String IS_DIFFERENT_IGNORE_CASE = "Values should be different ignore case";
+        public static final String IS_DIFFERENT_IGNORE_CASE = "Actual and expected values should be different ignoring case";
 
-        public static final String IS_GREATER = "Value should be greater then the expected";
+        public static final String IS_GREATER = "Actual value should be greater then the expected";
 
-        public static final String IS_GREATER_IGNORE_CASE = "Value should be greater then the expected ignore case";
+        public static final String IS_GREATER_IGNORE_CASE = "Actual value should be greater then the expected ignoring case";
 
-        public static final String IS_GREATER_OR_EQUAL = "Value should be greater then or equal to the expected";
+        public static final String IS_GREATER_OR_EQUAL = "Actual value should be greater then or equal to the expected";
 
-        public static final String IS_GREATER_OR_EQUAL_IGNORE_CASE = "Value should be greater then or equal to the expected ignore case";
+        public static final String IS_GREATER_OR_EQUAL_IGNORE_CASE = "Actual value should be greater then or equal to the expected ignoring case";
 
-        public static final String IS_LESS = "Value should be less then the expected";
+        public static final String IS_LESS = "Actual value should be less then the expected";
 
-        public static final String IS_LESS_IGNORE_CASE = "Value should be less then the expected ignore case";
+        public static final String IS_LESS_IGNORE_CASE = "Actual value should be less then the expected ignoring case";
 
-        public static final String IS_LESS_OR_EQUAL = "Value should be less then or equal to the expected";
+        public static final String IS_LESS_OR_EQUAL = "Actual value should be less then or equal to the expected";
 
-        public static final String IS_LESS_OR_EQUAL_IGNORE_CASE = "Value should be less then or equal to the expected ignore case";
+        public static final String IS_LESS_OR_EQUAL_IGNORE_CASE = "Actual value should be less then or equal to the expected ignoring case";
 
-        public static final String IS_IN_RANGE = "Value should be in the expected range";
+        public static final String IS_IN_RANGE = "Actual value should be in the expected range";
 
-        public static final String IS_IN_RANGE_IGNORE_CASE = "Value should be in the expected range ignore case";
+        public static final String IS_IN_RANGE_IGNORE_CASE = "Actual value should be in the expected range ignoring case";
 
-        public static final String IS_NOT_IN_RANGE = "Value should not be in the expected range";
+        public static final String IS_NOT_IN_RANGE = "Actual value should not be in the expected range";
 
-        public static final String IS_NOT_IN_RANGE_IGNORE_CASE = "Value should not be in the expected range ignore case";
+        public static final String IS_NOT_IN_RANGE_IGNORE_CASE = "Actual value should not be in the expected range ignoring case";
 
-        public static final String IS_ZERO = "Value should be zero";
+        public static final String IS_ZERO = "Actual value should be zero";
 
-        public static final String IS_NON_ZERO = "Value should not be zero";
+        public static final String IS_NON_ZERO = "Actual value should not be zero";
 
-        public static final String IS_POSITIVE_INFINITY = "Value should be positive infinity";
+        public static final String IS_POSITIVE_INFINITY = "Actual value should be positive infinity";
 
-        public static final String IS_NEGATIVE_INFINITY = "Value should be negative infinity";
+        public static final String IS_NEGATIVE_INFINITY = "Actual value should be negative infinity";
 
-        public static final String IS_INFINITY = "Value should be infinity";
+        public static final String IS_INFINITY = "Actual value should be infinity";
 
-        public static final String IS_NAN = "Value should be NaN";
+        public static final String IS_NAN = "Actual value should be NaN";
 
-        public static final String IS_NOT_NAN = "Value should not be NaN";
+        public static final String IS_NOT_NAN = "Actual value should not be NaN";
 
-        public static final String IS_FINITE = "Value should be finite";
+        public static final String IS_FINITE = "Actual value should be finite";
 
-        public static final String IS_ALPHABETIC = "Value should be the alphabetic symbol";
+        public static final String IS_ALPHABETIC = "Actual value should be the alphabetic symbol";
 
-        public static final String IS_DIGIT = "Value should be the digit";
+        public static final String IS_DIGIT = "Actual value should be the digit";
 
-        public static final String IS_LETTER = "Value should be the letter";
+        public static final String IS_LETTER = "Actual value should be the letter";
 
-        public static final String IS_LETTER_OR_DIGIT = "Value should be the letter or the digit";
+        public static final String IS_LETTER_OR_DIGIT = "Actual value should be the letter or the digit";
 
-        public static final String IS_CONTROL_SYMBOL = "Value should be the control symbol";
+        public static final String IS_CONTROL_SYMBOL = "Actual value should be the control symbol";
 
-        public static final String IS_LOWER_CASE = "Value should be the lower case symbol";
+        public static final String IS_LOWER_CASE = "Actual value should be the lower case symbol";
 
-        public static final String IS_UPPER_CASE = "Value should be the upper case symbol";
+        public static final String IS_UPPER_CASE = "Actual value should be the upper case symbol";
 
-        public static final String IS_WHITESPACE = "Value should be the whitespace symbol";
+        public static final String IS_WHITESPACE = "Actual value should be the whitespace symbol";
 
-        public static final String IS_NULL = "Value should be null";
+        public static final String IS_NULL = "Actual value should be null";
 
-        public static final String IS_NOT_NULL = "Value should not be null";
+        public static final String IS_NOT_NULL = "Actual value should not be null";
 
-        public static final String IS_EMPTY = "Value should be empty";
+        public static final String IS_EMPTY = "Actual value should be empty";
 
-        public static final String IS_NULL_OR_EMPTY = "Value should be null or empty";
+        public static final String IS_NULL_OR_EMPTY = "Actual value should be null or empty";
 
-        public static final String IS_NOT_EMPTY = "Value should not be empty";
+        public static final String IS_NOT_EMPTY = "Actual value should not be empty";
 
-        public static final String IS_BLANK = "Value should be blank";
+        public static final String IS_BLANK = "Actual value should be blank";
 
-        public static final String IS_NULL_OR_BLANK = "Value should be null or blank";
+        public static final String IS_NULL_OR_BLANK = "Actual value should be null or blank";
 
-        public static final String IS_NOT_BLANK = "Value should not be blank";
+        public static final String IS_NOT_BLANK = "Actual value should not be blank";
 
-        public static final String IS_SUBTYPE_OF = "Value should be the subtype of the expected value";
+        public static final String IS_SUBTYPE_OF = "Actual value should be the subtype of the expected value";
 
-        public static final String IS_NOT_SUBTYPE_OF = "Value should not be the subtype of the expected value";
+        public static final String IS_NOT_SUBTYPE_OF = "Actual value should not be the subtype of the expected value";
 
-        public static final String IS_CONSTRUCTOR_DEFAULT = "Value should have one default constructor";
+        public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor";
 
-        public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Value constructor should not be acccessible";
+        public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value's constructor should not be acccessible";
 
-        public static final String CONTAINS = "Value should contain the expected value";
+        public static final String CONTAINS = "Actual value should contain the expected value";
 
-        public static final String CONTAINS_IGNORE_CASE = "Value should contain the expected value ignore case";
+        public static final String CONTAINS_IGNORE_CASE = "Actual value should contain the expected value ignoring case";
 
-        public static final String DOES_NOT_CONTAIN = "Value should not contain the expected value";
+        public static final String DOES_NOT_CONTAIN = "Actual value should not contain the expected value";
 
-        public static final String DOES_NOT_CONTAIN_IGNORE_CASE = "Value should not contain the expected value ignore case";
+        public static final String DOES_NOT_CONTAIN_IGNORE_CASE = "Actual value should not contain the expected value ignoring case";
 
-        public static final String CONTAINS_ALL = "Value should contain all of the expected values";
+        public static final String CONTAINS_ALL = "Actual value should contain all of the expected values";
 
-        public static final String CONTAINS_ALL_IN_ORDER = "Value should contain all of the expected values in the specified order";
+        public static final String CONTAINS_ALL_IN_ORDER = "Actual value should contain all of the expected values in the specified order";
 
-        public static final String CONTAINS_EXACTLY = "Value should contain all of the expected values exactly";
+        public static final String CONTAINS_EXACTLY = "Actual value should contain all of the expected values exactly";
 
-        public static final String CONTAINS_EXACTLY_IN_ORDER = "Value should contain all of the expected values exactly in the specified order";
+        public static final String CONTAINS_EXACTLY_IN_ORDER = "Actual value should contain all of the expected values exactly in the specified order";
 
-        public static final String CONTAINS_ANY = "Value should contain any of the expected values";
+        public static final String CONTAINS_ANY = "Actual value should contain any of the expected values";
 
-        public static final String CONTAINS_NONE = "Value should not contain any of the expected values";
+        public static final String CONTAINS_NONE = "Actual value should not contain any of the expected values";
 
-        public static final String IS_PART_OF = "Value should be the part of the expected value";
+        public static final String IS_PART_OF = "Actual value should be the part of the expected value";
 
-        public static final String IS_PART_OF_IGNORE_CASE = "Value should be the part of the expected value ignore case";
+        public static final String IS_PART_OF_IGNORE_CASE = "Actual value should be the part of the expected value ignoring case";
 
-        public static final String IS_NOT_PART_OF = "Value should not be the part of the expected value";
+        public static final String IS_NOT_PART_OF = "Actual value should not be the part of the expected value";
 
-        public static final String IS_NOT_PART_OF_IGNORE_CASE = "Value should not be the part of the expected value ignore case";
+        public static final String IS_NOT_PART_OF_IGNORE_CASE = "Actual value should not be the part of the expected value ignoring case";
 
-        public static final String MATCHES = "Value should match the expected value";
+        public static final String MATCHES = "Actual value should match the expected value";
 
-        public static final String DOES_NOT_MATCH = "Value should not match the expected value";
+        public static final String DOES_NOT_MATCH = "Actual value should not match the expected value";
 
-        public static final String STARTS_WITH = "Value should start with the expected value";
+        public static final String STARTS_WITH = "Actual value should start with the expected value";
 
-        public static final String STARTS_WITH_IGNORE_CASE = "Value should start with the expected value ignore case";
+        public static final String STARTS_WITH_IGNORE_CASE = "Actual value should start with the expected value ignoring case";
 
-        public static final String DOES_NOT_START_WITH = "Value should not start with the expected value";
+        public static final String DOES_NOT_START_WITH = "Actual value should not start with the expected value";
 
-        public static final String DOES_NOT_START_WITH_IGNORE_CASE = "Value should not start with the expected value ignore case";
+        public static final String DOES_NOT_START_WITH_IGNORE_CASE = "Actual value should not start with the expected value ignoring case";
 
-        public static final String ENDS_WITH = "Value should end with the expected value";
+        public static final String ENDS_WITH = "Actual value should end with the expected value";
 
-        public static final String ENDS_WITH_IGNORE_CASE = "Value should end with the expected value ignore case";
+        public static final String ENDS_WITH_IGNORE_CASE = "Actual value should end with the expected value ignoring case";
 
-        public static final String DOES_NOT_END_WITH = "Value should not end with the expected value";
+        public static final String DOES_NOT_END_WITH = "Actual value should not end with the expected value";
 
-        public static final String DOES_NOT_END_WITH_IGNORE_CASE = "Value should not end with the expected value ignore case";
+        public static final String DOES_NOT_END_WITH_IGNORE_CASE = "Actual value should not end with the expected value ignoring case";
 
-        public static final String IS_DIRECT = "Value should be direct";
+        public static final String IS_DIRECT = "Actual value should be direct";
 
-        public static final String IS_NOT_DIRECT = "Value should not be direct";
+        public static final String IS_NOT_DIRECT = "Actual value should not be direct";
 
-        public static final String IS_READ_ONLY = "Value should be read only";
+        public static final String IS_READ_ONLY = "Actual value should be read only";
 
-        public static final String IS_NOT_READ_ONLY = "Value should not be read only";
+        public static final String IS_NOT_READ_ONLY = "Actual value should not be read only";
 
-        public static final String CONTAINS_FIELD = "Value should contain the expected field";
+        public static final String CONTAINS_FIELD = "Actual value should contain the expected field";
 
         private Fail() {
             super();
