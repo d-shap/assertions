@@ -29,7 +29,7 @@ import java.util.List;
  */
 final class FailDescription {
 
-    private static final String MESAGE_SEPARATOR = "\n                          ";
+    private static final String MESAGE_SEPARATOR = "\n\t";
 
     private final List<String> _messages;
 
