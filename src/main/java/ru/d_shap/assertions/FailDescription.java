@@ -29,6 +29,8 @@ import java.util.List;
  */
 final class FailDescription {
 
+    static final String MESAGE_SEPARATOR = "\n                          ";
+
     private final List<String> _messages;
 
     private boolean _actualDefined;
@@ -240,7 +242,7 @@ final class FailDescription {
         StringBuilder assertionErrorMessage = new StringBuilder();
         for (int i = 0; i < _messages.size(); i++) {
             if (i > 0) {
-                assertionErrorMessage.append(" ");
+                assertionErrorMessage.append(MESAGE_SEPARATOR);
             }
             assertionErrorMessage.append(_messages.get(i));
         }
