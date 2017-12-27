@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  */
 final class FailDescription {
 
-    private static final String MESAGE_SEPARATOR = "\n\t";
+    private static final String MESSAGE_SEPARATOR = "\n\t";
 
     private final List<String> _messages;
 
@@ -63,7 +64,7 @@ final class FailDescription {
      */
     FailDescription(final String message) {
         this();
-        addMessage(message, null, true);
+        addMessage(message, true, (Object[]) null);
     }
 
     /**
@@ -84,7 +85,7 @@ final class FailDescription {
      */
     FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
-        addMessage(message, null, true);
+        addMessage(message, true, (Object[]) null);
     }
 
     /**
@@ -92,33 +93,33 @@ final class FailDescription {
      *
      * @param failDescription the fail description.
      * @param message         the message.
-     * @param parameter       the message parameter.
+     * @param arguments       the message arguments.
      */
-    FailDescription(final FailDescription failDescription, final String message, final Object parameter) {
+    FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
         this(failDescription);
-        addMessage(message, parameter, true);
+        addMessage(message, true, arguments);
     }
 
-    private void addMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
-        String fullMessage = getFullMessage(message, parameter, checkLastSymbol);
+    private void addMessage(final String message, final boolean checkLastSymbol, final Object... arguments) {
+        String fullMessage = getFullMessage(message, checkLastSymbol, arguments);
         if (!"".equals(fullMessage)) {
             _messages.add(fullMessage);
         }
     }
 
     static String getFullMessage(final String message) {
-        return getFullMessage(message, null, true);
+        return getFullMessage(message, true, (Object[]) null);
     }
 
-    private static String getFullMessage(final String message, final Object parameter, final boolean checkLastSymbol) {
+    private static String getFullMessage(final String message, final boolean checkLastSymbol, final Object... arguments) {
         if (message == null || "".equals(message)) {
             return "";
         }
         String fullMessage;
-        if (parameter == null || "".equals(String.valueOf(parameter))) {
+        if (arguments == null || arguments.length == 0) {
             fullMessage = message;
         } else {
-            fullMessage = message + ": " + parameter;
+            fullMessage = MessageFormat.format(message, arguments);
         }
 
         if (checkLastSymbol) {
@@ -222,15 +223,15 @@ final class FailDescription {
     private boolean addValuesMessage() {
         if (_actualDefined) {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected + " but was:" + _actual, null, false);
+                addMessage("Expected:" + _expected + " but was:" + _actual, false, (Object[]) null);
                 return true;
             } else {
-                addMessage("Actual:" + _actual, null, false);
+                addMessage("Actual:" + _actual, false, (Object[]) null);
                 return true;
             }
         } else {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected, null, false);
+                addMessage("Expected:" + _expected, false, (Object[]) null);
                 return true;
             } else {
                 return false;
@@ -242,7 +243,7 @@ final class FailDescription {
         StringBuilder assertionErrorMessage = new StringBuilder();
         for (int i = 0; i < _messages.size(); i++) {
             if (i > 0) {
-                assertionErrorMessage.append(MESAGE_SEPARATOR);
+                assertionErrorMessage.append(MESSAGE_SEPARATOR);
             }
             assertionErrorMessage.append(_messages.get(i));
         }
