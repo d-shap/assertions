@@ -115,17 +115,17 @@ final class FailDescription {
         if (message == null || "".equals(message)) {
             return "";
         }
-        String fullMessage;
-        if (arguments == null || arguments.length == 0) {
-            fullMessage = message;
+
+        String[] argumentStrArray;
+        if (arguments == null) {
+            argumentStrArray = new String[0];
         } else {
-            String pattern = message.replace("'", "''");
-            String[] argumentsStr = new String[arguments.length];
+            argumentStrArray = new String[arguments.length];
             for (int i = 0; i < arguments.length; i++) {
-                argumentsStr[i] = String.valueOf(arguments[i]);
+                argumentStrArray[i] = String.valueOf(arguments[i]);
             }
-            fullMessage = MessageFormat.format(pattern, (Object[]) argumentsStr);
         }
+        String fullMessage = MessageFormat.format(message, (Object[]) argumentStrArray);
 
         if (checkLastSymbol) {
             if (fullMessage.endsWith(".") || fullMessage.endsWith("?") || fullMessage.endsWith("!")) {
@@ -228,15 +228,15 @@ final class FailDescription {
     private boolean addValuesMessage() {
         if (_actualDefined) {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected + " but was:" + _actual, false, (Object[]) null);
+                addMessage("'Expected:" + _expected + " but was:" + _actual + "'", false, (Object[]) null);
                 return true;
             } else {
-                addMessage("Actual:" + _actual, false, (Object[]) null);
+                addMessage("'Actual:" + _actual + "'", false, (Object[]) null);
                 return true;
             }
         } else {
             if (_expectedDefined) {
-                addMessage("Expected:" + _expected, false, (Object[]) null);
+                addMessage("'Expected:" + _expected + "'", false, (Object[]) null);
                 return true;
             } else {
                 return false;
