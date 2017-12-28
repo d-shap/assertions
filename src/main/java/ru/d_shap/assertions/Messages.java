@@ -37,61 +37,61 @@ public final class Messages {
      */
     public static final class Check {
 
-        public static final String ACTUAL_VALUE_CLASS = "Check actual value's class.";
+        public static final String ACTUAL_VALUE_CLASS = "Check actual value''s class.";
 
-        public static final String ACTUAL_VALUE_TO_STRING = "Check actual value's string representation.";
+        public static final String ACTUAL_VALUE_TO_STRING = "Check actual value''s string representation.";
 
-        public static final String ACTUAL_VALUE_HASH_CODE = "Check actual value's hash code.";
+        public static final String ACTUAL_VALUE_HASH_CODE = "Check actual value''s hash code.";
 
-        public static final String ACTUAL_VALUE_FIELD = "Check actual value's field: {0}.";
+        public static final String ACTUAL_VALUE_FIELD = "Check actual value''s field: {0}.";
 
-        public static final String ACTUAL_VALUE_LENGTH = "Check actual value's length.";
+        public static final String ACTUAL_VALUE_LENGTH = "Check actual value''s length.";
 
-        public static final String ACTUAL_VALUE_SIZE = "Check actual value's size.";
+        public static final String ACTUAL_VALUE_SIZE = "Check actual value''s size.";
 
-        public static final String ACTUAL_VALUE_ELEMENTS_ALL = "Check all actual value's elements.";
+        public static final String ACTUAL_VALUE_ELEMENTS_ALL = "Check all actual value''s elements.";
 
-        public static final String ACTUAL_VALUE_ELEMENTS_COUNT = "Check next N actual value's elements: {0}.";
+        public static final String ACTUAL_VALUE_ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
 
-        public static final String ACTUAL_VALUE_HEAD_ELEMENT = "Check actual value's head elements up to element: {0}.";
+        public static final String ACTUAL_VALUE_HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
 
-        public static final String ACTUAL_VALUE_HEAD_COUNT = "Check actual value's N head elements: {0}.";
+        public static final String ACTUAL_VALUE_HEAD_COUNT = "Check actual value''s N head elements: {0}.";
 
-        public static final String ACTUAL_VALUE_TAIL_ELEMENT = "Check actual value's tail elements from element: {0}.";
+        public static final String ACTUAL_VALUE_TAIL_ELEMENT = "Check actual value''s tail elements from element: {0}.";
 
-        public static final String ACTUAL_VALUE_TAIL_COUNT = "Check actual value's N tail elements: {0}.";
+        public static final String ACTUAL_VALUE_TAIL_COUNT = "Check actual value''s N tail elements: {0}.";
 
-        public static final String ACTUAL_VALUE_KEYS = "Check actual value's keys.";
+        public static final String ACTUAL_VALUE_KEYS = "Check actual value''s keys.";
 
-        public static final String ACTUAL_VALUE_VALUES = "Check actual value's values.";
+        public static final String ACTUAL_VALUE_VALUES = "Check actual value''s values.";
 
-        public static final String ACTUAL_VALUE_TOKENS = "Check actual value's tokens.";
+        public static final String ACTUAL_VALUE_TOKENS = "Check actual value''s tokens.";
 
-        public static final String ACTUAL_VALUE_MESSAGE = "Check actual value's message.";
+        public static final String ACTUAL_VALUE_MESSAGE = "Check actual value''s message.";
 
-        public static final String ACTUAL_VALUE_CAUSE = "Check actual value's cause.";
+        public static final String ACTUAL_VALUE_CAUSE = "Check actual value''s cause.";
 
-        public static final String ACTUAL_VALUE_VALUE_COUNT = "Check actual value's value count.";
+        public static final String ACTUAL_VALUE_VALUE_COUNT = "Check actual value''s value count.";
 
-        public static final String ACTUAL_VALUE_BYTE = "Check next actual value's byte.";
+        public static final String ACTUAL_VALUE_BYTE = "Check next actual value''s byte.";
 
-        public static final String ACTUAL_VALUE_BYTES_ALL = "Check all actual value's bytes.";
+        public static final String ACTUAL_VALUE_BYTES_ALL = "Check all actual value''s bytes.";
 
-        public static final String ACTUAL_VALUE_BYTES_COUNT = "Check next N actual value's bytes: {0}.";
+        public static final String ACTUAL_VALUE_BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
 
-        public static final String ACTUAL_VALUE_CHAR = "Check next actual value's char.";
+        public static final String ACTUAL_VALUE_CHAR = "Check next actual value''s char.";
 
-        public static final String ACTUAL_VALUE_CHARS_ALL = "Check all actual value's chars.";
+        public static final String ACTUAL_VALUE_CHARS_ALL = "Check all actual value''s chars.";
 
-        public static final String ACTUAL_VALUE_CHARS_COUNT = "Check next N actual value's chars: {0}.";
+        public static final String ACTUAL_VALUE_CHARS_COUNT = "Check next N actual value''s chars: {0}.";
 
-        public static final String ACTUAL_VALUE_POSITION = "Check actual value's position.";
+        public static final String ACTUAL_VALUE_POSITION = "Check actual value''s position.";
 
-        public static final String ACTUAL_VALUE_LIMIT = "Check actual value's limit.";
+        public static final String ACTUAL_VALUE_LIMIT = "Check actual value''s limit.";
 
-        public static final String ACTUAL_VALUE_CAPACITY = "Check actual value's capacity.";
+        public static final String ACTUAL_VALUE_CAPACITY = "Check actual value''s capacity.";
 
-        public static final String ACTUAL_VALUE_REMAINING = "Check actual value's remaining.";
+        public static final String ACTUAL_VALUE_REMAINING = "Check actual value''s remaining.";
 
         private Check() {
             super();
@@ -212,7 +212,7 @@ public final class Messages {
 
         public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor.";
 
-        public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value's constructor should not be acccessible.";
+        public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
 
         public static final String CONTAINS = "Actual value should contain the expected value.";
 
