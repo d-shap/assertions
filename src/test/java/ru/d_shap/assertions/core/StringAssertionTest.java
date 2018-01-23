@@ -372,6 +372,7 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "value").isEqualTo("value");
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isEqualTo("ЗНАЧЕНИЕ");
         initialize(Raw.stringAssertion(), "значение").isEqualTo("значение");
+        initialize(Raw.stringAssertion(), "value's").isEqualTo("value's");
         initialize(Raw.stringAssertion(), "").isEqualTo("");
 
         try {
@@ -429,12 +430,6 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
         }
         try {
-            initialize(Raw.stringAssertion(), "value1").isEqualTo("value2");
-            Assertions.fail("StringAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
-        }
-        try {
             initialize(Raw.stringAssertion(), "value").isEqualTo("ЗНАЧЕНИЕ");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -445,6 +440,18 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<ЗНАЧЕНИЕ> but was:<значение>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "value's").isEqualTo("values");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<values> but was:<value's>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "values").isEqualTo("value's");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value's> but was:<values>");
         }
         try {
             initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isEqualTo("значение");
@@ -481,6 +488,7 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "valUe").isEqualToIgnoreCase("vALue");
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isEqualToIgnoreCase("значение");
         initialize(Raw.stringAssertion(), "значение").isEqualToIgnoreCase("ЗНАЧЕНИЕ");
+        initialize(Raw.stringAssertion(), "valUe's").isEqualToIgnoreCase("vALue's");
         initialize(Raw.stringAssertion(), "").isEqualToIgnoreCase("");
 
         try {
@@ -550,6 +558,18 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<значение> but was:<value>");
         }
         try {
+            initialize(Raw.stringAssertion(), "valUe's").isEqualToIgnoreCase("vALues");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<vALues> but was:<valUe's>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "valUes").isEqualToIgnoreCase("vALue's");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same ignoring case.\n\tExpected:<vALue's> but was:<valUes>");
+        }
+        try {
             initialize(Raw.stringAssertion(), "ЗнаЧеНИЕ").isEqualToIgnoreCase("vaLUE");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -573,6 +593,8 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "значение").isNotEqualTo("value");
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isNotEqualTo("value");
         initialize(Raw.stringAssertion(), "ЗНАЧЕНИЕ").isNotEqualTo("");
+        initialize(Raw.stringAssertion(), "value's").isNotEqualTo("values");
+        initialize(Raw.stringAssertion(), "values").isNotEqualTo("value's");
 
         try {
             Raw.stringAssertion().isNotEqualTo("value");
@@ -629,6 +651,12 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value>");
         }
         try {
+            initialize(Raw.stringAssertion(), "value's").isNotEqualTo("value's");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value's>");
+        }
+        try {
             initialize(Raw.stringAssertion(), "значение").isNotEqualTo("значение");
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
@@ -658,6 +686,8 @@ public final class StringAssertionTest extends AssertionTest {
         initialize(Raw.stringAssertion(), "знАЧенИЕ").isNotEqualToIgnoreCase("vaLUe");
         initialize(Raw.stringAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("VAluE");
         initialize(Raw.stringAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("");
+        initialize(Raw.stringAssertion(), "vaLUe's").isNotEqualToIgnoreCase("VAluEs");
+        initialize(Raw.stringAssertion(), "vaLUes").isNotEqualToIgnoreCase("VAluE's");
 
         try {
             Raw.stringAssertion().isNotEqualToIgnoreCase("value");
@@ -712,6 +742,12 @@ public final class StringAssertionTest extends AssertionTest {
             Assertions.fail("StringAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<value>");
+        }
+        try {
+            initialize(Raw.stringAssertion(), "value's").isNotEqualToIgnoreCase("value's");
+            Assertions.fail("StringAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different ignoring case.\n\tActual:<value's>");
         }
         try {
             initialize(Raw.stringAssertion(), "знАЧенИЕ").isNotEqualToIgnoreCase("ЗНачЕНие");
