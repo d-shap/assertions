@@ -226,9 +226,8 @@ public class AssertionTest {
      * @return the hash set.
      */
     protected final Set<String> createHashSet(final String... values) {
-        Set<String> set = new LinkedHashSet<>();
-        set.addAll(Arrays.asList(values));
-        return set;
+        List<String> list = Arrays.asList(values);
+        return new LinkedHashSet<>(list);
     }
 
     /**
