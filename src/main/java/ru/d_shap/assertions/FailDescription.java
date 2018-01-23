@@ -30,6 +30,12 @@ import java.util.List;
  */
 final class FailDescription {
 
+    private static final String VALUE_ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
+
+    private static final String VALUE_ACTUAL = "Actual:{0}";
+
+    private static final String VALUE_EXPECTED = "Expected:{0}";
+
     private static final String MESSAGE_SEPARATOR = "\n\t";
 
     private final List<String> _messages;
@@ -228,15 +234,15 @@ final class FailDescription {
     private boolean addValuesMessage() {
         if (_actualDefined) {
             if (_expectedDefined) {
-                addMessage("'Expected:" + _expected + " but was:" + _actual + "'", false, (Object[]) null);
+                addMessage(VALUE_ACTUAL_AND_EXPECTED, false, _actual, _expected);
                 return true;
             } else {
-                addMessage("'Actual:" + _actual + "'", false, (Object[]) null);
+                addMessage(VALUE_ACTUAL, false, _actual);
                 return true;
             }
         } else {
             if (_expectedDefined) {
-                addMessage("'Expected:" + _expected + "'", false, (Object[]) null);
+                addMessage(VALUE_EXPECTED, false, _expected);
                 return true;
             } else {
                 return false;
