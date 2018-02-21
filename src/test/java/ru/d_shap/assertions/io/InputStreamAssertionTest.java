@@ -126,6 +126,61 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
+    public void isNotCompletedTest() {
+        ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
+        initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
+        initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
+        initialize(Raw.inputStreamAssertion(), bais).isCompleted();
+
+        try {
+            Raw.inputStreamAssertion().isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next actual value's byte.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").isNotCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's byte.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
     public void toByteArrayFullTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray().containsExactlyInOrder(1, 2, 3);
 

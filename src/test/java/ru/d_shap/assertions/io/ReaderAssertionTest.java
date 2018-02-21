@@ -128,6 +128,61 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
+    public void isNotCompletedTest() {
+        StringReader reader = new StringReader("123");
+        initialize(Raw.readerAssertion(), reader).isNotCompleted();
+        initialize(Raw.readerAssertion(), reader).isNotCompleted();
+        initialize(Raw.readerAssertion(), reader).isNotCompleted();
+        initialize(Raw.readerAssertion(), reader).isCompleted();
+
+        try {
+            Raw.readerAssertion().isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader()).isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("")).isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader(""), "Message").isNotCompleted();
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
     public void toCharArrayFullTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray().containsExactlyInOrder('1', '2', '3');
 
