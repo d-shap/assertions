@@ -57,6 +57,15 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_CHAR).isLessThan(0);
     }
 
+    /**
+     * Check if the actual value contains more chars.
+     */
+    public final void isNotCompleted() {
+        checkInitialized();
+        checkActualIsNotNull();
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_CHAR).isGreaterThanOrEqualTo(0);
+    }
+
     private int readActual() {
         try {
             return getActual().read();

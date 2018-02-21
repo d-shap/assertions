@@ -57,6 +57,15 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_BYTE).isLessThan(0);
     }
 
+    /**
+     * Check if the actual value contains more bytes.
+     */
+    public final void isNotCompleted() {
+        checkInitialized();
+        checkActualIsNotNull();
+        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_BYTE).isGreaterThanOrEqualTo(0);
+    }
+
     private int readActual() {
         try {
             return getActual().read();
