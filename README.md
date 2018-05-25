@@ -197,7 +197,7 @@ Donate
 I am a full time software developer.
 I code in my spare time and to extend the use of software that has purpose.
 
-If you find value in what I do then, please, feel free to donate to me/
+If you find value in what I do then, please, feel free to donate to me.
 I'm not going to force you to donate, you can use my software completely free of charge and without limitations for any purpose you want.
 If you are really want to give something to me then you are welcome to do so.
 I don't expect donations, nor do I insist that you give them.
