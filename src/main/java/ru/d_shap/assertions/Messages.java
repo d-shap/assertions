@@ -85,6 +85,8 @@ public final class Messages {
 
         public static final String ACTUAL_VALUE_CHARS_COUNT = "Check next N actual value''s chars: {0}.";
 
+        public static final String ACTUAL_VALUE_AVAILABLE = "Check actual value''s available.";
+
         public static final String ACTUAL_VALUE_POSITION = "Check actual value''s position.";
 
         public static final String ACTUAL_VALUE_LIMIT = "Check actual value''s limit.";
