@@ -29,6 +29,7 @@ import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.primitive.LongAssertion;
 
 /**
  * Assertions for the input stream.
@@ -224,6 +225,38 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void hasAvailable(final int available) {
         toAvailable().isEqualTo(available);
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @return the assertion.
+     */
+    public final LongAssertion toSize() {
+        checkInitialized();
+        checkActualIsNotNull();
+        try {
+            long size = 0;
+            while (true) {
+                int read = getActual().read();
+                if (read < 0) {
+                    break;
+                }
+                size++;
+            }
+            return initializeAssertion(Raw.longAssertion(), size, Messages.Check.ACTUAL_VALUE_SIZE);
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Check if the actual value size is equal to the expected size.
+     *
+     * @param size the expected size.
+     */
+    public final void hasSize(final long size) {
+        toSize().isEqualTo(size);
     }
 
     @Override

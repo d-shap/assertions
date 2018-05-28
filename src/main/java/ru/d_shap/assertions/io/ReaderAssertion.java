@@ -28,6 +28,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.CharArrayAssertion;
+import ru.d_shap.assertions.primitive.LongAssertion;
 
 /**
  * Assertions for the reader.
@@ -199,6 +200,38 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkArgumentIsNotNull(expected);
         char[] expectedChars = ValueConverter.toCharArray(expected);
         toCharArray().containsExactlyInOrder(expectedChars);
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @return the assertion.
+     */
+    public final LongAssertion toSize() {
+        checkInitialized();
+        checkActualIsNotNull();
+        try {
+            long size = 0;
+            while (true) {
+                int read = getActual().read();
+                if (read < 0) {
+                    break;
+                }
+                size++;
+            }
+            return initializeAssertion(Raw.longAssertion(), size, Messages.Check.ACTUAL_VALUE_SIZE);
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Check if the actual value size is equal to the expected size.
+     *
+     * @param size the expected size.
+     */
+    public final void hasSize(final long size) {
+        toSize().isEqualTo(size);
     }
 
     @Override
