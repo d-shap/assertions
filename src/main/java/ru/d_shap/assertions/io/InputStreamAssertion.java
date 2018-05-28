@@ -28,6 +28,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
  * Assertions for the input stream.
@@ -199,6 +200,30 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkArgumentIsNotNull(expected);
         byte[] expectedBytes = ValueConverter.toByteArray(expected);
         toByteArray().containsExactlyInOrder(expectedBytes);
+    }
+
+    /**
+     * Make assertion about the actual value's available.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toAvailable() {
+        try {
+            checkInitialized();
+            checkActualIsNotNull();
+            return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.ACTUAL_VALUE_AVAILABLE);
+        } catch (IOException ex) {
+            throw createAssertionError(ex.toString(), ex);
+        }
+    }
+
+    /**
+     * Check if the actual value available is equal to the expected available.
+     *
+     * @param available the expected available.
+     */
+    public final void hasAvailable(final int available) {
+        toAvailable().isEqualTo(available);
     }
 
     @Override
