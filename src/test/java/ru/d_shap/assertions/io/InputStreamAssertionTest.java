@@ -915,6 +915,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toAvailable();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: available exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toAvailable();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: available exception.");
+        }
+        try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toAvailable().isEqualTo(2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
@@ -965,6 +977,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).hasAvailable(0);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: available exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").hasAvailable(0);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: available exception.");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).hasAvailable(2);
@@ -1043,6 +1067,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toLength();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toLength();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toLength().isEqualTo(2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
@@ -1117,6 +1153,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).hasLength(0);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").hasLength(0);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).hasLength(2);
@@ -1222,6 +1270,11 @@ public final class InputStreamAssertionTest extends AssertionTest {
 
         ErrorInputStream() {
             super();
+        }
+
+        @Override
+        public int available() throws IOException {
+            throw new IOException("available exception");
         }
 
         @Override
