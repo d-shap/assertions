@@ -884,6 +884,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toAvailable().isEqualTo(2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toAvailable().isEqualTo(5);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toAvailable().isEqualTo(0);
+
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais).toAvailable().isEqualTo(3);
         Assertions.assertThat(bais.read()).isEqualTo(1);
@@ -935,6 +936,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).hasAvailable(2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).hasAvailable(5);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).hasAvailable(0);
+
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais).hasAvailable(3);
         Assertions.assertThat(bais.read()).isEqualTo(1);
@@ -975,6 +977,82 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's available.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toSizeTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toSize().isEqualTo(2);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toSize().isEqualTo(5);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toSize().isEqualTo(0);
+
+        ByteArrayInputStream bais1 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        initialize(Raw.inputStreamAssertion(), bais1).toSize().isEqualTo(3);
+        Assertions.assertThat(bais1.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais1).toSize().isEqualTo(0);
+
+        ByteArrayInputStream bais2 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais2.read()).isEqualTo(1);
+        initialize(Raw.inputStreamAssertion(), bais2).toSize().isEqualTo(2);
+        Assertions.assertThat(bais2.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais2).toSize().isEqualTo(0);
+
+        ByteArrayInputStream bais3 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais3.read()).isEqualTo(1);
+        Assertions.assertThat(bais3.read()).isEqualTo(2);
+        initialize(Raw.inputStreamAssertion(), bais3).toSize().isEqualTo(1);
+        Assertions.assertThat(bais3.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais3).toSize().isEqualTo(0);
+
+        ByteArrayInputStream bais4 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais4.read()).isEqualTo(1);
+        Assertions.assertThat(bais4.read()).isEqualTo(2);
+        Assertions.assertThat(bais4.read()).isEqualTo(3);
+        initialize(Raw.inputStreamAssertion(), bais4).toSize().isEqualTo(0);
+        Assertions.assertThat(bais4.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais4).toSize().isEqualTo(0);
+
+        ByteArrayInputStream bais5 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais5.read()).isEqualTo(1);
+        Assertions.assertThat(bais5.read()).isEqualTo(2);
+        Assertions.assertThat(bais5.read()).isEqualTo(3);
+        Assertions.assertThat(bais5.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais5).toSize().isEqualTo(0);
+        Assertions.assertThat(bais5.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais5).toSize().isEqualTo(0);
+
+        try {
+            Raw.inputStreamAssertion().toSize();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toSize();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toSize();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toSize().isEqualTo(2);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toSize().isEqualTo(2);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
         }
     }
 
