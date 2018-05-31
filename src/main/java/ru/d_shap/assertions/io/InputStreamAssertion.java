@@ -221,42 +221,42 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     /**
      * Check if the actual value available is equal to the expected available.
      *
-     * @param available the expected available.
+     * @param expected the expected available.
      */
-    public final void hasAvailable(final int available) {
-        toAvailable().isEqualTo(available);
+    public final void hasAvailable(final int expected) {
+        toAvailable().isEqualTo(expected);
     }
 
     /**
-     * Make assertion about the actual value's size.
+     * Make assertion about the actual value's length.
      *
      * @return the assertion.
      */
-    public final LongAssertion toSize() {
+    public final LongAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            long size = 0;
+            long length = 0;
             while (true) {
                 int read = getActual().read();
                 if (read < 0) {
                     break;
                 }
-                size++;
+                length++;
             }
-            return initializeAssertion(Raw.longAssertion(), size, Messages.Check.ACTUAL_VALUE_SIZE);
+            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
         } catch (IOException ex) {
             throw createAssertionError(ex.toString(), ex);
         }
     }
 
     /**
-     * Check if the actual value size is equal to the expected size.
+     * Check if the actual value length is equal to the expected length.
      *
-     * @param size the expected size.
+     * @param expected the expected length.
      */
-    public final void hasSize(final long size) {
-        toSize().isEqualTo(size);
+    public final void hasLength(final long expected) {
+        toLength().isEqualTo(expected);
     }
 
     @Override
