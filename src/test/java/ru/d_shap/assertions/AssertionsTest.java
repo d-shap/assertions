@@ -643,11 +643,11 @@ public final class AssertionsTest extends AssertionTest {
     public void stringAssertionTest() {
         Assertions.assertThat((String) null).isNull();
         Assertions.assertThat("test").hasLength(4);
-        Assertions.assertThat(null, Raw.stringAssertion()).isNull();
-        Assertions.assertThat("test", Raw.stringAssertion()).hasLength(4);
-        Assertions.assertThat(createNullFieldClass(), "_field", Raw.stringAssertion()).isNull();
+        Assertions.assertThat(null, Raw.charSequenceAssertion()).isNull();
+        Assertions.assertThat("test", Raw.charSequenceAssertion()).hasLength(4);
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.charSequenceAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_string").isNotNull();
-        Assertions.assertThat(createPrivateFieldsClass(), "_string", Raw.stringAssertion()).hasLength(4);
+        Assertions.assertThat(createPrivateFieldsClass(), "_string", Raw.charSequenceAssertion()).hasLength(4);
 
         try {
             Assertions.assertThat("test").hasLength(5);

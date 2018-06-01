@@ -956,11 +956,11 @@ public final class MessageAssertionTest extends AssertionTest {
     public void stringAssertionTest() {
         Assertions.assertWithMessage("Test message").that((String) null).isNull();
         Assertions.assertWithMessage("Test message").that("test").hasLength(4);
-        Assertions.assertWithMessage("Test message").that(null, Raw.stringAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that("test", Raw.stringAssertion()).hasLength(4);
-        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.stringAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(null, Raw.charSequenceAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that("test", Raw.charSequenceAssertion()).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.charSequenceAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_string").isNotNull();
-        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_string", Raw.stringAssertion()).hasLength(4);
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_string", Raw.charSequenceAssertion()).hasLength(4);
 
         try {
             Assertions.assertWithMessage(null).that("test").hasLength(5);
