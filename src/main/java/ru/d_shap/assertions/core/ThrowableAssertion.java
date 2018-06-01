@@ -47,10 +47,10 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @return the assertion.
      */
-    public final StringAssertion toMessage() {
+    public final CharSequenceAssertion toMessage() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.stringAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_VALUE_MESSAGE);
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_VALUE_MESSAGE);
     }
 
     /**
