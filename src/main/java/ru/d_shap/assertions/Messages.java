@@ -212,6 +212,10 @@ public final class Messages {
 
         public static final String IS_NOT_SUBTYPE_OF = "Actual value should not be the subtype of the expected value.";
 
+        public static final String IS_SUPERTYPE_OF = "Actual value should be the supertype of the expected value.";
+
+        public static final String IS_NOT_SUPERTYPE_OF = "Actual value should not be the supertype of the expected value.";
+
         public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor.";
 
         public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
