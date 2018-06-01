@@ -1003,14 +1003,14 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toFieldSpecifiedAssertionTest() {
-        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.stringAssertion()).isNull();
+        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
         createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.classAssertion()).isNull();
-        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.stringAssertion()).isEqualTo("parentField");
+        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
 
-        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Raw.stringAssertion()).isNull();
+        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
         createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Raw.classAssertion()).isNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField", Raw.stringAssertion()).isEqualTo("parentField");
-        createReferenceAssertion(new ToFieldChildClass()).toField("_childField", Raw.stringAssertion()).isEqualTo("childField");
+        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
+        createReferenceAssertion(new ToFieldChildClass()).toField("_childField", Raw.charSequenceAssertion()).isEqualTo("childField");
 
         try {
             createReferenceAssertion().toField("value", Raw.objectAssertion());
@@ -1079,25 +1079,25 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.stringAssertion())).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField", Raw.stringAssertion())).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.stringAssertion()).isNotNull();
+            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _nullField.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", Raw.stringAssertion()).isNotNull();
+            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _nullField.\n\tActual value should not be null.");
