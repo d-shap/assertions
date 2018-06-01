@@ -406,6 +406,217 @@ public final class ClassAssertionTest extends AssertionTest {
      * {@link ClassAssertion} class test.
      */
     @Test
+    public void isSupertypeOfTest() {
+        initialize(Raw.classAssertion(), Integer.class).isSupertypeOf(Integer.class);
+        initialize(Raw.classAssertion(), Object.class).isSupertypeOf(Integer.class);
+        initialize(Raw.classAssertion(), Comparable.class).isSupertypeOf(Integer.class);
+
+        initialize(Raw.classAssertion(), String.class).isSupertypeOf(String.class);
+        initialize(Raw.classAssertion(), Object.class).isSupertypeOf(String.class);
+        initialize(Raw.classAssertion(), Serializable.class).isSupertypeOf(String.class);
+        initialize(Raw.classAssertion(), CharSequence.class).isSupertypeOf(String.class);
+
+        try {
+            Raw.classAssertion().isSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").isSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class).isSupertypeOf(Integer.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.Integer> but was:<java.lang.String>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Integer.class).isSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.lang.Integer>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Integer.class).isSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.Object> but was:<java.lang.Integer>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Integer.class).isSupertypeOf(Comparable.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.Comparable> but was:<java.lang.Integer>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class).isSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.Object> but was:<java.lang.String>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class).isSupertypeOf(Serializable.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.io.Serializable> but was:<java.lang.String>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class).isSupertypeOf(CharSequence.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the supertype of the expected value.\n\tExpected:<java.lang.CharSequence> but was:<java.lang.String>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class, "Message").isSupertypeOf(CharSequence.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the supertype of the expected value.\n\tExpected:<java.lang.CharSequence> but was:<java.lang.String>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isNotSupertypeOfTest() {
+        initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(Integer.class);
+        initialize(Raw.classAssertion(), Integer.class).isNotSupertypeOf(String.class);
+        initialize(Raw.classAssertion(), Integer.class).isNotSupertypeOf(Object.class);
+        initialize(Raw.classAssertion(), Integer.class).isNotSupertypeOf(Comparable.class);
+        initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(Object.class);
+        initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(Serializable.class);
+        initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(CharSequence.class);
+
+        try {
+            Raw.classAssertion().isNotSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isNotSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isNotSupertypeOf(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isNotSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isNotSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isNotSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").isNotSupertypeOf(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Integer.class).isNotSupertypeOf(Integer.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.Integer> but was:<java.lang.Integer>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isNotSupertypeOf(Integer.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.Integer> but was:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Comparable.class).isNotSupertypeOf(Integer.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.Integer> but was:<java.lang.Comparable>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.lang.String>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isNotSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Serializable.class).isNotSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.io.Serializable>");
+        }
+        try {
+            initialize(Raw.classAssertion(), CharSequence.class).isNotSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.lang.CharSequence>");
+        }
+        try {
+            initialize(Raw.classAssertion(), CharSequence.class, "Message").isNotSupertypeOf(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the supertype of the expected value.\n\tExpected:<java.lang.String> but was:<java.lang.CharSequence>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
     public void hasOnePrivateConstructorTest() {
         initialize(Raw.classAssertion(), Math.class).hasOnePrivateConstructor();
 
