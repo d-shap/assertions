@@ -341,20 +341,6 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
-    public void stringAssertionTest() {
-        initialize(Raw.stringAssertion(), null).isNull();
-        try {
-            Raw.stringAssertion().isNull();
-            Assertions.fail("Raw test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-    }
-
-    /**
-     * {@link Raw} class test.
-     */
-    @Test
     public void comparableAssertionTest() {
         initialize(Raw.<Integer>comparableAssertion(), null).isNull();
         try {
