@@ -471,6 +471,19 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
+    public void isEqualToMutationTest() {
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1").isEqualTo("value2");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualToIgnoreCase("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
+        }
+    }
+
+    /**
+     * {@link CharSequenceAssertion} class test.
+     */
+    @Test
     public void isEqualToIgnoreCaseTest() {
         initialize(Raw.charSequenceAssertion(), "valUe").isEqualToIgnoreCase("vALue");
         initialize(Raw.charSequenceAssertion(), "ЗНАЧЕНИЕ").isEqualToIgnoreCase("значение");
