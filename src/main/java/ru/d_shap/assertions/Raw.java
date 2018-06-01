@@ -40,7 +40,6 @@ import ru.d_shap.assertions.core.ComparableAssertion;
 import ru.d_shap.assertions.core.EnumAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
-import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
 import ru.d_shap.assertions.io.InputStreamAssertion;
 import ru.d_shap.assertions.io.ReaderAssertion;
@@ -259,15 +258,6 @@ public final class Raw {
      */
     public static CharSequenceAssertion charSequenceAssertion() {
         return new CharSequenceAssertion();
-    }
-
-    /**
-     * Create uninitialized assertion about the string.
-     *
-     * @return the assertion.
-     */
-    public static StringAssertion stringAssertion() {
-        return new StringAssertion();
     }
 
     /**
