@@ -885,44 +885,44 @@ public final class ReaderAssertionTest extends AssertionTest {
      */
     @Test
     public void toLengthTest() throws IOException {
-        initialize(Raw.readerAssertion(), new StringReader("12")).toLength().isEqualTo(2);
-        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).toLength().isEqualTo(5);
-        initialize(Raw.readerAssertion(), new StringReader("")).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), new StringReader("12")).toLength().isEqualTo(2L);
+        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).toLength().isEqualTo(5L);
+        initialize(Raw.readerAssertion(), new StringReader("")).toLength().isEqualTo(0L);
 
         StringReader reader1 = new StringReader("123");
-        initialize(Raw.readerAssertion(), reader1).toLength().isEqualTo(3);
+        initialize(Raw.readerAssertion(), reader1).toLength().isEqualTo(3L);
         Assertions.assertThat(reader1.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader1).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader1).toLength().isEqualTo(0L);
 
         StringReader reader2 = new StringReader("123");
         Assertions.assertThat(reader2.read()).isEqualTo('1');
-        initialize(Raw.readerAssertion(), reader2).toLength().isEqualTo(2);
+        initialize(Raw.readerAssertion(), reader2).toLength().isEqualTo(2L);
         Assertions.assertThat(reader2.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader2).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader2).toLength().isEqualTo(0L);
 
         StringReader reader3 = new StringReader("123");
         Assertions.assertThat(reader3.read()).isEqualTo('1');
         Assertions.assertThat(reader3.read()).isEqualTo('2');
-        initialize(Raw.readerAssertion(), reader3).toLength().isEqualTo(1);
+        initialize(Raw.readerAssertion(), reader3).toLength().isEqualTo(1L);
         Assertions.assertThat(reader3.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader3).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader3).toLength().isEqualTo(0L);
 
         StringReader reader4 = new StringReader("123");
         Assertions.assertThat(reader4.read()).isEqualTo('1');
         Assertions.assertThat(reader4.read()).isEqualTo('2');
         Assertions.assertThat(reader4.read()).isEqualTo('3');
-        initialize(Raw.readerAssertion(), reader4).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader4).toLength().isEqualTo(0L);
         Assertions.assertThat(reader4.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader4).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader4).toLength().isEqualTo(0L);
 
         StringReader reader5 = new StringReader("123");
         Assertions.assertThat(reader5.read()).isEqualTo('1');
         Assertions.assertThat(reader5.read()).isEqualTo('2');
         Assertions.assertThat(reader5.read()).isEqualTo('3');
         Assertions.assertThat(reader5.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader5).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader5).toLength().isEqualTo(0L);
         Assertions.assertThat(reader5.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader5).toLength().isEqualTo(0);
+        initialize(Raw.readerAssertion(), reader5).toLength().isEqualTo(0L);
 
         try {
             Raw.readerAssertion().toLength();
@@ -955,13 +955,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123")).toLength().isEqualTo(2);
+            initialize(Raw.readerAssertion(), new StringReader("123")).toLength().isEqualTo(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toLength().isEqualTo(2);
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toLength().isEqualTo(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
@@ -975,83 +975,83 @@ public final class ReaderAssertionTest extends AssertionTest {
      */
     @Test
     public void hasLengthTest() throws IOException {
-        initialize(Raw.readerAssertion(), new StringReader("12")).hasLength(2);
-        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).hasLength(5);
-        initialize(Raw.readerAssertion(), new StringReader("")).hasLength(0);
+        initialize(Raw.readerAssertion(), new StringReader("12")).hasLength(2L);
+        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).hasLength(5L);
+        initialize(Raw.readerAssertion(), new StringReader("")).hasLength(0L);
 
         StringReader reader1 = new StringReader("123");
-        initialize(Raw.readerAssertion(), reader1).hasLength(3);
+        initialize(Raw.readerAssertion(), reader1).hasLength(3L);
         Assertions.assertThat(reader1.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader1).hasLength(0);
+        initialize(Raw.readerAssertion(), reader1).hasLength(0L);
 
         StringReader reader2 = new StringReader("123");
         Assertions.assertThat(reader2.read()).isEqualTo('1');
-        initialize(Raw.readerAssertion(), reader2).hasLength(2);
+        initialize(Raw.readerAssertion(), reader2).hasLength(2L);
         Assertions.assertThat(reader2.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader2).hasLength(0);
+        initialize(Raw.readerAssertion(), reader2).hasLength(0L);
 
         StringReader reader3 = new StringReader("123");
         Assertions.assertThat(reader3.read()).isEqualTo('1');
         Assertions.assertThat(reader3.read()).isEqualTo('2');
-        initialize(Raw.readerAssertion(), reader3).hasLength(1);
+        initialize(Raw.readerAssertion(), reader3).hasLength(1L);
         Assertions.assertThat(reader3.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader3).hasLength(0);
+        initialize(Raw.readerAssertion(), reader3).hasLength(0L);
 
         StringReader reader4 = new StringReader("123");
         Assertions.assertThat(reader4.read()).isEqualTo('1');
         Assertions.assertThat(reader4.read()).isEqualTo('2');
         Assertions.assertThat(reader4.read()).isEqualTo('3');
-        initialize(Raw.readerAssertion(), reader4).hasLength(0);
+        initialize(Raw.readerAssertion(), reader4).hasLength(0L);
         Assertions.assertThat(reader4.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader4).hasLength(0);
+        initialize(Raw.readerAssertion(), reader4).hasLength(0L);
 
         StringReader reader5 = new StringReader("123");
         Assertions.assertThat(reader5.read()).isEqualTo('1');
         Assertions.assertThat(reader5.read()).isEqualTo('2');
         Assertions.assertThat(reader5.read()).isEqualTo('3');
         Assertions.assertThat(reader5.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader5).hasLength(0);
+        initialize(Raw.readerAssertion(), reader5).hasLength(0L);
         Assertions.assertThat(reader5.read()).isLessThan(0);
-        initialize(Raw.readerAssertion(), reader5).hasLength(0);
+        initialize(Raw.readerAssertion(), reader5).hasLength(0L);
 
         try {
-            Raw.readerAssertion().hasLength(0);
+            Raw.readerAssertion().hasLength(0L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.readerAssertion(), null).hasLength(0);
+            initialize(Raw.readerAssertion(), null).hasLength(0L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), null, "Message").hasLength(0);
+            initialize(Raw.readerAssertion(), null, "Message").hasLength(0L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), new ErrorReader()).hasLength(0);
+            initialize(Raw.readerAssertion(), new ErrorReader()).hasLength(0L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").hasLength(0);
+            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").hasLength(0L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123")).hasLength(2);
+            initialize(Raw.readerAssertion(), new StringReader("123")).hasLength(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").hasLength(2);
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").hasLength(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
