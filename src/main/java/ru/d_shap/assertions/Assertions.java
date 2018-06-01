@@ -58,7 +58,6 @@ import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ComparableAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
-import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.core.ThrowableAssertion;
 import ru.d_shap.assertions.io.InputStreamAssertion;
 import ru.d_shap.assertions.io.ReaderAssertion;
@@ -481,9 +480,9 @@ public final class Assertions {
      * @param actual the actual value.
      * @return the assertion.
      */
-    public static StringAssertion assertThat(final String actual) {
-        StringAssertion assertion = Raw.stringAssertion();
-        ((BaseAssertion<String>) assertion).initialize(actual);
+    public static CharSequenceAssertion assertThat(final String actual) {
+        CharSequenceAssertion assertion = Raw.charSequenceAssertion();
+        ((BaseAssertion<CharSequence>) assertion).initialize(actual);
         return assertion;
     }
 
