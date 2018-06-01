@@ -108,6 +108,34 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     }
 
     /**
+     * Check if the actual value is the supertype of the expected class.
+     *
+     * @param expected the expected class.
+     */
+    public final void isSupertypeOf(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (!getActual().isAssignableFrom(expected)) {
+            throw createAssertionErrorWithActual(Messages.Fail.IS_SUPERTYPE_OF, expected);
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the supertype of the expected class.
+     *
+     * @param expected the expected class.
+     */
+    public final void isNotSupertypeOf(final Class<?> expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        if (getActual().isAssignableFrom(expected)) {
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUPERTYPE_OF, expected);
+        }
+    }
+
+    /**
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      * Side-effect: invokes the private constractor for the code coverage.
      */
