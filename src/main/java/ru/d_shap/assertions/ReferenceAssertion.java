@@ -22,9 +22,9 @@ package ru.d_shap.assertions;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 
+import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
-import ru.d_shap.assertions.core.StringAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
@@ -152,10 +152,10 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @return the assertion.
      */
-    public final StringAssertion toToString() {
+    public final CharSequenceAssertion toToString() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.stringAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
     }
 
     /**
