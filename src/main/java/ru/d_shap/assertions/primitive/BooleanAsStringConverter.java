@@ -26,7 +26,7 @@ import ru.d_shap.assertions.utils.AsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanAsStringConverter implements AsStringConverter {
+public final class BooleanAsStringConverter implements AsStringConverter<Boolean> {
 
     /**
      * Create new object.
@@ -36,8 +36,8 @@ public final class BooleanAsStringConverter implements AsStringConverter {
     }
 
     @Override
-    public boolean canConvert(final Object value) {
-        return value instanceof Boolean;
+    public Class<Boolean> getValueClass() {
+        return Boolean.class;
     }
 
     @Override
