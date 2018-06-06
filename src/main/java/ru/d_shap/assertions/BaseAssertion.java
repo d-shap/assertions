@@ -22,8 +22,8 @@ package ru.d_shap.assertions;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.d_shap.assertions.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.validator.ActualValueValidator;
+import ru.d_shap.assertions.utils.validator.ActualValueClassValidator;
+import ru.d_shap.assertions.utils.validator.ActualValueValidator;
 
 /**
  * Base class for all assertions.

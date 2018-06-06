@@ -17,21 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.validator;
-
 /**
- * Validator for the actual value.
- *
- * @author Dmitry Shapovalov
+ * Multipurpose helper classes.
  */
-public interface ActualValueValidator {
-
-    /**
-     * Check if the actual value valid.
-     *
-     * @param actual the actual value.
-     * @return true, if the actual value is valid.
-     */
-    boolean isValid(Object actual);
-
-}
+package ru.d_shap.assertions.utils;

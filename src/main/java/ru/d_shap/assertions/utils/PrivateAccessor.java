@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.utils;
 
 import java.lang.reflect.AccessibleObject;
 import java.security.AccessController;
@@ -28,13 +28,13 @@ import java.security.PrivilegedAction;
  *
  * @author Dmitry Shapovalov
  */
-final class PrivateAccessor {
+public final class PrivateAccessor {
 
     private PrivateAccessor() {
         super();
     }
 
-    static void setAccessible(final AccessibleObject accessibleObject) {
+    public static void setAccessible(final AccessibleObject accessibleObject) {
         AccessController.doPrivileged(new PrivilegedAccessAction(accessibleObject));
     }
 

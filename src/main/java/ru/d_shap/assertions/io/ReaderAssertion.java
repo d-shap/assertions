@@ -26,9 +26,9 @@ import java.io.StringWriter;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.array.CharArrayAssertion;
 import ru.d_shap.assertions.primitive.LongAssertion;
+import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the reader.

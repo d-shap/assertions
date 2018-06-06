@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.validator.ActualValueEnumValidator;
+import ru.d_shap.assertions.utils.validator.ActualValueEnumValidator;
 
 /**
  * Assertions for the enum.

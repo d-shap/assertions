@@ -23,7 +23,7 @@ import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the int buffer.

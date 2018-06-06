@@ -17,30 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.validator;
-
 /**
- * Validator for the actual value. Check if the actual value is instance of the specified class.
- *
- * @author Dmitry Shapovalov
+ * Validators for the actual value.
  */
-public final class ActualValueClassValidator implements ActualValueValidator {
-
-    private final Class<?> _clazz;
-
-    /**
-     * Create new object.
-     *
-     * @param clazz the specified class.
-     */
-    public ActualValueClassValidator(final Class<?> clazz) {
-        super();
-        _clazz = clazz;
-    }
-
-    @Override
-    public boolean isValid(final Object actual) {
-        return _clazz.isInstance(actual);
-    }
-
-}
+package ru.d_shap.assertions.utils.validator;

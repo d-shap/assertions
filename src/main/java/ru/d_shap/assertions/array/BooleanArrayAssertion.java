@@ -21,7 +21,7 @@ package ru.d_shap.assertions.array;
 
 import java.util.List;
 
-import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the boolean array.

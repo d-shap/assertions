@@ -26,8 +26,8 @@ import java.util.List;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.ValueConverter;
 import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the iterator.
