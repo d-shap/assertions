@@ -26,7 +26,7 @@ import ru.d_shap.assertions.utils.AsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteAsStringConverter implements AsStringConverter {
+public final class ByteAsStringConverter implements AsStringConverter<Byte> {
 
     /**
      * Create new object.
@@ -36,8 +36,8 @@ public final class ByteAsStringConverter implements AsStringConverter {
     }
 
     @Override
-    public boolean canConvert(final Object value) {
-        return value instanceof Byte;
+    public Class<Byte> getValueClass() {
+        return Byte.class;
     }
 
     @Override
