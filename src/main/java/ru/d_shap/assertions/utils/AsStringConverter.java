@@ -22,22 +22,22 @@ package ru.d_shap.assertions.utils;
 /**
  * Value converter to the string representation.
  *
+ * @param <T> the generic type of the value.
  * @author Dmitry Shapovalov
  */
-public interface AsStringConverter {
+public interface AsStringConverter<T> {
 
     /**
-     * Check if the value can be converted to the string representation.
+     * Get the value class.
      *
-     * @param value the value to be converted.
-     * @return true if the value can be converted to the string representation.
+     * @return the value class.
      */
-    boolean canConvert(Object value);
+    Class<T> getValueClass();
 
     /**
      * Convert the value to the string representation.
      *
-     * @param value the value to be converted.
+     * @param value the valu.
      * @return the string representation of the value.
      */
     String asString(Object value);
