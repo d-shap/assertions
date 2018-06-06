@@ -34,6 +34,11 @@ public final class PrivateAccessor {
         super();
     }
 
+    /**
+     * Make the private class element accessible.
+     *
+     * @param accessibleObject the private class element.
+     */
     public static void setAccessible(final AccessibleObject accessibleObject) {
         AccessController.doPrivileged(new PrivilegedAccessAction(accessibleObject));
     }
