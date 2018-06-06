@@ -46,6 +46,8 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import ru.d_shap.assertions.utils.PrivateAccessor;
+
 /**
  * Base class for all tests.
  *

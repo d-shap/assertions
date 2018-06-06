@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ValueConverter;
+import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Tests for {@link ArrayAssertion}.
