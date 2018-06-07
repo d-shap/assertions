@@ -46,11 +46,8 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Set<E>> getActualValueClass() {
-        return (Class<Set<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Set.class;
+        Class<?> rawActualValueClass = Set.class;
+        return (Class<Set<E>>) rawActualValueClass;
     }
 
     /**
@@ -272,11 +269,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }
