@@ -47,11 +47,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Iterator<E>> getActualValueClass() {
-        return (Class<Iterator<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Iterator.class;
+        Class<?> rawActualValueClass = Iterator.class;
+        return (Class<Iterator<E>>) rawActualValueClass;
     }
 
     /**
@@ -338,11 +335,6 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void hasSize(final int expected) {
         toList().hasSize(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }

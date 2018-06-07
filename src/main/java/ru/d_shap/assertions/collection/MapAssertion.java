@@ -48,11 +48,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Map<K, V>> getActualValueClass() {
-        return (Class<Map<K, V>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Map.class;
+        Class<?> rawActualValueClass = Map.class;
+        return (Class<Map<K, V>>) rawActualValueClass;
     }
 
     /**
@@ -409,11 +406,6 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }

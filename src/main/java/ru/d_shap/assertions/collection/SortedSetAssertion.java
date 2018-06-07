@@ -47,11 +47,8 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<SortedSet<E>> getActualValueClass() {
-        return (Class<SortedSet<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return SortedSet.class;
+        Class<?> rawActualValueClass = SortedSet.class;
+        return (Class<SortedSet<E>>) rawActualValueClass;
     }
 
     /**
@@ -341,11 +338,6 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }
