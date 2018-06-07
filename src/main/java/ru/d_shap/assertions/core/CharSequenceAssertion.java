@@ -723,9 +723,4 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         return initializeAssertion(Raw.<String>listAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

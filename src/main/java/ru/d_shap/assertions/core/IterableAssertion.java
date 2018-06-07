@@ -46,11 +46,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Iterable<E>> getActualValueClass() {
-        return (Class<Iterable<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Iterable.class;
+        Class<?> rawActualValueClass = Iterable.class;
+        return (Class<Iterable<E>>) rawActualValueClass;
     }
 
     /**
@@ -271,11 +268,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
             list.add(element);
         }
         return initializeAssertion(Raw.<E>listAssertion(), list);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }

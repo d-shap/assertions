@@ -124,9 +124,4 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         toCause().messageMatches(expected);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

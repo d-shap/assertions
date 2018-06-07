@@ -44,11 +44,8 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Class<?>> getActualValueClass() {
-        return (Class<Class<?>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Class.class;
+        Class<?> rawActualValueClass = Class.class;
+        return (Class<Class<?>>) rawActualValueClass;
     }
 
     /**
@@ -169,15 +166,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final EnumAssertion asEnum() {
         return as(Raw.enumAssertion());
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof Class) {
-            return ((Class<?>) value).getName();
-        } else {
-            return value.toString();
-        }
     }
 
 }

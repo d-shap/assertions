@@ -69,9 +69,4 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

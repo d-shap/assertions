@@ -40,11 +40,8 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Comparable<E>> getActualValueClass() {
-        return (Class<Comparable<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Comparable.class;
+        Class<?> rawActualValueClass = Comparable.class;
+        return (Class<Comparable<E>>) rawActualValueClass;
     }
 
     /**
@@ -161,11 +158,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
             throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
         }
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }
