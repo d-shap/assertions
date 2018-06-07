@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 
 /**
- * Tests for {@link ru.d_shap.assertions.PrivateAccessor}.
+ * Tests for {@link PrivateAccessor}.
  *
  * @author Dmitry Shapovalov
  */
@@ -41,7 +41,7 @@ public final class PrivateAccessorTest extends AssertionTest {
     }
 
     /**
-     * {@link ru.d_shap.assertions.PrivateAccessor} class test.
+     * {@link PrivateAccessor} class test.
      */
     @Test
     public void constructorTest() {
