@@ -524,12 +524,4 @@ public abstract class BaseAssertion<T> {
         return new FailDescription(_failDescription, message).addActual(this).addExpected(this, expectedFrom, expectedTo).addThrowable(throwable).createAssertionError();
     }
 
-    /**
-     * Get the string representation of the value.
-     *
-     * @param value the value.
-     * @return the string representation of the value.
-     */
-    protected abstract String asString(Object value);
-
 }
