@@ -48,11 +48,8 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<List<E>> getActualValueClass() {
-        return (Class<List<E>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return List.class;
+        Class<?> rawActualValueClass = List.class;
+        return (Class<List<E>>) rawActualValueClass;
     }
 
     /**
@@ -361,11 +358,6 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
     }
 
 }
