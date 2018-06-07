@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class MapAsStringConverter extends BaseAsStringConverter<Map<?, ?>> {
+public class MapAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,12 +38,7 @@ public class MapAsStringConverter extends BaseAsStringConverter<Map<?, ?>> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    protected final Class<Map<?, ?>> getValueClass() {
-        return (Class<Map<?, ?>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
+    protected final Class<?> getValueClass() {
         return Map.class;
     }
 

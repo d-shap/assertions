@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class ClassAsStringConverter extends BaseAsStringConverter<Class<?>> {
+public class ClassAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -36,12 +36,7 @@ public class ClassAsStringConverter extends BaseAsStringConverter<Class<?>> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    protected final Class<Class<?>> getValueClass() {
-        return (Class<Class<?>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
+    protected final Class<?> getValueClass() {
         return Class.class;
     }
 

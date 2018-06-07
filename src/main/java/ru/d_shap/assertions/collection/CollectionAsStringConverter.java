@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class CollectionAsStringConverter extends BaseAsStringConverter<Collection<?>> {
+public class CollectionAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,12 +38,7 @@ public class CollectionAsStringConverter extends BaseAsStringConverter<Collectio
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    protected final Class<Collection<?>> getValueClass() {
-        return (Class<Collection<?>>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
+    protected final Class<?> getValueClass() {
         return Collection.class;
     }
 

@@ -22,10 +22,9 @@ package ru.d_shap.assertions;
 /**
  * Base class for all value to string converters.
  *
- * @param <T> the generic type of the value.
  * @author Dmitry Shapovalov
  */
-public abstract class BaseAsStringConverter<T> {
+public abstract class BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -39,7 +38,7 @@ public abstract class BaseAsStringConverter<T> {
      *
      * @return the value class.
      */
-    protected abstract Class<T> getValueClass();
+    protected abstract Class<?> getValueClass();
 
     /**
      * Get the string representation of the value.

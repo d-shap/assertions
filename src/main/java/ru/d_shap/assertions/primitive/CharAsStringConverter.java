@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class CharAsStringConverter extends BaseAsStringConverter<Character> {
+public class CharAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.

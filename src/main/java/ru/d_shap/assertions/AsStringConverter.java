@@ -34,7 +34,7 @@ import ru.d_shap.assertions.primitive.CharAsStringConverter;
  */
 final class AsStringConverter {
 
-    private static final List<BaseAsStringConverter<?>> CONVERTERS;
+    private static final List<BaseAsStringConverter> CONVERTERS;
 
     static {
         CONVERTERS = new ArrayList<>(4);
@@ -54,7 +54,7 @@ final class AsStringConverter {
         }
         Class<?> valueClass = value.getClass();
         for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseAsStringConverter<?> converter = CONVERTERS.get(i);
+            BaseAsStringConverter converter = CONVERTERS.get(i);
             if (converter.getValueClass().isAssignableFrom(valueClass)) {
                 return converter.asString(value);
             }
