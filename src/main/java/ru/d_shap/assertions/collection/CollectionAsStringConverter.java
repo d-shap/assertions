@@ -53,7 +53,7 @@ public class CollectionAsStringConverter extends BaseAsStringConverter {
             } else {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(getChildValueAsString(element));
+            stringBuilder.append(getValueAsString(element));
         }
         stringBuilder.append(']');
         return stringBuilder.toString();

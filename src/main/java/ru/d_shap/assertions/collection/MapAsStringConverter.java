@@ -53,9 +53,9 @@ public class MapAsStringConverter extends BaseAsStringConverter {
             } else {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(getChildValueAsString(entry.getKey()));
+            stringBuilder.append(getValueAsString(entry.getKey()));
             stringBuilder.append('=');
-            stringBuilder.append(getChildValueAsString(entry.getValue()));
+            stringBuilder.append(getValueAsString(entry.getValue()));
         }
         stringBuilder.append(']');
         return stringBuilder.toString();
