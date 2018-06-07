@@ -49,13 +49,24 @@ public abstract class BaseAsStringConverter {
     protected abstract String asString(Object value);
 
     /**
-     * Get the string representation of the child value.
+     * Get the string representation of the value.
      *
-     * @param value the child value.
-     * @return the string representation of the child value.
+     * @param value the value.
+     * @return the string representation of the value.
      */
     protected final String getValueAsString(final Object value) {
         return AsStringConverter.asString(value);
+    }
+
+    /**
+     * Get the string representation of the value.
+     *
+     * @param value       the value.
+     * @param targetClass the target class.
+     * @return the string representation of the value.
+     */
+    protected final String getValueAsString(final Object value, final Class<?> targetClass) {
+        return AsStringConverter.asString(value, targetClass);
     }
 
 }
