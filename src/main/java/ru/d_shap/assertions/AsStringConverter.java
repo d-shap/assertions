@@ -22,6 +22,9 @@ package ru.d_shap.assertions;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.d_shap.assertions.collection.CollectionAsStringConverter;
+import ru.d_shap.assertions.primitive.CharAsStringConverter;
+
 /**
  * Class to convert value to the string representation.
  *
@@ -32,7 +35,9 @@ final class AsStringConverter {
     private static final List<BaseAsStringConverter<?>> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>();
+        CONVERTERS = new ArrayList<>(2);
+        CONVERTERS.add(new CharAsStringConverter());
+        CONVERTERS.add(new CollectionAsStringConverter());
     }
 
     private AsStringConverter() {
