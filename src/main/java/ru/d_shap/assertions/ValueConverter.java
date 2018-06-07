@@ -53,7 +53,7 @@ final class ValueConverter {
                 return converter.convert(targetClass);
             }
         }
-        return value.toString();
+        return value;
     }
 
 }
