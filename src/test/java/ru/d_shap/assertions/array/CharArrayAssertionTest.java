@@ -93,13 +93,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('3');
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3(51)> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").contains('3');
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3(51)> but was:<[1(49), 2(50)]>");
         }
     }
 
@@ -1611,13 +1611,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNull();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").isNull();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1(49), 2(50)]>");
         }
     }
 
@@ -1633,13 +1633,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             initialize(Raw.charArrayAssertion(), value).isSameAs(new char[]{'1', '2'});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), value, "Message").isSameAs(new char[]{'1', '2'});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50)]>");
         }
     }
 
@@ -1655,13 +1655,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             initialize(Raw.charArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1(49), 2(50)]>");
         }
     }
 
