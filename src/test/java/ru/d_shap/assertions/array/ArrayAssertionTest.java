@@ -1482,11 +1482,6 @@ public final class ArrayAssertionTest extends AssertionTest {
             return ValueConverter.toObjectList((String[]) value);
         }
 
-        @Override
-        protected String asString(final Object value) {
-            return value.toString();
-        }
-
     }
 
 }
