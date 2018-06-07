@@ -24,7 +24,7 @@ import java.util.List;
 import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
- * Assertions the char array.
+ * Assertions for the char array.
  *
  * @author Dmitry Shapovalov
  */
