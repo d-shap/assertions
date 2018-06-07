@@ -46,8 +46,6 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import ru.d_shap.assertions.utils.PrivateAccessor;
-
 /**
  * Base class for all tests.
  *
@@ -888,11 +886,6 @@ public class AssertionTest {
             return Object.class;
         }
 
-        @Override
-        protected String asString(final Object value) {
-            return value.toString();
-        }
-
     }
 
     /**
@@ -909,11 +902,6 @@ public class AssertionTest {
         @Override
         protected Class<Object> getActualValueClass() {
             return Object.class;
-        }
-
-        @Override
-        protected String asString(final Object value) {
-            return value.toString();
         }
 
     }
