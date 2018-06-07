@@ -50,7 +50,7 @@ final class ValueConverter {
         for (int i = 0; i < CONVERTERS.size(); i++) {
             BaseValueConverter converter = CONVERTERS.get(i);
             if (converter.getValueClass().isAssignableFrom(valueClass) && converter.getTargetClass().isAssignableFrom(targetClass)) {
-                return converter.convert(targetClass);
+                return converter.convert(value);
             }
         }
         return value;
