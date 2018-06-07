@@ -23,6 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.array.BooleanArrayToListValueConverter;
+import ru.d_shap.assertions.array.ByteArrayToListValueConverter;
+import ru.d_shap.assertions.array.CharArrayToListValueConverter;
+import ru.d_shap.assertions.array.DoubleArrayToListValueConverter;
+import ru.d_shap.assertions.array.FloatArrayToListValueConverter;
+import ru.d_shap.assertions.array.IntArrayToListValueConverter;
+import ru.d_shap.assertions.array.LongArrayToListValueConverter;
+import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
+import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
 
 /**
  * Class to convert value to the value with the target class.
@@ -34,8 +42,17 @@ final class ValueConverter {
     private static final List<BaseValueConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(1);
+        CONVERTERS = new ArrayList<>(9);
+
         CONVERTERS.add(new BooleanArrayToListValueConverter());
+        CONVERTERS.add(new ByteArrayToListValueConverter());
+        CONVERTERS.add(new CharArrayToListValueConverter());
+        CONVERTERS.add(new DoubleArrayToListValueConverter());
+        CONVERTERS.add(new FloatArrayToListValueConverter());
+        CONVERTERS.add(new IntArrayToListValueConverter());
+        CONVERTERS.add(new LongArrayToListValueConverter());
+        CONVERTERS.add(new ObjectArrayToListValueConverter());
+        CONVERTERS.add(new ShortArrayToListValueConverter());
     }
 
     private ValueConverter() {
