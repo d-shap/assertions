@@ -24,6 +24,7 @@ import java.util.List;
 
 import ru.d_shap.assertions.array.BooleanArrayAsStringConverter;
 import ru.d_shap.assertions.array.ByteArrayAsStringConverter;
+import ru.d_shap.assertions.array.CharArrayAsStringConverter;
 import ru.d_shap.assertions.array.DoubleArrayAsStringConverter;
 import ru.d_shap.assertions.array.FloatArrayAsStringConverter;
 import ru.d_shap.assertions.array.IntArrayAsStringConverter;
@@ -56,7 +57,7 @@ final class AsStringConverter {
 
         CONVERTERS.add(new BooleanArrayAsStringConverter());
         CONVERTERS.add(new ByteArrayAsStringConverter());
-        CONVERTERS.add(new CharAsStringConverter());
+        CONVERTERS.add(new CharArrayAsStringConverter());
         CONVERTERS.add(new DoubleArrayAsStringConverter());
         CONVERTERS.add(new FloatArrayAsStringConverter());
         CONVERTERS.add(new IntArrayAsStringConverter());
