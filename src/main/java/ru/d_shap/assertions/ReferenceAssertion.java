@@ -26,7 +26,6 @@ import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.utils.PrivateAccessor;
 
 /**
  * Base class for all reference type assertions.
