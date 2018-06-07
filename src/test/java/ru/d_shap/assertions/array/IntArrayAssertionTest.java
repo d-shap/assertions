@@ -1179,20 +1179,4 @@ public final class IntArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link IntArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.intArrayAssertion(), null).asString(null));
-            Assertions.fail("IntArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.intArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.intArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.intArrayAssertion(), null).asString(new int[]{1, 2})).isEqualTo("[1, 2]");
-    }
-
 }

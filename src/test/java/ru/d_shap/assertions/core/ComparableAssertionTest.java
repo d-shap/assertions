@@ -731,21 +731,4 @@ public final class ComparableAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link ComparableAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.<Integer>comparableAssertion(), 5).asString(null));
-            Assertions.fail("ComparableAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.<Integer>comparableAssertion(), 5).asString(5)).isEqualTo("5");
-        Assertions.assertThat(initialize(Raw.<Integer>comparableAssertion(), 5).asString(60)).isEqualTo("60");
-        Assertions.assertThat(initialize(Raw.<Integer>comparableAssertion(), 5).asString(244)).isEqualTo("244");
-        Assertions.assertThat(initialize(Raw.<Integer>comparableAssertion(), 5).asString("test")).isEqualTo("test");
-    }
-
 }

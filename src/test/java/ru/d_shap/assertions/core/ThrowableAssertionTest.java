@@ -568,21 +568,4 @@ public final class ThrowableAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link ThrowableAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.throwableAssertion(), new Throwable()).asString(null));
-            Assertions.fail("ThrowableAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.throwableAssertion(), new Throwable()).asString(new Throwable())).isEqualTo("java.lang.Throwable");
-        Assertions.assertThat(initialize(Raw.throwableAssertion(), new Throwable()).asString(new Exception())).isEqualTo("java.lang.Exception");
-        Assertions.assertThat(initialize(Raw.throwableAssertion(), new Throwable()).asString(new RuntimeException())).isEqualTo("java.lang.RuntimeException");
-        Assertions.assertThat(initialize(Raw.throwableAssertion(), new Throwable()).asString(new RuntimeException("exception message"))).isEqualTo("java.lang.RuntimeException: exception message");
-    }
-
 }

@@ -792,22 +792,6 @@ public final class ClassAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link ClassAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(null));
-            Assertions.fail("ClassAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(Object.class)).isEqualTo("java.lang.Object");
-        Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString(Values.class)).isEqualTo("ru.d_shap.assertions.AssertionTest$Values");
-        Assertions.assertThat(initialize(Raw.classAssertion(), Values.class).asString("test")).isEqualTo("test");
-    }
-
-    /**
      * Test class.
      *
      * @author Dmitry Shapovalov

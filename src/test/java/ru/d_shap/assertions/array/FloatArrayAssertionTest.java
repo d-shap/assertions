@@ -1179,20 +1179,4 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link FloatArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.floatArrayAssertion(), null).asString(null));
-            Assertions.fail("FloatArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.floatArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.floatArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.floatArrayAssertion(), null).asString(new float[]{1.0f, 2.0f})).isEqualTo("[1.0, 2.0]");
-    }
-
 }

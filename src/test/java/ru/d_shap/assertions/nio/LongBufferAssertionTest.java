@@ -2483,23 +2483,6 @@ public final class LongBufferAssertionTest extends AssertionTest {
      * {@link LongBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).asString(null));
-            Assertions.fail("LongBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).asString(createLongBuffer(new long[]{1L, 2L, 3L}))).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}))).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(initialize(Raw.longBufferAssertion(), null).asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 2))).isEqualTo("[3, 4, 5]");
-    }
-
-    /**
-     * {@link LongBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         LongBuffer buffer = createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

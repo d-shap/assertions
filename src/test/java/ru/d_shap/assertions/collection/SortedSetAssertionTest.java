@@ -1962,20 +1962,4 @@ public final class SortedSetAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link SortedSetAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.<String>sortedSetAssertion(), null).asString(null));
-            Assertions.fail("SortedSetAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.<String>sortedSetAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.<String>sortedSetAssertion(), null).asString(createTreeSet("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.<String>sortedSetAssertion(), null).asString(createTreeSet("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
-    }
-
 }

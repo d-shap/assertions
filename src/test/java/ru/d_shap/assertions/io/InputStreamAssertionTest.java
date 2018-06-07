@@ -1246,22 +1246,6 @@ public final class InputStreamAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link InputStreamAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.inputStreamAssertion(), null).asString(null));
-            Assertions.fail("InputStreamAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.inputStreamAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.inputStreamAssertion(), null).asString(new ByteArrayInputStream(new byte[0]))).matches("java.io.ByteArrayInputStream.*");
-        Assertions.assertThat(initialize(Raw.inputStreamAssertion(), null).asString(new ByteArrayInputStream(new byte[]{0, 0, 0}))).matches("java.io.ByteArrayInputStream.*");
-    }
-
-    /**
      * Test class.
      *
      * @author Dmitry Shapovalov

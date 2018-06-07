@@ -1139,21 +1139,4 @@ public final class DoubleAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link DoubleAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.doubleAssertion(), 10.0).asString(null));
-            Assertions.fail("DoubleAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.doubleAssertion(), 10.0).asString(5.0)).isEqualTo("5.0");
-        Assertions.assertThat(initialize(Raw.doubleAssertion(), 10.0).asString(60.0)).isEqualTo("60.0");
-        Assertions.assertThat(initialize(Raw.doubleAssertion(), 10.0).asString(244.0)).isEqualTo("244.0");
-        Assertions.assertThat(initialize(Raw.doubleAssertion(), 10.0).asString("test")).isEqualTo("test");
-    }
-
 }

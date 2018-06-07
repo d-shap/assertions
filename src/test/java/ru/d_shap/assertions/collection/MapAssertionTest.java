@@ -2280,20 +2280,4 @@ public final class MapAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link MapAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.<String, String>mapAssertion(), null).asString(null));
-            Assertions.fail("MapAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.<String, String>mapAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.<String, String>mapAssertion(), null).asString(createHashMap())).isEqualTo("{}");
-        Assertions.assertThat(initialize(Raw.<String, String>mapAssertion(), null).asString(createHashMap("key1", "value1"))).isEqualTo("{key1=value1}");
-    }
-
 }

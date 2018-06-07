@@ -1665,20 +1665,4 @@ public final class CharArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link CharArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.charArrayAssertion(), null).asString(null));
-            Assertions.fail("CharArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.charArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.charArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.charArrayAssertion(), null).asString(new char[]{'1', '2'})).isEqualTo("[1, 2]");
-    }
-
 }

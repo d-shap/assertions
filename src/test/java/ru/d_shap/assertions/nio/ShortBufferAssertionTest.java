@@ -3559,23 +3559,6 @@ public final class ShortBufferAssertionTest extends AssertionTest {
      * {@link ShortBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.shortBufferAssertion(), null).asString(null));
-            Assertions.fail("ShortBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.shortBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.shortBufferAssertion(), null).asString(createShortBuffer(new short[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(initialize(Raw.shortBufferAssertion(), null).asString(createShortBuffer(new short[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(initialize(Raw.shortBufferAssertion(), null).asString(createShortBuffer(new short[]{1, 2, 3, 4, 5}, 2))).isEqualTo("[3, 4, 5]");
-    }
-
-    /**
-     * {@link ShortBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         ShortBuffer buffer = createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

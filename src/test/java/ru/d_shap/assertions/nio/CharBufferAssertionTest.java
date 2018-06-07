@@ -3559,23 +3559,6 @@ public final class CharBufferAssertionTest extends AssertionTest {
      * {@link CharBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).asString(null));
-            Assertions.fail("CharBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).asString(createCharBuffer(new char[]{'1', '2', '3'}))).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).asString(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}))).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(initialize(Raw.charBufferAssertion(), null).asString(createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 2))).isEqualTo("[3, 4, 5]");
-    }
-
-    /**
-     * {@link CharBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         CharBuffer buffer = createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

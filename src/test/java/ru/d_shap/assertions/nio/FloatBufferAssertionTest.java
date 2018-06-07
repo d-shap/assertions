@@ -2483,23 +2483,6 @@ public final class FloatBufferAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).asString(null));
-            Assertions.fail("FloatBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}))).isEqualTo("[1.0, 2.0, 3.0]");
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
-    }
-
-    /**
-     * {@link FloatBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         FloatBuffer buffer = createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

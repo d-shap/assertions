@@ -4263,20 +4263,4 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link CharSequenceAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.charSequenceAssertion(), "vAlUe").asString(null));
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.charSequenceAssertion(), "vAlUe").asString("vAlUe")).isEqualTo("vAlUe");
-        Assertions.assertThat(initialize(Raw.charSequenceAssertion(), "vAlUe").asString("знАчЕнИе")).isEqualTo("знАчЕнИе");
-        Assertions.assertThat(initialize(Raw.charSequenceAssertion(), "vAlUe").asString(1)).isEqualTo("1");
-    }
-
 }

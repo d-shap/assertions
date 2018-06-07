@@ -527,21 +527,4 @@ public final class LongAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link LongAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.longAssertion(), 5L).asString(null));
-            Assertions.fail("LongAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.longAssertion(), 5L).asString(5L)).isEqualTo("5");
-        Assertions.assertThat(initialize(Raw.longAssertion(), 5L).asString(60L)).isEqualTo("60");
-        Assertions.assertThat(initialize(Raw.longAssertion(), 5L).asString(244L)).isEqualTo("244");
-        Assertions.assertThat(initialize(Raw.longAssertion(), 5L).asString("test")).isEqualTo("test");
-    }
-
 }

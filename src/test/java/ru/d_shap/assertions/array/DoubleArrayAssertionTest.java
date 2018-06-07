@@ -1179,20 +1179,4 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link DoubleArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(null));
-            Assertions.fail("DoubleArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.doubleArrayAssertion(), null).asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
-    }
-
 }

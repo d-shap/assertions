@@ -1665,20 +1665,4 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link ByteArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.byteArrayAssertion(), null).asString(null));
-            Assertions.fail("ByteArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.byteArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.byteArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.byteArrayAssertion(), null).asString(new byte[]{1, 2})).isEqualTo("[1, 2]");
-    }
-
 }

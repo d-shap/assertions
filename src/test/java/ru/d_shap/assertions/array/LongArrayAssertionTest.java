@@ -1179,20 +1179,4 @@ public final class LongArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link LongArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.longArrayAssertion(), null).asString(null));
-            Assertions.fail("LongArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.longArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.longArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.longArrayAssertion(), null).asString(new long[]{1L, 2L})).isEqualTo("[1, 2]");
-    }
-
 }

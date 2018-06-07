@@ -1139,21 +1139,4 @@ public final class FloatAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link FloatAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(null));
-            Assertions.fail("FloatAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(5.0f)).isEqualTo("5.0");
-        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(60.0f)).isEqualTo("60.0");
-        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString(244.0f)).isEqualTo("244.0");
-        Assertions.assertThat(initialize(Raw.floatAssertion(), 10.0f).asString("test")).isEqualTo("test");
-    }
-
 }

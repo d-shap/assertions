@@ -1559,20 +1559,4 @@ public final class SetAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link SetAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.<String>setAssertion(), null).asString(null));
-            Assertions.fail("SetAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), null).asString(createHashSet("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), null).asString(createHashSet("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
-    }
-
 }

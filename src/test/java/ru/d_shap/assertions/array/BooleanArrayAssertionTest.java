@@ -1191,20 +1191,4 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link BooleanArrayAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.booleanArrayAssertion(), null).asString(null));
-            Assertions.fail("BooleanArrayAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.booleanArrayAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.booleanArrayAssertion(), null).asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(initialize(Raw.booleanArrayAssertion(), null).asString(new boolean[]{true, true})).isEqualTo("[true, true]");
-    }
-
 }

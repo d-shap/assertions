@@ -3042,20 +3042,4 @@ public final class SortedMapAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link SortedMapAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.<String, String>sortedMapAssertion(), null).asString(null));
-            Assertions.fail("SortedMapAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.<String, String>sortedMapAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.<String, String>sortedMapAssertion(), null).asString(createTreeMap())).isEqualTo("{}");
-        Assertions.assertThat(initialize(Raw.<String, String>sortedMapAssertion(), null).asString(createTreeMap("key1", "value1"))).isEqualTo("{key1=value1}");
-    }
-
 }

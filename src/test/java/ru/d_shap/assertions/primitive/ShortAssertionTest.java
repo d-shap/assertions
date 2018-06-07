@@ -527,21 +527,4 @@ public final class ShortAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link ShortAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.shortAssertion(), (short) 5).asString(null));
-            Assertions.fail("ShortAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.shortAssertion(), (short) 5).asString((short) 5)).isEqualTo("5");
-        Assertions.assertThat(initialize(Raw.shortAssertion(), (short) 5).asString((short) 60)).isEqualTo("60");
-        Assertions.assertThat(initialize(Raw.shortAssertion(), (short) 5).asString((short) 244)).isEqualTo("244");
-        Assertions.assertThat(initialize(Raw.shortAssertion(), (short) 5).asString("test")).isEqualTo("test");
-    }
-
 }

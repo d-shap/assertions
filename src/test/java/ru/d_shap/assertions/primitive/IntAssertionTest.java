@@ -527,21 +527,4 @@ public final class IntAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link IntAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(null));
-            Assertions.fail("IntAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(5)).isEqualTo("5");
-        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(60)).isEqualTo("60");
-        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString(244)).isEqualTo("244");
-        Assertions.assertThat(initialize(Raw.intAssertion(), 5).asString("test")).isEqualTo("test");
-    }
-
 }

@@ -1124,22 +1124,6 @@ public final class ReaderAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link ReaderAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.readerAssertion(), null).asString(null));
-            Assertions.fail("ReaderAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.readerAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.readerAssertion(), null).asString(new StringReader(""))).matches("java.io.StringReader.*");
-        Assertions.assertThat(initialize(Raw.readerAssertion(), null).asString(new StringReader("\u0000\u0000\u0000"))).matches("java.io.StringReader.*");
-    }
-
-    /**
      * Test class.
      *
      * @author Dmitry Shapovalov

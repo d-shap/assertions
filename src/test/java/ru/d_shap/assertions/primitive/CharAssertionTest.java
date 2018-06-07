@@ -1028,24 +1028,4 @@ public final class CharAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link CharAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString(null));
-            Assertions.fail("CharAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString('a')).isEqualTo("a(97)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString('7')).isEqualTo("7(55)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString('F')).isEqualTo("F(70)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString(10)).isEqualTo(" (10)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString(100000)).isEqualTo(" (100000)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString(Integer.MAX_VALUE)).isEqualTo(" (2147483647)");
-        Assertions.assertThat(initialize(Raw.charAssertion(), 'a').asString("test")).isEqualTo("test");
-    }
-
 }

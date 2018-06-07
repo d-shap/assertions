@@ -2483,23 +2483,6 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      * {@link DoubleBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(null));
-            Assertions.fail("DoubleBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0}))).isEqualTo("[1.0, 2.0, 3.0]");
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 5.0]");
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 2))).isEqualTo("[3.0, 4.0, 5.0]");
-    }
-
-    /**
-     * {@link DoubleBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         DoubleBuffer buffer = createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

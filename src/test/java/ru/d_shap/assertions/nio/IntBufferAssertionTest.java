@@ -2483,23 +2483,6 @@ public final class IntBufferAssertionTest extends AssertionTest {
      * {@link IntBufferAssertion} class test.
      */
     @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).asString(null));
-            Assertions.fail("IntBufferAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).asString(new StringBuilder("test"))).isEqualTo("test");
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).asString(createIntBuffer(new int[]{1, 2, 3}))).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}))).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).asString(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 2))).isEqualTo("[3, 4, 5]");
-    }
-
-    /**
-     * {@link IntBufferAssertion} class test.
-     */
-    @Test
     public void positionTest() {
         IntBuffer buffer = createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3);
         Assertions.assertThat(buffer).hasPosition(3);

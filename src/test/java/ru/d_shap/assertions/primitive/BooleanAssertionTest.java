@@ -203,20 +203,4 @@ public final class BooleanAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * {@link BooleanAssertion} class test.
-     */
-    @Test
-    public void asStringTest() {
-        try {
-            Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(null));
-            Assertions.fail("BooleanAssertion test fail");
-        } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
-        }
-        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(true)).isEqualTo("true");
-        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString(false)).isEqualTo("false");
-        Assertions.assertThat(initialize(Raw.booleanAssertion(), true).asString("test")).isEqualTo("test");
-    }
-
 }
