@@ -234,9 +234,4 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         toLength().isEqualTo(expected);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

@@ -259,9 +259,4 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         toLength().isEqualTo(expected);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }
