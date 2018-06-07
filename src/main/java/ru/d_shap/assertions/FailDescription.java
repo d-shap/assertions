@@ -157,7 +157,7 @@ final class FailDescription {
         if (actual == null) {
             actualStr = null;
         } else {
-            actualStr = assertion.asString(actual);
+            actualStr = asString(actual);
         }
         _actual = "<" + actualStr + ">";
         return this;
@@ -176,7 +176,7 @@ final class FailDescription {
         if (expected == null) {
             expectedStr = null;
         } else {
-            expectedStr = assertion.asString(expected);
+            expectedStr = asString(expected);
         }
         _expected = "<" + expectedStr + ">";
         return this;
@@ -196,16 +196,20 @@ final class FailDescription {
         if (expectedFrom == null) {
             expectedFromStr = null;
         } else {
-            expectedFromStr = assertion.asString(expectedFrom);
+            expectedFromStr = asString(expectedFrom);
         }
         String expectedToStr;
         if (expectedTo == null) {
             expectedToStr = null;
         } else {
-            expectedToStr = assertion.asString(expectedTo);
+            expectedToStr = asString(expectedTo);
         }
         _expected = "<" + expectedFromStr + ":" + expectedToStr + ">";
         return this;
+    }
+
+    private String asString(final Object value) {
+        return AsStringConverter.asString(value);
     }
 
     /**
