@@ -23,6 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.array.BooleanArrayAsStringConverter;
+import ru.d_shap.assertions.array.ByteArrayAsStringConverter;
+import ru.d_shap.assertions.array.DoubleArrayAsStringConverter;
+import ru.d_shap.assertions.array.FloatArrayAsStringConverter;
+import ru.d_shap.assertions.array.IntArrayAsStringConverter;
+import ru.d_shap.assertions.array.LongArrayAsStringConverter;
+import ru.d_shap.assertions.array.ObjectArrayAsStringConverter;
+import ru.d_shap.assertions.array.ShortArrayAsStringConverter;
 import ru.d_shap.assertions.collection.CollectionAsStringConverter;
 import ru.d_shap.assertions.collection.MapAsStringConverter;
 import ru.d_shap.assertions.core.ClassAsStringConverter;
@@ -38,12 +45,24 @@ final class AsStringConverter {
     private static final List<BaseAsStringConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(5);
+        CONVERTERS = new ArrayList<>(13);
+
         CONVERTERS.add(new CharAsStringConverter());
+
         CONVERTERS.add(new ClassAsStringConverter());
+
         CONVERTERS.add(new CollectionAsStringConverter());
         CONVERTERS.add(new MapAsStringConverter());
+
         CONVERTERS.add(new BooleanArrayAsStringConverter());
+        CONVERTERS.add(new ByteArrayAsStringConverter());
+        CONVERTERS.add(new CharAsStringConverter());
+        CONVERTERS.add(new DoubleArrayAsStringConverter());
+        CONVERTERS.add(new FloatArrayAsStringConverter());
+        CONVERTERS.add(new IntArrayAsStringConverter());
+        CONVERTERS.add(new LongArrayAsStringConverter());
+        CONVERTERS.add(new ObjectArrayAsStringConverter());
+        CONVERTERS.add(new ShortArrayAsStringConverter());
     }
 
     private AsStringConverter() {
