@@ -147,9 +147,4 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

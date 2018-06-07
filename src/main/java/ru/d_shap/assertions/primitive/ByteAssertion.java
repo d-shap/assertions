@@ -147,9 +147,4 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

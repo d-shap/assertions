@@ -237,9 +237,4 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

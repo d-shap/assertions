@@ -147,9 +147,4 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }

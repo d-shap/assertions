@@ -235,33 +235,4 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof Character) {
-            return asSymbolAndCodeString((char) value, (char) value);
-        } else if (value instanceof Integer) {
-            int code = (int) value;
-            char symbol = (char) code;
-            if (symbol == code) {
-                return asSymbolAndCodeString(symbol, code);
-            } else {
-                return asCodeString(code);
-            }
-        } else {
-            return value.toString();
-        }
-    }
-
-    private String asSymbolAndCodeString(final char symbol, final int code) {
-        if (Character.isLetterOrDigit(symbol)) {
-            return symbol + "(" + code + ")";
-        } else {
-            return asCodeString(code);
-        }
-    }
-
-    private String asCodeString(final int code) {
-        return " (" + code + ")";
-    }
-
 }

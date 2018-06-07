@@ -237,9 +237,4 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
         }
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        return value.toString();
-    }
-
 }
