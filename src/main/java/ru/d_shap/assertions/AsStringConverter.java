@@ -22,6 +22,7 @@ package ru.d_shap.assertions;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.d_shap.assertions.array.BooleanArrayAsStringConverter;
 import ru.d_shap.assertions.collection.CollectionAsStringConverter;
 import ru.d_shap.assertions.collection.MapAsStringConverter;
 import ru.d_shap.assertions.core.ClassAsStringConverter;
@@ -37,11 +38,12 @@ final class AsStringConverter {
     private static final List<BaseAsStringConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(4);
+        CONVERTERS = new ArrayList<>(5);
         CONVERTERS.add(new CharAsStringConverter());
         CONVERTERS.add(new ClassAsStringConverter());
         CONVERTERS.add(new CollectionAsStringConverter());
         CONVERTERS.add(new MapAsStringConverter());
+        CONVERTERS.add(new BooleanArrayAsStringConverter());
     }
 
     private AsStringConverter() {
