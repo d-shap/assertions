@@ -157,7 +157,7 @@ final class FailDescription {
         if (actual == null) {
             actualStr = null;
         } else {
-            actualStr = asString(actual);
+            actualStr = AsStringConverter.asString(actual);
         }
         _actual = "<" + actualStr + ">";
         return this;
@@ -176,7 +176,7 @@ final class FailDescription {
         if (expected == null) {
             expectedStr = null;
         } else {
-            expectedStr = asString(expected);
+            expectedStr = AsStringConverter.asString(expected, assertion.getActualValueClass());
         }
         _expected = "<" + expectedStr + ">";
         return this;
@@ -196,20 +196,16 @@ final class FailDescription {
         if (expectedFrom == null) {
             expectedFromStr = null;
         } else {
-            expectedFromStr = asString(expectedFrom);
+            expectedFromStr = AsStringConverter.asString(expectedFrom, assertion.getActualValueClass());
         }
         String expectedToStr;
         if (expectedTo == null) {
             expectedToStr = null;
         } else {
-            expectedToStr = asString(expectedTo);
+            expectedToStr = AsStringConverter.asString(expectedTo, assertion.getActualValueClass());
         }
         _expected = "<" + expectedFromStr + ":" + expectedToStr + ">";
         return this;
-    }
-
-    private String asString(final Object value) {
-        return AsStringConverter.asString(value);
     }
 
     /**
