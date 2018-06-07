@@ -492,13 +492,4 @@ public class ShortBufferAssertion extends BufferAssertion<ShortBuffer, Short> {
         return result;
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof ShortBuffer) {
-            return createList(value, false).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

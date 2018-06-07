@@ -348,13 +348,4 @@ public class IntBufferAssertion extends BufferAssertion<IntBuffer, Integer> {
         return result;
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof IntBuffer) {
-            return createList(value, false).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

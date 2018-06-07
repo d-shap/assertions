@@ -348,13 +348,4 @@ public class DoubleBufferAssertion extends BufferAssertion<DoubleBuffer, Double>
         return result;
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof DoubleBuffer) {
-            return createList(value, false).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

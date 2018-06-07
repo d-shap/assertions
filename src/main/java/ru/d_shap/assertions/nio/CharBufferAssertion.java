@@ -492,13 +492,4 @@ public class CharBufferAssertion extends BufferAssertion<CharBuffer, Character> 
         return result;
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof CharBuffer) {
-            return createList(value, false).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }
