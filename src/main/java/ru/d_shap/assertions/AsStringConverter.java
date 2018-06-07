@@ -24,6 +24,7 @@ import java.util.List;
 
 import ru.d_shap.assertions.collection.CollectionAsStringConverter;
 import ru.d_shap.assertions.collection.MapAsStringConverter;
+import ru.d_shap.assertions.core.ClassAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
 
 /**
@@ -36,8 +37,9 @@ final class AsStringConverter {
     private static final List<BaseAsStringConverter<?>> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(3);
+        CONVERTERS = new ArrayList<>(4);
         CONVERTERS.add(new CharAsStringConverter());
+        CONVERTERS.add(new ClassAsStringConverter());
         CONVERTERS.add(new CollectionAsStringConverter());
         CONVERTERS.add(new MapAsStringConverter());
     }
