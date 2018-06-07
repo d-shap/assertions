@@ -3628,11 +3628,6 @@ public final class BufferAssertionTest extends AssertionTest {
             return result;
         }
 
-        @Override
-        protected String asString(final Object value) {
-            return value.toString();
-        }
-
     }
 
 }
