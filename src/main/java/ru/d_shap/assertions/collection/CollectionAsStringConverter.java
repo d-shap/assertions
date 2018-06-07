@@ -19,29 +19,29 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
-import java.util.List;
+import java.util.Collection;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
 
 /**
- * Value to string converter for the list.
+ * Value to string converter for the collection.
  *
  * @author Dmitry Shapovalov
  */
-public class ListAsStringConverter extends BaseAsStringConverter<List<?>> {
+public class CollectionAsStringConverter extends BaseAsStringConverter<Collection<?>> {
 
     /**
      * Create new object.
      */
-    public ListAsStringConverter() {
+    public CollectionAsStringConverter() {
         super();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<List<?>> getValueClass() {
-        Class<?> rawActualValueClass = List.class;
-        return (Class<List<?>>) rawActualValueClass;
+    protected final Class<Collection<?>> getValueClass() {
+        Class<?> rawActualValueClass = Collection.class;
+        return (Class<Collection<?>>) rawActualValueClass;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ListAsStringConverter extends BaseAsStringConverter<List<?>> {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
         boolean first = true;
-        for (Object element : (List<?>) value) {
+        for (Object element : (Collection<?>) value) {
             if (first) {
                 first = false;
             } else {
