@@ -48,8 +48,11 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Map<K, V>> getActualValueClass() {
-        Class<?> rawActualValueClass = Map.class;
-        return (Class<Map<K, V>>) rawActualValueClass;
+        return (Class<Map<K, V>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Map.class;
     }
 
     /**

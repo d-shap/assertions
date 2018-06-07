@@ -46,8 +46,11 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Set<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = Set.class;
-        return (Class<Set<E>>) rawActualValueClass;
+        return (Class<Set<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Set.class;
     }
 
     /**

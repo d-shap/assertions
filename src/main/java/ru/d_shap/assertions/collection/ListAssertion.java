@@ -48,8 +48,11 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<List<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = List.class;
-        return (Class<List<E>>) rawActualValueClass;
+        return (Class<List<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return List.class;
     }
 
     /**

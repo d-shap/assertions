@@ -41,8 +41,11 @@ public class ObjectArrayAssertion<E> extends ArrayAssertion<E[], E> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<E[]> getActualValueClass() {
-        Class<?> rawActualValueClass = Object[].class;
-        return (Class<E[]>) rawActualValueClass;
+        return (Class<E[]>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Object[].class;
     }
 
     /**

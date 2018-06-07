@@ -40,8 +40,11 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Comparable<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = Comparable.class;
-        return (Class<Comparable<E>>) rawActualValueClass;
+        return (Class<Comparable<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Comparable.class;
     }
 
     /**

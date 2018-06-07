@@ -47,8 +47,11 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<SortedSet<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = SortedSet.class;
-        return (Class<SortedSet<E>>) rawActualValueClass;
+        return (Class<SortedSet<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return SortedSet.class;
     }
 
     /**

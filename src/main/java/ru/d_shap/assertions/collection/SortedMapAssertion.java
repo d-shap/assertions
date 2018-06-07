@@ -53,8 +53,11 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<SortedMap<K, V>> getActualValueClass() {
-        Class<?> rawActualValueClass = SortedMap.class;
-        return (Class<SortedMap<K, V>>) rawActualValueClass;
+        return (Class<SortedMap<K, V>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return SortedMap.class;
     }
 
     /**

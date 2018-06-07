@@ -47,8 +47,11 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Iterator<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = Iterator.class;
-        return (Class<Iterator<E>>) rawActualValueClass;
+        return (Class<Iterator<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Iterator.class;
     }
 
     /**

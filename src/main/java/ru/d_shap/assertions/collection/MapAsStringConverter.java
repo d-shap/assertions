@@ -40,8 +40,11 @@ public class MapAsStringConverter extends BaseAsStringConverter<Map<?, ?>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Map<?, ?>> getValueClass() {
-        Class<?> rawActualValueClass = Map.class;
-        return (Class<Map<?, ?>>) rawActualValueClass;
+        return (Class<Map<?, ?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Map.class;
     }
 
     @Override

@@ -38,8 +38,11 @@ public class ClassAsStringConverter extends BaseAsStringConverter<Class<?>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Class<?>> getValueClass() {
-        Class<?> rawActualValueClass = Class.class;
-        return (Class<Class<?>>) rawActualValueClass;
+        return (Class<Class<?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Class.class;
     }
 
     @Override

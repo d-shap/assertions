@@ -44,8 +44,11 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Class<?>> getActualValueClass() {
-        Class<?> rawActualValueClass = Class.class;
-        return (Class<Class<?>>) rawActualValueClass;
+        return (Class<Class<?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Class.class;
     }
 
     /**

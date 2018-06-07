@@ -46,8 +46,11 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Iterable<E>> getActualValueClass() {
-        Class<?> rawActualValueClass = Iterable.class;
-        return (Class<Iterable<E>>) rawActualValueClass;
+        return (Class<Iterable<E>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Iterable.class;
     }
 
     /**

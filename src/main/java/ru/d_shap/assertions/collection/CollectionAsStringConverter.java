@@ -40,8 +40,11 @@ public class CollectionAsStringConverter extends BaseAsStringConverter<Collectio
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<Collection<?>> getValueClass() {
-        Class<?> rawActualValueClass = Collection.class;
-        return (Class<Collection<?>>) rawActualValueClass;
+        return (Class<Collection<?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Collection.class;
     }
 
     @Override
