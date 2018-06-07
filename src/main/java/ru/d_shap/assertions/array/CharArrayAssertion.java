@@ -263,13 +263,4 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         return ValueConverter.toCharacterList((char[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof char[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

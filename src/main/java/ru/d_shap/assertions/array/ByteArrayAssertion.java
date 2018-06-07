@@ -263,13 +263,4 @@ public class ByteArrayAssertion extends ArrayAssertion<byte[], Byte> {
         return ValueConverter.toByteList((byte[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof byte[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

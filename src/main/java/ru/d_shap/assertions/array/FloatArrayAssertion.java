@@ -191,13 +191,4 @@ public class FloatArrayAssertion extends ArrayAssertion<float[], Float> {
         return ValueConverter.toFloatList((float[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof float[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

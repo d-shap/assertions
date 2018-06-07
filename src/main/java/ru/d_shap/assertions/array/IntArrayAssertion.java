@@ -191,13 +191,4 @@ public class IntArrayAssertion extends ArrayAssertion<int[], Integer> {
         return ValueConverter.toIntegerList((int[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof int[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

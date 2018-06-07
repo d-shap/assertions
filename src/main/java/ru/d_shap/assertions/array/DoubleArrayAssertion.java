@@ -191,13 +191,4 @@ public class DoubleArrayAssertion extends ArrayAssertion<double[], Double> {
         return ValueConverter.toDoubleList((double[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof double[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

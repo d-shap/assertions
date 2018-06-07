@@ -41,11 +41,8 @@ public class ObjectArrayAssertion<E> extends ArrayAssertion<E[], E> {
     @Override
     @SuppressWarnings("unchecked")
     protected final Class<E[]> getActualValueClass() {
-        return (Class<E[]>) getRawActualValueClass();
-    }
-
-    private Class<?> getRawActualValueClass() {
-        return Object[].class;
+        Class<?> rawActualValueClass = Object[].class;
+        return (Class<E[]>) rawActualValueClass;
     }
 
     /**
@@ -184,15 +181,6 @@ public class ObjectArrayAssertion<E> extends ArrayAssertion<E[], E> {
     @SuppressWarnings("unchecked")
     final List<E> createList(final Object value) {
         return ValueConverter.toObjectList((E[]) value);
-    }
-
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof Object[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
     }
 
 }

@@ -263,13 +263,4 @@ public class ShortArrayAssertion extends ArrayAssertion<short[], Short> {
         return ValueConverter.toShortList((short[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof short[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }

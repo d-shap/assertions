@@ -191,13 +191,4 @@ public class LongArrayAssertion extends ArrayAssertion<long[], Long> {
         return ValueConverter.toLongList((long[]) value);
     }
 
-    @Override
-    protected final String asString(final Object value) {
-        if (value instanceof long[]) {
-            return createList(value).toString();
-        } else {
-            return value.toString();
-        }
-    }
-
 }
