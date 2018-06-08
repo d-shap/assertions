@@ -25,7 +25,7 @@ import java.util.List;
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
- * Value converter for the byte array to list.
+ * Value converter from the byte array to the list.
  *
  * @author Dmitry Shapovalov
  */

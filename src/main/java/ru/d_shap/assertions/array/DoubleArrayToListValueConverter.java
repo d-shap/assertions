@@ -25,7 +25,7 @@ import java.util.List;
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
- * Value converter for the double array to list.
+ * Value converter from the double array to the list.
  *
  * @author Dmitry Shapovalov
  */

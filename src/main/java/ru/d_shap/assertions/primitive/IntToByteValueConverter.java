@@ -22,7 +22,7 @@ package ru.d_shap.assertions.primitive;
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
- * Value converter for the int to byte.
+ * Value converter from the int to the byte.
  *
  * @author Dmitry Shapovalov
  */

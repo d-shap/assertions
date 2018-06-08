@@ -22,7 +22,7 @@ package ru.d_shap.assertions.primitive;
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
- * Value converter for the int to char.
+ * Value converter from the int to the char.
  *
  * @author Dmitry Shapovalov
  */

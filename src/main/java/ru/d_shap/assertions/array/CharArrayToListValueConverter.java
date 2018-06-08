@@ -25,7 +25,7 @@ import java.util.List;
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
- * Value converter for the char array to list.
+ * Value converter from the char array to the list.
  *
  * @author Dmitry Shapovalov
  */
