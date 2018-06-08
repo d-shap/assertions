@@ -100,6 +100,30 @@ public final class CharAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<Z(90)> but was:<a(97)>");
         }
+        try {
+            initialize(Raw.charAssertion(), 'a').isEqualTo(10000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:< (10000)> but was:<a(97)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), 'a', "Message").isEqualTo(10000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:< (10000)> but was:<a(97)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), 'a').isEqualTo(100000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<100000> but was:<a(97)>");
+        }
+        try {
+            initialize(Raw.charAssertion(), 'a', "Message").isEqualTo(100000);
+            Assertions.fail("CharAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<100000> but was:<a(97)>");
+        }
     }
 
     /**
