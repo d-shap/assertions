@@ -49,7 +49,7 @@ public class ByteArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value) {
+    protected final boolean canConvert(final Object value) {
         return true;
     }
 
