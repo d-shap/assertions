@@ -19,9 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.primitive;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ru.d_shap.assertions.BaseValueConverter;
 
 /**
@@ -49,7 +46,7 @@ public class IntToCharValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value) {
+    protected final boolean canConvert(final Object value) {
         int code = (int) value;
         char symbol = (char) code;
         return code == symbol;
@@ -57,11 +54,7 @@ public class IntToCharValueConverter extends BaseValueConverter {
 
     @Override
     protected final Object convert(final Object value) {
-        List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
-        for (boolean element : (boolean[]) value) {
-            list.add(element);
-        }
-        return list;
+        return (char) (int) value;
     }
 
 }
