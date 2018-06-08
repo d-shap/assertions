@@ -100,6 +100,18 @@ public final class ByteAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20> but was:<10>");
         }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(130);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<130> but was:<10>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10, "Message").isEqualTo(130);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<130> but was:<10>");
+        }
     }
 
     /**
