@@ -49,6 +49,11 @@ public class IntArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
+    protected boolean canConvert(final Object value) {
+        return true;
+    }
+
+    @Override
     protected final Object convert(final Object value) {
         List<Integer> list = new ArrayList<>(((int[]) value).length);
         for (int element : (int[]) value) {

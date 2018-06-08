@@ -49,6 +49,11 @@ public class ObjectArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
+    protected boolean canConvert(final Object value) {
+        return true;
+    }
+
+    @Override
     protected final Object convert(final Object value) {
         return Arrays.asList((Object[]) value);
     }

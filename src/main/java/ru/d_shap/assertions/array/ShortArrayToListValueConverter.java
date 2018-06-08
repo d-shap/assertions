@@ -49,6 +49,11 @@ public class ShortArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
+    protected boolean canConvert(final Object value) {
+        return true;
+    }
+
+    @Override
     protected final Object convert(final Object value) {
         List<Short> list = new ArrayList<>(((short[]) value).length);
         for (short element : (short[]) value) {

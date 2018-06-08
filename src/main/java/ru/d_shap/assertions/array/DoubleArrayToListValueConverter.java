@@ -49,6 +49,11 @@ public class DoubleArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
+    protected boolean canConvert(final Object value) {
+        return true;
+    }
+
+    @Override
     protected final Object convert(final Object value) {
         List<Double> list = new ArrayList<>(((double[]) value).length);
         for (double element : (double[]) value) {
