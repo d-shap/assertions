@@ -42,12 +42,12 @@ public class CharAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected final String asString(final Object value) {
-        int code = (char) value;
-        char symbol = (char) code;
-        if (Character.isLetterOrDigit(symbol)) {
-            return symbol + "(" + code + ")";
+        int intValue = (char) value;
+        char charValue = (char) value;
+        if (Character.isLetterOrDigit(charValue)) {
+            return charValue + "(" + intValue + ")";
         } else {
-            return " (" + code + ")";
+            return " (" + intValue + ")";
         }
     }
 

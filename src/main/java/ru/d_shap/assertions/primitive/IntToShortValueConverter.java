@@ -47,9 +47,9 @@ public class IntToShortValueConverter extends BaseValueConverter {
 
     @Override
     protected final boolean canConvert(final Object value) {
-        int code = (int) value;
-        short symbol = (short) code;
-        return code == symbol;
+        int intValue = (int) value;
+        short shortValue = (short) intValue;
+        return intValue == shortValue;
     }
 
     @Override

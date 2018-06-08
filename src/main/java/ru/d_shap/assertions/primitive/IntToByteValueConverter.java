@@ -47,9 +47,9 @@ public class IntToByteValueConverter extends BaseValueConverter {
 
     @Override
     protected final boolean canConvert(final Object value) {
-        int code = (int) value;
-        byte symbol = (byte) code;
-        return code == symbol;
+        int intValue = (int) value;
+        byte byteValue = (byte) intValue;
+        return intValue == byteValue;
     }
 
     @Override
