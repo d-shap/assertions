@@ -48,6 +48,14 @@ public abstract class BaseValueConverter {
     protected abstract Class<?> getTargetClass();
 
     /**
+     * Check if the value can be converted to the target class.
+     *
+     * @param value the value.
+     * @return true if the value can be converted to the target class.
+     */
+    protected abstract boolean canConvert(Object value);
+
+    /**
      * Get the converted value with the target class.
      *
      * @param value the value.
