@@ -153,7 +153,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     }
 
     private void containsAll(final List<E> expected) {
-        checkArgumentIsNotEmptyTrue(expected.size() == 0);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<?> actualListCopy = new ArrayList<>(getActual());
         for (E expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
@@ -193,7 +193,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     }
 
     private void containsAllInOrder(final List<E> expected) {
-        checkArgumentIsNotEmptyTrue(expected.size() == 0);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<?> actualListCopy = new ArrayList<>(getActual());
         for (E expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
@@ -317,7 +317,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     }
 
     private void containsAny(final List<E> expected) {
-        checkArgumentIsNotEmptyFalse(expected.size() == 0);
+        checkArgumentIsNotEmptyFalse(expected.isEmpty());
         List<?> actualListCopy = new ArrayList<>(getActual());
         boolean found = false;
         for (E expectedItem : expected) {
@@ -360,7 +360,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     }
 
     private void containsNone(final List<E> expected) {
-        checkArgumentIsNotEmptyTrue(expected.size() == 0);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<?> actualListCopy = new ArrayList<>(getActual());
         for (E expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
