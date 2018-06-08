@@ -167,6 +167,10 @@ public abstract class BaseAssertion<T> {
         return assertion;
     }
 
+    protected final <V> V convert(final Object value, final Class<?> targetClass) {
+        return ValueConverter.convert(value, targetClass);
+    }
+
     /**
      * Make assertion of the specified type about the same actual.
      *
