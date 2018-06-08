@@ -75,8 +75,8 @@ final class ValueConverter {
             BaseValueConverter converter = CONVERTERS.get(i);
             boolean valueClassValid = converter.getValueClass().isAssignableFrom(valueClass);
             boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
-            boolean canConvert = converter.canConvert(value);
-            if (valueClassValid && targetClassValid && canConvert) {
+            boolean canConvert = valueClassValid && targetClassValid && converter.canConvert(value);
+            if (canConvert) {
                 return converter.convert(value);
             }
         }
