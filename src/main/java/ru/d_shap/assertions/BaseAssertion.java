@@ -172,7 +172,7 @@ public abstract class BaseAssertion<T> {
      *
      * @param value       the value.
      * @param targetClass the target class.
-     * @param <V>the      generic type of the value converted to the target class.
+     * @param <V>         the generic type of the value converted to the target class.
      * @return the value converted to the target class.
      */
     protected final <V> V convertValue(final Object value, final Class<?> targetClass) {
