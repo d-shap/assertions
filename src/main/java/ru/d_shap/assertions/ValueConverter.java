@@ -31,6 +31,7 @@ import ru.d_shap.assertions.array.IntArrayToListValueConverter;
 import ru.d_shap.assertions.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
 import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
+import ru.d_shap.assertions.core.IterableToListValueConverter;
 import ru.d_shap.assertions.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.primitive.IntToShortValueConverter;
@@ -45,11 +46,13 @@ final class ValueConverter {
     private static final List<BaseValueConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(9);
+        CONVERTERS = new ArrayList<>(13);
 
         CONVERTERS.add(new IntToByteValueConverter());
         CONVERTERS.add(new IntToCharValueConverter());
         CONVERTERS.add(new IntToShortValueConverter());
+
+        CONVERTERS.add(new IterableToListValueConverter());
 
         CONVERTERS.add(new BooleanArrayToListValueConverter());
         CONVERTERS.add(new ByteArrayToListValueConverter());
@@ -66,7 +69,8 @@ final class ValueConverter {
         super();
     }
 
-    static Object convert(final Object value, final Class<?> targetClass) {
+    @SuppressWarnings("unchecked")
+    static <V> V convert(final Object value, final Class<?> targetClass) {
         if (value == null) {
             return null;
         }
@@ -77,10 +81,10 @@ final class ValueConverter {
             boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
             boolean canConvert = valueClassValid && targetClassValid && converter.canConvert(value);
             if (canConvert) {
-                return converter.convert(value);
+                return (V) converter.convert(value);
             }
         }
-        return value;
+        return (V) value;
     }
 
 }
