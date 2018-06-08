@@ -100,6 +100,18 @@ public final class ShortAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20> but was:<10>");
         }
+        try {
+            initialize(Raw.shortAssertion(), (short) 10).isEqualTo(1000000);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<1000000> but was:<10>");
+        }
+        try {
+            initialize(Raw.shortAssertion(), (short) 10, "Message").isEqualTo(1000000);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<1000000> but was:<10>");
+        }
     }
 
     /**
