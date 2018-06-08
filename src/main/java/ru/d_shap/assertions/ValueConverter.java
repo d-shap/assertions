@@ -31,7 +31,9 @@ import ru.d_shap.assertions.array.IntArrayToListValueConverter;
 import ru.d_shap.assertions.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
 import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
+import ru.d_shap.assertions.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.primitive.IntToCharValueConverter;
+import ru.d_shap.assertions.primitive.IntToShortValueConverter;
 
 /**
  * Class to convert value to the value with the target class.
@@ -45,7 +47,9 @@ final class ValueConverter {
     static {
         CONVERTERS = new ArrayList<>(9);
 
+        CONVERTERS.add(new IntToByteValueConverter());
         CONVERTERS.add(new IntToCharValueConverter());
+        CONVERTERS.add(new IntToShortValueConverter());
 
         CONVERTERS.add(new BooleanArrayToListValueConverter());
         CONVERTERS.add(new ByteArrayToListValueConverter());
