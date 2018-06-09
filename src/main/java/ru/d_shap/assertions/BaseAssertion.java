@@ -19,11 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ru.d_shap.assertions.utils.validator.ActualValueClassValidator;
-import ru.d_shap.assertions.utils.validator.ActualValueValidator;
+import ru.d_shap.assertions.core.ClassActualValueValidator;
 
 /**
  * Base class for all assertions.
@@ -33,7 +29,7 @@ import ru.d_shap.assertions.utils.validator.ActualValueValidator;
  */
 public abstract class BaseAssertion<T> {
 
-    private final List<ActualValueValidator> _actualValidators;
+    private final ActualValueValidator _actualValueValidator;
 
     private boolean _initialized;
 
@@ -46,9 +42,9 @@ public abstract class BaseAssertion<T> {
      */
     protected BaseAssertion() {
         super();
-        _actualValidators = new ArrayList<>();
+        _actualValueValidator = new ActualValueValidator();
         Class<T> actualValueClass = getActualValueClass();
-        ActualValueValidator actualValueValidator = new ActualValueClassValidator(actualValueClass);
+        BaseActualValueValidator actualValueValidator = new ClassActualValueValidator(actualValueClass);
         addActualValueValidator(actualValueValidator);
         _initialized = false;
         _actual = null;
@@ -67,8 +63,8 @@ public abstract class BaseAssertion<T> {
      *
      * @param actualValueValidator validator for the actual value.
      */
-    protected final void addActualValueValidator(final ActualValueValidator actualValueValidator) {
-        _actualValidators.add(actualValueValidator);
+    protected final void addActualValueValidator(final BaseActualValueValidator actualValueValidator) {
+        _actualValueValidator.addActualValueValidator(actualValueValidator);
     }
 
     /**
@@ -103,20 +99,12 @@ public abstract class BaseAssertion<T> {
         if (_initialized) {
             throw new FailDescription(_failDescription, Messages.Fail.ASSERTION_IS_NOT_INITIALIZED).createAssertionError();
         }
-        if (actual == null) {
-            _initialized = true;
-            _actual = null;
-            _failDescription = failDescription;
-        } else {
-            for (ActualValueValidator actualValidator : _actualValidators) {
-                if (!actualValidator.isValid(actual)) {
-                    throw new FailDescription(failDescription, Messages.Fail.ASSERTION_MATCHES).createAssertionError();
-                }
-            }
-            _initialized = true;
-            _actual = actual;
-            _failDescription = failDescription;
+        if (!_actualValueValidator.isValid(actual)) {
+            throw new FailDescription(failDescription, Messages.Fail.ASSERTION_MATCHES).createAssertionError();
         }
+        _initialized = true;
+        _actual = actual;
+        _failDescription = failDescription;
     }
 
     /**
