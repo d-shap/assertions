@@ -47,6 +47,13 @@ public final class IntArrayToCharArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) {
+        for (int i = 0; i < ((int[]) value).length; i++) {
+            int intValue = ((int[]) value)[i];
+            char charValue = (char) intValue;
+            if (intValue != charValue) {
+                return false;
+            }
+        }
         return true;
     }
 

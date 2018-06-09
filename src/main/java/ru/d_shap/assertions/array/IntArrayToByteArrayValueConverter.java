@@ -47,6 +47,13 @@ public final class IntArrayToByteArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) {
+        for (int i = 0; i < ((int[]) value).length; i++) {
+            int intValue = ((int[]) value)[i];
+            byte byteValue = (byte) intValue;
+            if (intValue != byteValue) {
+                return false;
+            }
+        }
         return true;
     }
 
