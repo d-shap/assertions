@@ -70,11 +70,6 @@ final class AsStringConverter {
         super();
     }
 
-    static String asString(final Object value, final Class<?> targetClass) {
-        Object convertedObject = ValueConverter.convert(value, targetClass);
-        return asString(convertedObject);
-    }
-
     static String asString(final Object value) {
         if (value == null) {
             return null;
@@ -87,6 +82,11 @@ final class AsStringConverter {
             }
         }
         return value.toString();
+    }
+
+    static String asString(final Object value, final Class<?> targetClass) {
+        Object convertedObject = ValueConverter.convert(value, targetClass);
+        return asString(convertedObject);
     }
 
 }
