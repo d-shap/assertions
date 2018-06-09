@@ -17,25 +17,32 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.utils.validator;
+package ru.d_shap.assertions.core;
+
+import ru.d_shap.assertions.BaseActualValueValidator;
 
 /**
- * Validator for the actual value. Check if the actual value is the enum class.
+ * Validator for the actual value. Check if the actual value is instance of the specified class.
  *
  * @author Dmitry Shapovalov
  */
-public final class ActualValueEnumValidator implements ActualValueValidator {
+public final class ClassActualValueValidator extends BaseActualValueValidator {
+
+    private final Class<?> _clazz;
 
     /**
      * Create new object.
+     *
+     * @param clazz the specified class.
      */
-    public ActualValueEnumValidator() {
+    public ClassActualValueValidator(final Class<?> clazz) {
         super();
+        _clazz = clazz;
     }
 
     @Override
-    public boolean isValid(final Object actual) {
-        return actual instanceof Class<?> && Enum.class.isAssignableFrom((Class<?>) actual);
+    protected boolean isValid(final Object actual) {
+        return _clazz.isInstance(actual);
     }
 
 }

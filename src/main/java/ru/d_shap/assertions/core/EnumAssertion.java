@@ -24,7 +24,6 @@ import java.lang.reflect.Method;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.utils.validator.ActualValueEnumValidator;
 
 /**
  * Assertions for the enum.
@@ -50,7 +49,7 @@ public class EnumAssertion extends ClassAssertion {
 
     EnumAssertion(final String valuesMethodName, final String valueOfMethodName) {
         super();
-        addActualValueValidator(new ActualValueEnumValidator());
+        addActualValueValidator(new EnumActualValueValidator());
         _valuesMethodName = valuesMethodName;
         _valueOfMethodName = valueOfMethodName;
     }
