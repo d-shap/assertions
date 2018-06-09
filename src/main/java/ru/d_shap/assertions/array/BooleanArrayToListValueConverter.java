@@ -54,7 +54,7 @@ public class BooleanArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
         for (boolean element : (boolean[]) value) {
             list.add(element);

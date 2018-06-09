@@ -53,7 +53,7 @@ public class IntToByteValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         return (byte) (int) value;
     }
 

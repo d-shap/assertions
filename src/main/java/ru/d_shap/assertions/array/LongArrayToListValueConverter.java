@@ -54,7 +54,7 @@ public class LongArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Long> list = new ArrayList<>(((long[]) value).length);
         for (long element : (long[]) value) {
             list.add(element);

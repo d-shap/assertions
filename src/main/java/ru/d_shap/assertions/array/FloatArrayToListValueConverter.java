@@ -54,7 +54,7 @@ public class FloatArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Float> list = new ArrayList<>(((float[]) value).length);
         for (float element : (float[]) value) {
             list.add(element);

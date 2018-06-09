@@ -54,7 +54,7 @@ public class CharArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Character> list = new ArrayList<>(((char[]) value).length);
         for (char element : (char[]) value) {
             list.add(element);

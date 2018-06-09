@@ -54,7 +54,7 @@ public class IterableToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Object> list = new ArrayList<>();
         for (Object element : (Iterable<?>) value) {
             list.add(element);

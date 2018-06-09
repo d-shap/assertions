@@ -54,7 +54,7 @@ public class ByteArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         List<Byte> list = new ArrayList<>(((byte[]) value).length);
         for (byte element : (byte[]) value) {
             list.add(element);

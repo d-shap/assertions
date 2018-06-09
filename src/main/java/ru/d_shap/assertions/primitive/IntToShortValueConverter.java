@@ -53,7 +53,7 @@ public class IntToShortValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         return (short) (int) value;
     }
 

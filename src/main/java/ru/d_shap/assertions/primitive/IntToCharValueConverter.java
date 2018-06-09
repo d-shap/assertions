@@ -53,7 +53,7 @@ public class IntToCharValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Object convert(final Object value) {
+    protected final Object convert(final Object value, final Object... arguments) {
         return (char) (int) value;
     }
 

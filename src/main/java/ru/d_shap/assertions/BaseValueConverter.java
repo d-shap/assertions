@@ -58,21 +58,23 @@ public abstract class BaseValueConverter {
     /**
      * Get the value converted to the target class.
      *
-     * @param value the value.
+     * @param value     the value.
+     * @param arguments conversion arguments.
      * @return the value converted to the target class.
      */
-    protected abstract Object convert(Object value);
+    protected abstract Object convert(Object value, Object... arguments);
 
     /**
      * Get the value converted to the target class.
      *
      * @param value       the value.
      * @param targetClass the target class.
+     * @param arguments   conversion arguments.
      * @param <V>         the generic type of the value converted to the target class.
      * @return the value converted to the target class.
      */
-    protected final <V> V convertValue(final Object value, final Class<?> targetClass) {
-        return ValueConverter.convert(value, targetClass);
+    protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
+        return ValueConverter.convert(value, targetClass, arguments);
     }
 
 }
