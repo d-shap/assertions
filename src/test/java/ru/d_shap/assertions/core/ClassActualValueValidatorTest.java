@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.utils.validator;
+package ru.d_shap.assertions.core;
 
 import org.junit.Test;
 
@@ -25,27 +25,28 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 
 /**
- * Tests for {@link ActualValueEnumValidator}.
+ * Tests for {@link ClassActualValueValidator}.
  *
  * @author Dmitry Shapovalov
  */
-public final class ActualValueEnumValidatorTest extends AssertionTest {
+public final class ClassActualValueValidatorTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public ActualValueEnumValidatorTest() {
+    public ClassActualValueValidatorTest() {
         super();
     }
 
     /**
-     * {@link ActualValueEnumValidator} class test.
+     * {@link ClassActualValueValidator} class test.
      */
     @Test
     public void isValidTest() {
-        Assertions.assertThat(new ActualValueEnumValidator().isValid(Values.class)).isTrue();
-        Assertions.assertThat(new ActualValueEnumValidator().isValid(Object.class)).isFalse();
-        Assertions.assertThat(new ActualValueEnumValidator().isValid("value")).isFalse();
+        Assertions.assertThat(new ClassActualValueValidator(String.class).isValid("value")).isTrue();
+        Assertions.assertThat(new ClassActualValueValidator(Object.class).isValid("value")).isTrue();
+        Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid("value")).isFalse();
+        Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid(new Object())).isFalse();
     }
 
 }
