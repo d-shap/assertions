@@ -75,8 +75,23 @@ final class ValueConverter {
         super();
     }
 
-    @SuppressWarnings("unchecked")
-    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) {
+    static boolean canConvert(final Object value, final Class<?> targetClass, final Object... arguments) {
+        if (value == null) {
+            return false;
+        }
+        Class<?> valueClass = value.getClass();
+        for (int i = 0; i < CONVERTERS.size(); i++) {
+            BaseValueConverter converter = CONVERTERS.get(i);
+            boolean valueClassValid = converter.getValueClass().isAssignableFrom(valueClass);
+            boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
+            if (valueClassValid && targetClassValid) {
+                return converter.canConvert(value);
+            }
+        }
+        return false;
+    }
+
+    static Object convert(final Object value, final Class<?> targetClass, final Object... arguments) {
         if (value == null) {
             return null;
         }
@@ -87,10 +102,10 @@ final class ValueConverter {
             boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
             boolean canConvert = valueClassValid && targetClassValid && converter.canConvert(value);
             if (canConvert) {
-                return (V) converter.convert(value, arguments);
+                return converter.convert(value, arguments);
             }
         }
-        return (V) value;
+        return value;
     }
 
 }
