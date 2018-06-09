@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class MapAsStringConverter extends BaseAsStringConverter {
+public final class MapAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,27 +38,27 @@ public class MapAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Map.class;
     }
 
     @Override
-    protected final String asString(final Object value) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append('[');
+    protected String asString(final Object value) {
+        StringBuilder result = new StringBuilder();
+        result.append('{');
         boolean first = true;
         for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
             if (first) {
                 first = false;
             } else {
-                stringBuilder.append(", ");
+                result.append(", ");
             }
-            stringBuilder.append(getValueAsString(entry.getKey()));
-            stringBuilder.append('=');
-            stringBuilder.append(getValueAsString(entry.getValue()));
+            result.append(getValueAsString(entry.getKey()));
+            result.append('=');
+            result.append(getValueAsString(entry.getValue()));
         }
-        stringBuilder.append(']');
-        return stringBuilder.toString();
+        result.append('}');
+        return result.toString();
     }
 
 }

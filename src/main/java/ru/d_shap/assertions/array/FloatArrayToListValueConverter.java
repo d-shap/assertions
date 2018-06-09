@@ -29,7 +29,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class FloatArrayToListValueConverter extends BaseValueConverter {
+public final class FloatArrayToListValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -39,27 +39,27 @@ public class FloatArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return float[].class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
-        List<Float> list = new ArrayList<>(((float[]) value).length);
+    protected Object convert(final Object value, final Object... arguments) {
+        List<Float> result = new ArrayList<>(((float[]) value).length);
         for (float element : (float[]) value) {
-            list.add(element);
+            result.add(element);
         }
-        return list;
+        return result;
     }
 
 }

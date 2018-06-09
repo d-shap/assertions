@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class ByteArrayAsStringConverter extends BaseAsStringConverter {
+public final class ByteArrayAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,12 +38,12 @@ public class ByteArrayAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return byte[].class;
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected String asString(final Object value) {
         return getValueAsString(value, List.class);
     }
 

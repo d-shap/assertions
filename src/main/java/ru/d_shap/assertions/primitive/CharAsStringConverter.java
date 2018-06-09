@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class CharAsStringConverter extends BaseAsStringConverter {
+public final class CharAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -36,12 +36,12 @@ public class CharAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected final Class<Character> getValueClass() {
+    protected Class<Character> getValueClass() {
         return Character.class;
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected String asString(final Object value) {
         int intValue = (char) value;
         char charValue = (char) value;
         if (Character.isLetterOrDigit(charValue)) {

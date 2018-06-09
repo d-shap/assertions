@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntToByteValueConverter extends BaseValueConverter {
+public final class IntToByteValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -36,24 +36,24 @@ public class IntToByteValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Integer.class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return Byte.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         int intValue = (int) value;
         byte byteValue = (byte) intValue;
         return intValue == byteValue;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) {
         return (byte) (int) value;
     }
 

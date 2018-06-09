@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntToCharValueConverter extends BaseValueConverter {
+public final class IntToCharValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -36,24 +36,24 @@ public class IntToCharValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Integer.class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return Character.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         int intValue = (int) value;
         char charValue = (char) intValue;
         return intValue == charValue;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) {
         return (char) (int) value;
     }
 

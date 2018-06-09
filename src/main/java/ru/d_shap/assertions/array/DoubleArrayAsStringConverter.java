@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class DoubleArrayAsStringConverter extends BaseAsStringConverter {
+public final class DoubleArrayAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,12 +38,12 @@ public class DoubleArrayAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return double[].class;
     }
 
     @Override
-    protected final String asString(final Object value) {
+    protected String asString(final Object value) {
         return getValueAsString(value, List.class);
     }
 

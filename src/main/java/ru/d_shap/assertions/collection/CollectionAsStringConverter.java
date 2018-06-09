@@ -28,7 +28,7 @@ import ru.d_shap.assertions.BaseAsStringConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class CollectionAsStringConverter extends BaseAsStringConverter {
+public final class CollectionAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
@@ -38,25 +38,25 @@ public class CollectionAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Collection.class;
     }
 
     @Override
-    protected final String asString(final Object value) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append('[');
+    protected String asString(final Object value) {
+        StringBuilder result = new StringBuilder();
+        result.append('[');
         boolean first = true;
         for (Object element : (Collection<?>) value) {
             if (first) {
                 first = false;
             } else {
-                stringBuilder.append(", ");
+                result.append(", ");
             }
-            stringBuilder.append(getValueAsString(element));
+            result.append(getValueAsString(element));
         }
-        stringBuilder.append(']');
-        return stringBuilder.toString();
+        result.append(']');
+        return result.toString();
     }
 
 }

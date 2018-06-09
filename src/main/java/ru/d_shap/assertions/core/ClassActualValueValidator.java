@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseActualValueValidator;
  *
  * @author Dmitry Shapovalov
  */
-public class ClassActualValueValidator extends BaseActualValueValidator {
+public final class ClassActualValueValidator extends BaseActualValueValidator {
 
     private final Class<?> _clazz;
 
@@ -41,7 +41,7 @@ public class ClassActualValueValidator extends BaseActualValueValidator {
     }
 
     @Override
-    protected final boolean isValid(final Object actual) {
+    protected boolean isValid(final Object actual) {
         return _clazz.isInstance(actual);
     }
 

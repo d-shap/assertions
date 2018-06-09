@@ -29,7 +29,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IterableToListValueConverter extends BaseValueConverter {
+public final class IterableToListValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -39,27 +39,31 @@ public class IterableToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Iterable.class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
-        List<Object> list = new ArrayList<>();
-        for (Object element : (Iterable<?>) value) {
-            list.add(element);
+    protected Object convert(final Object value, final Object... arguments) {
+        if (value instanceof List) {
+            return value;
+        } else {
+            List<Object> result = new ArrayList<>();
+            for (Object element : (Iterable<?>) value) {
+                result.add(element);
+            }
+            return result;
         }
-        return list;
     }
 
 }

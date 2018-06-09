@@ -29,7 +29,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayToListValueConverter extends BaseValueConverter {
+public final class IntArrayToListValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -39,27 +39,27 @@ public class IntArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return int[].class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
-        List<Integer> list = new ArrayList<>(((int[]) value).length);
+    protected Object convert(final Object value, final Object... arguments) {
+        List<Integer> result = new ArrayList<>(((int[]) value).length);
         for (int element : (int[]) value) {
-            list.add(element);
+            result.add(element);
         }
-        return list;
+        return result;
     }
 
 }

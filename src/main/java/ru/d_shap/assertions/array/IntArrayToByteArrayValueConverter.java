@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayToByteArrayValueConverter extends BaseValueConverter {
+public final class IntArrayToByteArrayValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -36,22 +36,22 @@ public class IntArrayToByteArrayValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return int[].class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return byte[].class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) {
         byte[] result = new byte[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (byte) ((int[]) value)[i];

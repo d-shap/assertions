@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseActualValueValidator;
  *
  * @author Dmitry Shapovalov
  */
-public class EnumActualValueValidator extends BaseActualValueValidator {
+public final class EnumActualValueValidator extends BaseActualValueValidator {
 
     /**
      * Create new object.
@@ -36,7 +36,7 @@ public class EnumActualValueValidator extends BaseActualValueValidator {
     }
 
     @Override
-    protected final boolean isValid(final Object actual) {
+    protected boolean isValid(final Object actual) {
         return actual instanceof Class<?> && Enum.class.isAssignableFrom((Class<?>) actual);
     }
 

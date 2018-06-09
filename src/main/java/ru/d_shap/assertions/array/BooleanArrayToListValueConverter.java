@@ -29,7 +29,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanArrayToListValueConverter extends BaseValueConverter {
+public final class BooleanArrayToListValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -39,27 +39,27 @@ public class BooleanArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return boolean[].class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
-        List<Boolean> list = new ArrayList<>(((boolean[]) value).length);
+    protected Object convert(final Object value, final Object... arguments) {
+        List<Boolean> result = new ArrayList<>(((boolean[]) value).length);
         for (boolean element : (boolean[]) value) {
-            list.add(element);
+            result.add(element);
         }
-        return list;
+        return result;
     }
 
 }

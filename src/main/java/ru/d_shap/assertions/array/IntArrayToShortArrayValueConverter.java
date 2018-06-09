@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayToShortArrayValueConverter extends BaseValueConverter {
+public final class IntArrayToShortArrayValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -36,22 +36,22 @@ public class IntArrayToShortArrayValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return int[].class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return short[].class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         return true;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) {
         short[] result = new short[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (short) ((int[]) value)[i];

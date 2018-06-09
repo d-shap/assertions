@@ -26,7 +26,7 @@ import ru.d_shap.assertions.BaseValueConverter;
  *
  * @author Dmitry Shapovalov
  */
-public class IntToShortValueConverter extends BaseValueConverter {
+public final class IntToShortValueConverter extends BaseValueConverter {
 
     /**
      * Create new object.
@@ -36,24 +36,24 @@ public class IntToShortValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected final Class<?> getValueClass() {
+    protected Class<?> getValueClass() {
         return Integer.class;
     }
 
     @Override
-    protected final Class<?> getTargetClass() {
+    protected Class<?> getTargetClass() {
         return Short.class;
     }
 
     @Override
-    protected final boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value) {
         int intValue = (int) value;
         short shortValue = (short) intValue;
         return intValue == shortValue;
     }
 
     @Override
-    protected final Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) {
         return (short) (int) value;
     }
 
