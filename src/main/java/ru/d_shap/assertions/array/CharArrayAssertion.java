@@ -21,14 +21,18 @@ package ru.d_shap.assertions.array;
 
 import java.util.List;
 
-import ru.d_shap.assertions.utils.ValueConverter;
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.collection.ListAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
  * Assertions for the char array.
  *
  * @author Dmitry Shapovalov
  */
-public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
+public class CharArrayAssertion extends ReferenceAssertion<char[]> {
 
     /**
      * Create new object.
@@ -43,12 +47,46 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
     }
 
     /**
+     * Check if the actual value is empty.
+     */
+    public final void isEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (getActual().length != 0) {
+            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+        }
+    }
+
+    /**
+     * Check if the actual value is null or empty.
+     */
+    public final void isNullOrEmpty() {
+        checkInitialized();
+        if (getActual() != null && getActual().length != 0) {
+            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT empty.
+     */
+    public final void isNotEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (getActual().length == 0) {
+            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+        }
+    }
+
+    /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
      */
     public final void contains(final int expected) {
-        doContains((char) expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().contains((char) expected);
     }
 
     /**
@@ -57,7 +95,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
-        doDoesNotContain((char) expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().doesNotContain((char) expected);
     }
 
     /**
@@ -69,7 +109,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAll(expectedList);
     }
 
     /**
@@ -81,7 +122,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAll(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsAll(expectedList);
     }
 
     /**
@@ -90,7 +133,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Character> expected) {
-        doContainsAll(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsAll(expected);
     }
 
     /**
@@ -102,7 +147,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -114,7 +160,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -123,7 +171,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Character> expected) {
-        doContainsAllInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -135,7 +185,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -147,7 +198,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactly(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -156,7 +209,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Character> expected) {
-        doContainsExactly(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsExactly(expected);
     }
 
     /**
@@ -168,7 +223,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -180,7 +236,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -189,7 +247,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Character> expected) {
-        doContainsExactlyInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -201,7 +261,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAny(expectedList);
     }
 
     /**
@@ -213,7 +274,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsAny(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsAny(expectedList);
     }
 
     /**
@@ -222,7 +285,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Character> expected) {
-        doContainsAny(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsAny(expected);
     }
 
     /**
@@ -234,7 +299,8 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
+        List<Character> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsNone(expectedList);
     }
 
     /**
@@ -246,7 +312,9 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        doContainsNone(ValueConverter.toCharacterObjectArray(expected));
+        char[] expectedBytes = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        createListAssertion().containsNone(expectedList);
     }
 
     /**
@@ -255,12 +323,34 @@ public class CharArrayAssertion extends ArrayAssertion<char[], Character> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Character> expected) {
-        doContainsNone(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().containsNone(expected);
     }
 
-    @Override
-    final List<Character> createList(final Object value) {
-        return ValueConverter.toCharacterList((char[]) value);
+    private ListAssertion<Character> createListAssertion() {
+        List<Character> list = convertValue(getActual(), List.class);
+        return initializeAssertion(Raw.<Character>listAssertion(), list);
+    }
+
+    /**
+     * Make assertion about the actual value's length.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toLength() {
+        checkInitialized();
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.ACTUAL_VALUE_LENGTH);
+    }
+
+    /**
+     * Check if the actual value length is equal to the expected length.
+     *
+     * @param expected the expected length.
+     */
+    public final void hasLength(final int expected) {
+        toLength().isEqualTo(expected);
     }
 
 }
