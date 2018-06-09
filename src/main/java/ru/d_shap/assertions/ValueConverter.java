@@ -70,7 +70,7 @@ final class ValueConverter {
     }
 
     @SuppressWarnings("unchecked")
-    static <V> V convert(final Object value, final Class<?> targetClass) {
+    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) {
         if (value == null) {
             return null;
         }
@@ -81,7 +81,7 @@ final class ValueConverter {
             boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
             boolean canConvert = valueClassValid && targetClassValid && converter.canConvert(value);
             if (canConvert) {
-                return (V) converter.convert(value);
+                return (V) converter.convert(value, arguments);
             }
         }
         return (V) value;
