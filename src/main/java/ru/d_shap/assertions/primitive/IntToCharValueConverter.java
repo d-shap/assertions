@@ -46,7 +46,7 @@ public final class IntToCharValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value, final Object... arguments) {
         int intValue = (int) value;
         char charValue = (char) intValue;
         return intValue == charValue;

@@ -49,7 +49,7 @@ public final class IntArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value, final Object... arguments) {
         return true;
     }
 

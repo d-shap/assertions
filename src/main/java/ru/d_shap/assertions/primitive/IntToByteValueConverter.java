@@ -46,7 +46,7 @@ public final class IntToByteValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value) {
+    protected boolean canConvert(final Object value, final Object... arguments) {
         int intValue = (int) value;
         byte byteValue = (byte) intValue;
         return intValue == byteValue;
