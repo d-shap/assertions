@@ -122,8 +122,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAll(expectedList);
     }
 
@@ -160,8 +160,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
 
@@ -198,8 +198,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsExactly(expectedList);
     }
 
@@ -236,8 +236,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -274,8 +274,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAny(expectedList);
     }
 
@@ -312,8 +312,8 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        short[] expectedBytes = convertValue(expected, short[].class);
-        List<Short> expectedList = convertValue(expectedBytes, List.class);
+        short[] expectedShorts = convertValue(expected, short[].class);
+        List<Short> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsNone(expectedList);
     }
 
