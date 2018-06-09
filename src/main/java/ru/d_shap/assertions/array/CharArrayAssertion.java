@@ -122,8 +122,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsAll(expectedList);
     }
 
@@ -160,8 +160,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
 
@@ -198,8 +198,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsExactly(expectedList);
     }
 
@@ -236,8 +236,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -274,8 +274,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsAny(expectedList);
     }
 
@@ -312,8 +312,8 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedBytes = convertValue(expected, char[].class);
-        List<Character> expectedList = convertValue(expectedBytes, List.class);
+        char[] expectedChars = convertValue(expected, char[].class);
+        List<Character> expectedList = convertValue(expectedChars, List.class);
         createListAssertion().containsNone(expectedList);
     }
 
