@@ -27,7 +27,10 @@ import ru.d_shap.assertions.array.ByteArrayToListValueConverter;
 import ru.d_shap.assertions.array.CharArrayToListValueConverter;
 import ru.d_shap.assertions.array.DoubleArrayToListValueConverter;
 import ru.d_shap.assertions.array.FloatArrayToListValueConverter;
+import ru.d_shap.assertions.array.IntArrayToByteArrayValueConverter;
+import ru.d_shap.assertions.array.IntArrayToCharArrayValueConverter;
 import ru.d_shap.assertions.array.IntArrayToListValueConverter;
+import ru.d_shap.assertions.array.IntArrayToShortArrayValueConverter;
 import ru.d_shap.assertions.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
 import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
@@ -46,7 +49,7 @@ final class ValueConverter {
     private static final List<BaseValueConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(13);
+        CONVERTERS = new ArrayList<>(16);
 
         CONVERTERS.add(new IntToByteValueConverter());
         CONVERTERS.add(new IntToCharValueConverter());
@@ -59,7 +62,10 @@ final class ValueConverter {
         CONVERTERS.add(new CharArrayToListValueConverter());
         CONVERTERS.add(new DoubleArrayToListValueConverter());
         CONVERTERS.add(new FloatArrayToListValueConverter());
+        CONVERTERS.add(new IntArrayToByteArrayValueConverter());
+        CONVERTERS.add(new IntArrayToCharArrayValueConverter());
         CONVERTERS.add(new IntArrayToListValueConverter());
+        CONVERTERS.add(new IntArrayToShortArrayValueConverter());
         CONVERTERS.add(new LongArrayToListValueConverter());
         CONVERTERS.add(new ObjectArrayToListValueConverter());
         CONVERTERS.add(new ShortArrayToListValueConverter());
