@@ -109,7 +109,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
 
@@ -121,7 +121,8 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsAll(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAll(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAll(expectedList);
     }
 
     /**
@@ -133,7 +134,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
 
@@ -145,7 +146,8 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsAllInOrder(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAllInOrder(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -157,7 +159,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
 
@@ -169,7 +171,8 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsExactly(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactly(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -181,7 +184,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -193,7 +196,8 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsExactlyInOrder(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactlyInOrder(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -205,7 +209,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
 
@@ -217,7 +221,8 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsAny(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAny(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAny(expectedList);
     }
 
     /**
@@ -229,7 +234,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Float> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
 
@@ -241,12 +246,13 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
     public final void containsNone(final Iterable<Float> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsNone(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Float> createListAssertion() {
-        List<Float> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.<Float>listAssertion(), list);
+    private ListAssertion<Object> createListAssertion() {
+        List<Object> list = convertValue(getActual(), List.class);
+        return initializeAssertion(Raw.listAssertion(), list);
     }
 
     /**
