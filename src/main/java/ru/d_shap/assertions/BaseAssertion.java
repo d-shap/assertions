@@ -156,30 +156,6 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Check if the value can be converted to the target class.
-     *
-     * @param value       the value.
-     * @param targetClass the target class.
-     * @param arguments   the conversion arguments.
-     * @return true if the value can be converted to the target class.
-     */
-    protected final boolean canConvertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
-        return ValueConverter.canConvert(value, targetClass, arguments);
-    }
-
-    /**
-     * Get the value converted to the target class.
-     *
-     * @param value       the value.
-     * @param targetClass the target class.
-     * @param arguments   the conversion arguments.
-     * @return the value converted to the target class.
-     */
-    protected final Object convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
-        return ValueConverter.convert(value, targetClass, arguments);
-    }
-
-    /**
      * Make assertion of the specified type about the same actual.
      *
      * @param assertion the assertion.
@@ -208,6 +184,19 @@ public abstract class BaseAssertion<T> {
         checkInitialized();
         checkArgumentIsNotNull(assertion);
         return initializeAssertion(assertion, (W) _actual, message);
+    }
+
+    /**
+     * Get the value converted to the target class.
+     *
+     * @param value       the value.
+     * @param targetClass the target class.
+     * @param arguments   the conversion arguments.
+     * @param <V>         the generic type of the value converted to the target class.
+     * @return the value converted to the target class.
+     */
+    protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
+        return ValueConverter.convert(value, targetClass, arguments);
     }
 
     /**
