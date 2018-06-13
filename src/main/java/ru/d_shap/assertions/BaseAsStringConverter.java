@@ -63,10 +63,11 @@ public abstract class BaseAsStringConverter {
      *
      * @param value       the value.
      * @param targetClass the target class.
+     * @param arguments   the conversion arguments.
      * @return the string representation of the value.
      */
-    protected final String getValueAsString(final Object value, final Class<?> targetClass) {
-        return AsStringConverter.asString(value, targetClass);
+    protected final String getValueAsString(final Object value, final Class<?> targetClass, final Object... arguments) {
+        return AsStringConverter.asString(value, targetClass, arguments);
     }
 
 }
