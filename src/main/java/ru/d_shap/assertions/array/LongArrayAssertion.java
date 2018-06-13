@@ -109,7 +109,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
 
@@ -121,7 +121,8 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAll(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAll(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAll(expectedList);
     }
 
     /**
@@ -133,7 +134,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
 
@@ -145,7 +146,8 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAllInOrder(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAllInOrder(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -157,7 +159,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
 
@@ -169,7 +171,8 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsExactly(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactly(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -181,7 +184,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -193,7 +196,8 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsExactlyInOrder(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactlyInOrder(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -205,7 +209,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
 
@@ -217,7 +221,8 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAny(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAny(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsAny(expectedList);
     }
 
     /**
@@ -229,7 +234,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Long> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
 
@@ -241,12 +246,13 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsNone(final Iterable<Long> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsNone(expected);
+        List<Object> expectedList = convertValue(expected, List.class);
+        createListAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Long> createListAssertion() {
-        List<Long> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.<Long>listAssertion(), list);
+    private ListAssertion<Object> createListAssertion() {
+        List<Object> list = convertValue(getActual(), List.class);
+        return initializeAssertion(Raw.listAssertion(), list);
     }
 
     /**
