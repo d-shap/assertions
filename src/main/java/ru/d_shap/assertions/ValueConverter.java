@@ -40,7 +40,7 @@ import ru.d_shap.assertions.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.primitive.IntToShortValueConverter;
 
 /**
- * Class to convert value to the value with the target class.
+ * Class to convert the value to the value with the target class.
  *
  * @author Dmitry Shapovalov
  */
@@ -75,37 +75,26 @@ final class ValueConverter {
         super();
     }
 
-    static boolean canConvert(final Object value, final Class<?> targetClass, final Object... arguments) {
-        if (value == null) {
-            return false;
-        }
-        Class<?> valueClass = value.getClass();
-        for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseValueConverter converter = CONVERTERS.get(i);
-            boolean valueClassValid = converter.getValueClass().isAssignableFrom(valueClass);
-            boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
-            if (valueClassValid && targetClassValid) {
-                return converter.canConvert(value);
-            }
-        }
-        return false;
-    }
-
-    static Object convert(final Object value, final Class<?> targetClass, final Object... arguments) {
+    @SuppressWarnings("unchecked")
+    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) {
         if (value == null) {
             return null;
         }
         Class<?> valueClass = value.getClass();
         for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseValueConverter converter = CONVERTERS.get(i);
-            boolean valueClassValid = converter.getValueClass().isAssignableFrom(valueClass);
-            boolean targetClassValid = converter.getTargetClass().isAssignableFrom(targetClass);
-            boolean canConvert = valueClassValid && targetClassValid && converter.canConvert(value);
-            if (canConvert) {
-                return converter.convert(value, arguments);
+            BaseValueConverter valueConverter = CONVERTERS.get(i);
+            boolean valueClassValid = valueConverter.getValueClass().isAssignableFrom(valueClass);
+            boolean targetClassValid = valueConverter.getTargetClass().isAssignableFrom(targetClass);
+            if (valueClassValid && targetClassValid) {
+                boolean canConvert = valueConverter.canConvert(value, arguments);
+                if (canConvert) {
+                    return (V) valueConverter.convert(value, arguments);
+                } else {
+                    return (V) value;
+                }
             }
         }
-        return value;
+        return (V) value;
     }
 
 }

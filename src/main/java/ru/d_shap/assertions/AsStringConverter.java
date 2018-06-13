@@ -37,7 +37,7 @@ import ru.d_shap.assertions.core.ClassAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
 
 /**
- * Class to convert value to the string representation.
+ * Class to convert the value to the string representation.
  *
  * @author Dmitry Shapovalov
  */
@@ -76,17 +76,17 @@ final class AsStringConverter {
         }
         Class<?> valueClass = value.getClass();
         for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseAsStringConverter converter = CONVERTERS.get(i);
-            if (converter.getValueClass().isAssignableFrom(valueClass)) {
-                return converter.asString(value);
+            BaseAsStringConverter asStringConverter = CONVERTERS.get(i);
+            if (asStringConverter.getValueClass().isAssignableFrom(valueClass)) {
+                return asStringConverter.asString(value);
             }
         }
         return value.toString();
     }
 
-    static String asString(final Object value, final Class<?> targetClass) {
-        Object convertedObject = ValueConverter.convert(value, targetClass);
-        return asString(convertedObject);
+    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) {
+        Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
+        return asString(convertedValue);
     }
 
 }
