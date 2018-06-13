@@ -153,12 +153,7 @@ final class FailDescription {
     FailDescription addActual(final BaseAssertion<?> assertion) {
         _actualDefined = true;
         Object actual = assertion.getActual();
-        String actualStr;
-        if (actual == null) {
-            actualStr = null;
-        } else {
-            actualStr = AsStringConverter.asString(actual);
-        }
+        String actualStr = AsStringConverter.asString(actual);
         _actual = "<" + actualStr + ">";
         return this;
     }
@@ -172,12 +167,7 @@ final class FailDescription {
      */
     FailDescription addExpected(final BaseAssertion<?> assertion, final Object expected) {
         _expectedDefined = true;
-        String expectedStr;
-        if (expected == null) {
-            expectedStr = null;
-        } else {
-            expectedStr = AsStringConverter.asString(expected, assertion.getActualValueClass());
-        }
+        String expectedStr = AsStringConverter.asString(expected, assertion.getActualValueClass());
         _expected = "<" + expectedStr + ">";
         return this;
     }
@@ -192,18 +182,8 @@ final class FailDescription {
      */
     FailDescription addExpected(final BaseAssertion<?> assertion, final Object expectedFrom, final Object expectedTo) {
         _expectedDefined = true;
-        String expectedFromStr;
-        if (expectedFrom == null) {
-            expectedFromStr = null;
-        } else {
-            expectedFromStr = AsStringConverter.asString(expectedFrom, assertion.getActualValueClass());
-        }
-        String expectedToStr;
-        if (expectedTo == null) {
-            expectedToStr = null;
-        } else {
-            expectedToStr = AsStringConverter.asString(expectedTo, assertion.getActualValueClass());
-        }
+        String expectedFromStr = AsStringConverter.asString(expectedFrom, assertion.getActualValueClass());
+        String expectedToStr = AsStringConverter.asString(expectedTo, assertion.getActualValueClass());
         _expected = "<" + expectedFromStr + ":" + expectedToStr + ">";
         return this;
     }
