@@ -108,7 +108,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAll(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -133,7 +132,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAllInOrder(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -158,7 +156,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsExactly(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -183,7 +180,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsExactlyInOrder(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -208,7 +204,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsAny(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -233,7 +228,6 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void containsNone(final long... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }

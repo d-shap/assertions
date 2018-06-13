@@ -108,7 +108,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAll(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -121,7 +120,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAll(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAll(expectedList);
@@ -147,7 +145,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAllInOrder(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -160,7 +157,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAllInOrder(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAllInOrder(expectedList);
@@ -186,7 +182,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsExactly(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -199,7 +194,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsExactly(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsExactly(expectedList);
@@ -225,7 +219,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsExactlyInOrder(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -238,7 +231,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsExactlyInOrder(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
@@ -264,7 +256,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAny(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -277,7 +268,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsAny(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsAny(expectedList);
@@ -303,7 +293,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsNone(final short... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -316,7 +305,6 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void containsNone(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedShorts = convertValue(expected, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, List.class);
         createListAssertion().containsNone(expectedList);

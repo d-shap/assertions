@@ -108,7 +108,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAll(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -121,7 +120,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAll(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsAll(expectedList);
@@ -147,7 +145,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAllInOrder(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -160,7 +157,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAllInOrder(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsAllInOrder(expectedList);
@@ -186,7 +182,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsExactly(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -199,7 +194,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsExactly(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsExactly(expectedList);
@@ -225,7 +219,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsExactlyInOrder(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -238,7 +231,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsExactlyInOrder(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
@@ -264,7 +256,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAny(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -277,7 +268,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsAny(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsAny(expectedList);
@@ -303,7 +293,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsNone(final byte... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -316,7 +305,6 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void containsNone(final int... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
         Object expectedBytes = convertValue(expected, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, List.class);
         createListAssertion().containsNone(expectedList);
