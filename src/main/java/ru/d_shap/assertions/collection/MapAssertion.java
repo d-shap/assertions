@@ -29,7 +29,6 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.core.IterableAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the map.
@@ -141,9 +140,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toKeys().containsAll(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        toKeys().containsAll(expectedList);
     }
 
     /**
@@ -169,9 +168,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toKeys().containsAllInOrder(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        toKeys().containsAllInOrder(expectedList);
     }
 
     /**
@@ -196,8 +195,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        toKeys().containsExactly(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        toKeys().containsExactly(expectedList);
     }
 
     /**
@@ -222,8 +221,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        toKeys().containsExactlyInOrder(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        toKeys().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -249,9 +248,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyFalse(expectedArray.length == 0);
-        toKeys().containsAny(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyFalse(expectedList.size() == 0);
+        toKeys().containsAny(expectedList);
     }
 
     /**
@@ -277,9 +276,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        K[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toKeys().containsNone(expectedArray);
+        List<K> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        toKeys().containsNone(expectedList);
     }
 
     /**
