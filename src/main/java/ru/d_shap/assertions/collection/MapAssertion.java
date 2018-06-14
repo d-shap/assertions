@@ -19,7 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ru.d_shap.assertions.Messages;
@@ -324,7 +326,16 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAll(expected.entrySet());
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+                actualKeysCopy.remove(idx);
+            } else {
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL, expected);
+            }
+        }
     }
 
     /**
@@ -336,7 +347,16 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAllInOrder(expected.entrySet());
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+                actualKeysCopy = actualKeysCopy.subList(idx + 1, actualKeysCopy.size());
+            } else {
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL_IN_ORDER, expected);
+            }
+        }
     }
 
     /**
@@ -348,7 +368,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsExactly(expected.entrySet());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        int elementCount = 0;
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+                actualKeysCopy.remove(idx);
+                elementCount++;
+            }
+        }
+        if (!actualKeysCopy.isEmpty() || elementCount != expected.size()) {
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY, expected);
+        }
     }
 
     /**
@@ -360,7 +391,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsExactlyInOrder(expected.entrySet());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx == 0 && isValuesEqual(expected, expectedKey)) {
+                actualKeysCopy.remove(idx);
+            } else {
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expected);
+            }
+        }
+        if (!actualKeysCopy.isEmpty()) {
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expected);
+        }
     }
 
     /**
@@ -372,7 +414,19 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAny(expected.entrySet());
+        checkArgumentIsNotEmptyFalse(expected.isEmpty());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        boolean found = false;
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ANY, expected);
+        }
     }
 
     /**
@@ -384,11 +438,20 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsNone(expected.entrySet());
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        for (K expectedKey : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(expectedKey);
+            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_NONE, expected);
+            }
+        }
     }
 
-    private SetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
-        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), getActual().entrySet());
+    private boolean isValuesEqual(final Map<K, V> expected, final K key) {
+        V actualValue = getActual().get(key);
+        V expectedValue = expected.get(key);
+        return actualValue == null && expectedValue == null || actualValue != null && actualValue.equals(expectedValue);
     }
 
     /**
