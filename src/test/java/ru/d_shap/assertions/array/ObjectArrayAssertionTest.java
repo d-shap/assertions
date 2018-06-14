@@ -223,6 +223,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3]> but was:<[val1, val2]>");
         }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsAll("val2", "val3");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val2, val3]> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").containsAll("val2", "val3");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3]> but was:<[val1, 1(49)]>");
+        }
     }
 
     /**
@@ -383,6 +395,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val2, val1]> but was:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsAllInOrder("val2", "val1");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val2, val1]> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").containsAllInOrder("val2", "val1");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val2, val1]> but was:<[val1, 1(49)]>");
         }
     }
 
@@ -551,6 +575,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val3, val2]> but was:<[val1, val2, val3, val4]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsExactly("val1", "val1", "val3", "val2");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val3, val2]> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").containsExactly("val1", "val1", "val3", "val2");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val3, val2]> but was:<[val1, 1(49)]>");
         }
     }
 
@@ -727,6 +763,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3, val1, val4]> but was:<[val1, val2, val3, val4]>");
         }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsExactlyInOrder("val2", "val3", "val1", "val4");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3, val1, val4]> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").containsExactlyInOrder("val2", "val3", "val1", "val4");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3, val1, val4]> but was:<[val1, 1(49)]>");
+        }
     }
 
     /**
@@ -896,6 +944,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val3, val4]> but was:<[val1, val2]>");
         }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsAny("val3", "val4");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val3, val4]> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").containsAny("val3", "val4");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val3, val4]> but was:<[val1, 1(49)]>");
+        }
     }
 
     /**
@@ -986,6 +1046,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3", "val4", "val5");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null}).containsNone("val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3", null);
+        initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsNone("val3", "val7");
 
         try {
             Raw.<String>objectArrayAssertion().containsNone("val");
