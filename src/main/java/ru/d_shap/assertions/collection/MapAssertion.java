@@ -141,7 +141,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
         toKeys().containsAll(expectedList);
     }
 
@@ -169,7 +169,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
         toKeys().containsAllInOrder(expectedList);
     }
 
@@ -249,7 +249,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyFalse(expectedList.size() == 0);
+        checkArgumentIsNotEmptyFalse(expectedList.isEmpty());
         toKeys().containsAny(expectedList);
     }
 
@@ -277,7 +277,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.size() == 0);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
         toKeys().containsNone(expectedList);
     }
 
