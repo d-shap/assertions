@@ -195,8 +195,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<K> expectedList = convertValue(expected, List.class);
-        toKeys().containsExactly(expectedList);
+        toKeys().containsExactly(expected);
     }
 
     /**
@@ -221,8 +220,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<K> expectedList = convertValue(expected, List.class);
-        toKeys().containsExactlyInOrder(expectedList);
+        toKeys().containsExactlyInOrder(expected);
     }
 
     /**
