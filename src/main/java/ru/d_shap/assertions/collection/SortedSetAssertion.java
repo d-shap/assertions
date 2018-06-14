@@ -19,9 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.SortedSet;
 
 import ru.d_shap.assertions.Messages;
@@ -189,7 +189,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAll(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAll(expected);
+        createSetAssertion().containsAll(expected);
     }
 
     /**
@@ -200,7 +200,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAll(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAll(expected);
+        createSetAssertion().containsAll(expected);
     }
 
     /**
@@ -212,7 +212,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAllInOrder(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAllInOrder(expected);
+        createSetAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -223,7 +223,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAllInOrder(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAllInOrder(expected);
+        createSetAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -235,7 +235,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsExactly(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactly(expected);
+        createSetAssertion().containsExactly(expected);
     }
 
     /**
@@ -246,7 +246,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsExactly(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactly(expected);
+        createSetAssertion().containsExactly(expected);
     }
 
     /**
@@ -258,7 +258,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsExactlyInOrder(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactlyInOrder(expected);
+        createSetAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -269,7 +269,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsExactlyInOrder(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsExactlyInOrder(expected);
+        createSetAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -281,7 +281,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAny(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAny(expected);
+        createSetAssertion().containsAny(expected);
     }
 
     /**
@@ -292,7 +292,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsAny(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsAny(expected);
+        createSetAssertion().containsAny(expected);
     }
 
     /**
@@ -304,7 +304,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsNone(final E... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsNone(expected);
+        createSetAssertion().containsNone(expected);
     }
 
     /**
@@ -315,12 +315,12 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void containsNone(final Iterable<E> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        createListAssertion().containsNone(expected);
+        createSetAssertion().containsNone(expected);
     }
 
-    private ListAssertion<E> createListAssertion() {
-        List<E> list = new ArrayList<>(getActual());
-        return initializeAssertion(Raw.<E>listAssertion(), list);
+    private SetAssertion<E> createSetAssertion() {
+        Set<E> set = new LinkedHashSet<>(getActual());
+        return initializeAssertion(Raw.<E>setAssertion(), set);
     }
 
     /**
