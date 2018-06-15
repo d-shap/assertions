@@ -19,8 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -354,7 +354,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedValue the value of the expected entry.
      */
     public final void containsEntry(final K expectedKey, final V expectedValue) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsAll(expected);
     }
@@ -366,7 +366,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedValue the value of the expected entry.
      */
     public final void doesNotContainEntry(final K expectedKey, final V expectedValue) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsNone(expected);
     }
@@ -447,8 +447,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAll(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAll(expected.entrySet());
+        createMapAssertion().containsAll(expected);
     }
 
     /**
@@ -459,8 +458,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAllInOrder(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAllInOrder(expected.entrySet());
+        createMapAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -471,8 +469,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsExactly(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsExactly(expected.entrySet());
+        createMapAssertion().containsExactly(expected);
     }
 
     /**
@@ -483,8 +480,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsExactlyInOrder(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsExactlyInOrder(expected.entrySet());
+        createMapAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -495,8 +491,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAny(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsAny(expected.entrySet());
+        createMapAssertion().containsAny(expected);
     }
 
     /**
@@ -507,12 +502,12 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsNone(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        createEntrySetAssertion().containsNone(expected.entrySet());
+        createMapAssertion().containsNone(expected);
     }
 
-    private SetAssertion<Map.Entry<K, V>> createEntrySetAssertion() {
-        return initializeAssertion(Raw.<Map.Entry<K, V>>setAssertion(), getActual().entrySet());
+    private MapAssertion<K, V> createMapAssertion() {
+        Map<K, V> map = convertValue(getActual(), Map.class);
+        return initializeAssertion(Raw.<K, V>mapAssertion(), map);
     }
 
     /**
