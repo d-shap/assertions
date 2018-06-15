@@ -23,10 +23,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
@@ -100,12 +98,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedSetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        Set<K> keys = getActual().keySet();
-        if (keys instanceof SortedSet) {
-            return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) keys, Messages.Check.ACTUAL_VALUE_KEYS);
-        } else {
-            return initializeAssertion(Raw.<K>sortedSetAssertion(), new TreeSet<>(keys), Messages.Check.ACTUAL_VALUE_KEYS);
-        }
+        return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) getActual().keySet(), Messages.Check.ACTUAL_VALUE_KEYS);
     }
 
     /**
