@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,7 +26,6 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the iterator.
@@ -62,11 +60,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final ListAssertion<E> toList() {
         checkInitialized();
         checkActualIsNotNull();
-        List<E> list = new ArrayList<>();
-        while (getActual().hasNext()) {
-            E element = getActual().next();
-            list.add(element);
-        }
+        List<E> list = convertValue(getActual(), List.class);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
     }
 
@@ -80,11 +74,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        List<E> list = new ArrayList<>();
-        for (int i = 0; i < count && getActual().hasNext(); i++) {
-            E element = getActual().next();
-            list.add(element);
-        }
+        List<E> list = convertValue(getActual(), List.class, count);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
     }
 
@@ -135,9 +125,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toList(expectedArray.length).containsExactlyInOrder(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toList(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -181,9 +171,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toList().containsAll(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toList().containsAll(expectedList);
     }
 
     /**
@@ -209,9 +199,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toList().containsAllInOrder(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toList().containsAllInOrder(expectedList);
     }
 
     /**
@@ -236,8 +226,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        toList().containsExactly(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        toList().containsExactly(expectedList);
     }
 
     /**
@@ -262,8 +252,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        toList().containsExactlyInOrder(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        toList().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -289,9 +279,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyFalse(expectedArray.length == 0);
-        toList().containsAny(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyFalse(expectedList.isEmpty());
+        toList().containsAny(expectedList);
     }
 
     /**
@@ -317,9 +307,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        E[] expectedArray = ValueConverter.toObjectArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedArray.length == 0);
-        toList().containsNone(expectedArray);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toList().containsNone(expectedList);
     }
 
     /**
