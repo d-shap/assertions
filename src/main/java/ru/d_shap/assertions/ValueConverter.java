@@ -34,6 +34,10 @@ import ru.d_shap.assertions.array.IntArrayToShortArrayValueConverter;
 import ru.d_shap.assertions.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
 import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
+import ru.d_shap.assertions.collection.IteratorToListValueConverter;
+import ru.d_shap.assertions.collection.SetToListValueConverter;
+import ru.d_shap.assertions.collection.SortedMapToMapValueConverter;
+import ru.d_shap.assertions.collection.SortedSetToSetValueConverter;
 import ru.d_shap.assertions.core.IterableToListValueConverter;
 import ru.d_shap.assertions.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.primitive.IntToCharValueConverter;
@@ -49,13 +53,18 @@ final class ValueConverter {
     private static final List<BaseValueConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(16);
+        CONVERTERS = new ArrayList<>(20);
 
         CONVERTERS.add(new IntToByteValueConverter());
         CONVERTERS.add(new IntToCharValueConverter());
         CONVERTERS.add(new IntToShortValueConverter());
 
         CONVERTERS.add(new IterableToListValueConverter());
+
+        CONVERTERS.add(new IteratorToListValueConverter());
+        CONVERTERS.add(new SetToListValueConverter());
+        CONVERTERS.add(new SortedSetToSetValueConverter());
+        CONVERTERS.add(new SortedMapToMapValueConverter());
 
         CONVERTERS.add(new BooleanArrayToListValueConverter());
         CONVERTERS.add(new ByteArrayToListValueConverter());
