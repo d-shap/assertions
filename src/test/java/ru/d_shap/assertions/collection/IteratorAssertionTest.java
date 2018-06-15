@@ -1614,6 +1614,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).containsNone("val8", "val4");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", null).iterator()).containsNone("val8", "val4");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).containsNone("val8", "val4", null);
+        initialize(Raw.iteratorAssertion(), Arrays.asList((Object) "val1", "val2", '1').iterator()).containsNone("val8", "val4");
 
         try {
             Raw.<String>iteratorAssertion().containsNone("val");
