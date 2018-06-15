@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.collection;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -297,7 +297,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue the value of the expected entry.
      */
     public final void containsEntry(final K expectedKey, final V expectedValue) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsAll(expected);
     }
@@ -309,7 +309,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue the value of the expected entry.
      */
     public final void doesNotContainEntry(final K expectedKey, final V expectedValue) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsNone(expected);
     }
@@ -323,7 +323,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsAll(expected);
@@ -340,7 +340,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -360,7 +360,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -383,7 +383,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -422,7 +422,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsAllInOrder(expected);
@@ -439,7 +439,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -459,7 +459,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -482,7 +482,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -521,7 +521,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsExactly(expected);
@@ -538,7 +538,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -558,7 +558,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -581,7 +581,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -622,7 +622,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsExactlyInOrder(expected);
@@ -639,7 +639,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -659,7 +659,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -682,7 +682,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -723,7 +723,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsAny(expected);
@@ -740,7 +740,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -760,7 +760,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -783,7 +783,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -825,7 +825,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue2 the value of the expected entry.
      */
     public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         containsNone(expected);
@@ -842,7 +842,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue3 the value of the expected entry.
      */
     public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -862,7 +862,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue4 the value of the expected entry.
      */
     public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
@@ -885,7 +885,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      * @param expectedValue5 the value of the expected entry.
      */
     public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
-        Map<K, V> expected = new HashMap<>();
+        Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
         expected.put(expectedKey3, expectedValue3);
