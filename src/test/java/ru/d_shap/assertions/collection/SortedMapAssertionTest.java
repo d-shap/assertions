@@ -176,7 +176,6 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void toKeysTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).toKeys().isNotEmpty();
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMapWithHashKeys("key1", "value1", "key2", "value2")).toKeys().isNotEmpty();
 
         try {
             Raw.<String, String>sortedMapAssertion().toKeys();

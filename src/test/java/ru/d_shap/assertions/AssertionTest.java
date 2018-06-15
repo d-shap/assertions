@@ -31,9 +31,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -352,64 +350,6 @@ public class AssertionTest {
      */
     protected final SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
         SortedMap<String, String> sortedMap = new TreeMap<>(new NullFirstStringComparator());
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        sortedMap.put(key3, value3);
-        return sortedMap;
-    }
-
-    /**
-     * Create new empty tree map with the hash keys.
-     *
-     * @return the tree map with the hash keys.
-     */
-    protected final SortedMap<String, String> createTreeMapWithHashKeys() {
-        SortedMap<String, String> sortedMap = new TreeMapMapWithHashKeys();
-        return sortedMap;
-    }
-
-    /**
-     * Create new tree map with the hash keys and the values.
-     *
-     * @param key   the key.
-     * @param value the value.
-     * @return the tree map with the hash keys.
-     */
-    protected final SortedMap<String, String> createTreeMapWithHashKeys(final String key, final String value) {
-        SortedMap<String, String> sortedMap = new TreeMapMapWithHashKeys();
-        sortedMap.put(key, value);
-        return sortedMap;
-    }
-
-    /**
-     * Create new tree map with the hash keys and the values.
-     *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @return the tree map with the hash keys.
-     */
-    protected final SortedMap<String, String> createTreeMapWithHashKeys(final String key1, final String value1, final String key2, final String value2) {
-        SortedMap<String, String> sortedMap = new TreeMapMapWithHashKeys();
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        return sortedMap;
-    }
-
-    /**
-     * Create new tree map with the hash keys and the values.
-     *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
-     * @return the tree map with the hash keys.
-     */
-    protected final SortedMap<String, String> createTreeMapWithHashKeys(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
-        SortedMap<String, String> sortedMap = new TreeMapMapWithHashKeys();
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
         sortedMap.put(key3, value3);
@@ -1071,29 +1011,6 @@ public class AssertionTest {
             _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
             _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
             _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class TreeMapMapWithHashKeys extends TreeMap<String, String> {
-
-        private static final long serialVersionUID = 1L;
-
-        TreeMapMapWithHashKeys() {
-            super(new NullFirstStringComparator());
-        }
-
-        @Override
-        public Set<String> keySet() {
-            Set<String> keySet = super.keySet();
-            List<String> keyList = new ArrayList<>(keySet);
-            Collections.reverse(keyList);
-            return new LinkedHashSet<>(keyList);
         }
 
     }
