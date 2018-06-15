@@ -442,12 +442,168 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value contains all of the expected values.
      *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
      * @param expected the expected values.
      */
     public final void containsAll(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsAllInOrder(expected);
     }
 
     /**
@@ -464,12 +620,168 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
      * @param expected the expected values.
      */
     public final void containsExactly(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsExactlyInOrder(expected);
     }
 
     /**
@@ -486,12 +798,168 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value contains any of the expected values.
      *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
      * @param expected the expected values.
      */
     public final void containsAny(final Map<K, V> expected) {
         checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     */
+    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        containsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     */
+    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        containsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     */
+    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        containsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     * @param expectedKey2   the key of the expected entry.
+     * @param expectedValue2 the value of the expected entry.
+     * @param expectedKey3   the key of the expected entry.
+     * @param expectedValue3 the value of the expected entry.
+     * @param expectedKey4   the key of the expected entry.
+     * @param expectedValue4 the value of the expected entry.
+     * @param expectedKey5   the key of the expected entry.
+     * @param expectedValue5 the value of the expected entry.
+     */
+    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        expected.put(expectedKey2, expectedValue2);
+        expected.put(expectedKey3, expectedValue3);
+        expected.put(expectedKey4, expectedValue4);
+        expected.put(expectedKey5, expectedValue5);
+        containsNone(expected);
     }
 
     /**
