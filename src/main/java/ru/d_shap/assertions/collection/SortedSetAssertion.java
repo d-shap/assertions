@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.collection;
 
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -319,7 +318,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     }
 
     private SetAssertion<E> createSetAssertion() {
-        Set<E> set = new LinkedHashSet<>(getActual());
+        Set<E> set = convertValue(getActual(), Set.class);
         return initializeAssertion(Raw.<E>setAssertion(), set);
     }
 

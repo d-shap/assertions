@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.collection;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -250,7 +249,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     }
 
     private ListAssertion<E> createListAssertion() {
-        List<E> list = new ArrayList<>(getActual());
+        List<E> list = convertValue(getActual(), List.class);
         return initializeAssertion(Raw.<E>listAssertion(), list);
     }
 
