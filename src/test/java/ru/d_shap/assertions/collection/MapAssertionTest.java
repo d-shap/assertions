@@ -250,6 +250,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsKey("key3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain the expected value.\n\tExpected:<key3> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsKey("key3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain the expected value.\n\tExpected:<key3> but was:<[key1, key2]>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKey("key3");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -290,6 +302,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).doesNotContainKey("key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should not contain the expected value.\n\tExpected:<key1> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).doesNotContainKey("key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should not contain the expected value.\n\tExpected:<key1> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).doesNotContainKey("key1");
@@ -375,6 +399,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values.\n\tExpected:<[key1, key3]> but was:<[key1, key2]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAllKeys("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values.\n\tExpected:<[key3, key1]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAllKeys("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values.\n\tExpected:<[key3, key1]> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAllKeys("key3", "key1");
@@ -566,6 +602,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[null, key1]> but was:<[key1, null, key3]>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAllKeysInOrder("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[key3, key1]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAllKeysInOrder("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[key3, key1]> but was:<[key1, key2]>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAllKeysInOrder("key3", "key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -748,6 +796,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[key1, key2]>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsKeysExactly("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[key3, key1]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsKeysExactly("key3", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[key3, key1]> but was:<[key1, key2]>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly("key3", "key1");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -919,6 +979,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[key1, null]> but was:<[key1, null, key3]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsKeysExactlyInOrder("key2", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[key2, key1]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsKeysExactlyInOrder("key2", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[key2, key1]> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder("key2", "key1");
@@ -1101,6 +1173,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain any of the expected values.\n\tExpected:<[key4, key6]> but was:<[key1, key2]>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAnyKey("key9", "key8", "key7");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain any of the expected values.\n\tExpected:<[key9, key8, key7]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAnyKey("key9", "key8", "key7");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain any of the expected values.\n\tExpected:<[key9, key8, key7]> but was:<[key1, key2]>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAnyKey("key9", "key8", "key7");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -1210,6 +1294,8 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsNoKey("key7", "key6", "key8");
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2")).containsNoKey("key7", "key6", "key8");
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsNoKey("key7", null, "key8");
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNoKey("key4", "key3");
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNoKey("key4", "key3");
 
         try {
             Raw.<String, String>mapAssertion().containsNoKey("key");
@@ -1270,6 +1356,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should not contain any of the expected values.\n\tExpected:<[key2, key4]> but was:<[key1, key2]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNoKey("key3", "key2", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should not contain any of the expected values.\n\tExpected:<[key3, key2, key1]> but was:<[key1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNoKey("key3", "key2", "key1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should not contain any of the expected values.\n\tExpected:<[key3, key2, key1]> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsNoKey("key3", "key2", "key1");
@@ -1477,6 +1575,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key2=value1}> but was:<{key1=value1, key2=value2}>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsEntry("key3", "value3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key3=value3}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsEntry("key3", "value3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key3=value3}> but was:<{key1=value1, key2=1(49)}>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsEntry("key3", "value3");
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -1502,6 +1612,8 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).doesNotContainEntry("key", null);
         initialize(Raw.<String, String>mapAssertion(), createHashMap(null, "value1", "key2", "value2")).doesNotContainEntry("key1", "value1");
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", null, "key2", "value2")).doesNotContainEntry("key1", "value1");
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).doesNotContainEntry("key1", "value2");
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).doesNotContainEntry("key1", "value2");
 
         try {
             Raw.<String, String>mapAssertion().doesNotContainEntry("key", "value");
@@ -1526,6 +1638,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1}> but was:<{key1=value1, key2=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).doesNotContainEntry("key1", "value1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).doesNotContainEntry("key1", "value1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1}> but was:<{key1=value1, key2=1(49)}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).doesNotContainEntry("key2", "value2");
@@ -1620,6 +1744,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key3=value3}> but was:<{key1=value1, key2=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAll(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAll(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, key2=1(49)}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAll(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
@@ -1731,6 +1867,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<{key2=value2, key1=null}> but was:<{key1=null, key2=value2}>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAllInOrder(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAllInOrder(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, key2=1(49)}>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAllInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -1826,6 +1974,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<{}> but was:<{key1=value1, key2=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsExactly(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsExactly(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, key2=1(49)}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsExactly(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
@@ -1942,6 +2102,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{key2=value2, key1=null}> but was:<{key1=null, key2=value2}>");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsExactlyInOrder(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsExactlyInOrder(createHashMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{key1=value1, key2=value2, key3=value3}> but was:<{key1=value1, key2=1(49)}>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -2020,6 +2192,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
         }
         try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsAny(createHashMap((Object) "key", (Object) "value"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<{key=value}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsAny(createHashMap((Object) "key", (Object) "value"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<{key=value}> but was:<{key1=value1, key2=1(49)}>");
+        }
+        try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsAny(createHashMap("key", "value"));
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
@@ -2044,6 +2228,8 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", null, "key2", "value2")).containsNone(createHashMap("key1", "value1"));
         initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", "value2")).containsNone(createHashMap(null, (Object) "value1"));
         initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", "value2")).containsNone(createHashMap((Object) "key1", null));
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNone(createHashMap((Object) "key", (Object) "value"));
+        initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNone(createHashMap((Object) "key", (Object) "value"));
 
         try {
             Raw.mapAssertion().containsNone(createHashMap());
@@ -2104,6 +2290,18 @@ public final class MapAssertionTest extends AssertionTest {
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1}> but was:<{key1=value1, key2=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNone(createHashMap((Object) "key1", (Object) "value1", "key2", "value2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1, key2=value2}> but was:<{key1=value1, 1(49)=value2}>");
+        }
+        try {
+            initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNone(createHashMap((Object) "key1", (Object) "value1", "key2", "value2"));
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<{key1=value1, key2=value2}> but was:<{key1=value1, key2=1(49)}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsNone(createHashMap("key1", "value1", "key2", "value2"));
