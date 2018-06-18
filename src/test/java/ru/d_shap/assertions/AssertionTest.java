@@ -238,7 +238,7 @@ public class AssertionTest {
      * @return the tree set.
      */
     @SafeVarargs
-    protected final <E extends Comparable<E>> SortedSet<E> createTreeSet(final E... values) {
+    protected final <E> SortedSet<E> createTreeSet(final E... values) {
         SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
         sortedSet.addAll(Arrays.asList(values));
         return sortedSet;
@@ -317,7 +317,7 @@ public class AssertionTest {
      * @param <V> the generic type of the value.
      * @return the tree map.
      */
-    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap() {
+    protected final <K, V> SortedMap<K, V> createTreeMap() {
         SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         return sortedMap;
     }
@@ -331,7 +331,7 @@ public class AssertionTest {
      * @param <V>   the generic type of the value.
      * @return the tree map.
      */
-    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
+    protected final <K, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
         SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key, value);
         return sortedMap;
@@ -348,7 +348,7 @@ public class AssertionTest {
      * @param <V>    the generic type of the value.
      * @return the tree map.
      */
-    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
+    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
         SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
@@ -368,7 +368,7 @@ public class AssertionTest {
      * @param <V>    the generic type of the value.
      * @return the tree map.
      */
-    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
         SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
@@ -1041,13 +1041,14 @@ public class AssertionTest {
      * @param <E> the generic type of the element.
      * @author Dmitry Shapovalov
      */
-    private static final class NullFirstComparator<E extends Comparable<E>> implements Comparator<E> {
+    private static final class NullFirstComparator<E> implements Comparator<E> {
 
         NullFirstComparator() {
             super();
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public int compare(final E obj1, final E obj2) {
             if (obj1 == null && obj2 == null) {
                 return 0;
@@ -1055,8 +1056,10 @@ public class AssertionTest {
                 return -1;
             } else if (obj1 != null && obj2 == null) {
                 return 1;
+            } else if (obj1 instanceof Comparable) {
+                return ((Comparable<E>) obj1).compareTo(obj2);
             } else {
-                return obj1.compareTo(obj2);
+                return 0;
             }
         }
 
