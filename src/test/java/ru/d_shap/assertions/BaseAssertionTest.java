@@ -1419,33 +1419,33 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
 
-        createBaseAssertion(createHashSet()).as(Raw.<String>setAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>setAssertion(), createHashSet()).as(Raw.<String>setAssertion())).hasClass(SetAssertion.class);
-        initialize(Raw.<String>setAssertion(), createHashSet()).as(Raw.<String>setAssertion()).isEmpty();
+        createBaseAssertion(createHashSet()).as(Raw.setAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.setAssertion(), createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
+        initialize(Raw.setAssertion(), createHashSet()).as(Raw.setAssertion()).isEmpty();
         try {
-            createBaseAssertion(new Object()).as(Raw.<String>setAssertion());
+            createBaseAssertion(new Object()).as(Raw.setAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(createHashSet()).as(Raw.<String>iterableAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), createHashSet()).as(Raw.<String>setAssertion())).hasClass(SetAssertion.class);
-        initialize(Raw.<String>iterableAssertion(), createHashSet()).as(Raw.<String>setAssertion()).isEmpty();
+        createBaseAssertion(createHashSet()).as(Raw.iterableAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
+        initialize(Raw.iterableAssertion(), createHashSet()).as(Raw.setAssertion()).isEmpty();
 
-        createBaseAssertion(createTreeSet()).as(Raw.<String>sortedSetAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).as(Raw.<String>sortedSetAssertion())).hasClass(SortedSetAssertion.class);
-        initialize(Raw.<String>sortedSetAssertion(), createTreeSet()).as(Raw.<String>sortedSetAssertion()).isEmpty();
+        createBaseAssertion(createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.sortedSetAssertion(), createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
+        initialize(Raw.sortedSetAssertion(), createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
         try {
-            createBaseAssertion(new Object()).as(Raw.<String>sortedSetAssertion());
+            createBaseAssertion(new Object()).as(Raw.sortedSetAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(createTreeSet()).as(Raw.<String>iterableAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), createTreeSet()).as(Raw.<String>sortedSetAssertion())).hasClass(SortedSetAssertion.class);
-        initialize(Raw.<String>iterableAssertion(), createTreeSet()).as(Raw.<String>sortedSetAssertion()).isEmpty();
+        createBaseAssertion(createTreeSet()).as(Raw.iterableAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
+        initialize(Raw.iterableAssertion(), createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
     }
 
     /**
