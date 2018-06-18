@@ -769,7 +769,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly(Arrays.asList("key1", "key2"));
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly(Arrays.asList("key2", "key1"));
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2")).containsKeysExactly(Arrays.asList(null, "key1"));
-        initialize(Raw.mapAssertion(), createHashMap()).containsKeysExactly(new ArrayList<String>());
+        initialize(Raw.mapAssertion(), createHashMap()).containsKeysExactly(new ArrayList<>());
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactly(new ArrayList<String>());
@@ -941,7 +941,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsKeysExactlyInOrderIterableTest() {
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(Arrays.asList("key1", "key2"));
         initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(Arrays.asList("key1", null));
-        initialize(Raw.mapAssertion(), createHashMap()).containsKeysExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.mapAssertion(), createHashMap()).containsKeysExactlyInOrder(new ArrayList<>());
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactlyInOrder(new ArrayList<String>());

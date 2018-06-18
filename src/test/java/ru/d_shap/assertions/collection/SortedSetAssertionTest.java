@@ -1182,7 +1182,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        initialize(Raw.sortedSetAssertion(), createTreeSet()).containsExactly(new ArrayList<String>());
+        initialize(Raw.sortedSetAssertion(), createTreeSet()).containsExactly(new ArrayList<>());
 
         try {
             Raw.<String>sortedSetAssertion().containsExactly(new ArrayList<String>());
@@ -1374,7 +1374,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList(null, "val1", "val2", "val3", "val4"));
-        initialize(Raw.sortedSetAssertion(), createTreeSet()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.sortedSetAssertion(), createTreeSet()).containsExactlyInOrder(new ArrayList<>());
 
         try {
             Raw.<String>sortedSetAssertion().containsExactlyInOrder(new ArrayList<String>());

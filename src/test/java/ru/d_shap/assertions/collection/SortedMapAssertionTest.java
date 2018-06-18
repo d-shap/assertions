@@ -1135,7 +1135,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactly(Arrays.asList("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactly(Arrays.asList("key2", "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", null, "value2")).containsKeysExactly(Arrays.asList(null, "key1"));
-        initialize(Raw.sortedMapAssertion(), createTreeMap()).containsKeysExactly(new ArrayList<String>());
+        initialize(Raw.sortedMapAssertion(), createTreeMap()).containsKeysExactly(new ArrayList<>());
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactly(new ArrayList<String>());
@@ -1307,7 +1307,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsKeysExactlyInOrderIterableTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(Arrays.asList("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(Arrays.asList(null, "key1"));
-        initialize(Raw.sortedMapAssertion(), createTreeMap()).containsKeysExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.sortedMapAssertion(), createTreeMap()).containsKeysExactlyInOrder(new ArrayList<>());
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactlyInOrder(new ArrayList<String>());
