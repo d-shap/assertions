@@ -221,10 +221,12 @@ public class AssertionTest {
      * Create new hash set with the values.
      *
      * @param values the values.
+     * @param <E>    the generic type of the element.
      * @return the hash set.
      */
-    protected final Set<String> createHashSet(final String... values) {
-        List<String> list = Arrays.asList(values);
+    @SafeVarargs
+    protected final <E> Set<E> createHashSet(final E... values) {
+        List<E> list = Arrays.asList(values);
         return new LinkedHashSet<>(list);
     }
 
@@ -232,10 +234,12 @@ public class AssertionTest {
      * Create new tree set with the values.
      *
      * @param values the values.
+     * @param <E>    the generic type of the element.
      * @return the tree set.
      */
-    protected final SortedSet<String> createTreeSet(final String... values) {
-        SortedSet<String> sortedSet = new TreeSet<>(new NullFirstStringComparator());
+    @SafeVarargs
+    protected final <E extends Comparable<E>> SortedSet<E> createTreeSet(final E... values) {
+        SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
         sortedSet.addAll(Arrays.asList(values));
         return sortedSet;
     }
@@ -243,10 +247,12 @@ public class AssertionTest {
     /**
      * Create new empty hash map.
      *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
      * @return the hash map.
      */
-    protected final Map<String, String> createHashMap() {
-        Map<String, String> map = new LinkedHashMap<>();
+    protected final <K, V> Map<K, V> createHashMap() {
+        Map<K, V> map = new LinkedHashMap<>();
         return map;
     }
 
@@ -255,10 +261,12 @@ public class AssertionTest {
      *
      * @param key   the key.
      * @param value the value.
+     * @param <K>   the generic type of the key.
+     * @param <V>   the generic type of the value.
      * @return the hash map.
      */
-    protected final Map<String, String> createHashMap(final String key, final String value) {
-        Map<String, String> map = new LinkedHashMap<>();
+    protected final <K, V> Map<K, V> createHashMap(final K key, final V value) {
+        Map<K, V> map = new LinkedHashMap<>();
         map.put(key, value);
         return map;
     }
@@ -270,10 +278,12 @@ public class AssertionTest {
      * @param value1 the first value.
      * @param key2   the second key.
      * @param value2 the second value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
      * @return the hash map.
      */
-    protected final Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2) {
-        Map<String, String> map = new LinkedHashMap<>();
+    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2) {
+        Map<K, V> map = new LinkedHashMap<>();
         map.put(key1, value1);
         map.put(key2, value2);
         return map;
@@ -288,10 +298,12 @@ public class AssertionTest {
      * @param value2 the second value.
      * @param key3   the third key.
      * @param value3 the third value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
      * @return the hash map.
      */
-    protected final Map<String, String> createHashMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
-        Map<String, String> map = new LinkedHashMap<>();
+    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+        Map<K, V> map = new LinkedHashMap<>();
         map.put(key1, value1);
         map.put(key2, value2);
         map.put(key3, value3);
@@ -301,10 +313,12 @@ public class AssertionTest {
     /**
      * Create new empty tree map.
      *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
      * @return the tree map.
      */
-    protected final SortedMap<String, String> createTreeMap() {
-        SortedMap<String, String> sortedMap = new TreeMap<>(new NullFirstStringComparator());
+    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap() {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         return sortedMap;
     }
 
@@ -313,10 +327,12 @@ public class AssertionTest {
      *
      * @param key   the key.
      * @param value the value.
+     * @param <K>   the generic type of the key.
+     * @param <V>   the generic type of the value.
      * @return the tree map.
      */
-    protected final SortedMap<String, String> createTreeMap(final String key, final String value) {
-        SortedMap<String, String> sortedMap = new TreeMap<>(new NullFirstStringComparator());
+    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key, value);
         return sortedMap;
     }
@@ -328,10 +344,12 @@ public class AssertionTest {
      * @param value1 the first value.
      * @param key2   the second key.
      * @param value2 the second value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
      * @return the tree map.
      */
-    protected final SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2) {
-        SortedMap<String, String> sortedMap = new TreeMap<>(new NullFirstStringComparator());
+    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
         return sortedMap;
@@ -346,10 +364,12 @@ public class AssertionTest {
      * @param value2 the second value.
      * @param key3   the third key.
      * @param value3 the third value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
      * @return the tree map.
      */
-    protected final SortedMap<String, String> createTreeMap(final String key1, final String value1, final String key2, final String value2, final String key3, final String value3) {
-        SortedMap<String, String> sortedMap = new TreeMap<>(new NullFirstStringComparator());
+    protected final <K extends Comparable<K>, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
         sortedMap.put(key3, value3);
@@ -1018,24 +1038,25 @@ public class AssertionTest {
     /**
      * Test class.
      *
+     * @param <E> the generic type of the element.
      * @author Dmitry Shapovalov
      */
-    private static final class NullFirstStringComparator implements Comparator<String> {
+    private static final class NullFirstComparator<E extends Comparable<E>> implements Comparator<E> {
 
-        NullFirstStringComparator() {
+        NullFirstComparator() {
             super();
         }
 
         @Override
-        public int compare(final String str1, final String str2) {
-            if (str1 == null && str2 == null) {
+        public int compare(final E obj1, final E obj2) {
+            if (obj1 == null && obj2 == null) {
                 return 0;
-            } else if (str1 == null && str2 != null) {
+            } else if (obj1 == null && obj2 != null) {
                 return -1;
-            } else if (str1 != null && str2 == null) {
+            } else if (obj1 != null && obj2 == null) {
                 return 1;
             } else {
-                return str1.compareTo(str2);
+                return obj1.compareTo(obj2);
             }
         }
 
