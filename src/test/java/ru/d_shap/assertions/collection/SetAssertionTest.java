@@ -48,7 +48,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.<String>setAssertion(), createHashSet());
+        initialize(Raw.setAssertion(), createHashSet());
 
         try {
             initializeWithRawActual(Raw.<String>setAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.<String>setAssertion(), createHashSet()).isEmpty();
+        initialize(Raw.setAssertion(), createHashSet()).isEmpty();
 
         try {
             Raw.<String>setAssertion().isEmpty();
@@ -108,7 +108,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.<String>setAssertion(), createHashSet()).isNullOrEmpty();
+        initialize(Raw.setAssertion(), createHashSet()).isNullOrEmpty();
         initialize(Raw.<String>setAssertion(), null).isNullOrEmpty();
 
         try {
@@ -158,13 +158,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), createHashSet()).isNotEmpty();
+            initialize(Raw.setAssertion(), createHashSet()).isNotEmpty();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), createHashSet(), "Message").isNotEmpty();
+            initialize(Raw.setAssertion(), createHashSet(), "Message").isNotEmpty();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -679,7 +679,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
-        initialize(Raw.<String>setAssertion(), createHashSet()).containsExactly();
+        initialize(Raw.setAssertion(), createHashSet()).containsExactly();
 
         try {
             Raw.<String>setAssertion().containsExactly("val");
@@ -779,7 +779,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        initialize(Raw.<String>setAssertion(), createHashSet()).containsExactly(new ArrayList<String>());
+        initialize(Raw.setAssertion(), createHashSet()).containsExactly(new ArrayList<String>());
 
         try {
             Raw.<String>setAssertion().containsExactly(new ArrayList<String>());
@@ -875,7 +875,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<String>setAssertion(), createHashSet()).containsExactlyInOrder();
+        initialize(Raw.setAssertion(), createHashSet()).containsExactlyInOrder();
 
         try {
             Raw.<String>setAssertion().containsExactlyInOrder("val");
@@ -971,7 +971,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<String>setAssertion(), createHashSet()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.setAssertion(), createHashSet()).containsExactlyInOrder(new ArrayList<String>());
 
         try {
             Raw.<String>setAssertion().containsExactlyInOrder(new ArrayList<String>());
