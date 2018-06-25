@@ -52,7 +52,6 @@ final class AsStringConverter {
         CONVERTERS.add(new CharAsStringConverter());
 
         CONVERTERS.add(new ClassAsStringConverter());
-        CONVERTERS.add(new IterableAsStringConverter());
 
         CONVERTERS.add(new CollectionAsStringConverter());
         CONVERTERS.add(new MapAsStringConverter());
@@ -66,6 +65,8 @@ final class AsStringConverter {
         CONVERTERS.add(new LongArrayAsStringConverter());
         CONVERTERS.add(new ObjectArrayAsStringConverter());
         CONVERTERS.add(new ShortArrayAsStringConverter());
+
+        CONVERTERS.add(new IterableAsStringConverter());
     }
 
     private AsStringConverter() {
