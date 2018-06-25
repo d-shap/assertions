@@ -34,6 +34,7 @@ import ru.d_shap.assertions.array.ShortArrayAsStringConverter;
 import ru.d_shap.assertions.collection.CollectionAsStringConverter;
 import ru.d_shap.assertions.collection.MapAsStringConverter;
 import ru.d_shap.assertions.core.ClassAsStringConverter;
+import ru.d_shap.assertions.core.IterableAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
 
 /**
@@ -51,6 +52,7 @@ final class AsStringConverter {
         CONVERTERS.add(new CharAsStringConverter());
 
         CONVERTERS.add(new ClassAsStringConverter());
+        CONVERTERS.add(new IterableAsStringConverter());
 
         CONVERTERS.add(new CollectionAsStringConverter());
         CONVERTERS.add(new MapAsStringConverter());
