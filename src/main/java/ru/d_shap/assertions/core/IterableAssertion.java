@@ -19,8 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import ru.d_shap.assertions.Raw;
@@ -264,12 +262,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private ListAssertion<E> createListAssertion() {
-        List<E> list = new ArrayList<>();
-        Iterator<E> iterator = getActual().iterator();
-        while (iterator.hasNext()) {
-            E element = iterator.next();
-            list.add(element);
-        }
+        List<E> list = convertValue(getActual(), List.class);
         return initializeAssertion(Raw.<E>listAssertion(), list);
     }
 
