@@ -22,6 +22,7 @@ package ru.d_shap.assertions.collection;
 import java.util.Map;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value to string converter for the map.
@@ -43,7 +44,7 @@ public final class MapAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) {
+    protected String asString(final Object value) throws ConvertionException {
         StringBuilder result = new StringBuilder();
         result.append('{');
         boolean first = true;

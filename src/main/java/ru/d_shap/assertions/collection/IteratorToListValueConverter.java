@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the iterator to the list.
@@ -50,12 +51,12 @@ public final class IteratorToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         List<Object> result = new ArrayList<>();
         int count;
         if (arguments.length > 0) {

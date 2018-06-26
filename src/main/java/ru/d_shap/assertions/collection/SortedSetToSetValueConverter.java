@@ -24,6 +24,7 @@ import java.util.Set;
 import java.util.SortedSet;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the sorted set to the set.
@@ -50,12 +51,12 @@ public final class SortedSetToSetValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         return new LinkedHashSet<>((SortedSet<?>) value);
     }
 
