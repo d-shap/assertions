@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the double array to the list.
@@ -49,12 +50,12 @@ public final class DoubleArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         List<Double> result = new ArrayList<>(((double[]) value).length);
         for (double element : (double[]) value) {
             result.add(element);

@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value to string converter for the object array.
@@ -43,7 +44,7 @@ public final class ObjectArrayAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) {
+    protected String asString(final Object value) throws ConvertionException {
         return getValueAsString(value, List.class);
     }
 

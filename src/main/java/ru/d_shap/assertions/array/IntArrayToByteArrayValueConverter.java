@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.array;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the int array to the byte array.
@@ -46,7 +47,7 @@ public final class IntArrayToByteArrayValueConverter extends BaseValueConverter 
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         for (int i = 0; i < ((int[]) value).length; i++) {
             int intValue = ((int[]) value)[i];
             byte byteValue = (byte) intValue;
@@ -58,7 +59,7 @@ public final class IntArrayToByteArrayValueConverter extends BaseValueConverter 
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         byte[] result = new byte[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (byte) ((int[]) value)[i];
