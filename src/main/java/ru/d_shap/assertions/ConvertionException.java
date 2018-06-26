@@ -20,7 +20,7 @@
 package ru.d_shap.assertions;
 
 /**
- * Convertion exception wrapper.
+ * Wrapper for exceptions, that can occur during conversion.
  *
  * @author Dmitry Shapovalov
  */
