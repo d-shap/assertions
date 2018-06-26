@@ -47,7 +47,7 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
 
     @Override
     protected Class<?> getTargetClass() {
-        return boolean[].class;
+        return byte[].class;
     }
 
     @Override
