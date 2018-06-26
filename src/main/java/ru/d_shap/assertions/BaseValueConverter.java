@@ -53,8 +53,9 @@ public abstract class BaseValueConverter {
      * @param value     the value.
      * @param arguments the conversion arguments.
      * @return true if the value can be converted to the target class.
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
-    protected abstract boolean canConvert(Object value, Object... arguments);
+    protected abstract boolean canConvert(Object value, Object... arguments) throws ConvertionException;
 
     /**
      * Get the value converted to the target class.
@@ -62,8 +63,9 @@ public abstract class BaseValueConverter {
      * @param value     the value.
      * @param arguments the conversion arguments.
      * @return the value converted to the target class.
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
-    protected abstract Object convert(Object value, Object... arguments);
+    protected abstract Object convert(Object value, Object... arguments) throws ConvertionException;
 
     /**
      * Get the value converted to the target class.
@@ -73,8 +75,9 @@ public abstract class BaseValueConverter {
      * @param arguments   the conversion arguments.
      * @param <V>         the generic type of the value converted to the target class.
      * @return the value converted to the target class.
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
-    protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
+    protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
         return ValueConverter.convert(value, targetClass, arguments);
     }
 
