@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.core;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value to string converter for the class.
@@ -41,7 +42,7 @@ public final class ClassAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) {
+    protected String asString(final Object value) throws ConvertionException {
         return ((Class<?>) value).getName();
     }
 
