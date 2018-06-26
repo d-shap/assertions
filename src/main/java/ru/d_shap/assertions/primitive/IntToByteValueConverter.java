@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the int to the byte.
@@ -46,14 +47,14 @@ public final class IntToByteValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         int intValue = (int) value;
         byte byteValue = (byte) intValue;
         return intValue == byteValue;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         return (byte) (int) value;
     }
 

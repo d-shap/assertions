@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseValueConverter;
+import ru.d_shap.assertions.ConvertionException;
 
 /**
  * Value converter from the int to the char.
@@ -46,14 +47,14 @@ public final class IntToCharValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         int intValue = (int) value;
         char charValue = (char) intValue;
         return intValue == charValue;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) {
+    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         return (char) (int) value;
     }
 
