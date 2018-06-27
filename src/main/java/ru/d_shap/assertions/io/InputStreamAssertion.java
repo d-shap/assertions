@@ -204,19 +204,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final LongAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        try {
-            long length = 0;
-            while (true) {
-                int read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                length++;
-            }
-            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        long length = convertValue(getActual(), Long.class);
+        return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
