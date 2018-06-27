@@ -57,12 +57,7 @@ public final class IteratorToListValueConverter extends BaseValueConverter {
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        int count;
-        if (arguments.length > 0) {
-            count = (Integer) arguments[0];
-        } else {
-            count = 0;
-        }
+        int count = (Integer) arguments[0];
         List<Object> result = new ArrayList<>();
         for (int i = 0; (count == 0 || i < count) && ((Iterator<?>) value).hasNext(); i++) {
             Object element = ((Iterator<?>) value).next();

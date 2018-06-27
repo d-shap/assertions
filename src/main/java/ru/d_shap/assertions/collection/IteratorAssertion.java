@@ -60,7 +60,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final ListAssertion<E> toList() {
         checkInitialized();
         checkActualIsNotNull();
-        List<E> list = convertValue(getActual(), List.class);
+        List<E> list = convertValue(getActual(), List.class, 0);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
     }
 
