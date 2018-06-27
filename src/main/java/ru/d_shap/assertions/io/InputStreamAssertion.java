@@ -92,7 +92,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
-        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
+        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
     }
 
     /**
