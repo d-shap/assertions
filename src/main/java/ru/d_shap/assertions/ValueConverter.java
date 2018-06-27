@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.array.BooleanArrayToListValueConverter;
@@ -39,6 +39,12 @@ import ru.d_shap.assertions.collection.SetToListValueConverter;
 import ru.d_shap.assertions.collection.SortedMapToMapValueConverter;
 import ru.d_shap.assertions.collection.SortedSetToSetValueConverter;
 import ru.d_shap.assertions.core.IterableToListValueConverter;
+import ru.d_shap.assertions.io.InputStreamToByteArrayValueConverter;
+import ru.d_shap.assertions.io.InputStreamToIntValueConverter;
+import ru.d_shap.assertions.io.InputStreamToLongValueConverter;
+import ru.d_shap.assertions.io.ReaderToCharArrayValueConverter;
+import ru.d_shap.assertions.io.ReaderToIntValueConverter;
+import ru.d_shap.assertions.io.ReaderToLongValueConverter;
 import ru.d_shap.assertions.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.primitive.IntToShortValueConverter;
@@ -53,18 +59,7 @@ final class ValueConverter {
     private static final List<BaseValueConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(20);
-
-        CONVERTERS.add(new IntToByteValueConverter());
-        CONVERTERS.add(new IntToCharValueConverter());
-        CONVERTERS.add(new IntToShortValueConverter());
-
-        CONVERTERS.add(new IterableToListValueConverter());
-
-        CONVERTERS.add(new IteratorToListValueConverter());
-        CONVERTERS.add(new SetToListValueConverter());
-        CONVERTERS.add(new SortedSetToSetValueConverter());
-        CONVERTERS.add(new SortedMapToMapValueConverter());
+        CONVERTERS = new LinkedList<>();
 
         CONVERTERS.add(new BooleanArrayToListValueConverter());
         CONVERTERS.add(new ByteArrayToListValueConverter());
@@ -78,6 +73,24 @@ final class ValueConverter {
         CONVERTERS.add(new LongArrayToListValueConverter());
         CONVERTERS.add(new ObjectArrayToListValueConverter());
         CONVERTERS.add(new ShortArrayToListValueConverter());
+
+        CONVERTERS.add(new InputStreamToByteArrayValueConverter());
+        CONVERTERS.add(new InputStreamToIntValueConverter());
+        CONVERTERS.add(new InputStreamToLongValueConverter());
+        CONVERTERS.add(new ReaderToCharArrayValueConverter());
+        CONVERTERS.add(new ReaderToIntValueConverter());
+        CONVERTERS.add(new ReaderToLongValueConverter());
+
+        CONVERTERS.add(new IteratorToListValueConverter());
+        CONVERTERS.add(new SetToListValueConverter());
+        CONVERTERS.add(new SortedSetToSetValueConverter());
+        CONVERTERS.add(new SortedMapToMapValueConverter());
+
+        CONVERTERS.add(new IterableToListValueConverter());
+
+        CONVERTERS.add(new IntToByteValueConverter());
+        CONVERTERS.add(new IntToCharValueConverter());
+        CONVERTERS.add(new IntToShortValueConverter());
     }
 
     private ValueConverter() {
@@ -85,14 +98,12 @@ final class ValueConverter {
     }
 
     @SuppressWarnings("unchecked")
-    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) {
+    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
         if (value == null) {
             return null;
         }
-        Class<?> valueClass = value.getClass();
-        for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseValueConverter valueConverter = CONVERTERS.get(i);
-            boolean valueClassValid = valueConverter.getValueClass().isAssignableFrom(valueClass);
+        for (BaseValueConverter valueConverter : CONVERTERS) {
+            boolean valueClassValid = valueConverter.getValueClass().isAssignableFrom(value.getClass());
             boolean targetClassValid = valueConverter.getTargetClass().isAssignableFrom(targetClass);
             if (valueClassValid && targetClassValid) {
                 boolean canConvert = valueConverter.canConvert(value, arguments);
