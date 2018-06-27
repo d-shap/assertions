@@ -28,6 +28,11 @@ public final class ConvertionException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Create new object.
+     *
+     * @param cause the cause of the exception.
+     */
     public ConvertionException(final Throwable cause) {
         super(cause);
     }
