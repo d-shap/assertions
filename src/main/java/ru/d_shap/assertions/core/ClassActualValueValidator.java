@@ -22,7 +22,7 @@ package ru.d_shap.assertions.core;
 import ru.d_shap.assertions.BaseActualValueValidator;
 
 /**
- * Validator for the actual value. Check if the actual value is instance of the specified class.
+ * Actual value validator to check if the actual value is instance of the specified class.
  *
  * @author Dmitry Shapovalov
  */
