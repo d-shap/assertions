@@ -58,15 +58,17 @@ public final class ReaderToCharArrayValueConverter extends BaseValueConverter {
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         try {
-            StringWriter writer = new StringWriter();
-            while (true) {
-                int read = ((Reader) value).read();
+            int count = (Integer) arguments[0];
+            int read;
+            StringWriter result = new StringWriter();
+            for (int i = 0; count == 0 || i < count; i++) {
+                read = ((Reader) value).read();
                 if (read < 0) {
                     break;
                 }
-                writer.write(read);
+                result.write(read);
             }
-            return writer.toString().toCharArray();
+            return result.toString().toCharArray();
         } catch (IOException ex) {
             throw new ConvertionException(ex);
         }
