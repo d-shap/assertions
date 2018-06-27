@@ -58,15 +58,17 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            while (true) {
-                int read = ((InputStream) value).read();
+            int count = (Integer) arguments[0];
+            int read;
+            ByteArrayOutputStream result = new ByteArrayOutputStream();
+            for (int i = 0; count == 0 || i < count; i++) {
+                read = ((InputStream) value).read();
                 if (read < 0) {
                     break;
                 }
-                baos.write(read);
+                result.write(read);
             }
-            return baos.toByteArray();
+            return result.toByteArray();
         } catch (IOException ex) {
             throw new ConvertionException(ex);
         }
