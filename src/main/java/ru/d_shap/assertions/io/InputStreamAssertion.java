@@ -19,9 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.io;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
@@ -29,7 +29,6 @@ import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
 import ru.d_shap.assertions.primitive.IntAssertion;
 import ru.d_shap.assertions.primitive.LongAssertion;
-import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the input stream.
@@ -56,7 +55,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_BYTE).isLessThan(0);
+        int nextByte = convertValue(getActual(), Integer.class);
+        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.ACTUAL_VALUE_BYTE).isLessThan(0);
     }
 
     /**
@@ -65,15 +65,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isNotCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_BYTE).isGreaterThanOrEqualTo(0);
-    }
-
-    private int readActual() {
-        try {
-            return getActual().read();
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        int nextByte = convertValue(getActual(), Integer.class);
+        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.ACTUAL_VALUE_BYTE).isGreaterThanOrEqualTo(0);
     }
 
     /**
@@ -84,19 +77,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final ByteArrayAssertion toByteArray() {
         checkInitialized();
         checkActualIsNotNull();
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            while (true) {
-                int read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                baos.write(read);
-            }
-            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_VALUE_BYTES_ALL);
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
+        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
     }
 
     /**
@@ -109,21 +91,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(count);
-            int readCount = 0;
-            while (readCount < count) {
-                int read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                baos.write(read);
-                readCount++;
-            }
-            return initializeAssertion(Raw.byteArrayAssertion(), baos.toByteArray(), Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        byte[] nextBytes = convertValue(getActual(), byte[].class, count);
+        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
     }
 
     /**
@@ -161,9 +130,9 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        byte[] expectedBytes = ValueConverter.toByteArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedBytes.length == 0);
-        toByteArray(expectedBytes.length).containsExactlyInOrder(expectedBytes);
+        List<Byte> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toByteArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -199,8 +168,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        byte[] expectedBytes = ValueConverter.toByteArray(expected);
-        toByteArray().containsExactlyInOrder(expectedBytes);
+        List<Byte> expectedList = convertValue(expected, List.class);
+        toByteArray().containsExactlyInOrder(expectedList);
     }
 
     /**
