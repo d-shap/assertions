@@ -21,14 +21,13 @@ package ru.d_shap.assertions.io;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringWriter;
+import java.util.List;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.array.CharArrayAssertion;
 import ru.d_shap.assertions.primitive.LongAssertion;
-import ru.d_shap.assertions.utils.ValueConverter;
 
 /**
  * Assertions for the reader.
@@ -55,7 +54,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_CHAR).isLessThan(0);
+        int nextChar = convertValue(getActual(), Integer.class);
+        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.ACTUAL_VALUE_CHAR).isLessThan(0);
     }
 
     /**
@@ -64,15 +64,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNotCompleted() {
         checkInitialized();
         checkActualIsNotNull();
-        initializeAssertion(Raw.intAssertion(), readActual(), Messages.Check.ACTUAL_VALUE_CHAR).isGreaterThanOrEqualTo(0);
-    }
-
-    private int readActual() {
-        try {
-            return getActual().read();
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        int nextChar = convertValue(getActual(), Integer.class);
+        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.ACTUAL_VALUE_CHAR).isGreaterThanOrEqualTo(0);
     }
 
     /**
@@ -83,19 +76,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final CharArrayAssertion toCharArray() {
         checkInitialized();
         checkActualIsNotNull();
-        try {
-            StringWriter writer = new StringWriter();
-            while (true) {
-                int read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                writer.write(read);
-            }
-            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_VALUE_CHARS_ALL);
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        char[] nextChars = convertValue(getActual(), char[].class, 0);
+        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.ACTUAL_VALUE_CHARS_ALL);
     }
 
     /**
@@ -108,21 +90,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        try {
-            StringWriter writer = new StringWriter(count);
-            int readCount = 0;
-            while (readCount < count) {
-                int read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                writer.write(read);
-                readCount++;
-            }
-            return initializeAssertion(Raw.charArrayAssertion(), writer.toString().toCharArray(), Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
-        } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
-        }
+        char[] nextChars = convertValue(getActual(), char[].class, count);
+        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
     }
 
     /**
@@ -160,9 +129,9 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedChars = ValueConverter.toCharArray(expected);
-        checkArgumentIsNotEmptyTrue(expectedChars.length == 0);
-        toCharArray(expectedChars.length).containsExactlyInOrder(expectedChars);
+        List<Character> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -198,8 +167,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        char[] expectedChars = ValueConverter.toCharArray(expected);
-        toCharArray().containsExactlyInOrder(expectedChars);
+        List<Character> expectedList = convertValue(expected, List.class);
+        toCharArray().containsExactlyInOrder(expectedList);
     }
 
     /**
