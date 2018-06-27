@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import ru.d_shap.assertions.array.BooleanArrayAsStringConverter;
@@ -47,14 +47,7 @@ final class AsStringConverter {
     private static final List<BaseAsStringConverter> CONVERTERS;
 
     static {
-        CONVERTERS = new ArrayList<>(14);
-
-        CONVERTERS.add(new CharAsStringConverter());
-
-        CONVERTERS.add(new ClassAsStringConverter());
-
-        CONVERTERS.add(new CollectionAsStringConverter());
-        CONVERTERS.add(new MapAsStringConverter());
+        CONVERTERS = new LinkedList<>();
 
         CONVERTERS.add(new BooleanArrayAsStringConverter());
         CONVERTERS.add(new ByteArrayAsStringConverter());
@@ -66,20 +59,25 @@ final class AsStringConverter {
         CONVERTERS.add(new ObjectArrayAsStringConverter());
         CONVERTERS.add(new ShortArrayAsStringConverter());
 
+        CONVERTERS.add(new CollectionAsStringConverter());
+        CONVERTERS.add(new MapAsStringConverter());
+
+        CONVERTERS.add(new ClassAsStringConverter());
         CONVERTERS.add(new IterableAsStringConverter());
+
+        CONVERTERS.add(new CharAsStringConverter());
     }
 
     private AsStringConverter() {
         super();
     }
 
-    static String asString(final Object value) {
+    static String asString(final Object value) throws ConvertionException {
         if (value == null) {
             return null;
         }
         Class<?> valueClass = value.getClass();
-        for (int i = 0; i < CONVERTERS.size(); i++) {
-            BaseAsStringConverter asStringConverter = CONVERTERS.get(i);
+        for (BaseAsStringConverter asStringConverter : CONVERTERS) {
             if (asStringConverter.getValueClass().isAssignableFrom(valueClass)) {
                 return asStringConverter.asString(value);
             }
@@ -87,7 +85,7 @@ final class AsStringConverter {
         return value.toString();
     }
 
-    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) {
+    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
         Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
         return asString(convertedValue);
     }
