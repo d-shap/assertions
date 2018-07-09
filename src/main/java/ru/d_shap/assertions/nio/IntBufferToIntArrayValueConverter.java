@@ -55,7 +55,17 @@ public final class IntBufferToIntArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        return null;
+        boolean rewind = (Boolean) arguments[0];
+        int position = ((IntBuffer) value).position();
+        if (rewind) {
+            ((IntBuffer) value).rewind();
+        }
+        int[] result = new int[((IntBuffer) value).remaining()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = ((IntBuffer) value).get();
+        }
+        ((IntBuffer) value).position(position);
+        return result;
     }
 
 }

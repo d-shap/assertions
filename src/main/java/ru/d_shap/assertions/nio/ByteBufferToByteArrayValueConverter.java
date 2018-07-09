@@ -55,7 +55,17 @@ public final class ByteBufferToByteArrayValueConverter extends BaseValueConverte
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        return null;
+        boolean rewind = (Boolean) arguments[0];
+        int position = ((ByteBuffer) value).position();
+        if (rewind) {
+            ((ByteBuffer) value).rewind();
+        }
+        byte[] result = new byte[((ByteBuffer) value).remaining()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = ((ByteBuffer) value).get();
+        }
+        ((ByteBuffer) value).position(position);
+        return result;
     }
 
 }

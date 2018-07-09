@@ -55,7 +55,17 @@ public final class LongBufferToLongArrayValueConverter extends BaseValueConverte
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        return null;
+        boolean rewind = (Boolean) arguments[0];
+        int position = ((LongBuffer) value).position();
+        if (rewind) {
+            ((LongBuffer) value).rewind();
+        }
+        long[] result = new long[((LongBuffer) value).remaining()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = ((LongBuffer) value).get();
+        }
+        ((LongBuffer) value).position(position);
+        return result;
     }
 
 }

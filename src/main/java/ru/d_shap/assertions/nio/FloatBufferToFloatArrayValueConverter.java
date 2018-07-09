@@ -55,7 +55,17 @@ public final class FloatBufferToFloatArrayValueConverter extends BaseValueConver
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        return null;
+        boolean rewind = (Boolean) arguments[0];
+        int position = ((FloatBuffer) value).position();
+        if (rewind) {
+            ((FloatBuffer) value).rewind();
+        }
+        float[] result = new float[((FloatBuffer) value).remaining()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = ((FloatBuffer) value).get();
+        }
+        ((FloatBuffer) value).position(position);
+        return result;
     }
 
 }

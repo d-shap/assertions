@@ -55,7 +55,17 @@ public final class CharBufferToCharArrayValueConverter extends BaseValueConverte
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
-        return null;
+        boolean rewind = (Boolean) arguments[0];
+        int position = ((CharBuffer) value).position();
+        if (rewind) {
+            ((CharBuffer) value).rewind();
+        }
+        char[] result = new char[((CharBuffer) value).remaining()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = ((CharBuffer) value).get();
+        }
+        ((CharBuffer) value).position(position);
+        return result;
     }
 
 }
