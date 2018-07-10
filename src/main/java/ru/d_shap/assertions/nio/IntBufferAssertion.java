@@ -410,6 +410,11 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         createIntArrayAssertion(true).containsNone(expected);
     }
 
+    private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
+        int[] ints = convertValue(getActual(), int[].class, rewind);
+        return initializeAssertion(Raw.intArrayAssertion(), ints);
+    }
+
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -545,11 +550,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         if (getActual().isReadOnly()) {
             throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
         }
-    }
-
-    private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
-        int[] ints = convertValue(getActual(), int[].class, rewind);
-        return initializeAssertion(Raw.intArrayAssertion(), ints);
     }
 
 }

@@ -542,6 +542,11 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
         createCharArrayAssertion(true).containsNone(expected);
     }
 
+    private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {
+        char[] chars = convertValue(getActual(), char[].class, rewind);
+        return initializeAssertion(Raw.charArrayAssertion(), chars);
+    }
+
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -677,11 +682,6 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
         if (getActual().isReadOnly()) {
             throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
         }
-    }
-
-    private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {
-        char[] chars = convertValue(getActual(), char[].class, rewind);
-        return initializeAssertion(Raw.charArrayAssertion(), chars);
     }
 
 }

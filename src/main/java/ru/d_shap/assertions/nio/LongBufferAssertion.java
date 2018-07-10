@@ -410,6 +410,11 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
         createLongBufferAssertion(true).containsNone(expected);
     }
 
+    private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
+        long[] longs = convertValue(getActual(), long[].class, rewind);
+        return initializeAssertion(Raw.longArrayAssertion(), longs);
+    }
+
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -545,11 +550,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
         if (getActual().isReadOnly()) {
             throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
         }
-    }
-
-    private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
-        long[] longs = convertValue(getActual(), long[].class, rewind);
-        return initializeAssertion(Raw.longArrayAssertion(), longs);
     }
 
 }
