@@ -680,8 +680,8 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
     }
 
     private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
-        byte[] byteArray = convertValue(getActual(), byte[].class, rewind);
-        return initializeAssertion(Raw.byteArrayAssertion(), byteArray);
+        byte[] bytes = convertValue(getActual(), byte[].class, rewind);
+        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
     }
 
 }

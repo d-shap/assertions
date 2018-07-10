@@ -680,8 +680,8 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     }
 
     private ShortArrayAssertion createShortBufferAssertion(final boolean rewind) {
-        short[] shortArray = convertValue(getActual(), short[].class, rewind);
-        return initializeAssertion(Raw.shortArrayAssertion(), shortArray);
+        short[] shorts = convertValue(getActual(), short[].class, rewind);
+        return initializeAssertion(Raw.shortArrayAssertion(), shorts);
     }
 
 }

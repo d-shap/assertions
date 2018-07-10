@@ -548,8 +548,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     }
 
     private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
-        float[] floatArray = convertValue(getActual(), float[].class, rewind);
-        return initializeAssertion(Raw.floatArrayAssertion(), floatArray);
+        float[] floats = convertValue(getActual(), float[].class, rewind);
+        return initializeAssertion(Raw.floatArrayAssertion(), floats);
     }
 
 }

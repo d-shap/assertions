@@ -548,8 +548,8 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
     }
 
     private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
-        int[] intArray = convertValue(getActual(), int[].class, rewind);
-        return initializeAssertion(Raw.intArrayAssertion(), intArray);
+        int[] ints = convertValue(getActual(), int[].class, rewind);
+        return initializeAssertion(Raw.intArrayAssertion(), ints);
     }
 
 }

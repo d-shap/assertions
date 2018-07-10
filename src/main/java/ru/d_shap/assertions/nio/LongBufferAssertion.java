@@ -548,8 +548,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
     }
 
     private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
-        long[] longArray = convertValue(getActual(), long[].class, rewind);
-        return initializeAssertion(Raw.longArrayAssertion(), longArray);
+        long[] longs = convertValue(getActual(), long[].class, rewind);
+        return initializeAssertion(Raw.longArrayAssertion(), longs);
     }
 
 }

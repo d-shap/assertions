@@ -548,8 +548,8 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
     }
 
     private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
-        double[] doubleArray = convertValue(getActual(), double[].class, rewind);
-        return initializeAssertion(Raw.doubleArrayAssertion(), doubleArray);
+        double[] doubles = convertValue(getActual(), double[].class, rewind);
+        return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
     }
 
 }
