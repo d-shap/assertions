@@ -45,6 +45,13 @@ import ru.d_shap.assertions.io.InputStreamToLongValueConverter;
 import ru.d_shap.assertions.io.ReaderToCharArrayValueConverter;
 import ru.d_shap.assertions.io.ReaderToIntValueConverter;
 import ru.d_shap.assertions.io.ReaderToLongValueConverter;
+import ru.d_shap.assertions.nio.ByteBufferToByteArrayValueConverter;
+import ru.d_shap.assertions.nio.CharBufferToCharArrayValueConverter;
+import ru.d_shap.assertions.nio.DoubleBufferToDoubleArrayValueConverter;
+import ru.d_shap.assertions.nio.FloatBufferToFloatArrayValueConverter;
+import ru.d_shap.assertions.nio.IntBufferToIntArrayValueConverter;
+import ru.d_shap.assertions.nio.LongBufferToLongArrayValueConverter;
+import ru.d_shap.assertions.nio.ShortBufferToShortArrayValueConverter;
 import ru.d_shap.assertions.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.primitive.IntToShortValueConverter;
@@ -61,40 +68,52 @@ final class ValueConverter {
     static {
         CONVERTERS = new LinkedList<>();
 
-        CONVERTERS.add(new BooleanArrayToListValueConverter());
-        CONVERTERS.add(new ByteArrayToListValueConverter());
-        CONVERTERS.add(new CharArrayToListValueConverter());
-        CONVERTERS.add(new DoubleArrayToListValueConverter());
-        CONVERTERS.add(new FloatArrayToListValueConverter());
-        CONVERTERS.add(new IntArrayToByteArrayValueConverter());
-        CONVERTERS.add(new IntArrayToCharArrayValueConverter());
-        CONVERTERS.add(new IntArrayToListValueConverter());
-        CONVERTERS.add(new IntArrayToShortArrayValueConverter());
-        CONVERTERS.add(new LongArrayToListValueConverter());
-        CONVERTERS.add(new ObjectArrayToListValueConverter());
-        CONVERTERS.add(new ShortArrayToListValueConverter());
+        registerValueConverter(new IntToByteValueConverter());
+        registerValueConverter(new IntToCharValueConverter());
+        registerValueConverter(new IntToShortValueConverter());
 
-        CONVERTERS.add(new InputStreamToByteArrayValueConverter());
-        CONVERTERS.add(new InputStreamToIntValueConverter());
-        CONVERTERS.add(new InputStreamToLongValueConverter());
-        CONVERTERS.add(new ReaderToCharArrayValueConverter());
-        CONVERTERS.add(new ReaderToIntValueConverter());
-        CONVERTERS.add(new ReaderToLongValueConverter());
+        registerValueConverter(new IterableToListValueConverter());
 
-        CONVERTERS.add(new IteratorToListValueConverter());
-        CONVERTERS.add(new SetToListValueConverter());
-        CONVERTERS.add(new SortedSetToSetValueConverter());
-        CONVERTERS.add(new SortedMapToMapValueConverter());
+        registerValueConverter(new IteratorToListValueConverter());
+        registerValueConverter(new SetToListValueConverter());
+        registerValueConverter(new SortedSetToSetValueConverter());
+        registerValueConverter(new SortedMapToMapValueConverter());
 
-        CONVERTERS.add(new IterableToListValueConverter());
+        registerValueConverter(new BooleanArrayToListValueConverter());
+        registerValueConverter(new ByteArrayToListValueConverter());
+        registerValueConverter(new CharArrayToListValueConverter());
+        registerValueConverter(new DoubleArrayToListValueConverter());
+        registerValueConverter(new FloatArrayToListValueConverter());
+        registerValueConverter(new IntArrayToByteArrayValueConverter());
+        registerValueConverter(new IntArrayToCharArrayValueConverter());
+        registerValueConverter(new IntArrayToListValueConverter());
+        registerValueConverter(new IntArrayToShortArrayValueConverter());
+        registerValueConverter(new LongArrayToListValueConverter());
+        registerValueConverter(new ObjectArrayToListValueConverter());
+        registerValueConverter(new ShortArrayToListValueConverter());
 
-        CONVERTERS.add(new IntToByteValueConverter());
-        CONVERTERS.add(new IntToCharValueConverter());
-        CONVERTERS.add(new IntToShortValueConverter());
+        registerValueConverter(new ByteBufferToByteArrayValueConverter());
+        registerValueConverter(new CharBufferToCharArrayValueConverter());
+        registerValueConverter(new DoubleBufferToDoubleArrayValueConverter());
+        registerValueConverter(new FloatBufferToFloatArrayValueConverter());
+        registerValueConverter(new IntBufferToIntArrayValueConverter());
+        registerValueConverter(new LongBufferToLongArrayValueConverter());
+        registerValueConverter(new ShortBufferToShortArrayValueConverter());
+
+        registerValueConverter(new InputStreamToByteArrayValueConverter());
+        registerValueConverter(new InputStreamToIntValueConverter());
+        registerValueConverter(new InputStreamToLongValueConverter());
+        registerValueConverter(new ReaderToCharArrayValueConverter());
+        registerValueConverter(new ReaderToIntValueConverter());
+        registerValueConverter(new ReaderToLongValueConverter());
     }
 
     private ValueConverter() {
         super();
+    }
+
+    static void registerValueConverter(final BaseValueConverter valueConverter) {
+        CONVERTERS.add(0, valueConverter);
     }
 
     @SuppressWarnings("unchecked")
