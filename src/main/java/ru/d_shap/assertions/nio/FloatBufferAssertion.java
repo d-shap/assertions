@@ -20,17 +20,19 @@
 package ru.d_shap.assertions.nio;
 
 import java.nio.FloatBuffer;
-import java.util.ArrayList;
-import java.util.List;
 
-import ru.d_shap.assertions.utils.ValueConverter;
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.array.FloatArrayAssertion;
+import ru.d_shap.assertions.primitive.IntAssertion;
 
 /**
  * Assertions for the float buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
+public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
 
     /**
      * Create new object.
@@ -45,12 +47,70 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     }
 
     /**
+     * Check if the actual value is empty.
+     */
+    public final void isEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).isEmpty();
+    }
+
+    /**
+     * Check if the actual value is empty.
+     */
+    public final void isRewindAndEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).isEmpty();
+    }
+
+    /**
+     * Check if the actual value is null or empty.
+     */
+    public final void isNullOrEmpty() {
+        checkInitialized();
+        if (getActual() != null) {
+            createFloatArrayAssertion(false).isNullOrEmpty();
+        }
+    }
+
+    /**
+     * Check if the actual value is null or empty.
+     */
+    public final void isRewindAndNullOrEmpty() {
+        checkInitialized();
+        if (getActual() != null) {
+            createFloatArrayAssertion(true).isNullOrEmpty();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT empty.
+     */
+    public final void isNotEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).isNotEmpty();
+    }
+
+    /**
+     * Check if the actual value is NOT empty.
+     */
+    public final void isRewindAndNotEmpty() {
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).isNotEmpty();
+    }
+
+    /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
      */
     public final void contains(final float expected) {
-        doContains(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).contains(expected);
     }
 
     /**
@@ -59,7 +119,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected value.
      */
     public final void rewindAndContains(final float expected) {
-        doRewindAndContains(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).contains(expected);
     }
 
     /**
@@ -68,7 +130,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final float expected) {
-        doDoesNotContain(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).doesNotContain(expected);
     }
 
     /**
@@ -77,7 +141,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected value.
      */
     public final void rewindAndDoesNotContain(final float expected) {
-        doRewindAndDoesNotContain(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).doesNotContain(expected);
     }
 
     /**
@@ -88,8 +154,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsAll(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsAll(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsAll(expected);
     }
 
     /**
@@ -98,7 +163,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Float> expected) {
-        doContainsAll(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsAll(expected);
     }
 
     /**
@@ -109,8 +176,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsAll(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsAll(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsAll(expected);
     }
 
     /**
@@ -119,7 +185,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final Iterable<Float> expected) {
-        doRewindAndContainsAll(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsAll(expected);
     }
 
     /**
@@ -130,8 +198,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsAllInOrder(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsAllInOrder(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -140,7 +207,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Float> expected) {
-        doContainsAllInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -151,8 +220,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsAllInOrder(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsAllInOrder(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsAllInOrder(expected);
     }
 
     /**
@@ -161,7 +229,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
-        doRewindAndContainsAllInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsAllInOrder(expected);
     }
 
     /**
@@ -172,8 +242,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsExactly(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsExactly(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -182,7 +251,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Float> expected) {
-        doContainsExactly(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -193,8 +264,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsExactly(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactly(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsExactly(expected);
     }
 
     /**
@@ -203,7 +273,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final Iterable<Float> expected) {
-        doRewindAndContainsExactly(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsExactly(expected);
     }
 
     /**
@@ -214,8 +286,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsExactlyInOrder(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsExactlyInOrder(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -224,7 +295,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Float> expected) {
-        doContainsExactlyInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -235,8 +308,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsExactlyInOrder(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsExactlyInOrder(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
     /**
@@ -245,7 +317,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
-        doRewindAndContainsExactlyInOrder(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
     /**
@@ -256,8 +330,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsAny(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsAny(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsAny(expected);
     }
 
     /**
@@ -266,7 +339,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Float> expected) {
-        doContainsAny(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsAny(expected);
     }
 
     /**
@@ -277,8 +352,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsAny(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsAny(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsAny(expected);
     }
 
     /**
@@ -287,7 +361,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final Iterable<Float> expected) {
-        doRewindAndContainsAny(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsAny(expected);
     }
 
     /**
@@ -298,8 +374,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void containsNone(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doContainsNone(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(false).containsNone(expected);
     }
 
     /**
@@ -308,7 +383,9 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Float> expected) {
-        doContainsNone(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(false).containsNone(expected);
     }
 
     /**
@@ -319,8 +396,7 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
     public final void rewindAndContainsNone(final float... expected) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        doRewindAndContainsNone(ValueConverter.toFloatObjectArray(expected));
+        createFloatArrayAssertion(true).containsNone(expected);
     }
 
     /**
@@ -329,23 +405,151 @@ public class FloatBufferAssertion extends BufferAssertion<FloatBuffer, Float> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final Iterable<Float> expected) {
-        doRewindAndContainsNone(expected);
+        checkInitialized();
+        checkActualIsNotNull();
+        createFloatArrayAssertion(true).containsNone(expected);
     }
 
-    @Override
-    final List<Float> createList(final Object value, final boolean rewind) {
-        FloatBuffer buffer = (FloatBuffer) value;
-        int position = buffer.position();
-        if (rewind) {
-            buffer.rewind();
+    /**
+     * Make assertion about the actual buffer's position.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toPosition() {
+        checkInitialized();
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.ACTUAL_VALUE_POSITION);
+    }
+
+    /**
+     * Check if the actual value position is equal to the expected position.
+     *
+     * @param expected the expected position.
+     */
+    public final void hasPosition(final int expected) {
+        toPosition().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual buffer's limit.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toLimit() {
+        checkInitialized();
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.ACTUAL_VALUE_LIMIT);
+    }
+
+    /**
+     * Check if the actual value limit is equal to the expected limit.
+     *
+     * @param expected the expected limit.
+     */
+    public final void hasLimit(final int expected) {
+        toLimit().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual buffer's capacity.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toCapacity() {
+        checkInitialized();
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.ACTUAL_VALUE_CAPACITY);
+    }
+
+    /**
+     * Check if the actual value capacity is equal to the expected capacity.
+     *
+     * @param expected the expected capacity.
+     */
+    public final void hasCapacity(final int expected) {
+        toCapacity().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value properties is equal to the expected properties.
+     *
+     * @param expectedPosition the expected position.
+     * @param expectedLimit    the expected limit.
+     * @param expectedCapacity the expected capacity.
+     */
+    public final void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+        hasPosition(expectedPosition);
+        hasLimit(expectedLimit);
+        hasCapacity(expectedCapacity);
+    }
+
+    /**
+     * Make assertion about the actual buffer's remaining.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toRemaining() {
+        checkInitialized();
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.ACTUAL_VALUE_REMAINING);
+    }
+
+    /**
+     * Check if the actual value remaining is equal to the expected remaining.
+     *
+     * @param expected the expected remaining.
+     */
+    public final void hasRemaining(final int expected) {
+        toRemaining().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is direct.
+     */
+    public final void isDirect() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (!getActual().isDirect()) {
+            throw createAssertionError(Messages.Fail.IS_DIRECT);
         }
-        List<Float> result = new ArrayList<>(buffer.remaining());
-        while (buffer.hasRemaining()) {
-            float bufferValue = buffer.get();
-            result.add(bufferValue);
+    }
+
+    /**
+     * Check if the actual value is NOT direct.
+     */
+    public final void isNotDirect() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (getActual().isDirect()) {
+            throw createAssertionError(Messages.Fail.IS_NOT_DIRECT);
         }
-        buffer.position(position);
-        return result;
+    }
+
+    /**
+     * Check if the actual value is read only.
+     */
+    public final void isReadOnly() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (!getActual().isReadOnly()) {
+            throw createAssertionError(Messages.Fail.IS_READ_ONLY);
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT read only.
+     */
+    public final void isNotReadOnly() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (getActual().isReadOnly()) {
+            throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
+        }
+    }
+
+    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
+        float[] floatArray = convertValue(getActual(), float[].class, rewind);
+        return initializeAssertion(Raw.floatArrayAssertion(), floatArray);
     }
 
 }
