@@ -2520,20 +2520,4 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
-    /**
-     * {@link DoubleBufferAssertion} class test.
-     */
-    @Test
-    public void listCapacityTest() {
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}), false), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 1, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.doubleBufferAssertion(), null).createList(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 1, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-    }
-
 }

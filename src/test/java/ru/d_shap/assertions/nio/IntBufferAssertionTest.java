@@ -2520,20 +2520,4 @@ public final class IntBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
-    /**
-     * {@link IntBufferAssertion} class test.
-     */
-    @Test
-    public void listCapacityTest() {
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}), false), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 1, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.intBufferAssertion(), null).createList(createIntBuffer(new int[]{1, 2, 3, 4, 5}, 1, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-    }
-
 }

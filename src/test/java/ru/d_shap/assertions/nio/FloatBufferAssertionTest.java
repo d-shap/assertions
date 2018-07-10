@@ -2520,20 +2520,4 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
     }
 
-    /**
-     * {@link FloatBufferAssertion} class test.
-     */
-    @Test
-    public void listCapacityTest() {
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}), false), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 1, 3), false), "elementData", Raw.objectArrayAssertion()).hasLength(2);
-
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(5);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-        Assertions.assertThat(initialize(Raw.floatBufferAssertion(), null).createList(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 1, 3), true), "elementData", Raw.objectArrayAssertion()).hasLength(3);
-    }
-
 }
