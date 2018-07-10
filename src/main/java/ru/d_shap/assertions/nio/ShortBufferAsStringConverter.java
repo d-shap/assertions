@@ -45,7 +45,7 @@ public final class ShortBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
-        return getValueAsString(value, short[].class);
+        return getValueAsString(value, short[].class, false);
     }
 
 }

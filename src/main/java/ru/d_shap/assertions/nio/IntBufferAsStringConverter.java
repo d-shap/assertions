@@ -45,7 +45,7 @@ public final class IntBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
-        return getValueAsString(value, int[].class);
+        return getValueAsString(value, int[].class, false);
     }
 
 }

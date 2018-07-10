@@ -45,7 +45,7 @@ public final class LongBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
-        return getValueAsString(value, long[].class);
+        return getValueAsString(value, long[].class, false);
     }
 
 }

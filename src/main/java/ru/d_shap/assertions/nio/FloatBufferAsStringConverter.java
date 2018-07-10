@@ -45,7 +45,7 @@ public final class FloatBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
-        return getValueAsString(value, float[].class);
+        return getValueAsString(value, float[].class, false);
     }
 
 }
