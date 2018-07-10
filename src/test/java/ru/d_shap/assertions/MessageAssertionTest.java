@@ -801,19 +801,19 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, true]> but was:<[true, true, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
         }
         try {
             Assertions.assertWithMessage("").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, true]> but was:<[true, true, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, true]> but was:<[true, true, false]>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
         }
     }
 

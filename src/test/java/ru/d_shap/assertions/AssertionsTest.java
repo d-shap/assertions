@@ -548,7 +548,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[true, true, false, true]> but was:<[true, true, false]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
         }
     }
 
