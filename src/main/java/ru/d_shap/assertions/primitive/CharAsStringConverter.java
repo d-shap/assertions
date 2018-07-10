@@ -37,7 +37,7 @@ public final class CharAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected Class<Character> getValueClass() {
+    protected Class<?> getValueClass() {
         return Character.class;
     }
 
