@@ -90,7 +90,7 @@ final class AsStringConverter {
     }
 
     static void registerValueConverter(final BaseAsStringConverter asStringConverter) {
-        CONVERTERS.add(asStringConverter);
+        CONVERTERS.add(0, asStringConverter);
     }
 
     static String asString(final Object value) throws ConvertionException {
