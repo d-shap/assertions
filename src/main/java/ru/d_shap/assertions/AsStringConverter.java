@@ -35,6 +35,14 @@ import ru.d_shap.assertions.collection.CollectionAsStringConverter;
 import ru.d_shap.assertions.collection.MapAsStringConverter;
 import ru.d_shap.assertions.core.ClassAsStringConverter;
 import ru.d_shap.assertions.core.IterableAsStringConverter;
+import ru.d_shap.assertions.nio.ByteBufferAsStringConverter;
+import ru.d_shap.assertions.nio.CharBufferAsStringConverter;
+import ru.d_shap.assertions.nio.DoubleBufferAsStringConverter;
+import ru.d_shap.assertions.nio.FloatBufferAsStringConverter;
+import ru.d_shap.assertions.nio.IntBufferAsStringConverter;
+import ru.d_shap.assertions.nio.LongBufferAsStringConverter;
+import ru.d_shap.assertions.nio.ShortBufferAsStringConverter;
+import ru.d_shap.assertions.primitive.BooleanAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
 
 /**
@@ -49,27 +57,40 @@ final class AsStringConverter {
     static {
         CONVERTERS = new LinkedList<>();
 
-        CONVERTERS.add(new BooleanArrayAsStringConverter());
-        CONVERTERS.add(new ByteArrayAsStringConverter());
-        CONVERTERS.add(new CharArrayAsStringConverter());
-        CONVERTERS.add(new DoubleArrayAsStringConverter());
-        CONVERTERS.add(new FloatArrayAsStringConverter());
-        CONVERTERS.add(new IntArrayAsStringConverter());
-        CONVERTERS.add(new LongArrayAsStringConverter());
-        CONVERTERS.add(new ObjectArrayAsStringConverter());
-        CONVERTERS.add(new ShortArrayAsStringConverter());
+        registerValueConverter(new BooleanAsStringConverter());
+        registerValueConverter(new CharAsStringConverter());
 
-        CONVERTERS.add(new CollectionAsStringConverter());
-        CONVERTERS.add(new MapAsStringConverter());
+        registerValueConverter(new ClassAsStringConverter());
+        registerValueConverter(new IterableAsStringConverter());
 
-        CONVERTERS.add(new ClassAsStringConverter());
-        CONVERTERS.add(new IterableAsStringConverter());
+        registerValueConverter(new CollectionAsStringConverter());
+        registerValueConverter(new MapAsStringConverter());
 
-        CONVERTERS.add(new CharAsStringConverter());
+        registerValueConverter(new BooleanArrayAsStringConverter());
+        registerValueConverter(new ByteArrayAsStringConverter());
+        registerValueConverter(new CharArrayAsStringConverter());
+        registerValueConverter(new DoubleArrayAsStringConverter());
+        registerValueConverter(new FloatArrayAsStringConverter());
+        registerValueConverter(new IntArrayAsStringConverter());
+        registerValueConverter(new LongArrayAsStringConverter());
+        registerValueConverter(new ObjectArrayAsStringConverter());
+        registerValueConverter(new ShortArrayAsStringConverter());
+
+        registerValueConverter(new ByteBufferAsStringConverter());
+        registerValueConverter(new CharBufferAsStringConverter());
+        registerValueConverter(new DoubleBufferAsStringConverter());
+        registerValueConverter(new FloatBufferAsStringConverter());
+        registerValueConverter(new IntBufferAsStringConverter());
+        registerValueConverter(new LongBufferAsStringConverter());
+        registerValueConverter(new ShortBufferAsStringConverter());
     }
 
     private AsStringConverter() {
         super();
+    }
+
+    static void registerValueConverter(final BaseAsStringConverter asStringConverter) {
+        CONVERTERS.add(asStringConverter);
     }
 
     static String asString(final Object value) throws ConvertionException {
