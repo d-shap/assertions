@@ -53,7 +53,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().length != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual(getActual()).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && getActual().length != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual(getActual()).build();
         }
     }
 
@@ -74,7 +74,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().length == 0) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 

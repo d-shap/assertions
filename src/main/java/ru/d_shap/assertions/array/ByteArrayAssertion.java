@@ -53,7 +53,7 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().length != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual(getActual()).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && getActual().length != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual(getActual()).build();
         }
     }
 
@@ -74,7 +74,7 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().length == 0) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 
