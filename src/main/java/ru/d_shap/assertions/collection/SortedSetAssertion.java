@@ -60,7 +60,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -70,7 +70,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -81,7 +81,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 
@@ -94,7 +94,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS).addActual().addExpected(expected).build();
         }
     }
 
@@ -107,7 +107,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
     }
 

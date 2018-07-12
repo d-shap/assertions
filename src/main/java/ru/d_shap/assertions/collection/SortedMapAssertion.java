@@ -65,7 +65,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -75,7 +75,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -86,7 +86,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 

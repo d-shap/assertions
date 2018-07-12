@@ -63,7 +63,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -73,7 +73,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -84,7 +84,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 
@@ -408,7 +408,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
                 actualKeysCopy.remove(idx);
             } else {
-                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL, expected);
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ALL).addActual().addExpected(expected).build();
             }
         }
     }
@@ -507,7 +507,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
                 actualKeysCopy = actualKeysCopy.subList(idx + 1, actualKeysCopy.size());
             } else {
-                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ALL_IN_ORDER, expected);
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
     }
@@ -609,7 +609,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             }
         }
         if (!actualKeysCopy.isEmpty() || elementCount != expected.size()) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
         }
     }
 
@@ -706,11 +706,11 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx == 0 && isValuesEqual(expected, expectedKey)) {
                 actualKeysCopy.remove(idx);
             } else {
-                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expected);
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
         if (!actualKeysCopy.isEmpty()) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
         }
     }
 
@@ -812,7 +812,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             }
         }
         if (!found) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_ANY, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ANY).addActual().addExpected(expected).build();
         }
     }
 
@@ -908,7 +908,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         for (K expectedKey : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(expectedKey);
             if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
-                throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_NONE, expected);
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
         }
     }
