@@ -48,7 +48,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final void isNull() {
         checkInitialized();
         if (getActual() != null) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL).addActual().build();
         }
     }
 
@@ -70,7 +70,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -84,7 +84,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -218,7 +218,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             Object value = field.get(getActual());
             return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
-            throw createAssertionError(Messages.Fail.CONTAINS_FIELD, fieldName, ex);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_FIELD, fieldName).addThrowable(ex).build();
         }
     }
 
