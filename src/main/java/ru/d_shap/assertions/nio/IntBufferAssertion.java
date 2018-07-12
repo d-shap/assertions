@@ -515,7 +515,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
-            throw createAssertionError(Messages.Fail.IS_DIRECT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIRECT).build();
         }
     }
 
@@ -526,7 +526,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isDirect()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_DIRECT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_DIRECT).build();
         }
     }
 
@@ -537,7 +537,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
-            throw createAssertionError(Messages.Fail.IS_READ_ONLY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_READ_ONLY).build();
         }
     }
 
@@ -548,7 +548,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_READ_ONLY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_READ_ONLY).build();
         }
     }
 
