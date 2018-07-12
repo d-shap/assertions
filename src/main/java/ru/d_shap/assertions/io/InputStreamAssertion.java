@@ -183,7 +183,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
             checkActualIsNotNull();
             return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.ACTUAL_VALUE_AVAILABLE);
         } catch (IOException ex) {
-            throw createAssertionError(ex.toString(), ex);
+            throw getAssertionErrorBuilder().addThrowable(ex).build();
         }
     }
 
