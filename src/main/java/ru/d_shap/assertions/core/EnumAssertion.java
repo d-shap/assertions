@@ -79,7 +79,7 @@ public class EnumAssertion extends ClassAssertion {
 
             return values.length;
         } catch (ReflectiveOperationException ex) {
-            throw createAssertionError(ex);
+            throw getAssertionErrorBuilder().addThrowable(ex).build();
         }
     }
 

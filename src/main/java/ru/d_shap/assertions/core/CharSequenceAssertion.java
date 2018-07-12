@@ -59,7 +59,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkInitialized();
         checkActualIsNotNull();
         if (!"".equals(getActual().toString())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -69,7 +69,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !"".equals(getActual().toString())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -80,7 +80,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkInitialized();
         checkActualIsNotNull();
         if ("".equals(getActual().toString())) {
-            throw createAssertionError(Messages.Fail.IS_NOT_EMPTY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
         }
     }
 
@@ -92,7 +92,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         for (int i = 0; i < getActual().length(); i++) {
             if (!Character.isWhitespace(getActual().charAt(i))) {
-                throw createAssertionErrorWithActual(Messages.Fail.IS_BLANK);
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_BLANK).addActual().build();
             }
         }
     }
@@ -105,7 +105,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         if (getActual() != null) {
             for (int i = 0; i < getActual().length(); i++) {
                 if (!Character.isWhitespace(getActual().charAt(i))) {
-                    throw createAssertionErrorWithActual(Messages.Fail.IS_NULL_OR_BLANK);
+                    throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_BLANK).addActual().build();
                 }
             }
         }
@@ -125,7 +125,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
             }
         }
         if (blank) {
-            throw createAssertionError(Messages.Fail.IS_NOT_BLANK);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_BLANK).build();
         }
     }
 
@@ -139,7 +139,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().toString().equals(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -153,7 +153,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().toString().equalsIgnoreCase(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -167,7 +167,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().equals(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -181,7 +181,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().equalsIgnoreCase(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT_IGNORE_CASE);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT_IGNORE_CASE).addActual().build();
         }
     }
 
@@ -196,7 +196,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
         if (getActual().toString().compareTo(expected) <= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -211,7 +211,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
         if (getActual().toString().compareToIgnoreCase(expected) <= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -225,7 +225,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().compareTo(expected) < 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -239,7 +239,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().compareToIgnoreCase(expected) < 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -254,7 +254,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
         if (getActual().toString().compareTo(expected) >= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -269,7 +269,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
         if (getActual().toString().compareToIgnoreCase(expected) >= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -283,7 +283,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().compareTo(expected) > 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -297,7 +297,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().compareToIgnoreCase(expected) > 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -314,7 +314,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expectedTo);
         checkArgumentIsNotEmptyFalse("".equals(expectedTo));
         if (getActual().toString().compareTo(expectedFrom) < 0 || getActual().toString().compareTo(expectedTo) >= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -331,7 +331,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expectedTo);
         checkArgumentIsNotEmptyFalse("".equals(expectedTo));
         if (getActual().toString().compareToIgnoreCase(expectedFrom) < 0 || getActual().toString().compareToIgnoreCase(expectedTo) >= 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE_IGNORE_CASE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -348,7 +348,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expectedTo);
         checkArgumentIsNotEmptyTrue("".equals(expectedTo));
         if (getActual().toString().compareTo(expectedFrom) >= 0 && getActual().toString().compareTo(expectedTo) < 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -365,7 +365,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expectedTo);
         checkArgumentIsNotEmptyTrue("".equals(expectedTo));
         if (getActual().toString().compareToIgnoreCase(expectedFrom) >= 0 && getActual().toString().compareToIgnoreCase(expectedTo) < 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE_IGNORE_CASE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -380,7 +380,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!getActual().toString().contains(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS).addActual().addExpected(expected).build();
         }
     }
 
@@ -396,7 +396,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotEmptyTrue("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (!matcher.find()) {
-            throw createAssertionErrorWithActual(Messages.Fail.CONTAINS_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -411,7 +411,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
         if (getActual().toString().contains(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
     }
 
@@ -427,7 +427,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotEmptyFalse("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (matcher.find()) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_CONTAIN_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_CONTAIN_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -441,7 +441,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.contains(getActual().toString())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_PART_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_PART_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -456,7 +456,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_PART_OF_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -470,7 +470,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.contains(getActual().toString())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_PART_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_PART_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -485,7 +485,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_PART_OF_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -499,7 +499,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().toString().matches(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.MATCHES, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.MATCHES).addActual().addExpected(expected).build();
         }
     }
 
@@ -513,7 +513,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().toString().matches(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_MATCH, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_MATCH).addActual().addExpected(expected).build();
         }
     }
 
@@ -528,7 +528,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!getActual().toString().startsWith(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.STARTS_WITH, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.STARTS_WITH).addActual().addExpected(expected).build();
         }
     }
 
@@ -544,7 +544,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotEmptyTrue("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (!matcher.find() || matcher.start() != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.STARTS_WITH_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.STARTS_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -559,7 +559,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
         if (getActual().toString().startsWith(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_START_WITH, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_START_WITH).addActual().addExpected(expected).build();
         }
     }
 
@@ -575,7 +575,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotEmptyFalse("".equals(expected));
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (matcher.find() && matcher.start() == 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_START_WITH_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_START_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -590,7 +590,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue("".equals(expected));
         if (!getActual().toString().endsWith(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.ENDS_WITH, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.ENDS_WITH).addActual().addExpected(expected).build();
         }
     }
 
@@ -612,7 +612,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
             lastIndexEnd = matcher.end();
         }
         if (lastIndexEnd != getActual().length()) {
-            throw createAssertionErrorWithActual(Messages.Fail.ENDS_WITH_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.ENDS_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 
@@ -627,7 +627,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse("".equals(expected));
         if (getActual().toString().endsWith(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_END_WITH, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_END_WITH).addActual().addExpected(expected).build();
         }
     }
 
@@ -649,7 +649,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
             lastIndexEnd = matcher.end();
         }
         if (lastIndexEnd == getActual().length()) {
-            throw createAssertionErrorWithActual(Messages.Fail.DOES_NOT_END_WITH_IGNORE_CASE, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_END_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
     }
 

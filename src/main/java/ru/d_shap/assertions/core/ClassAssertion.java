@@ -61,7 +61,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -75,7 +75,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -89,7 +89,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.isAssignableFrom(getActual())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SUBTYPE_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -103,7 +103,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.isAssignableFrom(getActual())) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUBTYPE_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -117,7 +117,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().isAssignableFrom(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SUPERTYPE_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -131,7 +131,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().isAssignableFrom(expected)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_SUPERTYPE_OF, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -144,21 +144,21 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         Constructor<?>[] constructors = getActual().getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_CONSTRUCTOR_DEFAULT).addActual().build();
         }
         Constructor<?> constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_DEFAULT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_CONSTRUCTOR_DEFAULT).addActual().build();
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_CONSTRUCTOR_NOT_ACCESSIBLE);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
         }
         setAccessible(constructor);
         try {
             constructor.newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException ex) {
-            throw createAssertionError(ex);
+            throw getAssertionErrorBuilder().addThrowable(ex).build();
         }
     }
 
