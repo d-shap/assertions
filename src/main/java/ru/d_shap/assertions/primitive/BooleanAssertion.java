@@ -48,7 +48,7 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual()) {
-            throw createAssertionError(Messages.Fail.IS_TRUE);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_TRUE).build();
         }
     }
 
@@ -59,7 +59,7 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual()) {
-            throw createAssertionError(Messages.Fail.IS_FALSE);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_FALSE).build();
         }
     }
 

@@ -51,7 +51,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) > delta) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -65,7 +65,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) <= delta) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -78,7 +78,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -91,7 +91,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -104,7 +104,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -117,7 +117,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -131,7 +131,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -145,7 +145,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -156,7 +156,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != 0.0f) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_ZERO);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_ZERO).addActual().build();
         }
     }
 
@@ -167,7 +167,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
-            throw createAssertionError(Messages.Fail.IS_NON_ZERO);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NON_ZERO).addActual().build();
         }
     }
 
@@ -178,7 +178,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != Float.POSITIVE_INFINITY) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_POSITIVE_INFINITY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_POSITIVE_INFINITY).addActual().build();
         }
     }
 
@@ -189,7 +189,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != Float.NEGATIVE_INFINITY) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NEGATIVE_INFINITY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NEGATIVE_INFINITY).addActual().build();
         }
     }
 
@@ -200,7 +200,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isInfinite()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_INFINITY);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_INFINITY).addActual().build();
         }
     }
 
@@ -211,7 +211,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isNaN()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NAN);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NAN).addActual().build();
         }
     }
 
@@ -222,7 +222,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isNaN()) {
-            throw createAssertionError(Messages.Fail.IS_NOT_NAN);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_NAN).addActual().build();
         }
     }
 
@@ -233,7 +233,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isNaN() || getActual().isInfinite()) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_FINITE);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_FINITE).addActual().build();
         }
     }
 

@@ -50,7 +50,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_SAME, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() == expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_DIFFERENT);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -76,7 +76,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -89,7 +89,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_GREATER_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -102,7 +102,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -115,7 +115,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_LESS_OR_EQUAL, expected);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -129,7 +129,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -143,7 +143,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw createAssertionErrorWithActual(Messages.Fail.IS_NOT_IN_RANGE, expectedFrom, expectedTo);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
