@@ -53,7 +53,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().length != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual(getActual()).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -63,7 +63,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && getActual().length != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual(getActual()).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
