@@ -167,7 +167,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NON_ZERO).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NON_ZERO).build();
         }
     }
 
@@ -222,7 +222,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isNaN()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_NAN).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_NAN).build();
         }
     }
 
