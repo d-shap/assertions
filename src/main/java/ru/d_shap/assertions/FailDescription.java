@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,234 +29,66 @@ import java.util.List;
  */
 final class FailDescription {
 
-    private static final String VALUE_ACTUAL = "Actual:{0}";
-
-    private static final String VALUE_EXPECTED = "Expected:{0}";
-
-    private static final String VALUE_ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
-
     private static final String MESSAGE_SEPARATOR = "\n\t";
 
-    private final List<String> _messages;
+    private final List<FailDescriptionEntry> _failDescriptionEntries;
 
-    /**
-     * Create new object.
-     */
     FailDescription() {
         super();
-        _messages = new ArrayList<>();
+        _failDescriptionEntries = new ArrayList<>();
     }
 
-    /**
-     * Create new object.
-     *
-     * @param message   the message.
-     * @param arguments the message arguments.
-     */
-    FailDescription(final String message, final Object... arguments) {
+    FailDescription(final String message) {
         this();
-        addMessage(message, true, arguments);
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[0], true));
     }
 
-    /**
-     * Create new object.
-     *
-     * @param failDescription the fail description.
-     */
+    FailDescription(final String message, final Object[] arguments) {
+        this();
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
+    }
+
+    FailDescription(final FailDescriptionEntry failDescriptionEntry) {
+        this();
+        _failDescriptionEntries.add(failDescriptionEntry);
+    }
+
     FailDescription(final FailDescription failDescription) {
         this();
-        _messages.addAll(failDescription._messages);
+        if (failDescription != null) {
+            _failDescriptionEntries.addAll(failDescription._failDescriptionEntries);
+        }
     }
 
-    /**
-     * Create new object.
-     *
-     * @param failDescription the fail description.
-     * @param message         the message.
-     * @param arguments       the message arguments.
-     */
-    FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
+    FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
-        addMessage(message, true, arguments);
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[0], true));
     }
 
-    private void addMessage(final String message, final boolean checkLastSymbol, final Object... arguments) {
-        if (message == null || "".equals(message)) {
-            return;
-        }
-        String[] argumentStrArray = new String[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            argumentStrArray[i] = String.valueOf(arguments[i]);
-        }
-        String formattedMessage = MessageFormat.format(message, (Object[]) argumentStrArray);
-        if (checkLastSymbol && !formattedMessage.endsWith(".") && !formattedMessage.endsWith("?") && !formattedMessage.endsWith("!")) {
-            formattedMessage += ".";
-        }
-        _messages.add(formattedMessage);
+    FailDescription(final FailDescription failDescription, final String message, final Object[] arguments) {
+        this(failDescription);
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
+    }
+
+    FailDescription(final FailDescription failDescription, final FailDescriptionEntry failDescriptionEntry) {
+        this(failDescription);
+        _failDescriptionEntries.add(failDescriptionEntry);
     }
 
     String getFullMessage() {
+        List<String> formattedMessages = new ArrayList<>();
+        for (FailDescriptionEntry failDescriptionEntry : _failDescriptionEntries) {
+            failDescriptionEntry.addFormattedMessage(formattedMessages);
+        }
+
         StringBuilder fullMessage = new StringBuilder();
-        for (int i = 0; i < _messages.size(); i++) {
+        for (int i = 0; i < formattedMessages.size(); i++) {
             if (i > 0) {
                 fullMessage.append(MESSAGE_SEPARATOR);
             }
-            fullMessage.append(_messages.get(i));
+            fullMessage.append(formattedMessages.get(i));
         }
         return fullMessage.toString();
-    }
-
-    AssertionError createAssertionError(final String message) {
-        FailDescription failDescription = new FailDescription(this);
-        failDescription.addMessage(message, true);
-        return new AssertionError(failDescription.getFullMessage());
-    }
-
-    AssertionError createAssertionError(final String message1, final String message2) {
-        FailDescription failDescription = new FailDescription(this);
-        failDescription.addMessage(message1, true);
-        failDescription.addMessage(message2, true);
-        return new AssertionError(failDescription.getFullMessage());
-    }
-
-    AssertionError createAssertionError(final String message, final Object expected, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message, true);
-            failDescription.addMessage(VALUE_EXPECTED, false, getValueMessage(expected, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionError(final String message1, final String message2, final Object expected, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message1, true);
-            failDescription.addMessage(message2, true);
-            failDescription.addMessage(VALUE_EXPECTED, false, getValueMessage(expected, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionError(final String message, final Object expectedFrom, final Object expectedTo, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message, true);
-            failDescription.addMessage(VALUE_EXPECTED, false, getValueMessage(expectedFrom, expectedTo, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionError(final String message1, final String message2, final Object expectedFrom, final Object expectedTo, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message1, true);
-            failDescription.addMessage(message2, true);
-            failDescription.addMessage(VALUE_EXPECTED, false, getValueMessage(expectedFrom, expectedTo, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionError(final String message, final Throwable throwable) {
-        FailDescription failDescription = new FailDescription(this);
-        failDescription.addMessage(message, true);
-        return new AssertionError(failDescription.getFullMessage(), getThrowable(throwable));
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message, final Object actual, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message, true);
-            failDescription.addMessage(VALUE_ACTUAL, false, getValueMessage(actual, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message1, final String message2, final Object actual, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message1, true);
-            failDescription.addMessage(message2, true);
-            failDescription.addMessage(VALUE_ACTUAL, false, getValueMessage(actual, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message, final Object actual, final Object expected, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message, true);
-            failDescription.addMessage(VALUE_ACTUAL_AND_EXPECTED, false, getValueMessage(actual, valueClass), getValueMessage(expected, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message1, final String message2, final Object actual, final Object expected, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message1, true);
-            failDescription.addMessage(message2, true);
-            failDescription.addMessage(VALUE_ACTUAL_AND_EXPECTED, false, getValueMessage(actual, valueClass), getValueMessage(expected, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message, final Object actual, final Object expectedFrom, final Object expectedTo, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message, true);
-            failDescription.addMessage(VALUE_ACTUAL_AND_EXPECTED, false, getValueMessage(actual, valueClass), getValueMessage(expectedFrom, expectedTo, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    AssertionError createAssertionErrorWithActual(final String message1, final String message2, final Object actual, final Object expectedFrom, final Object expectedTo, final Class<?> valueClass) {
-        try {
-            FailDescription failDescription = new FailDescription(this);
-            failDescription.addMessage(message1, true);
-            failDescription.addMessage(message2, true);
-            failDescription.addMessage(VALUE_ACTUAL_AND_EXPECTED, false, getValueMessage(actual, valueClass), getValueMessage(expectedFrom, expectedTo, valueClass));
-            return new AssertionError(failDescription.getFullMessage());
-        } catch (ConvertionException ex) {
-            return new AssertionError(getFullMessage(), getThrowable(ex));
-        }
-    }
-
-    private String getValueMessage(final Object object, final Class<?> valueClass) throws ConvertionException {
-        String objectStr = AsStringConverter.asString(object, valueClass);
-        return "<" + objectStr + ">";
-    }
-
-    private String getValueMessage(final Object objectFrom, final Object objectTo, final Class<?> valueClass) throws ConvertionException {
-        String objectFromStr = AsStringConverter.asString(objectFrom, valueClass);
-        String objectToStr = AsStringConverter.asString(objectTo, valueClass);
-        return "<" + objectFromStr + ":" + objectToStr + ">";
-    }
-
-    private Throwable getThrowable(final Throwable throwable) {
-        if (throwable instanceof ConvertionException) {
-            return throwable.getCause();
-        } else {
-            return throwable;
-        }
     }
 
 }
