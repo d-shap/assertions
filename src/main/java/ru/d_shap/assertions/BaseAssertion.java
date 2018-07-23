@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+
 import ru.d_shap.assertions.core.ClassActualValueValidator;
 
 /**
@@ -137,6 +140,31 @@ public abstract class BaseAssertion<T> {
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object... arguments) {
         ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message, arguments));
         return assertion;
+    }
+
+    /**
+     * Make assertion with the hamcrest matcher.
+     *
+     * @param actual  the actual value.
+     * @param matcher the hamcrest matcher.
+     * @param <U>     the generic type of the actual value.
+     */
+    protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher) {
+        String fullMessage = _failDescription.getFullMessage();
+        MatcherAssert.assertThat(fullMessage, actual, matcher);
+    }
+
+    /**
+     * Make assertion with the hamcrest matcher.
+     *
+     * @param actual  the actual value.
+     * @param matcher the hamcrest matcher.
+     * @param message the message.
+     * @param <U>     the generic type of the actual value.
+     */
+    protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message) {
+        String fullMessage = new FailDescription(_failDescription, message).getFullMessage();
+        MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
 
     /**
