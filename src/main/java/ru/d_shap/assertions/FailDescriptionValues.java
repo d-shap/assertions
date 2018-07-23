@@ -78,11 +78,13 @@ final class FailDescriptionValues {
     }
 
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        addActualAndExpected2(failDescriptionEntries);
-        addActualAndExpected(failDescriptionEntries);
-        addActual(failDescriptionEntries);
-        addExpected2(failDescriptionEntries);
-        addExpected(failDescriptionEntries);
+        if (_valueClass != null) {
+            addActualAndExpected2(failDescriptionEntries);
+            addActualAndExpected(failDescriptionEntries);
+            addActual(failDescriptionEntries);
+            addExpected2(failDescriptionEntries);
+            addExpected(failDescriptionEntries);
+        }
     }
 
     private void addActualAndExpected2(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
