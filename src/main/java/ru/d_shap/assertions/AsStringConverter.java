@@ -103,7 +103,7 @@ final class AsStringConverter {
                 return asStringConverter.asString(value);
             }
         }
-        return String.valueOf(value);
+        return value.toString();
     }
 
     static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
