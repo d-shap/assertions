@@ -22,7 +22,7 @@ package ru.d_shap.assertions;
 import java.util.List;
 
 /**
- * Fail description values.
+ * Fail description actual and expected values.
  *
  * @author Dmitry Shapovalov
  */
