@@ -218,7 +218,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             Object value = field.get(getActual());
             return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
