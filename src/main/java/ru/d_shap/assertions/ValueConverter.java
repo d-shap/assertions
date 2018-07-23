@@ -41,10 +41,8 @@ import ru.d_shap.assertions.collection.SortedSetToSetValueConverter;
 import ru.d_shap.assertions.core.IterableToListValueConverter;
 import ru.d_shap.assertions.io.InputStreamToByteArrayValueConverter;
 import ru.d_shap.assertions.io.InputStreamToIntValueConverter;
-import ru.d_shap.assertions.io.InputStreamToLongValueConverter;
 import ru.d_shap.assertions.io.ReaderToCharArrayValueConverter;
 import ru.d_shap.assertions.io.ReaderToIntValueConverter;
-import ru.d_shap.assertions.io.ReaderToLongValueConverter;
 import ru.d_shap.assertions.nio.ByteBufferToByteArrayValueConverter;
 import ru.d_shap.assertions.nio.CharBufferToCharArrayValueConverter;
 import ru.d_shap.assertions.nio.DoubleBufferToDoubleArrayValueConverter;
@@ -102,10 +100,8 @@ final class ValueConverter {
 
         registerValueConverter(new InputStreamToByteArrayValueConverter());
         registerValueConverter(new InputStreamToIntValueConverter());
-        registerValueConverter(new InputStreamToLongValueConverter());
         registerValueConverter(new ReaderToCharArrayValueConverter());
         registerValueConverter(new ReaderToIntValueConverter());
-        registerValueConverter(new ReaderToLongValueConverter());
     }
 
     private ValueConverter() {

@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.io;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
@@ -178,8 +179,20 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final LongAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        long length = convertValue(getActual(), Long.class);
-        return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        try {
+            int read;
+            long length = 0;
+            while (true) {
+                read = getActual().read();
+                if (read < 0) {
+                    break;
+                }
+                length++;
+            }
+            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+        }
     }
 
     /**

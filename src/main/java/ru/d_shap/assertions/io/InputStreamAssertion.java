@@ -178,9 +178,9 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @return the assertion.
      */
     public final IntAssertion toAvailable() {
+        checkInitialized();
+        checkActualIsNotNull();
         try {
-            checkInitialized();
-            checkActualIsNotNull();
             return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.ACTUAL_VALUE_AVAILABLE);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
@@ -204,8 +204,20 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final LongAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        long length = convertValue(getActual(), Long.class);
-        return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        try {
+            int read;
+            long length = 0;
+            while (true) {
+                read = getActual().read();
+                if (read < 0) {
+                    break;
+                }
+                length++;
+            }
+            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+        }
     }
 
     /**
