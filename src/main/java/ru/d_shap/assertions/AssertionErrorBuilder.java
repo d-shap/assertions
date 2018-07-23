@@ -66,6 +66,17 @@ public final class AssertionErrorBuilder {
     }
 
     /**
+     * Add the throwabe message to the assertion error.
+     *
+     * @param throwable the throwabe.
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addMessage(final Throwable throwable) {
+        addMessage(getThrowable(throwable).toString());
+        return this;
+    }
+
+    /**
      * Add the actual value of the assertion to the assertion error.
      *
      * @return current object for the chain call.
