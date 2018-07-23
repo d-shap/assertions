@@ -97,10 +97,10 @@ public abstract class BaseAssertion<T> {
 
     private void initialize(final T actual, final FailDescription failDescription) {
         if (_initialized) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED).build();
+            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.ASSERTION_IS_NOT_INITIALIZED).build();
         }
         if (!_actualValueValidator.isValid(actual)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.ASSERTION_MATCHES).build();
+            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.ASSERTION_MATCHES).build();
         }
         _initialized = true;
         _actual = actual;
@@ -183,7 +183,7 @@ public abstract class BaseAssertion<T> {
         try {
             return ValueConverter.convert(value, targetClass, arguments);
         } catch (ConvertionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
     }
 
@@ -254,8 +254,12 @@ public abstract class BaseAssertion<T> {
      *
      * @return the assertion error builder instance.
      */
-    protected final FailDescription.AssertionErrorBuilder getAssertionErrorBuilder() {
-        return _failDescription.getAssertionErrorBuilder(getActual(), getActualValueClass());
+    protected final AssertionErrorBuilder getAssertionErrorBuilder() {
+        return getAssertionErrorBuilder(_failDescription);
+    }
+
+    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription) {
+        return AssertionErrorBuilder.getInstance(failDescription, getActualValueClass(), getActual());
     }
 
 }
