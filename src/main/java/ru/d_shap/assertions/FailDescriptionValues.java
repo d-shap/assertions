@@ -79,15 +79,15 @@ final class FailDescriptionValues {
 
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (_valueClass != null) {
-            addActualAndExpected2(failDescriptionEntries);
-            addActualAndExpected(failDescriptionEntries);
-            addActual(failDescriptionEntries);
-            addExpected2(failDescriptionEntries);
-            addExpected(failDescriptionEntries);
+            addActualAndExpected2Entry(failDescriptionEntries);
+            addActualAndExpectedEntry(failDescriptionEntries);
+            addActualEntry(failDescriptionEntries);
+            addExpected2Entry(failDescriptionEntries);
+            addExpectedEntry(failDescriptionEntries);
         }
     }
 
-    private void addActualAndExpected2(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (_actualDefined && !_expected1Defined && _expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
@@ -96,7 +96,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualAndExpected(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (_actualDefined && _expected1Defined && !_expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _valueClass);
@@ -105,7 +105,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActual(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (_actualDefined && !_expected1Defined && !_expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL, new Object[]{actual}, false);
@@ -113,7 +113,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpected2(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (!_actualDefined && !_expected1Defined && _expected2Defined) {
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
@@ -121,7 +121,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpected(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (!_actualDefined && _expected1Defined && !_expected2Defined) {
             String expected = getValueMessage(_expected1, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
