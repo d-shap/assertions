@@ -100,8 +100,8 @@ public final class AssertionErrorBuilder {
     /**
      * Add the expected value range of the assertion to the assertion error.
      *
-     * @param expectedFrom the lower (inclusive) bound of the expected value range of the assertion.
-     * @param expectedTo   the upper (exclusive) bound of the expected value range of the assertion.
+     * @param expectedFrom the lower bound of the expected value range of the assertion.
+     * @param expectedTo   the upper bound of the expected value range of the assertion.
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addExpected(final Object expectedFrom, final Object expectedTo) {
