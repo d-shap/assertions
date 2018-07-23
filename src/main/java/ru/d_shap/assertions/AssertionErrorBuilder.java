@@ -29,44 +29,28 @@ import java.util.List;
  */
 public final class AssertionErrorBuilder {
 
-    private static final String VALUE_ACTUAL = "Actual:{0}";
-
-    private static final String VALUE_EXPECTED = "Expected:{0}";
-
-    private static final String VALUE_ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
-
     private final FailDescription _failDescription;
-
-    private final Class<?> _valueClass;
 
     private final List<FailDescriptionEntry> _failDescriptionEntries;
 
-    private boolean _actualDefined;
-
-    private Object _actual;
-
-    private boolean _expected1Defined;
-
-    private Object _expected1;
-
-    private boolean _expected2Defined;
-
-    private Object _expected2;
+    private final FailDescriptionValues _failDescriptionValues;
 
     private Throwable _throwable;
 
-    AssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
+    private AssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
         super();
         _failDescription = failDescription;
-        _valueClass = valueClass;
         _failDescriptionEntries = new ArrayList<>();
-        _actualDefined = false;
-        _actual = actual;
-        _expected1Defined = false;
-        _expected1 = null;
-        _expected2Defined = false;
-        _expected2 = null;
+        _failDescriptionValues = new FailDescriptionValues(valueClass, actual);
         _throwable = null;
+    }
+
+    static AssertionErrorBuilder getInstance() {
+        return new AssertionErrorBuilder(null, null, null);
+    }
+
+    static AssertionErrorBuilder getInstance(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
+        return new AssertionErrorBuilder(failDescription, valueClass, actual);
     }
 
     /**
@@ -87,7 +71,7 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addActual() {
-        _actualDefined = true;
+        _failDescriptionValues.addActual();
         return this;
     }
 
@@ -98,10 +82,7 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addExpected(final Object expected) {
-        _expected1Defined = true;
-        _expected1 = expected;
-        _expected2Defined = false;
-        _expected2 = null;
+        _failDescriptionValues.addExpected(expected);
         return this;
     }
 
@@ -113,10 +94,7 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addExpected(final Object expectedFrom, final Object expectedTo) {
-        _expected1Defined = false;
-        _expected1 = expectedFrom;
-        _expected2Defined = true;
-        _expected2 = expectedTo;
+        _failDescriptionValues.addExpected(expectedFrom, expectedTo);
         return this;
     }
 
@@ -139,7 +117,7 @@ public final class AssertionErrorBuilder {
     public AssertionError build() {
         try {
             List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>(_failDescriptionEntries);
-            addFailDescriptionEntryForValues(failDescriptionEntries);
+            _failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
 
             FailDescription failDescription = new FailDescription(_failDescription);
             for (FailDescriptionEntry failDescriptionEntry : failDescriptionEntries) {
@@ -153,47 +131,6 @@ public final class AssertionErrorBuilder {
             Throwable throwable = getThrowable(ex);
             return new AssertionError(fullMessage, throwable);
         }
-    }
-
-    private void addFailDescriptionEntryForValues(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        if (_actualDefined) {
-            if (_expected2Defined) {
-                String actual = getValueMessage(_actual, _valueClass);
-                String expected = getValueMessage(_expected1, _expected2, _valueClass);
-                FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
-                failDescriptionEntries.add(failDescriptionEntry);
-            } else if (_expected1Defined) {
-                String actual = getValueMessage(_actual, _valueClass);
-                String expected = getValueMessage(_expected1, _valueClass);
-                FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
-                failDescriptionEntries.add(failDescriptionEntry);
-            } else {
-                String actual = getValueMessage(_actual, _valueClass);
-                FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL, new Object[]{actual}, false);
-                failDescriptionEntries.add(failDescriptionEntry);
-            }
-        } else {
-            if (_expected2Defined) {
-                String expected = getValueMessage(_expected1, _expected2, _valueClass);
-                FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
-                failDescriptionEntries.add(failDescriptionEntry);
-            } else if (_expected1Defined) {
-                String expected = getValueMessage(_expected1, _valueClass);
-                FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
-                failDescriptionEntries.add(failDescriptionEntry);
-            }
-        }
-    }
-
-    private String getValueMessage(final Object object, final Class<?> valueClass) throws ConvertionException {
-        String objectStr = AsStringConverter.asString(object, valueClass);
-        return "<" + objectStr + ">";
-    }
-
-    private String getValueMessage(final Object objectFrom, final Object objectTo, final Class<?> valueClass) throws ConvertionException {
-        String objectFromStr = AsStringConverter.asString(objectFrom, valueClass);
-        String objectToStr = AsStringConverter.asString(objectTo, valueClass);
-        return "<" + objectFromStr + ":" + objectToStr + ">";
     }
 
     private Throwable getThrowable(final Throwable throwable) {
