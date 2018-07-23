@@ -57,39 +57,39 @@ final class AsStringConverter {
     static {
         CONVERTERS = new LinkedList<>();
 
-        registerValueConverter(new BooleanAsStringConverter());
-        registerValueConverter(new CharAsStringConverter());
+        registerAsStringConverter(new BooleanAsStringConverter());
+        registerAsStringConverter(new CharAsStringConverter());
 
-        registerValueConverter(new ClassAsStringConverter());
-        registerValueConverter(new IterableAsStringConverter());
+        registerAsStringConverter(new ClassAsStringConverter());
+        registerAsStringConverter(new IterableAsStringConverter());
 
-        registerValueConverter(new CollectionAsStringConverter());
-        registerValueConverter(new MapAsStringConverter());
+        registerAsStringConverter(new CollectionAsStringConverter());
+        registerAsStringConverter(new MapAsStringConverter());
 
-        registerValueConverter(new BooleanArrayAsStringConverter());
-        registerValueConverter(new ByteArrayAsStringConverter());
-        registerValueConverter(new CharArrayAsStringConverter());
-        registerValueConverter(new DoubleArrayAsStringConverter());
-        registerValueConverter(new FloatArrayAsStringConverter());
-        registerValueConverter(new IntArrayAsStringConverter());
-        registerValueConverter(new LongArrayAsStringConverter());
-        registerValueConverter(new ObjectArrayAsStringConverter());
-        registerValueConverter(new ShortArrayAsStringConverter());
+        registerAsStringConverter(new BooleanArrayAsStringConverter());
+        registerAsStringConverter(new ByteArrayAsStringConverter());
+        registerAsStringConverter(new CharArrayAsStringConverter());
+        registerAsStringConverter(new DoubleArrayAsStringConverter());
+        registerAsStringConverter(new FloatArrayAsStringConverter());
+        registerAsStringConverter(new IntArrayAsStringConverter());
+        registerAsStringConverter(new LongArrayAsStringConverter());
+        registerAsStringConverter(new ObjectArrayAsStringConverter());
+        registerAsStringConverter(new ShortArrayAsStringConverter());
 
-        registerValueConverter(new ByteBufferAsStringConverter());
-        registerValueConverter(new CharBufferAsStringConverter());
-        registerValueConverter(new DoubleBufferAsStringConverter());
-        registerValueConverter(new FloatBufferAsStringConverter());
-        registerValueConverter(new IntBufferAsStringConverter());
-        registerValueConverter(new LongBufferAsStringConverter());
-        registerValueConverter(new ShortBufferAsStringConverter());
+        registerAsStringConverter(new ByteBufferAsStringConverter());
+        registerAsStringConverter(new CharBufferAsStringConverter());
+        registerAsStringConverter(new DoubleBufferAsStringConverter());
+        registerAsStringConverter(new FloatBufferAsStringConverter());
+        registerAsStringConverter(new IntBufferAsStringConverter());
+        registerAsStringConverter(new LongBufferAsStringConverter());
+        registerAsStringConverter(new ShortBufferAsStringConverter());
     }
 
     private AsStringConverter() {
         super();
     }
 
-    static void registerValueConverter(final BaseAsStringConverter asStringConverter) {
+    static void registerAsStringConverter(final BaseAsStringConverter asStringConverter) {
         CONVERTERS.add(0, asStringConverter);
     }
 
@@ -103,7 +103,7 @@ final class AsStringConverter {
                 return asStringConverter.asString(value);
             }
         }
-        return value.toString();
+        return String.valueOf(value);
     }
 
     static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
