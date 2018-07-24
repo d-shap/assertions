@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -102,6 +104,18 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     }
 
     /**
+     * Make assertion about the actual keys.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toKeys(final Matcher<SortedSet<K>> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion((SortedSet<K>) getActual().keySet(), matcher, Messages.Check.ACTUAL_VALUE_KEYS);
+    }
+
+    /**
      * Check if the actual value contains the expected key.
      *
      * @param expected the expected key.
@@ -143,6 +157,33 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     }
 
     /**
+     * Make assertion about the head key set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param key     upper key (exclusive) of the head key set.
+     */
+    public final void toHeadKeys(final Matcher<SortedSet<K>> matcher, final K key) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        toKeys().toHeadSet(matcher, key);
+    }
+
+    /**
+     * Make assertion about the head key set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of keys to get from the head key set.
+     */
+    public final void toHeadKeys(final Matcher<SortedSet<K>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        toKeys().toHeadSet(matcher, count);
+    }
+
+    /**
      * Make assertion about the tail key set of the actual.
      *
      * @param key lower key (inclusive) of the tail key set.
@@ -163,6 +204,33 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         return toKeys().toTailSet(count);
+    }
+
+    /**
+     * Make assertion about the tail key set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param key     lower key (inclusive) of the tail key set.
+     */
+    public final void toTailKeys(final Matcher<SortedSet<K>> matcher, final K key) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        toKeys().toTailSet(matcher, key);
+    }
+
+    /**
+     * Make assertion about the tail key set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of keys to get from the tail key set.
+     */
+    public final void toTailKeys(final Matcher<SortedSet<K>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        toKeys().toTailSet(matcher, count);
     }
 
     /**
@@ -341,6 +409,18 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     }
 
     /**
+     * Make assertion about the actual values.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toValues(final Matcher<Iterable<V>> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().values(), matcher, Messages.Check.ACTUAL_VALUE_VALUES);
+    }
+
+    /**
      * Check if the actual value contains the expected entry.
      *
      * @param expectedKey   the key of the expected entry.
@@ -386,11 +466,42 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the head map of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param key     upper key (exclusive) of the head map.
+     */
+    public final void toHeadMap(final Matcher<SortedMap<K, V>> matcher, final K key) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().headMap(key), matcher, Messages.Check.ACTUAL_VALUE_HEAD_ELEMENT, key);
+    }
+
+    /**
+     * Make assertion about the head map of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of elements to get from the head map.
+     */
+    public final void toHeadMap(final Matcher<SortedMap<K, V>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        matcherAssertion(getHeadMap(count), matcher, Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+    }
+
+    private SortedMap<K, V> getHeadMap(final int count) {
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+            return getActual();
         } else {
             K key = getNthKey(count + 1);
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+            return getActual().headMap(key);
         }
     }
 
@@ -416,11 +527,42 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the tail map of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param key     lower key (inclusive) of the tail map.
+     */
+    public final void toTailMap(final Matcher<SortedMap<K, V>> matcher, final K key) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().tailMap(key), matcher, Messages.Check.ACTUAL_VALUE_TAIL_ELEMENT, key);
+    }
+
+    /**
+     * Make assertion about the tail map of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of elements to get from the tail map.
+     */
+    public final void toTailMap(final Matcher<SortedMap<K, V>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        matcherAssertion(getTailMap(count), matcher, Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+    }
+
+    private SortedMap<K, V> getTailMap(final int count) {
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+            return getActual();
         } else {
             K key = getNthKey(getActual().size() - count + 1);
-            return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+            return getActual().tailMap(key);
         }
     }
 
@@ -980,6 +1122,18 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSize(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**
