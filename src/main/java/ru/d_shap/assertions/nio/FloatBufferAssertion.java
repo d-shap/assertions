@@ -21,6 +21,8 @@ package ru.d_shap.assertions.nio;
 
 import java.nio.FloatBuffer;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -427,6 +429,18 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     }
 
     /**
+     * Make assertion about the actual buffer's position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toPosition(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().position(), matcher, Messages.Check.ACTUAL_VALUE_POSITION);
+    }
+
+    /**
      * Check if the actual value position is equal to the expected position.
      *
      * @param expected the expected position.
@@ -447,6 +461,18 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     }
 
     /**
+     * Make assertion about the actual buffer's limit.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLimit(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().limit(), matcher, Messages.Check.ACTUAL_VALUE_LIMIT);
+    }
+
+    /**
      * Check if the actual value limit is equal to the expected limit.
      *
      * @param expected the expected limit.
@@ -464,6 +490,18 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.ACTUAL_VALUE_CAPACITY);
+    }
+
+    /**
+     * Make assertion about the actual buffer's capacity.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toCapacity(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().capacity(), matcher, Messages.Check.ACTUAL_VALUE_CAPACITY);
     }
 
     /**
@@ -497,6 +535,18 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.ACTUAL_VALUE_REMAINING);
+    }
+
+    /**
+     * Make assertion about the actual buffer's remaining.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toRemaining(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().remaining(), matcher, Messages.Check.ACTUAL_VALUE_REMAINING);
     }
 
     /**
