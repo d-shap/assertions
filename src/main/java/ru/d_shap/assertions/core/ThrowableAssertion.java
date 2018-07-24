@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -51,6 +53,18 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_VALUE_MESSAGE);
+    }
+
+    /**
+     * Make assertion about the actual throwable message.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toMessage(final Matcher<CharSequence> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().getMessage(), matcher, Messages.Check.ACTUAL_VALUE_MESSAGE);
     }
 
     /**
@@ -89,11 +103,23 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Make assertion about the actual throwable cause.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toCause(final Matcher<Throwable> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().getCause(), matcher, Messages.Check.ACTUAL_VALUE_CAUSE);
+    }
+
+    /**
      * Check if the cause of the throwable is instance of the expected class.
      *
      * @param expected the expected class.
      */
-    public final void isCauseInstanceOf(final Class<?> expected) {
+    public final void hasCause(final Class<?> expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
