@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.RandomAccess;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -373,6 +375,18 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSize(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**
