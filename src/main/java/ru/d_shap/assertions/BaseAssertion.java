@@ -157,13 +157,14 @@ public abstract class BaseAssertion<T> {
     /**
      * Make assertion with the hamcrest matcher.
      *
-     * @param actual  the actual value.
-     * @param matcher the hamcrest matcher.
-     * @param message the message.
-     * @param <U>     the generic type of the actual value.
+     * @param actual    the actual value.
+     * @param matcher   the hamcrest matcher.
+     * @param message   the message.
+     * @param arguments the message arguments.
+     * @param <U>       the generic type of the actual value.
      */
-    protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message) {
-        String fullMessage = new FailDescription(_failDescription, message).getFullMessage();
+    protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message, final Object... arguments) {
+        String fullMessage = new FailDescription(_failDescription, message, arguments).getFullMessage();
         MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
 
