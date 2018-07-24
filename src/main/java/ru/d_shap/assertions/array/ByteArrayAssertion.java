@@ -21,6 +21,8 @@ package ru.d_shap.assertions.array;
 
 import java.util.List;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -336,6 +338,18 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.ACTUAL_VALUE_LENGTH);
+    }
+
+    /**
+     * Make assertion about the actual value's length.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLength(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().length, matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
     }
 
     /**
