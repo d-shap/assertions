@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -92,6 +94,33 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkArgumentIsValid(count > 0);
         char[] nextChars = convertValue(getActual(), char[].class, count);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the chars read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toCharArray(final Matcher<char[]> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        char[] nextChars = convertValue(getActual(), char[].class, 0);
+        matcherAssertion(nextChars, matcher, Messages.Check.ACTUAL_VALUE_CHARS_ALL);
+    }
+
+    /**
+     * Make assertion about the chars read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of chars to read from the actual.
+     */
+    public final void toCharArray(final Matcher<char[]> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        char[] nextChars = convertValue(getActual(), char[].class, count);
+        matcherAssertion(nextChars, matcher, Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
     }
 
     /**
@@ -180,19 +209,39 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            int read;
-            long length = 0;
-            while (true) {
-                read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                length++;
-            }
-            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.ACTUAL_VALUE_LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
+    }
+
+    /**
+     * Make assertion about the actual value's length.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLength(final Matcher<Long> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        try {
+            matcherAssertion(getLength(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+        }
+    }
+
+    private long getLength() throws IOException {
+        int read;
+        long length = 0;
+        while (true) {
+            read = getActual().read();
+            if (read < 0) {
+                break;
+            }
+            length++;
+        }
+        return length;
     }
 
     /**

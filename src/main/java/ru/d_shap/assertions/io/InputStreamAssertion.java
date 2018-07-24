@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -93,6 +95,33 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkArgumentIsValid(count > 0);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the bytes read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toByteArray(final Matcher<byte[]> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
+        matcherAssertion(nextBytes, matcher, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
+    }
+
+    /**
+     * Make assertion about the bytes read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of bytes to read from the actual.
+     */
+    public final void toByteArray(final Matcher<byte[]> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        byte[] nextBytes = convertValue(getActual(), byte[].class, count);
+        matcherAssertion(nextBytes, matcher, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
     }
 
     /**
@@ -188,6 +217,22 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     }
 
     /**
+     * Make assertion about the actual value's available.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toAvailable(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        try {
+            matcherAssertion(getActual().available(), matcher, Messages.Check.ACTUAL_VALUE_AVAILABLE);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+        }
+    }
+
+    /**
      * Check if the actual value available is equal to the expected available.
      *
      * @param expected the expected available.
@@ -205,19 +250,39 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            int read;
-            long length = 0;
-            while (true) {
-                read = getActual().read();
-                if (read < 0) {
-                    break;
-                }
-                length++;
-            }
-            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.ACTUAL_VALUE_LENGTH);
+            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.ACTUAL_VALUE_LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
+    }
+
+    /**
+     * Make assertion about the actual value's length.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLength(final Matcher<Long> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        try {
+            matcherAssertion(getLength(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+        }
+    }
+
+    private long getLength() throws IOException {
+        int read;
+        long length = 0;
+        while (true) {
+            read = getActual().read();
+            if (read < 0) {
+                break;
+            }
+            length++;
+        }
+        return length;
     }
 
     /**
