@@ -22,6 +22,8 @@ package ru.d_shap.assertions.collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -76,6 +78,34 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkArgumentIsValid(count > 0);
         List<E> list = convertValue(getActual(), List.class, count);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the iterator elements from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toList(final Matcher<List<E>> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        List<E> list = convertValue(getActual(), List.class, 0);
+        matcherAssertion(list, matcher, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
+    }
+
+    /**
+     * Make assertion about the iterator elements from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of elements to get from the iterator.
+     */
+    public final void toList(final Matcher<List<E>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        List<E> list = convertValue(getActual(), List.class, count);
+        matcherAssertion(list, matcher, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
     }
 
     /**
@@ -319,6 +349,15 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final IntAssertion toSize() {
         return toList().toSize();
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSize(final Matcher<Integer> matcher) {
+        toList().toSize(matcher);
     }
 
     /**
