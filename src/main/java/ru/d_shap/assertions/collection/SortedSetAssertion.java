@@ -23,6 +23,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
@@ -133,11 +135,42 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(count), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the head set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param element upper element (exclusive) of the head set.
+     */
+    public final void toHeadSet(final Matcher<SortedSet<E>> matcher, final E element) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().headSet(element), matcher, Messages.Check.ACTUAL_VALUE_HEAD_ELEMENT, element);
+    }
+
+    /**
+     * Make assertion about the head set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of elements to get from the head.
+     */
+    public final void toHeadSet(final Matcher<SortedSet<E>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        matcherAssertion(getHeadSet(count), matcher, Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+    }
+
+    private SortedSet<E> getHeadSet(final int count) {
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+            return getActual();
         } else {
             E element = getNthElement(count + 1);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().headSet(element), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+            return getActual().headSet(element);
         }
     }
 
@@ -163,11 +196,42 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(count), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the tail set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param element lower element (inclusive) of the tail set.
+     */
+    public final void toTailSet(final Matcher<SortedSet<E>> matcher, final E element) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().tailSet(element), matcher, Messages.Check.ACTUAL_VALUE_TAIL_ELEMENT, element);
+    }
+
+    /**
+     * Make assertion about the tail set of the actual.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of elements to get from the tail.
+     */
+    public final void toTailSet(final Matcher<SortedSet<E>> matcher, final int count) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0);
+        matcherAssertion(getTailSet(count), matcher, Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+    }
+
+    private SortedSet<E> getTailSet(final int count) {
         if (getActual().size() <= count) {
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual(), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+            return getActual();
         } else {
             E element = getNthElement(getActual().size() - count + 1);
-            return initializeAssertion(Raw.<E>sortedSetAssertion(), getActual().tailSet(element), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+            return getActual().tailSet(element);
         }
     }
 
@@ -331,6 +395,18 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSize(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
     }
 
     /**
