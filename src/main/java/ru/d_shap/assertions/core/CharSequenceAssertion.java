@@ -665,6 +665,18 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
     }
 
     /**
+     * Make assertion about the actual value's length.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLength(final org.hamcrest.Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().length(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+    }
+
+    /**
      * Check if the actual value length is equal to the expected length.
      *
      * @param expected the expected length.
@@ -682,7 +694,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkInitialized();
         checkActualIsNotNull();
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
-        return toTokens(stringTokenizer);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
     /**
@@ -696,7 +708,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
-        return toTokens(stringTokenizer);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
     /**
@@ -711,16 +723,60 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
-        return toTokens(stringTokenizer);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
     }
 
-    private ListAssertion<String> toTokens(final StringTokenizer stringTokenizer) {
+    /**
+     * Make assertion about the actual value's tokens.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+    }
+
+    /**
+     * Make assertion about the actual value's tokens.
+     *
+     * @param matcher    the hamcrest matcher.
+     * @param delimiters the delimiters.
+     */
+    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher, final String delimiters) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(delimiters);
+        StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+    }
+
+    /**
+     * Make assertion about the actual value's tokens.
+     *
+     * @param matcher          the hamcrest matcher.
+     * @param delimiters       the delimiters.
+     * @param returnDelimiters whether to return the delimiters as tokens.
+     */
+    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher, final String delimiters, final boolean returnDelimiters) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(delimiters);
+        StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+    }
+
+    private List<String> getTokens(final StringTokenizer stringTokenizer) {
         List<String> tokens = new ArrayList<>();
         while (stringTokenizer.hasMoreTokens()) {
             String token = stringTokenizer.nextToken();
             tokens.add(token);
         }
-        return initializeAssertion(Raw.<String>listAssertion(), tokens, Messages.Check.ACTUAL_VALUE_TOKENS);
+        return tokens;
     }
 
 }
