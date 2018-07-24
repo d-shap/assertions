@@ -335,6 +335,17 @@ public final class MessageAssertion {
     }
 
     /**
+     * Make assertion of specified type about the object's field.
+     *
+     * @param actual    the actual value.
+     * @param fieldName the field name.
+     * @param matcher   the hamcrest matcher.
+     */
+    public void that(final Object actual, final String fieldName, final Matcher<Object> matcher) {
+        that(actual).toField(fieldName, matcher);
+    }
+
+    /**
      * Make assertion about the byte array.
      *
      * @param actual the actual value.

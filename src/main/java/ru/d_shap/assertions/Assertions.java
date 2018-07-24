@@ -342,6 +342,17 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion of specified type about the object's field.
+     *
+     * @param actual    the actual value.
+     * @param fieldName the field name.
+     * @param matcher   the hamcrest matcher.
+     */
+    public static void assertThat(final Object actual, final String fieldName, final Matcher<Object> matcher) {
+        assertThat(actual).toField(fieldName, matcher);
+    }
+
+    /**
      * Make assertion about the byte array.
      *
      * @param actual the actual value.
