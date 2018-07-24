@@ -22,6 +22,8 @@ package ru.d_shap.assertions;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.core.CharSequenceAssertion;
 import ru.d_shap.assertions.core.ClassAssertion;
 import ru.d_shap.assertions.core.ObjectAssertion;
@@ -100,6 +102,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Make assertion about the actual value's class.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toClass(final Matcher<Class<?>> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().getClass(), matcher, Messages.Check.ACTUAL_VALUE_CLASS);
+    }
+
+    /**
      * Check if the actual value has the expected class.
      *
      * @param expected the expected class.
@@ -159,11 +173,23 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Make assertion about the actual value's string representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toToString(final Matcher<CharSequence> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().toString(), matcher, Messages.Check.ACTUAL_VALUE_TO_STRING);
+    }
+
+    /**
      * Check if the string representation of the actual value is equal to the expected value.
      *
      * @param expected the expected value.
      */
-    public final void isToStringEqualTo(final String expected) {
+    public final void hasToString(final String expected) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
@@ -194,11 +220,23 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Make assertion about the actual value's hash code.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHashCode(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getActual().hashCode(), matcher, Messages.Check.ACTUAL_VALUE_HASH_CODE);
+    }
+
+    /**
      * Check if the actual values hash code is equal to the expected value.
      *
      * @param expected the expected value.
      */
-    public final void isHashCodeEqualTo(final int expected) {
+    public final void hasHashCode(final int expected) {
         toHashCode().isEqualTo(expected);
     }
 
@@ -213,10 +251,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
         try {
-            Field field = getField(fieldName);
-            setAccessible(field);
-            Object value = field.get(getActual());
-            return initializeAssertion(Raw.objectAssertion(), value, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
+            return initializeAssertion(Raw.objectAssertion(), getFieldValue(fieldName), Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -236,6 +271,29 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(assertion);
         return toField(fieldName).as(assertion);
+    }
+
+    /**
+     * Make assertion about the actual value's field.
+     *
+     * @param fieldName the field name.
+     * @param matcher   the hamcrest matcher.
+     */
+    public final void toField(final String fieldName, final Matcher<Object> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(fieldName);
+        try {
+            matcherAssertion(getFieldValue(fieldName), matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
+        } catch (ReflectiveOperationException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
+        }
+    }
+
+    private Object getFieldValue(final String fieldName) throws ReflectiveOperationException {
+        Field field = getField(fieldName);
+        setAccessible(field);
+        return field.get(getActual());
     }
 
     private Field getField(final String fieldName) throws NoSuchFieldException {
