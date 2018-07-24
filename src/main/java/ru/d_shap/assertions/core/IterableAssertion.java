@@ -21,6 +21,8 @@ package ru.d_shap.assertions.core;
 
 import java.util.List;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.ReferenceAssertion;
 import ru.d_shap.assertions.collection.ListAssertion;
@@ -248,6 +250,17 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
         checkInitialized();
         checkActualIsNotNull();
         return createListAssertion().toSize();
+    }
+
+    /**
+     * Make assertion about the actual value's size.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSize(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        createListAssertion().toSize(matcher);
     }
 
     /**
