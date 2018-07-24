@@ -21,6 +21,8 @@ package ru.d_shap.assertions.core;
 
 import java.lang.reflect.Method;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.primitive.IntAssertion;
@@ -64,6 +66,19 @@ public class EnumAssertion extends ClassAssertion {
         checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.ACTUAL_VALUE_VALUE_COUNT);
+    }
+
+    /**
+     * Make assertion about the actual enum value count.
+     * Side-effect: invokes the methods "values" and "valueOf" for the code coverage.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toValueCount(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        matcherAssertion(getValueCount(), matcher, Messages.Check.ACTUAL_VALUE_VALUE_COUNT);
     }
 
     private int getValueCount() {
