@@ -20,7 +20,6 @@
 package ru.d_shap.assertions;
 
 import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 
 import ru.d_shap.assertions.core.ClassActualValueValidator;
 
@@ -150,8 +149,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>     the generic type of the actual value.
      */
     protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher) {
-        String fullMessage = _failDescription.getFullMessage();
-        MatcherAssert.assertThat(fullMessage, actual, matcher);
+        HamcrestMatcher.assertThat(actual, matcher, _failDescription);
     }
 
     /**
@@ -164,8 +162,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>       the generic type of the actual value.
      */
     protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message, final Object... arguments) {
-        String fullMessage = new FailDescription(_failDescription, message, arguments).getFullMessage();
-        MatcherAssert.assertThat(fullMessage, actual, matcher);
+        HamcrestMatcher.assertThat(actual, matcher, _failDescription, message, arguments);
     }
 
     /**

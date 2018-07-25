@@ -36,7 +36,6 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 
 import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 
 import ru.d_shap.assertions.array.BooleanArrayAssertion;
 import ru.d_shap.assertions.array.ByteArrayAssertion;
@@ -732,7 +731,7 @@ public final class Assertions {
      * @param <U>     the generic type of the actual value.
      */
     public static <W, U extends W> void assertThat(final U actual, final Matcher<W> matcher) {
-        MatcherAssert.assertThat(actual, matcher);
+        HamcrestMatcher.assertThat(actual, matcher);
     }
 
     /**
