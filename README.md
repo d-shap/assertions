@@ -158,6 +158,29 @@ Assertions framework check for not equals:
 assertThat(actual).isNotEqualTo(expected);
 ```
 
+Static import
+-------------
+Hamcrest assertions are readable only if static import is used.
+But sometimes coding policy does not allow static import.
+In this case tests with Hamcrest matchers are not readable at all.
+
+Hamcrest check with static import:
+```
+assertThat(actual, is(not(equalTo(expected))));
+```
+Hamcrest check without static import:
+```
+MatcherAssert.assertThat(actual, Matchers.is(Matchers.not(Matchers.equalTo(expected))));
+```
+Assertions framework check with static import:
+```
+assertThat(actual).isNotEqualTo(expected);
+```
+Assertions framework check without static import:
+```
+Assertions.assertThat(actual).isNotEqualTo(expected);
+```
+
 Combinations of matchers
 ------------------------
 Hamcrest allows any combination of matchers in assertions:
