@@ -178,19 +178,35 @@ public final class Messages {
 
         public static final String IS_ALPHABETIC = "Actual value should be the alphabetic symbol.";
 
-        public static final String IS_DIGIT = "Actual value should be the digit.";
+        public static final String IS_NOT_ALPHABETIC = "Actual value should not be the alphabetic symbol.";
 
         public static final String IS_LETTER = "Actual value should be the letter.";
 
+        public static final String IS_NOT_LETTER = "Actual value should not be the letter.";
+
+        public static final String IS_DIGIT = "Actual value should be the digit.";
+
+        public static final String IS_NOT_DIGIT = "Actual value should not be the digit.";
+
+        public static final String IS_WHITESPACE = "Actual value should be the whitespace symbol.";
+
+        public static final String IS_NOT_WHITESPACE = "Actual value should not be the whitespace symbol.";
+
         public static final String IS_LETTER_OR_DIGIT = "Actual value should be the letter or the digit.";
+
+        public static final String IS_LETTER_OR_WHITESPACE = "Actual value should be the letter or the whitespace symbol.";
 
         public static final String IS_CONTROL_SYMBOL = "Actual value should be the control symbol.";
 
+        public static final String IS_NOT_CONTROL_SYMBOL = "Actual value should not be the control symbol.";
+
         public static final String IS_LOWER_CASE = "Actual value should be the lower case symbol.";
+
+        public static final String IS_NOT_LOWER_CASE = "Actual value should not be the lower case symbol.";
 
         public static final String IS_UPPER_CASE = "Actual value should be the upper case symbol.";
 
-        public static final String IS_WHITESPACE = "Actual value should be the whitespace symbol.";
+        public static final String IS_NOT_UPPER_CASE = "Actual value should not be the upper case symbol.";
 
         public static final String IS_NULL = "Actual value should be null.";
 
