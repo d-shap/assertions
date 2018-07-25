@@ -209,6 +209,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Check if the string representation of the actual value matches the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void toStringMatches(final String expected) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        toToString().matches(expected);
+    }
+
+    /**
      * Make assertion about the actual value's hash code.
      *
      * @return the assertion.
@@ -279,12 +291,13 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
      */
-    public final void toField(final String fieldName, final Matcher<Object> matcher) {
+    @SuppressWarnings("unchecked")
+    public final void toField(final String fieldName, final Matcher<?> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
         try {
-            matcherAssertion(getFieldValue(fieldName), matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
+            matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
