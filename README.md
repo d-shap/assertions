@@ -19,7 +19,7 @@ assertThat(intValue).isGreaterThan(0);
 assertThat(longValue).isInRange(1L, 10L);
 assertThat(floatValue).isNotNaN();
 assertThat(doubleValue).isEqualTo(5.0, 0.001);
-assertThat(charValue).isAlphabetic();
+assertThat(charValue).isLetter();
 ```
 
 Assertion examples for the core data types:
@@ -68,7 +68,7 @@ assertThat(mapValue).isNullOrEmpty();
 assertThat(mapValue).hasSize(5);
 assertThat(mapValue).containsAnyKey("key1", "key2", "key3");
 assertThat(mapValue).containsEntry("key", "value");
-assertThat(mapValue).containsNone(expectedMapValue);
+assertThat(mapValue).containsNone("key1", "value1", "key2", "value2", "key3", "value3");
 ```
 
 Assertion examples for the io data types:
@@ -115,11 +115,9 @@ assertThat(listValue, everyItem(greaterThan(1)));
 Custom assertion classes can be used in the next extension points:
 * Assertions.assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
 * Assertions.assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
-* Assertions.assertThat(java.lang.Object, org.hamcrest.Matcher)
 * BaseAssertion.as(ru.d_shap.assertions.BaseAssertion)
 * MessageAssertion.that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
 * MessageAssertion.that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
-* MessageAssertion.that(java.lang.Object, org.hamcrest.Matcher)
 * ReferenceAssertion.toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)
 
 Assertions framework and Hamcrest

@@ -40,7 +40,7 @@
  * assertThat(longValue).isInRange(1L, 10L);
  * assertThat(floatValue).isNotNaN();
  * assertThat(doubleValue).isEqualTo(5.0, 0.001);
- * assertThat(charValue).isAlphabetic();
+ * assertThat(charValue).isLetter();
  * }</pre>
  * <p>
  * Assertion examples for the core data types:
@@ -92,7 +92,7 @@
  * assertThat(mapValue).hasSize(5);
  * assertThat(mapValue).containsAnyKey("key1", "key2", "key3");
  * assertThat(mapValue).containsEntry("key", "value");
- * assertThat(mapValue).containsNone(expectedMapValue);
+ * assertThat(mapValue).containsNone("key1", "value1", "key2", "value2", "key3", "value3");
  * }</pre>
  * <p>
  * Assertion examples for the io data types:
@@ -144,11 +144,9 @@
  * <ul>
  * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, org.hamcrest.Matcher)}</li>
  * <li>{@link ru.d_shap.assertions.BaseAssertion#as(ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, org.hamcrest.Matcher)}</li>
  * <li>{@link ru.d_shap.assertions.ReferenceAssertion#toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
  * </ul>
  */
