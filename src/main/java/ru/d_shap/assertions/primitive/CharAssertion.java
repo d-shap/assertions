@@ -159,13 +159,13 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
-     * Check if the actual value is the digit.
+     * Check if the actual value is NOT the alphabetic symbol.
      */
-    public final void isDigit() {
+    public final void isNotAlphabetic() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isDigit(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIGIT).addActual().build();
+        if (Character.isAlphabetic(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_ALPHABETIC).addActual().build();
         }
     }
 
@@ -181,13 +181,79 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is NOT the letter.
+     */
+    public final void isNotLetter() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (Character.isLetter(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_LETTER).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is the digit.
+     */
+    public final void isDigit() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (!Character.isDigit(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIGIT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the digit.
+     */
+    public final void isNotDigit() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (Character.isDigit(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_DIGIT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is the whitespace symbol.
+     */
+    public final void isWhitespace() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (!Character.isWhitespace(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_WHITESPACE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the whitespace symbol.
+     */
+    public final void isNotWhitespace() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (Character.isWhitespace(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_WHITESPACE).addActual().build();
+        }
+    }
+
+    /**
      * Check if the actual value is the letter or the digit.
      */
     public final void isLetterOrDigit() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isLetterOrDigit(getActual())) {
+        if (!Character.isLetter(getActual()) && !Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LETTER_OR_DIGIT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is the letter or the whitespace symbol.
+     */
+    public final void isLetterOrWhitespace() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (!Character.isLetter(getActual()) && !Character.isWhitespace(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LETTER_OR_WHITESPACE).addActual().build();
         }
     }
 
@@ -203,6 +269,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is NOT the control symbol.
+     */
+    public final void isNotControl() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (Character.isISOControl(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_CONTROL_SYMBOL).addActual().build();
+        }
+    }
+
+    /**
      * Check if the actual value is the lower case symbol.
      */
     public final void isLowerCase() {
@@ -210,6 +287,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkActualIsNotNull();
         if (!Character.isLowerCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LOWER_CASE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the lower case symbol.
+     */
+    public final void isNotLowerCase() {
+        checkInitialized();
+        checkActualIsNotNull();
+        if (Character.isLowerCase(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_LOWER_CASE).addActual().build();
         }
     }
 
@@ -225,13 +313,13 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
-     * Check if the actual value is the whitespace symbol.
+     * Check if the actual value is NOT the upper case symbol.
      */
-    public final void isWhitespace() {
+    public final void isNotUpperCase() {
         checkInitialized();
         checkActualIsNotNull();
-        if (!Character.isWhitespace(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_WHITESPACE).addActual().build();
+        if (Character.isUpperCase(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_UPPER_CASE).addActual().build();
         }
     }
 
