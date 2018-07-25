@@ -316,6 +316,18 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the object with the hamcrest matcher.
+     *
+     * @param actual  the actual value.
+     * @param matcher the hamcrest matcher.
+     * @param <W>     the generic type of the matcher's actual value.
+     * @param <U>     the generic type of the actual value.
+     */
+    public static <W, U extends W> void assertThat(final U actual, final Matcher<W> matcher) {
+        HamcrestMatcher.assertThat(actual, matcher);
+    }
+
+    /**
      * Make assertion about the object's field.
      *
      * @param actual    the actual value.
@@ -341,13 +353,13 @@ public final class Assertions {
     }
 
     /**
-     * Make assertion of specified type about the object's field.
+     * Make assertion about the object's field with the hamcrest matcher.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
      */
-    public static void assertThat(final Object actual, final String fieldName, final Matcher<Object> matcher) {
+    public static void assertThat(final Object actual, final String fieldName, final Matcher<?> matcher) {
         assertThat(actual).toField(fieldName, matcher);
     }
 
@@ -720,18 +732,6 @@ public final class Assertions {
         CharBufferAssertion assertion = Raw.charBufferAssertion();
         ((BaseAssertion<CharBuffer>) assertion).initialize(actual);
         return assertion;
-    }
-
-    /**
-     * Make assertion with the hamcrest matcher.
-     *
-     * @param actual  the actual value.
-     * @param matcher the hamcrest matcher.
-     * @param <W>     the generic type of the matcher's actual value.
-     * @param <U>     the generic type of the actual value.
-     */
-    public static <W, U extends W> void assertThat(final U actual, final Matcher<W> matcher) {
-        HamcrestMatcher.assertThat(actual, matcher);
     }
 
     /**
