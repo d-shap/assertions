@@ -324,7 +324,7 @@ public final class Assertions {
      * @param <U>     the generic type of the actual value.
      */
     public static <W, U extends W> void assertThat(final U actual, final Matcher<W> matcher) {
-        HamcrestMatcher.assertThat(actual, matcher);
+        HamcrestMatcher.matcherAssertion(actual, matcher);
     }
 
     /**

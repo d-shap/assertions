@@ -149,7 +149,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>     the generic type of the actual value.
      */
     protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher) {
-        HamcrestMatcher.assertThat(actual, matcher, _failDescription);
+        HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription);
     }
 
     /**
@@ -162,7 +162,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>       the generic type of the actual value.
      */
     protected final <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message, final Object... arguments) {
-        HamcrestMatcher.assertThat(actual, matcher, _failDescription, message, arguments);
+        HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription, message, arguments);
     }
 
     /**

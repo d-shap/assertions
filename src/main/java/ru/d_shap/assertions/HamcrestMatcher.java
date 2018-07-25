@@ -33,21 +33,21 @@ final class HamcrestMatcher {
         super();
     }
 
-    static <U> void assertThat(final U actual, final Matcher<U> matcher) {
+    static <U> void matcherAssertion(final U actual, final Matcher<U> matcher) {
         MatcherAssert.assertThat(actual, matcher);
     }
 
-    static <U> void assertThat(final U actual, final Matcher<U> matcher, final String message, final Object... arguments) {
+    static <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final String message, final Object... arguments) {
         String fullMessage = new FailDescription(message, arguments).getFullMessage();
         MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
 
-    static <U> void assertThat(final U actual, final Matcher<U> matcher, final FailDescription failDescription) {
+    static <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final FailDescription failDescription) {
         String fullMessage = failDescription.getFullMessage();
         MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
 
-    static <U> void assertThat(final U actual, final Matcher<U> matcher, final FailDescription failDescription, final String message, final Object... arguments) {
+    static <U> void matcherAssertion(final U actual, final Matcher<U> matcher, final FailDescription failDescription, final String message, final Object... arguments) {
         String fullMessage = new FailDescription(failDescription, message, arguments).getFullMessage();
         MatcherAssert.assertThat(fullMessage, actual, matcher);
     }
