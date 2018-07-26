@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -60,6 +61,112 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.intArrayAssertion(), new int[0]).isEmpty();
+
+        try {
+            Raw.intArrayAssertion().isEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null).isEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").isEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).isEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").isEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.intArrayAssertion(), null).isNullOrEmpty();
+        initialize(Raw.intArrayAssertion(), new int[0]).isNullOrEmpty();
+
+        try {
+            Raw.intArrayAssertion().isNullOrEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).isNullOrEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").isNullOrEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).isNotEmpty();
+
+        try {
+            Raw.intArrayAssertion().isNotEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null).isNotEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[0]).isNotEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[0], "Message").isNotEmpty();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -1111,6 +1218,148 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthTest() {
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength().isEqualTo(2);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength().isGreaterThan(1);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength().isLessThan(3);
+
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength().isEqualTo(4);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength().isGreaterThan(3);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength().isLessThan(5);
+
+        try {
+            Raw.intArrayAssertion().toLength();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null).toLength();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").toLength();
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength()).isEqualTo(0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toLength()).isEqualTo(0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength().isEqualTo(4);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toLength().isEqualTo(4);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength(Matchers.is(Matchers.greaterThan(1)));
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength(Matchers.is(Matchers.lessThan(3)));
+
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength(Matchers.equalTo(4));
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength(Matchers.greaterThan(3));
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).toLength(Matchers.lessThan(5));
+
+        try {
+            Raw.intArrayAssertion().toLength(Matchers.equalTo(0));
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null).toLength(Matchers.equalTo(0));
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength(Matchers.equalTo(4));
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toLength(Matchers.equalTo(4));
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void hasLengthTest() {
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2}).hasLength(2);
+        initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).hasLength(4);
+
+        try {
+            Raw.intArrayAssertion().hasLength(0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null).hasLength(0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").hasLength(0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).hasLength(4);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").hasLength(4);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
     }
 
