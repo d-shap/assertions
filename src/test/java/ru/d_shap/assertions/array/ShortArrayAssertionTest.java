@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -60,6 +61,112 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.shortArrayAssertion(), new short[0]).isEmpty();
+
+        try {
+            Raw.shortArrayAssertion().isEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null).isEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").isEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").isEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.shortArrayAssertion(), null).isNullOrEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[0]).isNullOrEmpty();
+
+        try {
+            Raw.shortArrayAssertion().isNullOrEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNullOrEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").isNullOrEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotEmpty();
+
+        try {
+            Raw.shortArrayAssertion().isNotEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null).isNotEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[0]).isNotEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[0], "Message").isNotEmpty();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -1658,6 +1765,148 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthTest() {
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength().isEqualTo(2);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength().isGreaterThan(1);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength().isLessThan(3);
+
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength().isEqualTo(4);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength().isGreaterThan(3);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength().isLessThan(5);
+
+        try {
+            Raw.shortArrayAssertion().toLength();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null).toLength();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").toLength();
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength()).isEqualTo(0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toLength()).isEqualTo(0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength().isEqualTo(4);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toLength().isEqualTo(4);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength(Matchers.is(Matchers.greaterThan(1)));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength(Matchers.is(Matchers.lessThan(3)));
+
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.equalTo(4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.greaterThan(3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.lessThan(5));
+
+        try {
+            Raw.shortArrayAssertion().toLength(Matchers.equalTo(0));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null).toLength(Matchers.equalTo(0));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength(Matchers.equalTo(4));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toLength(Matchers.equalTo(4));
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void hasLengthTest() {
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasLength(2);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).hasLength(4);
+
+        try {
+            Raw.shortArrayAssertion().hasLength(0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null).hasLength(0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").hasLength(0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasLength(4);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasLength(4);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
     }
 
