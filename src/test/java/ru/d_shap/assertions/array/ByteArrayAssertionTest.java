@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -60,6 +61,112 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[0]).isEmpty();
+
+        try {
+            Raw.byteArrayAssertion().isEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).isEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").isEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").isEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.byteArrayAssertion(), null).isNullOrEmpty();
+        initialize(Raw.byteArrayAssertion(), new byte[0]).isNullOrEmpty();
+
+        try {
+            Raw.byteArrayAssertion().isNullOrEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNullOrEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").isNullOrEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotEmpty();
+
+        try {
+            Raw.byteArrayAssertion().isNotEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).isNotEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[0]).isNotEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[0], "Message").isNotEmpty();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -295,16 +402,16 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAll(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAll(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAll(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAll(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
     }
 
@@ -548,16 +655,16 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAllInOrder(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAllInOrder(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAllInOrder(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAllInOrder(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
     }
 
@@ -810,16 +917,16 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1000, 1001]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[100000, 100001]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").containsExactly(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").containsExactly(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1000, 1001]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[100000, 100001]> but was:<[1, 2, 3, 4]>");
         }
     }
 
@@ -1084,16 +1191,16 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1000, 1001]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1000, 1001]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1, 2, 3, 4]>");
         }
     }
 
@@ -1341,16 +1448,16 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAny(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAny(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAny(1000, 1001);
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").containsAny(100000, 100001);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[1000, 1001]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1, 2]>");
         }
     }
 
@@ -1515,7 +1622,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayIntTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(3, 5);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(3, 4, 5);
-        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(1000, 1001);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(100000, 100001);
 
         try {
             Raw.byteArrayAssertion().containsNone(1);
@@ -1658,6 +1765,148 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength().isEqualTo(2);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength().isGreaterThan(1);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength().isLessThan(3);
+
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength().isEqualTo(4);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength().isGreaterThan(3);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength().isLessThan(5);
+
+        try {
+            Raw.byteArrayAssertion().toLength();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toLength();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toLength();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength()).isEqualTo(0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toLength()).isEqualTo(0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength().isEqualTo(4);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toLength().isEqualTo(4);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength(Matchers.is(Matchers.greaterThan(1)));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength(Matchers.is(Matchers.lessThan(3)));
+
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.equalTo(4));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.greaterThan(3));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.lessThan(5));
+
+        try {
+            Raw.byteArrayAssertion().toLength(Matchers.equalTo(0));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toLength(Matchers.equalTo(0));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toLength(Matchers.equalTo(4));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toLength(Matchers.equalTo(4));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void hasLengthTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasLength(2);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).hasLength(4);
+
+        try {
+            Raw.byteArrayAssertion().hasLength(0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).hasLength(0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").hasLength(0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasLength(4);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasLength(4);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
     }
 
