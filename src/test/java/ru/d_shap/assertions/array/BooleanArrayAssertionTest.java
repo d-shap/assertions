@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -60,6 +61,112 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[0]).isEmpty();
+
+        try {
+            Raw.booleanArrayAssertion().isEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null).isEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").isEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[T, F]>");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}, "Message").isEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[T, F]>");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.booleanArrayAssertion(), null).isNullOrEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[0]).isNullOrEmpty();
+
+        try {
+            Raw.booleanArrayAssertion().isNullOrEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isNullOrEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[T, F]>");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}, "Message").isNullOrEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[T, F]>");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isNotEmpty();
+
+        try {
+            Raw.booleanArrayAssertion().isNotEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null).isNotEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[0]).isNotEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[0], "Message").isNotEmpty();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -1123,6 +1230,148 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[F, T]> but was:<[T, T]>");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength().isEqualTo(2);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength().isGreaterThan(1);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength().isLessThan(3);
+
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength().isEqualTo(4);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength().isGreaterThan(3);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength().isLessThan(5);
+
+        try {
+            Raw.booleanArrayAssertion().toLength();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null).toLength();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").toLength();
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength()).isEqualTo(0);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").toLength()).isEqualTo(0);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength().isEqualTo(4);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").toLength().isEqualTo(4);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength(Matchers.is(Matchers.greaterThan(1)));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength(Matchers.is(Matchers.lessThan(3)));
+
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.equalTo(4));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.greaterThan(3));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.lessThan(5));
+
+        try {
+            Raw.booleanArrayAssertion().toLength(Matchers.equalTo(0));
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null).toLength(Matchers.equalTo(0));
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength(Matchers.equalTo(4));
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").toLength(Matchers.equalTo(4));
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+    }
+
+    /**
+     * {@link BooleanArrayAssertion} class test.
+     */
+    @Test
+    public void hasLengthTest() {
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).hasLength(2);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).hasLength(4);
+
+        try {
+            Raw.booleanArrayAssertion().hasLength(0);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null).hasLength(0);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").hasLength(0);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).hasLength(4);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}, "Message").hasLength(4);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
     }
 
