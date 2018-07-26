@@ -22,6 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -60,6 +61,112 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.longArrayAssertion(), new long[0]).isEmpty();
+
+        try {
+            Raw.longArrayAssertion().isEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null).isEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").isEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").isEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.longArrayAssertion(), null).isNullOrEmpty();
+        initialize(Raw.longArrayAssertion(), new long[0]).isNullOrEmpty();
+
+        try {
+            Raw.longArrayAssertion().isNullOrEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNullOrEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").isNullOrEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotEmpty();
+
+        try {
+            Raw.longArrayAssertion().isNotEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null).isNotEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[0]).isNotEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[0], "Message").isNotEmpty();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
     }
 
@@ -1111,6 +1218,148 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthTest() {
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength().isEqualTo(2);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength().isGreaterThan(1);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength().isLessThan(3);
+
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength().isEqualTo(4);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength().isGreaterThan(3);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength().isLessThan(5);
+
+        try {
+            Raw.longArrayAssertion().toLength();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null).toLength();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").toLength();
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength()).isEqualTo(0);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toLength()).isEqualTo(0);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength().isEqualTo(4);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toLength().isEqualTo(4);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength(Matchers.is(Matchers.greaterThan(1)));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength(Matchers.is(Matchers.lessThan(3)));
+
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.equalTo(4));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.greaterThan(3));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.lessThan(5));
+
+        try {
+            Raw.longArrayAssertion().toLength(Matchers.equalTo(0));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null).toLength(Matchers.equalTo(0));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength(Matchers.equalTo(4));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toLength(Matchers.equalTo(4));
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
+        }
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void hasLengthTest() {
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasLength(2);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).hasLength(4);
+
+        try {
+            Raw.longArrayAssertion().hasLength(0);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null).hasLength(0);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").hasLength(0);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasLength(4);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").hasLength(4);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
     }
 
