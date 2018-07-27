@@ -57,9 +57,26 @@ public final class ShortArrayAsStringConverterTest {
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2})).isEqualTo("[1, 2]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2, 3, 4})).isEqualTo("[1, 2, 3, 4]");
+    }
 
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link ShortArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new ShortArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link ShortArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new ShortArrayAsStringConverter().asString(new Object());
     }
 
 }

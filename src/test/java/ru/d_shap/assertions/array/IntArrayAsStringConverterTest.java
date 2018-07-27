@@ -57,9 +57,26 @@ public final class IntArrayAsStringConverterTest {
         Assertions.assertThat(new IntArrayAsStringConverter().asString(new int[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new IntArrayAsStringConverter().asString(new int[]{1, 2})).isEqualTo("[1, 2]");
         Assertions.assertThat(new IntArrayAsStringConverter().asString(new int[]{1, 2, 3, 4})).isEqualTo("[1, 2, 3, 4]");
+    }
 
-        Assertions.assertThat(new IntArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new IntArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link IntArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new IntArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link IntArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new IntArrayAsStringConverter().asString(new Object());
     }
 
 }

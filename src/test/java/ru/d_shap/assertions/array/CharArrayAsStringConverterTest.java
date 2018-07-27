@@ -57,9 +57,26 @@ public final class CharArrayAsStringConverterTest {
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1'})).isEqualTo("[1(49)]");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2'})).isEqualTo("[1(49), 2(50)]");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2', '3', '4'})).isEqualTo("[1(49), 2(50), 3(51), 4(52)]");
+    }
 
-        Assertions.assertThat(new CharArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new CharArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link CharArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new CharArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link CharArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new CharArrayAsStringConverter().asString(new Object());
     }
 
 }

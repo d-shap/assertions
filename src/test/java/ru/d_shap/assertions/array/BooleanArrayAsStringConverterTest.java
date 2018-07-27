@@ -57,9 +57,26 @@ public final class BooleanArrayAsStringConverterTest {
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true})).isEqualTo("[T]");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, false})).isEqualTo("[T, F]");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, true, false, false})).isEqualTo("[T, T, F, F]");
+    }
 
-        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link BooleanArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new BooleanArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link BooleanArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new BooleanArrayAsStringConverter().asString(new Object());
     }
 
 }

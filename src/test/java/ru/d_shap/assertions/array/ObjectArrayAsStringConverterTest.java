@@ -57,9 +57,26 @@ public final class ObjectArrayAsStringConverterTest {
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1"})).isEqualTo("[val1]");
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2"})).isEqualTo("[val1, val2]");
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2", "val3", "val4"})).isEqualTo("[val1, val2, val3, val4]");
+    }
 
-        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link ObjectArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new ObjectArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link ObjectArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new ObjectArrayAsStringConverter().asString(new Object());
     }
 
 }

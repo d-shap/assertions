@@ -57,9 +57,26 @@ public final class DoubleArrayAsStringConverterTest {
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0})).isEqualTo("[1.0]");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0, 3.0, 4.0})).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
+    }
 
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link DoubleArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new DoubleArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link DoubleArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new DoubleArrayAsStringConverter().asString(new Object());
     }
 
 }

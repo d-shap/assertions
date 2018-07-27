@@ -57,9 +57,26 @@ public final class LongArrayAsStringConverterTest {
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L})).isEqualTo("[1]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L})).isEqualTo("[1, 2]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L, 3L, 4L})).isEqualTo("[1, 2, 3, 4]");
+    }
 
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link LongArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new LongArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link LongArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new LongArrayAsStringConverter().asString(new Object());
     }
 
 }

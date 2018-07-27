@@ -57,9 +57,26 @@ public final class FloatArrayAsStringConverterTest {
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f})).isEqualTo("[1.0]");
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f})).isEqualTo("[1.0, 2.0]");
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
+    }
 
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link FloatArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new FloatArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link FloatArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new FloatArrayAsStringConverter().asString(new Object());
     }
 
 }

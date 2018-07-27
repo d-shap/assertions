@@ -57,9 +57,26 @@ public final class ByteArrayAsStringConverterTest {
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1, 2})).isEqualTo("[1, 2]");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1, 2, 3, 4})).isEqualTo("[1, 2, 3, 4]");
+    }
 
-        Assertions.assertThat(new ByteArrayAsStringConverter().asString(null)).isNull();
-        Assertions.assertThat(new ByteArrayAsStringConverter().asString(new Object())).startsWith("java.lang.Object@");
+    /**
+     * {@link ByteArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void asStringNullValueFailTest() throws ConvertionException {
+        new ByteArrayAsStringConverter().asString(null);
+    }
+
+    /**
+     * {@link ByteArrayAsStringConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ClassCastException.class)
+    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+        new ByteArrayAsStringConverter().asString(new Object());
     }
 
 }
