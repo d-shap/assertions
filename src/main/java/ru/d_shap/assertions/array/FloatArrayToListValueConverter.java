@@ -51,11 +51,13 @@ public final class FloatArrayToListValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         List<Float> result = new ArrayList<>(((float[]) value).length);
         for (float element : (float[]) value) {
             result.add(element);

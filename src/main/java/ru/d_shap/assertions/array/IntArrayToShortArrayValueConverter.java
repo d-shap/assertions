@@ -48,6 +48,7 @@ public final class IntArrayToShortArrayValueConverter extends BaseValueConverter
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         for (int i = 0; i < ((int[]) value).length; i++) {
             int intValue = ((int[]) value)[i];
             short shortValue = (short) intValue;
@@ -60,6 +61,7 @@ public final class IntArrayToShortArrayValueConverter extends BaseValueConverter
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         short[] result = new short[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (short) ((int[]) value)[i];

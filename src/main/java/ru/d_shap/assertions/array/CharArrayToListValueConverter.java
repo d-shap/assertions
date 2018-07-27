@@ -51,11 +51,13 @@ public final class CharArrayToListValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         List<Character> result = new ArrayList<>(((char[]) value).length);
         for (char element : (char[]) value) {
             result.add(element);

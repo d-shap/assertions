@@ -48,6 +48,7 @@ public final class IntArrayToCharArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         for (int i = 0; i < ((int[]) value).length; i++) {
             int intValue = ((int[]) value)[i];
             char charValue = (char) intValue;
@@ -60,6 +61,7 @@ public final class IntArrayToCharArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         char[] result = new char[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (char) ((int[]) value)[i];

@@ -50,11 +50,13 @@ public final class DoubleBufferToDoubleArrayValueConverter extends BaseValueConv
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         boolean rewind = (Boolean) arguments[0];
         int position = ((DoubleBuffer) value).position();
         if (rewind) {

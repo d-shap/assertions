@@ -51,11 +51,13 @@ public final class LongArrayToListValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         List<Long> result = new ArrayList<>(((long[]) value).length);
         for (long element : (long[]) value) {
             result.add(element);

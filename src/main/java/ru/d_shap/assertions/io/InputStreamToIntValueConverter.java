@@ -51,11 +51,13 @@ public final class InputStreamToIntValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         try {
             return ((InputStream) value).read();
         } catch (IOException ex) {

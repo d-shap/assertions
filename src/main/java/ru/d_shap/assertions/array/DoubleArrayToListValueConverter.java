@@ -51,11 +51,13 @@ public final class DoubleArrayToListValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         List<Double> result = new ArrayList<>(((double[]) value).length);
         for (double element : (double[]) value) {
             result.add(element);

@@ -50,11 +50,13 @@ public final class IntBufferToIntArrayValueConverter extends BaseValueConverter 
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         boolean rewind = (Boolean) arguments[0];
         int position = ((IntBuffer) value).position();
         if (rewind) {

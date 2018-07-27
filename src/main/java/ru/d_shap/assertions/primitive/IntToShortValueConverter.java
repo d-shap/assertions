@@ -48,6 +48,7 @@ public final class IntToShortValueConverter extends BaseValueConverter {
 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         int intValue = (int) value;
         short shortValue = (short) intValue;
         return intValue == shortValue;
@@ -55,6 +56,7 @@ public final class IntToShortValueConverter extends BaseValueConverter {
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        checkValueClass(value);
         return (short) (int) value;
     }
 
