@@ -300,11 +300,10 @@ public final class MessageAssertion {
      * @param actual    the actual value.
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
-     * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
-    public <W, U extends W, S extends BaseAssertion<W>> S that(final U actual, final S assertion) {
+    public <W, S extends BaseAssertion<W>> S that(final Object actual, final S assertion) {
         return that(actual).as(assertion);
     }
 
@@ -351,8 +350,9 @@ public final class MessageAssertion {
      * @param actual    the actual value.
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
+     * @param <W>       the generic type of the matcher's actual value.
      */
-    public void that(final Object actual, final String fieldName, final Matcher<?> matcher) {
+    public <W> void that(final Object actual, final String fieldName, final Matcher<W> matcher) {
         that(actual).toField(fieldName, matcher);
     }
 

@@ -307,11 +307,10 @@ public final class Assertions {
      * @param actual    the actual value.
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
-     * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
      * @return the assertion.
      */
-    public static <W, U extends W, S extends BaseAssertion<W>> S assertThat(final U actual, final S assertion) {
+    public static <W, S extends BaseAssertion<W>> S assertThat(final Object actual, final S assertion) {
         return assertThat(actual).as(assertion);
     }
 
@@ -358,8 +357,9 @@ public final class Assertions {
      * @param actual    the actual value.
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
+     * @param <W>       the generic type of the matcher's actual value.
      */
-    public static void assertThat(final Object actual, final String fieldName, final Matcher<?> matcher) {
+    public static <W> void assertThat(final Object actual, final String fieldName, final Matcher<W> matcher) {
         assertThat(actual).toField(fieldName, matcher);
     }
 
