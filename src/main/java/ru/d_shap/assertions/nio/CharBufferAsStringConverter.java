@@ -45,6 +45,7 @@ public final class CharBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
+        checkValueClass(value);
         return getValueAsString(value, char[].class, false);
     }
 

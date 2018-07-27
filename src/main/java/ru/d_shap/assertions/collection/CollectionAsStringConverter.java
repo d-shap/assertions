@@ -45,6 +45,7 @@ public final class CollectionAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
+        checkValueClass(value);
         StringBuilder result = new StringBuilder();
         result.append('[');
         boolean first = true;

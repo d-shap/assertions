@@ -43,6 +43,7 @@ public final class CharAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
+        checkValueClass(value);
         int intValue = (char) value;
         char charValue = (char) value;
         if (Character.isLetterOrDigit(charValue)) {

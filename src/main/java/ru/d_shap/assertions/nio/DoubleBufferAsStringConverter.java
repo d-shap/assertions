@@ -45,6 +45,7 @@ public final class DoubleBufferAsStringConverter extends BaseAsStringConverter {
 
     @Override
     protected String asString(final Object value) throws ConvertionException {
+        checkValueClass(value);
         return getValueAsString(value, double[].class, false);
     }
 
