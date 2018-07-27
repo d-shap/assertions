@@ -41,6 +41,16 @@ public abstract class BaseValueConverter {
     protected abstract Class<?> getValueClass();
 
     /**
+     * Check the value class.
+     *
+     * @param value the value.
+     */
+    protected final void checkValueClass(final Object value) {
+        value.getClass();
+        getValueClass().cast(value);
+    }
+
+    /**
      * Get the target class.
      *
      * @return the target class.
