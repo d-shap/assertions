@@ -95,6 +95,16 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
      *
      * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+        new ObjectArrayToListValueConverter().canConvert(new String[0], new Object());
+    }
+
+    /**
+     * {@link ObjectArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
     @Test
     public void convertTest() throws ConvertionException {
         Assertions.assertThat(new ObjectArrayToListValueConverter().convert(new String[]{})).isInstanceOf(List.class);
@@ -128,6 +138,16 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConvertionException {
         new ObjectArrayToListValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link ObjectArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+        new ObjectArrayToListValueConverter().convert(new String[0], new Object());
     }
 
 }

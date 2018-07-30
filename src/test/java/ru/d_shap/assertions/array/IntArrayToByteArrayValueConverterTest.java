@@ -94,6 +94,16 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
      *
      * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+        new IntArrayToByteArrayValueConverter().canConvert(new int[0], new Object());
+    }
+
+    /**
+     * {@link IntArrayToByteArrayValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
     @Test
     public void convertTest() throws ConvertionException {
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{})).isInstanceOf(byte[].class);
@@ -131,6 +141,16 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConvertionException {
         new IntArrayToByteArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link IntArrayToByteArrayValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+        new IntArrayToByteArrayValueConverter().convert(new int[0], new Object());
     }
 
 }

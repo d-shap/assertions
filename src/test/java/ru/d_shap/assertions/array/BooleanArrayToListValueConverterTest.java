@@ -95,6 +95,16 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
      *
      * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+        new BooleanArrayToListValueConverter().canConvert(new boolean[0], new Object());
+    }
+
+    /**
+     * {@link BooleanArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
     @Test
     public void convertTest() throws ConvertionException {
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).isInstanceOf(List.class);
@@ -128,6 +138,16 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConvertionException {
         new BooleanArrayToListValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link BooleanArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+        new BooleanArrayToListValueConverter().convert(new boolean[0], new Object());
     }
 
 }

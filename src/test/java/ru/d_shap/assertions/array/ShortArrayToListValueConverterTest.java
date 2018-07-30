@@ -95,6 +95,16 @@ public final class ShortArrayToListValueConverterTest extends AssertionTest {
      *
      * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+        new ShortArrayToListValueConverter().canConvert(new short[0], new Object());
+    }
+
+    /**
+     * {@link ShortArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
     @Test
     public void convertTest() throws ConvertionException {
         Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{})).isInstanceOf(List.class);
@@ -128,6 +138,16 @@ public final class ShortArrayToListValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConvertionException {
         new ShortArrayToListValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link ShortArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+        new ShortArrayToListValueConverter().convert(new short[0], new Object());
     }
 
 }

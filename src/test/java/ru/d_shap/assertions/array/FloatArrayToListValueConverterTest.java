@@ -95,6 +95,16 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
      *
      * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+        new FloatArrayToListValueConverter().canConvert(new float[0], new Object());
+    }
+
+    /**
+     * {@link FloatArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
     @Test
     public void convertTest() throws ConvertionException {
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).isInstanceOf(List.class);
@@ -128,6 +138,16 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConvertionException {
         new FloatArrayToListValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link FloatArrayToListValueConverter} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+        new FloatArrayToListValueConverter().convert(new float[0], new Object());
     }
 
 }
