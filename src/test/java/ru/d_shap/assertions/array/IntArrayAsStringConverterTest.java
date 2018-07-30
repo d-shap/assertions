@@ -21,6 +21,7 @@ package ru.d_shap.assertions.array;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.ConvertionException;
 
@@ -29,7 +30,7 @@ import ru.d_shap.assertions.ConvertionException;
  *
  * @author Dmitry Shapovalov
  */
-public final class IntArrayAsStringConverterTest {
+public final class IntArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.

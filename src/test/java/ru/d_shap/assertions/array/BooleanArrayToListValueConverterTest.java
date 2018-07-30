@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.ConvertionException;
 import ru.d_shap.assertions.Raw;
@@ -32,7 +33,7 @@ import ru.d_shap.assertions.Raw;
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanArrayToListValueConverterTest {
+public final class BooleanArrayToListValueConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
