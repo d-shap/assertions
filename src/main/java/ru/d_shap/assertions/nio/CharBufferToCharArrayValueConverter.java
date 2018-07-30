@@ -51,12 +51,16 @@ public final class CharBufferToCharArrayValueConverter extends BaseValueConverte
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Boolean.class);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Boolean.class);
         boolean rewind = (Boolean) arguments[0];
         int position = ((CharBuffer) value).position();
         if (rewind) {

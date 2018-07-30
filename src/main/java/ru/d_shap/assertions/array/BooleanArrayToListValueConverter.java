@@ -52,12 +52,14 @@ public final class BooleanArrayToListValueConverter extends BaseValueConverter {
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         List<Boolean> result = new ArrayList<>(((boolean[]) value).length);
         for (boolean element : (boolean[]) value) {
             result.add(element);

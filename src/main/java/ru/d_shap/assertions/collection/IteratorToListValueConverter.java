@@ -53,12 +53,16 @@ public final class IteratorToListValueConverter extends BaseValueConverter {
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Integer.class);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Integer.class);
         int count = (Integer) arguments[0];
         List<Object> result = new ArrayList<>();
         for (int i = 0; (count == 0 || i < count) && ((Iterator<?>) value).hasNext(); i++) {

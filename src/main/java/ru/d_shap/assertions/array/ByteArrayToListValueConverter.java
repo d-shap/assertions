@@ -52,12 +52,14 @@ public final class ByteArrayToListValueConverter extends BaseValueConverter {
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         List<Byte> result = new ArrayList<>(((byte[]) value).length);
         for (byte element : (byte[]) value) {
             result.add(element);

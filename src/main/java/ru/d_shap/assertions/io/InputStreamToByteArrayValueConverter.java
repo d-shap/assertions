@@ -53,12 +53,16 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Integer.class);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(1, arguments);
+        checkArgumentClass(arguments[0], Integer.class);
         try {
             int count = (Integer) arguments[0];
             int read;

@@ -52,12 +52,14 @@ public final class ShortArrayToListValueConverter extends BaseValueConverter {
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         List<Short> result = new ArrayList<>(((short[]) value).length);
         for (short element : (short[]) value) {
             result.add(element);

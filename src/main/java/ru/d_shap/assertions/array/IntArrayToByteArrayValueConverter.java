@@ -49,6 +49,7 @@ public final class IntArrayToByteArrayValueConverter extends BaseValueConverter 
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         for (int i = 0; i < ((int[]) value).length; i++) {
             int intValue = ((int[]) value)[i];
             byte byteValue = (byte) intValue;
@@ -62,6 +63,7 @@ public final class IntArrayToByteArrayValueConverter extends BaseValueConverter 
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         byte[] result = new byte[((int[]) value).length];
         for (int i = 0; i < ((int[]) value).length; i++) {
             result[i] = (byte) ((int[]) value)[i];

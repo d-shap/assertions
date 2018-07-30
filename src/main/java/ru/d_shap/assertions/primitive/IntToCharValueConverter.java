@@ -49,6 +49,7 @@ public final class IntToCharValueConverter extends BaseValueConverter {
     @Override
     protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         int intValue = (int) value;
         char charValue = (char) intValue;
         return intValue == charValue;
@@ -57,6 +58,7 @@ public final class IntToCharValueConverter extends BaseValueConverter {
     @Override
     protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
         checkValueClass(value);
+        checkArgumentValueCount(0, arguments);
         return (char) (int) value;
     }
 
