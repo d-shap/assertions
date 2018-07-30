@@ -41,6 +41,15 @@ public abstract class BaseAsStringConverter {
     protected abstract Class<?> getValueClass();
 
     /**
+     * Get the string representation of the value.
+     *
+     * @param value the value.
+     * @return the string representation of the value.
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    protected abstract String asString(Object value) throws ConvertionException;
+
+    /**
      * Check the value class.
      *
      * @param value the value.
@@ -49,15 +58,6 @@ public abstract class BaseAsStringConverter {
         value.getClass();
         getValueClass().cast(value);
     }
-
-    /**
-     * Get the string representation of the value.
-     *
-     * @param value the value.
-     * @return the string representation of the value.
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
-     */
-    protected abstract String asString(Object value) throws ConvertionException;
 
     /**
      * Get the string representation of the value.
