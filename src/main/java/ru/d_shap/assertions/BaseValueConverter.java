@@ -78,6 +78,29 @@ public abstract class BaseValueConverter {
     }
 
     /**
+     * Check the argument count.
+     *
+     * @param count     the argument count.
+     * @param arguments the arguments.
+     */
+    protected final void checkArgumentValueCount(final int count, final Object... arguments) {
+        if (arguments.length != count) {
+            throw new ArrayIndexOutOfBoundsException(count);
+        }
+    }
+
+    /**
+     * Check the argument class.
+     *
+     * @param argument      the argument.
+     * @param argumentClass the argument class.
+     */
+    protected final void checkArgumentClass(final Object argument, final Class<?> argumentClass) {
+        argument.getClass();
+        argumentClass.cast(argument);
+    }
+
+    /**
      * Get the value converted to the target class.
      *
      * @param value       the value.
