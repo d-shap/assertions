@@ -4289,59 +4289,59 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toTokensMatcherSpecifiedTest() {
-        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.hasItems("value1 value2 value3"), "|");
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems("value1", "value2", "value3"), "|");
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", Matchers.hasItems("value1 value2 value3"));
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", Matchers.hasItems("value1", "value2", "value3"));
 
         try {
-            Raw.charSequenceAssertion().toTokens(Matchers.hasItems(""), "|");
+            Raw.charSequenceAssertion().toTokens("|", Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens(Matchers.hasItems(""), "|");
+            initialize(Raw.charSequenceAssertion(), null).toTokens("|", Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(Matchers.hasItems(""), "|");
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens("|", Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens(Matchers.hasItems(""), null);
+            initialize(Raw.charSequenceAssertion(), null).toTokens(null, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(Matchers.hasItems(""), null);
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(null, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems(""), null);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(Matchers.hasItems(""), null);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.<String>iterableWithSize(4), "|");
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", Matchers.<String>iterableWithSize(4));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\nExpected: an iterable with size <4>\n     but: iterable size was <3>");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(Matchers.<String>iterableWithSize(4), "|");
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|", Matchers.<String>iterableWithSize(4));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\nExpected: an iterable with size <4>\n     but: iterable size was <3>");
@@ -4353,61 +4353,61 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toTokensMatcherWithDelimitersTest() {
-        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.hasItems("value1 value2 value3"), "|", false);
-        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.hasItems("value1 value2 value3"), "|", true);
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems("value1", "value2", "value3"), "|", false);
-        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems("value1", "value2", "value3", "|", "|"), "|", true);
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", false, Matchers.hasItems("value1 value2 value3"));
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", true, Matchers.hasItems("value1 value2 value3"));
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false, Matchers.hasItems("value1", "value2", "value3"));
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true, Matchers.hasItems("value1", "value2", "value3", "|", "|"));
 
         try {
-            Raw.charSequenceAssertion().toTokens(Matchers.hasItems(""), "|", false);
+            Raw.charSequenceAssertion().toTokens("|", false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens(Matchers.hasItems(""), "|", false);
+            initialize(Raw.charSequenceAssertion(), null).toTokens("|", false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(Matchers.hasItems(""), "|", false);
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens("|", false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).toTokens(Matchers.hasItems(""), null, false);
+            initialize(Raw.charSequenceAssertion(), null).toTokens(null, false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(Matchers.hasItems(""), null, false);
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens(null, false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems(""), null, false);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(Matchers.hasItems(""), null, false);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, false, Matchers.hasItems(""));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.<String>iterableWithSize(4), "|", true);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true, Matchers.<String>iterableWithSize(4));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's tokens.\nExpected: an iterable with size <4>\n     but: iterable size was <5>");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(Matchers.<String>iterableWithSize(4), "|", true);
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|", true, Matchers.<String>iterableWithSize(4));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tokens.\nExpected: an iterable with size <4>\n     but: iterable size was <5>");
