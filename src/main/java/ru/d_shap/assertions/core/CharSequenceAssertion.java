@@ -731,7 +731,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher) {
+    public final void toTokens(final org.hamcrest.Matcher<Iterable<? extends String>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -745,7 +745,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param matcher    the hamcrest matcher.
      * @param delimiters the delimiters.
      */
-    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher, final String delimiters) {
+    public final void toTokens(final org.hamcrest.Matcher<Iterable<? extends String>> matcher, final String delimiters) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -761,7 +761,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param delimiters       the delimiters.
      * @param returnDelimiters whether to return the delimiters as tokens.
      */
-    public final void toTokens(final org.hamcrest.Matcher<List<String>> matcher, final String delimiters, final boolean returnDelimiters) {
+    public final void toTokens(final org.hamcrest.Matcher<Iterable<? extends String>> matcher, final String delimiters, final boolean returnDelimiters) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
