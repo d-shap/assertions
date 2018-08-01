@@ -44,6 +44,9 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
+
 /**
  * Base class for all tests.
  *
@@ -215,6 +218,32 @@ public class AssertionTest {
      */
     protected final PrivateFieldsClass createPrivateFieldsClass() {
         return new PrivateFieldsClass(this);
+    }
+
+    /**
+     * Create new iterable with the values.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     * @return the iterable.
+     */
+    @SafeVarargs
+    protected final <E> Iterable<E> createIterable(final E... values) {
+        List<E> list = Arrays.asList(values);
+        return new IterableImpl<>(list);
+    }
+
+    /**
+     * Create new iterator with the values.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     * @return the iterator.
+     */
+    @SafeVarargs
+    protected final <E> Iterator<E> createIterator(final E... values) {
+        List<E> list = Arrays.asList(values);
+        return new IteratorImpl<>(list);
     }
 
     /**
@@ -831,11 +860,65 @@ public class AssertionTest {
     }
 
     /**
+     * Create the class A instance.
+     *
+     * @return the class A instance.
+     */
+    protected final ClassA createClassA() {
+        return new ClassA();
+    }
+
+    /**
+     * Create the class B instance.
+     *
+     * @return the class B instance.
+     */
+    protected final ClassB createClassB() {
+        return new ClassB();
+    }
+
+    /**
+     * Create the class C instance.
+     *
+     * @return the class C instance.
+     */
+    protected final ClassC createClassC() {
+        return new ClassC();
+    }
+
+    /**
+     * Create hamcrest matcher for the class A.
+     *
+     * @return hamcrest matcher for the class A.
+     */
+    protected final MatcherA createMatcherA() {
+        return new MatcherA();
+    }
+
+    /**
+     * Create hamcrest matcher for the class B.
+     *
+     * @return hamcrest matcher for the class B.
+     */
+    protected final MatcherB createMatcherB() {
+        return new MatcherB();
+    }
+
+    /**
+     * Create hamcrest matcher for the class C.
+     *
+     * @return hamcrest matcher for the class C.
+     */
+    protected final MatcherC createMatcherC() {
+        return new MatcherC();
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
      */
-    public static final class BaseAssertionImpl extends BaseAssertion<Object> {
+    private static final class BaseAssertionImpl extends BaseAssertion<Object> {
 
         BaseAssertionImpl() {
             super();
@@ -853,7 +936,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
+    private static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
 
         ReferenceAssertionImpl() {
             super();
@@ -871,7 +954,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class NullFieldClass {
+    private static final class NullFieldClass {
 
         private Object _field;
 
@@ -886,7 +969,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    public static final class PrivateFieldsClass {
+    private static final class PrivateFieldsClass {
 
         private final byte _byte;
 
@@ -1041,6 +1124,60 @@ public class AssertionTest {
      * @param <E> the generic type of the element.
      * @author Dmitry Shapovalov
      */
+    private static final class IterableImpl<E> implements Iterable<E> {
+
+        private final List<E> _list;
+
+        IterableImpl(final List<E> list) {
+            super();
+            _list = list;
+        }
+
+        @Override
+        public Iterator<E> iterator() {
+            return _list.iterator();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @param <E> the generic type of the element.
+     * @author Dmitry Shapovalov
+     */
+    private static final class IteratorImpl<E> implements Iterator<E> {
+
+        private final Iterator<E> _iterator;
+
+        IteratorImpl(final List<E> list) {
+            super();
+            _iterator = list.iterator();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return _iterator.hasNext();
+        }
+
+        @Override
+        public E next() {
+            return _iterator.next();
+        }
+
+        @Override
+        public void remove() {
+            _iterator.remove();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @param <E> the generic type of the element.
+     * @author Dmitry Shapovalov
+     */
     private static final class NullFirstComparator<E> implements Comparator<E> {
 
         NullFirstComparator() {
@@ -1073,6 +1210,114 @@ public class AssertionTest {
     public enum Values {
 
         VALUE_1, VALUE_2, VALUE_3
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassA {
+
+        ClassA() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassB extends ClassA {
+
+        ClassB() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassC extends ClassB {
+
+        ClassC() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherA extends TypeSafeMatcher<ClassA> {
+
+        MatcherA() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassA classA) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherB extends TypeSafeMatcher<ClassB> {
+
+        MatcherB() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassB classB) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherC extends TypeSafeMatcher<ClassC> {
+
+        MatcherC() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassC classB) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
 
     }
 
