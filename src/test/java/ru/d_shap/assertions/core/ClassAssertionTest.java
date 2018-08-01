@@ -690,13 +690,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), AbstractClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).isCauseInstanceOf(InstantiationException.class);
+            Assertions.assertThat(ex).hasCause(InstantiationException.class);
         }
         try {
             initialize(Raw.classAssertion(), FailConstructorClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).isCauseInstanceOf(InvocationTargetException.class);
+            Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
         }
     }
 
