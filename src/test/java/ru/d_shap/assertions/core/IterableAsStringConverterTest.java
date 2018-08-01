@@ -19,9 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -57,14 +54,9 @@ public final class IterableAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws ConvertionException {
-        Assertions.assertThat(new IterableAsStringConverter().asString(new ArrayList<String>())).isEqualTo("[]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(new IterableImpl(new ArrayList<String>()))).isEqualTo("[]");
-
-        Assertions.assertThat(new IterableAsStringConverter().asString(Arrays.asList("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(new IterableImpl(Arrays.asList("val1", "val2", "val3")))).isEqualTo("[val1, val2, val3]");
-
-        Assertions.assertThat(new IterableAsStringConverter().asString(Arrays.asList("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(new IterableImpl(Arrays.asList("val1", "val2", "val3", "val4", "val5")))).isEqualTo("[val1, val2, val3, val4, val5]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("[]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }
 
     /**
