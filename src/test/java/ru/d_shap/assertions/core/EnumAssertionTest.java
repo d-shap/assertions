@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -117,6 +118,47 @@ public final class EnumAssertionTest extends AssertionTest {
      * {@link EnumAssertion} class test.
      */
     @Test
+    public void toValueCountMatcherTest() {
+        initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.lessThan(4)));
+
+        try {
+            Raw.enumAssertion().toValueCount(Matchers.equalTo(0));
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.enumAssertion(), null).toValueCount(Matchers.equalTo(0));
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.enumAssertion(), null, "Message").toValueCount(Matchers.equalTo(0));
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.equalTo(4));
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's value count.\nExpected: <4>\n     but: was <3>");
+        }
+        try {
+            initialize(Raw.enumAssertion(), Values.class, "Message").toValueCount(Matchers.equalTo(4));
+            Assertions.fail("EnumAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's value count.\nExpected: <4>\n     but: was <3>");
+        }
+    }
+
+    /**
+     * {@link EnumAssertion} class test.
+     */
+    @Test
     public void hasValueCountTest() {
         initialize(Raw.enumAssertion(), Values.class).hasValueCount(3);
 
@@ -161,13 +203,13 @@ public final class EnumAssertionTest extends AssertionTest {
             initialize(new EnumAssertion("wrongMethodName", "valueOf"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
         try {
             initialize(new EnumAssertion("values", "wrongMethodName"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).isCauseInstanceOf(NoSuchMethodException.class);
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
 
