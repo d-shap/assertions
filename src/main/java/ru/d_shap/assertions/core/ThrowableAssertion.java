@@ -60,7 +60,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMessage(final Matcher<CharSequence> matcher) {
+    public final void toMessage(final Matcher<String> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
