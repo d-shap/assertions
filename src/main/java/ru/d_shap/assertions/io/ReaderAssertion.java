@@ -115,7 +115,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param matcher the hamcrest matcher.
      * @param count   the number of chars to read from the actual.
      */
-    public final void toCharArray(final Matcher<char[]> matcher, final int count) {
+    public final void toCharArray(final int count, final Matcher<char[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);

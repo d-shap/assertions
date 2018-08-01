@@ -113,10 +113,10 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     /**
      * Make assertion about the bytes read from the actual from the current position.
      *
-     * @param matcher the hamcrest matcher.
      * @param count   the number of bytes to read from the actual.
+     * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final Matcher<byte[]> matcher, final int count) {
+    public final void toByteArray(final int count, final Matcher<byte[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);

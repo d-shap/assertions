@@ -141,10 +141,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Make assertion about the head set of the actual.
      *
-     * @param matcher the hamcrest matcher.
      * @param element upper element (exclusive) of the head set.
+     * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final Matcher<SortedSet<E>> matcher, final E element) {
+    public final void toHeadSet(final E element, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -154,10 +154,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Make assertion about the head set of the actual.
      *
-     * @param matcher the hamcrest matcher.
      * @param count   the number of elements to get from the head.
+     * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final Matcher<SortedSet<E>> matcher, final int count) {
+    public final void toHeadSet(final int count, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -202,10 +202,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Make assertion about the tail set of the actual.
      *
-     * @param matcher the hamcrest matcher.
      * @param element lower element (inclusive) of the tail set.
+     * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final Matcher<SortedSet<E>> matcher, final E element) {
+    public final void toTailSet(final E element, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -215,10 +215,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Make assertion about the tail set of the actual.
      *
-     * @param matcher the hamcrest matcher.
      * @param count   the number of elements to get from the tail.
+     * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final Matcher<SortedSet<E>> matcher, final int count) {
+    public final void toTailSet(final int count, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
