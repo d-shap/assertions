@@ -265,6 +265,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
         }
         try {
+            initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null, "val2"}).doesNotContain(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
+        }
+        try {
+            initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null, "val2"}, "Message").doesNotContain(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
+        }
+        try {
             initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).doesNotContain("val1");
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
