@@ -211,6 +211,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, val2]>");
         }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).contains("val3");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").contains("val3");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, 1(49)]>");
+        }
     }
 
     /**
@@ -251,6 +263,18 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).doesNotContain("val1");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, 1(49)]>");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}, "Message").doesNotContain("val1");
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, 1(49)]>");
         }
     }
 
