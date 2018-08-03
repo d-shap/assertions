@@ -102,12 +102,13 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final Matcher<byte[]> matcher) {
+    public final void toByteArray(final Matcher<Byte[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
-        matcherAssertion(nextBytes, matcher, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
+        Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
+        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
     }
 
     /**
@@ -116,12 +117,13 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final int count, final Matcher<byte[]> matcher) {
+    public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
-        matcherAssertion(nextBytes, matcher, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
+        Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
+        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
     }
 
     /**
