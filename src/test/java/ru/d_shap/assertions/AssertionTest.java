@@ -20,6 +20,7 @@
 package ru.d_shap.assertions;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
@@ -207,7 +208,7 @@ public class AssertionTest {
      *
      * @return the object with the private field with null value.
      */
-    protected final NullFieldClass createNullFieldClass() {
+    protected final Object createNullFieldClass() {
         return new NullFieldClass();
     }
 
@@ -216,7 +217,7 @@ public class AssertionTest {
      *
      * @return the object with initialized private fields.
      */
-    protected final PrivateFieldsClass createPrivateFieldsClass() {
+    protected final Object createPrivateFieldsClass() {
         return new PrivateFieldsClass(this);
     }
 
@@ -860,6 +861,24 @@ public class AssertionTest {
     }
 
     /**
+     * Create the input stream.
+     *
+     * @return the input stream.
+     */
+    protected final InputStream createErrorInputStream() {
+        return new ErrorInputStream();
+    }
+
+    /**
+     * Create the reader.
+     *
+     * @return the reader.
+     */
+    protected final Reader createErrorReader() {
+        return new ErrorReader();
+    }
+
+    /**
      * Create the class A instance.
      *
      * @return the class A instance.
@@ -1218,7 +1237,58 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassA {
+    private static final class ErrorInputStream extends InputStream {
+
+        ErrorInputStream() {
+            super();
+        }
+
+        @Override
+        public int available() throws IOException {
+            throw new IOException("available exception");
+        }
+
+        @Override
+        public int read() throws IOException {
+            throw new IOException("read exception");
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ErrorReader extends Reader {
+
+        ErrorReader() {
+            super();
+        }
+
+        @Override
+        public int read() throws IOException {
+            throw new IOException("read exception");
+        }
+
+        @Override
+        public int read(final char[] buffer, final int from, final int to) throws IOException {
+            throw new IOException("read exception");
+        }
+
+        @Override
+        public void close() throws IOException {
+            // Ignore
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static class ClassA {
 
         ClassA() {
             super();
@@ -1231,7 +1301,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassB extends ClassA {
+    public static class ClassB extends ClassA {
 
         ClassB() {
             super();
@@ -1244,7 +1314,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassC extends ClassB {
+    public static class ClassC extends ClassB {
 
         ClassC() {
             super();
@@ -1257,7 +1327,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class MatcherA extends TypeSafeMatcher<ClassA> {
+    public static final class MatcherA extends TypeSafeMatcher<ClassA> {
 
         MatcherA() {
             super();
@@ -1280,7 +1350,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class MatcherB extends TypeSafeMatcher<ClassB> {
+    public static final class MatcherB extends TypeSafeMatcher<ClassB> {
 
         MatcherB() {
             super();
@@ -1303,7 +1373,7 @@ public class AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class MatcherC extends TypeSafeMatcher<ClassC> {
+    public static final class MatcherC extends TypeSafeMatcher<ClassC> {
 
         MatcherC() {
             super();
