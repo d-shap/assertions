@@ -160,8 +160,8 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void toHeadSet(final int count, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
         checkArgumentIsValid(count > 0);
+        checkArgumentIsNotNull(matcher);
         matcherAssertion(getHeadSet(count), matcher, Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
     }
 
@@ -221,8 +221,8 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void toTailSet(final int count, final Matcher<SortedSet<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
         checkArgumentIsValid(count > 0);
+        checkArgumentIsNotNull(matcher);
         matcherAssertion(getTailSet(count), matcher, Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
     }
 

@@ -281,6 +281,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {
         checkInitialized();
         checkActualIsNotNull();
+        checkArgumentIsNotNull(fieldName);
         checkArgumentIsNotNull(assertion);
         return toField(fieldName).as(assertion);
     }
@@ -296,6 +297,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
+        checkArgumentIsNotNull(matcher);
         try {
             matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {

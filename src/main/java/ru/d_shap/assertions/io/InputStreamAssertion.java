@@ -120,6 +120,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);

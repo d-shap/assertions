@@ -119,6 +119,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
         checkInitialized();
         checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         char[] nextChars = convertValue(getActual(), char[].class, count);
         Character[] nextObjects = convertValue(nextChars, Character[].class);

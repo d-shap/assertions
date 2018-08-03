@@ -102,8 +102,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void toList(final int count, final Matcher<List<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
         checkArgumentIsValid(count > 0);
+        checkArgumentIsNotNull(matcher);
         List<E> list = convertValue(getActual(), List.class, count);
         matcherAssertion(list, matcher, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
     }
