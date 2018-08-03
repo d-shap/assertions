@@ -25,6 +25,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -183,7 +184,7 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayFullTest() {
+    public void toCharArrayTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray().containsExactlyInOrder('1', '2', '3');
 
         try {
@@ -246,7 +247,7 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayWithLengthTest() {
+    public void toCharArrayLengthTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(3).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(2).containsExactlyInOrder('1', '2');
@@ -341,6 +342,147 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
+    public void toCharArrayMatcherTest() {
+        initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(Matchers.arrayContaining('1', '2', '3'));
+
+        try {
+            Raw.readerAssertion().toCharArray(Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).toCharArray(Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toCharArray(Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader()).toCharArray(Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").toCharArray(Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(Matchers.arrayContaining('1', '2'));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(Matchers.arrayContaining('1', '2'));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
+    public void toCharArrayLengthMatcherTest() {
+        initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4, Matchers.arrayContaining('1', '2', '3'));
+        initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(3, Matchers.arrayContaining('1', '2', '3'));
+        initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(2, Matchers.arrayContaining('1', '2'));
+        initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(1, Matchers.arrayContaining('1'));
+
+        try {
+            Raw.readerAssertion().toCharArray(1, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).toCharArray(1, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toCharArray(1, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).toCharArray(0, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toCharArray(0, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(0, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(0, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(-1, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(-1, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader()).toCharArray(3, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").toCharArray(3, Matchers.arrayContaining((char) 0));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4, Matchers.arrayContaining('1', '2'));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(4, Matchers.arrayContaining('1', '2'));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
         }
     }
 
@@ -965,6 +1107,96 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     *
+     * @throws IOException IO exception.
+     */
+    @Test
+    public void toLengthMatcherTest() throws IOException {
+        initialize(Raw.readerAssertion(), new StringReader("12")).toLength(Matchers.is(Matchers.equalTo(2L)));
+        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).toLength(Matchers.equalTo(5L));
+        initialize(Raw.readerAssertion(), new StringReader("")).toLength(Matchers.equalTo(0L));
+
+        StringReader reader1 = new StringReader("123");
+        initialize(Raw.readerAssertion(), reader1).toLength(Matchers.equalTo(3L));
+        Assertions.assertThat(reader1.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader1).toLength(Matchers.equalTo(0L));
+
+        StringReader reader2 = new StringReader("123");
+        Assertions.assertThat(reader2.read()).isEqualTo('1');
+        initialize(Raw.readerAssertion(), reader2).toLength(Matchers.equalTo(2L));
+        Assertions.assertThat(reader2.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader2).toLength(Matchers.equalTo(0L));
+
+        StringReader reader3 = new StringReader("123");
+        Assertions.assertThat(reader3.read()).isEqualTo('1');
+        Assertions.assertThat(reader3.read()).isEqualTo('2');
+        initialize(Raw.readerAssertion(), reader3).toLength(Matchers.equalTo(1L));
+        Assertions.assertThat(reader3.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader3).toLength(Matchers.equalTo(0L));
+
+        StringReader reader4 = new StringReader("123");
+        Assertions.assertThat(reader4.read()).isEqualTo('1');
+        Assertions.assertThat(reader4.read()).isEqualTo('2');
+        Assertions.assertThat(reader4.read()).isEqualTo('3');
+        initialize(Raw.readerAssertion(), reader4).toLength(Matchers.equalTo(0L));
+        Assertions.assertThat(reader4.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader4).toLength(Matchers.equalTo(0L));
+
+        StringReader reader5 = new StringReader("123");
+        Assertions.assertThat(reader5.read()).isEqualTo('1');
+        Assertions.assertThat(reader5.read()).isEqualTo('2');
+        Assertions.assertThat(reader5.read()).isEqualTo('3');
+        Assertions.assertThat(reader5.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader5).toLength(Matchers.equalTo(0L));
+        Assertions.assertThat(reader5.read()).isLessThan(0);
+        initialize(Raw.readerAssertion(), reader5).toLength(Matchers.equalTo(0L));
+
+        try {
+            Raw.readerAssertion().toLength(Matchers.equalTo(0L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).toLength(Matchers.equalTo(0L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toLength(Matchers.equalTo(0L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader()).toLength(Matchers.equalTo(0L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new ErrorReader(), "Message").toLength(Matchers.equalTo(0L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toLength(Matchers.equalTo(2L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <2L>\n     but: was <3L>");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toLength(Matchers.equalTo(2L));
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <2L>\n     but: was <3L>");
         }
     }
 
