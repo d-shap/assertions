@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -181,7 +182,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
-    public void toByteArrayFullTest() {
+    public void toByteArrayTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray().containsExactlyInOrder(1, 2, 3);
 
         try {
@@ -244,7 +245,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
-    public void toByteArrayWithLengthTest() {
+    public void toByteArrayLengthTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4).containsExactlyInOrder(1, 2, 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(3).containsExactlyInOrder(1, 2, 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(2).containsExactlyInOrder(1, 2);
@@ -339,6 +340,147 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toByteArrayMatcherTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(Matchers.arrayContaining((byte) 1, (byte) 2, (byte) 3));
+
+        try {
+            Raw.inputStreamAssertion().toByteArray(Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toByteArray(Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toByteArray(Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toByteArray(Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toByteArray(Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(Matchers.arrayContaining((byte) 1, (byte) 2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all actual value's bytes.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(Matchers.arrayContaining((byte) 1, (byte) 2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's bytes.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toByteArrayLengthMatcherTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2, (byte) 3));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(3, Matchers.arrayContaining((byte) 1, (byte) 2, (byte) 3));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(2, Matchers.arrayContaining((byte) 1, (byte) 2));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(1, Matchers.arrayContaining((byte) 1));
+
+        try {
+            Raw.inputStreamAssertion().toByteArray(1, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toByteArray(1, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toByteArray(1, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toByteArray(0, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toByteArray(0, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(0, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(0, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(-1, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(-1, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toByteArray(3, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toByteArray(3, Matchers.arrayContaining((byte) 0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 4.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
         }
     }
 
@@ -944,6 +1086,70 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
+    public void toAvailableMatcherTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toAvailable(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toAvailable(Matchers.equalTo(5));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toAvailable(Matchers.equalTo(0));
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(3));
+        Assertions.assertThat(bais.read()).isEqualTo(1);
+        initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(2));
+        Assertions.assertThat(bais.read()).isEqualTo(2);
+        initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(1));
+        Assertions.assertThat(bais.read()).isEqualTo(3);
+        initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(0));
+        Assertions.assertThat(bais.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(0));
+
+        try {
+            Raw.inputStreamAssertion().toAvailable(Matchers.equalTo(0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toAvailable(Matchers.equalTo(0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toAvailable(Matchers.equalTo(0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toAvailable(Matchers.equalTo(0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: available exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toAvailable(Matchers.equalTo(0));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: available exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toAvailable(Matchers.equalTo(2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's available.\nExpected: <2>\n     but: was <3>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toAvailable(Matchers.equalTo(2));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's available.\nExpected: <2>\n     but: was <3>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
     public void hasAvailableTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).hasAvailable(2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).hasAvailable(5);
@@ -1089,6 +1295,94 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toLengthMatcherTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toLength(Matchers.is(Matchers.equalTo(2L)));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toLength(Matchers.equalTo(5L));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toLength(Matchers.equalTo(0L));
+
+        ByteArrayInputStream bais1 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        initialize(Raw.inputStreamAssertion(), bais1).toLength(Matchers.equalTo(3L));
+        Assertions.assertThat(bais1.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais1).toLength(Matchers.equalTo(0L));
+
+        ByteArrayInputStream bais2 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais2.read()).isEqualTo(1);
+        initialize(Raw.inputStreamAssertion(), bais2).toLength(Matchers.equalTo(2L));
+        Assertions.assertThat(bais2.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais2).toLength(Matchers.equalTo(0L));
+
+        ByteArrayInputStream bais3 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais3.read()).isEqualTo(1);
+        Assertions.assertThat(bais3.read()).isEqualTo(2);
+        initialize(Raw.inputStreamAssertion(), bais3).toLength(Matchers.equalTo(1L));
+        Assertions.assertThat(bais3.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais3).toLength(Matchers.equalTo(0L));
+
+        ByteArrayInputStream bais4 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais4.read()).isEqualTo(1);
+        Assertions.assertThat(bais4.read()).isEqualTo(2);
+        Assertions.assertThat(bais4.read()).isEqualTo(3);
+        initialize(Raw.inputStreamAssertion(), bais4).toLength(Matchers.equalTo(0L));
+        Assertions.assertThat(bais4.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais4).toLength(Matchers.equalTo(0L));
+
+        ByteArrayInputStream bais5 = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        Assertions.assertThat(bais5.read()).isEqualTo(1);
+        Assertions.assertThat(bais5.read()).isEqualTo(2);
+        Assertions.assertThat(bais5.read()).isEqualTo(3);
+        Assertions.assertThat(bais5.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais5).toLength(Matchers.equalTo(0L));
+        Assertions.assertThat(bais5.read()).isLessThan(0);
+        initialize(Raw.inputStreamAssertion(), bais5).toLength(Matchers.equalTo(0L));
+
+        try {
+            Raw.inputStreamAssertion().toLength(Matchers.equalTo(0L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toLength(Matchers.equalTo(0L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toLength(Matchers.equalTo(0L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream()).toLength(Matchers.equalTo(0L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ErrorInputStream(), "Message").toLength(Matchers.equalTo(0L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toLength(Matchers.equalTo(2L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <2L>\n     but: was <3L>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toLength(Matchers.equalTo(2L));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <2L>\n     but: was <3L>");
         }
     }
 
