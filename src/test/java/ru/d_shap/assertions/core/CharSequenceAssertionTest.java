@@ -4042,7 +4042,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensDefaultTest() {
+    public void toTokensTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens().containsAll("value1", "value2", "value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens().containsAll("value1|value2|value3");
 
@@ -4170,7 +4170,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensWithDelimitersTest() {
+    public void toTokensDelimitersTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", false).containsAll("value1 value2 value3");
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", true).containsAll("value1 value2 value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false).containsAll("value1", "value2", "value3");
@@ -4248,7 +4248,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensMatcherDefaultTest() {
+    public void toTokensMatcherTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.hasItems("value1", "value2", "value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems("value1|value2|value3"));
 
@@ -4288,7 +4288,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensMatcherSpecifiedTest() {
+    public void toTokensSpecifiedMatcherTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", Matchers.hasItems("value1 value2 value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", Matchers.hasItems("value1", "value2", "value3"));
 
@@ -4352,7 +4352,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      * {@link CharSequenceAssertion} class test.
      */
     @Test
-    public void toTokensMatcherWithDelimitersTest() {
+    public void toTokensDelimitersMatcherTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", false, Matchers.hasItems("value1 value2 value3"));
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", true, Matchers.hasItems("value1 value2 value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false, Matchers.hasItems("value1", "value2", "value3"));
