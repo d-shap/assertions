@@ -2722,7 +2722,38 @@ public final class MapAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrder2Test() {
+        initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2")).containsExactlyInOrder("k1", "v1", "k2", "v2");
 
+        try {
+            Raw.mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null).containsExactlyInOrder("k1", "v1", "k2", "v2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null, "Message").containsExactlyInOrder("k1", "v1", "k2", "v2");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k2", "v2", "k1", "v1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactlyInOrder("k2", "v2", "k1", "v1");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
     }
 
     /**
@@ -2730,7 +2761,38 @@ public final class MapAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrder3Test() {
+        initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
 
+        try {
+            Raw.mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null, "Message").containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
     }
 
     /**
@@ -2738,7 +2800,38 @@ public final class MapAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrder4Test() {
+        initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
 
+        try {
+            Raw.mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null, "Message").containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3, k4=v4}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3, k4=v4}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
     }
 
     /**
@@ -2746,7 +2839,38 @@ public final class MapAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrder5Test() {
+        initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
 
+        try {
+            Raw.mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.mapAssertion(), null, "Message").containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3, k4=v4, k5=v5}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactlyInOrder("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+            Assertions.fail("MapAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{k2=v2, k1=v1, k3=v3, k4=v4, k5=v5}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+        }
     }
 
     /**
