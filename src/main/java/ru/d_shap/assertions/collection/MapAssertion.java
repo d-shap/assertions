@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.hamcrest.Matcher;
 
@@ -107,7 +106,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toKeys(final Matcher<Set<K>> matcher) {
+    public final void toKeys(final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
