@@ -341,6 +341,57 @@ public class AssertionTest {
     }
 
     /**
+     * Create new hash map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @param key4   the fourth key.
+     * @param value4 the fourth value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the hash map.
+     */
+    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
+        Map<K, V> map = new LinkedHashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        map.put(key4, value4);
+        return map;
+    }
+
+    /**
+     * Create new hash map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @param key4   the fourth key.
+     * @param value4 the fourth value.
+     * @param key5   the fifth key.
+     * @param value5 the fifth value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the hash map.
+     */
+    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
+        Map<K, V> map = new LinkedHashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        map.put(key4, value4);
+        map.put(key5, value5);
+        return map;
+    }
+
+    /**
      * Create new empty tree map.
      *
      * @param <K> the generic type of the key.
@@ -403,6 +454,57 @@ public class AssertionTest {
         sortedMap.put(key1, value1);
         sortedMap.put(key2, value2);
         sortedMap.put(key3, value3);
+        return sortedMap;
+    }
+
+    /**
+     * Create new tree map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @param key4   the fourth key.
+     * @param value4 the fourth value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the tree map.
+     */
+    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
+        sortedMap.put(key1, value1);
+        sortedMap.put(key2, value2);
+        sortedMap.put(key3, value3);
+        sortedMap.put(key4, value4);
+        return sortedMap;
+    }
+
+    /**
+     * Create new tree map with the values.
+     *
+     * @param key1   the first key.
+     * @param value1 the first value.
+     * @param key2   the second key.
+     * @param value2 the second value.
+     * @param key3   the third key.
+     * @param value3 the third value.
+     * @param key4   the fourth key.
+     * @param value4 the fourth value.
+     * @param key5   the fifth key.
+     * @param value5 the fifth value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the tree map.
+     */
+    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
+        sortedMap.put(key1, value1);
+        sortedMap.put(key2, value2);
+        sortedMap.put(key3, value3);
+        sortedMap.put(key4, value4);
+        sortedMap.put(key5, value5);
         return sortedMap;
     }
 
