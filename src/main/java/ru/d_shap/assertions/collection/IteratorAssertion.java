@@ -85,7 +85,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toList(final Matcher<List<E>> matcher) {
+    public final void toList(final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -99,7 +99,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param count   the number of elements to get from the iterator.
      * @param matcher the hamcrest matcher.
      */
-    public final void toList(final int count, final Matcher<List<E>> matcher) {
+    public final void toList(final int count, final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
