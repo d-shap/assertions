@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -1500,6 +1501,51 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link SetAssertion} class test.
+     */
+    @Test
+    public void toSizeMatcherTest() {
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.is(Matchers.lessThan(4)));
+
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
+
+        try {
+            Raw.<String>setAssertion().toSize(Matchers.equalTo(0));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), null).toSize(Matchers.equalTo(0));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), null, "Message").toSize(Matchers.equalTo(0));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.equalTo(4));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's size.\nExpected: <4>\n     but: was <3>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3"), "Message").toSize(Matchers.equalTo(4));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\nExpected: <4>\n     but: was <3>");
         }
     }
 
