@@ -162,7 +162,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     upper key (exclusive) of the head key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadKeys(final K key, final Matcher<SortedSet<K>> matcher) {
+    public final void toHeadKeys(final K key, final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -175,7 +175,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of keys to get from the head key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadKeys(final int count, final Matcher<SortedSet<K>> matcher) {
+    public final void toHeadKeys(final int count, final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
@@ -212,7 +212,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     lower key (inclusive) of the tail key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailKeys(final K key, final Matcher<SortedSet<K>> matcher) {
+    public final void toTailKeys(final K key, final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -225,7 +225,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of keys to get from the tail key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailKeys(final int count, final Matcher<SortedSet<K>> matcher) {
+    public final void toTailKeys(final int count, final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
