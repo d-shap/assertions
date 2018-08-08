@@ -144,7 +144,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element upper element (exclusive) of the head set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final E element, final Matcher<SortedSet<E>> matcher) {
+    public final void toHeadSet(final E element, final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -157,7 +157,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the head.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final int count, final Matcher<SortedSet<E>> matcher) {
+    public final void toHeadSet(final int count, final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
@@ -205,7 +205,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element lower element (inclusive) of the tail set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final E element, final Matcher<SortedSet<E>> matcher) {
+    public final void toTailSet(final E element, final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -218,7 +218,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the tail.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final int count, final Matcher<SortedSet<E>> matcher) {
+    public final void toTailSet(final int count, final Matcher<Iterable<E>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
