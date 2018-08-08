@@ -108,11 +108,11 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toKeys(final Matcher<SortedSet<K>> matcher) {
+    public final void toKeys(final Matcher<Iterable<K>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion((SortedSet<K>) getActual().keySet(), matcher, Messages.Check.ACTUAL_VALUE_KEYS);
+        matcherAssertion(getActual().keySet(), matcher, Messages.Check.ACTUAL_VALUE_KEYS);
     }
 
     /**
