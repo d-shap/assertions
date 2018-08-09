@@ -475,7 +475,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     upper key (exclusive) of the head map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadMap(final K key, final Matcher<SortedMap<K, V>> matcher) {
+    public final void toHeadMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -488,7 +488,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of elements to get from the head map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadMap(final int count, final Matcher<SortedMap<K, V>> matcher) {
+    public final void toHeadMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
@@ -536,7 +536,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     lower key (inclusive) of the tail map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailMap(final K key, final Matcher<SortedMap<K, V>> matcher) {
+    public final void toTailMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
@@ -549,7 +549,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of elements to get from the tail map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailMap(final int count, final Matcher<SortedMap<K, V>> matcher) {
+    public final void toTailMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
