@@ -82,6 +82,22 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value", "ignore"}, true)).containsExactlyInOrder("message value : 1.");
     }
 
+    /**
+     * {@link FailDescriptionEntry} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void nullArgumentsFailTest() {
+        new FailDescriptionEntry("", null, false);
+    }
+
+    /**
+     * {@link FailDescriptionEntry} class test.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void convertArgumentToStringTest() {
+        getFormattedMessages("{0,number,integer}", new Object[]{12345}, true);
+    }
+
     private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
         List<String> formattedMessages = new ArrayList<>();
