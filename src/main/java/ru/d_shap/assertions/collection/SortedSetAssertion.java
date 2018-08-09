@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.collection;
 
 import java.util.Iterator;
-import java.util.Set;
 import java.util.SortedSet;
 
 import org.hamcrest.Matcher;
@@ -382,8 +381,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     }
 
     private SetAssertion<E> createSetAssertion() {
-        Set<E> set = convertValue(getActual(), Set.class);
-        return initializeAssertion(Raw.<E>setAssertion(), set);
+        return initializeAssertion(Raw.<E>setAssertion(), getActual());
     }
 
     /**

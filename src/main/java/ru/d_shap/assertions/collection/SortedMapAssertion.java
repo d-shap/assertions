@@ -1109,8 +1109,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     }
 
     private MapAssertion<K, V> createMapAssertion() {
-        Map<K, V> map = convertValue(getActual(), Map.class);
-        return initializeAssertion(Raw.<K, V>mapAssertion(), map);
+        return initializeAssertion(Raw.<K, V>mapAssertion(), getActual());
     }
 
     /**

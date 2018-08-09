@@ -44,8 +44,6 @@ import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
 import ru.d_shap.assertions.array.ShortArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.collection.IteratorToListValueConverter;
 import ru.d_shap.assertions.collection.SetToListValueConverter;
-import ru.d_shap.assertions.collection.SortedMapToMapValueConverter;
-import ru.d_shap.assertions.collection.SortedSetToSetValueConverter;
 import ru.d_shap.assertions.core.IterableToListValueConverter;
 import ru.d_shap.assertions.io.InputStreamToByteArrayValueConverter;
 import ru.d_shap.assertions.io.InputStreamToIntValueConverter;
@@ -82,8 +80,6 @@ final class ValueConverter {
 
         registerValueConverter(new IteratorToListValueConverter());
         registerValueConverter(new SetToListValueConverter());
-        registerValueConverter(new SortedSetToSetValueConverter());
-        registerValueConverter(new SortedMapToMapValueConverter());
 
         registerValueConverter(new BooleanArrayToListValueConverter());
         registerValueConverter(new BooleanArrayToObjectArrayValueConverter());
