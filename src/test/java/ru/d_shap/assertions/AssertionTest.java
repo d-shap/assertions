@@ -32,6 +32,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -960,6 +961,21 @@ public class AssertionTest {
         } else {
             return values.length;
         }
+    }
+
+    /**
+     * Get the formatted message.
+     *
+     * @param message         the message.
+     * @param arguments       the message arguments.
+     * @param checkLastSymbol true to check the last symbol.
+     * @return
+     */
+    protected final List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
+        FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
+        List<String> formattedMessages = new ArrayList<>();
+        failDescriptionEntry.addFormattedMessage(formattedMessages);
+        return formattedMessages;
     }
 
     /**
