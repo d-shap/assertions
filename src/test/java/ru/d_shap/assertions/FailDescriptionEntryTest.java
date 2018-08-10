@@ -67,6 +67,10 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages("message!", new Object[]{}, true)).containsExactlyInOrder("message!");
         Assertions.assertThat(getFormattedMessages("message:", new Object[]{}, true)).containsExactlyInOrder("message:.");
 
+        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, false)).containsExactlyInOrder("message null");
+
+        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, true)).containsExactlyInOrder("message null.");
+
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value"}, false)).containsExactlyInOrder("message value : 1");
         Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{1, "value"}, false)).containsExactlyInOrder("message {1} : {0}");
         Assertions.assertThat(getFormattedMessages("message ''{1}'' : ''{0}''", new Object[]{1, "value"}, false)).containsExactlyInOrder("message 'value' : '1'");
@@ -95,7 +99,7 @@ public final class FailDescriptionEntryTest extends AssertionTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void convertArgumentToStringTest() {
-        getFormattedMessages("{0,number,integer}", new Object[]{12345}, true);
+        getFormattedMessages("{0,number,integer}", new Object[]{1}, true);
     }
 
     private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
