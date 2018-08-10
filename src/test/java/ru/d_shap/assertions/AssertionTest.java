@@ -969,10 +969,20 @@ public class AssertionTest {
      * @param message         the message.
      * @param arguments       the message arguments.
      * @param checkLastSymbol true to check the last symbol.
-     * @return
+     * @return the formatted message.
      */
     protected final List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
+        return getFormattedMessages(failDescriptionEntry);
+    }
+
+    /**
+     * Get the formatted message.
+     *
+     * @param failDescriptionEntry the fail description entry.
+     * @return the formatted message.
+     */
+    protected final List<String> getFormattedMessages(final FailDescriptionEntry failDescriptionEntry) {
         List<String> formattedMessages = new ArrayList<>();
         failDescriptionEntry.addFormattedMessage(formattedMessages);
         return formattedMessages;
