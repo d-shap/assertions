@@ -979,6 +979,19 @@ public class AssertionTest {
     }
 
     /**
+     * Get the fail description entries for the fail description values.
+     *
+     * @param failDescriptionValues the fail description values
+     * @return the fail description entries
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     */
+    protected final List<FailDescriptionEntry> getFailDescriptionEntries(final FailDescriptionValues failDescriptionValues) throws ConvertionException {
+        List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
+        failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
+        return failDescriptionEntries;
+    }
+
+    /**
      * Create the input stream.
      *
      * @return the input stream.
