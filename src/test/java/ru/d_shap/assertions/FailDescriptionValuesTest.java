@@ -37,6 +37,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryNullValueClassTest() throws ConvertionException {
@@ -90,6 +92,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryTest() throws ConvertionException {
@@ -99,6 +103,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryExpectedTest() throws ConvertionException {
@@ -137,6 +143,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryExpected2Test() throws ConvertionException {
@@ -175,6 +183,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryActualTest() throws ConvertionException {
@@ -191,6 +201,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryActualAndExpectedTest() throws ConvertionException {
@@ -235,6 +247,8 @@ public final class FailDescriptionValuesTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionValues} class test.
+     *
+     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void addFailDescriptionEntryActualAndExpected2Test() throws ConvertionException {
