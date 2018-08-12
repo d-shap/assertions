@@ -79,28 +79,26 @@ final class FailDescriptionValues {
 
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
         if (_valueClass != null) {
-            addActualAndExpected2Entry(failDescriptionEntries);
-            addActualAndExpectedEntry(failDescriptionEntries);
-            addActualEntry(failDescriptionEntries);
-            addExpected2Entry(failDescriptionEntries);
             addExpectedEntry(failDescriptionEntries);
+            addExpected2Entry(failDescriptionEntries);
+            addActualEntry(failDescriptionEntries);
+            addActualAndExpectedEntry(failDescriptionEntries);
+            addActualAndExpected2Entry(failDescriptionEntries);
         }
     }
 
-    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        if (_actualDefined && !_expected1Defined && _expected2Defined) {
-            String actual = getValueMessage(_actual, _valueClass);
-            String expected = getValueMessage(_expected1, _expected2, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
+    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+        if (!_actualDefined && _expected1Defined) {
+            String expected = getValueMessage(_expected1, _valueClass);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
 
-    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        if (_actualDefined && _expected1Defined && !_expected2Defined) {
-            String actual = getValueMessage(_actual, _valueClass);
-            String expected = getValueMessage(_expected1, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
+    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+        if (!_actualDefined && _expected2Defined) {
+            String expected = getValueMessage(_expected1, _expected2, _valueClass);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
@@ -113,18 +111,20 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        if (!_actualDefined && !_expected1Defined && _expected2Defined) {
-            String expected = getValueMessage(_expected1, _expected2, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
+    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+        if (_actualDefined && _expected1Defined) {
+            String actual = getValueMessage(_actual, _valueClass);
+            String expected = getValueMessage(_expected1, _valueClass);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
 
-    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
-        if (!_actualDefined && _expected1Defined && !_expected2Defined) {
-            String expected = getValueMessage(_expected1, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
+    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+        if (_actualDefined && _expected2Defined) {
+            String actual = getValueMessage(_actual, _valueClass);
+            String expected = getValueMessage(_expected1, _expected2, _valueClass);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
