@@ -145,63 +145,91 @@ public class AssertionTest {
     }
 
     /**
-     * Create uninitialized base assertion.
+     * Create the uninitialized base assertion.
      *
-     * @return the initialized assertion.
+     * @return the uninitialized base assertion.
      */
     protected final BaseAssertion<Object> createBaseAssertion() {
         return new BaseAssertionImpl();
     }
 
     /**
-     * Create initialized base assertion with the actual value.
+     * Create the initialized base assertion with the actual value.
      *
      * @param actual the actual value.
-     * @return the initialized assertion.
+     * @return the initialized base assertion.
      */
     protected final BaseAssertion<Object> createBaseAssertion(final Object actual) {
         return initialize(createBaseAssertion(), actual);
     }
 
     /**
-     * Create initialized base assertion with the actual value and the message.
+     * Create the initialized base assertion with the actual value and the message.
      *
      * @param actual  the actual value.
      * @param message the message.
-     * @return the initialized assertion.
+     * @return the initialized base assertion.
      */
     protected final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
         return initialize(createBaseAssertion(), actual, message);
     }
 
     /**
-     * Create uninitialized reference assertion.
+     * Create the uninitialized reference assertion.
      *
-     * @return the initialized assertion.
+     * @return the uninitialized reference assertion.
      */
     protected final ReferenceAssertion<Object> createReferenceAssertion() {
         return new ReferenceAssertionImpl();
     }
 
     /**
-     * Create initialized reference assertion with the actual value.
+     * Create the initialized reference assertion with the actual value.
      *
      * @param actual the actual value.
-     * @return the initialized assertion.
+     * @return the initialized reference assertion.
      */
     protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
         return initialize(createReferenceAssertion(), actual);
     }
 
     /**
-     * Create initialized reference assertion with the actual value and the message.
+     * Create the initialized reference assertion with the actual value and the message.
      *
      * @param actual  the actual value.
      * @param message the message.
-     * @return the initialized assertion.
+     * @return the initialized reference assertion.
      */
     protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
         return initialize(createReferenceAssertion(), actual, message);
+    }
+
+    /**
+     * Create the actual value validator.
+     *
+     * @param valid true if the value is valid.
+     * @return the actual value validator.
+     */
+    protected final BaseActualValueValidator createActualValueValidator(final boolean valid) {
+        return new BaseActualValueValidatorImpl(valid);
+    }
+
+    /**
+     * Create the value converter.
+     *
+     * @return the value converter.
+     */
+    protected final BaseValueConverter createValueConverter() {
+        return new BaseValueConverterImpl();
+    }
+
+    /**
+     * Create the value to string converter.
+     *
+     * @return the value to string converter.
+     */
+    protected final BaseAsStringConverter createAsStringConverter() {
+        return new BaseAsStringConverterImpl();
     }
 
     /**
@@ -305,10 +333,10 @@ public class AssertionTest {
     /**
      * Create new hash map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the hash map.
@@ -323,12 +351,12 @@ public class AssertionTest {
     /**
      * Create new hash map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the hash map.
@@ -344,14 +372,14 @@ public class AssertionTest {
     /**
      * Create new hash map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
-     * @param key4   the fourth key.
-     * @param value4 the fourth value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the hash map.
@@ -368,16 +396,16 @@ public class AssertionTest {
     /**
      * Create new hash map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
-     * @param key4   the fourth key.
-     * @param value4 the fourth value.
-     * @param key5   the fifth key.
-     * @param value5 the fifth value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param key5   the key.
+     * @param value5 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the hash map.
@@ -422,10 +450,10 @@ public class AssertionTest {
     /**
      * Create new tree map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the tree map.
@@ -440,12 +468,12 @@ public class AssertionTest {
     /**
      * Create new tree map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the tree map.
@@ -461,14 +489,14 @@ public class AssertionTest {
     /**
      * Create new tree map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
-     * @param key4   the fourth key.
-     * @param value4 the fourth value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the tree map.
@@ -485,16 +513,16 @@ public class AssertionTest {
     /**
      * Create new tree map with the values.
      *
-     * @param key1   the first key.
-     * @param value1 the first value.
-     * @param key2   the second key.
-     * @param value2 the second value.
-     * @param key3   the third key.
-     * @param value3 the third value.
-     * @param key4   the fourth key.
-     * @param value4 the fourth value.
-     * @param key5   the fifth key.
-     * @param value5 the fifth value.
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param key5   the key.
+     * @param value5 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      * @return the tree map.
@@ -1105,6 +1133,83 @@ public class AssertionTest {
         @Override
         protected Class<Object> getActualValueClass() {
             return Object.class;
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseActualValueValidatorImpl extends BaseActualValueValidator {
+
+        private final boolean _valid;
+
+        BaseActualValueValidatorImpl(final boolean valid) {
+            super();
+            _valid = valid;
+        }
+
+        @Override
+        protected boolean isValid(final Object actual) {
+            return _valid;
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseValueConverterImpl extends BaseValueConverter {
+
+        BaseValueConverterImpl() {
+            super();
+        }
+
+        @Override
+        protected Class<?> getValueClass() {
+            return String.class;
+        }
+
+        @Override
+        protected Class<?> getTargetClass() {
+            return String.class;
+        }
+
+        @Override
+        protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+            return true;
+        }
+
+        @Override
+        protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+            return value;
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseAsStringConverterImpl extends BaseAsStringConverter {
+
+        BaseAsStringConverterImpl() {
+            super();
+        }
+
+        @Override
+        protected Class<?> getValueClass() {
+            return String.class;
+        }
+
+        @Override
+        protected String asString(final Object value) throws ConvertionException {
+            return (String) value;
         }
 
     }
