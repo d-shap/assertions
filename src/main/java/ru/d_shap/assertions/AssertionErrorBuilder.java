@@ -138,7 +138,7 @@ public final class AssertionErrorBuilder {
             Throwable throwable = getThrowable(_throwable);
             return new AssertionError(fullMessage, throwable);
         } catch (ConvertionException ex) {
-            String fullMessage = _failDescription.getFullMessage();
+            String fullMessage = new FailDescription(_failDescription).getFullMessage();
             Throwable throwable = getThrowable(ex);
             return new AssertionError(fullMessage, throwable);
         }
