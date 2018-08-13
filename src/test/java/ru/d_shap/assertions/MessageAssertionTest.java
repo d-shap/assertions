@@ -590,6 +590,64 @@ public final class MessageAssertionTest extends AssertionTest {
      * {@link MessageAssertion} class test.
      */
     @Test
+    public void objectMatcherAssertionTest() {
+        Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(10)));
+        Assertions.assertWithMessage("Test message").that(1L, Matchers.instanceOf(Long.class));
+        Assertions.assertWithMessage("Test message").that(1L, Matchers.isA(Long.class));
+        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyString());
+        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyOrNullString());
+        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
+        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
+        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Matchers.nullValue());
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.notNullValue());
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.not(Matchers.equalTo(new StringBuilder("value"))));
+
+        try {
+            Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertWithMessage(null).that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
     public void byteArrayAssertionTest() {
         Assertions.assertWithMessage("Test message").that((byte[]) null).isNull();
         Assertions.assertWithMessage("Test message").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
@@ -1575,43 +1633,6 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
-        }
-    }
-
-    /**
-     * {@link MessageAssertion} class test.
-     */
-    @Test
-    public void matcherAssertionTest() {
-        Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(10)));
-        Assertions.assertWithMessage("Test message").that(1L, Matchers.instanceOf(Long.class));
-        Assertions.assertWithMessage("Test message").that(1L, Matchers.isA(Long.class));
-        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyString());
-        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyOrNullString());
-        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
-        Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
-
-        try {
-            Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
-        }
-        try {
-            Assertions.assertWithMessage("").that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
-        }
-        try {
-            Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\nExpected: is <11>\n     but: was <10>");
         }
     }
 

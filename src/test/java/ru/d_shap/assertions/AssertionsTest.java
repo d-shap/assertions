@@ -409,6 +409,40 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
+    public void objectMatcherAssertionTest() {
+        Assertions.assertThat(10, Matchers.is(Matchers.equalTo(10)));
+        Assertions.assertThat(1L, Matchers.instanceOf(Long.class));
+        Assertions.assertThat(1L, Matchers.isA(Long.class));
+        Assertions.assertThat("", Matchers.isEmptyString());
+        Assertions.assertThat("", Matchers.isEmptyOrNullString());
+        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
+        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
+        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
+        Assertions.assertThat(createNullFieldClass(), "_field", Matchers.nullValue());
+        Assertions.assertThat(createPrivateFieldsClass(), "_object", Matchers.notNullValue());
+        Assertions.assertThat(createPrivateFieldsClass(), "_object", Matchers.not(Matchers.equalTo(new StringBuilder("value"))));
+
+        try {
+            Assertions.assertThat(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
+            Assertions.assertThat(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
     public void byteArrayAssertionTest() {
         Assertions.assertThat((byte[]) null).isNull();
         Assertions.assertThat(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3);
@@ -1034,31 +1068,6 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
-        }
-    }
-
-    /**
-     * {@link Assertions} class test.
-     */
-    @Test
-    public void matcherAssertionTest() {
-        Assertions.assertThat(10, Matchers.is(Matchers.equalTo(10)));
-        Assertions.assertThat(1L, Matchers.instanceOf(Long.class));
-        Assertions.assertThat(1L, Matchers.isA(Long.class));
-        Assertions.assertThat("", Matchers.isEmptyString());
-        Assertions.assertThat("", Matchers.isEmptyOrNullString());
-        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
-        Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
-        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
-        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
-        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
-        Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
-
-        try {
-            Assertions.assertThat(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
         }
     }
 
