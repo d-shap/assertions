@@ -1646,6 +1646,9 @@ public class AssertionTest {
 
         private final String _value;
 
+        /**
+         * Create new object.
+         */
         public PrivateFieldClass() {
             super();
             _value = "value";
@@ -1660,6 +1663,9 @@ public class AssertionTest {
      */
     public static final class PrivateMethodClass {
 
+        /**
+         * Create new object.
+         */
         public PrivateMethodClass() {
             super();
         }

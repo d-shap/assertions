@@ -1402,6 +1402,9 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     /**
      * {@link ReferenceAssertion} class test.
+     *
+     * @throws NoSuchFieldException   no such field exception.
+     * @throws IllegalAccessException illegal access exception.
      */
     @Test
     public void setAccessibleTest() throws NoSuchFieldException, IllegalAccessException {
