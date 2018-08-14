@@ -53,6 +53,8 @@ public final class AsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws ConvertionException {
+        Assertions.assertThat(AsStringConverter.asString(null)).isNull();
+
         Assertions.assertThat(AsStringConverter.asString(1)).isEqualTo("1");
         Assertions.assertThat(AsStringConverter.asString('1')).isEqualTo("1(49)");
         Assertions.assertThat(AsStringConverter.asString(true)).isEqualTo("T");
