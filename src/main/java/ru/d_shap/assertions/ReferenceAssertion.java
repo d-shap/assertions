@@ -177,7 +177,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toToString(final Matcher<CharSequence> matcher) {
+    public final void toToString(final Matcher<String> matcher) {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
