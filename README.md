@@ -213,6 +213,6 @@ But Assertions framework can use Hamcrest matchers.
 In this case Assertions framework can be used as a main framework for the unit testing.
 And in case of specific assertions custom Hamcrest matchers can be used.
 
-Donate
-======
+Donation
+========
 If you find my code useful, you can [![bye me a coffee](donation.png)](https://www.paypal.me/dshapovalov)
