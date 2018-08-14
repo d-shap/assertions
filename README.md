@@ -215,4 +215,4 @@ And in case of specific assertions custom Hamcrest matchers can be used.
 
 Donate
 ======
-If you find my code useful, you can [![Donate](donation.png)](https://www.paypal.me/dshapovalov)
+If you find my code useful, you can [![bye me a coffee](donation.png)](https://www.paypal.me/dshapovalov)
