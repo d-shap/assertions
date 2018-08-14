@@ -1637,4 +1637,50 @@ public class AssertionTest {
 
     }
 
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class PrivateFieldClass {
+
+        private final String _value;
+
+        public PrivateFieldClass() {
+            super();
+            _value = "value";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class PrivateMethodClass {
+
+        public PrivateMethodClass() {
+            super();
+        }
+
+        private String getValue() {
+            return "value";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class PrivateConstructorClass {
+
+        private PrivateConstructorClass() {
+            super();
+        }
+
+    }
+
 }
