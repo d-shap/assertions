@@ -1154,7 +1154,7 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
-        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).hasClass(BaseAssertionImpl.class);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion())).isInstanceOf(BaseAssertion.class);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion())).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion()).getActual()).isSameAs(object);
 
@@ -1208,7 +1208,7 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertion(object);
-        Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).hasClass(BaseAssertionImpl.class);
+        Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).isInstanceOf(BaseAssertion.class);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message")).isNotSameAs(baseAssertion);
         Assertions.assertThat(baseAssertion.as(createBaseAssertion(), "As message").getActual()).isSameAs(object);
 
