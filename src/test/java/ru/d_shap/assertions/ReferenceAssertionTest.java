@@ -19,6 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.lang.reflect.Field;
+
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 /**
@@ -274,6 +278,49 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toClassMatcherTest() {
+        createReferenceAssertion(new Object()).toClass(Matchers.typeCompatibleWith(Object.class));
+
+        createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(StringBuilder.class));
+        createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(CharSequence.class));
+        createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(Object.class));
+
+        try {
+            createReferenceAssertion().toClass(Matchers.typeCompatibleWith(Object.class));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).toClass(Matchers.typeCompatibleWith(Object.class));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toClass(Matchers.typeCompatibleWith(Object.class));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(String.class));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's class.\nExpected: type < java.lang.String\n     but: \"java.lang.StringBuilder\"");
+        }
+        try {
+            createReferenceAssertion(new StringBuilder("value"), "Message").toClass(Matchers.typeCompatibleWith(String.class));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\nExpected: type < java.lang.String\n     but: \"java.lang.StringBuilder\"");
         }
     }
 
@@ -665,59 +712,100 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void isToStringEqualToTest() {
-        createReferenceAssertion("reference").isToStringEqualTo("reference");
+    public void toToStringMatcherTest() {
+        createReferenceAssertion("reference").toToString(Matchers.equalTo("reference"));
+        createReferenceAssertion("reference").toToString(Matchers.startsWith("ref"));
+        createReferenceAssertion("reference").toToString(Matchers.endsWith("ce"));
 
         try {
-            createReferenceAssertion().isToStringEqualTo("value");
+            createReferenceAssertion().toToString(Matchers.equalTo(""));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).isToStringEqualTo("value");
+            createReferenceAssertion(null).toToString(Matchers.equalTo(""));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isToStringEqualTo("value");
+            createReferenceAssertion(null, "Message").toToString(Matchers.equalTo(""));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(null).isToStringEqualTo(null);
+            createReferenceAssertion("reference").toToString(Matchers.equalTo("value"));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's string representation.\nExpected: \"value\"\n     but: was \"reference\"");
+        }
+        try {
+            createReferenceAssertion("reference", "Message").toToString(Matchers.equalTo("value"));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's string representation.\nExpected: \"value\"\n     but: was \"reference\"");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void hasToStringTest() {
+        createReferenceAssertion("reference").hasToString("reference");
+
+        try {
+            createReferenceAssertion().hasToString("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).hasToString("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isToStringEqualTo(null);
+            createReferenceAssertion(null, "Message").hasToString("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion("reference").isToStringEqualTo(null);
+            createReferenceAssertion(null).hasToString(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").hasToString(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion("reference").hasToString(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createReferenceAssertion("reference", "Message").isToStringEqualTo(null);
+            createReferenceAssertion("reference", "Message").hasToString(null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            createReferenceAssertion("reference").isToStringEqualTo("value");
+            createReferenceAssertion("reference").hasToString("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's string representation.\n\tActual and expected values should be the same.\n\tExpected:<value> but was:<reference>");
         }
         try {
-            createReferenceAssertion("reference", "Message").isToStringEqualTo("value");
+            createReferenceAssertion("reference", "Message").hasToString("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's string representation.\n\tActual and expected values should be the same.\n\tExpected:<value> but was:<reference>");
@@ -791,6 +879,69 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
+    public void toStringMatchesTest() {
+        createReferenceAssertion("reference").toStringMatches("re.*ce");
+
+        try {
+            createReferenceAssertion().toStringMatches("v.*e");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).toStringMatches("v.*e");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toStringMatches("v.*e");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null).toStringMatches(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toStringMatches(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion("value").toStringMatches(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            createReferenceAssertion("value", "Message").toStringMatches(null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            createReferenceAssertion("reference").toStringMatches("rE.*cE");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's string representation.\n\tActual value should match the expected value.\n\tExpected:<rE.*cE> but was:<reference>");
+        }
+        try {
+            createReferenceAssertion("reference", "Message").toStringMatches("rE.*cE");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's string representation.\n\tActual value should match the expected value.\n\tExpected:<rE.*cE> but was:<reference>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
     public void toHashCodeTest() {
         createReferenceAssertion("reference").toHashCode().isEqualTo(-925155509);
         createReferenceAssertion("reference").toHashCode().isLessThan(0);
@@ -844,35 +995,76 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void isHashCodeEqualToTest() {
-        createReferenceAssertion("reference").isHashCodeEqualTo(-925155509);
+    public void toHashCodeMatcherTest() {
+        createReferenceAssertion("reference").toHashCode(Matchers.equalTo(-925155509));
+        createReferenceAssertion("reference").toHashCode(Matchers.lessThan(0));
+        createReferenceAssertion("reference").toHashCode(Matchers.not(Matchers.allOf(Matchers.greaterThan(1), Matchers.lessThan(10))));
 
         try {
-            createReferenceAssertion().isHashCodeEqualTo(1);
+            createReferenceAssertion().toHashCode(Matchers.equalTo(0));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).isHashCodeEqualTo(1);
+            createReferenceAssertion(null).toHashCode(Matchers.equalTo(0));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").isHashCodeEqualTo(1);
+            createReferenceAssertion(null, "Message").toHashCode(Matchers.equalTo(0));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion("reference").isHashCodeEqualTo(1);
+            createReferenceAssertion("reference").toHashCode(Matchers.equalTo(1));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hash code.\nExpected: <1>\n     but: was <-925155509>");
+        }
+        try {
+            createReferenceAssertion("reference", "Message").toHashCode(Matchers.equalTo(1));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hash code.\nExpected: <1>\n     but: was <-925155509>");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void hasHashCodeTest() {
+        createReferenceAssertion("reference").hasHashCode(-925155509);
+
+        try {
+            createReferenceAssertion().hasHashCode(1);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).hasHashCode(1);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").hasHashCode(1);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion("reference").hasHashCode(1);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hash code.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<-925155509>");
         }
         try {
-            createReferenceAssertion("reference", "Message").isHashCodeEqualTo(1);
+            createReferenceAssertion("reference", "Message").hasHashCode(1);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hash code.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<-925155509>");
@@ -883,7 +1075,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toFieldObjectAssertionTest() {
+    public void toFieldTest() {
         createReferenceAssertion(new ToFieldParentClass()).toField("_nullField").isNull();
         createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isNotNull();
         createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isEqualTo("parentField");
@@ -1002,7 +1194,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toFieldSpecifiedAssertionTest() {
+    public void toFieldAssertionTest() {
         createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
         createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.classAssertion()).isNull();
         createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
@@ -1043,13 +1235,13 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(null).toField("value", null);
+            createReferenceAssertion(null).toField("value", (BaseAssertion<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").toField("value", null);
+            createReferenceAssertion(null, "Message").toField("value", (BaseAssertion<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1067,13 +1259,13 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            createReferenceAssertion(new Object()).toField("value", null);
+            createReferenceAssertion(new Object()).toField("value", (BaseAssertion<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createReferenceAssertion(new Object(), "Message").toField("value", null);
+            createReferenceAssertion(new Object(), "Message").toField("value", (BaseAssertion<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1102,6 +1294,128 @@ public final class ReferenceAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _nullField.\n\tActual value should not be null.");
         }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toFieldMatcherTest() {
+        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Matchers.nullValue());
+        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Matchers.equalTo("parentField"));
+
+        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Matchers.nullValue());
+        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField", Matchers.equalTo("parentField"));
+        createReferenceAssertion(new ToFieldChildClass()).toField("_childField", Matchers.equalTo("childField"));
+
+        try {
+            createReferenceAssertion().toField("value", Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).toField("value", Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toField("value", Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null).toField(null, Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toField(null, Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null).toField("value", (Matcher<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toField("value", (Matcher<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toField(null, Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toField(null, Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toField("value", (Matcher<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toField("value", (Matcher<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new ToFieldParentClass()).toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected field.\n\tExpected:<wrongFieldName>");
+        }
+        try {
+            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected field.\n\tExpected:<wrongFieldName>");
+        }
+        try {
+            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's field: _nullField.\nExpected: not null\n     but: was null");
+        }
+        try {
+            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _nullField.\nExpected: not null\n     but: was null");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void setAccessibleTest() throws NoSuchFieldException, IllegalAccessException {
+        PrivateFieldClass privateField = new PrivateFieldClass();
+        Field field = privateField.getClass().getDeclaredField("_value");
+        try {
+            field.get(privateField);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (IllegalAccessException ex) {
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
+        }
+        createReferenceAssertion(new Object()).setAccessible(field);
+        Object value = field.get(privateField);
+        Assertions.assertThat(value).isEqualTo("value");
     }
 
     /**
