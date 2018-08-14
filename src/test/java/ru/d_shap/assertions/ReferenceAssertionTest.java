@@ -1235,18 +1235,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(null).toField("value", (BaseAssertion<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            createReferenceAssertion(null, "Message").toField("value", (BaseAssertion<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             createReferenceAssertion(new Object()).toField(null, Raw.objectAssertion());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -1254,6 +1242,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
         }
         try {
             createReferenceAssertion(new Object(), "Message").toField(null, Raw.objectAssertion());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toField(null, (BaseAssertion<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toField(null, (BaseAssertion<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1339,18 +1339,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(null).toField("value", (Matcher<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            createReferenceAssertion(null, "Message").toField("value", (Matcher<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             createReferenceAssertion(new Object()).toField(null, Matchers.nullValue());
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -1358,6 +1346,18 @@ public final class ReferenceAssertionTest extends AssertionTest {
         }
         try {
             createReferenceAssertion(new Object(), "Message").toField(null, Matchers.nullValue());
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toField(null, (Matcher<?>) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toField(null, (Matcher<?>) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
