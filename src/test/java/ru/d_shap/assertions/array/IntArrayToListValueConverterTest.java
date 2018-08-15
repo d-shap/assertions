@@ -108,8 +108,8 @@ public final class IntArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{}), Raw.<Integer>listAssertion()).isEmpty();
-        Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{})).as(Raw.<Integer>listAssertion()).isEmpty();
+        Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{}), Raw.<Integer>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{})).as(Raw.<Integer>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{1, 2})).isInstanceOf(List.class);
         Assertions.assertThat(new IntArrayToListValueConverter().convert(new int[]{1, 2}), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2);

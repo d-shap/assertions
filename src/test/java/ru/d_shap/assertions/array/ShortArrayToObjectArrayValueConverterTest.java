@@ -106,8 +106,8 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).isInstanceOf(Short[].class);
-        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{1, 2})).isInstanceOf(Short[].class);
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{1, 2}), Raw.objectArrayAssertion()).containsExactlyInOrder((short) 1, (short) 2);

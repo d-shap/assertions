@@ -108,8 +108,8 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{}), Raw.<Boolean>listAssertion()).isEmpty();
-        Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).as(Raw.<Boolean>listAssertion()).isEmpty();
+        Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{}), Raw.<Boolean>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).as(Raw.<Boolean>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{true, false})).isInstanceOf(List.class);
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{true, false}), Raw.<Boolean>listAssertion()).containsExactlyInOrder(true, false);

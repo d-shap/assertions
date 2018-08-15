@@ -106,8 +106,8 @@ public final class LongArrayToObjectArrayValueConverterTest extends AssertionTes
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{})).isInstanceOf(Long[].class);
-        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{1L, 2L})).isInstanceOf(Long[].class);
         Assertions.assertThat(new LongArrayToObjectArrayValueConverter().convert(new long[]{1L, 2L}), Raw.objectArrayAssertion()).containsExactlyInOrder(1L, 2L);

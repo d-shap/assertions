@@ -106,8 +106,8 @@ public final class BooleanArrayToObjectArrayValueConverterTest extends Assertion
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{})).isInstanceOf(Boolean[].class);
-        Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{true, false})).isInstanceOf(Boolean[].class);
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{true, false}), Raw.objectArrayAssertion()).containsExactlyInOrder(true, false);

@@ -106,8 +106,8 @@ public final class DoubleArrayToObjectArrayValueConverterTest extends AssertionT
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{})).isInstanceOf(Double[].class);
-        Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{1.0, 2.0})).isInstanceOf(Double[].class);
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{1.0, 2.0}), Raw.objectArrayAssertion()).containsExactlyInOrder(1.0, 2.0);

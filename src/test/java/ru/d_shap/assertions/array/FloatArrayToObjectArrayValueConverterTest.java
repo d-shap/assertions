@@ -106,8 +106,8 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{})).isInstanceOf(Float[].class);
-        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{1.0f, 2.0f})).isInstanceOf(Float[].class);
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{1.0f, 2.0f}), Raw.objectArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);

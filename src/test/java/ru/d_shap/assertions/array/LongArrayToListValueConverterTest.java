@@ -108,8 +108,8 @@ public final class LongArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{}), Raw.<Long>listAssertion()).isEmpty();
-        Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{})).as(Raw.<Long>listAssertion()).isEmpty();
+        Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{}), Raw.<Long>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{})).as(Raw.<Long>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{1L, 2L})).isInstanceOf(List.class);
         Assertions.assertThat(new LongArrayToListValueConverter().convert(new long[]{1L, 2L}), Raw.<Long>listAssertion()).containsExactlyInOrder(1L, 2L);

@@ -108,8 +108,8 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{}), Raw.<Float>listAssertion()).isEmpty();
-        Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).as(Raw.<Float>listAssertion()).isEmpty();
+        Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{}), Raw.<Float>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).as(Raw.<Float>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{1.0f, 2.0f})).isInstanceOf(List.class);
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{1.0f, 2.0f}), Raw.<Float>listAssertion()).containsExactlyInOrder(1.0f, 2.0f);

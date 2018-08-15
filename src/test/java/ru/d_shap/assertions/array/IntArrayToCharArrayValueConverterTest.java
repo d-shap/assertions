@@ -107,8 +107,8 @@ public final class IntArrayToCharArrayValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{})).isInstanceOf(char[].class);
-        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{}), Raw.charArrayAssertion()).isEmpty();
-        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{})).as(Raw.charArrayAssertion()).isEmpty();
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{}), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{})).as(Raw.charArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1, 2})).isInstanceOf(char[].class);
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1, 2}), Raw.charArrayAssertion()).containsExactlyInOrder(1, 2);

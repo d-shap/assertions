@@ -106,8 +106,8 @@ public final class ByteArrayToObjectArrayValueConverterTest extends AssertionTes
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{})).isInstanceOf(Byte[].class);
-        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{}), Raw.objectArrayAssertion()).isEmpty();
-        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{})).as(Raw.objectArrayAssertion()).isEmpty();
+        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{1, 2})).isInstanceOf(Byte[].class);
         Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().convert(new byte[]{1, 2}), Raw.objectArrayAssertion()).containsExactlyInOrder((byte) 1, (byte) 2);

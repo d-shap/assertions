@@ -108,8 +108,8 @@ public final class ShortArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{}), Raw.<Short>listAssertion()).isEmpty();
-        Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{})).as(Raw.<Short>listAssertion()).isEmpty();
+        Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{}), Raw.<Short>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{})).as(Raw.<Short>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{1, 2})).isInstanceOf(List.class);
         Assertions.assertThat(new ShortArrayToListValueConverter().convert(new short[]{1, 2}), Raw.<Short>listAssertion()).containsExactlyInOrder((short) 1, (short) 2);

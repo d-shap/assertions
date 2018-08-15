@@ -108,8 +108,8 @@ public final class CharArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{})).isInstanceOf(List.class);
-        Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{}), Raw.<Character>listAssertion()).isEmpty();
-        Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{})).as(Raw.<Character>listAssertion()).isEmpty();
+        Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{}), Raw.<Character>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{})).as(Raw.<Character>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{'1', '2'})).isInstanceOf(List.class);
         Assertions.assertThat(new CharArrayToListValueConverter().convert(new char[]{'1', '2'}), Raw.<Character>listAssertion()).containsExactlyInOrder('1', '2');
