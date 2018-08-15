@@ -170,12 +170,12 @@ public final class CharBufferToCharArrayValueConverterTest extends AssertionTest
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false)).isInstanceOf(char[].class);
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false), Raw.charArrayAssertion()).isEmpty();
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false)).as(Raw.charArrayAssertion()).isEmpty();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), true)).isInstanceOf(char[].class);
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), true), Raw.charArrayAssertion()).isEmpty();
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), true)).as(Raw.charArrayAssertion()).isEmpty();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), true), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), true)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}), false)).isInstanceOf(char[].class);
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}), false), Raw.charArrayAssertion()).containsExactlyInOrder('1');
@@ -202,8 +202,8 @@ public final class CharBufferToCharArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1', '2', '3', '4'}), true)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
 
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), false)).isInstanceOf(char[].class);
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), false), Raw.charArrayAssertion()).isEmpty();
-        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), false)).as(Raw.charArrayAssertion()).isEmpty();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), false), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), false)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), true)).isInstanceOf(char[].class);
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{'1'}, 1), true), Raw.charArrayAssertion()).containsExactlyInOrder('1');

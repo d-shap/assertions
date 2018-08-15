@@ -170,12 +170,12 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false)).isInstanceOf(long[].class);
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false), Raw.longArrayAssertion()).isEmpty();
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false)).as(Raw.longArrayAssertion()).isEmpty();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false), Raw.longArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false)).as(Raw.longArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), true)).isInstanceOf(long[].class);
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), true), Raw.longArrayAssertion()).isEmpty();
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), true)).as(Raw.longArrayAssertion()).isEmpty();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), true), Raw.longArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), true)).as(Raw.longArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}), false)).isInstanceOf(long[].class);
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}), false), Raw.longArrayAssertion()).containsExactlyInOrder(1L);
@@ -202,8 +202,8 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L, 2L, 3L, 4L}), true)).as(Raw.longArrayAssertion()).containsExactlyInOrder(1L, 2L, 3L, 4L);
 
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), false)).isInstanceOf(long[].class);
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), false), Raw.longArrayAssertion()).isEmpty();
-        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), false)).as(Raw.longArrayAssertion()).isEmpty();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), false), Raw.longArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), false)).as(Raw.longArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), true)).isInstanceOf(long[].class);
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{1L}, 1), true), Raw.longArrayAssertion()).containsExactlyInOrder(1L);

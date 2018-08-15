@@ -170,12 +170,12 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false)).isInstanceOf(short[].class);
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false), Raw.shortArrayAssertion()).isEmpty();
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false)).as(Raw.shortArrayAssertion()).isEmpty();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false), Raw.shortArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false)).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), true)).isInstanceOf(short[].class);
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), true), Raw.shortArrayAssertion()).isEmpty();
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), true)).as(Raw.shortArrayAssertion()).isEmpty();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), true), Raw.shortArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), true)).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}), false)).isInstanceOf(short[].class);
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}), false), Raw.shortArrayAssertion()).containsExactlyInOrder(1);
@@ -202,8 +202,8 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1, 2, 3, 4}), true)).as(Raw.shortArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), false)).isInstanceOf(short[].class);
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), false), Raw.shortArrayAssertion()).isEmpty();
-        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), false)).as(Raw.shortArrayAssertion()).isEmpty();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), false), Raw.shortArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), false)).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), true)).isInstanceOf(short[].class);
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{1}, 1), true), Raw.shortArrayAssertion()).containsExactlyInOrder(1);
