@@ -26,7 +26,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -62,10 +62,10 @@ public final class SetToListValueConverterTest extends AssertionTest {
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConvertionException {
+    public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new SetToListValueConverter().canConvert(createHashSet())).isTrue();
         Assertions.assertThat(new SetToListValueConverter().canConvert(createHashSet("val1", "val2"))).isTrue();
         Assertions.assertThat(new SetToListValueConverter().canConvert(createHashSet("val1", "val2", "val3", "val4"))).isTrue();
@@ -74,40 +74,40 @@ public final class SetToListValueConverterTest extends AssertionTest {
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConvertionException {
+    public void canConvertNullValueFailTest() throws ConversionException {
         new SetToListValueConverter().canConvert(null);
     }
 
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConvertionException {
+    public void canConvertWrongValueTypeFailTest() throws ConversionException {
         new SetToListValueConverter().canConvert(new Object());
     }
 
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
         new SetToListValueConverter().canConvert(createHashSet(), new Object());
     }
 
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertTest() throws ConvertionException {
+    public void convertTest() throws ConversionException {
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet())).isInstanceOf(List.class);
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet()), Raw.<String>listAssertion()).isEmpty();
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet())).as(Raw.<String>listAssertion()).isEmpty();
@@ -124,30 +124,30 @@ public final class SetToListValueConverterTest extends AssertionTest {
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConvertionException {
+    public void convertNullValueFailTest() throws ConversionException {
         new SetToListValueConverter().convert(null);
     }
 
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConvertionException {
+    public void convertWrongValueTypeFailTest() throws ConversionException {
         new SetToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link SetToListValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+    public void convertWrongArgumentCountFailTest() throws ConversionException {
         new SetToListValueConverter().convert(createHashSet(), new Object());
     }
 
