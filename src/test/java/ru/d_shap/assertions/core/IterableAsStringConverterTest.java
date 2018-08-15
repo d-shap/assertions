@@ -50,7 +50,7 @@ public final class IterableAsStringConverterTest extends AssertionTest {
     /**
      * {@link IterableAsStringConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
@@ -62,7 +62,7 @@ public final class IterableAsStringConverterTest extends AssertionTest {
     /**
      * {@link IterableAsStringConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
@@ -72,7 +72,7 @@ public final class IterableAsStringConverterTest extends AssertionTest {
     /**
      * {@link IterableAsStringConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {

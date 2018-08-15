@@ -61,7 +61,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void canConvertTest() throws ConversionException {
@@ -105,7 +105,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void canConvertNullValueFailTest() throws ConversionException {
@@ -115,7 +115,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void canConvertWrongValueTypeFailTest() throws ConversionException {
@@ -125,7 +125,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
@@ -135,7 +135,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
@@ -145,7 +145,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void canConvertNullArgumentFailTest() throws ConversionException {
@@ -155,7 +155,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
@@ -165,7 +165,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void convertTest() throws ConversionException {
@@ -277,7 +277,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void convertNullValueFailTest() throws ConversionException {
@@ -287,7 +287,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
@@ -297,7 +297,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCount0FailTest() throws ConversionException {
@@ -307,7 +307,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCount2FailTest() throws ConversionException {
@@ -317,7 +317,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void convertNullArgumentFailTest() throws ConversionException {
@@ -327,7 +327,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void convertWrongArgumentTypeFailTest() throws ConversionException {

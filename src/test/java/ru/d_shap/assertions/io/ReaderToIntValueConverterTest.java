@@ -63,7 +63,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void canConvertTest() throws ConversionException {
@@ -78,7 +78,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void canConvertNullValueFailTest() throws ConversionException {
@@ -88,7 +88,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void canConvertWrongValueTypeFailTest() throws ConversionException {
@@ -98,7 +98,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
@@ -108,7 +108,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void convertTest() throws ConversionException {
@@ -140,7 +140,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void convertNullValueFailTest() throws ConversionException {
@@ -150,7 +150,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
@@ -160,7 +160,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
