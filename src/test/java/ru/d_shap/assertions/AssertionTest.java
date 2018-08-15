@@ -1021,9 +1021,9 @@ public class AssertionTest {
      *
      * @param failDescriptionValues the fail description values
      * @return the fail description entries
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    protected final List<FailDescriptionEntry> getFailDescriptionEntries(final FailDescriptionValues failDescriptionValues) throws ConvertionException {
+    protected final List<FailDescriptionEntry> getFailDescriptionEntries(final FailDescriptionValues failDescriptionValues) throws ConversionException {
         List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
         failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
         return failDescriptionEntries;
@@ -1180,12 +1180,12 @@ public class AssertionTest {
         }
 
         @Override
-        protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+        protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
             return true;
         }
 
         @Override
-        protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+        protected Object convert(final Object value, final Object... arguments) throws ConversionException {
             return value;
         }
 
@@ -1208,7 +1208,7 @@ public class AssertionTest {
         }
 
         @Override
-        protected String asString(final Object value) throws ConvertionException {
+        protected String asString(final Object value) throws ConversionException {
             return (String) value;
         }
 

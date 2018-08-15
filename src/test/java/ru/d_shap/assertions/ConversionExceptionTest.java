@@ -1,0 +1,63 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Assertions framework provides facilities for the unit testing.
+// Copyright (C) 2017 Dmitry Shapovalov.
+//
+// This file is part of assertions framework.
+//
+// Assertions framework is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Assertions framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+///////////////////////////////////////////////////////////////////////////////////////////////////
+package ru.d_shap.assertions;
+
+import java.io.IOException;
+
+import org.junit.Test;
+
+/**
+ * Tests for {@link ConversionException}.
+ *
+ * @author Dmitry Shapovalov
+ */
+public final class ConversionExceptionTest extends AssertionTest {
+
+    /**
+     * Test class constructor.
+     */
+    public ConversionExceptionTest() {
+        super();
+    }
+
+    /**
+     * {@link ConversionException} class test.
+     */
+    @Test
+    public void conversionExceptionCauseTest() {
+        Assertions.assertThat(new ConversionException(null)).isNotNull();
+        Assertions.assertThat(new ConversionException(null)).isInstanceOf(ConversionException.class);
+        Assertions.assertThat(new ConversionException(null)).toMessage().isNull();
+        Assertions.assertThat(new ConversionException(null)).toCause().isNull();
+
+        Assertions.assertThat(new ConversionException(new IOException())).isNotNull();
+        Assertions.assertThat(new ConversionException(new IOException())).isInstanceOf(ConversionException.class);
+        Assertions.assertThat(new ConversionException(new IOException())).hasMessage("java.io.IOException");
+        Assertions.assertThat(new ConversionException(new IOException())).hasCause(IOException.class);
+        Assertions.assertThat(new ConversionException(new IOException())).toCause().toMessage().isNull();
+
+        Assertions.assertThat(new ConversionException(new IOException("exception"))).isNotNull();
+        Assertions.assertThat(new ConversionException(new IOException("exception"))).isInstanceOf(ConversionException.class);
+        Assertions.assertThat(new ConversionException(new IOException("exception"))).hasMessage("java.io.IOException: exception");
+        Assertions.assertThat(new ConversionException(new IOException("exception"))).hasCause(IOException.class);
+        Assertions.assertThat(new ConversionException(new IOException("exception"))).hasCauseMessage("exception");
+    }
+
+}

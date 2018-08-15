@@ -118,10 +118,10 @@ public final class BaseValueConverterTest extends AssertionTest {
     /**
      * {@link BaseValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertValueTest() throws ConvertionException {
+    public void convertValueTest() throws ConversionException {
         Assertions.assertThat(createValueConverter().convertValue(null, String.class)).isNull();
 
         Assertions.assertThat(createValueConverter().convertValue(100, Character.class)).isInstanceOf(Character.class);

@@ -38,10 +38,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryNullValueClassTest() throws ConvertionException {
+    public void addFailDescriptionEntryNullValueClassTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues01 = new FailDescriptionValues(null, null);
         Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues01)).isEmpty();
 
@@ -93,10 +93,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryTest() throws ConvertionException {
+    public void addFailDescriptionEntryTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues = new FailDescriptionValues(String.class, null);
         Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues)).isEmpty();
     }
@@ -104,10 +104,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryExpectedTest() throws ConvertionException {
+    public void addFailDescriptionEntryExpectedTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
         Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
@@ -144,10 +144,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryExpected2Test() throws ConvertionException {
+    public void addFailDescriptionEntryExpected2Test() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null, null);
         Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
@@ -184,10 +184,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryActualTest() throws ConvertionException {
+    public void addFailDescriptionEntryActualTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
@@ -202,10 +202,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryActualAndExpectedTest() throws ConvertionException {
+    public void addFailDescriptionEntryActualAndExpectedTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null);
@@ -248,10 +248,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void addFailDescriptionEntryActualAndExpected2Test() throws ConvertionException {
+    public void addFailDescriptionEntryActualAndExpected2Test() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null, null);
