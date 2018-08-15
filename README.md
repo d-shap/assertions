@@ -192,7 +192,7 @@ assertThat(new HashMap<String, String>(), allOf(hasEntry(equalTo("key1"), anyOf(
 ```
 But some combinations of matchers do not make sense.
 Also it is too difficult to understand some complicated combinations of matchers.
-The test should be as simple as possible - to prevent mistakes in the tests itself.
+The test should be as simple as possible - to prevent mistakes in the test itself.
 And too difficult combinations of matchers are error prone.
 
 Assertions framework provides methods for specific combinations of assertions:
