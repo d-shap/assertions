@@ -109,8 +109,8 @@ public final class SetToListValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet())).isInstanceOf(List.class);
-        Assertions.assertThat(new SetToListValueConverter().convert(createHashSet()), Raw.<String>listAssertion()).isEmpty();
-        Assertions.assertThat(new SetToListValueConverter().convert(createHashSet())).as(Raw.<String>listAssertion()).isEmpty();
+        Assertions.assertThat(new SetToListValueConverter().convert(createHashSet()), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new SetToListValueConverter().convert(createHashSet())).as(Raw.<String>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet("val1", "val2"))).isInstanceOf(List.class);
         Assertions.assertThat(new SetToListValueConverter().convert(createHashSet("val1", "val2")), Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2");
