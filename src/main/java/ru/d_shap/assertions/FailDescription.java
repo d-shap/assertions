@@ -40,7 +40,7 @@ final class FailDescription {
 
     FailDescription(final String message) {
         this();
-        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[0], true));
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[]{}, true));
     }
 
     FailDescription(final String message, final Object[] arguments) {
@@ -62,7 +62,7 @@ final class FailDescription {
 
     FailDescription(final FailDescription failDescription, final String message) {
         this(failDescription);
-        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[0], true));
+        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[]{}, true));
     }
 
     FailDescription(final FailDescription failDescription, final String message, final Object[] arguments) {
