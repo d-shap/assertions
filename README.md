@@ -188,6 +188,7 @@ Hamcrest allows any combination of matchers in assertions:
 assertThat(10, greaterThan(5));
 assertThat(Arrays.asList(15, 20, 25, 30), everyItem(greaterThan(5)));
 assertThat("value", anyOf(nullValue(), equalTo("test"), allOf(containsString("alu"), not(containsString("zzz")))));
+assertThat(new HashMap<String, String>(), allOf(hasEntry(equalTo("key1"), anyOf(equalToIgnoringCase("VALUE1"), isEmptyString())), not(hasEntry(startsWith("key2"), not(equalToIgnoringCase("VALUE2"))))));
 ```
 But some combinations of matchers do not make sense.
 Also it is too difficult to understand some complicated combinations of matchers.
