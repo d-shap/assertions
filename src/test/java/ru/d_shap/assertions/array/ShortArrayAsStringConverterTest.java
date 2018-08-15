@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link ShortArrayAsStringConverter}.
@@ -50,10 +50,10 @@ public final class ShortArrayAsStringConverterTest extends AssertionTest {
     /**
      * {@link ShortArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{})).isEqualTo("[]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1})).isEqualTo("[1]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2})).isEqualTo("[1, 2]");
@@ -63,20 +63,20 @@ public final class ShortArrayAsStringConverterTest extends AssertionTest {
     /**
      * {@link ShortArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new ShortArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link ShortArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new ShortArrayAsStringConverter().asString(new Object());
     }
 

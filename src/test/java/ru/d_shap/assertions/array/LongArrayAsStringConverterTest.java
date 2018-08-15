@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link LongArrayAsStringConverter}.
@@ -50,10 +50,10 @@ public final class LongArrayAsStringConverterTest extends AssertionTest {
     /**
      * {@link LongArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{})).isEqualTo("[]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L})).isEqualTo("[1]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L})).isEqualTo("[1, 2]");
@@ -63,20 +63,20 @@ public final class LongArrayAsStringConverterTest extends AssertionTest {
     /**
      * {@link LongArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new LongArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link LongArrayAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new LongArrayAsStringConverter().asString(new Object());
     }
 

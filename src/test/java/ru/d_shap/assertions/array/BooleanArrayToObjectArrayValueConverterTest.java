@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -59,10 +59,10 @@ public final class BooleanArrayToObjectArrayValueConverterTest extends Assertion
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConvertionException {
+    public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().canConvert(new boolean[0])).isTrue();
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().canConvert(new boolean[]{true, false})).isTrue();
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().canConvert(new boolean[]{true, true, false, false})).isTrue();
@@ -71,40 +71,40 @@ public final class BooleanArrayToObjectArrayValueConverterTest extends Assertion
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConvertionException {
+    public void canConvertNullValueFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().canConvert(null);
     }
 
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConvertionException {
+    public void canConvertWrongValueTypeFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().canConvert(new Object());
     }
 
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().canConvert(new boolean[0], new Object());
     }
 
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertTest() throws ConvertionException {
+    public void convertTest() throws ConversionException {
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{})).isInstanceOf(Boolean[].class);
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{}), Raw.objectArrayAssertion()).isEmpty();
         Assertions.assertThat(new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{})).as(Raw.objectArrayAssertion()).isEmpty();
@@ -121,30 +121,30 @@ public final class BooleanArrayToObjectArrayValueConverterTest extends Assertion
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConvertionException {
+    public void convertNullValueFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConvertionException {
+    public void convertWrongValueTypeFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+    public void convertWrongArgumentCountFailTest() throws ConversionException {
         new BooleanArrayToObjectArrayValueConverter().convert(new boolean[0], new Object());
     }
 
