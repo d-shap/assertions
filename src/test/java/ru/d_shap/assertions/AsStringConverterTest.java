@@ -21,6 +21,7 @@ package ru.d_shap.assertions;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -83,6 +84,8 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isEqualTo("[1, 2, 3]");
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isEqualTo("[1, 2]");
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isEqualTo("[1]");
+
+        Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
 }
