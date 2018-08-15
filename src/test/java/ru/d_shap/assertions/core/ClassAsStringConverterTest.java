@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link ClassAsStringConverter}.
@@ -52,10 +52,10 @@ public final class ClassAsStringConverterTest extends AssertionTest {
     /**
      * {@link ClassAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new ClassAsStringConverter().asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAsStringConverter().asString(Boolean.class)).isEqualTo("java.lang.Boolean");
         Assertions.assertThat(new ClassAsStringConverter().asString(Map.class)).isEqualTo("java.util.Map");
@@ -65,20 +65,20 @@ public final class ClassAsStringConverterTest extends AssertionTest {
     /**
      * {@link ClassAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new ClassAsStringConverter().asString(null);
     }
 
     /**
      * {@link ClassAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new ClassAsStringConverter().asString(new Object());
     }
 
