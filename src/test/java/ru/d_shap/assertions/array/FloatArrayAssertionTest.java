@@ -48,7 +48,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.floatArrayAssertion(), new float[0]);
+        initialize(Raw.floatArrayAssertion(), new float[]{});
 
         try {
             initializeWithRawActual(Raw.floatArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.floatArrayAssertion(), new float[0]).isEmpty();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).isEmpty();
 
         try {
             Raw.floatArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.floatArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.floatArrayAssertion(), new float[0]).isNullOrEmpty();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).isNullOrEmpty();
 
         try {
             Raw.floatArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[0]).isNotEmpty();
+            initialize(Raw.floatArrayAssertion(), new float[]{}).isNotEmpty();
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[0], "Message").isNotEmpty();
+            initialize(Raw.floatArrayAssertion(), new float[]{}, "Message").isNotEmpty();
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -575,7 +575,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(1.0f, 2.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(1.0f, 2.0f, 3.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(1.0f, 3.0f, 2.0f, 4.0f);
-        initialize(Raw.floatArrayAssertion(), new float[0]).containsExactly();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly();
 
         try {
             Raw.floatArrayAssertion().containsExactly(1.0f);
@@ -659,7 +659,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(Arrays.asList(1.0f, 2.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 3.0f, 2.0f, 4.0f));
-        initialize(Raw.floatArrayAssertion(), new float[0]).containsExactly(new ArrayList<Float>());
+        initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly(new ArrayList<Float>());
 
         try {
             Raw.floatArrayAssertion().containsExactly(new ArrayList<Float>());
@@ -742,7 +742,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(1.0f, 2.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
-        initialize(Raw.floatArrayAssertion(), new float[0]).containsExactlyInOrder();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactlyInOrder();
 
         try {
             Raw.floatArrayAssertion().containsExactlyInOrder(1.0f);
@@ -831,7 +831,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
-        initialize(Raw.floatArrayAssertion(), new float[0]).containsExactlyInOrder(new ArrayList<Float>());
+        initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactlyInOrder(new ArrayList<Float>());
 
         try {
             Raw.floatArrayAssertion().containsExactlyInOrder(new ArrayList<Float>());

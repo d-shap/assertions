@@ -63,7 +63,7 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[0])).isTrue();
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{})).isTrue();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{1, 2})).isTrue();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{1, 2, 3, 4})).isTrue();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{100000, 100001})).isFalse();
@@ -96,7 +96,7 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new IntArrayToByteArrayValueConverter().canConvert(new int[0], new Object());
+        new IntArrayToByteArrayValueConverter().canConvert(new int[]{}, new Object());
     }
 
     /**
@@ -150,7 +150,7 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new IntArrayToByteArrayValueConverter().convert(new int[0], new Object());
+        new IntArrayToByteArrayValueConverter().convert(new int[]{}, new Object());
     }
 
 }

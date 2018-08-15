@@ -50,7 +50,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0]));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}));
 
         try {
             initializeWithRawActual(Raw.intBufferAssertion(), new Object());
@@ -71,7 +71,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isEmpty();
 
@@ -94,7 +94,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -124,7 +124,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndEmptyTest() {
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isRewindAndEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isRewindAndEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0, 4)).isRewindAndEmpty();
 
@@ -147,7 +147,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isRewindAndEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -177,7 +177,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isNullOrEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.intBufferAssertion(), null).isNullOrEmpty();
@@ -189,7 +189,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isNullOrEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -219,7 +219,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndNullOrEmptyTest() {
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isRewindAndNullOrEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isRewindAndNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.intBufferAssertion(), null).isRewindAndNullOrEmpty();
@@ -231,7 +231,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isRewindAndNullOrEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -263,7 +263,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).isNotEmpty();
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isNotEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isNotEmpty();
 
         try {
             Raw.intBufferAssertion().isNotEmpty();
@@ -284,7 +284,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isNotEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isNotEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
@@ -316,7 +316,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void isRewindAndNotEmptyTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isRewindAndNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).isRewindAndNotEmpty();
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0], 0, 4, 4)).isRewindAndNotEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isRewindAndNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isRewindAndNotEmpty();
 
@@ -339,13 +339,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).isRewindAndNotEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isRewindAndNotEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0]), "Message").isRewindAndNotEmpty();
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").isRewindAndNotEmpty();
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -1270,7 +1270,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactly(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(1, 2, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(1, 3, 2, 4);
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).containsExactly();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly();
 
         try {
             Raw.intBufferAssertion().containsExactly(1);
@@ -1366,7 +1366,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactly(Arrays.asList(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1, 3, 2, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).containsExactly(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly(new ArrayList<Integer>());
 
         try {
             Raw.intBufferAssertion().containsExactly(new ArrayList<Integer>());
@@ -1462,7 +1462,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactly(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 2, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 3, 2, 4);
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).rewindAndContainsExactly();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(1, 2, 3, 4, 5);
 
         try {
@@ -1553,7 +1553,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactly(Arrays.asList(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1, 3, 2, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).rewindAndContainsExactly(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly(new ArrayList<Integer>());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(Arrays.asList(1, 2, 3, 4, 5));
 
         try {
@@ -1643,7 +1643,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3, 4);
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).containsExactlyInOrder();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder();
 
         try {
             Raw.intBufferAssertion().containsExactlyInOrder(1);
@@ -1744,7 +1744,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(Arrays.asList(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).containsExactlyInOrder(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder(new ArrayList<Integer>());
 
         try {
             Raw.intBufferAssertion().containsExactlyInOrder(new ArrayList<Integer>());
@@ -1845,7 +1845,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderArrayTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactlyInOrder(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).rewindAndContainsExactlyInOrder();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
 
         try {
@@ -1941,7 +1941,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[0])).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1, 2, 3, 4, 5));
 
         try {

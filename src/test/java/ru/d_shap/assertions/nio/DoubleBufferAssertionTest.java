@@ -50,7 +50,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0]));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}));
 
         try {
             initializeWithRawActual(Raw.doubleBufferAssertion(), new Object());
@@ -71,7 +71,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isEmpty();
 
@@ -94,7 +94,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0.0, 0.0, 0.0, 0.0]>");
@@ -124,7 +124,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndEmptyTest() {
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isRewindAndEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isRewindAndEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0, 4)).isRewindAndEmpty();
 
@@ -147,7 +147,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isRewindAndEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0.0, 0.0, 0.0, 0.0]>");
@@ -177,7 +177,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isNullOrEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), null).isNullOrEmpty();
@@ -189,7 +189,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isNullOrEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0.0, 0.0, 0.0, 0.0]>");
@@ -219,7 +219,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndNullOrEmptyTest() {
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isRewindAndNullOrEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isRewindAndNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), null).isRewindAndNullOrEmpty();
@@ -231,7 +231,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isRewindAndNullOrEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0.0, 0.0, 0.0, 0.0]>");
@@ -263,7 +263,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 1)).isNotEmpty();
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isNotEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isNotEmpty();
 
         try {
             Raw.doubleBufferAssertion().isNotEmpty();
@@ -284,7 +284,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isNotEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isNotEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
@@ -316,7 +316,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void isRewindAndNotEmptyTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isRewindAndNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 1)).isRewindAndNotEmpty();
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0], 0, 4, 4)).isRewindAndNotEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isRewindAndNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isRewindAndNotEmpty();
 
@@ -339,13 +339,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).isRewindAndNotEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isRewindAndNotEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0]), "Message").isRewindAndNotEmpty();
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").isRewindAndNotEmpty();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -1270,7 +1270,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(1.0, 3.0, 2.0, 4.0);
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactly();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly();
 
         try {
             Raw.doubleBufferAssertion().containsExactly(1.0);
@@ -1366,7 +1366,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly(new ArrayList<Double>());
 
         try {
             Raw.doubleBufferAssertion().containsExactly(new ArrayList<Double>());
@@ -1462,7 +1462,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(1.0, 3.0, 2.0, 4.0);
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactly();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
 
         try {
@@ -1553,7 +1553,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly(new ArrayList<Double>());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {
@@ -1643,7 +1643,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactlyInOrder();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder();
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(1.0);
@@ -1744,7 +1744,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder(new ArrayList<Double>());
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(new ArrayList<Double>());
@@ -1845,7 +1845,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderArrayTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactlyInOrder();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
 
         try {
@@ -1941,7 +1941,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[0])).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {

@@ -63,7 +63,7 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().canConvert(new float[0])).isTrue();
+        Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().canConvert(new float[]{})).isTrue();
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().canConvert(new float[]{1.0f, 2.0f})).isTrue();
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().canConvert(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isTrue();
     }
@@ -95,7 +95,7 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new FloatArrayToObjectArrayValueConverter().canConvert(new float[0], new Object());
+        new FloatArrayToObjectArrayValueConverter().canConvert(new float[]{}, new Object());
     }
 
     /**
@@ -145,7 +145,7 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new FloatArrayToObjectArrayValueConverter().convert(new float[0], new Object());
+        new FloatArrayToObjectArrayValueConverter().convert(new float[]{}, new Object());
     }
 
 }

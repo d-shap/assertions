@@ -893,9 +893,9 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void asArrayAssertionTest() {
-        createBaseAssertion(new byte[0]).as(Raw.byteArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new byte[0]).as(Raw.byteArrayAssertion()).getActual()).hasClass(byte[].class);
-        initialize(Raw.byteArrayAssertion(), new byte[0]).as(Raw.byteArrayAssertion()).hasLength(0);
+        createBaseAssertion(new byte[]{}).as(Raw.byteArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new byte[]{}).as(Raw.byteArrayAssertion()).getActual()).hasClass(byte[].class);
+        initialize(Raw.byteArrayAssertion(), new byte[]{}).as(Raw.byteArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.byteArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -903,9 +903,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new short[0]).as(Raw.shortArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new short[0]).as(Raw.shortArrayAssertion()).getActual()).hasClass(short[].class);
-        initialize(Raw.shortArrayAssertion(), new short[0]).as(Raw.shortArrayAssertion()).hasLength(0);
+        createBaseAssertion(new short[]{}).as(Raw.shortArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new short[]{}).as(Raw.shortArrayAssertion()).getActual()).hasClass(short[].class);
+        initialize(Raw.shortArrayAssertion(), new short[]{}).as(Raw.shortArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.shortArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -913,9 +913,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new int[0]).as(Raw.intArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new int[0]).as(Raw.intArrayAssertion()).getActual()).hasClass(int[].class);
-        initialize(Raw.intArrayAssertion(), new int[0]).as(Raw.intArrayAssertion()).hasLength(0);
+        createBaseAssertion(new int[]{}).as(Raw.intArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new int[]{}).as(Raw.intArrayAssertion()).getActual()).hasClass(int[].class);
+        initialize(Raw.intArrayAssertion(), new int[]{}).as(Raw.intArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.intArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -923,9 +923,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new long[0]).as(Raw.longArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new long[0]).as(Raw.longArrayAssertion()).getActual()).hasClass(long[].class);
-        initialize(Raw.longArrayAssertion(), new long[0]).as(Raw.longArrayAssertion()).hasLength(0);
+        createBaseAssertion(new long[]{}).as(Raw.longArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new long[]{}).as(Raw.longArrayAssertion()).getActual()).hasClass(long[].class);
+        initialize(Raw.longArrayAssertion(), new long[]{}).as(Raw.longArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.longArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -933,9 +933,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new float[0]).as(Raw.floatArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new float[0]).as(Raw.floatArrayAssertion()).getActual()).hasClass(float[].class);
-        initialize(Raw.floatArrayAssertion(), new float[0]).as(Raw.floatArrayAssertion()).hasLength(0);
+        createBaseAssertion(new float[]{}).as(Raw.floatArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new float[]{}).as(Raw.floatArrayAssertion()).getActual()).hasClass(float[].class);
+        initialize(Raw.floatArrayAssertion(), new float[]{}).as(Raw.floatArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.floatArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -943,9 +943,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new double[0]).as(Raw.doubleArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new double[0]).as(Raw.doubleArrayAssertion()).getActual()).hasClass(double[].class);
-        initialize(Raw.doubleArrayAssertion(), new double[0]).as(Raw.doubleArrayAssertion()).hasLength(0);
+        createBaseAssertion(new double[]{}).as(Raw.doubleArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new double[]{}).as(Raw.doubleArrayAssertion()).getActual()).hasClass(double[].class);
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).as(Raw.doubleArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.doubleArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -953,9 +953,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new boolean[0]).as(Raw.booleanArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new boolean[0]).as(Raw.booleanArrayAssertion()).getActual()).hasClass(boolean[].class);
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).as(Raw.booleanArrayAssertion()).hasLength(0);
+        createBaseAssertion(new boolean[]{}).as(Raw.booleanArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new boolean[]{}).as(Raw.booleanArrayAssertion()).getActual()).hasClass(boolean[].class);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).as(Raw.booleanArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.booleanArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -963,9 +963,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new char[0]).as(Raw.charArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new char[0]).as(Raw.charArrayAssertion()).getActual()).hasClass(char[].class);
-        initialize(Raw.charArrayAssertion(), new char[0]).as(Raw.charArrayAssertion()).hasLength(0);
+        createBaseAssertion(new char[]{}).as(Raw.charArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new char[]{}).as(Raw.charArrayAssertion()).getActual()).hasClass(char[].class);
+        initialize(Raw.charArrayAssertion(), new char[]{}).as(Raw.charArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.charArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -973,9 +973,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
         }
 
-        createBaseAssertion(new String[0]).as(Raw.<String>objectArrayAssertion()).hasLength(0);
-        Assertions.assertThat(createBaseAssertion(new String[0]).as(Raw.<String>objectArrayAssertion()).getActual()).hasClass(String[].class);
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]).as(Raw.<String>objectArrayAssertion()).hasLength(0);
+        createBaseAssertion(new String[]{}).as(Raw.<String>objectArrayAssertion()).hasLength(0);
+        Assertions.assertThat(createBaseAssertion(new String[]{}).as(Raw.<String>objectArrayAssertion()).getActual()).hasClass(String[].class);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{}).as(Raw.<String>objectArrayAssertion()).hasLength(0);
         try {
             createBaseAssertion(new Object()).as(Raw.<String>objectArrayAssertion());
             Assertions.fail("BaseAssertion test fail");

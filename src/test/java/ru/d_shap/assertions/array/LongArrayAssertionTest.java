@@ -48,7 +48,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.longArrayAssertion(), new long[0]);
+        initialize(Raw.longArrayAssertion(), new long[]{});
 
         try {
             initializeWithRawActual(Raw.longArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.longArrayAssertion(), new long[0]).isEmpty();
+        initialize(Raw.longArrayAssertion(), new long[]{}).isEmpty();
 
         try {
             Raw.longArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.longArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.longArrayAssertion(), new long[0]).isNullOrEmpty();
+        initialize(Raw.longArrayAssertion(), new long[]{}).isNullOrEmpty();
 
         try {
             Raw.longArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[0]).isNotEmpty();
+            initialize(Raw.longArrayAssertion(), new long[]{}).isNotEmpty();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[0], "Message").isNotEmpty();
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").isNotEmpty();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -575,7 +575,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly(1L, 2L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(1L, 2L, 3L, 4L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(1L, 3L, 2L, 4L);
-        initialize(Raw.longArrayAssertion(), new long[0]).containsExactly();
+        initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly();
 
         try {
             Raw.longArrayAssertion().containsExactly(1L);
@@ -659,7 +659,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly(Arrays.asList(1L, 2L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(Arrays.asList(1L, 2L, 3L, 4L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(Arrays.asList(1L, 3L, 2L, 4L));
-        initialize(Raw.longArrayAssertion(), new long[0]).containsExactly(new ArrayList<Long>());
+        initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly(new ArrayList<Long>());
 
         try {
             Raw.longArrayAssertion().containsExactly(new ArrayList<Long>());
@@ -742,7 +742,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder(1L, 2L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
-        initialize(Raw.longArrayAssertion(), new long[0]).containsExactlyInOrder();
+        initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder();
 
         try {
             Raw.longArrayAssertion().containsExactlyInOrder(1L);
@@ -831,7 +831,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder(Arrays.asList(1L, 2L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
-        initialize(Raw.longArrayAssertion(), new long[0]).containsExactlyInOrder(new ArrayList<Long>());
+        initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder(new ArrayList<Long>());
 
         try {
             Raw.longArrayAssertion().containsExactlyInOrder(new ArrayList<Long>());

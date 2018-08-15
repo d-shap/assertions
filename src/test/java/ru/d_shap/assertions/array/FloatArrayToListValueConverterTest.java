@@ -65,7 +65,7 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[0])).isTrue();
+        Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{})).isTrue();
         Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{1.0f, 2.0f})).isTrue();
         Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new FloatArrayToListValueConverter().canConvert(new float[0], new Object());
+        new FloatArrayToListValueConverter().canConvert(new float[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new FloatArrayToListValueConverter().convert(new float[0], new Object());
+        new FloatArrayToListValueConverter().convert(new float[]{}, new Object());
     }
 
 }

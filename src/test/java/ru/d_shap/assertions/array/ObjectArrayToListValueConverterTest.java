@@ -65,7 +65,7 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new ObjectArrayToListValueConverter().canConvert(new String[0])).isTrue();
+        Assertions.assertThat(new ObjectArrayToListValueConverter().canConvert(new String[]{})).isTrue();
         Assertions.assertThat(new ObjectArrayToListValueConverter().canConvert(new String[]{"val1", "val2"})).isTrue();
         Assertions.assertThat(new ObjectArrayToListValueConverter().canConvert(new String[]{"val1", "val2", "val3", "val4"})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new ObjectArrayToListValueConverter().canConvert(new String[0], new Object());
+        new ObjectArrayToListValueConverter().canConvert(new String[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new ObjectArrayToListValueConverter().convert(new String[0], new Object());
+        new ObjectArrayToListValueConverter().convert(new String[]{}, new Object());
     }
 
 }

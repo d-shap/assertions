@@ -63,7 +63,7 @@ public final class CharArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new CharArrayToObjectArrayValueConverter().canConvert(new char[0])).isTrue();
+        Assertions.assertThat(new CharArrayToObjectArrayValueConverter().canConvert(new char[]{})).isTrue();
         Assertions.assertThat(new CharArrayToObjectArrayValueConverter().canConvert(new char[]{'1', '2'})).isTrue();
         Assertions.assertThat(new CharArrayToObjectArrayValueConverter().canConvert(new char[]{'1', '2', '3', '4'})).isTrue();
     }
@@ -95,7 +95,7 @@ public final class CharArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new CharArrayToObjectArrayValueConverter().canConvert(new char[0], new Object());
+        new CharArrayToObjectArrayValueConverter().canConvert(new char[]{}, new Object());
     }
 
     /**
@@ -145,7 +145,7 @@ public final class CharArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new CharArrayToObjectArrayValueConverter().convert(new char[0], new Object());
+        new CharArrayToObjectArrayValueConverter().convert(new char[]{}, new Object());
     }
 
 }

@@ -63,7 +63,7 @@ public final class LongArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().canConvert(new long[0])).isTrue();
+        Assertions.assertThat(new LongArrayToObjectArrayValueConverter().canConvert(new long[]{})).isTrue();
         Assertions.assertThat(new LongArrayToObjectArrayValueConverter().canConvert(new long[]{1L, 2L})).isTrue();
         Assertions.assertThat(new LongArrayToObjectArrayValueConverter().canConvert(new long[]{1L, 2L, 3L, 4L})).isTrue();
     }
@@ -95,7 +95,7 @@ public final class LongArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new LongArrayToObjectArrayValueConverter().canConvert(new long[0], new Object());
+        new LongArrayToObjectArrayValueConverter().canConvert(new long[]{}, new Object());
     }
 
     /**
@@ -145,7 +145,7 @@ public final class LongArrayToObjectArrayValueConverterTest extends AssertionTes
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new LongArrayToObjectArrayValueConverter().convert(new long[0], new Object());
+        new LongArrayToObjectArrayValueConverter().convert(new long[]{}, new Object());
     }
 
 }

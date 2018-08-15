@@ -65,7 +65,7 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new DoubleArrayToListValueConverter().canConvert(new double[0])).isTrue();
+        Assertions.assertThat(new DoubleArrayToListValueConverter().canConvert(new double[]{})).isTrue();
         Assertions.assertThat(new DoubleArrayToListValueConverter().canConvert(new double[]{1.0, 2.0})).isTrue();
         Assertions.assertThat(new DoubleArrayToListValueConverter().canConvert(new double[]{1.0, 2.0, 3.0, 4.0})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new DoubleArrayToListValueConverter().canConvert(new double[0], new Object());
+        new DoubleArrayToListValueConverter().canConvert(new double[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new DoubleArrayToListValueConverter().convert(new double[0], new Object());
+        new DoubleArrayToListValueConverter().convert(new double[]{}, new Object());
     }
 
 }

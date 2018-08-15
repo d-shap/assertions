@@ -65,7 +65,7 @@ public final class ByteArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new ByteArrayToListValueConverter().canConvert(new byte[0])).isTrue();
+        Assertions.assertThat(new ByteArrayToListValueConverter().canConvert(new byte[]{})).isTrue();
         Assertions.assertThat(new ByteArrayToListValueConverter().canConvert(new byte[]{1, 2})).isTrue();
         Assertions.assertThat(new ByteArrayToListValueConverter().canConvert(new byte[]{1, 2, 3, 4})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class ByteArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new ByteArrayToListValueConverter().canConvert(new byte[0], new Object());
+        new ByteArrayToListValueConverter().canConvert(new byte[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class ByteArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new ByteArrayToListValueConverter().convert(new byte[0], new Object());
+        new ByteArrayToListValueConverter().convert(new byte[]{}, new Object());
     }
 
 }

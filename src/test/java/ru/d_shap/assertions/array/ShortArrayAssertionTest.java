@@ -48,7 +48,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.shortArrayAssertion(), new short[0]);
+        initialize(Raw.shortArrayAssertion(), new short[]{});
 
         try {
             initializeWithRawActual(Raw.shortArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.shortArrayAssertion(), new short[0]).isEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).isEmpty();
 
         try {
             Raw.shortArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.shortArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.shortArrayAssertion(), new short[0]).isNullOrEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).isNullOrEmpty();
 
         try {
             Raw.shortArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[0]).isNotEmpty();
+            initialize(Raw.shortArrayAssertion(), new short[]{}).isNotEmpty();
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[0], "Message").isNotEmpty();
+            initialize(Raw.shortArrayAssertion(), new short[]{}, "Message").isNotEmpty();
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -378,13 +378,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAll(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAll(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -625,13 +625,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAllInOrder(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAllInOrder(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -758,7 +758,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly((short) 1, (short) 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly((short) 1, (short) 3, (short) 2, (short) 4);
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactly();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly();
 
         try {
             Raw.shortArrayAssertion().containsExactly((short) 1);
@@ -842,7 +842,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(1, 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(1, 2, 3, 4);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(1, 3, 2, 4);
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactly(new int[0]);
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly(new int[]{});
 
         try {
             Raw.shortArrayAssertion().containsExactly(1);
@@ -899,7 +899,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
@@ -938,7 +938,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(Arrays.asList((short) 1, (short) 2));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 3, (short) 2, (short) 4));
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactly(new ArrayList<Short>());
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly(new ArrayList<Short>());
 
         try {
             Raw.shortArrayAssertion().containsExactly(new ArrayList<Short>());
@@ -1021,7 +1021,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayShortTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder((short) 1, (short) 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4);
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactlyInOrder();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder();
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder((short) 1);
@@ -1110,7 +1110,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayIntTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(1, 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(1, 2, 3, 4);
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactlyInOrder(new int[0]);
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder(new int[]{});
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder(1);
@@ -1173,7 +1173,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
@@ -1211,7 +1211,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4));
-        initialize(Raw.shortArrayAssertion(), new short[0]).containsExactlyInOrder(new ArrayList<Short>());
+        initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder(new ArrayList<Short>());
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder(new ArrayList<Short>());
@@ -1424,13 +1424,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAny(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAny(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1667,13 +1667,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsNone(new int[0]);
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsNone(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");

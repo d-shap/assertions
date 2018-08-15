@@ -48,7 +48,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[0]);
+        initialize(Raw.doubleArrayAssertion(), new double[]{});
 
         try {
             initializeWithRawActual(Raw.doubleArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[0]).isEmpty();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).isEmpty();
 
         try {
             Raw.doubleArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.doubleArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.doubleArrayAssertion(), new double[0]).isNullOrEmpty();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).isNullOrEmpty();
 
         try {
             Raw.doubleArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[0]).isNotEmpty();
+            initialize(Raw.doubleArrayAssertion(), new double[]{}).isNotEmpty();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[0], "Message").isNotEmpty();
+            initialize(Raw.doubleArrayAssertion(), new double[]{}, "Message").isNotEmpty();
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -575,7 +575,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(1.0, 2.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 3.0, 2.0, 4.0);
-        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactly();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactly();
 
         try {
             Raw.doubleArrayAssertion().containsExactly(1.0);
@@ -659,7 +659,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
-        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactly(new ArrayList<Double>());
 
         try {
             Raw.doubleArrayAssertion().containsExactly(new ArrayList<Double>());
@@ -742,7 +742,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(1.0, 2.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
-        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactlyInOrder();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactlyInOrder();
 
         try {
             Raw.doubleArrayAssertion().containsExactlyInOrder(1.0);
@@ -831,7 +831,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleArrayAssertion(), new double[0]).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactlyInOrder(new ArrayList<Double>());
 
         try {
             Raw.doubleArrayAssertion().containsExactlyInOrder(new ArrayList<Double>());

@@ -50,7 +50,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0]));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}));
 
         try {
             initializeWithRawActual(Raw.charBufferAssertion(), new Object());
@@ -71,7 +71,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2)).isEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2, 2, 4)).isEmpty();
 
@@ -94,7 +94,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[ (0),  (0),  (0),  (0)]>");
@@ -124,7 +124,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndEmptyTest() {
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isRewindAndEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isRewindAndEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 0, 0, 4)).isRewindAndEmpty();
 
@@ -147,7 +147,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isRewindAndEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[ (0),  (0),  (0),  (0)]>");
@@ -177,7 +177,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isNullOrEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2)).isNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.charBufferAssertion(), null).isNullOrEmpty();
@@ -189,7 +189,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isNullOrEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[ (0),  (0),  (0),  (0)]>");
@@ -219,7 +219,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndNullOrEmptyTest() {
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isRewindAndNullOrEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isRewindAndNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.charBufferAssertion(), null).isRewindAndNullOrEmpty();
@@ -231,7 +231,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isRewindAndNullOrEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[ (0),  (0),  (0),  (0)]>");
@@ -263,7 +263,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2})).isNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 1)).isNotEmpty();
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isNotEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isNotEmpty();
 
         try {
             Raw.charBufferAssertion().isNotEmpty();
@@ -284,7 +284,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isNotEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isNotEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
@@ -316,7 +316,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void isRewindAndNotEmptyTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2})).isRewindAndNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 1)).isRewindAndNotEmpty();
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0], 0, 4, 4)).isRewindAndNotEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2)).isRewindAndNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{1, 2}, 2, 2, 4)).isRewindAndNotEmpty();
 
@@ -339,13 +339,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).isRewindAndNotEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isRewindAndNotEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0]), "Message").isRewindAndNotEmpty();
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}), "Message").isRewindAndNotEmpty();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -691,13 +691,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAll(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAll(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAll(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAll(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -954,13 +954,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAll(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAll(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAll(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAll(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1214,13 +1214,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAllInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAllInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAllInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAllInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1492,13 +1492,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAllInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAllInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1626,7 +1626,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly('1', '2', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly('1', '3', '2', '4');
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactly();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly();
 
         try {
             Raw.charBufferAssertion().containsExactly('1');
@@ -1722,7 +1722,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(49, 50, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(49, 51, 50, 52);
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactly(new int[0]);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly(new int[]{});
 
         try {
             Raw.charBufferAssertion().containsExactly(49);
@@ -1779,7 +1779,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
@@ -1818,7 +1818,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(Arrays.asList('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(Arrays.asList('1', '2', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(Arrays.asList('1', '3', '2', '4'));
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactly(new ArrayList<Character>());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly(new ArrayList<Character>());
 
         try {
             Raw.charBufferAssertion().containsExactly(new ArrayList<Character>());
@@ -1914,7 +1914,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly('1', '2', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly('1', '3', '2', '4');
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactly();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly('1', '2', '3', '4', '5');
 
         try {
@@ -2005,7 +2005,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(49, 50, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(49, 51, 50, 52);
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactly(new int[0]);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly(new int[]{});
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly(49, 50, 51, 52, 53);
 
         try {
@@ -2063,7 +2063,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
@@ -2096,7 +2096,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(Arrays.asList('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(Arrays.asList('1', '3', '2', '4'));
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactly(new ArrayList<Character>());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly(new ArrayList<Character>());
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
 
         try {
@@ -2186,7 +2186,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayCharTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder('1', '2', '3', '4');
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactlyInOrder();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder();
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder('1');
@@ -2287,7 +2287,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayIntTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder(49, 50, 51, 52);
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactlyInOrder(new int[0]);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder(new int[]{});
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder(49);
@@ -2350,7 +2350,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
@@ -2388,7 +2388,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(Arrays.asList('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).containsExactlyInOrder(new ArrayList<Character>());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder(new ArrayList<Character>());
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder(new ArrayList<Character>());
@@ -2489,7 +2489,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderArrayCharTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder('1', '2', '3', '4');
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactlyInOrder();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
 
         try {
@@ -2585,7 +2585,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderArrayIntTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder(49, 50, 51, 52);
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactlyInOrder(new int[0]);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder(new int[]{});
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
 
         try {
@@ -2649,7 +2649,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
@@ -2681,7 +2681,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4'));
-        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[0])).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
 
         try {
@@ -2913,13 +2913,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAny(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAny(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAny(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsAny(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3179,13 +3179,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAny(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAny(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAny(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsAny(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3426,13 +3426,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsNone(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsNone(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsNone(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").containsNone(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3664,13 +3664,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsNone(new int[0]);
+            initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}), "Message").rewindAndContainsNone(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");

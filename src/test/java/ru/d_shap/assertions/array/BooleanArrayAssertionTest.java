@@ -48,7 +48,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{});
 
         try {
             initializeWithRawActual(Raw.booleanArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).isEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isEmpty();
 
         try {
             Raw.booleanArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.booleanArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).isNullOrEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isNullOrEmpty();
 
         try {
             Raw.booleanArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.booleanArrayAssertion(), new boolean[0]).isNotEmpty();
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isNotEmpty();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.booleanArrayAssertion(), new boolean[0], "Message").isNotEmpty();
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{}, "Message").isNotEmpty();
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -575,7 +575,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(true, false, true, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(false, false, true, true);
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactly();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactly();
 
         try {
             Raw.booleanArrayAssertion().containsExactly(true);
@@ -659,7 +659,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactly(Arrays.asList(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(Arrays.asList(true, false, true, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(Arrays.asList(false, false, true, true));
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactly(new ArrayList<Boolean>());
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactly(new ArrayList<Boolean>());
 
         try {
             Raw.booleanArrayAssertion().containsExactly(new ArrayList<Boolean>());
@@ -742,7 +742,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(true, true, false, false);
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactlyInOrder();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactlyInOrder();
 
         try {
             Raw.booleanArrayAssertion().containsExactlyInOrder(true);
@@ -831,7 +831,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(Arrays.asList(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(Arrays.asList(true, true, false, false));
-        initialize(Raw.booleanArrayAssertion(), new boolean[0]).containsExactlyInOrder(new ArrayList<Boolean>());
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactlyInOrder(new ArrayList<Boolean>());
 
         try {
             Raw.booleanArrayAssertion().containsExactlyInOrder(new ArrayList<Boolean>());

@@ -65,7 +65,7 @@ public final class CharArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[0])).isTrue();
+        Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{})).isTrue();
         Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{'1', '2'})).isTrue();
         Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{'1', '2', '3', '4'})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class CharArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new CharArrayToListValueConverter().canConvert(new char[0], new Object());
+        new CharArrayToListValueConverter().canConvert(new char[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class CharArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new CharArrayToListValueConverter().convert(new char[0], new Object());
+        new CharArrayToListValueConverter().convert(new char[]{}, new Object());
     }
 
 }

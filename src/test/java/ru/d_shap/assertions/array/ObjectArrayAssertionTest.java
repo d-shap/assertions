@@ -48,7 +48,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{});
 
         try {
             initializeWithRawActual(Raw.<String>objectArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.objectArrayAssertion(), new String[0]).isEmpty();
+        initialize(Raw.objectArrayAssertion(), new String[]{}).isEmpty();
 
         try {
             Raw.objectArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.objectArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.objectArrayAssertion(), new String[0]).isNullOrEmpty();
+        initialize(Raw.objectArrayAssertion(), new String[]{}).isNullOrEmpty();
 
         try {
             Raw.objectArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.objectArrayAssertion(), new String[0]).isNotEmpty();
+            initialize(Raw.objectArrayAssertion(), new String[]{}).isNotEmpty();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.objectArrayAssertion(), new String[0], "Message").isNotEmpty();
+            initialize(Raw.objectArrayAssertion(), new String[]{}, "Message").isNotEmpty();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -645,7 +645,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val2", "val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val3", "val2", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly("val1", "val3", "val2", null);
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]).containsExactly();
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactly();
 
         try {
             Raw.<String>objectArrayAssertion().containsExactly("val");
@@ -742,7 +742,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(Arrays.asList("val1", "val3", "val2", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly(Arrays.asList("val1", "val3", "val2", null));
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]).containsExactly(new ArrayList<String>());
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactly(new ArrayList<String>());
 
         try {
             Raw.<String>objectArrayAssertion().containsExactly(new ArrayList<String>());
@@ -826,7 +826,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder("val1", "val2");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder("val1", "val2", "val3", null);
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]).containsExactlyInOrder();
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactlyInOrder();
 
         try {
             Raw.<String>objectArrayAssertion().containsExactlyInOrder("val");
@@ -928,7 +928,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder(Arrays.asList("val1", "val2"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", null));
-        initialize(Raw.<String>objectArrayAssertion(), new String[0]).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactlyInOrder(new ArrayList<String>());
 
         try {
             Raw.<String>objectArrayAssertion().containsExactlyInOrder(new ArrayList<String>());

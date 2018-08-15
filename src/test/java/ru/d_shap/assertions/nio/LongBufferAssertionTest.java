@@ -50,7 +50,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0]));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}));
 
         try {
             initializeWithRawActual(Raw.longBufferAssertion(), new Object());
@@ -71,7 +71,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isEmpty();
 
@@ -94,7 +94,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -124,7 +124,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndEmptyTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isRewindAndEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isRewindAndEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0, 4)).isRewindAndEmpty();
 
@@ -147,7 +147,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isRewindAndEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -177,7 +177,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isNullOrEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.longBufferAssertion(), null).isNullOrEmpty();
@@ -189,7 +189,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isNullOrEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -219,7 +219,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void isRewindAndNullOrEmptyTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isRewindAndNullOrEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isRewindAndNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.longBufferAssertion(), null).isRewindAndNullOrEmpty();
@@ -231,7 +231,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isRewindAndNullOrEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
@@ -263,7 +263,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isNotEmpty();
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isNotEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isNotEmpty();
 
         try {
             Raw.longBufferAssertion().isNotEmpty();
@@ -284,7 +284,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isNotEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isNotEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
@@ -316,7 +316,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void isRewindAndNotEmptyTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isRewindAndNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isRewindAndNotEmpty();
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0], 0, 4, 4)).isRewindAndNotEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isRewindAndNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isRewindAndNotEmpty();
 
@@ -339,13 +339,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).isRewindAndNotEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isRewindAndNotEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0]), "Message").isRewindAndNotEmpty();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").isRewindAndNotEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -1270,7 +1270,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 3L, 2L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).containsExactly();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly();
 
         try {
             Raw.longBufferAssertion().containsExactly(1L);
@@ -1366,7 +1366,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(Arrays.asList(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 3L, 2L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).containsExactly(new ArrayList<Long>());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly(new ArrayList<Long>());
 
         try {
             Raw.longBufferAssertion().containsExactly(new ArrayList<Long>());
@@ -1462,7 +1462,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 3L, 2L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).rewindAndContainsExactly();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
 
         try {
@@ -1553,7 +1553,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(Arrays.asList(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 3L, 2L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).rewindAndContainsExactly(new ArrayList<Long>());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly(new ArrayList<Long>());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
 
         try {
@@ -1643,7 +1643,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(1L, 2L, 3L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).containsExactlyInOrder();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder();
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(1L);
@@ -1744,7 +1744,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(Arrays.asList(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).containsExactlyInOrder(new ArrayList<Long>());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder(new ArrayList<Long>());
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(new ArrayList<Long>());
@@ -1845,7 +1845,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).rewindAndContainsExactlyInOrder();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
 
         try {
@@ -1941,7 +1941,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[0])).rewindAndContainsExactlyInOrder(new ArrayList<Long>());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Long>());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
 
         try {

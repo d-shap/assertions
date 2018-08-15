@@ -633,13 +633,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(new int[0]);
+            initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo(new int[]{});
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo(new int[0]);
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharsEqualTo(new int[]{});
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -861,7 +861,7 @@ public final class ReaderAssertionTest extends AssertionTest {
     public void isAllCharsEqualToArrayIntTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(49, 50, 51);
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isAllCharsEqualTo(0, 0, 0);
-        initialize(Raw.readerAssertion(), new StringReader("")).isAllCharsEqualTo(new int[0]);
+        initialize(Raw.readerAssertion(), new StringReader("")).isAllCharsEqualTo(new int[]{});
 
         try {
             Raw.readerAssertion().isAllCharsEqualTo(49);

@@ -48,7 +48,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.intArrayAssertion(), new int[0]);
+        initialize(Raw.intArrayAssertion(), new int[]{});
 
         try {
             initializeWithRawActual(Raw.intArrayAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.intArrayAssertion(), new int[0]).isEmpty();
+        initialize(Raw.intArrayAssertion(), new int[]{}).isEmpty();
 
         try {
             Raw.intArrayAssertion().isEmpty();
@@ -109,7 +109,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.intArrayAssertion(), null).isNullOrEmpty();
-        initialize(Raw.intArrayAssertion(), new int[0]).isNullOrEmpty();
+        initialize(Raw.intArrayAssertion(), new int[]{}).isNullOrEmpty();
 
         try {
             Raw.intArrayAssertion().isNullOrEmpty();
@@ -157,13 +157,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[0]).isNotEmpty();
+            initialize(Raw.intArrayAssertion(), new int[]{}).isNotEmpty();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[0], "Message").isNotEmpty();
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").isNotEmpty();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -575,7 +575,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly(1, 2);
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(1, 2, 3, 4);
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(1, 3, 2, 4);
-        initialize(Raw.intArrayAssertion(), new int[0]).containsExactly();
+        initialize(Raw.intArrayAssertion(), new int[]{}).containsExactly();
 
         try {
             Raw.intArrayAssertion().containsExactly(1);
@@ -659,7 +659,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly(Arrays.asList(1, 2));
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(Arrays.asList(1, 2, 3, 4));
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(Arrays.asList(1, 3, 2, 4));
-        initialize(Raw.intArrayAssertion(), new int[0]).containsExactly(new ArrayList<Integer>());
+        initialize(Raw.intArrayAssertion(), new int[]{}).containsExactly(new ArrayList<Integer>());
 
         try {
             Raw.intArrayAssertion().containsExactly(new ArrayList<Integer>());
@@ -742,7 +742,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder(1, 2);
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactlyInOrder(1, 2, 3, 4);
-        initialize(Raw.intArrayAssertion(), new int[0]).containsExactlyInOrder();
+        initialize(Raw.intArrayAssertion(), new int[]{}).containsExactlyInOrder();
 
         try {
             Raw.intArrayAssertion().containsExactlyInOrder(1);
@@ -831,7 +831,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder(Arrays.asList(1, 2));
         initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList(1, 2, 3, 4));
-        initialize(Raw.intArrayAssertion(), new int[0]).containsExactlyInOrder(new ArrayList<Integer>());
+        initialize(Raw.intArrayAssertion(), new int[]{}).containsExactlyInOrder(new ArrayList<Integer>());
 
         try {
             Raw.intArrayAssertion().containsExactlyInOrder(new ArrayList<Integer>());

@@ -63,7 +63,7 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().canConvert(new short[0])).isTrue();
+        Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().canConvert(new short[]{})).isTrue();
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().canConvert(new short[]{1, 2})).isTrue();
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().canConvert(new short[]{1, 2, 3, 4})).isTrue();
     }
@@ -95,7 +95,7 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new ShortArrayToObjectArrayValueConverter().canConvert(new short[0], new Object());
+        new ShortArrayToObjectArrayValueConverter().canConvert(new short[]{}, new Object());
     }
 
     /**
@@ -145,7 +145,7 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new ShortArrayToObjectArrayValueConverter().convert(new short[0], new Object());
+        new ShortArrayToObjectArrayValueConverter().convert(new short[]{}, new Object());
     }
 
 }

@@ -65,7 +65,7 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
      */
     @Test
     public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[0])).isTrue();
+        Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{})).isTrue();
         Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{true, false})).isTrue();
         Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{true, true, false, false})).isTrue();
     }
@@ -97,7 +97,7 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new BooleanArrayToListValueConverter().canConvert(new boolean[0], new Object());
+        new BooleanArrayToListValueConverter().canConvert(new boolean[]{}, new Object());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws ConversionException {
-        new BooleanArrayToListValueConverter().convert(new boolean[0], new Object());
+        new BooleanArrayToListValueConverter().convert(new boolean[]{}, new Object());
     }
 
 }

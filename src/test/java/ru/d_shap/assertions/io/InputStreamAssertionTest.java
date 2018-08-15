@@ -559,7 +559,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isNextBytesEqualTo((byte) 1, (byte) 2);
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNextBytesEqualTo((byte) 1, (byte) 2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
@@ -630,13 +630,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(new int[0]);
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(new int[]{});
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isNextBytesEqualTo(new int[0]);
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isNextBytesEqualTo(new int[]{});
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -654,7 +654,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isNextBytesEqualTo(1, 2);
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNextBytesEqualTo(1, 2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
@@ -749,7 +749,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isNextBytesEqualTo(Arrays.asList((byte) 1, (byte) 2));
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNextBytesEqualTo(Arrays.asList((byte) 1, (byte) 2));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[]>");
@@ -775,7 +775,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void isAllBytesEqualToArrayByteTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isAllBytesEqualTo((byte) 1, (byte) 2, (byte) 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isAllBytesEqualTo((byte) 0, (byte) 0, (byte) 0);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isAllBytesEqualTo();
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isAllBytesEqualTo();
 
         try {
             Raw.inputStreamAssertion().isAllBytesEqualTo((byte) 1);
@@ -858,7 +858,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void isAllBytesEqualToArrayIntTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isAllBytesEqualTo(1, 2, 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isAllBytesEqualTo(0, 0, 0);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isAllBytesEqualTo(new int[0]);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isAllBytesEqualTo(new int[]{});
 
         try {
             Raw.inputStreamAssertion().isAllBytesEqualTo(1);
@@ -941,7 +941,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void isAllBytesEqualToIterableTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isAllBytesEqualTo(Arrays.asList((byte) 1, (byte) 2, (byte) 3));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isAllBytesEqualTo(Arrays.asList((byte) 0, (byte) 0, (byte) 0));
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).isAllBytesEqualTo(new ArrayList<Byte>());
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isAllBytesEqualTo(new ArrayList<Byte>());
 
         try {
             Raw.inputStreamAssertion().isAllBytesEqualTo(new ArrayList<Byte>());
@@ -1024,7 +1024,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void toAvailableTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toAvailable().isEqualTo(2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toAvailable().isEqualTo(5);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toAvailable().isEqualTo(0);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toAvailable().isEqualTo(0);
 
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais).toAvailable().isEqualTo(3);
@@ -1088,7 +1088,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void toAvailableMatcherTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toAvailable(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toAvailable(Matchers.equalTo(5));
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toAvailable(Matchers.equalTo(0));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toAvailable(Matchers.equalTo(0));
 
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais).toAvailable(Matchers.equalTo(3));
@@ -1152,7 +1152,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void hasAvailableTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).hasAvailable(2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).hasAvailable(5);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).hasAvailable(0);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).hasAvailable(0);
 
         ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais).hasAvailable(3);
@@ -1216,7 +1216,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void toLengthTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toLength().isEqualTo(2L);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toLength().isEqualTo(5L);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toLength().isEqualTo(0L);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toLength().isEqualTo(0L);
 
         ByteArrayInputStream bais1 = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais1).toLength().isEqualTo(3L);
@@ -1304,7 +1304,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void toLengthMatcherTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).toLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).toLength(Matchers.equalTo(5L));
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).toLength(Matchers.equalTo(0L));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toLength(Matchers.equalTo(0L));
 
         ByteArrayInputStream bais1 = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais1).toLength(Matchers.equalTo(3L));
@@ -1392,7 +1392,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2})).hasLength(2L);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0, 0, 0})).hasLength(5L);
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[0])).hasLength(0L);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).hasLength(0L);
 
         ByteArrayInputStream bais1 = new ByteArrayInputStream(new byte[]{1, 2, 3});
         initialize(Raw.inputStreamAssertion(), bais1).hasLength(3L);
