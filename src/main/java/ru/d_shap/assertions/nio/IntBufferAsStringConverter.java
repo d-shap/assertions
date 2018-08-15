@@ -22,7 +22,7 @@ package ru.d_shap.assertions.nio;
 import java.nio.IntBuffer;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value to string converter for the int buffer.
@@ -44,7 +44,7 @@ public final class IntBufferAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConvertionException {
+    protected String asString(final Object value) throws ConversionException {
         checkValueClass(value);
         return getValueAsString(value, int[].class, false);
     }

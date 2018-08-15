@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Set;
 
 import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value converter from the set to the list.
@@ -51,14 +51,14 @@ public final class SetToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         return new ArrayList<>((Set<?>) value);

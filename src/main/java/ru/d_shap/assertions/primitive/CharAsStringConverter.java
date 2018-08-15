@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.primitive;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value to string converter for the char.
@@ -42,7 +42,7 @@ public final class CharAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConvertionException {
+    protected String asString(final Object value) throws ConversionException {
         checkValueClass(value);
         int intValue = (char) value;
         char charValue = (char) value;

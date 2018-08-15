@@ -22,7 +22,7 @@ package ru.d_shap.assertions.collection;
 import java.util.Collection;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value to string converter for the collection.
@@ -44,7 +44,7 @@ public final class CollectionAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConvertionException {
+    protected String asString(final Object value) throws ConversionException {
         checkValueClass(value);
         StringBuilder result = new StringBuilder();
         result.append('[');

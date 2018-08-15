@@ -210,7 +210,7 @@ public abstract class BaseAssertion<T> {
     protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
         try {
             return ValueConverter.convert(value, targetClass, arguments);
-        } catch (ConvertionException ex) {
+        } catch (ConversionException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
     }

@@ -77,7 +77,7 @@ final class FailDescriptionValues {
         _expected2 = expectedTo;
     }
 
-    void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_valueClass != null) {
             addExpectedEntry(failDescriptionEntries);
             addExpected2Entry(failDescriptionEntries);
@@ -87,7 +87,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected1Defined) {
             String expected = getValueMessage(_expected1, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
@@ -95,7 +95,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected2Defined) {
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_EXPECTED, new Object[]{expected}, false);
@@ -103,7 +103,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && !_expected1Defined && !_expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(VALUE_ACTUAL, new Object[]{actual}, false);
@@ -111,7 +111,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && _expected1Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _valueClass);
@@ -120,7 +120,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConvertionException {
+    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && _expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
@@ -129,12 +129,12 @@ final class FailDescriptionValues {
         }
     }
 
-    private String getValueMessage(final Object object, final Class<?> valueClass) throws ConvertionException {
+    private String getValueMessage(final Object object, final Class<?> valueClass) throws ConversionException {
         String objectStr = AsStringConverter.asString(object, valueClass);
         return "<" + objectStr + ">";
     }
 
-    private String getValueMessage(final Object objectFrom, final Object objectTo, final Class<?> valueClass) throws ConvertionException {
+    private String getValueMessage(final Object objectFrom, final Object objectTo, final Class<?> valueClass) throws ConversionException {
         String objectFromStr = AsStringConverter.asString(objectFrom, valueClass);
         String objectToStr = AsStringConverter.asString(objectTo, valueClass);
         return "<" + objectFromStr + ":" + objectToStr + ">";

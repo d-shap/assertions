@@ -24,7 +24,7 @@ package ru.d_shap.assertions;
  *
  * @author Dmitry Shapovalov
  */
-public final class ConvertionException extends Exception {
+public final class ConversionException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public final class ConvertionException extends Exception {
      *
      * @param cause the cause of the exception.
      */
-    public ConvertionException(final Throwable cause) {
+    public ConversionException(final Throwable cause) {
         super(cause);
     }
 

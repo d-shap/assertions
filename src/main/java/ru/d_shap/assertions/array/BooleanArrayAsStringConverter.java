@@ -22,7 +22,7 @@ package ru.d_shap.assertions.array;
 import java.util.List;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value to string converter for the boolean array.
@@ -44,7 +44,7 @@ public final class BooleanArrayAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConvertionException {
+    protected String asString(final Object value) throws ConversionException {
         checkValueClass(value);
         return getValueAsString(value, List.class);
     }

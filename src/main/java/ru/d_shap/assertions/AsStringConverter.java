@@ -93,7 +93,7 @@ final class AsStringConverter {
         CONVERTERS.add(0, asStringConverter);
     }
 
-    static String asString(final Object value) throws ConvertionException {
+    static String asString(final Object value) throws ConversionException {
         if (value == null) {
             return null;
         }
@@ -106,7 +106,7 @@ final class AsStringConverter {
         return value.toString();
     }
 
-    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
+    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
         return asString(convertedValue);
     }

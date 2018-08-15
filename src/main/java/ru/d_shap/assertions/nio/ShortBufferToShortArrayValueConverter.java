@@ -22,7 +22,7 @@ package ru.d_shap.assertions.nio;
 import java.nio.ShortBuffer;
 
 import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value converter from the short buffer to the short array.
@@ -49,7 +49,7 @@ public final class ShortBufferToShortArrayValueConverter extends BaseValueConver
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(1, arguments);
         checkArgumentClass(arguments[0], Boolean.class);
@@ -57,7 +57,7 @@ public final class ShortBufferToShortArrayValueConverter extends BaseValueConver
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(1, arguments);
         checkArgumentClass(arguments[0], Boolean.class);

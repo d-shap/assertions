@@ -137,7 +137,7 @@ public final class AssertionErrorBuilder {
             String fullMessage = failDescription.getFullMessage();
             Throwable throwable = getThrowable(_throwable);
             return new AssertionError(fullMessage, throwable);
-        } catch (ConvertionException ex) {
+        } catch (ConversionException ex) {
             String fullMessage = new FailDescription(_failDescription).getFullMessage();
             Throwable throwable = getThrowable(ex);
             return new AssertionError(fullMessage, throwable);
@@ -145,7 +145,7 @@ public final class AssertionErrorBuilder {
     }
 
     private Throwable getThrowable(final Throwable throwable) {
-        if (throwable instanceof ConvertionException) {
+        if (throwable instanceof ConversionException) {
             return throwable.getCause();
         } else {
             return throwable;

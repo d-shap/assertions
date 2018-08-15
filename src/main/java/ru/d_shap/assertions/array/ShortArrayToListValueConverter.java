@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value converter from the short array to the list.
@@ -50,14 +50,14 @@ public final class ShortArrayToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         List<Short> result = new ArrayList<>(((short[]) value).length);

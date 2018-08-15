@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.array;
 
 import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value converter from the byte array to the object array.
@@ -47,14 +47,14 @@ public final class ByteArrayToObjectArrayValueConverter extends BaseValueConvert
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(0, arguments);
         Byte[] result = new Byte[((byte[]) value).length];

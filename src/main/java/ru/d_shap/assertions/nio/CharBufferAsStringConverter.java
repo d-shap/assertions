@@ -22,7 +22,7 @@ package ru.d_shap.assertions.nio;
 import java.nio.CharBuffer;
 
 import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value to string converter for the char buffer.
@@ -44,7 +44,7 @@ public final class CharBufferAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConvertionException {
+    protected String asString(final Object value) throws ConversionException {
         checkValueClass(value);
         return getValueAsString(value, char[].class, false);
     }

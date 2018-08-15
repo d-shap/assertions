@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Value converter from the input stream to the byte array.
@@ -51,7 +51,7 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConvertionException {
+    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(1, arguments);
         checkArgumentClass(arguments[0], Integer.class);
@@ -59,7 +59,7 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConvertionException {
+    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
         checkValueClass(value);
         checkArgumentValueCount(1, arguments);
         checkArgumentClass(arguments[0], Integer.class);
@@ -76,7 +76,7 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
             }
             return result.toByteArray();
         } catch (IOException ex) {
-            throw new ConvertionException(ex);
+            throw new ConversionException(ex);
         }
     }
 

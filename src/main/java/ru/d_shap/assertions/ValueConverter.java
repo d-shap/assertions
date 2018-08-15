@@ -125,7 +125,7 @@ final class ValueConverter {
     }
 
     @SuppressWarnings("unchecked")
-    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConvertionException {
+    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         if (value == null) {
             return null;
         }
