@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link ShortBufferAsStringConverter}.
@@ -52,10 +52,10 @@ public final class ShortBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link ShortBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{}))).isEqualTo("[]");
 
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}))).isEqualTo("[1]");
@@ -78,20 +78,20 @@ public final class ShortBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link ShortBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new ShortBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link ShortBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new ShortBufferAsStringConverter().asString(new Object());
     }
 

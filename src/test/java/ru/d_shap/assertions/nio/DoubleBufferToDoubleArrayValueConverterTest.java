@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -61,10 +61,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConvertionException {
+    public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), false)).isTrue();
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), true)).isTrue();
@@ -105,70 +105,70 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConvertionException {
+    public void canConvertNullValueFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(null);
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConvertionException {
+    public void canConvertWrongValueTypeFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}));
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), new Object(), new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConvertionException {
+    public void canConvertNullArgumentFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), (Object) null);
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConvertionException {
+    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertTest() throws ConvertionException {
+    public void convertTest() throws ConversionException {
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false), Raw.doubleArrayAssertion()).isEmpty();
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).as(Raw.doubleArrayAssertion()).isEmpty();
@@ -277,60 +277,60 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConvertionException {
+    public void convertNullValueFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(null);
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConvertionException {
+    public void convertWrongValueTypeFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConvertionException {
+    public void convertWrongArgumentCount0FailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}));
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConvertionException {
+    public void convertWrongArgumentCount2FailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), new Object(), new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullArgumentFailTest() throws ConvertionException {
+    public void convertNullArgumentFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), (Object) null);
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConvertionException {
+    public void convertWrongArgumentTypeFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), new Object());
     }
 

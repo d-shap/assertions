@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link CharBufferAsStringConverter}.
@@ -52,10 +52,10 @@ public final class CharBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link CharBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{}))).isEqualTo("[]");
 
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1'}))).isEqualTo("[1(49)]");
@@ -78,20 +78,20 @@ public final class CharBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link CharBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new CharBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link CharBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new CharBufferAsStringConverter().asString(new Object());
     }
 

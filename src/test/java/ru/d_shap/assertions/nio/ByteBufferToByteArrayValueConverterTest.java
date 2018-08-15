@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -61,10 +61,10 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConvertionException {
+    public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}), false)).isTrue();
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}), true)).isTrue();
@@ -105,70 +105,70 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConvertionException {
+    public void canConvertNullValueFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(null);
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConvertionException {
+    public void canConvertWrongValueTypeFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}));
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}), new Object(), new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConvertionException {
+    public void canConvertNullArgumentFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}), (Object) null);
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConvertionException {
+    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().canConvert(createByteBuffer(new byte[]{}), new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertTest() throws ConvertionException {
+    public void convertTest() throws ConversionException {
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false), Raw.byteArrayAssertion()).isEmpty();
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).as(Raw.byteArrayAssertion()).isEmpty();
@@ -277,60 +277,60 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConvertionException {
+    public void convertNullValueFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConvertionException {
+    public void convertWrongValueTypeFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConvertionException {
+    public void convertWrongArgumentCount0FailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}));
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConvertionException {
+    public void convertWrongArgumentCount2FailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), new Object(), new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullArgumentFailTest() throws ConvertionException {
+    public void convertNullArgumentFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), (Object) null);
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConvertionException {
+    public void convertWrongArgumentTypeFailTest() throws ConversionException {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), new Object());
     }
 

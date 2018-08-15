@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 
 /**
  * Tests for {@link IntBufferAsStringConverter}.
@@ -52,10 +52,10 @@ public final class IntBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void asStringTest() throws ConvertionException {
+    public void asStringTest() throws ConversionException {
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{}))).isEqualTo("[]");
 
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1}))).isEqualTo("[1]");
@@ -78,20 +78,20 @@ public final class IntBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConvertionException {
+    public void asStringNullValueFailTest() throws ConversionException {
         new IntBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConvertionException {
+    public void asStringWrongValueTypeFailTest() throws ConversionException {
         new IntBufferAsStringConverter().asString(new Object());
     }
 
