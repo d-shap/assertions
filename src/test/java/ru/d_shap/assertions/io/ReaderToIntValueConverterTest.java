@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConvertionException;
+import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -63,10 +63,10 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConvertionException {
+    public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new ReaderToIntValueConverter().canConvert(new StringReader(""))).isTrue();
         Assertions.assertThat(new ReaderToIntValueConverter().canConvert(new StringReader("1"))).isTrue();
         Assertions.assertThat(new ReaderToIntValueConverter().canConvert(new StringReader("12"))).isTrue();
@@ -78,40 +78,40 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConvertionException {
+    public void canConvertNullValueFailTest() throws ConversionException {
         new ReaderToIntValueConverter().canConvert(null);
     }
 
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConvertionException {
+    public void canConvertWrongValueTypeFailTest() throws ConversionException {
         new ReaderToIntValueConverter().canConvert(new Object());
     }
 
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConvertionException {
+    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
         new ReaderToIntValueConverter().canConvert(new StringReader(""), new Object());
     }
 
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertTest() throws ConvertionException {
+    public void convertTest() throws ConversionException {
         Assertions.assertThat(new ReaderToIntValueConverter().convert(new StringReader(""))).isInstanceOf(Integer.class);
         Assertions.assertThat(new ReaderToIntValueConverter().convert(new StringReader("")), Raw.intAssertion()).isLessThan(0);
         Assertions.assertThat(new ReaderToIntValueConverter().convert(new StringReader(""))).as(Raw.intAssertion()).isLessThan(0);
@@ -131,7 +131,7 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
         try {
             Assertions.assertThat(new ReaderToIntValueConverter().convert(createErrorReader()));
             Assertions.fail("ReaderToIntValueConverter test fail");
-        } catch (ConvertionException ex) {
+        } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
@@ -140,30 +140,30 @@ public final class ReaderToIntValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConvertionException {
+    public void convertNullValueFailTest() throws ConversionException {
         new ReaderToIntValueConverter().convert(null);
     }
 
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConvertionException {
+    public void convertWrongValueTypeFailTest() throws ConversionException {
         new ReaderToIntValueConverter().convert(new Object());
     }
 
     /**
      * {@link ReaderToIntValueConverter} class test.
      *
-     * @throws ConvertionException wrapper for exceptions, that can occur during conversion.
+     * @throws ru.d_shap.assertions.ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConvertionException {
+    public void convertWrongArgumentCountFailTest() throws ConversionException {
         new ReaderToIntValueConverter().convert(new StringReader(""), new Object());
     }
 
