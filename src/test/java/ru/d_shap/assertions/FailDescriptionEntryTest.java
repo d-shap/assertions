@@ -95,7 +95,7 @@ public final class FailDescriptionEntryTest extends AssertionTest {
      * {@link FailDescriptionEntry} class test.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void convertArgumentToStringTest() {
+    public void convertArgumentToStringFailTest() {
         getFormattedMessages("{0,number,integer}", new Object[]{1}, true);
     }
 

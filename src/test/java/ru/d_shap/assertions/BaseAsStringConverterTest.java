@@ -50,7 +50,7 @@ public final class BaseAsStringConverterTest extends AssertionTest {
      * {@link BaseAsStringConverter} class test.
      */
     @Test(expected = NullPointerException.class)
-    public void checkValueClassNullValueTest() {
+    public void checkValueClassNullValueFailTest() {
         createAsStringConverter().checkValueClass(null);
     }
 
@@ -58,7 +58,7 @@ public final class BaseAsStringConverterTest extends AssertionTest {
      * {@link BaseAsStringConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void checkValueClassWrongValueTypeTest() {
+    public void checkValueClassWrongValueTypeFailTest() {
         createAsStringConverter().checkValueClass(new Object());
     }
 
