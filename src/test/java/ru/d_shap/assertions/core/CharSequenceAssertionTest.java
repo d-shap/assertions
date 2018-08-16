@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.core;
 
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
@@ -3985,6 +3986,30 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.charSequenceAssertion(), null).toLength(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toLength(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "vAlUe").toLength(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "vAlUe", "Message").toLength(null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.charSequenceAssertion(), "vAlUe").toLength(Matchers.equalTo(6));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -4271,6 +4296,30 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.charSequenceAssertion(), null).toTokens((Matcher<Iterable<String>>) null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), null, "Message").toTokens((Matcher<Iterable<String>>) null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens((Matcher<Iterable<String>>) null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1 value2 value3", "Message").toTokens((Matcher<Iterable<String>>) null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.<String>iterableWithSize(4));
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -4330,6 +4379,30 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, Matchers.hasItems(""));
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|", null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -4396,6 +4469,30 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, false, Matchers.hasItems(""));
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(null, false, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens(null, false, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", false, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "value1|value2|value3", "Message").toTokens("|", false, null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
