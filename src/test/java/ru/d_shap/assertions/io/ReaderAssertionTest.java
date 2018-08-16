@@ -371,6 +371,30 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.readerAssertion(), null).toCharArray(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toCharArray(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.readerAssertion(), createErrorReader()).toCharArray(Matchers.arrayContaining((char) 0));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
@@ -459,6 +483,30 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(0, null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(0, null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(1, null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(1, null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), createErrorReader()).toCharArray(3, Matchers.arrayContaining((char) 0));
@@ -1173,6 +1221,30 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).toLength(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").toLength(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).toLength(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toLength(null);
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
             initialize(Raw.readerAssertion(), createErrorReader()).toLength(Matchers.equalTo(0L));
