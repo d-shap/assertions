@@ -61,7 +61,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -71,7 +71,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -82,7 +82,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
         }
     }
 
@@ -95,7 +95,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS).addActual().addExpected(expected).build();
         }
     }
 
@@ -108,7 +108,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
     }
 

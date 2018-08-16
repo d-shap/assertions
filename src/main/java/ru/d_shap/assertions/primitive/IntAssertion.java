@@ -50,7 +50,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() == expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -76,7 +76,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -89,7 +89,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -102,7 +102,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -115,7 +115,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -129,7 +129,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -143,7 +143,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 

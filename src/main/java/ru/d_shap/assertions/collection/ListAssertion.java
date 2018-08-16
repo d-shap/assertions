@@ -62,7 +62,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
         }
     }
 
@@ -72,7 +72,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     public final void isNullOrEmpty() {
         checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL_OR_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -83,7 +83,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_EMPTY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
         }
     }
 
@@ -110,7 +110,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS).addActual().addExpected(expected).build();
         }
     }
 
@@ -123,7 +123,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
     }
 
@@ -161,7 +161,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
             if (idx >= 0) {
                 actualListCopy.remove(idx);
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ALL).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL).addActual().addExpected(expected).build();
             }
         }
     }
@@ -200,7 +200,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
             if (idx >= 0) {
                 actualListCopy = actualListCopy.subList(idx + 1, actualListCopy.size());
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
     }
@@ -242,7 +242,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
             }
         }
         if (!actualListCopy.isEmpty() || elementCount != expected.size()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
         }
     }
 
@@ -279,11 +279,11 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
             if (idx == 0) {
                 actualListCopy.remove(idx);
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
         if (!actualListCopy.isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
         }
     }
 
@@ -325,7 +325,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
             }
         }
         if (!found) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_ANY).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ANY).addActual().addExpected(expected).build();
         }
     }
 
@@ -361,7 +361,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         for (Object expectedItem : expected) {
             int idx = actualListCopy.indexOf(expectedItem);
             if (idx >= 0) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.CONTAINS_NONE).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
         }
     }

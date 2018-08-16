@@ -50,7 +50,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() != expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() == expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -76,7 +76,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -89,7 +89,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -102,7 +102,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -115,7 +115,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -129,7 +129,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -143,7 +143,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -154,7 +154,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isAlphabetic(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_ALPHABETIC).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_ALPHABETIC).addActual().build();
         }
     }
 
@@ -165,7 +165,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isAlphabetic(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_ALPHABETIC).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_ALPHABETIC).addActual().build();
         }
     }
 
@@ -176,7 +176,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isLetter(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LETTER).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LETTER).addActual().build();
         }
     }
 
@@ -187,7 +187,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isLetter(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_LETTER).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_LETTER).addActual().build();
         }
     }
 
@@ -198,7 +198,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isDigit(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIGIT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIGIT).addActual().build();
         }
     }
 
@@ -209,7 +209,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isDigit(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_DIGIT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIGIT).addActual().build();
         }
     }
 
@@ -220,7 +220,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isWhitespace(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_WHITESPACE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_WHITESPACE).addActual().build();
         }
     }
 
@@ -231,7 +231,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isWhitespace(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_WHITESPACE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_WHITESPACE).addActual().build();
         }
     }
 
@@ -242,7 +242,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isDigit(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LETTER_OR_DIGIT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LETTER_OR_DIGIT).addActual().build();
         }
     }
 
@@ -253,7 +253,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isWhitespace(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LETTER_OR_WHITESPACE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LETTER_OR_WHITESPACE).addActual().build();
         }
     }
 
@@ -264,7 +264,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isISOControl(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_CONTROL_SYMBOL).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_CONTROL_SYMBOL).addActual().build();
         }
     }
 
@@ -275,7 +275,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isISOControl(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_CONTROL_SYMBOL).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_CONTROL_SYMBOL).addActual().build();
         }
     }
 
@@ -286,7 +286,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isLowerCase(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_LOWER_CASE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LOWER_CASE).addActual().build();
         }
     }
 
@@ -297,7 +297,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isLowerCase(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_LOWER_CASE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_LOWER_CASE).addActual().build();
         }
     }
 
@@ -308,7 +308,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (!Character.isUpperCase(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_UPPER_CASE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_UPPER_CASE).addActual().build();
         }
     }
 
@@ -319,7 +319,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkInitialized();
         checkActualIsNotNull();
         if (Character.isUpperCase(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_UPPER_CASE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_UPPER_CASE).addActual().build();
         }
     }
 

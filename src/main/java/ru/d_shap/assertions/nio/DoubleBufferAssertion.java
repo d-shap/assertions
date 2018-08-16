@@ -565,7 +565,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIRECT).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIRECT).build();
         }
     }
 
@@ -576,7 +576,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isDirect()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_DIRECT).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIRECT).build();
         }
     }
 
@@ -587,7 +587,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_READ_ONLY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_READ_ONLY).build();
         }
     }
 
@@ -598,7 +598,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NOT_READ_ONLY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_READ_ONLY).build();
         }
     }
 
