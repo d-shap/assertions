@@ -42,7 +42,9 @@ public final class MessagesTest extends AssertionTest {
     public void constructorTest() {
         Assertions.assertThat(Messages.class).hasOnePrivateConstructor();
         Assertions.assertThat(Messages.Check.class).hasOnePrivateConstructor();
-        Assertions.assertThat(Messages.Fail.class).hasOnePrivateConstructor();
+        Assertions.assertThat(Messages.AssertionFail.class).hasOnePrivateConstructor();
+        Assertions.assertThat(Messages.ArgumentFail.class).hasOnePrivateConstructor();
+        Assertions.assertThat(Messages.ActualFail.class).hasOnePrivateConstructor();
     }
 
 }
