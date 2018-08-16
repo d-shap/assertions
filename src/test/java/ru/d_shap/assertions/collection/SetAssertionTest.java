@@ -1584,6 +1584,30 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.<String>setAssertion(), null).toSize(null);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), null, "Message").toSize(null);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(null);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3"), "Message").toSize(null);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.equalTo(4));
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
