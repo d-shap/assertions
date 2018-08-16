@@ -77,13 +77,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.objectAssertion(), "value").isEqualTo(null);
+            initialize(Raw.objectAssertion(), new Object()).isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.objectAssertion(), "value", "Message").isEqualTo(null);
+            initialize(Raw.objectAssertion(), new Object(), "Message").isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -141,13 +141,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.objectAssertion(), "value").isNotEqualTo(null);
+            initialize(Raw.objectAssertion(), new Object()).isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.objectAssertion(), "value", "Message").isNotEqualTo(null);
+            initialize(Raw.objectAssertion(), new Object(), "Message").isNotEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");

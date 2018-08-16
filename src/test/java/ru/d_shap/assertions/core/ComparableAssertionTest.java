@@ -101,13 +101,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -167,13 +167,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isNotEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isNotEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isNotEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isNotEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -232,13 +232,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isGreaterThan(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isGreaterThan(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isGreaterThan(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isGreaterThan(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -303,13 +303,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isGreaterThanOrEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isGreaterThanOrEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isGreaterThanOrEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isGreaterThanOrEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -368,13 +368,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isLessThan(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isLessThan(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isLessThan(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isLessThan(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -439,13 +439,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isLessThanOrEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isLessThanOrEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isLessThanOrEqualTo(null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isLessThanOrEqualTo(null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -516,25 +516,25 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isInRange(null, 10);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isInRange(null, 10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isInRange(null, 10);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isInRange(null, 10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isInRange(10, null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isInRange(10, null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isInRange(10, null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isInRange(10, null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -617,25 +617,25 @@ public final class ComparableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isNotInRange(null, 10);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isNotInRange(null, 10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isNotInRange(null, 10);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isNotInRange(null, 10);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10).isNotInRange(10, null);
+            initialize(Raw.<Integer>comparableAssertion(), 0).isNotInRange(10, null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.<Integer>comparableAssertion(), 10, "Message").isNotInRange(10, null);
+            initialize(Raw.<Integer>comparableAssertion(), 0, "Message").isNotInRange(10, null);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
