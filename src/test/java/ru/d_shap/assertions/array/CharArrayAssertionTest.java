@@ -289,25 +289,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll();
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll();
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -366,25 +366,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -455,25 +455,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAll(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -531,25 +531,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder();
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder();
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -613,25 +613,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -707,25 +707,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -791,13 +791,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactly((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -875,13 +875,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactly((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -971,13 +971,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactly((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1054,13 +1054,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactlyInOrder((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1143,13 +1143,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactlyInOrder((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1244,13 +1244,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsExactlyInOrder((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1334,25 +1334,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny();
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny();
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1412,25 +1412,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1502,25 +1502,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsAny(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1578,25 +1578,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone((char[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((char[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone();
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone();
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone();
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1655,25 +1655,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone((int[]) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((int[]) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone(new int[]{});
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone(new int[]{});
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1731,25 +1731,25 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone((Iterable<Character>) null);
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((Iterable<Character>) null);
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}).containsNone(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone(new ArrayList<Character>());
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone(new ArrayList<Character>());
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");

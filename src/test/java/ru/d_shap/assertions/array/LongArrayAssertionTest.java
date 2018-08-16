@@ -289,25 +289,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAll((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAll((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAll((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll();
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAll();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAll();
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAll();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -366,25 +366,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAll((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAll((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAll((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAll(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAll(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAll(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -442,25 +442,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAllInOrder((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAllInOrder((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAllInOrder((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder();
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAllInOrder();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAllInOrder();
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAllInOrder();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -524,25 +524,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -608,13 +608,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsExactly((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsExactly((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -692,13 +692,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsExactly((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsExactly((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -775,13 +775,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsExactlyInOrder((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsExactlyInOrder((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -864,13 +864,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -954,25 +954,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAny((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAny((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAny((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAny((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAny();
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAny();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAny();
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAny();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1032,25 +1032,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAny((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAny((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAny((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAny((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAny(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsAny(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsAny(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsAny(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1108,25 +1108,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsNone((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsNone((long[]) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsNone((long[]) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone();
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsNone();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsNone();
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsNone();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1184,25 +1184,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsNone((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsNone((Iterable<Long>) null);
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsNone((Iterable<Long>) null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}).containsNone(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").containsNone(new ArrayList<Long>());
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").containsNone(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");

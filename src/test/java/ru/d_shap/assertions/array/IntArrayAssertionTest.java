@@ -289,25 +289,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAll((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAll((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAll((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAll((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAll();
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAll();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAll();
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAll();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -366,25 +366,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAll((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAll((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAll((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAll((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAll(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAll(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAll(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAll(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -442,25 +442,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAllInOrder((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAllInOrder((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAllInOrder((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAllInOrder((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAllInOrder();
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAllInOrder();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAllInOrder();
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAllInOrder();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -524,25 +524,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAllInOrder((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAllInOrder((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAllInOrder((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAllInOrder((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAllInOrder(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -608,13 +608,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsExactly((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsExactly((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsExactly((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -692,13 +692,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsExactly((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsExactly((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsExactly((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -775,13 +775,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsExactlyInOrder((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsExactlyInOrder((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsExactlyInOrder((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -864,13 +864,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsExactlyInOrder((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsExactlyInOrder((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsExactlyInOrder((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -954,25 +954,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAny((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAny((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAny((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAny((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAny();
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAny();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAny();
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAny();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1032,25 +1032,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAny((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAny((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAny((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAny((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsAny(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsAny(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsAny(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsAny(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1108,25 +1108,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsNone((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsNone((int[]) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsNone((int[]) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone();
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsNone();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsNone();
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsNone();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1184,25 +1184,25 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsNone((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsNone((Iterable<Integer>) null);
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsNone((Iterable<Integer>) null);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsNone(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}).containsNone(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").containsNone(new ArrayList<Integer>());
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").containsNone(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
