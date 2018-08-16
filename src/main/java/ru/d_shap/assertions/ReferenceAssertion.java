@@ -50,7 +50,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final void isNull() {
         checkInitialized();
         if (getActual() != null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_NULL).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL).addActual().build();
         }
     }
 
@@ -72,7 +72,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() != expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -86,7 +86,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual() == expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -265,7 +265,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             return initializeAssertion(Raw.objectAssertion(), getFieldValue(fieldName), Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
@@ -301,7 +301,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.CONTAINS_FIELD).addExpected(fieldName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
