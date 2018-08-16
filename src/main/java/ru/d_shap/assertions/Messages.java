@@ -31,7 +31,7 @@ public final class Messages {
     }
 
     /**
-     * Check messages for all assertions.
+     * Check messages.
      *
      * @author Dmitry Shapovalov
      */
@@ -102,17 +102,30 @@ public final class Messages {
     }
 
     /**
-     * Fail messages for all assertions.
+     * Assertion fail messages.
      *
      * @author Dmitry Shapovalov
      */
-    public static final class Fail {
+    public static final class AssertionFail {
 
         public static final String ASSERTION_IS_INITIALIZED = "Assertion should be initialized.";
 
         public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should not be initialized.";
 
         public static final String ASSERTION_MATCHES = "Actual value should match the assertion.";
+
+        private AssertionFail() {
+            super();
+        }
+
+    }
+
+    /**
+     * Argument fail messages.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class ArgumentFail {
 
         public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null.";
 
@@ -123,6 +136,19 @@ public final class Messages {
         public static final String RESULT_IS_ALWAYS_FALSE = "The result is always false.";
 
         public static final String ARGUMENT_IS_VALID = "Argument should be valid.";
+
+        private ArgumentFail() {
+            super();
+        }
+
+    }
+
+    /**
+     * Actual fail messages.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class ActualFail {
 
         public static final String IS_TRUE = "Actual value should be true.";
 
@@ -294,7 +320,7 @@ public final class Messages {
 
         public static final String CONTAINS_FIELD = "Actual value should contain the expected field.";
 
-        private Fail() {
+        private ActualFail() {
             super();
         }
 
