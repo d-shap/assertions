@@ -1322,6 +1322,30 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.booleanArrayAssertion(), null).toLength(null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{}).toLength(null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.booleanArrayAssertion(), new boolean[]{}, "Message").toLength(null);
+            Assertions.fail("BooleanArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).toLength(Matchers.equalTo(4));
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {

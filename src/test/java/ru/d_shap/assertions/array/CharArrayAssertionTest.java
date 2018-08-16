@@ -1857,6 +1857,30 @@ public final class CharArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.charArrayAssertion(), null).toLength(null);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.charArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.charArrayAssertion(), new char[]{}).toLength(null);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.charArrayAssertion(), new char[]{}, "Message").toLength(null);
+            Assertions.fail("CharArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toLength(Matchers.equalTo(4));
             Assertions.fail("CharArrayAssertion test fail");
         } catch (AssertionError ex) {

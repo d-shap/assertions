@@ -1857,6 +1857,30 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.shortArrayAssertion(), null).toLength(null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{}).toLength(null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{}, "Message").toLength(null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toLength(Matchers.equalTo(4));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {

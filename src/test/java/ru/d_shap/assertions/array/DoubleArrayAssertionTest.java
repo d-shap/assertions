@@ -1310,6 +1310,30 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.doubleArrayAssertion(), null).toLength(null);
+            Assertions.fail("DoubleArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("DoubleArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleArrayAssertion(), new double[]{}).toLength(null);
+            Assertions.fail("DoubleArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.doubleArrayAssertion(), new double[]{}, "Message").toLength(null);
+            Assertions.fail("DoubleArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toLength(Matchers.equalTo(4));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {

@@ -1438,6 +1438,30 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.objectArrayAssertion(), null).toLength(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new String[]{}).toLength(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.objectArrayAssertion(), new String[]{}, "Message").toLength(null);
+            Assertions.fail("ObjectArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).toLength(Matchers.equalTo(4));
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {

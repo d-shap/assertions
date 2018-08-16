@@ -1310,6 +1310,30 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatArrayAssertion(), null).toLength(null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatArrayAssertion(), new float[]{}).toLength(null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.floatArrayAssertion(), new float[]{}, "Message").toLength(null);
+            Assertions.fail("FloatArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).toLength(Matchers.equalTo(4));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {

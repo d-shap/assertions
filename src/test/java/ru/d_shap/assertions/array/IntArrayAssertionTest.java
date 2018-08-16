@@ -1310,6 +1310,30 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.intArrayAssertion(), null).toLength(null);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{}).toLength(null);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{}, "Message").toLength(null);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toLength(Matchers.equalTo(4));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {

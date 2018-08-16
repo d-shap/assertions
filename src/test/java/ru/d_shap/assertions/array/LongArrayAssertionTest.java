@@ -1310,6 +1310,30 @@ public final class LongArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.longArrayAssertion(), null).toLength(null);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), null, "Message").toLength(null);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{}).toLength(null);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.longArrayAssertion(), new long[]{}, "Message").toLength(null);
+            Assertions.fail("LongArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toLength(Matchers.equalTo(4));
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
