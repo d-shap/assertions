@@ -72,8 +72,7 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addMessage(final Throwable throwable) {
-        addMessage(getThrowable(throwable).toString());
-        return this;
+        return addMessage(getThrowable(throwable).toString());
     }
 
     /**
