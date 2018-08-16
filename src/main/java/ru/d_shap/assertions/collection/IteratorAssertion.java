@@ -357,6 +357,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param matcher the hamcrest matcher.
      */
     public final void toSize(final Matcher<Integer> matcher) {
+        checkInitialized();
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
         toList().toSize(matcher);
     }
 
