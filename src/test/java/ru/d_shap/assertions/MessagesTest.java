@@ -45,6 +45,7 @@ public final class MessagesTest extends AssertionTest {
         Assertions.assertThat(Messages.AssertionFail.class).hasOnePrivateConstructor();
         Assertions.assertThat(Messages.ArgumentFail.class).hasOnePrivateConstructor();
         Assertions.assertThat(Messages.ActualFail.class).hasOnePrivateConstructor();
+        Assertions.assertThat(Messages.Value.class).hasOnePrivateConstructor();
     }
 
 }
