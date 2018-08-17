@@ -28,6 +28,8 @@ public final class Messages {
 
     public static final String SIMPLE_MESSAGE = "{0}";
 
+    public static final String MESSAGE_SEPARATOR = "\n\t";
+
     private Messages() {
         super();
     }
