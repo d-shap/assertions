@@ -328,4 +328,23 @@ public final class Messages {
 
     }
 
+    /**
+     * Value messages.
+     *
+     * @author Dmitry Shapovalov
+     */
+    public static final class Value {
+
+        public static final String VALUE_ACTUAL = "Actual:{0}";
+
+        public static final String VALUE_EXPECTED = "Expected:{0}";
+
+        public static final String VALUE_ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
+
+        private Value() {
+            super();
+        }
+
+    }
+
 }
