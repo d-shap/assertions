@@ -98,7 +98,7 @@ public final class MessageAssertion {
      */
     public ByteAssertion that(final byte actual) {
         ByteAssertion assertion = Raw.byteAssertion();
-        ((BaseAssertion<Byte>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Byte>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -110,7 +110,7 @@ public final class MessageAssertion {
      */
     public ByteAssertion that(final Byte actual) {
         ByteAssertion assertion = Raw.byteAssertion();
-        ((BaseAssertion<Byte>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Byte>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -122,7 +122,7 @@ public final class MessageAssertion {
      */
     public ShortAssertion that(final short actual) {
         ShortAssertion assertion = Raw.shortAssertion();
-        ((BaseAssertion<Short>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Short>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -134,7 +134,7 @@ public final class MessageAssertion {
      */
     public ShortAssertion that(final Short actual) {
         ShortAssertion assertion = Raw.shortAssertion();
-        ((BaseAssertion<Short>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Short>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -146,7 +146,7 @@ public final class MessageAssertion {
      */
     public IntAssertion that(final int actual) {
         IntAssertion assertion = Raw.intAssertion();
-        ((BaseAssertion<Integer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Integer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -158,7 +158,7 @@ public final class MessageAssertion {
      */
     public IntAssertion that(final Integer actual) {
         IntAssertion assertion = Raw.intAssertion();
-        ((BaseAssertion<Integer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Integer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -170,7 +170,7 @@ public final class MessageAssertion {
      */
     public LongAssertion that(final long actual) {
         LongAssertion assertion = Raw.longAssertion();
-        ((BaseAssertion<Long>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Long>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -182,7 +182,7 @@ public final class MessageAssertion {
      */
     public LongAssertion that(final Long actual) {
         LongAssertion assertion = Raw.longAssertion();
-        ((BaseAssertion<Long>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Long>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -194,7 +194,7 @@ public final class MessageAssertion {
      */
     public FloatAssertion that(final float actual) {
         FloatAssertion assertion = Raw.floatAssertion();
-        ((BaseAssertion<Float>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Float>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -206,7 +206,7 @@ public final class MessageAssertion {
      */
     public FloatAssertion that(final Float actual) {
         FloatAssertion assertion = Raw.floatAssertion();
-        ((BaseAssertion<Float>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Float>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -218,7 +218,7 @@ public final class MessageAssertion {
      */
     public DoubleAssertion that(final double actual) {
         DoubleAssertion assertion = Raw.doubleAssertion();
-        ((BaseAssertion<Double>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Double>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -230,7 +230,7 @@ public final class MessageAssertion {
      */
     public DoubleAssertion that(final Double actual) {
         DoubleAssertion assertion = Raw.doubleAssertion();
-        ((BaseAssertion<Double>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Double>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -242,7 +242,7 @@ public final class MessageAssertion {
      */
     public BooleanAssertion that(final boolean actual) {
         BooleanAssertion assertion = Raw.booleanAssertion();
-        ((BaseAssertion<Boolean>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Boolean>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -254,7 +254,7 @@ public final class MessageAssertion {
      */
     public BooleanAssertion that(final Boolean actual) {
         BooleanAssertion assertion = Raw.booleanAssertion();
-        ((BaseAssertion<Boolean>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Boolean>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -266,7 +266,7 @@ public final class MessageAssertion {
      */
     public CharAssertion that(final char actual) {
         CharAssertion assertion = Raw.charAssertion();
-        ((BaseAssertion<Character>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Character>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -278,7 +278,7 @@ public final class MessageAssertion {
      */
     public CharAssertion that(final Character actual) {
         CharAssertion assertion = Raw.charAssertion();
-        ((BaseAssertion<Character>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Character>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -290,7 +290,7 @@ public final class MessageAssertion {
      */
     public ObjectAssertion that(final Object actual) {
         ObjectAssertion assertion = Raw.objectAssertion();
-        ((BaseAssertion<Object>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Object>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -316,7 +316,7 @@ public final class MessageAssertion {
      * @param <U>     the generic type of the actual value.
      */
     public <W, U extends W> void that(final U actual, final Matcher<W> matcher) {
-        HamcrestMatcher.matcherAssertion(actual, matcher, _message);
+        HamcrestMatcher.matcherAssertion(actual, matcher, Messages.SIMPLE_MESSAGE, _message);
     }
 
     /**
@@ -364,7 +364,7 @@ public final class MessageAssertion {
      */
     public ByteArrayAssertion that(final byte[] actual) {
         ByteArrayAssertion assertion = Raw.byteArrayAssertion();
-        ((BaseAssertion<byte[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<byte[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -376,7 +376,7 @@ public final class MessageAssertion {
      */
     public ShortArrayAssertion that(final short[] actual) {
         ShortArrayAssertion assertion = Raw.shortArrayAssertion();
-        ((BaseAssertion<short[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<short[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -388,7 +388,7 @@ public final class MessageAssertion {
      */
     public IntArrayAssertion that(final int[] actual) {
         IntArrayAssertion assertion = Raw.intArrayAssertion();
-        ((BaseAssertion<int[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<int[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -400,7 +400,7 @@ public final class MessageAssertion {
      */
     public LongArrayAssertion that(final long[] actual) {
         LongArrayAssertion assertion = Raw.longArrayAssertion();
-        ((BaseAssertion<long[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<long[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -412,7 +412,7 @@ public final class MessageAssertion {
      */
     public FloatArrayAssertion that(final float[] actual) {
         FloatArrayAssertion assertion = Raw.floatArrayAssertion();
-        ((BaseAssertion<float[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<float[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -424,7 +424,7 @@ public final class MessageAssertion {
      */
     public DoubleArrayAssertion that(final double[] actual) {
         DoubleArrayAssertion assertion = Raw.doubleArrayAssertion();
-        ((BaseAssertion<double[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<double[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -436,7 +436,7 @@ public final class MessageAssertion {
      */
     public BooleanArrayAssertion that(final boolean[] actual) {
         BooleanArrayAssertion assertion = Raw.booleanArrayAssertion();
-        ((BaseAssertion<boolean[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<boolean[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -448,7 +448,7 @@ public final class MessageAssertion {
      */
     public CharArrayAssertion that(final char[] actual) {
         CharArrayAssertion assertion = Raw.charArrayAssertion();
-        ((BaseAssertion<char[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<char[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -461,7 +461,7 @@ public final class MessageAssertion {
      */
     public <E> ObjectArrayAssertion<E> that(final E[] actual) {
         ObjectArrayAssertion<E> assertion = Raw.objectArrayAssertion();
-        ((BaseAssertion<E[]>) assertion).initialize(actual, _message);
+        ((BaseAssertion<E[]>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -473,7 +473,7 @@ public final class MessageAssertion {
      */
     public ClassAssertion that(final Class<?> actual) {
         ClassAssertion assertion = Raw.classAssertion();
-        ((BaseAssertion<Class<?>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Class<?>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -485,7 +485,7 @@ public final class MessageAssertion {
      */
     public CharSequenceAssertion that(final CharSequence actual) {
         CharSequenceAssertion assertion = Raw.charSequenceAssertion();
-        ((BaseAssertion<CharSequence>) assertion).initialize(actual, _message);
+        ((BaseAssertion<CharSequence>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -497,7 +497,7 @@ public final class MessageAssertion {
      */
     public CharSequenceAssertion that(final String actual) {
         CharSequenceAssertion assertion = Raw.charSequenceAssertion();
-        ((BaseAssertion<CharSequence>) assertion).initialize(actual, _message);
+        ((BaseAssertion<CharSequence>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -510,7 +510,7 @@ public final class MessageAssertion {
      */
     public <E> ComparableAssertion<E> that(final Comparable<E> actual) {
         ComparableAssertion<E> assertion = Raw.comparableAssertion();
-        ((BaseAssertion<Comparable<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Comparable<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -523,7 +523,7 @@ public final class MessageAssertion {
      */
     public <E> IterableAssertion<E> that(final Iterable<E> actual) {
         IterableAssertion<E> assertion = Raw.iterableAssertion();
-        ((BaseAssertion<Iterable<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Iterable<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -535,7 +535,7 @@ public final class MessageAssertion {
      */
     public ThrowableAssertion that(final Throwable actual) {
         ThrowableAssertion assertion = Raw.throwableAssertion();
-        ((BaseAssertion<Throwable>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Throwable>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -548,7 +548,7 @@ public final class MessageAssertion {
      */
     public <E> IteratorAssertion<E> that(final Iterator<E> actual) {
         IteratorAssertion<E> assertion = Raw.iteratorAssertion();
-        ((BaseAssertion<Iterator<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Iterator<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -561,7 +561,7 @@ public final class MessageAssertion {
      */
     public <E> ListAssertion<E> that(final List<E> actual) {
         ListAssertion<E> assertion = Raw.listAssertion();
-        ((BaseAssertion<List<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<List<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -574,7 +574,7 @@ public final class MessageAssertion {
      */
     public <E> SetAssertion<E> that(final Set<E> actual) {
         SetAssertion<E> assertion = Raw.setAssertion();
-        ((BaseAssertion<Set<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Set<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -587,7 +587,7 @@ public final class MessageAssertion {
      */
     public <E> SortedSetAssertion<E> that(final SortedSet<E> actual) {
         SortedSetAssertion<E> assertion = Raw.sortedSetAssertion();
-        ((BaseAssertion<SortedSet<E>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<SortedSet<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -601,7 +601,7 @@ public final class MessageAssertion {
      */
     public <K, V> MapAssertion<K, V> that(final Map<K, V> actual) {
         MapAssertion<K, V> assertion = Raw.mapAssertion();
-        ((BaseAssertion<Map<K, V>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Map<K, V>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -615,7 +615,7 @@ public final class MessageAssertion {
      */
     public <K, V> SortedMapAssertion<K, V> that(final SortedMap<K, V> actual) {
         SortedMapAssertion<K, V> assertion = Raw.sortedMapAssertion();
-        ((BaseAssertion<SortedMap<K, V>>) assertion).initialize(actual, _message);
+        ((BaseAssertion<SortedMap<K, V>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -627,7 +627,7 @@ public final class MessageAssertion {
      */
     public InputStreamAssertion that(final InputStream actual) {
         InputStreamAssertion assertion = Raw.inputStreamAssertion();
-        ((BaseAssertion<InputStream>) assertion).initialize(actual, _message);
+        ((BaseAssertion<InputStream>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -639,7 +639,7 @@ public final class MessageAssertion {
      */
     public ReaderAssertion that(final Reader actual) {
         ReaderAssertion assertion = Raw.readerAssertion();
-        ((BaseAssertion<Reader>) assertion).initialize(actual, _message);
+        ((BaseAssertion<Reader>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -651,7 +651,7 @@ public final class MessageAssertion {
      */
     public ByteBufferAssertion that(final ByteBuffer actual) {
         ByteBufferAssertion assertion = Raw.byteBufferAssertion();
-        ((BaseAssertion<ByteBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<ByteBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -663,7 +663,7 @@ public final class MessageAssertion {
      */
     public ShortBufferAssertion that(final ShortBuffer actual) {
         ShortBufferAssertion assertion = Raw.shortBufferAssertion();
-        ((BaseAssertion<ShortBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<ShortBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -675,7 +675,7 @@ public final class MessageAssertion {
      */
     public IntBufferAssertion that(final IntBuffer actual) {
         IntBufferAssertion assertion = Raw.intBufferAssertion();
-        ((BaseAssertion<IntBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<IntBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -687,7 +687,7 @@ public final class MessageAssertion {
      */
     public LongBufferAssertion that(final LongBuffer actual) {
         LongBufferAssertion assertion = Raw.longBufferAssertion();
-        ((BaseAssertion<LongBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<LongBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -699,7 +699,7 @@ public final class MessageAssertion {
      */
     public FloatBufferAssertion that(final FloatBuffer actual) {
         FloatBufferAssertion assertion = Raw.floatBufferAssertion();
-        ((BaseAssertion<FloatBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<FloatBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -711,7 +711,7 @@ public final class MessageAssertion {
      */
     public DoubleBufferAssertion that(final DoubleBuffer actual) {
         DoubleBufferAssertion assertion = Raw.doubleBufferAssertion();
-        ((BaseAssertion<DoubleBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<DoubleBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
@@ -723,7 +723,7 @@ public final class MessageAssertion {
      */
     public CharBufferAssertion that(final CharBuffer actual) {
         CharBufferAssertion assertion = Raw.charBufferAssertion();
-        ((BaseAssertion<CharBuffer>) assertion).initialize(actual, _message);
+        ((BaseAssertion<CharBuffer>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
