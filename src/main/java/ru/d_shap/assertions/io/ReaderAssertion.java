@@ -57,7 +57,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         int nextChar = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.ACTUAL_VALUE_CHAR).isLessThan(0);
+        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
     }
 
     /**
@@ -67,7 +67,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         int nextChar = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.ACTUAL_VALUE_CHAR).isGreaterThanOrEqualTo(0);
+        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
     }
 
     /**
@@ -79,7 +79,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         char[] nextChars = convertValue(getActual(), char[].class, 0);
-        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.ACTUAL_VALUE_CHARS_ALL);
+        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
     }
 
     /**
@@ -93,7 +93,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         char[] nextChars = convertValue(getActual(), char[].class, count);
-        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
+        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
     }
 
     /**
@@ -107,7 +107,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkArgumentIsNotNull(matcher);
         char[] nextChars = convertValue(getActual(), char[].class, 0);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_CHARS_ALL);
+        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
     }
 
     /**
@@ -123,7 +123,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkArgumentIsNotNull(matcher);
         char[] nextChars = convertValue(getActual(), char[].class, count);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_CHARS_COUNT, count);
+        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
     }
 
     /**
@@ -212,7 +212,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.ACTUAL_VALUE_LENGTH);
+            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
@@ -228,7 +228,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getLength(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+            matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }

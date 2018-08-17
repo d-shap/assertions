@@ -98,7 +98,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final SetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K>setAssertion(), getActual().keySet(), Messages.Check.ACTUAL_VALUE_KEYS);
+        return initializeAssertion(Raw.<K>setAssertion(), getActual().keySet(), Messages.Check.KEYS);
     }
 
     /**
@@ -110,7 +110,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().keySet(), matcher, Messages.Check.ACTUAL_VALUE_KEYS);
+        matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
     }
 
     /**
@@ -301,7 +301,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUE_VALUES);
+        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.VALUES);
     }
 
     /**
@@ -313,7 +313,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().values(), matcher, Messages.Check.ACTUAL_VALUE_VALUES);
+        matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
     }
 
     /**
@@ -953,7 +953,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
 
     /**
@@ -965,7 +965,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 
     /**

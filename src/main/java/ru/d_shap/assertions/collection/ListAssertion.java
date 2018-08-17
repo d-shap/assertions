@@ -374,7 +374,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
 
     /**
@@ -386,7 +386,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 
     /**

@@ -98,7 +98,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final ClassAssertion toClass() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.classAssertion(), getActual().getClass(), Messages.Check.ACTUAL_VALUE_CLASS);
+        return initializeAssertion(Raw.classAssertion(), getActual().getClass(), Messages.Check.CLASS);
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().getClass(), matcher, Messages.Check.ACTUAL_VALUE_CLASS);
+        matcherAssertion(getActual().getClass(), matcher, Messages.Check.CLASS);
     }
 
     /**
@@ -169,7 +169,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final CharSequenceAssertion toToString() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.charSequenceAssertion(), getActual().toString(), Messages.Check.ACTUAL_VALUE_TO_STRING);
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().toString(), Messages.Check.TO_STRING);
     }
 
     /**
@@ -181,7 +181,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().toString(), matcher, Messages.Check.ACTUAL_VALUE_TO_STRING);
+        matcherAssertion(getActual().toString(), matcher, Messages.Check.TO_STRING);
     }
 
     /**
@@ -228,7 +228,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final IntAssertion toHashCode() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().hashCode(), Messages.Check.ACTUAL_VALUE_HASH_CODE);
+        return initializeAssertion(Raw.intAssertion(), getActual().hashCode(), Messages.Check.HASH_CODE);
     }
 
     /**
@@ -240,7 +240,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().hashCode(), matcher, Messages.Check.ACTUAL_VALUE_HASH_CODE);
+        matcherAssertion(getActual().hashCode(), matcher, Messages.Check.HASH_CODE);
     }
 
     /**
@@ -263,7 +263,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
         try {
-            return initializeAssertion(Raw.objectAssertion(), getFieldValue(fieldName), Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
+            return initializeAssertion(Raw.objectAssertion(), getFieldValue(fieldName), Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -299,7 +299,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(fieldName);
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.ACTUAL_VALUE_FIELD, fieldName);
+            matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }

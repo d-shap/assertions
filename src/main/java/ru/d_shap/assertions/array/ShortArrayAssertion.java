@@ -337,7 +337,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public final IntAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
 
     /**
@@ -349,7 +349,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().length, matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+        matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
     }
 
     /**

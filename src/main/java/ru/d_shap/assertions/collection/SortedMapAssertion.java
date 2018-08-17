@@ -100,7 +100,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedSetAssertion<K> toKeys() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) getActual().keySet(), Messages.Check.ACTUAL_VALUE_KEYS);
+        return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) getActual().keySet(), Messages.Check.KEYS);
     }
 
     /**
@@ -112,7 +112,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().keySet(), matcher, Messages.Check.ACTUAL_VALUE_KEYS);
+        matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
     }
 
     /**
@@ -405,7 +405,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final IterableAssertion<V> toValues() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.ACTUAL_VALUE_VALUES);
+        return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.VALUES);
     }
 
     /**
@@ -417,7 +417,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().values(), matcher, Messages.Check.ACTUAL_VALUE_VALUES);
+        matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
     }
 
     /**
@@ -453,7 +453,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.ACTUAL_VALUE_HEAD_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.HEAD_ELEMENT, key);
     }
 
     /**
@@ -466,7 +466,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.HEAD_COUNT, count);
     }
 
     /**
@@ -479,7 +479,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().headMap(key), matcher, Messages.Check.ACTUAL_VALUE_HEAD_ELEMENT, key);
+        matcherAssertion(getActual().headMap(key), matcher, Messages.Check.HEAD_ELEMENT, key);
     }
 
     /**
@@ -493,7 +493,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getHeadMap(count), matcher, Messages.Check.ACTUAL_VALUE_HEAD_COUNT, count);
+        matcherAssertion(getHeadMap(count), matcher, Messages.Check.HEAD_COUNT, count);
     }
 
     private SortedMap<K, V> getHeadMap(final int count) {
@@ -514,7 +514,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.ACTUAL_VALUE_TAIL_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.TAIL_ELEMENT, key);
     }
 
     /**
@@ -527,7 +527,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.TAIL_COUNT, count);
     }
 
     /**
@@ -540,7 +540,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().tailMap(key), matcher, Messages.Check.ACTUAL_VALUE_TAIL_ELEMENT, key);
+        matcherAssertion(getActual().tailMap(key), matcher, Messages.Check.TAIL_ELEMENT, key);
     }
 
     /**
@@ -554,7 +554,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getTailMap(count), matcher, Messages.Check.ACTUAL_VALUE_TAIL_COUNT, count);
+        matcherAssertion(getTailMap(count), matcher, Messages.Check.TAIL_COUNT, count);
     }
 
     private SortedMap<K, V> getTailMap(final int count) {
@@ -1120,7 +1120,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final IntAssertion toSize() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.ACTUAL_VALUE_SIZE);
+        return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
 
     /**
@@ -1132,7 +1132,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().size(), matcher, Messages.Check.ACTUAL_VALUE_SIZE);
+        matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 
     /**

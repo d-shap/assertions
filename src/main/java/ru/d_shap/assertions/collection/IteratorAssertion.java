@@ -63,7 +63,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkInitialized();
         checkActualIsNotNull();
         List<E> list = convertValue(getActual(), List.class, 0);
-        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_ALL);
     }
 
     /**
@@ -77,7 +77,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         List<E> list = convertValue(getActual(), List.class, count);
-        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_COUNT, count);
     }
 
     /**
@@ -90,7 +90,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         List<E> list = convertValue(getActual(), List.class, 0);
-        matcherAssertion(list, matcher, Messages.Check.ACTUAL_VALUE_ELEMENTS_ALL);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL);
     }
 
     /**
@@ -105,7 +105,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         List<E> list = convertValue(getActual(), List.class, count);
-        matcherAssertion(list, matcher, Messages.Check.ACTUAL_VALUE_ELEMENTS_COUNT, count);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_COUNT, count);
     }
 
     /**

@@ -84,7 +84,7 @@ final class FailDescriptionValues {
     private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected1Defined) {
             String expected = getValueMessage(_expected1, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.VALUE_EXPECTED, new Object[]{expected}, false);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
@@ -92,7 +92,7 @@ final class FailDescriptionValues {
     private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected2Defined) {
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.VALUE_EXPECTED, new Object[]{expected}, false);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
@@ -100,7 +100,7 @@ final class FailDescriptionValues {
     private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && !_expected1Defined && !_expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.VALUE_ACTUAL, new Object[]{actual}, false);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL, new Object[]{actual}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
@@ -109,7 +109,7 @@ final class FailDescriptionValues {
         if (_actualDefined && _expected1Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
@@ -118,7 +118,7 @@ final class FailDescriptionValues {
         if (_actualDefined && _expected2Defined) {
             String actual = getValueMessage(_actual, _valueClass);
             String expected = getValueMessage(_expected1, _expected2, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.VALUE_ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }

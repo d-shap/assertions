@@ -65,7 +65,7 @@ public class EnumAssertion extends ClassAssertion {
     public final IntAssertion toValueCount() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.ACTUAL_VALUE_VALUE_COUNT);
+        return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.VALUE_COUNT);
     }
 
     /**
@@ -78,7 +78,7 @@ public class EnumAssertion extends ClassAssertion {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getValueCount(), matcher, Messages.Check.ACTUAL_VALUE_VALUE_COUNT);
+        matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
     }
 
     private int getValueCount() {

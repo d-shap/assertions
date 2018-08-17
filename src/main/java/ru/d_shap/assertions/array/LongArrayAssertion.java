@@ -259,7 +259,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     public final IntAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.ACTUAL_VALUE_LENGTH);
+        return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
 
     /**
@@ -271,7 +271,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().length, matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+        matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
     }
 
     /**

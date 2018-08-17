@@ -72,7 +72,7 @@ final class FailDescription {
         StringBuilder fullMessage = new StringBuilder();
         for (int i = 0; i < formattedMessages.size(); i++) {
             if (i > 0) {
-                fullMessage.append(Messages.MESSAGE_SEPARATOR);
+                fullMessage.append(Messages.SEPARATOR);
             }
             fullMessage.append(formattedMessages.get(i));
         }

@@ -661,7 +661,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
     public final IntAssertion toLength() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().length(), Messages.Check.ACTUAL_VALUE_LENGTH);
+        return initializeAssertion(Raw.intAssertion(), getActual().length(), Messages.Check.LENGTH);
     }
 
     /**
@@ -673,7 +673,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().length(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+        matcherAssertion(getActual().length(), matcher, Messages.Check.LENGTH);
     }
 
     /**
@@ -694,7 +694,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkInitialized();
         checkActualIsNotNull();
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
-        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.TOKENS);
     }
 
     /**
@@ -708,7 +708,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
-        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.TOKENS);
     }
 
     /**
@@ -723,7 +723,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
-        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.ACTUAL_VALUE_TOKENS);
+        return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.TOKENS);
     }
 
     /**
@@ -736,7 +736,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
-        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
 
     /**
@@ -751,7 +751,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(matcher);
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
-        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
 
     /**
@@ -767,7 +767,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
         checkArgumentIsNotNull(matcher);
         checkArgumentIsNotNull(delimiters);
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
-        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.ACTUAL_VALUE_TOKENS);
+        matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
 
     private List<String> getTokens(final StringTokenizer stringTokenizer) {

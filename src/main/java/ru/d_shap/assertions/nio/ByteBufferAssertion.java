@@ -557,7 +557,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
     public final IntAssertion toPosition() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.ACTUAL_VALUE_POSITION);
+        return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
 
     /**
@@ -569,7 +569,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().position(), matcher, Messages.Check.ACTUAL_VALUE_POSITION);
+        matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
     }
 
     /**
@@ -589,7 +589,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
     public final IntAssertion toLimit() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.ACTUAL_VALUE_LIMIT);
+        return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
 
     /**
@@ -601,7 +601,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().limit(), matcher, Messages.Check.ACTUAL_VALUE_LIMIT);
+        matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
     }
 
     /**
@@ -621,7 +621,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
     public final IntAssertion toCapacity() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.ACTUAL_VALUE_CAPACITY);
+        return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
 
     /**
@@ -633,7 +633,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().capacity(), matcher, Messages.Check.ACTUAL_VALUE_CAPACITY);
+        matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
     }
 
     /**
@@ -666,7 +666,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
     public final IntAssertion toRemaining() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.ACTUAL_VALUE_REMAINING);
+        return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
 
     /**
@@ -678,7 +678,7 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().remaining(), matcher, Messages.Check.ACTUAL_VALUE_REMAINING);
+        matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
     }
 
     /**

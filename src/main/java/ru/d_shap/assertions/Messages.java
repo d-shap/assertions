@@ -28,7 +28,7 @@ public final class Messages {
 
     public static final String SIMPLE_MESSAGE = "{0}";
 
-    public static final String MESSAGE_SEPARATOR = "\n\t";
+    public static final String SEPARATOR = "\n\t";
 
     private Messages() {
         super();
@@ -41,63 +41,63 @@ public final class Messages {
      */
     public static final class Check {
 
-        public static final String ACTUAL_VALUE_CLASS = "Check actual value''s class.";
+        public static final String CLASS = "Check actual value''s class.";
 
-        public static final String ACTUAL_VALUE_TO_STRING = "Check actual value''s string representation.";
+        public static final String TO_STRING = "Check actual value''s string representation.";
 
-        public static final String ACTUAL_VALUE_HASH_CODE = "Check actual value''s hash code.";
+        public static final String HASH_CODE = "Check actual value''s hash code.";
 
-        public static final String ACTUAL_VALUE_FIELD = "Check actual value''s field: {0}.";
+        public static final String FIELD = "Check actual value''s field: {0}.";
 
-        public static final String ACTUAL_VALUE_LENGTH = "Check actual value''s length.";
+        public static final String LENGTH = "Check actual value''s length.";
 
-        public static final String ACTUAL_VALUE_SIZE = "Check actual value''s size.";
+        public static final String SIZE = "Check actual value''s size.";
 
-        public static final String ACTUAL_VALUE_ELEMENTS_ALL = "Check all actual value''s elements.";
+        public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
-        public static final String ACTUAL_VALUE_ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
+        public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
 
-        public static final String ACTUAL_VALUE_HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
+        public static final String HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
 
-        public static final String ACTUAL_VALUE_HEAD_COUNT = "Check actual value''s N head elements: {0}.";
+        public static final String HEAD_COUNT = "Check actual value''s N head elements: {0}.";
 
-        public static final String ACTUAL_VALUE_TAIL_ELEMENT = "Check actual value''s tail elements from element: {0}.";
+        public static final String TAIL_ELEMENT = "Check actual value''s tail elements from element: {0}.";
 
-        public static final String ACTUAL_VALUE_TAIL_COUNT = "Check actual value''s N tail elements: {0}.";
+        public static final String TAIL_COUNT = "Check actual value''s N tail elements: {0}.";
 
-        public static final String ACTUAL_VALUE_KEYS = "Check actual value''s keys.";
+        public static final String KEYS = "Check actual value''s keys.";
 
-        public static final String ACTUAL_VALUE_VALUES = "Check actual value''s values.";
+        public static final String VALUES = "Check actual value''s values.";
 
-        public static final String ACTUAL_VALUE_TOKENS = "Check actual value''s tokens.";
+        public static final String TOKENS = "Check actual value''s tokens.";
 
-        public static final String ACTUAL_VALUE_MESSAGE = "Check actual value''s message.";
+        public static final String MESSAGE = "Check actual value''s message.";
 
-        public static final String ACTUAL_VALUE_CAUSE = "Check actual value''s cause.";
+        public static final String CAUSE = "Check actual value''s cause.";
 
-        public static final String ACTUAL_VALUE_VALUE_COUNT = "Check actual value''s value count.";
+        public static final String VALUE_COUNT = "Check actual value''s value count.";
 
-        public static final String ACTUAL_VALUE_BYTE = "Check next actual value''s byte.";
+        public static final String NEXT_BYTE = "Check next actual value''s byte.";
 
-        public static final String ACTUAL_VALUE_BYTES_ALL = "Check all actual value''s bytes.";
+        public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
-        public static final String ACTUAL_VALUE_BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
+        public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
 
-        public static final String ACTUAL_VALUE_CHAR = "Check next actual value''s char.";
+        public static final String NEXT_CHAR = "Check next actual value''s char.";
 
-        public static final String ACTUAL_VALUE_CHARS_ALL = "Check all actual value''s chars.";
+        public static final String CHARS_ALL = "Check all actual value''s chars.";
 
-        public static final String ACTUAL_VALUE_CHARS_COUNT = "Check next N actual value''s chars: {0}.";
+        public static final String CHARS_COUNT = "Check next N actual value''s chars: {0}.";
 
-        public static final String ACTUAL_VALUE_AVAILABLE = "Check actual value''s available.";
+        public static final String AVAILABLE = "Check actual value''s available.";
 
-        public static final String ACTUAL_VALUE_POSITION = "Check actual value''s position.";
+        public static final String POSITION = "Check actual value''s position.";
 
-        public static final String ACTUAL_VALUE_LIMIT = "Check actual value''s limit.";
+        public static final String LIMIT = "Check actual value''s limit.";
 
-        public static final String ACTUAL_VALUE_CAPACITY = "Check actual value''s capacity.";
+        public static final String CAPACITY = "Check actual value''s capacity.";
 
-        public static final String ACTUAL_VALUE_REMAINING = "Check actual value''s remaining.";
+        public static final String REMAINING = "Check actual value''s remaining.";
 
         private Check() {
             super();
@@ -112,11 +112,11 @@ public final class Messages {
      */
     public static final class AssertionFail {
 
-        public static final String ASSERTION_IS_INITIALIZED = "Assertion should be initialized.";
+        public static final String IS_INITIALIZED = "Assertion should be initialized.";
 
-        public static final String ASSERTION_IS_NOT_INITIALIZED = "Assertion should not be initialized.";
+        public static final String IS_NOT_INITIALIZED = "Assertion should not be initialized.";
 
-        public static final String ASSERTION_MATCHES = "Actual value should match the assertion.";
+        public static final String MATCHES = "Actual value should match the assertion.";
 
         private AssertionFail() {
             super();
@@ -131,15 +131,15 @@ public final class Messages {
      */
     public static final class ArgumentFail {
 
-        public static final String ARGUMENT_IS_NOT_NULL = "Argument should not be null.";
+        public static final String IS_NOT_NULL = "Argument should not be null.";
 
-        public static final String ARGUMENT_IS_NOT_EMPTY = "Argument should not be empty.";
+        public static final String IS_NOT_EMPTY = "Argument should not be empty.";
 
         public static final String RESULT_IS_ALWAYS_TRUE = "The result is always true.";
 
         public static final String RESULT_IS_ALWAYS_FALSE = "The result is always false.";
 
-        public static final String ARGUMENT_IS_VALID = "Argument should be valid.";
+        public static final String IS_VALID = "Argument should be valid.";
 
         private ArgumentFail() {
             super();
@@ -337,11 +337,11 @@ public final class Messages {
      */
     public static final class Value {
 
-        public static final String VALUE_ACTUAL = "Actual:{0}";
+        public static final String ACTUAL = "Actual:{0}";
 
-        public static final String VALUE_EXPECTED = "Expected:{0}";
+        public static final String EXPECTED = "Expected:{0}";
 
-        public static final String VALUE_ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
+        public static final String ACTUAL_AND_EXPECTED = "Expected:{1} but was:{0}";
 
         private Value() {
             super();

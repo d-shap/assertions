@@ -52,7 +52,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     public final CharSequenceAssertion toMessage() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.ACTUAL_VALUE_MESSAGE);
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.MESSAGE);
     }
 
     /**
@@ -64,7 +64,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().getMessage(), matcher, Messages.Check.ACTUAL_VALUE_MESSAGE);
+        matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
     }
 
     /**
@@ -99,7 +99,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     public final ThrowableAssertion toCause() {
         checkInitialized();
         checkActualIsNotNull();
-        return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.ACTUAL_VALUE_CAUSE);
+        return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.CAUSE);
     }
 
     /**
@@ -111,7 +111,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().getCause(), matcher, Messages.Check.ACTUAL_VALUE_CAUSE);
+        matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);
     }
 
     /**

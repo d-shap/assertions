@@ -58,7 +58,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         int nextByte = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.ACTUAL_VALUE_BYTE).isLessThan(0);
+        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isLessThan(0);
     }
 
     /**
@@ -68,7 +68,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         int nextByte = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.ACTUAL_VALUE_BYTE).isGreaterThanOrEqualTo(0);
+        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isGreaterThanOrEqualTo(0);
     }
 
     /**
@@ -80,7 +80,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
-        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
+        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_ALL);
     }
 
     /**
@@ -94,7 +94,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
-        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
+        return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_COUNT, count);
     }
 
     /**
@@ -108,7 +108,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_BYTES_ALL);
+        matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_ALL);
     }
 
     /**
@@ -124,7 +124,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.ACTUAL_VALUE_BYTES_COUNT, count);
+        matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_COUNT, count);
     }
 
     /**
@@ -213,7 +213,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.ACTUAL_VALUE_AVAILABLE);
+            return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.AVAILABLE);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
@@ -229,7 +229,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getActual().available(), matcher, Messages.Check.ACTUAL_VALUE_AVAILABLE);
+            matcherAssertion(getActual().available(), matcher, Messages.Check.AVAILABLE);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
@@ -253,7 +253,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkInitialized();
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.ACTUAL_VALUE_LENGTH);
+            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
@@ -269,7 +269,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getLength(), matcher, Messages.Check.ACTUAL_VALUE_LENGTH);
+            matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
         }
