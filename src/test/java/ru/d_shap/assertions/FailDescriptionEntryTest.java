@@ -72,6 +72,16 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, true)).containsExactlyInOrder("message null.");
         Assertions.assertThat(getFormattedMessages("{0}", new Object[]{null}, true)).containsExactlyInOrder();
 
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{null}, false)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{1, "value"}, false)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{null}, false)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{1, "value"}, false)).containsExactlyInOrder();
+
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{null}, true)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{1, "value"}, true)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{null}, true)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{1, "value"}, true)).containsExactlyInOrder();
+
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value"}, false)).containsExactlyInOrder("message value : 1");
         Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{}, false)).containsExactlyInOrder("message {1} : {0}");
         Assertions.assertThat(getFormattedMessages("message ''{1}'' : ''{0}''", new Object[]{1, "value"}, false)).containsExactlyInOrder("message 'value' : '1'");
