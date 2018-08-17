@@ -29,8 +29,6 @@ import java.util.List;
  */
 final class FailDescription {
 
-    private static final String MESSAGE_SEPARATOR = "\n\t";
-
     private final List<FailDescriptionEntry> _failDescriptionEntries;
 
     FailDescription() {
@@ -38,12 +36,7 @@ final class FailDescription {
         _failDescriptionEntries = new ArrayList<>();
     }
 
-    FailDescription(final String message) {
-        this();
-        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[]{}, true));
-    }
-
-    FailDescription(final String message, final Object[] arguments) {
+    FailDescription(final String message, final Object... arguments) {
         this();
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
@@ -60,12 +53,7 @@ final class FailDescription {
         }
     }
 
-    FailDescription(final FailDescription failDescription, final String message) {
-        this(failDescription);
-        _failDescriptionEntries.add(new FailDescriptionEntry(message, new Object[]{}, true));
-    }
-
-    FailDescription(final FailDescription failDescription, final String message, final Object[] arguments) {
+    FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
         this(failDescription);
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
@@ -84,7 +72,7 @@ final class FailDescription {
         StringBuilder fullMessage = new StringBuilder();
         for (int i = 0; i < formattedMessages.size(); i++) {
             if (i > 0) {
-                fullMessage.append(MESSAGE_SEPARATOR);
+                fullMessage.append(Messages.MESSAGE_SEPARATOR);
             }
             fullMessage.append(formattedMessages.get(i));
         }
