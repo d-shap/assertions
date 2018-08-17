@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.text.Format;
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  */
 final class FailDescriptionEntry {
 
-    private final String _message;
+    private final MessageFormat _messageFormat;
 
     private final Object[] _arguments;
 
@@ -37,19 +38,49 @@ final class FailDescriptionEntry {
 
     FailDescriptionEntry(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         super();
-        _message = message;
-        _arguments = new String[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            _arguments[i] = String.valueOf(arguments[i]);
-        }
+        String[] stringArguments = getStringArguments(arguments);
+        _messageFormat = getMessageFormat(message, stringArguments);
+        _arguments = stringArguments;
         _checkLastSymbol = checkLastSymbol;
     }
 
+    private String[] getStringArguments(final Object[] arguments) {
+        String[] stringArguments = new String[arguments.length];
+        for (int i = 0; i < arguments.length; i++) {
+            if (arguments[i] == null) {
+                stringArguments[i] = null;
+            } else {
+                stringArguments[i] = String.valueOf(arguments[i]);
+            }
+        }
+        return stringArguments;
+    }
+
+    private MessageFormat getMessageFormat(final String message, final String[] stringArguments) {
+        if (isEmptyString(message)) {
+            return null;
+        }
+        MessageFormat messageFormat = new MessageFormat(message);
+        Format[] formats = messageFormat.getFormatsByArgumentIndex();
+        if (formats.length != stringArguments.length) {
+            throw new ArrayIndexOutOfBoundsException(stringArguments.length);
+        }
+        if (Messages.SIMPLE_MESSAGE.equals(message) && isEmptyString(stringArguments[0])) {
+            return null;
+        } else {
+            return messageFormat;
+        }
+    }
+
+    private boolean isEmptyString(final String str) {
+        return str == null || "".equals(str);
+    }
+
     void addFormattedMessage(final List<String> formattedMessages) {
-        if (_message == null || "".equals(_message)) {
+        if (_messageFormat == null) {
             return;
         }
-        String formattedMessage = MessageFormat.format(_message, _arguments);
+        String formattedMessage = _messageFormat.format(_arguments);
         if (_checkLastSymbol && !formattedMessage.endsWith(".") && !formattedMessage.endsWith("?") && !formattedMessage.endsWith("!")) {
             formattedMessage += ".";
         }
