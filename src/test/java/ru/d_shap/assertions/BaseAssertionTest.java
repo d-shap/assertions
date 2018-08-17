@@ -1002,13 +1002,13 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createBaseAssertion(object).as(null);
+            createBaseAssertion(new Object()).as(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createBaseAssertion(object, "Message").as(null);
+            createBaseAssertion(new Object(), "Message").as(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1056,13 +1056,13 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createBaseAssertion(object).as(null, "As message");
+            createBaseAssertion(new Object()).as(null, "As message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createBaseAssertion(object, "Message").as(null, "As message");
+            createBaseAssertion(new Object(), "Message").as(null, "As message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1407,13 +1407,13 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(null).checkArgumentIsNotNull(1);
 
         try {
-            createBaseAssertion(null).checkArgumentIsNotNull(null);
+            createBaseAssertion(new Object()).checkArgumentIsNotNull(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            createBaseAssertion(null, "Message").checkArgumentIsNotNull(null);
+            createBaseAssertion(new Object(), "Message").checkArgumentIsNotNull(null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1428,13 +1428,13 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(null).checkArgumentIsNotEmptyTrue(false);
 
         try {
-            createBaseAssertion(null).checkArgumentIsNotEmptyTrue(true);
+            createBaseAssertion(new Object()).checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            createBaseAssertion(null, "Message").checkArgumentIsNotEmptyTrue(true);
+            createBaseAssertion(new Object(), "Message").checkArgumentIsNotEmptyTrue(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1449,13 +1449,13 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(null).checkArgumentIsNotEmptyFalse(false);
 
         try {
-            createBaseAssertion(null).checkArgumentIsNotEmptyFalse(true);
+            createBaseAssertion(new Object()).checkArgumentIsNotEmptyFalse(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            createBaseAssertion(null, "Message").checkArgumentIsNotEmptyFalse(true);
+            createBaseAssertion(new Object(), "Message").checkArgumentIsNotEmptyFalse(true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -1470,13 +1470,13 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(null).checkArgumentIsValid(true);
 
         try {
-            createBaseAssertion(null).checkArgumentIsValid(false);
+            createBaseAssertion(new Object()).checkArgumentIsValid(false);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid.");
         }
         try {
-            createBaseAssertion(null, "Message").checkArgumentIsValid(false);
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
