@@ -26,6 +26,8 @@ package ru.d_shap.assertions;
  */
 public final class Messages {
 
+    public static final String SIMPLE_MESSAGE = "{0}";
+
     private Messages() {
         super();
     }
