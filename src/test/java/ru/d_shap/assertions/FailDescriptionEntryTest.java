@@ -45,12 +45,14 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages(" ", new Object[]{}, false)).containsExactlyInOrder(" ");
         Assertions.assertThat(getFormattedMessages("  ", new Object[]{}, false)).containsExactlyInOrder("  ");
         Assertions.assertThat(getFormattedMessages("\t", new Object[]{}, false)).containsExactlyInOrder("\t");
+        Assertions.assertThat(getFormattedMessages("value''s", new Object[]{}, false)).containsExactlyInOrder("value's");
 
         Assertions.assertThat(getFormattedMessages(null, new Object[]{}, true)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages("", new Object[]{}, true)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages(" ", new Object[]{}, true)).containsExactlyInOrder(" .");
         Assertions.assertThat(getFormattedMessages("  ", new Object[]{}, true)).containsExactlyInOrder("  .");
         Assertions.assertThat(getFormattedMessages("\t", new Object[]{}, true)).containsExactlyInOrder("\t.");
+        Assertions.assertThat(getFormattedMessages("value''s", new Object[]{}, true)).containsExactlyInOrder("value's.");
 
         Assertions.assertThat(getFormattedMessages("message", new Object[]{}, false)).containsExactlyInOrder("message");
         Assertions.assertThat(getFormattedMessages("message.", new Object[]{}, false)).containsExactlyInOrder("message.");
@@ -65,22 +67,18 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages("message:", new Object[]{}, true)).containsExactlyInOrder("message:.");
 
         Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, false)).containsExactlyInOrder("message null");
+        Assertions.assertThat(getFormattedMessages("{0}", new Object[]{null}, false)).containsExactlyInOrder();
 
         Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, true)).containsExactlyInOrder("message null.");
+        Assertions.assertThat(getFormattedMessages("{0}", new Object[]{null}, true)).containsExactlyInOrder();
 
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value"}, false)).containsExactlyInOrder("message value : 1");
-        Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{1, "value"}, false)).containsExactlyInOrder("message {1} : {0}");
+        Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{}, false)).containsExactlyInOrder("message {1} : {0}");
         Assertions.assertThat(getFormattedMessages("message ''{1}'' : ''{0}''", new Object[]{1, "value"}, false)).containsExactlyInOrder("message 'value' : '1'");
 
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value"}, true)).containsExactlyInOrder("message value : 1.");
-        Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{1, "value"}, true)).containsExactlyInOrder("message {1} : {0}.");
+        Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{}, true)).containsExactlyInOrder("message {1} : {0}.");
         Assertions.assertThat(getFormattedMessages("message ''{1}'' : ''{0}''", new Object[]{1, "value"}, true)).containsExactlyInOrder("message 'value' : '1'.");
-
-        Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1}, false)).containsExactlyInOrder("message {1} : 1");
-        Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value", "ignore"}, false)).containsExactlyInOrder("message value : 1");
-
-        Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1}, true)).containsExactlyInOrder("message {1} : 1.");
-        Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value", "ignore"}, true)).containsExactlyInOrder("message value : 1.");
     }
 
     /**
@@ -89,6 +87,30 @@ public final class FailDescriptionEntryTest extends AssertionTest {
     @Test(expected = NullPointerException.class)
     public void nullArgumentsFailTest() {
         new FailDescriptionEntry("", null, false);
+    }
+
+    /**
+     * {@link FailDescriptionEntry} class test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void wrongArgumentCount0FailTest() {
+        new FailDescriptionEntry("{0}", new Object[]{}, false);
+    }
+
+    /**
+     * {@link FailDescriptionEntry} class test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void wrongArgumentCount1FailTest() {
+        new FailDescriptionEntry("'{0}'", new Object[]{null}, false);
+    }
+
+    /**
+     * {@link FailDescriptionEntry} class test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void wrongArgumentCount2FailTest() {
+        new FailDescriptionEntry("{0}", new Object[]{1, "value"}, false);
     }
 
     /**
