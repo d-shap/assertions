@@ -740,7 +740,7 @@ public final class Assertions {
      * @param failMessage the fail message.
      */
     public static void fail(final String failMessage) {
-        throw AssertionErrorBuilder.getInstance().addMessage(failMessage).build();
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, failMessage).build();
     }
 
 }
