@@ -556,8 +556,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAllArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAll(1L, 3L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAll(4L, 2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(1L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(4L, 2L);
 
         try {
             Raw.longBufferAssertion().containsAll(1L);
@@ -590,25 +590,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -645,8 +645,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAllIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAll(Arrays.asList(1L, 3L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAll(Arrays.asList(4L, 2L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(Arrays.asList(1L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(Arrays.asList(4L, 2L));
 
         try {
             Raw.longBufferAssertion().containsAll(new ArrayList<Long>());
@@ -679,25 +679,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -734,8 +734,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAllArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAll(1L, 3L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAll(4L, 2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(1L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(4L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAll(1L, 2L);
 
         try {
@@ -769,25 +769,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -818,8 +818,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAllIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAll(Arrays.asList(1L, 3L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAll(Arrays.asList(4L, 2L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(Arrays.asList(1L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(Arrays.asList(4L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAll(Arrays.asList(1L, 2L));
 
         try {
@@ -853,25 +853,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -902,7 +902,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAllInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAllInOrder(1L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAllInOrder(1L, 3L, 4L);
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(1L);
@@ -935,25 +935,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -996,7 +996,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAllInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAllInOrder(Arrays.asList(1L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAllInOrder(Arrays.asList(1L, 3L, 4L));
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(new ArrayList<Long>());
@@ -1029,25 +1029,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1090,7 +1090,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAllInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(1L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAllInOrder(1L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAllInOrder(1L, 2L);
 
         try {
@@ -1124,25 +1124,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1179,7 +1179,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAllInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(Arrays.asList(1L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAllInOrder(Arrays.asList(1L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAllInOrder(Arrays.asList(1L, 2L));
 
         try {
@@ -1213,25 +1213,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1268,8 +1268,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 2L, 3L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 3L, 2L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 2L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 3L, 2L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly();
 
         try {
@@ -1303,13 +1303,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsExactly((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1321,7 +1321,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 2L, 3L, 4L, 5L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1345,13 +1345,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(1L, 1L, 3L, 2L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").containsExactly(1L, 1L, 3L, 2L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
@@ -1364,8 +1364,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 3L, 2L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 3L, 2L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly(new ArrayList<Long>());
 
         try {
@@ -1399,13 +1399,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsExactly((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1417,7 +1417,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1441,13 +1441,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
@@ -1460,8 +1460,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsExactlyArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 2L, 3L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 3L, 2L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 2L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 3L, 2L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
 
@@ -1496,13 +1496,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsExactly((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1514,7 +1514,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1532,13 +1532,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(1L, 1L, 3L, 2L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1L, 1L, 3L, 2L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
@@ -1551,8 +1551,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsExactlyIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 3L, 2L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 3L, 2L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly(new ArrayList<Long>());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
 
@@ -1587,13 +1587,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsExactly((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1605,7 +1605,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1623,13 +1623,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
@@ -1642,7 +1642,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(1L, 2L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder();
 
         try {
@@ -1676,13 +1676,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsExactlyInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1694,13 +1694,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(1L, 2L, 3L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1724,13 +1724,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(2L, 3L, 1L, 4L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2L, 3L, 1L, 4L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
@@ -1743,7 +1743,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder(new ArrayList<Long>());
 
         try {
@@ -1777,13 +1777,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1795,13 +1795,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1825,13 +1825,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
@@ -1844,7 +1844,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsExactlyInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(1L, 2L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
 
@@ -1879,13 +1879,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsExactlyInOrder((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1897,13 +1897,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1L, 2L, 3L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -1921,13 +1921,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
@@ -1940,7 +1940,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Long>());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
 
@@ -1975,13 +1975,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsExactlyInOrder((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1993,13 +1993,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
@@ -2017,13 +2017,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
@@ -2036,9 +2036,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAnyArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny(2L, 3L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(2L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(4L, 1L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(5L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(2L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(4L, 1L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(5L, 3L);
 
         try {
             Raw.longBufferAssertion().containsAny(1L);
@@ -2071,25 +2071,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2126,9 +2126,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void containsAnyIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny(Arrays.asList(2L, 3L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(Arrays.asList(2L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(Arrays.asList(4L, 1L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).containsAny(Arrays.asList(5L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(Arrays.asList(2L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(Arrays.asList(4L, 1L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(Arrays.asList(5L, 3L));
 
         try {
             Raw.longBufferAssertion().containsAny(new ArrayList<Long>());
@@ -2161,25 +2161,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2216,9 +2216,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAnyArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny(2L, 3L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(2L, 4L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(4L, 1L);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(5L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(2L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(4L, 1L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(5L, 3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAny(1L, 3L);
 
         try {
@@ -2252,25 +2252,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2301,9 +2301,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void rewindAndContainsAnyIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny(Arrays.asList(2L, 3L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(Arrays.asList(2L, 4L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(Arrays.asList(4L, 1L));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3, 4})).rewindAndContainsAny(Arrays.asList(5L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(Arrays.asList(2L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(Arrays.asList(4L, 1L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(Arrays.asList(5L, 3L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAny(Arrays.asList(1L, 3L));
 
         try {
@@ -2337,25 +2337,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2421,25 +2421,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -2499,25 +2499,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -2576,25 +2576,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone((long[]) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone();
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -2659,25 +2659,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone((Iterable<Long>) null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone(new ArrayList<Long>());
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -2707,17 +2707,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toPositionTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition().isGreaterThan(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition().isLessThan(6);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isGreaterThan(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isLessThan(6);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition().isEqualTo(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition().isGreaterThan(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition().isLessThan(4);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition().isEqualTo(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition().isGreaterThan(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition().isLessThan(4);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition().isGreaterThan(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition().isLessThan(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition().isGreaterThan(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition().isLessThan(5);
 
         try {
             Raw.longBufferAssertion().toPosition();
@@ -2738,25 +2738,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toPosition()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toPosition()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toPosition().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toPosition().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -2768,17 +2768,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toPositionMatcherTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition(Matchers.is(Matchers.greaterThan(2)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition(Matchers.is(Matchers.lessThan(4)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition(Matchers.is(Matchers.lessThan(4)));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition(Matchers.equalTo(1));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition(Matchers.greaterThan(0));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).toPosition(Matchers.lessThan(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition(Matchers.equalTo(1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition(Matchers.greaterThan(0));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).toPosition(Matchers.lessThan(2));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
 
         try {
             Raw.longBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -2811,25 +2811,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3})).toPosition(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toPosition(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}), "Message").toPosition(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toPosition(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toPosition(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\nExpected: <4>\n     but: was <3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toPosition(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toPosition(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\nExpected: <4>\n     but: was <3>");
@@ -2841,9 +2841,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPositionTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasPosition(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).hasPosition(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasPosition(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).hasPosition(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasPosition(3);
 
         try {
             Raw.longBufferAssertion().hasPosition(1);
@@ -2864,13 +2864,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasPosition(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasPosition(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasPosition(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasPosition(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -2882,17 +2882,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toLimitTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit().isGreaterThan(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit().isLessThan(6);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit().isGreaterThan(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit().isLessThan(6);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit().isEqualTo(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit().isGreaterThan(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit().isLessThan(4);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit().isEqualTo(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit().isGreaterThan(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit().isLessThan(4);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit().isGreaterThan(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit().isLessThan(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isGreaterThan(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isLessThan(5);
 
         try {
             Raw.longBufferAssertion().toLimit();
@@ -2913,25 +2913,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toLimit()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toLimit()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toLimit().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toLimit().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -2943,17 +2943,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toLimitMatcherTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit(Matchers.is(Matchers.greaterThan(2)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit(Matchers.is(Matchers.lessThan(4)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit(Matchers.is(Matchers.lessThan(4)));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit(Matchers.equalTo(1));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit(Matchers.greaterThan(0));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toLimit(Matchers.lessThan(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit(Matchers.equalTo(1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit(Matchers.greaterThan(0));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toLimit(Matchers.lessThan(2));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
 
         try {
             Raw.longBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -2986,25 +2986,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3})).toLimit(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toLimit(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}), "Message").toLimit(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toLimit(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toLimit(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toLimit(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toLimit(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\nExpected: <4>\n     but: was <3>");
@@ -3016,9 +3016,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void hasLimitTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasLimit(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).hasLimit(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasLimit(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).hasLimit(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasLimit(3);
 
         try {
             Raw.longBufferAssertion().hasLimit(1);
@@ -3039,13 +3039,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasLimit(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasLimit(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasLimit(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasLimit(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3057,17 +3057,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toCapacityTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity().isGreaterThan(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity().isLessThan(6);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity().isGreaterThan(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity().isLessThan(6);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity().isEqualTo(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity().isGreaterThan(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity().isLessThan(6);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity().isEqualTo(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity().isGreaterThan(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity().isLessThan(6);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity().isEqualTo(5);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity().isGreaterThan(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity().isLessThan(7);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isEqualTo(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isGreaterThan(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isLessThan(7);
 
         try {
             Raw.longBufferAssertion().toCapacity();
@@ -3088,25 +3088,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toCapacity()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toCapacity()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toCapacity().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toCapacity().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3118,17 +3118,17 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toCapacityMatcherTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity(Matchers.is(Matchers.greaterThan(2)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity(Matchers.is(Matchers.lessThan(4)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity(Matchers.is(Matchers.lessThan(4)));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity(Matchers.equalTo(3));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity(Matchers.greaterThan(2));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).toCapacity(Matchers.lessThan(4));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity(Matchers.equalTo(3));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity(Matchers.greaterThan(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).toCapacity(Matchers.lessThan(4));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
 
         try {
             Raw.longBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -3161,25 +3161,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3})).toCapacity(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toCapacity(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}), "Message").toCapacity(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toCapacity(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toCapacity(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").toCapacity(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").toCapacity(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\nExpected: <4>\n     but: was <3>");
@@ -3191,9 +3191,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void hasCapacityTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasCapacity(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 1)).hasCapacity(3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasCapacity(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).hasCapacity(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasCapacity(5);
 
         try {
             Raw.longBufferAssertion().hasCapacity(1);
@@ -3214,13 +3214,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasCapacity(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasCapacity(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasCapacity(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasCapacity(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3232,9 +3232,9 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPropertiesTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasProperties(3, 3, 3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1)).hasProperties(1, 3, 3);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasProperties(3, 3, 3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).hasProperties(1, 3, 3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasProperties(3, 3, 5);
 
         try {
             Raw.longBufferAssertion().hasProperties(1, 1, 1);
@@ -3255,37 +3255,37 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasProperties(4, 3, 3);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasProperties(4, 3, 3);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasProperties(4, 3, 3);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasProperties(4, 3, 3);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasProperties(3, 4, 3);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasProperties(3, 4, 3);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasProperties(3, 4, 3);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasProperties(3, 4, 3);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasProperties(3, 3, 4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasProperties(3, 3, 4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3), "Message").hasProperties(3, 3, 4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3), "Message").hasProperties(3, 3, 4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3297,21 +3297,21 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toRemainingTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining().isEqualTo(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining().isGreaterThan(-1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining().isLessThan(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining().isEqualTo(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining().isGreaterThan(-1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining().isLessThan(3);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining().isEqualTo(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining().isGreaterThan(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining().isLessThan(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining().isEqualTo(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining().isGreaterThan(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining().isLessThan(5);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining().isEqualTo(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining().isGreaterThan(-1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining().isLessThan(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining().isEqualTo(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining().isGreaterThan(-1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining().isLessThan(3);
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining().isEqualTo(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining().isGreaterThan(1);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining().isLessThan(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining().isEqualTo(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining().isGreaterThan(1);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining().isLessThan(5);
 
         try {
             Raw.longBufferAssertion().toRemaining();
@@ -3332,25 +3332,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3)).toRemaining()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3)).toRemaining()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
+            clearActual(initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3)).toRemaining().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3)).toRemaining().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3362,21 +3362,21 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toRemainingMatcherTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining(Matchers.is(Matchers.equalTo(0)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining(Matchers.is(Matchers.greaterThan(-1)));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).toRemaining(Matchers.is(Matchers.lessThan(1)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining(Matchers.is(Matchers.greaterThan(-1)));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toRemaining(Matchers.is(Matchers.lessThan(1)));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining(Matchers.equalTo(2));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining(Matchers.greaterThan(1));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).toRemaining(Matchers.lessThan(3));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining(Matchers.equalTo(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining(Matchers.greaterThan(1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).toRemaining(Matchers.lessThan(3));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining(Matchers.equalTo(0));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining(Matchers.greaterThan(-1));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).toRemaining(Matchers.lessThan(1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining(Matchers.equalTo(0));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining(Matchers.greaterThan(-1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).toRemaining(Matchers.lessThan(1));
 
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
 
         try {
             Raw.longBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -3409,25 +3409,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3})).toRemaining(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toRemaining(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}), "Message").toRemaining(null);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toRemaining(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining(Matchers.equalTo(4));
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3), "Message").toRemaining(Matchers.equalTo(4));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\nExpected: <4>\n     but: was <3>");
@@ -3439,10 +3439,10 @@ public final class LongBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRemainingTest() {
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 3)).hasRemaining(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 1, 3)).hasRemaining(2);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 4, 2, 5)).hasRemaining(0);
-        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasRemaining(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).hasRemaining(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).hasRemaining(0);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).hasRemaining(2);
 
         try {
             Raw.longBufferAssertion().hasRemaining(1);
@@ -3463,13 +3463,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3)).hasRemaining(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3)).hasRemaining(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1, 2, 3}, 0, 3, 3), "Message").hasRemaining(4);
+            initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3), "Message").hasRemaining(4);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -3716,31 +3716,31 @@ public final class LongBufferAssertionTest extends AssertionTest {
         Assertions.assertThat(buffer).hasPosition(3);
         Assertions.assertThat(buffer).doesNotContain(2L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndDoesNotContain(0);
+        Assertions.assertThat(buffer).rewindAndDoesNotContain(0L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsAll(4, 5);
+        Assertions.assertThat(buffer).containsAll(4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsAll(2, 5);
+        Assertions.assertThat(buffer).rewindAndContainsAll(2L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsAllInOrder(4, 5);
+        Assertions.assertThat(buffer).containsAllInOrder(4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsAllInOrder(2, 5);
+        Assertions.assertThat(buffer).rewindAndContainsAllInOrder(2L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsExactly(4, 5);
+        Assertions.assertThat(buffer).containsExactly(4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        Assertions.assertThat(buffer).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsExactlyInOrder(4, 5);
+        Assertions.assertThat(buffer).containsExactlyInOrder(4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        Assertions.assertThat(buffer).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsAny(1, 5, 7);
+        Assertions.assertThat(buffer).containsAny(1L, 5L, 7L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsAny(1, 7, 9);
+        Assertions.assertThat(buffer).rewindAndContainsAny(1L, 7L, 9L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).containsNone(1, 9);
+        Assertions.assertThat(buffer).containsNone(1L, 9L);
         Assertions.assertThat(buffer).hasPosition(3);
-        Assertions.assertThat(buffer).rewindAndContainsNone(7, 9);
+        Assertions.assertThat(buffer).rewindAndContainsNone(7L, 9L);
         Assertions.assertThat(buffer).hasPosition(3);
     }
 

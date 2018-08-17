@@ -590,25 +590,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -679,25 +679,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -768,25 +768,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAll(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAll(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAll(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -858,25 +858,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -942,25 +942,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1026,25 +1026,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAll(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAll(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAll(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAll(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1108,25 +1108,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1202,25 +1202,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1296,25 +1296,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAllInOrder(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAllInOrder(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAllInOrder(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1391,25 +1391,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1480,25 +1480,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1569,25 +1569,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAllInOrder(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAllInOrder(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -1659,13 +1659,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactly((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactly((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactly((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1755,13 +1755,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactly((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactly((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactly((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1851,13 +1851,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactly((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactly((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactly((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -1948,13 +1948,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactly((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactly((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactly((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2039,13 +2039,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactly((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactly((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactly((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2130,13 +2130,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactly((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactly((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactly((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2219,13 +2219,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactlyInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactlyInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2320,13 +2320,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactlyInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactlyInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2421,13 +2421,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsExactlyInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsExactlyInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2523,13 +2523,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactlyInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactlyInOrder((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactlyInOrder((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2619,13 +2619,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactlyInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactlyInOrder((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2715,13 +2715,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsExactlyInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsExactlyInOrder((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -2811,25 +2811,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2901,25 +2901,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -2991,25 +2991,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAny(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsAny(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsAny(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsAny(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3082,25 +3082,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3167,25 +3167,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3252,25 +3252,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAny(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsAny(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsAny(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsAny(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
@@ -3336,25 +3336,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3414,25 +3414,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3492,25 +3492,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsNone(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").containsNone(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").containsNone(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3569,25 +3569,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone((short[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone((short[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone();
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3652,25 +3652,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone((int[]) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone((int[]) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone(new int[]{});
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone(new int[]{});
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3735,25 +3735,25 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone((Iterable<Short>) null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone((Iterable<Short>) null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsNone(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").rewindAndContainsNone(new ArrayList<Short>());
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").rewindAndContainsNone(new ArrayList<Short>());
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
@@ -3887,13 +3887,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3})).toPosition(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toPosition(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}), "Message").toPosition(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toPosition(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -4062,13 +4062,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3})).toLimit(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toLimit(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}), "Message").toLimit(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toLimit(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -4237,13 +4237,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3})).toCapacity(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toCapacity(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}), "Message").toCapacity(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toCapacity(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
@@ -4485,13 +4485,13 @@ public final class ShortBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3})).toRemaining(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toRemaining(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null.");
         }
         try {
-            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}), "Message").toRemaining(null);
+            initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toRemaining(null);
             Assertions.fail("ShortBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
