@@ -90,11 +90,12 @@ public abstract class BaseAssertion<T> {
     /**
      * Initialize assertion with the actual value and the message.
      *
-     * @param actual  the actual value.
-     * @param message the message.
+     * @param actual    the actual value.
+     * @param message   the message.
+     * @param arguments the message arguments.
      */
-    final void initialize(final T actual, final String message) {
-        initialize(actual, new FailDescription(message));
+    final void initialize(final T actual, final String message, final Object... arguments) {
+        initialize(actual, new FailDescription(message, arguments));
     }
 
     private void initialize(final T actual, final FailDescription failDescription) {
@@ -195,7 +196,7 @@ public abstract class BaseAssertion<T> {
     public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion, final String message) {
         checkInitialized();
         checkArgumentIsNotNull(assertion);
-        return initializeAssertion(assertion, (W) _actual, message);
+        return initializeAssertion(assertion, (W) _actual, Messages.SIMPLE_MESSAGE, message);
     }
 
     /**
