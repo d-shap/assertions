@@ -72,6 +72,12 @@ public final class HamcrestMatcherTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message: 1.\nExpected: <11>\n     but: was <10>");
         }
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), "value''s");
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value's.\nExpected: <11>\n     but: was <10>");
+        }
     }
 
     /**
@@ -101,6 +107,12 @@ public final class HamcrestMatcherTest extends AssertionTest {
             Assertions.fail("HamcrestMatcher test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message1.\n\tmessage2: 1.\nExpected: <11>\n     but: was <10>");
+        }
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message1"), "value''s");
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("message1.\n\tvalue's.\nExpected: <11>\n     but: was <10>");
         }
     }
 
