@@ -1081,6 +1081,11 @@ public final class AssertionsTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("fail a test.");
         }
+        try {
+            Assertions.fail("value''s");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.");
+        }
     }
 
 }
