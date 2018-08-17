@@ -82,6 +82,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that((byte) 5).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -115,6 +121,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Byte.valueOf((byte) 5)).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -143,6 +155,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that((short) 5).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
     }
 
@@ -177,6 +195,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Short.valueOf((short) 5)).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -205,6 +229,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(5).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
     }
 
@@ -239,6 +269,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Integer.valueOf(5)).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -267,6 +303,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(5L).isEqualTo(6L);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
     }
 
@@ -301,6 +343,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Long.valueOf(5L)).isEqualTo(6L);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -329,6 +377,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(5.0f).isEqualTo(6.0f, 0.001f);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
         }
     }
 
@@ -363,6 +417,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+        }
     }
 
     /**
@@ -391,6 +451,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(5.0).isEqualTo(6.0, 0.001);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
         }
     }
 
@@ -425,6 +491,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+        }
     }
 
     /**
@@ -453,6 +525,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should be false.");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(true).isFalse();
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should be false.");
         }
     }
 
@@ -487,6 +565,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should be false.");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Boolean.TRUE).isFalse();
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should be false.");
+        }
     }
 
     /**
@@ -515,6 +599,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6(54)> but was:<5(53)>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that('5').isEqualTo('6');
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6(54)> but was:<5(53)>");
         }
     }
 
@@ -548,6 +638,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6(54)> but was:<5(53)>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Character.valueOf('5')).isEqualTo('6');
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6(54)> but was:<5(53)>");
         }
     }
 
@@ -583,6 +679,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be different.\n\tActual:<value>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(object).isNotEqualTo(object);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be different.\n\tActual:<value>");
         }
     }
 
@@ -625,6 +727,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Test message.\nExpected: is <11>\n     but: was <10>");
         }
         try {
+            Assertions.assertWithMessage("value''s.").that(10, Matchers.is(Matchers.equalTo(11)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\nExpected: is <11>\n     but: was <10>");
+        }
+        try {
             Assertions.assertWithMessage(null).that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
@@ -641,6 +749,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
         }
     }
 
@@ -675,6 +789,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
     }
 
     /**
@@ -707,6 +827,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -741,6 +867,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new int[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
     }
 
     /**
@@ -773,6 +905,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -807,6 +945,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
+        }
     }
 
     /**
@@ -839,6 +983,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new double[]{1.0, 2.0, 3.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
         }
     }
 
@@ -873,6 +1023,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new boolean[]{true, true, false}).containsExactlyInOrder(true, true, false, true);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[T, T, F, T]> but was:<[T, T, F]>");
+        }
     }
 
     /**
@@ -905,6 +1061,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new char[]{'1', '2', '3'}).containsExactlyInOrder('1', '2', '3', '4');
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
     }
 
@@ -939,6 +1101,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new String[]{"1", "2", "3"}).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
     }
 
     /**
@@ -971,6 +1139,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.StringBuilder> but was:<java.lang.String>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(String.class).isSubtypeOf(StringBuilder.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.StringBuilder> but was:<java.lang.String>");
         }
     }
 
@@ -1005,6 +1179,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new StringBuilder("test")).hasLength(5);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
+        }
     }
 
     /**
@@ -1037,6 +1217,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that("test").hasLength(5);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
         }
     }
 
@@ -1072,6 +1258,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(comparable).isEqualTo(6);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
     }
 
     /**
@@ -1106,6 +1298,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(iterable).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
     }
 
     /**
@@ -1138,6 +1336,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new AssertionError("error")).isInstanceOf(RuntimeException.class);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.lang.AssertionError>");
         }
     }
 
@@ -1172,6 +1376,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
     }
 
     /**
@@ -1204,6 +1414,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -1238,6 +1454,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
     }
 
     /**
@@ -1270,6 +1492,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
     }
 
@@ -1304,6 +1532,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
     }
 
     /**
@@ -1336,6 +1570,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
     }
 
@@ -1370,6 +1610,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+        }
     }
 
     /**
@@ -1402,6 +1648,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new StringReader("123")).isNextCharsEqualTo('2', '3');
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
     }
 
@@ -1436,6 +1688,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
     }
 
     /**
@@ -1468,6 +1726,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
     }
 
@@ -1502,6 +1766,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(2, 1);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
     }
 
     /**
@@ -1534,6 +1804,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(2L, 1L);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
         }
     }
 
@@ -1568,6 +1844,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(2.0f, 1.0f);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
     }
 
     /**
@@ -1601,6 +1883,12 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createDoubleBuffer(new double[]{1.0f, 2.0f})).containsExactlyInOrder(2.0, 1.0);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
     }
 
     /**
@@ -1633,6 +1921,12 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(50, 49);
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
     }
 
