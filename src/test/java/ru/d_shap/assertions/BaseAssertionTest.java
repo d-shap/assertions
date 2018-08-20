@@ -1577,6 +1577,12 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion(null).convertValue(createHashSet("value1", "value2"), Map.class)).isNotInstanceOf(Map.class);
 
         try {
+            createBaseAssertion().convertValue(createHashSet("value1", "value2"), List.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+        }
+        try {
             createBaseAssertion(null, null).convertValue(createErrorInputStream(), Integer.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
@@ -1598,6 +1604,12 @@ public final class BaseAssertionTest extends AssertionTest {
         createBaseAssertion(new Object()).checkActualIsNotNull();
         createBaseAssertion("test").checkActualIsNotNull();
 
+        try {
+            createBaseAssertion().checkActualIsNotNull();
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+        }
         try {
             createBaseAssertion(null).checkActualIsNotNull();
             Assertions.fail("BaseAssertion test fail");
