@@ -215,7 +215,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         try {
             return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.AVAILABLE);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
@@ -231,7 +231,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         try {
             matcherAssertion(getActual().available(), matcher, Messages.Check.AVAILABLE);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
@@ -255,7 +255,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         try {
             return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
@@ -271,7 +271,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         try {
             matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 

@@ -214,7 +214,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         try {
             return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
@@ -230,7 +230,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         try {
             matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
