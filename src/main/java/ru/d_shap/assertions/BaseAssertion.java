@@ -122,6 +122,7 @@ public abstract class BaseAssertion<T> {
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual) {
+        checkInitialized();
         ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription));
         return assertion;
     }
@@ -139,6 +140,7 @@ public abstract class BaseAssertion<T> {
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object... arguments) {
+        checkInitialized();
         ((BaseAssertion<W>) assertion).initialize(actual, new FailDescription(_failDescription, message, arguments));
         return assertion;
     }
@@ -152,6 +154,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>     the generic type of the actual value.
      */
     protected final <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher) {
+        checkInitialized();
         HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription);
     }
 
@@ -166,6 +169,7 @@ public abstract class BaseAssertion<T> {
      * @param <U>       the generic type of the actual value.
      */
     protected final <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher, final String message, final Object... arguments) {
+        checkInitialized();
         HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription, message, arguments);
     }
 
@@ -210,6 +214,7 @@ public abstract class BaseAssertion<T> {
      * @return the value converted to the target class.
      */
     protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
+        checkInitialized();
         try {
             return ValueConverter.convert(value, targetClass, arguments);
         } catch (ConversionException ex) {
