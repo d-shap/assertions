@@ -75,6 +75,7 @@ public abstract class BaseAssertion<T> {
      * @return the actual value.
      */
     protected final T getActual() {
+        checkInitialized();
         return _actual;
     }
 
@@ -212,7 +213,7 @@ public abstract class BaseAssertion<T> {
         try {
             return ValueConverter.convert(value, targetClass, arguments);
         } catch (ConversionException ex) {
-            throw getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
         }
     }
 
@@ -229,6 +230,7 @@ public abstract class BaseAssertion<T> {
      * Check if the actual value is NOT null.
      */
     protected final void checkActualIsNotNull() {
+        checkInitialized();
         if (_actual == null) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_NULL).build();
         }
@@ -288,7 +290,7 @@ public abstract class BaseAssertion<T> {
     }
 
     private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription) {
-        return AssertionErrorBuilder.getInstance(failDescription, getActualValueClass(), getActual());
+        return AssertionErrorBuilder.getInstance(failDescription, getActualValueClass(), _actual);
     }
 
 }
