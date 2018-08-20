@@ -54,6 +54,13 @@ public final class BaseAssertionTest extends AssertionTest {
         Object object = new Object();
         Assertions.assertThat(createBaseAssertion(object).getActual()).isNotNull();
         Assertions.assertThat(createBaseAssertion(object).getActual()).isSameAs(object);
+
+        try {
+            createBaseAssertion().getActual();
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
     }
 
     /**
@@ -304,6 +311,12 @@ public final class BaseAssertionTest extends AssertionTest {
         BaseAssertion<Object> baseAssertion1 = createBaseAssertion(null, null);
 
         BaseAssertion<Object> baseAssertion11 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion11, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion11, null);
         Assertions.assertThat(baseAssertion11.getActual()).isNull();
         Assertions.assertThat(baseAssertion11.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -315,6 +328,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion12 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion12, new Object());
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion12, new Object());
         Assertions.assertThat(baseAssertion12.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion12.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -328,6 +347,12 @@ public final class BaseAssertionTest extends AssertionTest {
         BaseAssertion<Object> baseAssertion2 = createBaseAssertion(null, "");
 
         BaseAssertion<Object> baseAssertion21 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion21, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion2.initializeAssertion(baseAssertion21, null);
         Assertions.assertThat(baseAssertion21.getActual()).isNull();
         Assertions.assertThat(baseAssertion21.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -339,6 +364,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion22 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion22, new Object());
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion2.initializeAssertion(baseAssertion22, new Object());
         Assertions.assertThat(baseAssertion22.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion22.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -352,6 +383,12 @@ public final class BaseAssertionTest extends AssertionTest {
         BaseAssertion<Object> baseAssertion3 = createBaseAssertion(null, "Base message");
 
         BaseAssertion<Object> baseAssertion31 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion31, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion3.initializeAssertion(baseAssertion31, null);
         Assertions.assertThat(baseAssertion31.getActual()).isNull();
         Assertions.assertThat(baseAssertion31.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Base message.");
@@ -363,6 +400,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion32 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion32, new Object());
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion3.initializeAssertion(baseAssertion32, new Object());
         Assertions.assertThat(baseAssertion32.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion32.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Base message.");
@@ -382,6 +425,12 @@ public final class BaseAssertionTest extends AssertionTest {
         BaseAssertion<Object> baseAssertion1 = createBaseAssertion(null, null);
 
         BaseAssertion<Object> baseAssertion101 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion101, null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion101, null, null);
         Assertions.assertThat(baseAssertion101.getActual()).isNull();
         Assertions.assertThat(baseAssertion101.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -393,6 +442,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion102 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion102, new Object(), null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion102, new Object(), null);
         Assertions.assertThat(baseAssertion102.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion102.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -404,6 +459,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion103 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion103, null, "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion103, null, "");
         Assertions.assertThat(baseAssertion103.getActual()).isNull();
         Assertions.assertThat(baseAssertion103.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -415,6 +476,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion104 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion104, new Object(), "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion104, new Object(), "");
         Assertions.assertThat(baseAssertion104.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion104.getAssertionErrorBuilder().build().getMessage()).isEmpty();
@@ -426,6 +493,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion105 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion105, null, "Message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion105, null, "Message");
         Assertions.assertThat(baseAssertion105.getActual()).isNull();
         Assertions.assertThat(baseAssertion105.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message.");
@@ -437,6 +510,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion106 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion106, new Object(), "Message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion106, new Object(), "Message");
         Assertions.assertThat(baseAssertion106.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion106.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message.");
@@ -448,6 +527,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion107 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion107, new Object(), "value''s");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion107, new Object(), "value''s");
         Assertions.assertThat(baseAssertion107.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion107.getAssertionErrorBuilder().build().getMessage()).isEqualTo("value's.");
@@ -459,6 +544,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion108 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion108, new Object(), "value''s");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion108, new Object(), "value''s");
         Assertions.assertThat(baseAssertion108.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion108.getAssertionErrorBuilder().build().getMessage()).isEqualTo("value's.");
@@ -470,6 +561,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion109 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion109, new Object(), "Message: {0}", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion109, new Object(), "Message: {0}", true);
         Assertions.assertThat(baseAssertion109.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion109.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message: true.");
@@ -481,6 +578,12 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         BaseAssertion<Object> baseAssertion110 = createBaseAssertion();
+        try {
+            createBaseAssertion().initializeAssertion(baseAssertion110, new Object(), "Message: {0}", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         baseAssertion1.initializeAssertion(baseAssertion110, new Object(), "Message: {0}", true);
         Assertions.assertThat(baseAssertion110.getActual()).isNotNull();
         Assertions.assertThat(baseAssertion110.getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message: true.");
@@ -723,12 +826,25 @@ public final class BaseAssertionTest extends AssertionTest {
     public void matcherAssertionTest() {
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue());
         try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue());
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()));
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue());
             Assertions.fail("BaseAssertion test fail");
@@ -738,12 +854,25 @@ public final class BaseAssertionTest extends AssertionTest {
 
         createBaseAssertion(null, "").matcherAssertion(null, Matchers.nullValue());
         try {
+            createBaseAssertion().matcherAssertion(null, Matchers.not(Matchers.nullValue()));
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             createBaseAssertion(null, "").matcherAssertion(null, Matchers.not(Matchers.nullValue()));
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue());
             Assertions.fail("BaseAssertion test fail");
@@ -753,12 +882,25 @@ public final class BaseAssertionTest extends AssertionTest {
 
         createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.nullValue());
         try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue());
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.not(Matchers.nullValue()));
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()));
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue());
             Assertions.fail("BaseAssertion test fail");
@@ -774,68 +916,137 @@ public final class BaseAssertionTest extends AssertionTest {
     public void matcherAssertionWithMessageTest() {
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue(), null);
         try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue(), null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()), null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()), null);
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()), null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue(), null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue(), "");
+        try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue(), "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()), "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()), "");
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()), "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue(), "");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue(), "Message");
+        try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue(), "Message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message");
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue(), "Message");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue(), "value''s");
+        try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue(), "value''s");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()), "value''s");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value's.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()), "value''s");
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()), "value''s");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue(), "value''s");
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value's.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, null).matcherAssertion(null, Matchers.nullValue(), "Message: {0}", true);
+        try {
+            createBaseAssertion().matcherAssertion(null, Matchers.nullValue(), "Message: {0}", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message: {0}", true);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message: true.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, null).matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message: {0}", true);
+        try {
+            createBaseAssertion().matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message: {0}", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
         try {
             createBaseAssertion(null, null).matcherAssertion("value", Matchers.nullValue(), "Message: {0}", true);
             Assertions.fail("BaseAssertion test fail");
@@ -850,6 +1061,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()), null);
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue(), null);
@@ -857,6 +1069,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "").matcherAssertion(null, Matchers.nullValue(), "");
         try {
             createBaseAssertion(null, "").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "");
@@ -864,6 +1077,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "");
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue(), "");
@@ -871,6 +1085,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "").matcherAssertion(null, Matchers.nullValue(), "Message");
         try {
             createBaseAssertion(null, "").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message");
@@ -878,6 +1093,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message");
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue(), "Message");
@@ -885,6 +1101,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "").matcherAssertion(null, Matchers.nullValue(), "value''s");
         try {
             createBaseAssertion(null, "").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "value''s");
@@ -892,6 +1109,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value's.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "value''s");
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue(), "value''s");
@@ -899,6 +1117,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value's.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "").matcherAssertion(null, Matchers.nullValue(), "Message: {0}", true);
         try {
             createBaseAssertion(null, "").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message: {0}", true);
@@ -906,6 +1125,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message: true.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message: {0}", true);
         try {
             createBaseAssertion(null, "").matcherAssertion("value", Matchers.nullValue(), "Message: {0}", true);
@@ -921,6 +1141,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()), null);
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue(), null);
@@ -928,6 +1149,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.nullValue(), "");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "");
@@ -935,6 +1157,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue(), "");
@@ -942,6 +1165,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.nullValue(), "Message");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message");
@@ -949,6 +1173,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue(), "Message");
@@ -956,6 +1181,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.nullValue(), "value''s");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "value''s");
@@ -963,6 +1189,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\n\tvalue's.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "value''s");
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue(), "value''s");
@@ -970,6 +1197,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\n\tvalue's.\nExpected: null\n     but: was \"value\"");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.nullValue(), "Message: {0}", true);
         try {
             createBaseAssertion(null, "Base message").matcherAssertion(null, Matchers.not(Matchers.nullValue()), "Message: {0}", true);
@@ -977,6 +1205,7 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Base message.\n\tMessage: true.\nExpected: not null\n     but: was null");
         }
+
         createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.not(Matchers.nullValue()), "Message: {0}", true);
         try {
             createBaseAssertion(null, "Base message").matcherAssertion("value", Matchers.nullValue(), "Message: {0}", true);
