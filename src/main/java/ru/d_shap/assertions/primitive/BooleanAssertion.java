@@ -45,7 +45,6 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
      * Check if the actual value is true.
      */
     public final void isTrue() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_TRUE).build();
@@ -56,7 +55,6 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
      * Check if the actual value is false.
      */
     public final void isFalse() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_FALSE).build();

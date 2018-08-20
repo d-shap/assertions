@@ -47,7 +47,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
@@ -60,7 +59,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
@@ -73,7 +71,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
@@ -86,7 +83,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
@@ -99,7 +95,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isLessThan(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
@@ -112,7 +107,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final int expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
@@ -126,7 +120,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final int expectedFrom, final int expectedTo) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -140,7 +133,6 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
