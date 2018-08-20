@@ -42,8 +42,7 @@ public final class BooleanAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConversionException {
-        checkValueClass(value);
+    protected String convertToString(final Object value) throws ConversionException {
         if ((boolean) value) {
             return "T";
         } else {

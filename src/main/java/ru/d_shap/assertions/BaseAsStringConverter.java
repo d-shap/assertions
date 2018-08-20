@@ -47,16 +47,10 @@ public abstract class BaseAsStringConverter {
      * @return the string representation of the value.
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    protected abstract String asString(Object value) throws ConversionException;
-
-    /**
-     * Check the value class.
-     *
-     * @param value the value.
-     */
-    protected final void checkValueClass(final Object value) {
+    public final String asString(final Object value) throws ConversionException {
         value.getClass();
         getValueClass().cast(value);
+        return convertToString(value);
     }
 
     /**
@@ -66,7 +60,16 @@ public abstract class BaseAsStringConverter {
      * @return the string representation of the value.
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    protected final String getValueAsString(final Object value) throws ConversionException {
+    protected abstract String convertToString(Object value) throws ConversionException;
+
+    /**
+     * Get the string representation of the value.
+     *
+     * @param value the value.
+     * @return the string representation of the value.
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    protected final String convertValueToString(final Object value) throws ConversionException {
         return AsStringConverter.asString(value);
     }
 
@@ -79,7 +82,7 @@ public abstract class BaseAsStringConverter {
      * @return the string representation of the value.
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    protected final String getValueAsString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
+    protected final String convertValueToString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         return AsStringConverter.asString(value, targetClass, arguments);
     }
 

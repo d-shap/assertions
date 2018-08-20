@@ -42,8 +42,7 @@ public final class ClassAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConversionException {
-        checkValueClass(value);
+    protected String convertToString(final Object value) throws ConversionException {
         return ((Class<?>) value).getName();
     }
 

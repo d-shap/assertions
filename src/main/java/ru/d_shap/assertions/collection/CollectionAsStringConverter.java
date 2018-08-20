@@ -44,8 +44,7 @@ public final class CollectionAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConversionException {
-        checkValueClass(value);
+    protected String convertToString(final Object value) throws ConversionException {
         StringBuilder result = new StringBuilder();
         result.append('[');
         boolean first = true;
@@ -55,7 +54,7 @@ public final class CollectionAsStringConverter extends BaseAsStringConverter {
             } else {
                 result.append(", ");
             }
-            result.append(getValueAsString(element));
+            result.append(convertValueToString(element));
         }
         result.append(']');
         return result.toString();

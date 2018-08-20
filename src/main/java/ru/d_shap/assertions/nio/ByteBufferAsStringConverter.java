@@ -44,9 +44,8 @@ public final class ByteBufferAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConversionException {
-        checkValueClass(value);
-        return getValueAsString(value, byte[].class, false);
+    protected String convertToString(final Object value) throws ConversionException {
+        return convertValueToString(value, byte[].class, false);
     }
 
 }

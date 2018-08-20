@@ -44,9 +44,8 @@ public final class ShortArrayAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected String asString(final Object value) throws ConversionException {
-        checkValueClass(value);
-        return getValueAsString(value, List.class);
+    protected String convertToString(final Object value) throws ConversionException {
+        return convertValueToString(value, List.class);
     }
 
 }
