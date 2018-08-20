@@ -52,8 +52,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).isEmpty();
     }
 
@@ -61,8 +59,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).isEmpty();
     }
 
@@ -70,28 +66,20 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createDoubleArrayAssertion(false).isNullOrEmpty();
-        }
+        createDoubleArrayAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createDoubleArrayAssertion(true).isNullOrEmpty();
-        }
+        createDoubleArrayAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).isNotEmpty();
     }
 
@@ -99,8 +87,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).isNotEmpty();
     }
 
@@ -110,8 +96,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected value.
      */
     public final void contains(final double expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).contains(expected);
     }
 
@@ -121,8 +105,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndContains(final double expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).contains(expected);
     }
 
@@ -132,8 +114,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final double expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).doesNotContain(expected);
     }
 
@@ -143,8 +123,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndDoesNotContain(final double expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).doesNotContain(expected);
     }
 
@@ -154,8 +132,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAll(expected);
     }
 
@@ -165,8 +141,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAll(expected);
     }
 
@@ -176,8 +150,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAll(expected);
     }
 
@@ -187,8 +159,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAll(expected);
     }
 
@@ -198,8 +168,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -209,8 +177,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -220,8 +186,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -231,8 +195,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -242,8 +204,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsExactly(expected);
     }
 
@@ -253,8 +213,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsExactly(expected);
     }
 
@@ -264,8 +222,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsExactly(expected);
     }
 
@@ -275,8 +231,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsExactly(expected);
     }
 
@@ -286,8 +240,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -297,8 +249,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -308,8 +258,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -319,8 +267,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -330,8 +276,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAny(expected);
     }
 
@@ -341,8 +285,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsAny(expected);
     }
 
@@ -352,8 +294,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAny(expected);
     }
 
@@ -363,8 +303,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsAny(expected);
     }
 
@@ -374,8 +312,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsNone(expected);
     }
 
@@ -385,8 +321,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(false).containsNone(expected);
     }
 
@@ -396,8 +330,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final double... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsNone(expected);
     }
 
@@ -407,8 +339,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final Iterable<Double> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createDoubleArrayAssertion(true).containsNone(expected);
     }
 
@@ -423,7 +353,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toPosition() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -434,7 +363,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toPosition(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -455,7 +383,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toLimit() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -466,7 +393,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLimit(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -487,7 +413,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toCapacity() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -498,7 +423,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toCapacity(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -532,7 +456,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toRemaining() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -543,7 +466,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toRemaining(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -562,7 +484,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is direct.
      */
     public final void isDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIRECT).build();
@@ -573,7 +494,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is NOT direct.
      */
     public final void isNotDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIRECT).build();
@@ -584,7 +504,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is read only.
      */
     public final void isReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_READ_ONLY).build();
@@ -595,7 +514,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
      * Check if the actual value is NOT read only.
      */
     public final void isNotReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_READ_ONLY).build();

@@ -52,8 +52,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).isEmpty();
     }
 
@@ -61,8 +59,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).isEmpty();
     }
 
@@ -70,28 +66,20 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createLongBufferAssertion(false).isNullOrEmpty();
-        }
+        createLongBufferAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createLongBufferAssertion(true).isNullOrEmpty();
-        }
+        createLongBufferAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).isNotEmpty();
     }
 
@@ -99,8 +87,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).isNotEmpty();
     }
 
@@ -110,8 +96,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected value.
      */
     public final void contains(final long expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).contains(expected);
     }
 
@@ -121,8 +105,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndContains(final long expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).contains(expected);
     }
 
@@ -132,8 +114,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final long expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).doesNotContain(expected);
     }
 
@@ -143,8 +123,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndDoesNotContain(final long expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).doesNotContain(expected);
     }
 
@@ -154,8 +132,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAll(expected);
     }
 
@@ -165,8 +141,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAll(expected);
     }
 
@@ -176,8 +150,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAll(expected);
     }
 
@@ -187,8 +159,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAll(expected);
     }
 
@@ -198,8 +168,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAllInOrder(expected);
     }
 
@@ -209,8 +177,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAllInOrder(expected);
     }
 
@@ -220,8 +186,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAllInOrder(expected);
     }
 
@@ -231,8 +195,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAllInOrder(expected);
     }
 
@@ -242,8 +204,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsExactly(expected);
     }
 
@@ -253,8 +213,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsExactly(expected);
     }
 
@@ -264,8 +222,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsExactly(expected);
     }
 
@@ -275,8 +231,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsExactly(expected);
     }
 
@@ -286,8 +240,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -297,8 +249,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -308,8 +258,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -319,8 +267,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -330,8 +276,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAny(expected);
     }
 
@@ -341,8 +285,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsAny(expected);
     }
 
@@ -352,8 +294,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAny(expected);
     }
 
@@ -363,8 +303,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsAny(expected);
     }
 
@@ -374,8 +312,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsNone(expected);
     }
 
@@ -385,8 +321,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(false).containsNone(expected);
     }
 
@@ -396,8 +330,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final long... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsNone(expected);
     }
 
@@ -407,8 +339,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final Iterable<Long> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createLongBufferAssertion(true).containsNone(expected);
     }
 
@@ -423,7 +353,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toPosition() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -434,7 +363,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toPosition(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -455,7 +383,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toLimit() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -466,7 +393,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLimit(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -487,7 +413,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toCapacity() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -498,7 +423,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toCapacity(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -532,7 +456,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toRemaining() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -543,7 +466,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toRemaining(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -562,7 +484,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is direct.
      */
     public final void isDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIRECT).build();
@@ -573,7 +494,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is NOT direct.
      */
     public final void isNotDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIRECT).build();
@@ -584,7 +504,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is read only.
      */
     public final void isReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_READ_ONLY).build();
@@ -595,7 +514,6 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      * Check if the actual value is NOT read only.
      */
     public final void isNotReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_READ_ONLY).build();

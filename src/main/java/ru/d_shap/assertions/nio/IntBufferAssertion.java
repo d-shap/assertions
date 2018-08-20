@@ -52,8 +52,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).isEmpty();
     }
 
@@ -61,8 +59,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).isEmpty();
     }
 
@@ -70,28 +66,20 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createIntArrayAssertion(false).isNullOrEmpty();
-        }
+        createIntArrayAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createIntArrayAssertion(true).isNullOrEmpty();
-        }
+        createIntArrayAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).isNotEmpty();
     }
 
@@ -99,8 +87,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).isNotEmpty();
     }
 
@@ -110,8 +96,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected value.
      */
     public final void contains(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).contains(expected);
     }
 
@@ -121,8 +105,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndContains(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).contains(expected);
     }
 
@@ -132,8 +114,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).doesNotContain(expected);
     }
 
@@ -143,8 +123,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected value.
      */
     public final void rewindAndDoesNotContain(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).doesNotContain(expected);
     }
 
@@ -154,8 +132,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAll(expected);
     }
 
@@ -165,8 +141,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAll(expected);
     }
 
@@ -176,8 +150,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAll(expected);
     }
 
@@ -187,8 +159,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAll(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAll(expected);
     }
 
@@ -198,8 +168,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -209,8 +177,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -220,8 +186,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -231,8 +195,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAllInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -242,8 +204,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsExactly(expected);
     }
 
@@ -253,8 +213,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsExactly(expected);
     }
 
@@ -264,8 +222,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsExactly(expected);
     }
 
@@ -275,8 +231,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactly(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsExactly(expected);
     }
 
@@ -286,8 +240,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -297,8 +249,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -308,8 +258,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -319,8 +267,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsExactlyInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -330,8 +276,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAny(expected);
     }
 
@@ -341,8 +285,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsAny(expected);
     }
 
@@ -352,8 +294,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAny(expected);
     }
 
@@ -363,8 +303,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsAny(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsAny(expected);
     }
 
@@ -374,8 +312,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsNone(expected);
     }
 
@@ -385,8 +321,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(false).containsNone(expected);
     }
 
@@ -396,8 +330,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsNone(expected);
     }
 
@@ -407,8 +339,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expected the expected values.
      */
     public final void rewindAndContainsNone(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createIntArrayAssertion(true).containsNone(expected);
     }
 
@@ -423,7 +353,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toPosition() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -434,7 +363,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toPosition(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -455,7 +383,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toLimit() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -466,7 +393,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLimit(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -487,7 +413,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toCapacity() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -498,7 +423,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toCapacity(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -532,7 +456,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @return the assertion.
      */
     public final IntAssertion toRemaining() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -543,7 +466,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param matcher the hamcrest matcher.
      */
     public final void toRemaining(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -562,7 +484,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is direct.
      */
     public final void isDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIRECT).build();
@@ -573,7 +494,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is NOT direct.
      */
     public final void isNotDirect() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIRECT).build();
@@ -584,7 +504,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is read only.
      */
     public final void isReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_READ_ONLY).build();
@@ -595,7 +514,6 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Check if the actual value is NOT read only.
      */
     public final void isNotReadOnly() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_READ_ONLY).build();
