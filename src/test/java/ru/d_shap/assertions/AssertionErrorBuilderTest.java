@@ -461,12 +461,17 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         }
 
         @Override
-        protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
+        protected void checkArguments(final Object... arguments) {
+            // Ignore
+        }
+
+        @Override
+        protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
             return true;
         }
 
         @Override
-        protected Object convert(final Object value, final Object... arguments) throws ConversionException {
+        protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 
