@@ -57,8 +57,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().isEmpty();
     }
 
@@ -66,18 +64,13 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
-        if (getActual() != null) {
-            createListAssertion().isNullOrEmpty();
-        }
+        createListAssertion().isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().isNotEmpty();
     }
 
@@ -87,8 +80,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected value.
      */
     public final void contains(final E expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().contains(expected);
     }
 
@@ -98,8 +89,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final E expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().doesNotContain(expected);
     }
 
@@ -110,8 +99,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAll(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAll(expected);
     }
 
@@ -121,8 +108,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAll(expected);
     }
 
@@ -133,8 +118,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAllInOrder(expected);
     }
 
@@ -144,8 +127,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAllInOrder(expected);
     }
 
@@ -156,8 +137,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsExactly(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactly(expected);
     }
 
@@ -167,8 +146,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactly(expected);
     }
 
@@ -179,8 +156,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder(expected);
     }
 
@@ -190,8 +165,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder(expected);
     }
 
@@ -202,8 +175,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAny(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAny(expected);
     }
 
@@ -213,8 +184,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAny(expected);
     }
 
@@ -225,8 +194,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsNone(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsNone(expected);
     }
 
@@ -236,8 +203,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsNone(expected);
     }
 
@@ -247,8 +212,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
-        checkInitialized();
-        checkActualIsNotNull();
         return createListAssertion().toSize();
     }
 
@@ -258,8 +221,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param matcher the hamcrest matcher.
      */
     public final void toSize(final Matcher<Integer> matcher) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().toSize(matcher);
     }
 
@@ -269,8 +230,6 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().hasSize(expected);
     }
 

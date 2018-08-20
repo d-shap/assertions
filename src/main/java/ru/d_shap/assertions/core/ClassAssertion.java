@@ -57,7 +57,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
@@ -71,7 +70,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
@@ -85,7 +83,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected class.
      */
     public final void isSubtypeOf(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.isAssignableFrom(getActual())) {
@@ -99,7 +96,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected class.
      */
     public final void isNotSubtypeOf(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.isAssignableFrom(getActual())) {
@@ -113,7 +109,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected class.
      */
     public final void isSupertypeOf(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().isAssignableFrom(expected)) {
@@ -127,7 +122,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param expected the expected class.
      */
     public final void isNotSupertypeOf(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().isAssignableFrom(expected)) {
@@ -140,7 +134,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * Side-effect: invokes the private constractor for the code coverage.
      */
     public final void hasOnePrivateConstructor() {
-        checkInitialized();
         checkActualIsNotNull();
         Constructor<?>[] constructors = getActual().getDeclaredConstructors();
         if (constructors.length != 1) {

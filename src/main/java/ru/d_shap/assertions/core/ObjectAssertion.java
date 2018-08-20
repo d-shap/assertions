@@ -47,7 +47,6 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Object expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
@@ -61,7 +60,6 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Object expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {

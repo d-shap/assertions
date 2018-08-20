@@ -50,7 +50,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toMessage() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.MESSAGE);
     }
@@ -61,7 +60,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param matcher the hamcrest matcher.
      */
     public final void toMessage(final Matcher<String> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
@@ -73,7 +71,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected value.
      */
     public final void hasMessage(final String expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toMessage().isEqualTo(expected);
@@ -85,7 +82,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected value.
      */
     public final void messageMatches(final String expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toMessage().matches(expected);
@@ -97,7 +93,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @return the assertion.
      */
     public final ThrowableAssertion toCause() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.CAUSE);
     }
@@ -108,7 +103,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param matcher the hamcrest matcher.
      */
     public final void toCause(final Matcher<Throwable> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);
@@ -120,7 +114,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected class.
      */
     public final void hasCause(final Class<?> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().isInstanceOf(expected);
@@ -132,7 +125,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected value.
      */
     public final void hasCauseMessage(final String expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().hasMessage(expected);
@@ -144,7 +136,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected value.
      */
     public final void causeMessageMatches(final String expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCause().messageMatches(expected);

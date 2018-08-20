@@ -53,7 +53,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) != 0) {
@@ -67,7 +66,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) == 0) {
@@ -81,7 +79,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) <= 0) {
@@ -95,7 +92,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) < 0) {
@@ -109,7 +105,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isLessThan(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) >= 0) {
@@ -123,7 +118,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) > 0) {
@@ -138,7 +132,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final E expectedFrom, final E expectedTo) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
@@ -154,7 +147,6 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final E expectedFrom, final E expectedTo) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);

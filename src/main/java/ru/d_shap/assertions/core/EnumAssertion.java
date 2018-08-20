@@ -63,7 +63,6 @@ public class EnumAssertion extends ClassAssertion {
      * @return the assertion.
      */
     public final IntAssertion toValueCount() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.VALUE_COUNT);
     }
@@ -75,7 +74,6 @@ public class EnumAssertion extends ClassAssertion {
      * @param matcher the hamcrest matcher.
      */
     public final void toValueCount(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
