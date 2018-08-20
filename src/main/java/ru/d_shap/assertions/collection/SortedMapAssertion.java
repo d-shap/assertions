@@ -64,7 +64,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
@@ -75,7 +74,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -85,7 +83,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
@@ -98,7 +95,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toKeys() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) getActual().keySet(), Messages.Check.KEYS);
     }
@@ -109,7 +105,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toKeys(final Matcher<Iterable<K>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
@@ -150,7 +145,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toHeadKeys(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         return toKeys().toHeadSet(count);
@@ -163,7 +157,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toHeadKeys(final K key, final Matcher<Iterable<K>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         toKeys().toHeadSet(key, matcher);
@@ -176,7 +169,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toHeadKeys(final int count, final Matcher<Iterable<K>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -200,7 +192,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toTailKeys(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         return toKeys().toTailSet(count);
@@ -213,7 +204,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toTailKeys(final K key, final Matcher<Iterable<K>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         toKeys().toTailSet(key, matcher);
@@ -226,7 +216,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toTailKeys(final int count, final Matcher<Iterable<K>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -240,7 +229,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsAllKeys(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -253,7 +241,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected keys.
      */
     public final void containsAllKeys(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -268,7 +255,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsAllKeysInOrder(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -281,7 +267,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected keys.
      */
     public final void containsAllKeysInOrder(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -296,7 +281,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsKeysExactly(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toKeys().containsExactly(expected);
@@ -308,7 +292,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected keys.
      */
     public final void containsKeysExactly(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -322,7 +305,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsKeysExactlyInOrder(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toKeys().containsExactlyInOrder(expected);
@@ -334,7 +316,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsKeysExactlyInOrder(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -348,7 +329,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsAnyKey(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse(expected.length == 0);
@@ -361,7 +341,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected keys.
      */
     public final void containsAnyKey(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -376,7 +355,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     @SafeVarargs
     public final void containsNoKey(final K... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -389,7 +367,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected keys.
      */
     public final void containsNoKey(final Iterable<K> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
@@ -403,7 +380,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final IterableAssertion<V> toValues() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.VALUES);
     }
@@ -414,7 +390,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toValues(final Matcher<Iterable<V>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
@@ -451,7 +426,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.HEAD_ELEMENT, key);
     }
@@ -463,7 +437,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toHeadMap(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.HEAD_COUNT, count);
@@ -476,7 +449,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toHeadMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().headMap(key), matcher, Messages.Check.HEAD_ELEMENT, key);
@@ -489,7 +461,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toHeadMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -512,7 +483,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.TAIL_ELEMENT, key);
     }
@@ -524,7 +494,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toTailMap(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.TAIL_COUNT, count);
@@ -537,7 +506,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toTailMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().tailMap(key), matcher, Messages.Check.TAIL_ELEMENT, key);
@@ -550,7 +518,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toTailMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -658,7 +625,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAll(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsAll(expected);
     }
@@ -747,7 +713,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsAllInOrder(expected);
     }
@@ -836,7 +801,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsExactly(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsExactly(expected);
     }
@@ -925,7 +889,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsExactlyInOrder(expected);
     }
@@ -1014,7 +977,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAny(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsAny(expected);
     }
@@ -1103,7 +1065,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsNone(final Map<K, V> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         createMapAssertion().containsNone(expected);
     }
@@ -1118,7 +1079,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @return the assertion.
      */
     public final IntAssertion toSize() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
@@ -1129,7 +1089,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param matcher the hamcrest matcher.
      */
     public final void toSize(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);

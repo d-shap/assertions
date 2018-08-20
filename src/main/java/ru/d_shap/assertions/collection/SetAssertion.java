@@ -58,7 +58,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
@@ -69,7 +68,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
         if (getActual() != null && !getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -79,7 +77,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
@@ -92,7 +89,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected value.
      */
     public final void contains(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS).addActual().addExpected(expected).build();
@@ -105,7 +101,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final E expected) {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
@@ -119,8 +114,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAll(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAll(expected);
     }
 
@@ -130,8 +123,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAll(expected);
     }
 
@@ -142,8 +133,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAllInOrder(expected);
     }
 
@@ -153,8 +142,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAllInOrder(expected);
     }
 
@@ -165,8 +152,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsExactly(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactly(expected);
     }
 
@@ -176,8 +161,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactly(expected);
     }
 
@@ -188,8 +171,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder(expected);
     }
 
@@ -199,8 +180,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsExactlyInOrder(expected);
     }
 
@@ -211,8 +190,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAny(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAny(expected);
     }
 
@@ -222,8 +199,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsAny(expected);
     }
 
@@ -234,8 +209,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsNone(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsNone(expected);
     }
 
@@ -245,8 +218,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().containsNone(expected);
     }
 
@@ -261,7 +232,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
@@ -272,7 +242,6 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param matcher the hamcrest matcher.
      */
     public final void toSize(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
