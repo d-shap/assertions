@@ -49,18 +49,18 @@ public final class CharBufferToCharArrayValueConverter extends BaseValueConverte
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(1, arguments);
-        checkArgumentClass(arguments[0], Boolean.class);
+    protected void checkArguments(final Object... arguments) {
+        checkArgumentCount(arguments, 1);
+        checkArgumentClass(arguments, 0, Boolean.class);
+    }
+
+    @Override
+    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(1, arguments);
-        checkArgumentClass(arguments[0], Boolean.class);
+    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         boolean rewind = (Boolean) arguments[0];
         int position = ((CharBuffer) value).position();
         if (rewind) {

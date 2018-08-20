@@ -51,18 +51,18 @@ public final class ReaderToCharArrayValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(1, arguments);
-        checkArgumentClass(arguments[0], Integer.class);
+    protected void checkArguments(final Object... arguments) {
+        checkArgumentCount(arguments, 1);
+        checkArgumentClass(arguments, 0, Integer.class);
+    }
+
+    @Override
+    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(1, arguments);
-        checkArgumentClass(arguments[0], Integer.class);
+    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         try {
             int count = (Integer) arguments[0];
             int read;

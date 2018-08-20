@@ -47,16 +47,17 @@ public final class ByteArrayToObjectArrayValueConverter extends BaseValueConvert
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(0, arguments);
+    protected void checkArguments(final Object... arguments) {
+        checkArgumentCount(arguments, 0);
+    }
+
+    @Override
+    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(0, arguments);
+    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         Byte[] result = new Byte[((byte[]) value).length];
         for (int i = 0; i < ((byte[]) value).length; i++) {
             result[i] = ((byte[]) value)[i];

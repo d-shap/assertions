@@ -47,16 +47,17 @@ public final class DoubleArrayToObjectArrayValueConverter extends BaseValueConve
     }
 
     @Override
-    protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(0, arguments);
+    protected void checkArguments(final Object... arguments) {
+        checkArgumentCount(arguments, 0);
+    }
+
+    @Override
+    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         return true;
     }
 
     @Override
-    protected Object convert(final Object value, final Object... arguments) throws ConversionException {
-        checkValueClass(value);
-        checkArgumentValueCount(0, arguments);
+    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         Double[] result = new Double[((double[]) value).length];
         for (int i = 0; i < ((double[]) value).length; i++) {
             result[i] = ((double[]) value)[i];
