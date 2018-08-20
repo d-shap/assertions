@@ -55,7 +55,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * Check if the actual value does not contain any more bytes.
      */
     public final void isCompleted() {
-        checkInitialized();
         checkActualIsNotNull();
         int nextByte = convertValue(getActual(), Integer.class);
         initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isLessThan(0);
@@ -65,7 +64,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * Check if the actual value contains more bytes.
      */
     public final void isNotCompleted() {
-        checkInitialized();
         checkActualIsNotNull();
         int nextByte = convertValue(getActual(), Integer.class);
         initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isGreaterThanOrEqualTo(0);
@@ -77,7 +75,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @return the assertion.
      */
     public final ByteArrayAssertion toByteArray() {
-        checkInitialized();
         checkActualIsNotNull();
         byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_ALL);
@@ -90,7 +87,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @return the assertion.
      */
     public final ByteArrayAssertion toByteArray(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
@@ -103,7 +99,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param matcher the hamcrest matcher.
      */
     public final void toByteArray(final Matcher<Byte[]> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
@@ -118,7 +113,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param matcher the hamcrest matcher.
      */
     public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -133,7 +127,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isNextBytesEqualTo(final byte... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -146,7 +139,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isNextBytesEqualTo(final int... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -159,7 +151,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isNextBytesEqualTo(final Iterable<Byte> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Byte> expectedList = convertValue(expected, List.class);
@@ -173,7 +164,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isAllBytesEqualTo(final byte... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toByteArray().containsExactlyInOrder(expected);
@@ -185,7 +175,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isAllBytesEqualTo(final int... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toByteArray().containsExactlyInOrder(expected);
@@ -197,7 +186,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected bytes.
      */
     public final void isAllBytesEqualTo(final Iterable<Byte> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Byte> expectedList = convertValue(expected, List.class);
@@ -210,7 +198,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @return the assertion.
      */
     public final IntAssertion toAvailable() {
-        checkInitialized();
         checkActualIsNotNull();
         try {
             return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.AVAILABLE);
@@ -225,7 +212,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param matcher the hamcrest matcher.
      */
     public final void toAvailable(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
@@ -250,7 +236,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @return the assertion.
      */
     public final LongAssertion toLength() {
-        checkInitialized();
         checkActualIsNotNull();
         try {
             return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
@@ -265,7 +250,6 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLength(final Matcher<Long> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {

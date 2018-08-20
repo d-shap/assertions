@@ -54,7 +54,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Check if the actual value does not contain any more chars.
      */
     public final void isCompleted() {
-        checkInitialized();
         checkActualIsNotNull();
         int nextChar = convertValue(getActual(), Integer.class);
         initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
@@ -64,7 +63,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Check if the actual value contains more chars.
      */
     public final void isNotCompleted() {
-        checkInitialized();
         checkActualIsNotNull();
         int nextChar = convertValue(getActual(), Integer.class);
         initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
@@ -76,7 +74,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray() {
-        checkInitialized();
         checkActualIsNotNull();
         char[] nextChars = convertValue(getActual(), char[].class, 0);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
@@ -89,7 +86,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray(final int count) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         char[] nextChars = convertValue(getActual(), char[].class, count);
@@ -102,7 +98,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param matcher the hamcrest matcher.
      */
     public final void toCharArray(final Matcher<Character[]> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         char[] nextChars = convertValue(getActual(), char[].class, 0);
@@ -117,7 +112,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param count   the number of chars to read from the actual.
      */
     public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
@@ -132,7 +126,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final char... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -145,7 +138,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final int... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -158,7 +150,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final Iterable<Character> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Character> expectedList = convertValue(expected, List.class);
@@ -172,7 +163,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final char... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCharArray().containsExactlyInOrder(expected);
@@ -184,7 +174,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final int... expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toCharArray().containsExactlyInOrder(expected);
@@ -196,7 +185,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final Iterable<Character> expected) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Character> expectedList = convertValue(expected, List.class);
@@ -209,7 +197,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @return the assertion.
      */
     public final LongAssertion toLength() {
-        checkInitialized();
         checkActualIsNotNull();
         try {
             return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
@@ -224,7 +211,6 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLength(final Matcher<Long> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
