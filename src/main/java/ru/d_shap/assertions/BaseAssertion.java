@@ -244,6 +244,7 @@ public abstract class BaseAssertion<T> {
      * @param argument the argument.
      */
     protected final void checkArgumentIsNotNull(final Object argument) {
+        checkInitialized();
         if (argument == null) {
             throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_NULL).build();
         }
@@ -255,6 +256,7 @@ public abstract class BaseAssertion<T> {
      * @param isEmpty is the argument empty.
      */
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
+        checkInitialized();
         if (isEmpty) {
             throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_EMPTY).addMessage(Messages.ArgumentFail.RESULT_IS_ALWAYS_TRUE).build();
         }
@@ -266,6 +268,7 @@ public abstract class BaseAssertion<T> {
      * @param isEmpty is the argument empty.
      */
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
+        checkInitialized();
         if (isEmpty) {
             throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_EMPTY).addMessage(Messages.ArgumentFail.RESULT_IS_ALWAYS_FALSE).build();
         }
@@ -277,6 +280,7 @@ public abstract class BaseAssertion<T> {
      * @param valid is the argument valid.
      */
     protected final void checkArgumentIsValid(final boolean valid) {
+        checkInitialized();
         if (!valid) {
             throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_VALID).build();
         }
