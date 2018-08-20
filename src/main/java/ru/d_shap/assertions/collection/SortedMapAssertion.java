@@ -625,7 +625,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAll(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsAll(expected);
     }
 
@@ -713,7 +712,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsAllInOrder(expected);
     }
 
@@ -801,7 +799,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsExactly(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsExactly(expected);
     }
 
@@ -889,7 +886,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsExactlyInOrder(expected);
     }
 
@@ -977,7 +973,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsAny(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsAny(expected);
     }
 
@@ -1065,7 +1060,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expected the expected values.
      */
     public final void containsNone(final Map<K, V> expected) {
-        checkActualIsNotNull();
         createMapAssertion().containsNone(expected);
     }
 
