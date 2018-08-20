@@ -1180,12 +1180,17 @@ public class AssertionTest {
         }
 
         @Override
-        protected boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
+        protected void checkArguments(final Object... arguments) {
+            // Ignore
+        }
+
+        @Override
+        protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
             return true;
         }
 
         @Override
-        protected Object convert(final Object value, final Object... arguments) throws ConversionException {
+        protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
             return value;
         }
 
@@ -1204,12 +1209,12 @@ public class AssertionTest {
 
         @Override
         protected Class<?> getValueClass() {
-            return String.class;
+            return Object.class;
         }
 
         @Override
-        protected String asString(final Object value) throws ConversionException {
-            return (String) value;
+        protected String convertToString(final Object value) throws ConversionException {
+            return convertValueToString(value);
         }
 
     }
