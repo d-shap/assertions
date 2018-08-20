@@ -64,6 +64,8 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
     @Test
     public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{})).isTrue();
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{1})).isTrue();
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{100000})).isFalse();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{1, 2})).isTrue();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{1, 2, 3, 4})).isTrue();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().canConvert(new int[]{100000, 100001})).isFalse();
@@ -109,6 +111,14 @@ public final class IntArrayToByteArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{})).isInstanceOf(byte[].class);
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{}), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{})).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{1})).isInstanceOf(byte[].class);
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{1}), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{1})).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{100000})).isInstanceOf(byte[].class);
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{100000}), Raw.byteArrayAssertion()).containsExactlyInOrder(-96);
+        Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{100000})).as(Raw.byteArrayAssertion()).containsExactlyInOrder(-96);
 
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{1, 2})).isInstanceOf(byte[].class);
         Assertions.assertThat(new IntArrayToByteArrayValueConverter().convert(new int[]{1, 2}), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);

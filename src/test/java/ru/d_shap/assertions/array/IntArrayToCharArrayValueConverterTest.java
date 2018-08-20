@@ -64,6 +64,8 @@ public final class IntArrayToCharArrayValueConverterTest extends AssertionTest {
     @Test
     public void canConvertTest() throws ConversionException {
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{})).isTrue();
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{1})).isTrue();
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{100000})).isFalse();
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{1, 2})).isTrue();
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{1, 2, 3, 4})).isTrue();
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().canConvert(new int[]{100000, 100001})).isFalse();
@@ -109,6 +111,14 @@ public final class IntArrayToCharArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{})).isInstanceOf(char[].class);
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{}), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{})).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1})).isInstanceOf(char[].class);
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1}), Raw.charArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1})).as(Raw.charArrayAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{100000})).isInstanceOf(char[].class);
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{100000}), Raw.charArrayAssertion()).containsExactlyInOrder(34464);
+        Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{100000})).as(Raw.charArrayAssertion()).containsExactlyInOrder(34464);
 
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1, 2})).isInstanceOf(char[].class);
         Assertions.assertThat(new IntArrayToCharArrayValueConverter().convert(new int[]{1, 2}), Raw.charArrayAssertion()).containsExactlyInOrder(1, 2);
