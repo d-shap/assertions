@@ -52,7 +52,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
@@ -63,7 +62,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -73,7 +71,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
@@ -86,8 +83,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected value.
      */
     public final void contains(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().contains(expected);
     }
 
@@ -97,8 +92,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().doesNotContain(expected);
     }
 
@@ -108,8 +101,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -120,8 +111,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -132,8 +121,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -144,8 +131,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -156,8 +141,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -168,8 +151,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -180,8 +161,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -192,8 +171,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -204,8 +181,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -216,8 +191,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -228,8 +201,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -240,8 +211,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Integer> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -257,7 +226,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @return the assertion.
      */
     public final IntAssertion toLength() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -268,7 +236,6 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLength(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);

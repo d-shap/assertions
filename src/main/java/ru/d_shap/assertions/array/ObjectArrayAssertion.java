@@ -58,7 +58,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
@@ -69,7 +68,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        checkInitialized();
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -79,7 +77,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        checkInitialized();
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
@@ -92,8 +89,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected value.
      */
     public final void contains(final E expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().contains(expected);
     }
 
@@ -103,8 +98,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final E expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         createListAssertion().doesNotContain(expected);
     }
 
@@ -115,8 +108,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsAll(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -127,8 +118,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAll(expectedList);
     }
@@ -140,8 +129,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -152,8 +139,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAllInOrder(expectedList);
     }
@@ -165,8 +150,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsExactly(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -177,8 +160,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactly(expectedList);
     }
@@ -190,8 +171,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -202,8 +181,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsExactlyInOrder(expectedList);
     }
@@ -215,8 +192,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsAny(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -227,8 +202,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsAny(expectedList);
     }
@@ -240,8 +213,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     @SafeVarargs
     public final void containsNone(final E... expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -252,8 +223,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<E> expected) {
-        checkInitialized();
-        checkActualIsNotNull();
         List<Object> expectedList = convertValue(expected, List.class);
         createListAssertion().containsNone(expectedList);
     }
@@ -269,7 +238,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @return the assertion.
      */
     public final IntAssertion toLength() {
-        checkInitialized();
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -280,7 +248,6 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLength(final Matcher<Integer> matcher) {
-        checkInitialized();
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
