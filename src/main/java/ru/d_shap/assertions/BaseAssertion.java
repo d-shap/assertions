@@ -217,10 +217,7 @@ public abstract class BaseAssertion<T> {
         }
     }
 
-    /**
-     * Check if the current assertion is initialized.
-     */
-    protected final void checkInitialized() {
+    private void checkInitialized() {
         if (!_initialized) {
             throw getAssertionErrorBuilder().addMessage(Messages.AssertionFail.IS_INITIALIZED).build();
         }
