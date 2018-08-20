@@ -1365,20 +1365,6 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void checkInitializedTest() {
-        createBaseAssertion(null).checkInitialized();
-        try {
-            createBaseAssertion().checkInitialized();
-            Assertions.fail("BaseAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-    }
-
-    /**
-     * {@link BaseAssertion} class test.
-     */
-    @Test
     public void checkActualIsNotNullTest() {
         createBaseAssertion(new Object()).checkActualIsNotNull();
         createBaseAssertion("test").checkActualIsNotNull();
