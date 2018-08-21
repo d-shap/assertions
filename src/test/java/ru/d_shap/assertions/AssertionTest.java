@@ -1171,12 +1171,12 @@ public class AssertionTest {
 
         @Override
         protected Class<?> getValueClass() {
-            return String.class;
+            return Object.class;
         }
 
         @Override
         protected Class<?> getTargetClass() {
-            return String.class;
+            return Object.class;
         }
 
         @Override
