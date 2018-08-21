@@ -34,7 +34,9 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -290,6 +292,21 @@ public class AssertionTest {
     }
 
     /**
+     * Create new duplicate set with the values.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     * @return the duplicate set.
+     */
+    @SafeVarargs
+    protected final <E> Set<E> createDuplicateSet(final E... values) {
+        Set<E> set = new DuplicateSet<>();
+        List<E> list = Arrays.asList(values);
+        set.addAll(list);
+        return set;
+    }
+
+    /**
      * Create new tree set with the values.
      *
      * @param values the values.
@@ -412,6 +429,123 @@ public class AssertionTest {
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
         Map<K, V> map = new LinkedHashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        map.put(key4, value4);
+        map.put(key5, value5);
+        return map;
+    }
+
+    /**
+     * Create new empty duplicate map.
+     *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap() {
+        Map<K, V> map = new DuplicateMap<>();
+        return map;
+    }
+
+    /**
+     * Create new duplicate map with the values.
+     *
+     * @param key   the key.
+     * @param value the value.
+     * @param <K>   the generic type of the key.
+     * @param <V>   the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap(final K key, final V value) {
+        Map<K, V> map = new DuplicateMap<>();
+        map.put(key, value);
+        return map;
+    }
+
+    /**
+     * Create new duplicate map with the values.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2) {
+        Map<K, V> map = new DuplicateMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        return map;
+    }
+
+    /**
+     * Create new duplicate map with the values.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+        Map<K, V> map = new DuplicateMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        return map;
+    }
+
+    /**
+     * Create new duplicate map with the values.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
+        Map<K, V> map = new DuplicateMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        map.put(key3, value3);
+        map.put(key4, value4);
+        return map;
+    }
+
+    /**
+     * Create new duplicate map with the values.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param key5   the key.
+     * @param value5 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     * @return the duplicate map.
+     */
+    protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
+        Map<K, V> map = new DuplicateMap<>();
         map.put(key1, value1);
         map.put(key2, value2);
         map.put(key3, value3);
@@ -1438,6 +1572,225 @@ public class AssertionTest {
         @Override
         public void remove() {
             _iterator.remove();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @param <E>the generic type of the element.
+     * @author Dmitry Shapovalov
+     */
+    private static final class DuplicateSet<E> implements Set<E> {
+
+        private final List<E> _elements;
+
+        DuplicateSet() {
+            super();
+            _elements = new ArrayList<>();
+        }
+
+        @Override
+        public int size() {
+            return _elements.size();
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return _elements.isEmpty();
+        }
+
+        @Override
+        public boolean contains(final Object element) {
+            return _elements.contains(element);
+        }
+
+        @Override
+        public Iterator<E> iterator() {
+            return _elements.iterator();
+        }
+
+        @Override
+        public Object[] toArray() {
+            return _elements.toArray(new Object[_elements.size()]);
+        }
+
+        @Override
+        public <T> T[] toArray(final T[] array) {
+            return null;
+        }
+
+        @Override
+        public boolean add(final E element) {
+            _elements.add(element);
+            return false;
+        }
+
+        @Override
+        public boolean remove(final Object element) {
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(final Collection<?> collection) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(final Collection<? extends E> collection) {
+            for (E element : collection) {
+                add(element);
+            }
+            return false;
+        }
+
+        @Override
+        public boolean retainAll(final Collection<?> collection) {
+            return false;
+        }
+
+        @Override
+        public boolean removeAll(final Collection<?> collection) {
+            return false;
+        }
+
+        @Override
+        public void clear() {
+            _elements.clear();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
+     * @author Dmitry Shapovalov
+     */
+    private static final class DuplicateMap<K, V> implements Map<K, V> {
+
+        private final List<K> _keys;
+
+        private final List<V> _values;
+
+        private final Map<K, Integer> _indices;
+
+        DuplicateMap() {
+            super();
+            _keys = new ArrayList<>();
+            _values = new ArrayList<>();
+            _indices = new HashMap<>();
+        }
+
+        @Override
+        public int size() {
+            return _keys.size();
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return _keys.isEmpty();
+        }
+
+        @Override
+        public boolean containsKey(final Object key) {
+            return false;
+        }
+
+        @Override
+        public boolean containsValue(final Object value) {
+            return false;
+        }
+
+        @Override
+        public V get(final Object key) {
+            int index = _indices.get(key);
+            return _values.get(index);
+        }
+
+        @Override
+        public V put(final K key, final V value) {
+            _keys.add(key);
+            _values.add(value);
+            _indices.put(key, _keys.size() - 1);
+            return null;
+        }
+
+        @Override
+        public V remove(final Object key) {
+            return null;
+        }
+
+        @Override
+        public void putAll(final Map<? extends K, ? extends V> map) {
+
+        }
+
+        @Override
+        public void clear() {
+            _keys.clear();
+            _values.clear();
+            _indices.clear();
+        }
+
+        @Override
+        public Set<K> keySet() {
+            DuplicateSet<K> set = new DuplicateSet<>();
+            set.addAll(_keys);
+            return set;
+        }
+
+        @Override
+        public Collection<V> values() {
+            return _values;
+        }
+
+        @Override
+        public Set<Entry<K, V>> entrySet() {
+            DuplicateSet<Entry<K, V>> set = new DuplicateSet<>();
+            for (int i = 0; i < _keys.size(); i++) {
+                Entry<K, V> entry = new DuplicateMapEntry<>(_keys.get(i), _values.get(i));
+                set.add(entry);
+            }
+            return set;
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
+     * @author Dmitry Shapovalov
+     */
+    private static final class DuplicateMapEntry<K, V> implements Map.Entry<K, V> {
+
+        private final K _key;
+
+        private final V _value;
+
+        DuplicateMapEntry(final K key, final V value) {
+            super();
+            _key = key;
+            _value = value;
+        }
+
+        @Override
+        public K getKey() {
+            return _key;
+        }
+
+        @Override
+        public V getValue() {
+            return _value;
+        }
+
+        @Override
+        public V setValue(final V value) {
+            return null;
         }
 
     }
