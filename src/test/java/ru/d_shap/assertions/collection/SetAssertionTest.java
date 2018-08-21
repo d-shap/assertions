@@ -310,6 +310,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAll("val1", "val1", "val1");
 
         try {
             Raw.<String>setAssertion().containsAll("val");
@@ -406,6 +407,18 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsAll("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1"), "Message").containsAll("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
     }
 
@@ -519,6 +532,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1");
 
         try {
             Raw.<String>setAssertion().containsAllInOrder("val");
@@ -615,6 +629,18 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1"), "Message").containsAllInOrder("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
     }
 
@@ -729,6 +755,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.setAssertion(), createHashSet()).containsExactly();
+        initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactly("val1", "val1", "val1");
 
         try {
             Raw.<String>setAssertion().containsExactly("val");
@@ -825,6 +852,18 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, 1(49)]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsExactly("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1"), "Message").containsExactly("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
     }
 
@@ -937,6 +976,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.setAssertion(), createHashSet()).containsExactlyInOrder();
+        initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactlyInOrder("val1", "val1", "val1");
 
         try {
             Raw.<String>setAssertion().containsExactlyInOrder("val");
@@ -1033,6 +1073,18 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, 1(49)]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsExactlyInOrder("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1"), "Message").containsExactlyInOrder("val1", "val1", "val1");
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
     }
 
@@ -1142,6 +1194,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
+        initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAny("val1", "val1", "val1");
+        initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsAny("val1", "val1", "val1");
 
         try {
             Raw.<String>setAssertion().containsAny("val");
