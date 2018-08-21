@@ -40,26 +40,28 @@ public final class BaseAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link BaseAsStringConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void checkValueClassTest() {
-        createAsStringConverter().checkValueClass("value");
+    public void asStringTest() throws ConversionException {
+        Assertions.assertThat(createAsStringConverter().asString(1)).isEqualTo("1");
+        Assertions.assertThat(createAsStringConverter().asString('1')).isEqualTo("1(49)");
+        Assertions.assertThat(createAsStringConverter().asString(true)).isEqualTo("T");
+        Assertions.assertThat(createAsStringConverter().asString("value")).isEqualTo("value");
+        Assertions.assertThat(createAsStringConverter().asString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
+        Assertions.assertThat(createAsStringConverter().asString(createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
+        Assertions.assertThat(createAsStringConverter().asString(createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
     }
 
     /**
      * {@link BaseAsStringConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
-    public void checkValueClassNullValueFailTest() {
-        createAsStringConverter().checkValueClass(null);
-    }
-
-    /**
-     * {@link BaseAsStringConverter} class test.
-     */
-    @Test(expected = ClassCastException.class)
-    public void checkValueClassWrongValueTypeFailTest() {
-        createAsStringConverter().checkValueClass(new Object());
+    public void asStringNullValueFailTest() throws ConversionException {
+        createAsStringConverter().asString(null);
     }
 
     /**
@@ -68,16 +70,16 @@ public final class BaseAsStringConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void getValueAsStringTest() throws ConversionException {
-        Assertions.assertThat(createAsStringConverter().getValueAsString(null)).isNull();
+    public void convertValueToStringTest() throws ConversionException {
+        Assertions.assertThat(createAsStringConverter().convertValueToString(null)).isNull();
 
-        Assertions.assertThat(createAsStringConverter().getValueAsString(1)).isEqualTo("1");
-        Assertions.assertThat(createAsStringConverter().getValueAsString('1')).isEqualTo("1(49)");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(true)).isEqualTo("T");
-        Assertions.assertThat(createAsStringConverter().getValueAsString("value")).isEqualTo("value");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(1)).isEqualTo("1");
+        Assertions.assertThat(createAsStringConverter().convertValueToString('1')).isEqualTo("1(49)");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(true)).isEqualTo("T");
+        Assertions.assertThat(createAsStringConverter().convertValueToString("value")).isEqualTo("value");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
     }
 
     /**
@@ -86,19 +88,19 @@ public final class BaseAsStringConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void getValueAsStringValueConverterTest() throws ConversionException {
-        Assertions.assertThat(createAsStringConverter().getValueAsString(null, String.class)).isNull();
+    public void convertValueToStringValueConverterTest() throws ConversionException {
+        Assertions.assertThat(createAsStringConverter().convertValueToString(null, String.class)).isNull();
 
-        Assertions.assertThat(createAsStringConverter().getValueAsString(100, Character.class)).isEqualTo("d(100)");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(100, Integer.class)).isEqualTo("100");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(100000, Character.class)).isEqualTo("100000");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(100000, Integer.class)).isEqualTo("100000");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(100, Character.class)).isEqualTo("d(100)");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(100, Integer.class)).isEqualTo("100");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(100000, Character.class)).isEqualTo("100000");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(100000, Integer.class)).isEqualTo("100000");
 
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5)).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4)).isEqualTo("[1, 2, 3, 4]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isEqualTo("[1, 2]");
-        Assertions.assertThat(createAsStringConverter().getValueAsString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isEqualTo("[1]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5)).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4)).isEqualTo("[1, 2, 3, 4]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isEqualTo("[1, 2]");
+        Assertions.assertThat(createAsStringConverter().convertValueToString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isEqualTo("[1]");
     }
 
 }
