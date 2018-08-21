@@ -43,7 +43,11 @@ import ru.d_shap.assertions.nio.IntBufferAsStringConverter;
 import ru.d_shap.assertions.nio.LongBufferAsStringConverter;
 import ru.d_shap.assertions.nio.ShortBufferAsStringConverter;
 import ru.d_shap.assertions.primitive.BooleanAsStringConverter;
+import ru.d_shap.assertions.primitive.ByteAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
+import ru.d_shap.assertions.primitive.FloatAsStringConverter;
+import ru.d_shap.assertions.primitive.LongAsStringConverter;
+import ru.d_shap.assertions.primitive.ShortAsStringConverter;
 
 /**
  * Class to convert the value to the string representation.
@@ -58,7 +62,11 @@ final class AsStringConverter {
         CONVERTERS = new LinkedList<>();
 
         registerAsStringConverter(new BooleanAsStringConverter());
+        registerAsStringConverter(new ByteAsStringConverter());
         registerAsStringConverter(new CharAsStringConverter());
+        registerAsStringConverter(new FloatAsStringConverter());
+        registerAsStringConverter(new LongAsStringConverter());
+        registerAsStringConverter(new ShortAsStringConverter());
 
         registerAsStringConverter(new ClassAsStringConverter());
         registerAsStringConverter(new IterableAsStringConverter());
