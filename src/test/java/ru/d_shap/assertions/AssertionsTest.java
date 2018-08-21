@@ -91,7 +91,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat((byte) 5).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6b> but was:<5b>");
         }
     }
 
@@ -112,7 +112,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Byte.valueOf((byte) 5)).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6b> but was:<5b>");
         }
     }
 
@@ -129,7 +129,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat((short) 5).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6s> but was:<5s>");
         }
     }
 
@@ -150,7 +150,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Short.valueOf((short) 5)).isEqualTo(6);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6s> but was:<5s>");
         }
     }
 
@@ -205,7 +205,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(5L).isEqualTo(6L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6L> but was:<5L>");
         }
     }
 
@@ -226,7 +226,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Long.valueOf(5L)).isEqualTo(6L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6L> but was:<5L>");
         }
     }
 
@@ -243,7 +243,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
         }
     }
 
@@ -264,7 +264,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
         }
     }
 
@@ -456,7 +456,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new byte[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b]> but was:<[1b, 2b, 3b]>");
         }
     }
 
@@ -477,7 +477,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new short[]{1, 2, 3}).containsExactlyInOrder(1, 2, 3, 4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1s, 2s, 3s, 4s]> but was:<[1s, 2s, 3s]>");
         }
     }
 
@@ -519,7 +519,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new long[]{1L, 2L, 3L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L]> but was:<[1L, 2L, 3L]>");
         }
     }
 
@@ -540,7 +540,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new float[]{1.0f, 2.0f, 3.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0]> but was:<[1.0, 2.0, 3.0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0f, 2.0f, 3.0f, 4.0f]> but was:<[1.0f, 2.0f, 3.0f]>");
         }
     }
 
@@ -899,7 +899,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -941,7 +941,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -962,7 +962,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");
         }
     }
 
@@ -1004,7 +1004,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(2L, 1L);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -1025,7 +1025,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(2.0f, 1.0f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
     }
 
