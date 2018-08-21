@@ -92,25 +92,25 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isEqualTo(20);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isEqualTo(20);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isEqualTo(1000000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<1000000> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<1000000> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isEqualTo(1000000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<1000000> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<1000000> but was:<10s>");
         }
     }
 
@@ -146,13 +146,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isNotEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10s>");
         }
     }
 
@@ -187,25 +187,25 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThan(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11s> but was:<10s>");
         }
     }
 
@@ -240,13 +240,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThanOrEqualTo(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11s> but was:<10s>");
         }
     }
 
@@ -281,25 +281,25 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10s> but was:<11s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10s> but was:<11s>");
         }
     }
 
@@ -334,13 +334,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 11).isLessThanOrEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<10s> but was:<11s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").isLessThanOrEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<10s> but was:<11s>");
         }
     }
 
@@ -375,37 +375,37 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 5).isInRange(1, 5);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1:5> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1s:5s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isInRange(1, 5);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1:5> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1s:5s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isInRange(6, 10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6:10> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6s:10s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isInRange(6, 10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6:10> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6s:10s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isInRange(8, 9);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8:9> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8s:9s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isInRange(8, 9);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8:9> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8s:9s> but was:<5s>");
         }
     }
 
@@ -440,37 +440,37 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 5).isNotInRange(4, 6);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4:6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4s:6s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isNotInRange(4, 6);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4:6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4s:6s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isNotInRange(5, 6);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5:6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5s:6s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isNotInRange(5, 6);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5:6> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5s:6s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5).isNotInRange(1, 10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1:10> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1s:10s> but was:<5s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 5, "Message").isNotInRange(1, 10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1:10> but was:<5>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1s:10s> but was:<5s>");
         }
     }
 
@@ -485,13 +485,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isNull();
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isNull();
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<10s>");
         }
     }
 
@@ -507,13 +507,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), value).isSameAs((short) 10000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000> but was:<10000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000s> but was:<10000s>");
         }
         try {
             initialize(Raw.shortAssertion(), value, "Message").isSameAs((short) 10000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000> but was:<10000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000s> but was:<10000s>");
         }
     }
 
@@ -529,13 +529,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), value).isNotSameAs(value);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000s>");
         }
         try {
             initialize(Raw.shortAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000s>");
         }
     }
 
