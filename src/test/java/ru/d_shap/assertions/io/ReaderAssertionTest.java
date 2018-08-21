@@ -1148,13 +1148,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).toLength().isEqualTo(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toLength().isEqualTo(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
     }
 
@@ -1352,13 +1352,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).hasLength(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").hasLength(2L);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
     }
 
