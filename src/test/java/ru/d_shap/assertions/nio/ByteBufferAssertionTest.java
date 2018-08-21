@@ -96,25 +96,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0b, 0b, 0b, 0b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").isEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[2b]>");
         }
     }
 
@@ -149,25 +149,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0b, 0b, 0b, 0b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isRewindAndEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).isRewindAndEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").isRewindAndEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1b, 2b]>");
         }
     }
 
@@ -191,25 +191,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0b, 0b, 0b, 0b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).isNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").isNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[2b]>");
         }
     }
 
@@ -233,25 +233,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0b, 0b, 0b, 0b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isRewindAndNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).isRewindAndNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").isRewindAndNullOrEmpty();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1b, 2b]>");
         }
     }
 
@@ -381,25 +381,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).contains(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<2> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<2b> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).contains(4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4b> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).contains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3b> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").contains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3b> but was:<[1b, 2b]>");
         }
     }
 
@@ -434,19 +434,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContains(4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4b> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3b> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContains(3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3b> but was:<[1b, 2b]>");
         }
     }
 
@@ -481,19 +481,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).doesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2b> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).doesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1b> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").doesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1b> but was:<[1b, 2b]>");
         }
     }
 
@@ -527,25 +527,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndDoesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2b> but was:<[1b, 2b, 3b, 4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndDoesNotContain(2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2b> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndDoesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1b> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndDoesNotContain(1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1b> but was:<[1b, 2b]>");
         }
     }
 
@@ -616,25 +616,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll((byte) 1, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAll((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -705,25 +705,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll(1, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAll(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -794,25 +794,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll(Arrays.asList((byte) 1, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAll(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -884,19 +884,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -968,19 +968,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1052,19 +1052,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAll(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1134,31 +1134,31 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAllInOrder((byte) 1, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAllInOrder((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1228,31 +1228,31 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAllInOrder(1, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAllInOrder(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1322,31 +1322,31 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAllInOrder(Arrays.asList((byte) 1, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1b, 2b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1417,25 +1417,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAllInOrder((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1506,25 +1506,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAllInOrder(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1595,25 +1595,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAllInOrder(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1673,43 +1673,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -1769,43 +1769,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -1865,43 +1865,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -1962,37 +1962,37 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly((byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2053,37 +2053,37 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactly(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(1, 1, 3, 2);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2144,37 +2144,37 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(Arrays.asList((byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1b, 1b, 3b, 2b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2233,49 +2233,49 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2334,49 +2334,49 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2435,49 +2435,49 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2537,43 +2537,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2633,43 +2633,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(2, 3, 1, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2729,43 +2729,43 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1b, 2b, 3b, 4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b, 1b, 4b]> but was:<[1b, 2b, 3b, 4b]>");
         }
     }
 
@@ -2837,25 +2837,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny((byte) 1, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAny((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -2927,25 +2927,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny(1, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAny(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3017,25 +3017,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny(Arrays.asList((byte) 1, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsAny(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3108,19 +3108,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny((byte) 4, (byte) 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny((byte) 3, (byte) 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3193,19 +3193,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny(4, 5);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny(3, 4);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3278,19 +3278,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny(Arrays.asList((byte) 4, (byte) 5));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4b, 5b]> but was:<[1b, 2b, 3b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsAny(Arrays.asList((byte) 3, (byte) 4));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3b, 4b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3362,13 +3362,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3440,13 +3440,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3518,13 +3518,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").containsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3595,19 +3595,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone((byte) 1, (byte) 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[1b, 2b, 3b, 4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone((byte) 2, (byte) 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3678,19 +3678,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone(1, 3);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[1b, 2b, 3b, 4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone(2, 1);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -3761,19 +3761,19 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone(Arrays.asList((byte) 1, (byte) 3));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1b, 3b]> but was:<[1b, 2b, 3b, 4b, 5b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").rewindAndContainsNone(Arrays.asList((byte) 2, (byte) 1));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2b, 1b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -4724,13 +4724,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNull();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").isNull();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1b, 2b]>");
         }
     }
 
@@ -4746,13 +4746,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), value).isSameAs(createByteBuffer(new byte[]{1, 2}));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), value, "Message").isSameAs(createByteBuffer(new byte[]{1, 2}));
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -4768,13 +4768,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), value).isNotSameAs(value);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1b, 2b]>");
         }
     }
 

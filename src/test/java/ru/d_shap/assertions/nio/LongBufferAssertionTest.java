@@ -97,25 +97,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0L, 0L, 0L, 0L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1), "Message").isEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[2L]>");
         }
     }
 
@@ -150,25 +150,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[0L, 0L, 0L, 0L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isRewindAndEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isRewindAndEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1), "Message").isRewindAndEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1L, 2L]>");
         }
     }
 
@@ -192,25 +192,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0L, 0L, 0L, 0L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1), "Message").isNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[2L]>");
         }
     }
 
@@ -234,25 +234,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0, 0, 0, 0]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[0L, 0L, 0L, 0L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isRewindAndNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isRewindAndNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1), "Message").isRewindAndNullOrEmpty();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1L, 2L]>");
         }
     }
 
@@ -382,25 +382,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).contains(2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<2> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<2L> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).contains(4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4L> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).contains(3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3L> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").contains(3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3L> but was:<[1L, 2L]>");
         }
     }
 
@@ -435,19 +435,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContains(4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<4L> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContains(3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3L> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContains(3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3L> but was:<[1L, 2L]>");
         }
     }
 
@@ -482,19 +482,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).doesNotContain(2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2L> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).doesNotContain(1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1L> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").doesNotContain(1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1L> but was:<[1L, 2L]>");
         }
     }
 
@@ -528,25 +528,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndDoesNotContain(2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2L> but was:<[1L, 2L, 3L, 4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndDoesNotContain(2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<2L> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndDoesNotContain(1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1L> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndDoesNotContain(1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1L> but was:<[1L, 2L]>");
         }
     }
 
@@ -617,25 +617,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAll(1L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1L, 2L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAll(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -706,25 +706,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAll(Arrays.asList(1L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[1L, 2L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAll(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAll(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -796,19 +796,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAll(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -880,19 +880,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAll(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAll(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAll(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -962,31 +962,31 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAllInOrder(1L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1L, 2L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAllInOrder(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -1056,31 +1056,31 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAllInOrder(Arrays.asList(1L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1, 2]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[1L, 2L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAllInOrder(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAllInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -1151,25 +1151,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAllInOrder(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -1240,25 +1240,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAllInOrder(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAllInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -1318,43 +1318,43 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1414,43 +1414,43 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1511,37 +1511,37 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactly(1L, 1L, 3L, 2L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1602,37 +1602,37 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(Arrays.asList(2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2L, 3L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsExactly(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactly(Arrays.asList(1L, 1L, 3L, 2L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 1, 3, 2]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1L, 1L, 3L, 2L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1691,49 +1691,49 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1792,49 +1792,49 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1894,43 +1894,43 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactlyInOrder(2L, 3L, 1L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -1990,43 +1990,43 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsExactlyInOrder(Arrays.asList(1L, 2L, 3L, 4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1L, 2L, 3L, 4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L}), "Message").rewindAndContainsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3, 1, 4]> but was:<[1, 2, 3, 4]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2L, 3L, 1L, 4L]> but was:<[1L, 2L, 3L, 4L]>");
         }
     }
 
@@ -2098,25 +2098,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAny(1L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1L, 3L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAny(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny(3L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny(3L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2188,25 +2188,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAny(Arrays.asList(1L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[1L, 3L]> but was:<[4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsAny(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAny(Arrays.asList(3L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsAny(Arrays.asList(3L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2279,19 +2279,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAny(4L, 5L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny(3L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny(3L, 4L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2364,19 +2364,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAny(Arrays.asList(4L, 5L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4, 5]> but was:<[1, 2, 3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[4L, 5L]> but was:<[1L, 2L, 3L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAny(Arrays.asList(3L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsAny(Arrays.asList(3L, 4L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3, 4]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3L, 4L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2448,13 +2448,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2526,13 +2526,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").containsNone(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2603,19 +2603,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsNone(1L, 3L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1L, 3L]> but was:<[1L, 2L, 3L, 4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone(2L, 1L);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -2686,19 +2686,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsNone(Arrays.asList(1L, 3L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1, 3]> but was:<[1, 2, 3, 4, 5]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[1L, 3L]> but was:<[1L, 2L, 3L, 4L, 5L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").rewindAndContainsNone(Arrays.asList(2L, 1L));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2, 1]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2L, 1L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -3649,13 +3649,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNull();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}), "Message").isNull();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1L, 2L]>");
         }
     }
 
@@ -3671,13 +3671,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), value).isSameAs(createLongBuffer(new long[]{1L, 2L}));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), value, "Message").isSameAs(createLongBuffer(new long[]{1L, 2L}));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -3693,13 +3693,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), value).isNotSameAs(value);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1L, 2L]>");
         }
     }
 

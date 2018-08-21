@@ -58,21 +58,21 @@ public final class ShortBufferAsStringConverterTest extends AssertionTest {
     public void asStringTest() throws ConversionException {
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{}))).isEqualTo("[]");
 
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}))).isEqualTo("[1]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}))).isEqualTo("[1, 2]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}))).isEqualTo("[1, 2, 3, 4]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}))).isEqualTo("[1s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}))).isEqualTo("[1s, 2s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}))).isEqualTo("[1s, 2s, 3s, 4s]");
 
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}, 1))).isEqualTo("[]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 1))).isEqualTo("[2]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 1))).isEqualTo("[2, 3, 4]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 1))).isEqualTo("[2s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 1))).isEqualTo("[2s, 3s, 4s]");
 
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}, 0, 1))).isEqualTo("[1]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 0, 1))).isEqualTo("[1]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 0, 1))).isEqualTo("[1]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}, 0, 1))).isEqualTo("[1s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 0, 1))).isEqualTo("[1s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 0, 1))).isEqualTo("[1s]");
 
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}, 0, 5, 5))).isEqualTo("[1, 0, 0, 0, 0]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 0, 5, 5))).isEqualTo("[1, 2, 0, 0, 0]");
-        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 0, 5, 5))).isEqualTo("[1, 2, 3, 4, 0]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}, 0, 5, 5))).isEqualTo("[1s, 0s, 0s, 0s, 0s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2}, 0, 5, 5))).isEqualTo("[1s, 2s, 0s, 0s, 0s]");
+        Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1, 2, 3, 4}, 0, 5, 5))).isEqualTo("[1s, 2s, 3s, 4s, 0s]");
     }
 
     /**

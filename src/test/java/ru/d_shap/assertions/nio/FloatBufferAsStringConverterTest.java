@@ -58,21 +58,21 @@ public final class FloatBufferAsStringConverterTest extends AssertionTest {
     public void asStringTest() throws ConversionException {
         Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{}))).isEqualTo("[]");
 
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}))).isEqualTo("[1.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}))).isEqualTo("[1.0, 2.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}))).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}))).isEqualTo("[1.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}))).isEqualTo("[1.0f, 2.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}))).isEqualTo("[1.0f, 2.0f, 3.0f, 4.0f]");
 
         Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}, 1))).isEqualTo("[]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 1))).isEqualTo("[2.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1))).isEqualTo("[2.0, 3.0, 4.0]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 1))).isEqualTo("[2.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1))).isEqualTo("[2.0f, 3.0f, 4.0f]");
 
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}, 0, 1))).isEqualTo("[1.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1))).isEqualTo("[1.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1))).isEqualTo("[1.0]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}, 0, 1))).isEqualTo("[1.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1))).isEqualTo("[1.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1))).isEqualTo("[1.0f]");
 
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}, 0, 5, 5))).isEqualTo("[1.0, 0.0, 0.0, 0.0, 0.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5))).isEqualTo("[1.0, 2.0, 0.0, 0.0, 0.0]");
-        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5))).isEqualTo("[1.0, 2.0, 3.0, 4.0, 0.0]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}, 0, 5, 5))).isEqualTo("[1.0f, 0.0f, 0.0f, 0.0f, 0.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5))).isEqualTo("[1.0f, 2.0f, 0.0f, 0.0f, 0.0f]");
+        Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5))).isEqualTo("[1.0f, 2.0f, 3.0f, 4.0f, 0.0f]");
     }
 
     /**
