@@ -43,50 +43,26 @@ public final class BaseValueConverterTest extends AssertionTest {
      * {@link BaseValueConverter} class test.
      */
     @Test
-    public void checkValueClassTest() {
-        createValueConverter().checkValueClass("value");
-    }
-
-    /**
-     * {@link BaseValueConverter} class test.
-     */
-    @Test(expected = NullPointerException.class)
-    public void checkValueClassNullValueFailTest() {
-        createValueConverter().checkValueClass(null);
-    }
-
-    /**
-     * {@link BaseValueConverter} class test.
-     */
-    @Test(expected = ClassCastException.class)
-    public void checkValueClassWrongValueTypeFailTest() {
-        createValueConverter().checkValueClass(new Object());
-    }
-
-    /**
-     * {@link BaseValueConverter} class test.
-     */
-    @Test
-    public void checkArgumentValueCountTest() {
-        createValueConverter().checkArgumentValueCount(0);
-        createValueConverter().checkArgumentValueCount(1, "argument");
-        createValueConverter().checkArgumentValueCount(2, "argument1", "argument2");
+    public void checkArgumentCountTest() {
+        createValueConverter().checkArgumentCount(new Object[]{}, 0);
+        createValueConverter().checkArgumentCount(new Object[]{"argument"}, 1);
+        createValueConverter().checkArgumentCount(new Object[]{"argument1", "argument2"}, 2);
     }
 
     /**
      * {@link BaseValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void checkArgumentValueCountWrongCount0FailTest() {
-        createValueConverter().checkArgumentValueCount(0, "argument");
+    public void checkArgumentCountWrongCount0FailTest() {
+        createValueConverter().checkArgumentCount(new Object[]{"argument"}, 0);
     }
 
     /**
      * {@link BaseValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void checkArgumentValueCountWrongCount1FailTest() {
-        createValueConverter().checkArgumentValueCount(1);
+    public void checkArgumentCountWrongCount1FailTest() {
+        createValueConverter().checkArgumentCount(new Object[]{}, 1);
     }
 
     /**
@@ -94,9 +70,9 @@ public final class BaseValueConverterTest extends AssertionTest {
      */
     @Test
     public void checkArgumentClassTest() {
-        createValueConverter().checkArgumentClass("argument", String.class);
-        createValueConverter().checkArgumentClass("argument", Object.class);
-        createValueConverter().checkArgumentClass(new Object(), Object.class);
+        createValueConverter().checkArgumentClass(new Object[]{"argument"}, 0, String.class);
+        createValueConverter().checkArgumentClass(new Object[]{"argument"}, 0, Object.class);
+        createValueConverter().checkArgumentClass(new Object[]{new Object()}, 0, Object.class);
     }
 
     /**
@@ -104,7 +80,7 @@ public final class BaseValueConverterTest extends AssertionTest {
      */
     @Test(expected = NullPointerException.class)
     public void checkArgumentClassNullArgumentFailTest() {
-        createValueConverter().checkArgumentClass(null, String.class);
+        createValueConverter().checkArgumentClass(new Object[]{null}, 0, String.class);
     }
 
     /**
@@ -112,7 +88,7 @@ public final class BaseValueConverterTest extends AssertionTest {
      */
     @Test(expected = ClassCastException.class)
     public void checkArgumentClassWrongArgumentTypeFailTest() {
-        createValueConverter().checkArgumentClass(new Object(), String.class);
+        createValueConverter().checkArgumentClass(new Object[]{new Object()}, 0, String.class);
     }
 
     /**
@@ -121,26 +97,70 @@ public final class BaseValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void convertValueTest() throws ConversionException {
-        Assertions.assertThat(createValueConverter().convertValue(null, String.class)).isNull();
+    public void canConvertTest() throws ConversionException {
+        Assertions.assertThat(createValueConverter().canConvert(100)).isTrue();
+        Assertions.assertThat(createValueConverter().canConvert(100000)).isTrue();
+    }
 
-        Assertions.assertThat(createValueConverter().convertValue(100, Character.class)).isInstanceOf(Character.class);
-        Assertions.assertThat(createValueConverter().convertValue(100, Character.class)).isEqualTo((char) 100);
-        Assertions.assertThat(createValueConverter().convertValue(100000, Character.class)).isInstanceOf(Integer.class);
-        Assertions.assertThat(createValueConverter().convertValue(100000, Character.class)).isEqualTo(100000);
+    /**
+     * {@link BaseValueConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void canConvertNullValueFailTest() throws ConversionException {
+        createValueConverter().canConvert(null);
+    }
 
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5)).isInstanceOf(List.class);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4, 5);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4)).isInstanceOf(List.class);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isInstanceOf(List.class);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isInstanceOf(List.class);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isInstanceOf(List.class);
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
+    /**
+     * {@link BaseValueConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test
+    public void convertTest() throws ConversionException {
+        Assertions.assertThat(createValueConverter().convert(100)).isInstanceOf(Integer.class);
+        Assertions.assertThat(createValueConverter().convert(100)).isEqualTo(100);
+        Assertions.assertThat(createValueConverter().convert(100000)).isInstanceOf(Integer.class);
+        Assertions.assertThat(createValueConverter().convert(100000)).isEqualTo(100000);
+    }
 
-        Assertions.assertThat(createValueConverter().convertValue(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
+    /**
+     * {@link BaseValueConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test(expected = NullPointerException.class)
+    public void convertNullValueFailTest() throws ConversionException {
+        createValueConverter().convert(null);
+    }
+
+    /**
+     * {@link BaseValueConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test
+    public void convertValueToTargetClassTest() throws ConversionException {
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(null, String.class)).isNull();
+
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(100, Character.class)).isInstanceOf(Character.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(100, Character.class)).isEqualTo((char) 100);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(100000, Character.class)).isInstanceOf(Integer.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(100000, Character.class)).isEqualTo(100000);
+
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5)).isInstanceOf(List.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4, 5);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4)).isInstanceOf(List.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isInstanceOf(List.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isInstanceOf(List.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isInstanceOf(List.class);
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(createValueConverter().convertValueToTargetClass(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
     }
 
 }
