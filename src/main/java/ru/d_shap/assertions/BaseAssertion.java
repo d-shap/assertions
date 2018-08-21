@@ -183,7 +183,6 @@ public abstract class BaseAssertion<T> {
      */
     @SuppressWarnings("unchecked")
     public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion) {
-        checkInitialized();
         checkArgumentIsNotNull(assertion);
         return initializeAssertion(assertion, (W) _actual);
     }
@@ -199,7 +198,6 @@ public abstract class BaseAssertion<T> {
      */
     @SuppressWarnings("unchecked")
     public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion, final String message) {
-        checkInitialized();
         checkArgumentIsNotNull(assertion);
         return initializeAssertion(assertion, (W) _actual, Messages.SIMPLE_MESSAGE, message);
     }
