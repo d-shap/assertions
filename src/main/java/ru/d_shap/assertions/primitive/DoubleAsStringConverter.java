@@ -47,11 +47,12 @@ public final class DoubleAsStringConverter extends BaseAsStringConverter {
         if (Double.isNaN(doubleValue)) {
             return "NaN";
         }
-        if (Double.isInfinite(doubleValue) && doubleValue > 0.0f) {
-            return "Infinity";
-        }
-        if (Double.isInfinite(doubleValue) && doubleValue < 0.0f) {
-            return "-Infinity";
+        if (Double.isInfinite(doubleValue)) {
+            if (doubleValue > 0.0f) {
+                return "Infinity";
+            } else {
+                return "-Infinity";
+            }
         }
         return String.format("%s", doubleValue);
     }
