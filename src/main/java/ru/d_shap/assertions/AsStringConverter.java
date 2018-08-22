@@ -100,7 +100,7 @@ final class AsStringConverter {
     }
 
     static void registerAsStringConverter(final BaseAsStringConverter asStringConverter) {
-        CONVERTERS.add(0, asStringConverter);
+        ((LinkedList<BaseAsStringConverter>) CONVERTERS).addFirst(asStringConverter);
     }
 
     static String asString(final Object value) throws ConversionException {

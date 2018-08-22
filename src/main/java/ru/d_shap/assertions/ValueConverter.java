@@ -121,7 +121,7 @@ final class ValueConverter {
     }
 
     static void registerValueConverter(final BaseValueConverter valueConverter) {
-        CONVERTERS.add(0, valueConverter);
+        ((LinkedList<BaseValueConverter>) CONVERTERS).addFirst(valueConverter);
     }
 
     @SuppressWarnings("unchecked")
