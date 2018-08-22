@@ -44,16 +44,6 @@ public final class DoubleAsStringConverter extends BaseAsStringConverter {
     @Override
     protected String convertToString(final Object value) throws ConversionException {
         double doubleValue = (double) value;
-        if (Double.isNaN(doubleValue)) {
-            return "NaN";
-        }
-        if (Double.isInfinite(doubleValue)) {
-            if (doubleValue > 0.0f) {
-                return "Infinity";
-            } else {
-                return "-Infinity";
-            }
-        }
         return String.format("%s", doubleValue);
     }
 

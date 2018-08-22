@@ -44,17 +44,11 @@ public final class FloatAsStringConverter extends BaseAsStringConverter {
     @Override
     protected String convertToString(final Object value) throws ConversionException {
         float floatValue = (float) value;
-        if (Float.isNaN(floatValue)) {
-            return "NaN";
+        if (Float.isNaN(floatValue) || Float.isInfinite(floatValue)) {
+            return String.format("%s", floatValue);
+        } else {
+            return String.format("%sf", floatValue);
         }
-        if (Float.isInfinite(floatValue)) {
-            if (floatValue > 0.0f) {
-                return "Infinity";
-            } else {
-                return "-Infinity";
-            }
-        }
-        return String.format("%sf", floatValue);
     }
 
 }
