@@ -1219,6 +1219,42 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
         }
         try {
+            Assertions.assertWithMessage(null).that("Expected:<aaa>").isEqualTo("but was:<10>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
+        }
+        try {
+            Assertions.assertWithMessage("").that("Expected:<aaa>").isEqualTo("but was:<10>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that("Expected:<aaa>").isEqualTo("but was:<10>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
+        }
+        try {
+            Assertions.assertWithMessage(null).that("but was:<10>").isEqualTo("Expected:<aaa>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
+        }
+        try {
+            Assertions.assertWithMessage("").that("but was:<10>").isEqualTo("Expected:<aaa>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that("but was:<10>").isEqualTo("Expected:<aaa>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
+        }
+        try {
             Assertions.assertWithMessage("value''s.").that("test").hasLength(5);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {

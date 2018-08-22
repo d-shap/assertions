@@ -689,6 +689,18 @@ public final class AssertionsTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<5> but was:<4>");
         }
+        try {
+            Assertions.assertThat("Expected:<aaa>").isEqualTo("but was:<10>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
+        }
+        try {
+            Assertions.assertThat("but was:<10>").isEqualTo("Expected:<aaa>");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
+        }
     }
 
     /**
