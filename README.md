@@ -5,6 +5,10 @@ Assertions framework allows checking of conditions using predefined assertions.
 This assertions make tests more readable, understandable and maintainable.
 Also this assertions reduce the amount of code needed to perform some complicated checks.
 
+Assertions framework is based on the following pillars:
+* The tests should be as simple, as possible
+* The fail messages should be as informative, as possible
+
 Import declaration for all the following examples:
 ```
 import static ru.d_shap.assertions.Assertions.assertThat;
