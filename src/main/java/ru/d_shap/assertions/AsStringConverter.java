@@ -45,6 +45,7 @@ import ru.d_shap.assertions.nio.ShortBufferAsStringConverter;
 import ru.d_shap.assertions.primitive.BooleanAsStringConverter;
 import ru.d_shap.assertions.primitive.ByteAsStringConverter;
 import ru.d_shap.assertions.primitive.CharAsStringConverter;
+import ru.d_shap.assertions.primitive.DoubleAsStringConverter;
 import ru.d_shap.assertions.primitive.FloatAsStringConverter;
 import ru.d_shap.assertions.primitive.LongAsStringConverter;
 import ru.d_shap.assertions.primitive.ShortAsStringConverter;
@@ -64,6 +65,7 @@ final class AsStringConverter {
         registerAsStringConverter(new BooleanAsStringConverter());
         registerAsStringConverter(new ByteAsStringConverter());
         registerAsStringConverter(new CharAsStringConverter());
+        registerAsStringConverter(new DoubleAsStringConverter());
         registerAsStringConverter(new FloatAsStringConverter());
         registerAsStringConverter(new LongAsStringConverter());
         registerAsStringConverter(new ShortAsStringConverter());
