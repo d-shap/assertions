@@ -23,37 +23,37 @@ import ru.d_shap.assertions.BaseAsStringConverter;
 import ru.d_shap.assertions.ConversionException;
 
 /**
- * Value to string converter for the float.
+ * Value to string converter for the double.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatAsStringConverter extends BaseAsStringConverter {
+public final class DoubleAsStringConverter extends BaseAsStringConverter {
 
     /**
      * Create new object.
      */
-    public FloatAsStringConverter() {
+    public DoubleAsStringConverter() {
         super();
     }
 
     @Override
     protected Class<?> getValueClass() {
-        return Float.class;
+        return Double.class;
     }
 
     @Override
     protected String convertToString(final Object value) throws ConversionException {
-        float floatValue = (float) value;
-        if (Float.isNaN(floatValue)) {
+        double doubleValue = (double) value;
+        if (Double.isNaN(doubleValue)) {
             return "NaN";
         }
-        if (Float.isInfinite(floatValue) && floatValue > 0.0f) {
+        if (Double.isInfinite(doubleValue) && doubleValue > 0.0f) {
             return "Infinity";
         }
-        if (Float.isInfinite(floatValue) && floatValue < 0.0f) {
+        if (Double.isInfinite(doubleValue) && doubleValue < 0.0f) {
             return "-Infinity";
         }
-        return String.format("%f", floatValue);
+        return String.format("%f", doubleValue);
     }
 
 }
