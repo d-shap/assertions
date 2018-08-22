@@ -24,6 +24,13 @@
  * Also this assertions reduce the amount of code needed to perform some complicated checks.
  * </p>
  * <p>
+ * Assertions framework is based on the following pillars:
+ * </p>
+ * <ul>
+ * <li>The tests should be as simple, as possible</li>
+ * <li>The fail messages should be as informative, as possible</li>
+ * </ul>
+ * <p>
  * Import declaration for all the following examples:
  * </p>
  * <pre>{@code
