@@ -53,7 +53,7 @@ public final class DoubleAsStringConverter extends BaseAsStringConverter {
         if (Double.isInfinite(doubleValue) && doubleValue < 0.0f) {
             return "-Infinity";
         }
-        return String.format("%f", doubleValue);
+        return String.format("%s", doubleValue);
     }
 
 }

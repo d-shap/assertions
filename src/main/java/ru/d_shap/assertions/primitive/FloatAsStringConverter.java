@@ -53,7 +53,7 @@ public final class FloatAsStringConverter extends BaseAsStringConverter {
         if (Float.isInfinite(floatValue) && floatValue < 0.0f) {
             return "-Infinity";
         }
-        return String.format("%f", floatValue);
+        return String.format("%sf", floatValue);
     }
 
 }
