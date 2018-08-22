@@ -88,4 +88,58 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
+    /**
+     * {@link AsStringConverter} class test.
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
+    @Test
+    public void registerAsStringConverterTest() throws ConversionException {
+        CustomClass value = new CustomClass();
+        Assertions.assertThat(AsStringConverter.asString(value)).isEqualTo("string value");
+        AsStringConverter.registerAsStringConverter(new CustomClassAsStringConverter());
+        Assertions.assertThat(AsStringConverter.asString(value)).isEqualTo("converted string value");
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class CustomClass {
+
+        CustomClass() {
+            super();
+        }
+
+        @Override
+        public String toString() {
+            return "string value";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class CustomClassAsStringConverter extends BaseAsStringConverter {
+
+        CustomClassAsStringConverter() {
+            super();
+        }
+
+        @Override
+        protected Class<?> getValueClass() {
+            return CustomClass.class;
+        }
+
+        @Override
+        protected String convertToString(final Object value) throws ConversionException {
+            return "converted string value";
+        }
+
+    }
+
 }
