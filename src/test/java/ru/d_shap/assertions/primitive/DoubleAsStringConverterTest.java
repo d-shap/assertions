@@ -26,68 +26,68 @@ import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.ConversionException;
 
 /**
- * Tests for {@link FloatAsStringConverter}.
+ * Tests for {@link DoubleAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatAsStringConverterTest extends AssertionTest {
+public final class DoubleAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public FloatAsStringConverterTest() {
+    public DoubleAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link FloatAsStringConverter} class test.
+     * {@link DoubleAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new FloatAsStringConverter().getValueClass()).isEqualTo(Float.class);
+        Assertions.assertThat(new DoubleAsStringConverter().getValueClass()).isEqualTo(Double.class);
     }
 
     /**
-     * {@link FloatAsStringConverter} class test.
+     * {@link DoubleAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new FloatAsStringConverter().asString(0.99f)).isEqualTo("0.99f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(1.0f)).isEqualTo("1.0f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(5000.0f)).isEqualTo("5000.0f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(5000000.0f)).isEqualTo("5000000.0f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(0.001f)).isEqualTo("0.001f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(0.0001f)).isEqualTo("1.0E-4f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(-0.99f)).isEqualTo("-0.99f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(-5000.0f)).isEqualTo("-5000.0f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(-5000000.0f)).isEqualTo("-5000000.0f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(-0.001f)).isEqualTo("-0.001f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(-0.0001f)).isEqualTo("-1.0E-4f");
-        Assertions.assertThat(new FloatAsStringConverter().asString(Float.NaN)).isEqualTo("NaN");
-        Assertions.assertThat(new FloatAsStringConverter().asString(Float.POSITIVE_INFINITY)).isEqualTo("Infinity");
-        Assertions.assertThat(new FloatAsStringConverter().asString(Float.NEGATIVE_INFINITY)).isEqualTo("-Infinity");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(0.99)).isEqualTo("0.99");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(1.0)).isEqualTo("1.0");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(5000.0)).isEqualTo("5000.0");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(5000000.0)).isEqualTo("5000000.0");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(0.001)).isEqualTo("0.001");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(0.0001)).isEqualTo("1.0E-4");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(-0.99)).isEqualTo("-0.99");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(-5000.0)).isEqualTo("-5000.0");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(-5000000.0)).isEqualTo("-5000000.0");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(-0.001)).isEqualTo("-0.001");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(-0.0001)).isEqualTo("-1.0E-4");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(Double.NaN)).isEqualTo("NaN");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(Double.POSITIVE_INFINITY)).isEqualTo("Infinity");
+        Assertions.assertThat(new DoubleAsStringConverter().asString(Double.NEGATIVE_INFINITY)).isEqualTo("-Infinity");
     }
 
     /**
-     * {@link FloatAsStringConverter} class test.
+     * {@link DoubleAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new FloatAsStringConverter().asString(null);
+        new DoubleAsStringConverter().asString(null);
     }
 
     /**
-     * {@link FloatAsStringConverter} class test.
+     * {@link DoubleAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new FloatAsStringConverter().asString(new Object());
+        new DoubleAsStringConverter().asString(new Object());
     }
 
 }
