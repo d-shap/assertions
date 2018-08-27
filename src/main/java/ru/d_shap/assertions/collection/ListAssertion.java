@@ -34,6 +34,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the list.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class ListAssertion<E> extends ReferenceAssertion<List<E>> {

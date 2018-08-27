@@ -33,6 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the iterator.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
@@ -69,6 +70,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * Make assertion about the iterator elements from the current position.
      *
      * @param count the number of elements to get from the iterator.
+     *
      * @return the assertion.
      */
     public final ListAssertion<E> toList(final int count) {

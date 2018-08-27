@@ -33,6 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the object array.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {

@@ -58,6 +58,7 @@ public final class AssertionErrorBuilder {
      *
      * @param message   the message.
      * @param arguments the message arguments.
+     *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addMessage(final String message, final Object... arguments) {
@@ -69,6 +70,7 @@ public final class AssertionErrorBuilder {
      * Add the throwabe message to the assertion error.
      *
      * @param throwable the throwabe.
+     *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addMessage(final Throwable throwable) {
@@ -89,6 +91,7 @@ public final class AssertionErrorBuilder {
      * Add the expected value of the assertion to the assertion error.
      *
      * @param expected the expected value of the assertion.
+     *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addExpected(final Object expected) {
@@ -101,6 +104,7 @@ public final class AssertionErrorBuilder {
      *
      * @param expectedFrom the lower bound of the expected value range of the assertion.
      * @param expectedTo   the upper bound of the expected value range of the assertion.
+     *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addExpected(final Object expectedFrom, final Object expectedTo) {
@@ -112,6 +116,7 @@ public final class AssertionErrorBuilder {
      * Add the throwabe to the assertion error.
      *
      * @param throwable the throwabe.
+     *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addThrowable(final Throwable throwable) {

@@ -33,6 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the set.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {

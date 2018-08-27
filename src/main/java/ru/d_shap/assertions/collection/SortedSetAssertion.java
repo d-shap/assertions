@@ -33,6 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the sorted set.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
@@ -111,6 +112,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * Make assertion about the head set of the actual.
      *
      * @param element upper element (exclusive) of the head set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<E> toHeadSet(final E element) {
@@ -122,6 +124,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * Make assertion about the head set of the actual.
      *
      * @param count the number of elements to get from the head.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<E> toHeadSet(final int count) {
@@ -168,6 +171,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * Make assertion about the tail set of the actual.
      *
      * @param element lower element (inclusive) of the tail set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<E> toTailSet(final E element) {
@@ -179,6 +183,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * Make assertion about the tail set of the actual.
      *
      * @param count the number of elements to get from the tail.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<E> toTailSet(final int count) {

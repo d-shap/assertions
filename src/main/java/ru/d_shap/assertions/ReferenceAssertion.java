@@ -33,6 +33,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Base class for all reference type assertions.
  *
  * @param <T> the generic type of the actual value.
+ *
  * @author Dmitry Shapovalov
  */
 public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
@@ -239,6 +240,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * Make assertion about the actual value's field.
      *
      * @param fieldName the field name.
+     *
      * @return the assertion.
      */
     public final ObjectAssertion toField(final String fieldName) {
@@ -258,6 +260,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {

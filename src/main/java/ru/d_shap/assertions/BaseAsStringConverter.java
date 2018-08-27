@@ -44,7 +44,9 @@ public abstract class BaseAsStringConverter {
      * Get the string representation of the value.
      *
      * @param value the value.
+     *
      * @return the string representation of the value.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     public final String asString(final Object value) throws ConversionException {
@@ -57,7 +59,9 @@ public abstract class BaseAsStringConverter {
      * Get the string representation of the value.
      *
      * @param value the value.
+     *
      * @return the string representation of the value.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected abstract String convertToString(Object value) throws ConversionException;
@@ -66,7 +70,9 @@ public abstract class BaseAsStringConverter {
      * Get the string representation of the value.
      *
      * @param value the value.
+     *
      * @return the string representation of the value.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected final String convertValueToString(final Object value) throws ConversionException {
@@ -79,7 +85,9 @@ public abstract class BaseAsStringConverter {
      * @param value       the value.
      * @param targetClass the target class.
      * @param arguments   the conversion arguments.
+     *
      * @return the string representation of the value.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected final String convertValueToString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {

@@ -91,6 +91,7 @@ public final class Assertions {
      * Make assertion with the assertion message.
      *
      * @param message the assertion message.
+     *
      * @return the assertion.
      */
     public static MessageAssertion assertWithMessage(final String message) {
@@ -101,6 +102,7 @@ public final class Assertions {
      * Make assertion about the byte.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ByteAssertion assertThat(final byte actual) {
@@ -113,6 +115,7 @@ public final class Assertions {
      * Make assertion about the byte.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ByteAssertion assertThat(final Byte actual) {
@@ -125,6 +128,7 @@ public final class Assertions {
      * Make assertion about the short.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ShortAssertion assertThat(final short actual) {
@@ -137,6 +141,7 @@ public final class Assertions {
      * Make assertion about the short.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ShortAssertion assertThat(final Short actual) {
@@ -149,6 +154,7 @@ public final class Assertions {
      * Make assertion about the int.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static IntAssertion assertThat(final int actual) {
@@ -161,6 +167,7 @@ public final class Assertions {
      * Make assertion about the int.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static IntAssertion assertThat(final Integer actual) {
@@ -173,6 +180,7 @@ public final class Assertions {
      * Make assertion about the long.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static LongAssertion assertThat(final long actual) {
@@ -185,6 +193,7 @@ public final class Assertions {
      * Make assertion about the long.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static LongAssertion assertThat(final Long actual) {
@@ -197,6 +206,7 @@ public final class Assertions {
      * Make assertion about the float.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static FloatAssertion assertThat(final float actual) {
@@ -209,6 +219,7 @@ public final class Assertions {
      * Make assertion about the float.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static FloatAssertion assertThat(final Float actual) {
@@ -221,6 +232,7 @@ public final class Assertions {
      * Make assertion about the double.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static DoubleAssertion assertThat(final double actual) {
@@ -233,6 +245,7 @@ public final class Assertions {
      * Make assertion about the double.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static DoubleAssertion assertThat(final Double actual) {
@@ -245,6 +258,7 @@ public final class Assertions {
      * Make assertion about the boolean.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static BooleanAssertion assertThat(final boolean actual) {
@@ -257,6 +271,7 @@ public final class Assertions {
      * Make assertion about the boolean.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static BooleanAssertion assertThat(final Boolean actual) {
@@ -269,6 +284,7 @@ public final class Assertions {
      * Make assertion about the char.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharAssertion assertThat(final char actual) {
@@ -281,6 +297,7 @@ public final class Assertions {
      * Make assertion about the char.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharAssertion assertThat(final Character actual) {
@@ -293,6 +310,7 @@ public final class Assertions {
      * Make assertion about the object.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ObjectAssertion assertThat(final Object actual) {
@@ -308,6 +326,7 @@ public final class Assertions {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     public static <W, S extends BaseAssertion<W>> S assertThat(final Object actual, final S assertion) {
@@ -331,6 +350,7 @@ public final class Assertions {
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
+     *
      * @return the assertion.
      */
     public static ObjectAssertion assertThat(final Object actual, final String fieldName) {
@@ -345,6 +365,7 @@ public final class Assertions {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     public static <W, S extends BaseAssertion<W>> S assertThat(final Object actual, final String fieldName, final S assertion) {
@@ -367,6 +388,7 @@ public final class Assertions {
      * Make assertion about the byte array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ByteArrayAssertion assertThat(final byte[] actual) {
@@ -379,6 +401,7 @@ public final class Assertions {
      * Make assertion about the short array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ShortArrayAssertion assertThat(final short[] actual) {
@@ -391,6 +414,7 @@ public final class Assertions {
      * Make assertion about the int array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static IntArrayAssertion assertThat(final int[] actual) {
@@ -403,6 +427,7 @@ public final class Assertions {
      * Make assertion about the long array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static LongArrayAssertion assertThat(final long[] actual) {
@@ -415,6 +440,7 @@ public final class Assertions {
      * Make assertion about the float array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static FloatArrayAssertion assertThat(final float[] actual) {
@@ -427,6 +453,7 @@ public final class Assertions {
      * Make assertion about the double array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static DoubleArrayAssertion assertThat(final double[] actual) {
@@ -439,6 +466,7 @@ public final class Assertions {
      * Make assertion about the boolean array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static BooleanArrayAssertion assertThat(final boolean[] actual) {
@@ -451,6 +479,7 @@ public final class Assertions {
      * Make assertion about the char array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharArrayAssertion assertThat(final char[] actual) {
@@ -464,6 +493,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> ObjectArrayAssertion<E> assertThat(final E[] actual) {
@@ -476,6 +506,7 @@ public final class Assertions {
      * Make assertion about the class.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ClassAssertion assertThat(final Class<?> actual) {
@@ -488,6 +519,7 @@ public final class Assertions {
      * Make assertion about the char sequence.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharSequenceAssertion assertThat(final CharSequence actual) {
@@ -500,6 +532,7 @@ public final class Assertions {
      * Make assertion about the string.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharSequenceAssertion assertThat(final String actual) {
@@ -513,6 +546,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> ComparableAssertion<E> assertThat(final Comparable<E> actual) {
@@ -526,6 +560,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> IterableAssertion<E> assertThat(final Iterable<E> actual) {
@@ -538,6 +573,7 @@ public final class Assertions {
      * Make assertion about the throwable.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ThrowableAssertion assertThat(final Throwable actual) {
@@ -551,6 +587,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> IteratorAssertion<E> assertThat(final Iterator<E> actual) {
@@ -564,6 +601,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> ListAssertion<E> assertThat(final List<E> actual) {
@@ -577,6 +615,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> SetAssertion<E> assertThat(final Set<E> actual) {
@@ -590,6 +629,7 @@ public final class Assertions {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public static <E> SortedSetAssertion<E> assertThat(final SortedSet<E> actual) {
@@ -604,6 +644,7 @@ public final class Assertions {
      * @param actual the actual value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the assertion.
      */
     public static <K, V> MapAssertion<K, V> assertThat(final Map<K, V> actual) {
@@ -618,6 +659,7 @@ public final class Assertions {
      * @param actual the actual value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the assertion.
      */
     public static <K, V> SortedMapAssertion<K, V> assertThat(final SortedMap<K, V> actual) {
@@ -630,6 +672,7 @@ public final class Assertions {
      * Make assertion about the input stream.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static InputStreamAssertion assertThat(final InputStream actual) {
@@ -642,6 +685,7 @@ public final class Assertions {
      * Make assertion about the reader.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ReaderAssertion assertThat(final Reader actual) {
@@ -654,6 +698,7 @@ public final class Assertions {
      * Make assertion about the byte buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ByteBufferAssertion assertThat(final ByteBuffer actual) {
@@ -666,6 +711,7 @@ public final class Assertions {
      * Make assertion about the short buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static ShortBufferAssertion assertThat(final ShortBuffer actual) {
@@ -678,6 +724,7 @@ public final class Assertions {
      * Make assertion about the int buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static IntBufferAssertion assertThat(final IntBuffer actual) {
@@ -690,6 +737,7 @@ public final class Assertions {
      * Make assertion about the long buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static LongBufferAssertion assertThat(final LongBuffer actual) {
@@ -702,6 +750,7 @@ public final class Assertions {
      * Make assertion about the float buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static FloatBufferAssertion assertThat(final FloatBuffer actual) {
@@ -714,6 +763,7 @@ public final class Assertions {
      * Make assertion about the double buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static DoubleBufferAssertion assertThat(final DoubleBuffer actual) {
@@ -726,6 +776,7 @@ public final class Assertions {
      * Make assertion about the char buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public static CharBufferAssertion assertThat(final CharBuffer actual) {

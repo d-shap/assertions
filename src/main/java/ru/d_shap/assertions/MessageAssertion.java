@@ -94,6 +94,7 @@ public final class MessageAssertion {
      * Make assertion about the byte.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ByteAssertion that(final byte actual) {
@@ -106,6 +107,7 @@ public final class MessageAssertion {
      * Make assertion about the byte.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ByteAssertion that(final Byte actual) {
@@ -118,6 +120,7 @@ public final class MessageAssertion {
      * Make assertion about the short.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ShortAssertion that(final short actual) {
@@ -130,6 +133,7 @@ public final class MessageAssertion {
      * Make assertion about the short.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ShortAssertion that(final Short actual) {
@@ -142,6 +146,7 @@ public final class MessageAssertion {
      * Make assertion about the int.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public IntAssertion that(final int actual) {
@@ -154,6 +159,7 @@ public final class MessageAssertion {
      * Make assertion about the int.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public IntAssertion that(final Integer actual) {
@@ -166,6 +172,7 @@ public final class MessageAssertion {
      * Make assertion about the long.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public LongAssertion that(final long actual) {
@@ -178,6 +185,7 @@ public final class MessageAssertion {
      * Make assertion about the long.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public LongAssertion that(final Long actual) {
@@ -190,6 +198,7 @@ public final class MessageAssertion {
      * Make assertion about the float.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public FloatAssertion that(final float actual) {
@@ -202,6 +211,7 @@ public final class MessageAssertion {
      * Make assertion about the float.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public FloatAssertion that(final Float actual) {
@@ -214,6 +224,7 @@ public final class MessageAssertion {
      * Make assertion about the double.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public DoubleAssertion that(final double actual) {
@@ -226,6 +237,7 @@ public final class MessageAssertion {
      * Make assertion about the double.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public DoubleAssertion that(final Double actual) {
@@ -238,6 +250,7 @@ public final class MessageAssertion {
      * Make assertion about the boolean.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public BooleanAssertion that(final boolean actual) {
@@ -250,6 +263,7 @@ public final class MessageAssertion {
      * Make assertion about the boolean.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public BooleanAssertion that(final Boolean actual) {
@@ -262,6 +276,7 @@ public final class MessageAssertion {
      * Make assertion about the char.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharAssertion that(final char actual) {
@@ -274,6 +289,7 @@ public final class MessageAssertion {
      * Make assertion about the char.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharAssertion that(final Character actual) {
@@ -286,6 +302,7 @@ public final class MessageAssertion {
      * Make assertion about the object.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ObjectAssertion that(final Object actual) {
@@ -301,6 +318,7 @@ public final class MessageAssertion {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     public <W, S extends BaseAssertion<W>> S that(final Object actual, final S assertion) {
@@ -324,6 +342,7 @@ public final class MessageAssertion {
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
+     *
      * @return the assertion.
      */
     public ObjectAssertion that(final Object actual, final String fieldName) {
@@ -338,6 +357,7 @@ public final class MessageAssertion {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     public <W, S extends BaseAssertion<W>> S that(final Object actual, final String fieldName, final S assertion) {
@@ -360,6 +380,7 @@ public final class MessageAssertion {
      * Make assertion about the byte array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ByteArrayAssertion that(final byte[] actual) {
@@ -372,6 +393,7 @@ public final class MessageAssertion {
      * Make assertion about the short array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ShortArrayAssertion that(final short[] actual) {
@@ -384,6 +406,7 @@ public final class MessageAssertion {
      * Make assertion about the int array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public IntArrayAssertion that(final int[] actual) {
@@ -396,6 +419,7 @@ public final class MessageAssertion {
      * Make assertion about the long array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public LongArrayAssertion that(final long[] actual) {
@@ -408,6 +432,7 @@ public final class MessageAssertion {
      * Make assertion about the float array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public FloatArrayAssertion that(final float[] actual) {
@@ -420,6 +445,7 @@ public final class MessageAssertion {
      * Make assertion about the double array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public DoubleArrayAssertion that(final double[] actual) {
@@ -432,6 +458,7 @@ public final class MessageAssertion {
      * Make assertion about the boolean array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public BooleanArrayAssertion that(final boolean[] actual) {
@@ -444,6 +471,7 @@ public final class MessageAssertion {
      * Make assertion about the char array.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharArrayAssertion that(final char[] actual) {
@@ -457,6 +485,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> ObjectArrayAssertion<E> that(final E[] actual) {
@@ -469,6 +498,7 @@ public final class MessageAssertion {
      * Make assertion about the class.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ClassAssertion that(final Class<?> actual) {
@@ -481,6 +511,7 @@ public final class MessageAssertion {
      * Make assertion about the char sequence.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharSequenceAssertion that(final CharSequence actual) {
@@ -493,6 +524,7 @@ public final class MessageAssertion {
      * Make assertion about the string.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharSequenceAssertion that(final String actual) {
@@ -506,6 +538,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> ComparableAssertion<E> that(final Comparable<E> actual) {
@@ -519,6 +552,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> IterableAssertion<E> that(final Iterable<E> actual) {
@@ -531,6 +565,7 @@ public final class MessageAssertion {
      * Make assertion about the throwable.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ThrowableAssertion that(final Throwable actual) {
@@ -544,6 +579,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> IteratorAssertion<E> that(final Iterator<E> actual) {
@@ -557,6 +593,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> ListAssertion<E> that(final List<E> actual) {
@@ -570,6 +607,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> SetAssertion<E> that(final Set<E> actual) {
@@ -583,6 +621,7 @@ public final class MessageAssertion {
      *
      * @param actual the actual value.
      * @param <E>    the generic type of the element.
+     *
      * @return the assertion.
      */
     public <E> SortedSetAssertion<E> that(final SortedSet<E> actual) {
@@ -597,6 +636,7 @@ public final class MessageAssertion {
      * @param actual the actual value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the assertion.
      */
     public <K, V> MapAssertion<K, V> that(final Map<K, V> actual) {
@@ -611,6 +651,7 @@ public final class MessageAssertion {
      * @param actual the actual value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the assertion.
      */
     public <K, V> SortedMapAssertion<K, V> that(final SortedMap<K, V> actual) {
@@ -623,6 +664,7 @@ public final class MessageAssertion {
      * Make assertion about the input stream.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public InputStreamAssertion that(final InputStream actual) {
@@ -635,6 +677,7 @@ public final class MessageAssertion {
      * Make assertion about the reader.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ReaderAssertion that(final Reader actual) {
@@ -647,6 +690,7 @@ public final class MessageAssertion {
      * Make assertion about the byte buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ByteBufferAssertion that(final ByteBuffer actual) {
@@ -659,6 +703,7 @@ public final class MessageAssertion {
      * Make assertion about the short buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public ShortBufferAssertion that(final ShortBuffer actual) {
@@ -671,6 +716,7 @@ public final class MessageAssertion {
      * Make assertion about the int buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public IntBufferAssertion that(final IntBuffer actual) {
@@ -683,6 +729,7 @@ public final class MessageAssertion {
      * Make assertion about the long buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public LongBufferAssertion that(final LongBuffer actual) {
@@ -695,6 +742,7 @@ public final class MessageAssertion {
      * Make assertion about the float buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public FloatBufferAssertion that(final FloatBuffer actual) {
@@ -707,6 +755,7 @@ public final class MessageAssertion {
      * Make assertion about the double buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public DoubleBufferAssertion that(final DoubleBuffer actual) {
@@ -719,6 +768,7 @@ public final class MessageAssertion {
      * Make assertion about the char buffer.
      *
      * @param actual the actual value.
+     *
      * @return the assertion.
      */
     public CharBufferAssertion that(final CharBuffer actual) {

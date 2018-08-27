@@ -84,6 +84,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * Make assertion about the bytes read from the actual from the current position.
      *
      * @param count the number of bytes to read from the actual.
+     *
      * @return the assertion.
      */
     public final ByteArrayAssertion toByteArray(final int count) {

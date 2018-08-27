@@ -39,6 +39,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  *
  * @param <K> the generic type of the key.
  * @param <V> the generic type of the value.
+ *
  * @author Dmitry Shapovalov
  */
 public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>> {
@@ -132,6 +133,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the head key set of the actual.
      *
      * @param key upper key (exclusive) of the head key set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toHeadKeys(final K key) {
@@ -142,6 +144,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the head key set of the actual.
      *
      * @param count the number of keys to get from the head key set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toHeadKeys(final int count) {
@@ -179,6 +182,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the tail key set of the actual.
      *
      * @param key lower key (inclusive) of the tail key set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toTailKeys(final K key) {
@@ -189,6 +193,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the tail key set of the actual.
      *
      * @param count the number of keys to get from the tail key set.
+     *
      * @return the assertion.
      */
     public final SortedSetAssertion<K> toTailKeys(final int count) {
@@ -423,6 +428,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the head map of the actual.
      *
      * @param key upper key (exclusive) of the head map.
+     *
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
@@ -434,6 +440,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the head map of the actual.
      *
      * @param count the number of elements to get from the head map.
+     *
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toHeadMap(final int count) {
@@ -480,6 +487,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the tail map of the actual.
      *
      * @param key lower key (inclusive) of the tail map.
+     *
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
@@ -491,6 +499,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * Make assertion about the tail map of the actual.
      *
      * @param count the number of elements to get from the tail map.
+     *
      * @return the assertion.
      */
     public final SortedMapAssertion<K, V> toTailMap(final int count) {

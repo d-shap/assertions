@@ -83,6 +83,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Make assertion about the chars read from the actual from the current position.
      *
      * @param count the number of chars to read from the actual.
+     *
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray(final int count) {

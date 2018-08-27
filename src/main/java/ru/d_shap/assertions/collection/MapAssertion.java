@@ -37,6 +37,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  *
  * @param <K> the generic type of the key.
  * @param <V> the generic type of the value.
+ *
  * @author Dmitry Shapovalov
  */
 public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {

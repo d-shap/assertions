@@ -658,6 +658,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * Make assertion about the actual value's tokens.
      *
      * @param delimiters the delimiters.
+     *
      * @return the assertion.
      */
     public final ListAssertion<String> toTokens(final String delimiters) {
@@ -672,6 +673,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      *
      * @param delimiters       the delimiters.
      * @param returnDelimiters whether to return the delimiters as tokens.
+     *
      * @return the assertion.
      */
     public final ListAssertion<String> toTokens(final String delimiters, final boolean returnDelimiters) {

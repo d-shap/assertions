@@ -32,6 +32,7 @@ import ru.d_shap.assertions.primitive.IntAssertion;
  * Assertions for the iterable.
  *
  * @param <E> the generic type of the element.
+ *
  * @author Dmitry Shapovalov
  */
 public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {

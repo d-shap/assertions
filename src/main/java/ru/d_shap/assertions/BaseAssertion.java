@@ -27,6 +27,7 @@ import ru.d_shap.assertions.core.ClassActualValueValidator;
  * Base class for all assertions.
  *
  * @param <T> the generic type of the actual value.
+ *
  * @author Dmitry Shapovalov
  */
 public abstract class BaseAssertion<T> {
@@ -119,6 +120,7 @@ public abstract class BaseAssertion<T> {
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual) {
@@ -137,6 +139,7 @@ public abstract class BaseAssertion<T> {
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initializeAssertion(final S assertion, final U actual, final String message, final Object... arguments) {
@@ -179,6 +182,7 @@ public abstract class BaseAssertion<T> {
      * @param assertion the assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     @SuppressWarnings("unchecked")
@@ -194,6 +198,7 @@ public abstract class BaseAssertion<T> {
      * @param message   the message.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion.
      */
     @SuppressWarnings("unchecked")
@@ -209,6 +214,7 @@ public abstract class BaseAssertion<T> {
      * @param targetClass the target class.
      * @param arguments   the conversion arguments.
      * @param <V>         the generic type of the value converted to the target class.
+     *
      * @return the value converted to the target class.
      */
     protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {

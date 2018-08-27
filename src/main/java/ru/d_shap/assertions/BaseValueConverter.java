@@ -83,7 +83,9 @@ public abstract class BaseValueConverter {
      *
      * @param value     the value.
      * @param arguments the conversion arguments.
+     *
      * @return true if the value can be converted to the target class.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     public final boolean canConvert(final Object value, final Object... arguments) throws ConversionException {
@@ -98,7 +100,9 @@ public abstract class BaseValueConverter {
      *
      * @param value     the value.
      * @param arguments the conversion arguments.
+     *
      * @return true if the value can be converted to the target class.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected abstract boolean canConvertToTargetClass(Object value, Object... arguments) throws ConversionException;
@@ -108,7 +112,9 @@ public abstract class BaseValueConverter {
      *
      * @param value     the value.
      * @param arguments the conversion arguments.
+     *
      * @return the value converted to the target class.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     public final Object convert(final Object value, final Object... arguments) throws ConversionException {
@@ -123,7 +129,9 @@ public abstract class BaseValueConverter {
      *
      * @param value     the value.
      * @param arguments the conversion arguments.
+     *
      * @return the value converted to the target class.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected abstract Object convertToTargetClass(Object value, Object... arguments) throws ConversionException;
@@ -135,7 +143,9 @@ public abstract class BaseValueConverter {
      * @param targetClass the target class.
      * @param arguments   the conversion arguments.
      * @param <V>         the generic type of the value converted to the target class.
+     *
      * @return the value converted to the target class.
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected final <V> V convertValueToTargetClass(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {

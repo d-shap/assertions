@@ -37,6 +37,7 @@ public abstract class BaseActualValueValidator {
      * Check if the actual value is valid.
      *
      * @param actual the actual value.
+     *
      * @return true, if the actual value is valid.
      */
     protected abstract boolean isValid(Object actual);
