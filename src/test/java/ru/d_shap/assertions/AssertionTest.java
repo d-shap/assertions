@@ -73,6 +73,7 @@ public class AssertionTest {
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual) {
@@ -89,6 +90,7 @@ public class AssertionTest {
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message) {
@@ -103,6 +105,7 @@ public class AssertionTest {
      * @param actual    the actual value.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     @SuppressWarnings("unchecked")
@@ -119,6 +122,7 @@ public class AssertionTest {
      * @param message   the message.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the initialized assertion.
      */
     @SuppressWarnings("unchecked")
@@ -133,6 +137,7 @@ public class AssertionTest {
      * @param assertion the specified assertion.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
+     *
      * @return the assertion with null actual value.
      */
     protected final <W, S extends BaseAssertion<W>> S clearActual(final S assertion) {
@@ -159,6 +164,7 @@ public class AssertionTest {
      * Create the initialized base assertion with the actual value.
      *
      * @param actual the actual value.
+     *
      * @return the initialized base assertion.
      */
     protected final BaseAssertion<Object> createBaseAssertion(final Object actual) {
@@ -170,6 +176,7 @@ public class AssertionTest {
      *
      * @param actual  the actual value.
      * @param message the message.
+     *
      * @return the initialized base assertion.
      */
     protected final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
@@ -189,6 +196,7 @@ public class AssertionTest {
      * Create the initialized reference assertion with the actual value.
      *
      * @param actual the actual value.
+     *
      * @return the initialized reference assertion.
      */
     protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
@@ -200,6 +208,7 @@ public class AssertionTest {
      *
      * @param actual  the actual value.
      * @param message the message.
+     *
      * @return the initialized reference assertion.
      */
     protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
@@ -210,6 +219,7 @@ public class AssertionTest {
      * Create the actual value validator.
      *
      * @param valid true if the value is valid.
+     *
      * @return the actual value validator.
      */
     protected final BaseActualValueValidator createActualValueValidator(final boolean valid) {
@@ -257,6 +267,7 @@ public class AssertionTest {
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
+     *
      * @return the iterable.
      */
     @SafeVarargs
@@ -270,6 +281,7 @@ public class AssertionTest {
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
+     *
      * @return the iterator.
      */
     @SafeVarargs
@@ -283,6 +295,7 @@ public class AssertionTest {
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
+     *
      * @return the hash set.
      */
     @SafeVarargs
@@ -296,6 +309,7 @@ public class AssertionTest {
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
+     *
      * @return the duplicate set.
      */
     @SafeVarargs
@@ -311,6 +325,7 @@ public class AssertionTest {
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
+     *
      * @return the tree set.
      */
     @SafeVarargs
@@ -325,6 +340,7 @@ public class AssertionTest {
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap() {
@@ -339,6 +355,7 @@ public class AssertionTest {
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key, final V value) {
@@ -356,6 +373,7 @@ public class AssertionTest {
      * @param value2 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2) {
@@ -376,6 +394,7 @@ public class AssertionTest {
      * @param value3 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
@@ -399,6 +418,7 @@ public class AssertionTest {
      * @param value4 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
@@ -425,6 +445,7 @@ public class AssertionTest {
      * @param value5 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the hash map.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
@@ -442,6 +463,7 @@ public class AssertionTest {
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap() {
@@ -456,6 +478,7 @@ public class AssertionTest {
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key, final V value) {
@@ -473,6 +496,7 @@ public class AssertionTest {
      * @param value2 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2) {
@@ -493,6 +517,7 @@ public class AssertionTest {
      * @param value3 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
@@ -516,6 +541,7 @@ public class AssertionTest {
      * @param value4 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
@@ -542,6 +568,7 @@ public class AssertionTest {
      * @param value5 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the duplicate map.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
@@ -559,6 +586,7 @@ public class AssertionTest {
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap() {
@@ -573,6 +601,7 @@ public class AssertionTest {
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
@@ -590,6 +619,7 @@ public class AssertionTest {
      * @param value2 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
@@ -610,6 +640,7 @@ public class AssertionTest {
      * @param value3 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
@@ -633,6 +664,7 @@ public class AssertionTest {
      * @param value4 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
@@ -659,6 +691,7 @@ public class AssertionTest {
      * @param value5 the value.
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
+     *
      * @return the tree map.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
@@ -675,6 +708,7 @@ public class AssertionTest {
      * Create the byte buffer.
      *
      * @param values the buffer values.
+     *
      * @return the byte buffer.
      */
     protected final ByteBuffer createByteBuffer(final byte[] values) {
@@ -686,6 +720,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the byte buffer.
      */
     protected final ByteBuffer createByteBuffer(final byte[] values, final int position) {
@@ -698,6 +733,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the byte buffer.
      */
     protected final ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit) {
@@ -711,6 +747,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the byte buffer.
      */
     protected final ByteBuffer createByteBuffer(final byte[] values, final int position, final int limit, final int capacity) {
@@ -739,6 +776,7 @@ public class AssertionTest {
      * Create the short buffer.
      *
      * @param values the buffer values.
+     *
      * @return the short buffer.
      */
     protected final ShortBuffer createShortBuffer(final short[] values) {
@@ -750,6 +788,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the short buffer.
      */
     protected final ShortBuffer createShortBuffer(final short[] values, final int position) {
@@ -762,6 +801,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the short buffer.
      */
     protected final ShortBuffer createShortBuffer(final short[] values, final int position, final int limit) {
@@ -775,6 +815,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the short buffer.
      */
     protected final ShortBuffer createShortBuffer(final short[] values, final int position, final int limit, final int capacity) {
@@ -804,6 +845,7 @@ public class AssertionTest {
      * Create the int buffer.
      *
      * @param values the buffer values.
+     *
      * @return the int buffer.
      */
     protected final IntBuffer createIntBuffer(final int[] values) {
@@ -815,6 +857,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the int buffer.
      */
     protected final IntBuffer createIntBuffer(final int[] values, final int position) {
@@ -827,6 +870,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the int buffer.
      */
     protected final IntBuffer createIntBuffer(final int[] values, final int position, final int limit) {
@@ -840,6 +884,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the int buffer.
      */
     protected final IntBuffer createIntBuffer(final int[] values, final int position, final int limit, final int capacity) {
@@ -869,6 +914,7 @@ public class AssertionTest {
      * Create the long buffer.
      *
      * @param values the buffer values.
+     *
      * @return the long buffer.
      */
     protected final LongBuffer createLongBuffer(final long[] values) {
@@ -880,6 +926,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the long buffer.
      */
     protected final LongBuffer createLongBuffer(final long[] values, final int position) {
@@ -892,6 +939,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the long buffer.
      */
     protected final LongBuffer createLongBuffer(final long[] values, final int position, final int limit) {
@@ -905,6 +953,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the long buffer.
      */
     protected final LongBuffer createLongBuffer(final long[] values, final int position, final int limit, final int capacity) {
@@ -934,6 +983,7 @@ public class AssertionTest {
      * Create the float buffer.
      *
      * @param values the buffer values.
+     *
      * @return the float buffer.
      */
     protected final FloatBuffer createFloatBuffer(final float[] values) {
@@ -945,6 +995,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the float buffer.
      */
     protected final FloatBuffer createFloatBuffer(final float[] values, final int position) {
@@ -957,6 +1008,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the float buffer.
      */
     protected final FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit) {
@@ -970,6 +1022,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the float buffer.
      */
     protected final FloatBuffer createFloatBuffer(final float[] values, final int position, final int limit, final int capacity) {
@@ -999,6 +1052,7 @@ public class AssertionTest {
      * Create the double buffer.
      *
      * @param values the buffer values.
+     *
      * @return the double buffer.
      */
     protected final DoubleBuffer createDoubleBuffer(final double[] values) {
@@ -1010,6 +1064,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the double buffer.
      */
     protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position) {
@@ -1022,6 +1077,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the double buffer.
      */
     protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit) {
@@ -1035,6 +1091,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the double buffer.
      */
     protected final DoubleBuffer createDoubleBuffer(final double[] values, final int position, final int limit, final int capacity) {
@@ -1064,6 +1121,7 @@ public class AssertionTest {
      * Create the char buffer.
      *
      * @param values the buffer values.
+     *
      * @return the char buffer.
      */
     protected final CharBuffer createCharBuffer(final char[] values) {
@@ -1075,6 +1133,7 @@ public class AssertionTest {
      *
      * @param values   the buffer values.
      * @param position the initial buffer position.
+     *
      * @return the char buffer.
      */
     protected final CharBuffer createCharBuffer(final char[] values, final int position) {
@@ -1087,6 +1146,7 @@ public class AssertionTest {
      * @param values   the buffer values.
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
+     *
      * @return the char buffer.
      */
     protected final CharBuffer createCharBuffer(final char[] values, final int position, final int limit) {
@@ -1100,6 +1160,7 @@ public class AssertionTest {
      * @param position the initial buffer position.
      * @param limit    the buffer limit.
      * @param capacity the buffer capacity.
+     *
      * @return the char buffer.
      */
     protected final CharBuffer createCharBuffer(final char[] values, final int position, final int limit, final int capacity) {
@@ -1131,6 +1192,7 @@ public class AssertionTest {
      * @param message         the message.
      * @param arguments       the message arguments.
      * @param checkLastSymbol true to check the last symbol.
+     *
      * @return the formatted message.
      */
     protected final List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
@@ -1142,6 +1204,7 @@ public class AssertionTest {
      * Get the formatted message.
      *
      * @param failDescriptionEntry the fail description entry.
+     *
      * @return the formatted message.
      */
     protected final List<String> getFormattedMessages(final FailDescriptionEntry failDescriptionEntry) {
@@ -1154,7 +1217,9 @@ public class AssertionTest {
      * Get the fail description entries for the fail description values.
      *
      * @param failDescriptionValues the fail description values
+     *
      * @return the fail description entries
+     *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     protected final List<FailDescriptionEntry> getFailDescriptionEntries(final FailDescriptionValues failDescriptionValues) throws ConversionException {
@@ -1526,6 +1591,7 @@ public class AssertionTest {
      * Test class.
      *
      * @param <E> the generic type of the element.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class IterableImpl<E> implements Iterable<E> {
@@ -1548,6 +1614,7 @@ public class AssertionTest {
      * Test class.
      *
      * @param <E> the generic type of the element.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class IteratorImpl<E> implements Iterator<E> {
@@ -1580,6 +1647,7 @@ public class AssertionTest {
      * Test class.
      *
      * @param <E>the generic type of the element.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class DuplicateSet<E> implements Set<E> {
@@ -1667,6 +1735,7 @@ public class AssertionTest {
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class DuplicateMap<K, V> implements Map<K, V> {
@@ -1764,6 +1833,7 @@ public class AssertionTest {
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class DuplicateMapEntry<K, V> implements Map.Entry<K, V> {
@@ -1799,6 +1869,7 @@ public class AssertionTest {
      * Test class.
      *
      * @param <E> the generic type of the element.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class NullFirstComparator<E> implements Comparator<E> {
