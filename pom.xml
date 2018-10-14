@@ -305,7 +305,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <keyname>maven signature - assertions</keyname>
+                            <keyname>(maven signature - assertions)</keyname>
                         </configuration>
                     </plugin>
                 </plugins>
