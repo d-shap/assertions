@@ -1,5 +1,4 @@
-Assertions framework
-====================
+# Assertions framework
 Assertions framework provides facilities for the unit testing.
 Assertions framework allows checking of conditions using predefined assertions.
 This assertions make tests more readable, understandable and maintainable.
@@ -124,10 +123,8 @@ Custom assertion classes can be used in the next extension points:
 * MessageAssertion.that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
 * ReferenceAssertion.toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)
 
-Assertions framework and Hamcrest
-=================================
-Too many braces
----------------
+# Assertions framework and Hamcrest
+## Too many braces
 Hamcrest has the target to make tests as readable as possible.
 But Hamcrest tends to use too many braces in even simple assertions.
 And this braces makes tests less readable.
@@ -162,8 +159,7 @@ Assertions framework check for not equals:
 assertThat(actual).isNotEqualTo(expected);
 ```
 
-Static import
--------------
+## Static import
 Hamcrest assertions are readable only if static import is used.
 But sometimes coding policy does not allow static import.
 In this case tests with Hamcrest matchers are not readable at all.
@@ -185,8 +181,7 @@ Assertions framework check without static import:
 Assertions.assertThat(actual).isNotEqualTo(expected);
 ```
 
-Combinations of matchers
-------------------------
+## Combinations of matchers
 Hamcrest allows any combination of matchers in assertions:
 ```
 assertThat(10, greaterThan(5));
@@ -209,8 +204,7 @@ assertThat(stringValue).isNullOrEmpty();
 ```
 This prevents creation of the error prone combinations of assertions.
 
-Custom assertions and matchers
----------------
+## Custom assertions and matchers
 Custom Hamcrest matchers can be easily developed and used in assertions.
 Assertions framework's support for custom assertions is rather awkward.
 
@@ -218,12 +212,10 @@ But Assertions framework can use Hamcrest matchers.
 In this case Assertions framework can be used as a main framework for the unit testing.
 And in case of specific assertions custom Hamcrest matchers can be used.
 
-Latest release
-==============
+# Latest release
 * **&lt;groupId&gt;**: ru.d-shap
 * **&lt;artifactId&gt;**: assertions
 * **&lt;version&gt;**: 1.2
 
-Donation
-========
+# Donation
 If you find my code useful, you can [bye me a coffee](https://www.paypal.me/dshapovalov)
