@@ -213,6 +213,7 @@ In this case Assertions framework can be used as a main framework for the unit t
 And in case of specific assertions custom Hamcrest matchers can be used.
 
 # Latest release
+Assertions framework:
 * **&lt;groupId&gt;**: ru.d-shap
 * **&lt;artifactId&gt;**: assertions
 * **&lt;version&gt;**: 1.2
