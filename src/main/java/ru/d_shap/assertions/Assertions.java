@@ -788,20 +788,20 @@ public final class Assertions {
     /**
      * Fail a test.
      *
-     * @param failMessage the fail message.
+     * @param message the fail message.
      */
-    public static void fail(final String failMessage) {
-        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, failMessage).build();
+    public static void fail(final String message) {
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, message).build();
     }
 
     /**
      * Fail a test.
      *
-     * @param failMessage the fail message.
-     * @param throwable   the throwabe.
+     * @param message   the fail message.
+     * @param throwable the throwabe.
      */
-    public static void fail(final String failMessage, final Throwable throwable) {
-        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, failMessage).addThrowable(throwable).build();
+    public static void fail(final String message, final Throwable throwable) {
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, message).addThrowable(throwable).build();
     }
 
     /**
