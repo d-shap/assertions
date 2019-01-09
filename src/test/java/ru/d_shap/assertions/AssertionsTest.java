@@ -20,6 +20,7 @@
 package ru.d_shap.assertions;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
@@ -1087,16 +1088,118 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
-    public void failTest() {
+    public void failWithMessageTest() {
+        try {
+            Assertions.fail((String) null);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
+        try {
+            Assertions.fail("");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
+        try {
+            Assertions.fail(" ");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage(" .");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
         try {
             Assertions.fail("fail a test");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("fail a test.");
+            Assertions.assertThat(ex).toCause().isNull();
         }
         try {
             Assertions.fail("value''s");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void failWithMessageAndThrowableTest() {
+        try {
+            Assertions.fail(null, new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+        }
+        try {
+            Assertions.fail("", new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+        }
+        try {
+            Assertions.fail(" ", new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage(" .");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+        }
+        try {
+            Assertions.fail("fail a test", null);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("fail a test.");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
+        try {
+            Assertions.fail("fail a test", new IOException());
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("fail a test.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).toCause().toMessage().isNull();
+        }
+        try {
+            Assertions.fail("fail a test", new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("fail a test.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+        }
+        try {
+            Assertions.fail("value''s", new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void failWithThrowableTest() {
+        try {
+            Assertions.fail((Throwable) null);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).toCause().isNull();
+        }
+        try {
+            Assertions.fail(new IOException());
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).toCause().toMessage().isNull();
+        }
+        try {
+            Assertions.fail(new IOException("runtime exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
         }
     }
 
