@@ -794,4 +794,23 @@ public final class Assertions {
         throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, failMessage).build();
     }
 
+    /**
+     * Fail a test.
+     *
+     * @param failMessage the fail message.
+     * @param throwable   the throwabe.
+     */
+    public static void fail(final String failMessage, final Throwable throwable) {
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.SIMPLE_MESSAGE, failMessage).addThrowable(throwable).build();
+    }
+
+    /**
+     * Fail a test.
+     *
+     * @param throwable the throwabe.
+     */
+    public static void fail(final Throwable throwable) {
+        throw AssertionErrorBuilder.getInstance().addThrowable(throwable).build();
+    }
+
 }
