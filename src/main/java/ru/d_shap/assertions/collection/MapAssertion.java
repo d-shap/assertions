@@ -327,6 +327,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsAll(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
@@ -418,6 +430,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL).addActual().addExpected(expected).build();
             }
         }
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsAllInOrder(expected);
     }
 
     /**
@@ -520,6 +544,26 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
 
     /**
      * Check if the actual value contains all of the expected values exactly.
+     */
+    public final void containsExactly() {
+        Map<K, V> expected = new LinkedHashMap<>();
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsExactly(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
      *
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
@@ -616,6 +660,26 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         if (!actualKeysCopy.isEmpty() || elementCount != expected.size()) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     */
+    public final void containsExactlyInOrder() {
+        Map<K, V> expected = new LinkedHashMap<>();
+        containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsExactlyInOrder(expected);
     }
 
     /**
@@ -723,6 +787,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsAny(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
@@ -817,6 +893,18 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         if (!found) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ANY).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expectedKey1   the key of the expected entry.
+     * @param expectedValue1 the value of the expected entry.
+     */
+    public final void containsNone(final K expectedKey1, final V expectedValue1) {
+        Map<K, V> expected = new LinkedHashMap<>();
+        expected.put(expectedKey1, expectedValue1);
+        containsNone(expected);
     }
 
     /**
