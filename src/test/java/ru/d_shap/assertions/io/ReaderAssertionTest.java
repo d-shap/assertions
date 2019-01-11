@@ -538,6 +538,47 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
+    public void isNextCharEqualToTest() {
+        initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharEqualTo('1');
+        initialize(Raw.readerAssertion(), new StringReader("234")).isNextCharEqualTo('2');
+        initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isNextCharEqualTo(0);
+
+        try {
+            Raw.readerAssertion().isNextCharEqualTo('1');
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null).isNextCharEqualTo('1');
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), null, "Message").isNextCharEqualTo('1');
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharEqualTo('2');
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual and expected values should be the same.\n\tExpected:<50> but was:<49>");
+        }
+        try {
+            initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharEqualTo('2');
+            Assertions.fail("ReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual and expected values should be the same.\n\tExpected:<50> but was:<49>");
+        }
+    }
+
+    /**
+     * {@link ReaderAssertion} class test.
+     */
+    @Test
     public void isNextCharsEqualToArrayCharTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo('1', '2');
         initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharsEqualTo('1', '2', '3');

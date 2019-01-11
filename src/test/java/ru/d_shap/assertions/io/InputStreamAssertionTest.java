@@ -535,6 +535,47 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
+    public void isNextByteEqualToTest() {
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextByteEqualTo(1);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{2, 3, 4})).isNextByteEqualTo(2);
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isNextByteEqualTo(0);
+
+        try {
+            Raw.inputStreamAssertion().isNextByteEqualTo(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).isNextByteEqualTo(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").isNextByteEqualTo(1);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextByteEqualTo(2);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next actual value's byte.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<1>");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isNextByteEqualTo(2);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's byte.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<1>");
+        }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
     public void isNextBytesEqualToArrayByteTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo((byte) 1, (byte) 2);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo((byte) 1, (byte) 2, (byte) 3);
