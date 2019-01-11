@@ -28,13 +28,18 @@ import java.security.PrivilegedAction;
  *
  * @author Dmitry Shapovalov
  */
-final class PrivateAccessor {
+public final class PrivateAccessor {
 
     private PrivateAccessor() {
         super();
     }
 
-    static void setAccessible(final AccessibleObject accessibleObject) {
+    /**
+     * Make the private class element accessible.
+     *
+     * @param accessibleObject the private class element.
+     */
+    public static void setAccessible(final AccessibleObject accessibleObject) {
         AccessController.doPrivileged(new PrivilegedAccessAction(accessibleObject));
     }
 
