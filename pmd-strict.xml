@@ -272,7 +272,7 @@
         </properties>
     </rule>
     <rule ref="rulesets/java/naming.xml/MethodNamingConventions" />
-    <rule ref="rulesets/java/naming.xml/ClassNamingConventions" />
+    <!-- rule ref="rulesets/java/naming.xml/ClassNamingConventions" / -->
     <!-- rule ref="rulesets/java/naming.xml/AbstractNaming" / -->
     <rule ref="rulesets/java/naming.xml/AvoidDollarSigns" />
     <rule ref="rulesets/java/naming.xml/MethodWithSameNameAsEnclosingClass" />
