@@ -214,7 +214,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>jdepend-maven-plugin</artifactId>
-                        <version>2.0</version>
+                        <version>${jdepend.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>generate-jdepend</id>
@@ -235,7 +235,7 @@
                     <plugin>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-maven</artifactId>
-                        <version>1.2.4</version>
+                        <version>${pitest.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>mutationCoverage-pitest</id>
@@ -280,7 +280,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.0.0</version>
+                        <version>${source.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>jar-source</id>
@@ -293,7 +293,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.10.4</version>
+                        <version>${javadoc.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>jar-javadoc</id>
@@ -310,7 +310,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
+                        <version>${gpg.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
