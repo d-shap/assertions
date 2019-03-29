@@ -258,20 +258,26 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <threads>4</threads>
+                            <threads>1</threads>
                             <mutateStaticInitializers>false</mutateStaticInitializers>
                             <mutators>
                                 <mutator>CONDITIONALS_BOUNDARY</mutator>
-                                <mutator>NEGATE_CONDITIONALS</mutator>
-                                <mutator>REMOVE_CONDITIONALS</mutator>
-                                <mutator>MATH</mutator>
                                 <mutator>INCREMENTS</mutator>
                                 <mutator>INVERT_NEGS</mutator>
-                                <mutator>INLINE_CONSTS</mutator>
+                                <mutator>MATH</mutator>
+                                <mutator>NEGATE_CONDITIONALS</mutator>
                                 <mutator>RETURN_VALS</mutator>
                                 <mutator>VOID_METHOD_CALLS</mutator>
-                                <mutator>NON_VOID_METHOD_CALLS</mutator>
                                 <mutator>CONSTRUCTOR_CALLS</mutator>
+                                <mutator>EMPTY_RETURNS</mutator>
+                                <mutator>FALSE_RETURNS</mutator>
+                                <mutator>INLINE_CONSTS</mutator>
+                                <mutator>NULL_RETURNS</mutator>
+                                <mutator>NON_VOID_METHOD_CALLS</mutator>
+                                <mutator>PRIMITIVE_RETURNS</mutator>
+                                <mutator>REMOVE_CONDITIONALS</mutator>
+                                <mutator>REMOVE_INCREMENTS</mutator>
+                                <mutator>TRUE_RETURNS</mutator>
                             </mutators>
                             <jvmArgs>
                                 <value>-Xms256M</value>
