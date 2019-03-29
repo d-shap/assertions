@@ -125,6 +125,7 @@
                     <rulesets>
                         <ruleset>pmd-strict.xml</ruleset>
                     </rulesets>
+                    <ignoreAnnotations>false</ignoreAnnotations>
                     <ignoreIdentifiers>false</ignoreIdentifiers>
                     <ignoreLiterals>true</ignoreLiterals>
                     <minimumTokens>1000</minimumTokens>
@@ -180,30 +181,30 @@
                         <configuration>
                             <haltOnFailure>true</haltOnFailure>
                             <rules>
-                                <rule implementation="org.jacoco.maven.RuleConfiguration">
+                                <rule>
                                     <element>BUNDLE</element>
                                     <limits>
-                                        <limit implementation="org.jacoco.report.check.Limit">
+                                        <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>1.0</minimum>
                                         </limit>
-                                        <limit implementation="org.jacoco.report.check.Limit">
+                                        <limit>
                                             <counter>BRANCH</counter>
-                                            <value>MISSEDRATIO</value>
-                                            <maximum>0.0</maximum>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.0</minimum>
                                         </limit>
-                                        <limit implementation="org.jacoco.report.check.Limit">
+                                        <limit>
                                             <counter>COMPLEXITY</counter>
-                                            <value>MISSEDCOUNT</value>
-                                            <maximum>0</maximum>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.0</minimum>
                                         </limit>
-                                        <limit implementation="org.jacoco.report.check.Limit">
+                                        <limit>
                                             <counter>CLASS</counter>
                                             <value>MISSEDCOUNT</value>
                                             <maximum>0</maximum>
                                         </limit>
-                                        <limit implementation="org.jacoco.report.check.Limit">
+                                        <limit>
                                             <counter>METHOD</counter>
                                             <value>MISSEDCOUNT</value>
                                             <maximum>0</maximum>
