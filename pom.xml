@@ -279,10 +279,6 @@
                                 <mutator>REMOVE_INCREMENTS</mutator>
                                 <mutator>TRUE_RETURNS</mutator>
                             </mutators>
-                            <jvmArgs>
-                                <value>-Xms256M</value>
-                                <value>-Xmx256M</value>
-                            </jvmArgs>
                             <failWhenNoMutations>true</failWhenNoMutations>
                             <exportLineCoverage>false</exportLineCoverage>
                             <detectInlinedCode>true</detectInlinedCode>
