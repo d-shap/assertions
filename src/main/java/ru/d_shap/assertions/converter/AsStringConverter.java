@@ -19,36 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import ru.d_shap.assertions.asimp.array.BooleanArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.DoubleArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.FloatArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.LongArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.ObjectArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.array.ShortArrayAsStringConverter;
-import ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter;
-import ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.ByteBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.CharBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.DoubleBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.FloatBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter;
-import ru.d_shap.assertions.asimp.java.util.CollectionAsStringConverter;
-import ru.d_shap.assertions.asimp.java.util.MapAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.CharAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.DoubleAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.FloatAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.LongAsStringConverter;
-import ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter;
+import java.util.ServiceLoader;
 
 /**
  * Class to convert the value to the string representation.
@@ -57,50 +33,21 @@ import ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter;
  */
 public final class AsStringConverter {
 
-    private static final List<BaseAsStringConverter> CONVERTERS;
+    private static final List<AsStringConverterProvider> CONVERTERS;
 
     static {
-        CONVERTERS = new LinkedList<>();
+        List<AsStringConverterProvider> converterProviders = new LinkedList<>();
+        ServiceLoader<AsStringConverterProvider> serviceLoader = ServiceLoader.load(AsStringConverterProvider.class);
+        for (Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator(); iterator.hasNext(); ) {
+            AsStringConverterProvider asStringConverterProvider = iterator.next();
+            converterProviders.add(asStringConverterProvider);
+        }
 
-        registerAsStringConverter(new BooleanAsStringConverter());
-        registerAsStringConverter(new ByteAsStringConverter());
-        registerAsStringConverter(new CharAsStringConverter());
-        registerAsStringConverter(new DoubleAsStringConverter());
-        registerAsStringConverter(new FloatAsStringConverter());
-        registerAsStringConverter(new LongAsStringConverter());
-        registerAsStringConverter(new ShortAsStringConverter());
-
-        registerAsStringConverter(new ClassAsStringConverter());
-        registerAsStringConverter(new IterableAsStringConverter());
-
-        registerAsStringConverter(new CollectionAsStringConverter());
-        registerAsStringConverter(new MapAsStringConverter());
-
-        registerAsStringConverter(new BooleanArrayAsStringConverter());
-        registerAsStringConverter(new ByteArrayAsStringConverter());
-        registerAsStringConverter(new CharArrayAsStringConverter());
-        registerAsStringConverter(new DoubleArrayAsStringConverter());
-        registerAsStringConverter(new FloatArrayAsStringConverter());
-        registerAsStringConverter(new IntArrayAsStringConverter());
-        registerAsStringConverter(new LongArrayAsStringConverter());
-        registerAsStringConverter(new ObjectArrayAsStringConverter());
-        registerAsStringConverter(new ShortArrayAsStringConverter());
-
-        registerAsStringConverter(new ByteBufferAsStringConverter());
-        registerAsStringConverter(new CharBufferAsStringConverter());
-        registerAsStringConverter(new DoubleBufferAsStringConverter());
-        registerAsStringConverter(new FloatBufferAsStringConverter());
-        registerAsStringConverter(new IntBufferAsStringConverter());
-        registerAsStringConverter(new LongBufferAsStringConverter());
-        registerAsStringConverter(new ShortBufferAsStringConverter());
+        CONVERTERS = Collections.unmodifiableList(new ArrayList<>(converterProviders));
     }
 
     private AsStringConverter() {
         super();
-    }
-
-    static void registerAsStringConverter(final BaseAsStringConverter asStringConverter) {
-        ((LinkedList<BaseAsStringConverter>) CONVERTERS).addFirst(asStringConverter);
     }
 
     public static String asString(final Object value) throws ConversionException {
@@ -108,7 +55,7 @@ public final class AsStringConverter {
             return null;
         }
         Class<?> valueClass = value.getClass();
-        for (BaseAsStringConverter asStringConverter : CONVERTERS) {
+        for (AsStringConverterProvider asStringConverter : CONVERTERS) {
             if (asStringConverter.getValueClass().isAssignableFrom(valueClass)) {
                 return asStringConverter.asString(value);
             }
