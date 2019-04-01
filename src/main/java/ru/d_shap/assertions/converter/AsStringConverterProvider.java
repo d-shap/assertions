@@ -36,13 +36,12 @@ public interface AsStringConverterProvider {
     /**
      * Get the string representation of the value.
      *
-     * @param asStringConverter the value to string converter.
-     * @param value             the value.
+     * @param value the value.
      *
      * @return the string representation of the value.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    String asString(AsStringConverter asStringConverter, Object value) throws ConversionException;
+    String asString(Object value) throws ConversionException;
 
 }
