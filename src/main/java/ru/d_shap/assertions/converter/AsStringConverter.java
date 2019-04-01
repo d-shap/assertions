@@ -17,45 +17,45 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.converter;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.array.BooleanArrayAsStringConverter;
-import ru.d_shap.assertions.array.ByteArrayAsStringConverter;
-import ru.d_shap.assertions.array.CharArrayAsStringConverter;
-import ru.d_shap.assertions.array.DoubleArrayAsStringConverter;
-import ru.d_shap.assertions.array.FloatArrayAsStringConverter;
-import ru.d_shap.assertions.array.IntArrayAsStringConverter;
-import ru.d_shap.assertions.array.LongArrayAsStringConverter;
-import ru.d_shap.assertions.array.ObjectArrayAsStringConverter;
-import ru.d_shap.assertions.array.ShortArrayAsStringConverter;
-import ru.d_shap.assertions.collection.CollectionAsStringConverter;
-import ru.d_shap.assertions.collection.MapAsStringConverter;
-import ru.d_shap.assertions.core.ClassAsStringConverter;
-import ru.d_shap.assertions.core.IterableAsStringConverter;
-import ru.d_shap.assertions.nio.ByteBufferAsStringConverter;
-import ru.d_shap.assertions.nio.CharBufferAsStringConverter;
-import ru.d_shap.assertions.nio.DoubleBufferAsStringConverter;
-import ru.d_shap.assertions.nio.FloatBufferAsStringConverter;
-import ru.d_shap.assertions.nio.IntBufferAsStringConverter;
-import ru.d_shap.assertions.nio.LongBufferAsStringConverter;
-import ru.d_shap.assertions.nio.ShortBufferAsStringConverter;
-import ru.d_shap.assertions.primitive.BooleanAsStringConverter;
-import ru.d_shap.assertions.primitive.ByteAsStringConverter;
-import ru.d_shap.assertions.primitive.CharAsStringConverter;
-import ru.d_shap.assertions.primitive.DoubleAsStringConverter;
-import ru.d_shap.assertions.primitive.FloatAsStringConverter;
-import ru.d_shap.assertions.primitive.LongAsStringConverter;
-import ru.d_shap.assertions.primitive.ShortAsStringConverter;
+import ru.d_shap.assertions.asimp.array.BooleanArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.DoubleArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.FloatArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.LongArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.ObjectArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.ShortArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter;
+import ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.ByteBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.CharBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.DoubleBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.FloatBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.util.CollectionAsStringConverter;
+import ru.d_shap.assertions.asimp.java.util.MapAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.CharAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.DoubleAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.FloatAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.LongAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter;
 
 /**
  * Class to convert the value to the string representation.
  *
  * @author Dmitry Shapovalov
  */
-final class AsStringConverter {
+public final class AsStringConverter {
 
     private static final List<BaseAsStringConverter> CONVERTERS;
 
@@ -103,7 +103,7 @@ final class AsStringConverter {
         ((LinkedList<BaseAsStringConverter>) CONVERTERS).addFirst(asStringConverter);
     }
 
-    static String asString(final Object value) throws ConversionException {
+    public static String asString(final Object value) throws ConversionException {
         if (value == null) {
             return null;
         }
@@ -116,7 +116,7 @@ final class AsStringConverter {
         return value.toString();
     }
 
-    static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
+    public static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
         return asString(convertedValue);
     }

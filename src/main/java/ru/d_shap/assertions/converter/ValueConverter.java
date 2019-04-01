@@ -17,55 +17,55 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.converter;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.d_shap.assertions.array.BooleanArrayToListValueConverter;
-import ru.d_shap.assertions.array.BooleanArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.ByteArrayToListValueConverter;
-import ru.d_shap.assertions.array.ByteArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.CharArrayToListValueConverter;
-import ru.d_shap.assertions.array.CharArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.DoubleArrayToListValueConverter;
-import ru.d_shap.assertions.array.DoubleArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.FloatArrayToListValueConverter;
-import ru.d_shap.assertions.array.FloatArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.IntArrayToByteArrayValueConverter;
-import ru.d_shap.assertions.array.IntArrayToCharArrayValueConverter;
-import ru.d_shap.assertions.array.IntArrayToListValueConverter;
-import ru.d_shap.assertions.array.IntArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.IntArrayToShortArrayValueConverter;
-import ru.d_shap.assertions.array.LongArrayToListValueConverter;
-import ru.d_shap.assertions.array.LongArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.array.ObjectArrayToListValueConverter;
-import ru.d_shap.assertions.array.ShortArrayToListValueConverter;
-import ru.d_shap.assertions.array.ShortArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.collection.IteratorToListValueConverter;
-import ru.d_shap.assertions.collection.SetToListValueConverter;
-import ru.d_shap.assertions.core.IterableToListValueConverter;
-import ru.d_shap.assertions.io.InputStreamToByteArrayValueConverter;
-import ru.d_shap.assertions.io.InputStreamToIntValueConverter;
-import ru.d_shap.assertions.io.ReaderToCharArrayValueConverter;
-import ru.d_shap.assertions.io.ReaderToIntValueConverter;
-import ru.d_shap.assertions.nio.ByteBufferToByteArrayValueConverter;
-import ru.d_shap.assertions.nio.CharBufferToCharArrayValueConverter;
-import ru.d_shap.assertions.nio.DoubleBufferToDoubleArrayValueConverter;
-import ru.d_shap.assertions.nio.FloatBufferToFloatArrayValueConverter;
-import ru.d_shap.assertions.nio.IntBufferToIntArrayValueConverter;
-import ru.d_shap.assertions.nio.LongBufferToLongArrayValueConverter;
-import ru.d_shap.assertions.nio.ShortBufferToShortArrayValueConverter;
-import ru.d_shap.assertions.primitive.IntToByteValueConverter;
-import ru.d_shap.assertions.primitive.IntToCharValueConverter;
-import ru.d_shap.assertions.primitive.IntToShortValueConverter;
+import ru.d_shap.assertions.asimp.array.BooleanArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.BooleanArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.ByteArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.ByteArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.CharArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.CharArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.DoubleArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.DoubleArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.FloatArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.FloatArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToByteArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToCharArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToShortArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.LongArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.LongArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.ObjectArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.ShortArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.ShortArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.io.InputStreamToByteArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.io.InputStreamToIntValueConverter;
+import ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.io.ReaderToIntValueConverter;
+import ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.ByteBufferToByteArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.CharBufferToCharArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.DoubleBufferToDoubleArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.FloatBufferToFloatArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.IntBufferToIntArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.LongBufferToLongArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.nio.ShortBufferToShortArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter;
+import ru.d_shap.assertions.asimp.java.util.SetToListValueConverter;
+import ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter;
+import ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter;
+import ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter;
 
 /**
  * Class to convert the value to the value with the target class.
  *
  * @author Dmitry Shapovalov
  */
-final class ValueConverter {
+public final class ValueConverter {
 
     private static final List<BaseValueConverter> CONVERTERS;
 
@@ -125,7 +125,7 @@ final class ValueConverter {
     }
 
     @SuppressWarnings("unchecked")
-    static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
+    public static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         if (value == null) {
             return null;
         }
