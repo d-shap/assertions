@@ -33,7 +33,7 @@ import java.util.ServiceLoader;
  */
 public final class AsStringConverter {
 
-    private static final List<AsStringConverterProvider> CONVERTERS;
+    private static final List<AsStringConverterProvider> AS_STRING_CONVERTER_PROVIDERS;
 
     static {
         List<AsStringConverterProvider> converterProviders = new LinkedList<>();
@@ -42,8 +42,8 @@ public final class AsStringConverter {
             AsStringConverterProvider asStringConverterProvider = iterator.next();
             converterProviders.add(asStringConverterProvider);
         }
-
-        CONVERTERS = Collections.unmodifiableList(new ArrayList<>(converterProviders));
+        converterProviders = new ArrayList<>(converterProviders);
+        AS_STRING_CONVERTER_PROVIDERS = Collections.unmodifiableList(converterProviders);
     }
 
     private AsStringConverter() {
@@ -55,7 +55,7 @@ public final class AsStringConverter {
             return null;
         }
         Class<?> valueClass = value.getClass();
-        for (AsStringConverterProvider asStringConverter : CONVERTERS) {
+        for (AsStringConverterProvider asStringConverter : AS_STRING_CONVERTER_PROVIDERS) {
             if (asStringConverter.getValueClass().isAssignableFrom(valueClass)) {
                 return asStringConverter.asString(value);
             }
