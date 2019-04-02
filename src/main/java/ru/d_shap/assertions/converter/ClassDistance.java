@@ -37,18 +37,18 @@ final class ClassDistance {
     }
 
     private static int getDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final int currentDistance) {
-        if (targetClazz == null) {
+        if (clazz == null) {
             return NON_RELATIVE_DISTANCE;
         }
         if (clazz == targetClazz) {
             return currentDistance;
         }
 
-        int distance = getDistanceStep(clazz, clazz.getSuperclass(), currentDistance + 1);
+        int distance = getDistanceStep(clazz.getSuperclass(), targetClazz, currentDistance + 1);
         Class<?>[] ifaces = clazz.getInterfaces();
         for (Class<?> iface : ifaces) {
-            int ifaceDistance = getDistanceStep(clazz, iface, currentDistance + 1);
-            if (ifaceDistance > 0 && ifaceDistance < distance) {
+            int ifaceDistance = getDistanceStep(iface, targetClazz, currentDistance + 1);
+            if (ifaceDistance >= 0 && (distance < 0 || distance > ifaceDistance)) {
                 distance = ifaceDistance;
             }
         }
