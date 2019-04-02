@@ -125,6 +125,7 @@ public final class AsStringConverter {
         List<Integer> distanceList = new ArrayList<>(converterProviders.size());
         List<AsStringConverterProvider> converterProviderList = new ArrayList<>(converterProviders.size());
         int minimumDistance = ClassDistance.NON_RELATIVE_DISTANCE;
+
         for (AsStringConverterProvider converterProvider : converterProviders) {
             int distance = ClassDistance.getDistance(valueClass, converterProvider.getValueClass());
             distanceList.add(distance);
