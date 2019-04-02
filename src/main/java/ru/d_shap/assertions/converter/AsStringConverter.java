@@ -33,28 +33,34 @@ import java.util.ServiceLoader;
  */
 public final class AsStringConverter {
 
-    private static final List<AsStringConverterProvider> CONVERTER_PROVIDERS;
+    private static final List<AsStringConverterProvider<?>> CONVERTER_PROVIDERS;
 
     static {
         CONVERTER_PROVIDERS = new LinkedList<>();
+        @SuppressWarnings("rawtypes")
         ServiceLoader<AsStringConverterProvider> serviceLoader = ServiceLoader.load(AsStringConverterProvider.class);
-        for (Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator(); iterator.hasNext(); ) {
+        @SuppressWarnings("rawtypes")
+        Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator();
+        while (iterator.hasNext()) {
+            @SuppressWarnings("rawtypes")
             AsStringConverterProvider converterProvider = iterator.next();
             CONVERTER_PROVIDERS.add(converterProvider);
         }
     }
 
-    private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
+    private static final Map<ConverterKey, AsStringConverterProvider<?>> CONVERTER_MAP = new HashMap<>();
 
     private AsStringConverter() {
         super();
     }
 
+    @SuppressWarnings("unchecked")
     public static String asString(final Object value) throws ConversionException {
         if (value == null) {
             return null;
         }
         Class<?> valueClass = value.getClass();
+        @SuppressWarnings("rawtypes")
         AsStringConverterProvider converterProvider = getConverterProvider(valueClass);
         if (converterProvider == null) {
             return value.toString();
@@ -68,19 +74,19 @@ public final class AsStringConverter {
         return asString(convertedValue);
     }
 
-    private static AsStringConverterProvider getConverterProvider(final Class<?> valueClass) {
+    private static AsStringConverterProvider<?> getConverterProvider(final Class<?> valueClass) {
         ConverterKey converterKey = new ConverterKey(valueClass);
         if (CONVERTER_MAP.containsKey(converterKey)) {
             return CONVERTER_MAP.get(converterKey);
         } else {
-            AsStringConverterProvider converterProvider = findConverterProvider(valueClass);
+            AsStringConverterProvider<?> converterProvider = findConverterProvider(valueClass);
             CONVERTER_MAP.put(converterKey, converterProvider);
             return converterProvider;
         }
     }
 
-    private static AsStringConverterProvider findConverterProvider(final Class<?> valueClass) {
-        for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
+    private static AsStringConverterProvider<?> findConverterProvider(final Class<?> valueClass) {
+        for (AsStringConverterProvider<?> converterProvider : CONVERTER_PROVIDERS) {
             if (converterProvider.getValueClass().isAssignableFrom(valueClass)) {
                 return converterProvider;
             }
