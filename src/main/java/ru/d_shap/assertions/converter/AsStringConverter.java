@@ -19,9 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.ServiceLoader;
 
 /**
@@ -31,16 +33,18 @@ import java.util.ServiceLoader;
  */
 public final class AsStringConverter {
 
-    private static final List<AsStringConverterProvider> AS_STRING_CONVERTER_PROVIDERS;
+    private static final List<AsStringConverterProvider> CONVERTER_PROVIDERS;
 
     static {
-        AS_STRING_CONVERTER_PROVIDERS = new LinkedList<>();
+        CONVERTER_PROVIDERS = new LinkedList<>();
         ServiceLoader<AsStringConverterProvider> serviceLoader = ServiceLoader.load(AsStringConverterProvider.class);
         for (Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator(); iterator.hasNext(); ) {
-            AsStringConverterProvider asStringConverterProvider = iterator.next();
-            AS_STRING_CONVERTER_PROVIDERS.add(asStringConverterProvider);
+            AsStringConverterProvider converterProvider = iterator.next();
+            CONVERTER_PROVIDERS.add(converterProvider);
         }
     }
+
+    private static final Map<Class<?>, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
 
     private AsStringConverter() {
         super();
@@ -51,17 +55,36 @@ public final class AsStringConverter {
             return null;
         }
         Class<?> valueClass = value.getClass();
-        for (AsStringConverterProvider asStringConverter : AS_STRING_CONVERTER_PROVIDERS) {
-            if (asStringConverter.getValueClass().isAssignableFrom(valueClass)) {
-                return asStringConverter.asString(value);
-            }
+        AsStringConverterProvider converterProvider = getConverterProvider(valueClass);
+        if (converterProvider == null) {
+            return value.toString();
+        } else {
+            return converterProvider.asString(value);
         }
-        return value.toString();
     }
 
     public static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
         return asString(convertedValue);
+    }
+
+    private static AsStringConverterProvider getConverterProvider(final Class<?> valueClass) {
+        if (CONVERTER_MAP.containsKey(valueClass)) {
+            return CONVERTER_MAP.get(valueClass);
+        } else {
+            AsStringConverterProvider converterProvider = findConverterProvider(valueClass);
+            CONVERTER_MAP.put(valueClass, converterProvider);
+            return converterProvider;
+        }
+    }
+
+    private static AsStringConverterProvider findConverterProvider(final Class<?> valueClass) {
+        for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
+            if (converterProvider.getValueClass().isAssignableFrom(valueClass)) {
+                return converterProvider;
+            }
+        }
+        return null;
     }
 
 }
