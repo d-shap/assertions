@@ -22,18 +22,16 @@ package ru.d_shap.assertions.converter;
 /**
  * Service provider interface for the value to the value with the target class converter.
  *
- * @param <T> the generic type of the value.
- *
  * @author Dmitry Shapovalov
  */
-public interface ValueConverterProvider<T> {
+public interface ValueConverterProvider {
 
     /**
      * Get the value class.
      *
      * @return the value class.
      */
-    Class<T> getValueClass();
+    Class<?> getValueClass();
 
     /**
      * Get the target class.
@@ -52,6 +50,6 @@ public interface ValueConverterProvider<T> {
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    Object convert(T value, Object... arguments) throws ConversionException;
+    Object convert(Object value, Object... arguments) throws ConversionException;
 
 }

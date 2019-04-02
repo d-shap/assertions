@@ -22,18 +22,16 @@ package ru.d_shap.assertions.converter;
 /**
  * Service provider interface for the value to the string representation of the value converter.
  *
- * @param <T> the generic type of the value.
- *
  * @author Dmitry Shapovalov
  */
-public interface AsStringConverterProvider<T> {
+public interface AsStringConverterProvider {
 
     /**
      * Get the value class.
      *
      * @return the value class.
      */
-    Class<T> getValueClass();
+    Class<?> getValueClass();
 
     /**
      * Get the string representation of the value.
@@ -44,6 +42,6 @@ public interface AsStringConverterProvider<T> {
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    String asString(T value) throws ConversionException;
+    String asString(Object value) throws ConversionException;
 
 }
