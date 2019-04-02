@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the primitive data types.
+ * Package contains classes to convert objects to the objects with some other class.
  */
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.converter;
