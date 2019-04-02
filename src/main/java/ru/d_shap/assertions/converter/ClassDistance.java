@@ -26,14 +26,33 @@ package ru.d_shap.assertions.converter;
  */
 final class ClassDistance {
 
-    private static final int DEFAULT_DISTANCE = Integer.MIN_VALUE;
+    private static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
 
     private ClassDistance() {
         super();
     }
 
-    static int getDistance(final Class<?> clazz, final Class<?> parentClazz) {
-        return DEFAULT_DISTANCE;
+    static int getDistance(final Class<?> clazz, final Class<?> targetClazz) {
+        return getDistanceStep(clazz, targetClazz, 0);
+    }
+
+    private static int getDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final int currentDistance) {
+        if (targetClazz == null) {
+            return NON_RELATIVE_DISTANCE;
+        }
+        if (clazz == targetClazz) {
+            return currentDistance;
+        }
+
+        int distance = getDistanceStep(clazz, clazz.getSuperclass(), currentDistance + 1);
+        Class<?>[] ifaces = clazz.getInterfaces();
+        for (Class<?> iface : ifaces) {
+            int ifaceDistance = getDistanceStep(clazz, iface, currentDistance + 1);
+            if (ifaceDistance > 0 && ifaceDistance < distance) {
+                distance = ifaceDistance;
+            }
+        }
+        return distance;
     }
 
 }
