@@ -18,6 +18,20 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
+ * <p>
  * Package contains classes to convert objects to the objects with some other class.
+ * </p>
+ * <p>
+ * Classes to convert the value to the value with the target class are used to reuse existing assertions.
+ * For example, arrays, collections, buffers have the same assertions like containsAll, containsExactly etc.
+ * The actual value of this assertions is converted to the value with the target class of the other assertion
+ * and the other assertion is used.
+ * </p>
+ * <p>
+ * Classes to convert the value to the string representation are used for the fail message generation.
+ * </p>
+ * <p>
+ * All convertes use SPI to locate the converter providers.
+ * </p>
  */
 package ru.d_shap.assertions.converter;
