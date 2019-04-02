@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.converter;
 
 /**
- * Service provider interface for the value to string converter.
+ * Service provider interface for the value to the string representation of the value converter.
  *
  * @author Dmitry Shapovalov
  */
