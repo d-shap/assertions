@@ -20,7 +20,8 @@
 package ru.d_shap.assertions.converter;
 
 /**
- * Class to define distance between two classes.
+ * Class to define the number of classes or interfaces between the specified class and the target class.
+ * The target class should be the superclass or the implemented interface of the specified class.
  *
  * @author Dmitry Shapovalov
  */
