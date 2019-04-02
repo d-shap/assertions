@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.ServiceLoader;
 
 /**
- * Class to convert the value to the string representation.
+ * Class to convert the value to the string representation of the value.
  *
  * @author Dmitry Shapovalov
  */
