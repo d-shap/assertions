@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -101,12 +102,49 @@ public final class AsStringConverter {
     }
 
     private static AsStringConverterProvider findConverterProvider(final Class<?> valueClass) {
+        List<AsStringConverterProvider> converterProviders = findConverterProviderCandidates(valueClass);
+        converterProviders = findMinimumValueClassConverterProviders(valueClass, converterProviders);
+        if (converterProviders.isEmpty()) {
+            return null;
+        } else {
+            return converterProviders.get(0);
+        }
+    }
+
+    private static List<AsStringConverterProvider> findConverterProviderCandidates(final Class<?> valueClass) {
+        List<AsStringConverterProvider> result = new LinkedList<>();
         for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
             if (converterProvider.getValueClass().isAssignableFrom(valueClass)) {
-                return converterProvider;
+                result.add(converterProvider);
             }
         }
-        return null;
+        return result;
+    }
+
+    private static List<AsStringConverterProvider> findMinimumValueClassConverterProviders(final Class<?> valueClass, final List<AsStringConverterProvider> converterProviders) {
+        List<Integer> distanceList = new ArrayList<>(converterProviders.size());
+        List<AsStringConverterProvider> converterProviderList = new ArrayList<>(converterProviders.size());
+        int minimumDistance = ClassDistance.NON_RELATIVE_DISTANCE;
+        for (AsStringConverterProvider converterProvider : converterProviders) {
+            int distance = ClassDistance.getDistance(valueClass, converterProvider.getValueClass());
+            distanceList.add(distance);
+            converterProviderList.add(converterProvider);
+            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
+                minimumDistance = distance;
+            }
+        }
+
+        List<AsStringConverterProvider> result = new LinkedList<>();
+        if (minimumDistance >= 0) {
+            for (int i = 0; i < distanceList.size(); i++) {
+                int distance = distanceList.get(i);
+                if (distance == minimumDistance) {
+                    AsStringConverterProvider converterProvider = converterProviderList.get(i);
+                    result.add(converterProvider);
+                }
+            }
+        }
+        return result;
     }
 
 }
