@@ -114,7 +114,8 @@ public final class AsStringConverter {
     private static List<AsStringConverterProvider> findConverterProviderCandidates(final Class<?> valueClass) {
         List<AsStringConverterProvider> result = new LinkedList<>();
         for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
-            if (converterProvider.getValueClass().isAssignableFrom(valueClass)) {
+            boolean valueClassValid = converterProvider.getValueClass().isAssignableFrom(valueClass);
+            if (valueClassValid) {
                 result.add(converterProvider);
             }
         }
