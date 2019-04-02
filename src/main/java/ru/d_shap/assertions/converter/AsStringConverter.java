@@ -19,8 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,14 +34,12 @@ public final class AsStringConverter {
     private static final List<AsStringConverterProvider> AS_STRING_CONVERTER_PROVIDERS;
 
     static {
-        List<AsStringConverterProvider> converterProviders = new LinkedList<>();
+        AS_STRING_CONVERTER_PROVIDERS = new LinkedList<>();
         ServiceLoader<AsStringConverterProvider> serviceLoader = ServiceLoader.load(AsStringConverterProvider.class);
         for (Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator(); iterator.hasNext(); ) {
             AsStringConverterProvider asStringConverterProvider = iterator.next();
-            converterProviders.add(asStringConverterProvider);
+            AS_STRING_CONVERTER_PROVIDERS.add(asStringConverterProvider);
         }
-        converterProviders = new ArrayList<>(converterProviders);
-        AS_STRING_CONVERTER_PROVIDERS = Collections.unmodifiableList(converterProviders);
     }
 
     private AsStringConverter() {
