@@ -44,7 +44,7 @@ public final class AsStringConverter {
         }
     }
 
-    private static final Map<Class<?>, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
+    private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
 
     private AsStringConverter() {
         super();
@@ -69,11 +69,12 @@ public final class AsStringConverter {
     }
 
     private static AsStringConverterProvider getConverterProvider(final Class<?> valueClass) {
-        if (CONVERTER_MAP.containsKey(valueClass)) {
-            return CONVERTER_MAP.get(valueClass);
+        ConverterKey converterKey = new ConverterKey(valueClass);
+        if (CONVERTER_MAP.containsKey(converterKey)) {
+            return CONVERTER_MAP.get(converterKey);
         } else {
             AsStringConverterProvider converterProvider = findConverterProvider(valueClass);
-            CONVERTER_MAP.put(valueClass, converterProvider);
+            CONVERTER_MAP.put(converterKey, converterProvider);
             return converterProvider;
         }
     }
