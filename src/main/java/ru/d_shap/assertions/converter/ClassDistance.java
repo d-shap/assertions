@@ -26,7 +26,7 @@ package ru.d_shap.assertions.converter;
  */
 final class ClassDistance {
 
-    private static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
+    static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
 
     private ClassDistance() {
         super();
