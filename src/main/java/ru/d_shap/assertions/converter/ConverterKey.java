@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.converter;
 
 /**
- * Key for the converter cache.
+ * Key implementation for the converter cache.
  *
  * @author Dmitry Shapovalov
  */
