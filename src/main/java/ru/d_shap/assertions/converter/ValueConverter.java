@@ -19,46 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import ru.d_shap.assertions.asimp.array.BooleanArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.BooleanArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.ByteArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.ByteArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.CharArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.CharArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.DoubleArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.DoubleArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.FloatArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.FloatArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayToByteArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayToCharArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.IntArrayToShortArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.LongArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.LongArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.array.ObjectArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.ShortArrayToListValueConverter;
-import ru.d_shap.assertions.asimp.array.ShortArrayToObjectArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.io.InputStreamToByteArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.io.InputStreamToIntValueConverter;
-import ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.io.ReaderToIntValueConverter;
-import ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.ByteBufferToByteArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.CharBufferToCharArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.DoubleBufferToDoubleArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.FloatBufferToFloatArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.IntBufferToIntArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.LongBufferToLongArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.nio.ShortBufferToShortArrayValueConverter;
-import ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter;
-import ru.d_shap.assertions.asimp.java.util.SetToListValueConverter;
-import ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter;
-import ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter;
-import ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter;
+import java.util.Map;
+import java.util.ServiceLoader;
 
 /**
  * Class to convert the value to the value with the target class.
@@ -67,82 +33,70 @@ import ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter;
  */
 public final class ValueConverter {
 
-    private static final List<BaseValueConverter> CONVERTERS;
+    private static final List<ValueConverterProvider> CONVERTER_PROVIDERS;
 
     static {
-        CONVERTERS = new LinkedList<>();
-
-        registerValueConverter(new IntToByteValueConverter());
-        registerValueConverter(new IntToCharValueConverter());
-        registerValueConverter(new IntToShortValueConverter());
-
-        registerValueConverter(new IterableToListValueConverter());
-
-        registerValueConverter(new IteratorToListValueConverter());
-        registerValueConverter(new SetToListValueConverter());
-
-        registerValueConverter(new BooleanArrayToListValueConverter());
-        registerValueConverter(new BooleanArrayToObjectArrayValueConverter());
-        registerValueConverter(new ByteArrayToListValueConverter());
-        registerValueConverter(new ByteArrayToObjectArrayValueConverter());
-        registerValueConverter(new CharArrayToListValueConverter());
-        registerValueConverter(new CharArrayToObjectArrayValueConverter());
-        registerValueConverter(new DoubleArrayToListValueConverter());
-        registerValueConverter(new DoubleArrayToObjectArrayValueConverter());
-        registerValueConverter(new FloatArrayToListValueConverter());
-        registerValueConverter(new FloatArrayToObjectArrayValueConverter());
-        registerValueConverter(new IntArrayToByteArrayValueConverter());
-        registerValueConverter(new IntArrayToCharArrayValueConverter());
-        registerValueConverter(new IntArrayToListValueConverter());
-        registerValueConverter(new IntArrayToObjectArrayValueConverter());
-        registerValueConverter(new IntArrayToShortArrayValueConverter());
-        registerValueConverter(new LongArrayToListValueConverter());
-        registerValueConverter(new LongArrayToObjectArrayValueConverter());
-        registerValueConverter(new ObjectArrayToListValueConverter());
-        registerValueConverter(new ShortArrayToListValueConverter());
-        registerValueConverter(new ShortArrayToObjectArrayValueConverter());
-
-        registerValueConverter(new ByteBufferToByteArrayValueConverter());
-        registerValueConverter(new CharBufferToCharArrayValueConverter());
-        registerValueConverter(new DoubleBufferToDoubleArrayValueConverter());
-        registerValueConverter(new FloatBufferToFloatArrayValueConverter());
-        registerValueConverter(new IntBufferToIntArrayValueConverter());
-        registerValueConverter(new LongBufferToLongArrayValueConverter());
-        registerValueConverter(new ShortBufferToShortArrayValueConverter());
-
-        registerValueConverter(new InputStreamToByteArrayValueConverter());
-        registerValueConverter(new InputStreamToIntValueConverter());
-        registerValueConverter(new ReaderToCharArrayValueConverter());
-        registerValueConverter(new ReaderToIntValueConverter());
+        CONVERTER_PROVIDERS = new LinkedList<>();
+        ServiceLoader<ValueConverterProvider> serviceLoader = ServiceLoader.load(ValueConverterProvider.class);
+        Iterator<ValueConverterProvider> iterator = serviceLoader.iterator();
+        while (iterator.hasNext()) {
+            ValueConverterProvider converterProvider = iterator.next();
+            CONVERTER_PROVIDERS.add(converterProvider);
+        }
     }
+
+    private static final Map<ConverterKey, ValueConverterProvider> CONVERTER_MAP = new HashMap<>();
 
     private ValueConverter() {
         super();
     }
 
-    static void registerValueConverter(final BaseValueConverter valueConverter) {
-        ((LinkedList<BaseValueConverter>) CONVERTERS).addFirst(valueConverter);
-    }
-
+    /**
+     * Get the value converted to the target class.
+     *
+     * @param value       the value.
+     * @param targetClass the target class.
+     * @param arguments   the conversion arguments.
+     * @param <V>         the generic type of the value converted to the target class.
+     *
+     * @return the value converted to the target class (or the same value if conversion cannot be performed).
+     *
+     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     */
     @SuppressWarnings("unchecked")
     public static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
         if (value == null) {
             return null;
         }
         Class<?> valueClass = value.getClass();
-        for (BaseValueConverter valueConverter : CONVERTERS) {
-            boolean valueClassValid = valueConverter.getValueClass().isAssignableFrom(valueClass);
-            boolean targetClassValid = valueConverter.getTargetClass().isAssignableFrom(targetClass);
+        ValueConverterProvider converterProvider = getConverterProvider(valueClass, targetClass);
+        if (converterProvider == null) {
+            return (V) value;
+        } else {
+            return (V) converterProvider.convert(value, arguments);
+        }
+    }
+
+    private static ValueConverterProvider getConverterProvider(final Class<?> valueClass, final Class<?> targetClass) {
+        ConverterKey converterKey = new ConverterKey(valueClass, targetClass);
+        if (CONVERTER_MAP.containsKey(converterKey)) {
+            return CONVERTER_MAP.get(converterKey);
+        } else {
+            ValueConverterProvider converterProvider = findConverterProvider(valueClass, targetClass);
+            CONVERTER_MAP.put(converterKey, converterProvider);
+            return converterProvider;
+        }
+    }
+
+    private static ValueConverterProvider findConverterProvider(final Class<?> valueClass, final Class<?> targetClass) {
+        for (ValueConverterProvider converterProvider : CONVERTER_PROVIDERS) {
+            boolean valueClassValid = converterProvider.getValueClass().isAssignableFrom(valueClass);
+            boolean targetClassValid = converterProvider.getTargetClass().isAssignableFrom(targetClass);
             if (valueClassValid && targetClassValid) {
-                boolean canConvert = valueConverter.canConvert(value, arguments);
-                if (canConvert) {
-                    return (V) valueConverter.convert(value, arguments);
-                } else {
-                    return (V) value;
-                }
+                return converterProvider;
             }
         }
-        return (V) value;
+        return null;
     }
 
 }
