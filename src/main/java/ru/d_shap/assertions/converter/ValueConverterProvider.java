@@ -41,7 +41,7 @@ public interface ValueConverterProvider {
     Class<?> getTargetClass();
 
     /**
-     * Get the value converted to the target class.
+     * Get the value converted to the target class (or the same value if conversion cannot be performed).
      *
      * @param value     the value.
      * @param arguments the conversion arguments.
