@@ -66,7 +66,7 @@ final class ClassDistance {
 
         for (T element : list) {
             Class<?> targetClazz = classExtractor.extractClass(element);
-            int distance = ClassDistance.getDistance(clazz, targetClazz);
+            int distance = getDistance(clazz, targetClazz);
             distances.add(distance);
             if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
                 minimumDistance = distance;
