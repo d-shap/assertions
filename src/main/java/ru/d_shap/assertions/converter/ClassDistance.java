@@ -19,15 +19,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class to define the number of classes or interfaces between the specified class and the target class.
  * The target class should be the superclass or the implemented interface of the specified class.
+ * Otherwise the distance is negative.
  *
  * @author Dmitry Shapovalov
  */
 final class ClassDistance {
 
-    static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
+    private static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
 
     private ClassDistance() {
         super();
@@ -54,6 +58,45 @@ final class ClassDistance {
             }
         }
         return distance;
+    }
+
+    static <T> void retainWithMinimumClassDistance(final List<T> list, final Class<?> clazz, final ClassExtractor<T> classExtractor) {
+        List<Integer> distances = new ArrayList<>(list.size());
+        int minimumDistance = NON_RELATIVE_DISTANCE;
+
+        for (T element : list) {
+            Class<?> targetClazz = classExtractor.extractClass(element);
+            int distance = ClassDistance.getDistance(clazz, targetClazz);
+            distances.add(distance);
+            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
+                minimumDistance = distance;
+            }
+        }
+
+        for (int i = distances.size() - 1; i >= 0; i--) {
+            int distance = distances.get(i);
+            if (minimumDistance < 0 || distance > minimumDistance) {
+                list.remove(i);
+            }
+        }
+    }
+
+    /**
+     * Interface to extract the class from the object.
+     *
+     * @author Dmitry Shapovalov
+     */
+    interface ClassExtractor<T> {
+
+        /**
+         * Extract the class from the object.
+         *
+         * @param object the object.
+         *
+         * @return the extracted class.
+         */
+        Class<?> extractClass(T object);
+
     }
 
 }
