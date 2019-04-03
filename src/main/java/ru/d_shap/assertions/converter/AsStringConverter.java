@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -47,6 +46,8 @@ public final class AsStringConverter {
     }
 
     private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
+
+    private static final ClassDistance.ClassExtractor<AsStringConverterProvider> VALUE_CLASS_EXTRACTOR = new ValueClassExtractor();
 
     private AsStringConverter() {
         super();
@@ -102,8 +103,14 @@ public final class AsStringConverter {
     }
 
     private static AsStringConverterProvider findConverterProvider(final Class<?> valueClass) {
-        List<AsStringConverterProvider> converterProviders = findConverterProviderCandidates(valueClass);
-        converterProviders = findMinimumValueClassConverterProviders(valueClass, converterProviders);
+        List<AsStringConverterProvider> converterProviders = new LinkedList<>();
+        for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
+            boolean valueClassValid = converterProvider.getValueClass().isAssignableFrom(valueClass);
+            if (valueClassValid) {
+                converterProviders.add(converterProvider);
+            }
+        }
+        ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
         if (converterProviders.isEmpty()) {
             return null;
         } else {
@@ -111,42 +118,22 @@ public final class AsStringConverter {
         }
     }
 
-    private static List<AsStringConverterProvider> findConverterProviderCandidates(final Class<?> valueClass) {
-        List<AsStringConverterProvider> result = new LinkedList<>();
-        for (AsStringConverterProvider converterProvider : CONVERTER_PROVIDERS) {
-            boolean valueClassValid = converterProvider.getValueClass().isAssignableFrom(valueClass);
-            if (valueClassValid) {
-                result.add(converterProvider);
-            }
-        }
-        return result;
-    }
+    /**
+     * Value class extractor.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ValueClassExtractor implements ClassDistance.ClassExtractor<AsStringConverterProvider> {
 
-    private static List<AsStringConverterProvider> findMinimumValueClassConverterProviders(final Class<?> valueClass, final List<AsStringConverterProvider> converterProviders) {
-        List<Integer> distanceList = new ArrayList<>(converterProviders.size());
-        List<AsStringConverterProvider> converterProviderList = new ArrayList<>(converterProviders.size());
-        int minimumDistance = ClassDistance.NON_RELATIVE_DISTANCE;
-
-        for (AsStringConverterProvider converterProvider : converterProviders) {
-            int distance = ClassDistance.getDistance(valueClass, converterProvider.getValueClass());
-            distanceList.add(distance);
-            converterProviderList.add(converterProvider);
-            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
-                minimumDistance = distance;
-            }
+        ValueClassExtractor() {
+            super();
         }
 
-        List<AsStringConverterProvider> result = new LinkedList<>();
-        if (minimumDistance >= 0) {
-            for (int i = 0; i < distanceList.size(); i++) {
-                int distance = distanceList.get(i);
-                if (distance == minimumDistance) {
-                    AsStringConverterProvider converterProvider = converterProviderList.get(i);
-                    result.add(converterProvider);
-                }
-            }
+        @Override
+        public Class<?> extractClass(final AsStringConverterProvider converterProvider) {
+            return converterProvider.getValueClass();
         }
-        return result;
+
     }
 
 }
