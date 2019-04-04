@@ -17,10 +17,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Builder for the assertion error.
@@ -45,11 +48,25 @@ public final class AssertionErrorBuilder {
         _throwable = null;
     }
 
-    static AssertionErrorBuilder getInstance() {
+    /**
+     * Get the instance of the assertion error builder.
+     *
+     * @return the instance of the assertion error builder.
+     */
+    public static AssertionErrorBuilder getInstance() {
         return new AssertionErrorBuilder(null, null, null);
     }
 
-    static AssertionErrorBuilder getInstance(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
+    /**
+     * Get the instance of the assertion error builder.
+     *
+     * @param failDescription the fail description.
+     * @param valueClass      the actual value class.
+     * @param actual          the actual value.
+     *
+     * @return the instance of the assertion error builder.
+     */
+    public static AssertionErrorBuilder getInstance(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
         return new AssertionErrorBuilder(failDescription, valueClass, actual);
     }
 
