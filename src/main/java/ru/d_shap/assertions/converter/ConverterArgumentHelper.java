@@ -20,13 +20,13 @@
 package ru.d_shap.assertions.converter;
 
 /**
- * Helper class to check arguments.
+ * Helper class to check converter arguments.
  *
  * @author Dmitry Shapovalov
  */
-public final class ValueConverterArgumentHelper {
+public final class ConverterArgumentHelper {
 
-    private ValueConverterArgumentHelper() {
+    private ConverterArgumentHelper() {
         super();
     }
 
