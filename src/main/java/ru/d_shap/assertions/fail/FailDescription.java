@@ -33,21 +33,40 @@ public final class FailDescription {
 
     private final List<FailDescriptionEntry> _failDescriptionEntries;
 
+    /**
+     * Create new object.
+     */
     public FailDescription() {
         super();
         _failDescriptionEntries = new ArrayList<>();
     }
 
+    /**
+     * Create new object.
+     *
+     * @param message   the message template.
+     * @param arguments the message arguments.
+     */
     public FailDescription(final String message, final Object... arguments) {
         this();
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
 
+    /**
+     * Create new object.
+     *
+     * @param failDescriptionEntry the fail description entry.
+     */
     public FailDescription(final FailDescriptionEntry failDescriptionEntry) {
         this();
         _failDescriptionEntries.add(failDescriptionEntry);
     }
 
+    /**
+     * Create new object.
+     *
+     * @param failDescription the base fail description.
+     */
     public FailDescription(final FailDescription failDescription) {
         this();
         if (failDescription != null) {
@@ -55,16 +74,34 @@ public final class FailDescription {
         }
     }
 
+    /**
+     * Create new object.
+     *
+     * @param failDescription the base fail description.
+     * @param message         the message template.
+     * @param arguments       the message arguments.
+     */
     public FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
         this(failDescription);
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
 
+    /**
+     * Create new object.
+     *
+     * @param failDescription      the base fail description.
+     * @param failDescriptionEntry the fail description entry.
+     */
     public FailDescription(final FailDescription failDescription, final FailDescriptionEntry failDescriptionEntry) {
         this(failDescription);
         _failDescriptionEntries.add(failDescriptionEntry);
     }
 
+    /**
+     * Get the full fail message.
+     *
+     * @return the full fail message.
+     */
     public String getFullMessage() {
         List<String> formattedMessages = new ArrayList<>();
         for (FailDescriptionEntry failDescriptionEntry : _failDescriptionEntries) {
