@@ -17,9 +17,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
 
 import java.util.List;
+
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Fail description actual and expected values.
