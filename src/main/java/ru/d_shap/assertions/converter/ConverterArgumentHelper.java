@@ -76,7 +76,7 @@ public final class ConverterArgumentHelper {
      * @param defaultValue the default argument value, if argument is not provided.
      * @param <T>          the generic type of the argument.
      *
-     * @return
+     * @return the argument value.
      */
     public static <T> T getArgument(final Object[] arguments, final int index, final Class<T> clazz, final T defaultValue) {
         if (index >= 0 && index < arguments.length) {
