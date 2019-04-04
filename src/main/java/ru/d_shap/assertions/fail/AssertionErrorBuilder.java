@@ -61,7 +61,7 @@ public final class AssertionErrorBuilder {
      * Get the instance of the assertion error builder.
      *
      * @param failDescription the fail description.
-     * @param valueClass      the actual value class.
+     * @param valueClass      the actual value class (as specified in the assertion).
      * @param actual          the actual value.
      *
      * @return the instance of the assertion error builder.
