@@ -84,6 +84,8 @@ final class ClassDistance {
     /**
      * Interface to extract the class from the object.
      *
+     * @param <T> the generic type of the converter.
+     *
      * @author Dmitry Shapovalov
      */
     interface ClassExtractor<T> {
