@@ -47,7 +47,7 @@ public final class ConverterArgumentHelper {
      * @param arguments the argument array.
      * @param length    the length.
      */
-    public static void checkArgumentLength(final Object[] arguments, final int length) {
+    public static void checkArgumentsLength(final Object[] arguments, final int length) {
         if (arguments.length > length) {
             throw new ArrayIndexOutOfBoundsException(length);
         }
