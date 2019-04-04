@@ -17,53 +17,55 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.d_shap.assertions.Messages;
 
 /**
  * Fail description.
  *
  * @author Dmitry Shapovalov
  */
-final class FailDescription {
+public final class FailDescription {
 
     private final List<FailDescriptionEntry> _failDescriptionEntries;
 
-    FailDescription() {
+    public FailDescription() {
         super();
         _failDescriptionEntries = new ArrayList<>();
     }
 
-    FailDescription(final String message, final Object... arguments) {
+    public FailDescription(final String message, final Object... arguments) {
         this();
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
 
-    FailDescription(final FailDescriptionEntry failDescriptionEntry) {
+    public FailDescription(final FailDescriptionEntry failDescriptionEntry) {
         this();
         _failDescriptionEntries.add(failDescriptionEntry);
     }
 
-    FailDescription(final FailDescription failDescription) {
+    public FailDescription(final FailDescription failDescription) {
         this();
         if (failDescription != null) {
             _failDescriptionEntries.addAll(failDescription._failDescriptionEntries);
         }
     }
 
-    FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
+    public FailDescription(final FailDescription failDescription, final String message, final Object... arguments) {
         this(failDescription);
         _failDescriptionEntries.add(new FailDescriptionEntry(message, arguments, true));
     }
 
-    FailDescription(final FailDescription failDescription, final FailDescriptionEntry failDescriptionEntry) {
+    public FailDescription(final FailDescription failDescription, final FailDescriptionEntry failDescriptionEntry) {
         this(failDescription);
         _failDescriptionEntries.add(failDescriptionEntry);
     }
 
-    String getFullMessage() {
+    public String getFullMessage() {
         List<String> formattedMessages = new ArrayList<>();
         for (FailDescriptionEntry failDescriptionEntry : _failDescriptionEntries) {
             failDescriptionEntry.addFormattedMessage(formattedMessages);
