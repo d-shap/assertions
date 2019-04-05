@@ -17,34 +17,37 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the long.
+ * Value to string converter for the byte.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongAsStringConverter extends BaseAsStringConverter {
+public final class ByteAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public LongAsStringConverter() {
+    public ByteAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return Long.class;
+    public Class<?> getValueClass() {
+        return Byte.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        long longValue = (long) value;
-        return longValue + "L";
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        byte byteValue = (byte) value;
+        return byteValue + "b";
     }
 
 }

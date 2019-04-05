@@ -17,34 +17,41 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the byte.
+ * Value to string converter for the double.
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteAsStringConverter extends BaseAsStringConverter {
+public final class DoubleAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public ByteAsStringConverter() {
+    public DoubleAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return Byte.class;
+    public Class<?> getValueClass() {
+        return Double.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        byte byteValue = (byte) value;
-        return byteValue + "b";
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        double doubleValue = (double) value;
+        if (Double.isNaN(doubleValue) || Double.isInfinite(doubleValue)) {
+            return String.format("%s", doubleValue);
+        } else {
+            return String.format("%sf", doubleValue);
+        }
     }
 
 }

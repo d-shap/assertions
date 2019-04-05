@@ -17,34 +17,40 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the double.
+ * Value to string converter for the boolean.
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleAsStringConverter extends BaseAsStringConverter {
+public final class BooleanAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public DoubleAsStringConverter() {
+    public BooleanAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return Double.class;
+    public Class<?> getValueClass() {
+        return Boolean.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        double doubleValue = (double) value;
-        return String.format("%s", doubleValue);
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        if ((boolean) value) {
+            return "T";
+        } else {
+            return "F";
+        }
     }
 
 }

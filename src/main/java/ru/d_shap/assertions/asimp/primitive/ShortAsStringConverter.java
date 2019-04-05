@@ -17,38 +17,37 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the float.
+ * Value to string converter for the short.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatAsStringConverter extends BaseAsStringConverter {
+public final class ShortAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public FloatAsStringConverter() {
+    public ShortAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return Float.class;
+    public Class<?> getValueClass() {
+        return Short.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        float floatValue = (float) value;
-        if (Float.isNaN(floatValue) || Float.isInfinite(floatValue)) {
-            return String.format("%s", floatValue);
-        } else {
-            return String.format("%sf", floatValue);
-        }
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        short shortValue = (short) value;
+        return shortValue + "s";
     }
 
 }
