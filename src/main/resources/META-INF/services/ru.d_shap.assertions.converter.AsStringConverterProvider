@@ -7,3 +7,4 @@ ru.d_shap.assertions.asimp.primitive.LongAsStringConverter
 ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter
 ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter
 ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter
+ru.d_shap.assertions.asimp.java.util.MapAsStringConverter
