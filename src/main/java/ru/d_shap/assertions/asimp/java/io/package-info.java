@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the io data types.
+ * Assertion implementation classes for the java.io data types.
  */
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
