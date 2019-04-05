@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +27,9 @@ import java.util.regex.Pattern;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.util.ListAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the char sequence.

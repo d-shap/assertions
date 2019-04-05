@@ -17,13 +17,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
  * Assertions for the throwable.
