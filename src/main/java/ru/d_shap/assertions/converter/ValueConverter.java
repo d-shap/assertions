@@ -103,11 +103,7 @@ public final class ValueConverter {
         }
         ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
         ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, TARGET_CLASS_EXTRACTOR);
-        if (converterProviders.isEmpty()) {
-            return null;
-        } else {
-            return converterProviders.get(0);
-        }
+        return ClassDistance.getElementWithClassFirst(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
     /**

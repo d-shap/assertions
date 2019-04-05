@@ -111,11 +111,7 @@ public final class AsStringConverter {
             }
         }
         ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
-        if (converterProviders.isEmpty()) {
-            return null;
-        } else {
-            return converterProviders.get(0);
-        }
+        return ClassDistance.getElementWithClassFirst(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
     /**
