@@ -19,13 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hamcrest.Matcher;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
-import ru.d_shap.assertions.asimp.java.util.ListAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -58,21 +59,32 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        createListAssertion().isEmpty();
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), List.class);
+        if (!list.isEmpty()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
+        }
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        createListAssertion().isNullOrEmpty();
+        List<E> list = convertValue(getActual(), List.class);
+        if (list != null && !list.isEmpty()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
+        }
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        createListAssertion().isNotEmpty();
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), List.class);
+        if (list.isEmpty()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
+        }
     }
 
     /**
@@ -81,7 +93,11 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected value.
      */
     public final void contains(final E expected) {
-        createListAssertion().contains(expected);
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), List.class);
+        if (!list.contains(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS).addActual().addExpected(expected).build();
+        }
     }
 
     /**
@@ -90,7 +106,11 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final E expected) {
-        createListAssertion().doesNotContain(expected);
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), List.class);
+        if (list.contains(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
+        }
     }
 
     /**
@@ -100,7 +120,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAll(final E... expected) {
-        createListAssertion().containsAll(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAll(expectedList);
     }
 
     /**
@@ -109,7 +131,24 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<E> expected) {
-        createListAssertion().containsAll(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAll(expectedList);
+    }
+
+    private void containsAll(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                listCopy.remove(idx);
+            } else {
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL).addActual().addExpected(expected).build();
+            }
+        }
     }
 
     /**
@@ -119,7 +158,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
-        createListAssertion().containsAllInOrder(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAllInOrder(expectedList);
     }
 
     /**
@@ -128,7 +169,24 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
-        createListAssertion().containsAllInOrder(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAllInOrder(expectedList);
+    }
+
+    private void containsAllInOrder(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                listCopy = listCopy.subList(idx + 1, listCopy.size());
+            } else {
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
+            }
+        }
     }
 
     /**
@@ -138,7 +196,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsExactly(final E... expected) {
-        createListAssertion().containsExactly(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsExactly(expectedList);
     }
 
     /**
@@ -147,7 +207,26 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<E> expected) {
-        createListAssertion().containsExactly(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsExactly(expectedList);
+    }
+
+    private void containsExactly(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        int elementCount = 0;
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                listCopy.remove(idx);
+                elementCount++;
+            }
+        }
+        if (!listCopy.isEmpty() || elementCount != expected.size()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
+        }
     }
 
     /**
@@ -157,7 +236,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
-        createListAssertion().containsExactlyInOrder(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -166,7 +247,26 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
-        createListAssertion().containsExactlyInOrder(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsExactlyInOrder(expectedList);
+    }
+
+    private void containsExactlyInOrder(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx == 0) {
+                listCopy.remove(idx);
+            } else {
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+            }
+        }
+        if (!listCopy.isEmpty()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+        }
     }
 
     /**
@@ -176,7 +276,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsAny(final E... expected) {
-        createListAssertion().containsAny(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAny(expectedList);
     }
 
     /**
@@ -185,7 +287,27 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<E> expected) {
-        createListAssertion().containsAny(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsAny(expectedList);
+    }
+
+    private void containsAny(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyFalse(expected.isEmpty());
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        boolean found = false;
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ANY).addActual().addExpected(expected).build();
+        }
     }
 
     /**
@@ -195,7 +317,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     @SafeVarargs
     public final void containsNone(final E... expected) {
-        createListAssertion().containsNone(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsNone(expectedList);
     }
 
     /**
@@ -204,7 +328,22 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<E> expected) {
-        createListAssertion().containsNone(expected);
+        checkActualIsNotNull();
+        List<?> expectedList = convertValue(expected, List.class);
+        containsNone(expectedList);
+    }
+
+    private void containsNone(final List<?> expected) {
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        List<?> list = convertValue(getActual(), List.class);
+        List<?> listCopy = new ArrayList<>(list);
+        for (Object expectedItem : expected) {
+            int idx = listCopy.indexOf(expectedItem);
+            if (idx >= 0) {
+                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
+            }
+        }
     }
 
     /**
@@ -213,7 +352,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @return the assertion.
      */
     public final IntAssertion toSize() {
-        return createListAssertion().toSize();
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), List.class);
+        return initializeAssertion(Raw.intAssertion(), list.size(), Messages.Check.SIZE);
     }
 
     /**
@@ -222,7 +363,10 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param matcher the hamcrest matcher.
      */
     public final void toSize(final Matcher<Integer> matcher) {
-        createListAssertion().toSize(matcher);
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        List<E> list = convertValue(getActual(), List.class);
+        matcherAssertion(list.size(), matcher, Messages.Check.SIZE);
     }
 
     /**
@@ -231,12 +375,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      * @param expected the expected size.
      */
     public final void hasSize(final int expected) {
-        createListAssertion().hasSize(expected);
-    }
-
-    private ListAssertion<E> createListAssertion() {
-        List<E> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.<E>listAssertion(), list);
+        toSize().isEqualTo(expected);
     }
 
 }
