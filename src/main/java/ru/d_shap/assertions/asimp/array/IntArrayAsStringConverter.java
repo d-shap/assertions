@@ -17,35 +17,39 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the object array.
+ * Value to string converter for the int array.
  *
  * @author Dmitry Shapovalov
  */
-public final class ObjectArrayAsStringConverter extends BaseAsStringConverter {
+public final class IntArrayAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public ObjectArrayAsStringConverter() {
+    public IntArrayAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return Object[].class;
+    public Class<?> getValueClass() {
+        return int[].class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        return convertValueToString(value, List.class);
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        return AsStringConverter.asString(value, List.class);
     }
 
 }
