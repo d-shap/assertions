@@ -17,17 +17,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
 
-import java.util.List;
 import java.util.Set;
 
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the set.
@@ -115,7 +115,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAll(final E... expected) {
-        createListAssertion().containsAll(expected);
+        createIterableAssertion().containsAll(expected);
     }
 
     /**
@@ -124,7 +124,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<E> expected) {
-        createListAssertion().containsAll(expected);
+        createIterableAssertion().containsAll(expected);
     }
 
     /**
@@ -134,7 +134,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
-        createListAssertion().containsAllInOrder(expected);
+        createIterableAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -143,7 +143,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
-        createListAssertion().containsAllInOrder(expected);
+        createIterableAssertion().containsAllInOrder(expected);
     }
 
     /**
@@ -153,7 +153,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsExactly(final E... expected) {
-        createListAssertion().containsExactly(expected);
+        createIterableAssertion().containsExactly(expected);
     }
 
     /**
@@ -162,7 +162,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<E> expected) {
-        createListAssertion().containsExactly(expected);
+        createIterableAssertion().containsExactly(expected);
     }
 
     /**
@@ -172,7 +172,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
-        createListAssertion().containsExactlyInOrder(expected);
+        createIterableAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -181,7 +181,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
-        createListAssertion().containsExactlyInOrder(expected);
+        createIterableAssertion().containsExactlyInOrder(expected);
     }
 
     /**
@@ -191,7 +191,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsAny(final E... expected) {
-        createListAssertion().containsAny(expected);
+        createIterableAssertion().containsAny(expected);
     }
 
     /**
@@ -200,7 +200,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<E> expected) {
-        createListAssertion().containsAny(expected);
+        createIterableAssertion().containsAny(expected);
     }
 
     /**
@@ -210,7 +210,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     @SafeVarargs
     public final void containsNone(final E... expected) {
-        createListAssertion().containsNone(expected);
+        createIterableAssertion().containsNone(expected);
     }
 
     /**
@@ -219,12 +219,11 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<E> expected) {
-        createListAssertion().containsNone(expected);
+        createIterableAssertion().containsNone(expected);
     }
 
-    private ListAssertion<E> createListAssertion() {
-        List<E> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.<E>listAssertion(), list);
+    private IterableAssertion<E> createIterableAssertion() {
+        return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
     }
 
     /**
