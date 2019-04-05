@@ -17,17 +17,18 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
  * Value to string converter for the class.
  *
  * @author Dmitry Shapovalov
  */
-public final class ClassAsStringConverter extends BaseAsStringConverter {
+public final class ClassAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
@@ -37,12 +38,14 @@ public final class ClassAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return Class.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
         return ((Class<?>) value).getName();
     }
 
