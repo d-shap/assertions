@@ -17,19 +17,21 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Map;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
  * Value to string converter for the map.
  *
  * @author Dmitry Shapovalov
  */
-public final class MapAsStringConverter extends BaseAsStringConverter {
+public final class MapAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
@@ -39,12 +41,14 @@ public final class MapAsStringConverter extends BaseAsStringConverter {
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return Map.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
         StringBuilder result = new StringBuilder();
         result.append('{');
         boolean first = true;
@@ -54,9 +58,9 @@ public final class MapAsStringConverter extends BaseAsStringConverter {
             } else {
                 result.append(", ");
             }
-            result.append(convertValueToString(entry.getKey()));
+            result.append(AsStringConverter.asString(entry.getKey()));
             result.append('=');
-            result.append(convertValueToString(entry.getValue()));
+            result.append(AsStringConverter.asString(entry.getValue()));
         }
         result.append('}');
         return result.toString();
