@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the one-dimension array data types.
+ * Assertion implementation classes for the one-dimension array data types.
  */
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
