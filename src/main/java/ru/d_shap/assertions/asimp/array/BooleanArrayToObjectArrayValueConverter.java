@@ -17,50 +17,44 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the float array to the object array.
+ * Value converter from the boolean array to the object array.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatArrayToObjectArrayValueConverter extends BaseValueConverter {
+public final class BooleanArrayToObjectArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public FloatArrayToObjectArrayValueConverter() {
+    public BooleanArrayToObjectArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return float[].class;
+    public Class<?> getValueClass() {
+        return boolean[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return Float[].class;
+    public Class<?> getTargetClass() {
+        return Boolean[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        Float[] result = new Float[((float[]) value).length];
-        for (int i = 0; i < ((float[]) value).length; i++) {
-            result[i] = ((float[]) value)[i];
+        Boolean[] result = new Boolean[((boolean[]) value).length];
+        for (int i = 0; i < ((boolean[]) value).length; i++) {
+            result[i] = ((boolean[]) value)[i];
         }
         return result;
     }

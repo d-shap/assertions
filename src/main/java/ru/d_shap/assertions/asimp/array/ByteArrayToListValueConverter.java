@@ -17,50 +17,47 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import java.util.ArrayList;
+import java.util.List;
+
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the byte array to the object array.
+ * Value converter from the byte array to the list.
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteArrayToObjectArrayValueConverter extends BaseValueConverter {
+public final class ByteArrayToListValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public ByteArrayToObjectArrayValueConverter() {
+    public ByteArrayToListValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return byte[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return Byte[].class;
+    public Class<?> getTargetClass() {
+        return List.class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        Byte[] result = new Byte[((byte[]) value).length];
-        for (int i = 0; i < ((byte[]) value).length; i++) {
-            result[i] = ((byte[]) value)[i];
+        List<Byte> result = new ArrayList<>(((byte[]) value).length);
+        for (byte element : (byte[]) value) {
+            result.add(element);
         }
         return result;
     }

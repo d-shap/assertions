@@ -17,52 +17,46 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the boolean array to the list.
+ * Value converter from the float array to the list.
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanArrayToListValueConverter extends BaseValueConverter {
+public final class FloatArrayToListValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public BooleanArrayToListValueConverter() {
+    public FloatArrayToListValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return boolean[].class;
+    public Class<?> getValueClass() {
+        return float[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
+    public Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        List<Boolean> result = new ArrayList<>(((boolean[]) value).length);
-        for (boolean element : (boolean[]) value) {
+        List<Float> result = new ArrayList<>(((float[]) value).length);
+        for (float element : (float[]) value) {
             result.add(element);
         }
         return result;

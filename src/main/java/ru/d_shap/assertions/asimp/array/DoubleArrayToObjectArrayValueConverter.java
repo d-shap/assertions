@@ -17,50 +17,44 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the long array to the object array.
+ * Value converter from the double array to the object array.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongArrayToObjectArrayValueConverter extends BaseValueConverter {
+public final class DoubleArrayToObjectArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public LongArrayToObjectArrayValueConverter() {
+    public DoubleArrayToObjectArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return long[].class;
+    public Class<?> getValueClass() {
+        return double[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return Long[].class;
+    public Class<?> getTargetClass() {
+        return Double[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        Long[] result = new Long[((long[]) value).length];
-        for (int i = 0; i < ((long[]) value).length; i++) {
-            result[i] = ((long[]) value)[i];
+        Double[] result = new Double[((double[]) value).length];
+        for (int i = 0; i < ((double[]) value).length; i++) {
+            result[i] = ((double[]) value)[i];
         }
         return result;
     }

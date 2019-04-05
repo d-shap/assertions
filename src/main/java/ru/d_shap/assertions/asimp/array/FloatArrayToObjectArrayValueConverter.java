@@ -17,53 +17,44 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the int array to the list.
+ * Value converter from the float array to the object array.
  *
  * @author Dmitry Shapovalov
  */
-public final class IntArrayToListValueConverter extends BaseValueConverter {
+public final class FloatArrayToObjectArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public IntArrayToListValueConverter() {
+    public FloatArrayToObjectArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return int[].class;
+    public Class<?> getValueClass() {
+        return float[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return List.class;
+    public Class<?> getTargetClass() {
+        return Float[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        List<Integer> result = new ArrayList<>(((int[]) value).length);
-        for (int element : (int[]) value) {
-            result.add(element);
+        Float[] result = new Float[((float[]) value).length];
+        for (int i = 0; i < ((float[]) value).length; i++) {
+            result[i] = ((float[]) value)[i];
         }
         return result;
     }
