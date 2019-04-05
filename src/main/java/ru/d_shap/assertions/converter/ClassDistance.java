@@ -81,6 +81,19 @@ final class ClassDistance {
         }
     }
 
+    static <T> T getElementWithClassFirst(final List<T> list, final ClassExtractor<T> classExtractor) {
+        if (list.isEmpty()) {
+            return null;
+        }
+        for (T element : list) {
+            Class<?> clazz = classExtractor.extractClass(element);
+            if (!clazz.isInterface()) {
+                return element;
+            }
+        }
+        return list.get(0);
+    }
+
     /**
      * Interface to extract the class from the object.
      *
