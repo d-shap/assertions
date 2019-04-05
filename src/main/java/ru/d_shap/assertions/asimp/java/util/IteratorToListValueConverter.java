@@ -28,16 +28,16 @@ import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the iterator to the iterable.
+ * Value converter from the iterator to the list.
  *
  * @author Dmitry Shapovalov
  */
-public final class IteratorToIterableValueConverter implements ValueConverterProvider {
+public final class IteratorToListValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public IteratorToIterableValueConverter() {
+    public IteratorToListValueConverter() {
         super();
     }
 
@@ -48,7 +48,7 @@ public final class IteratorToIterableValueConverter implements ValueConverterPro
 
     @Override
     public Class<?> getTargetClass() {
-        return Iterable.class;
+        return List.class;
     }
 
     @Override
