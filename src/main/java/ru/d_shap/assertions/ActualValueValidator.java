@@ -29,14 +29,14 @@ import java.util.List;
  */
 final class ActualValueValidator {
 
-    private final List<BaseActualValueValidator> _actualValueValidators;
+    private final List<ActualValueValidatorProvider> _actualValueValidators;
 
     ActualValueValidator() {
         super();
         _actualValueValidators = new ArrayList<>();
     }
 
-    void addActualValueValidator(final BaseActualValueValidator actualValueValidator) {
+    void addActualValueValidator(final ActualValueValidatorProvider actualValueValidator) {
         _actualValueValidators.add(actualValueValidator);
     }
 
@@ -44,7 +44,7 @@ final class ActualValueValidator {
         if (actual == null) {
             return true;
         } else {
-            for (BaseActualValueValidator actualValueValidator : _actualValueValidators) {
+            for (ActualValueValidatorProvider actualValueValidator : _actualValueValidators) {
                 if (!actualValueValidator.isValid(actual)) {
                     return false;
                 }
