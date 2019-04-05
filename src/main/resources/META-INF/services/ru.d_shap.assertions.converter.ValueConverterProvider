@@ -2,4 +2,4 @@ ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter
 ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter
 ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter
 ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter
-ru.d_shap.assertions.asimp.java.util.IteratorToIterableValueConverter
+ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter
