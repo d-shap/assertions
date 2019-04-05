@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -30,9 +30,9 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.core.IterableAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the sorted map.
@@ -433,7 +433,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().headMap(key), Messages.Check.HEAD_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(key), Messages.Check.HEAD_ELEMENT, key);
     }
 
     /**
@@ -458,7 +458,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void toHeadMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().headMap(key), matcher, Messages.Check.HEAD_ELEMENT, key);
+        matcherAssertion(getHeadMap(key), matcher, Messages.Check.HEAD_ELEMENT, key);
     }
 
     /**
@@ -472,6 +472,10 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getHeadMap(count), matcher, Messages.Check.HEAD_COUNT, count);
+    }
+
+    private SortedMap<K, V> getHeadMap(final K key) {
+        return getActual().headMap(key);
     }
 
     private SortedMap<K, V> getHeadMap(final int count) {
@@ -492,7 +496,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getActual().tailMap(key), Messages.Check.TAIL_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(key), Messages.Check.TAIL_ELEMENT, key);
     }
 
     /**
@@ -517,7 +521,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void toTailMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getActual().tailMap(key), matcher, Messages.Check.TAIL_ELEMENT, key);
+        matcherAssertion(getTailMap(key), matcher, Messages.Check.TAIL_ELEMENT, key);
     }
 
     /**
@@ -531,6 +535,10 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         matcherAssertion(getTailMap(count), matcher, Messages.Check.TAIL_COUNT, count);
+    }
+
+    private SortedMap<K, V> getTailMap(final K key) {
+        return getActual().tailMap(key);
     }
 
     private SortedMap<K, V> getTailMap(final int count) {
