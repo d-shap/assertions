@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
-import ru.d_shap.assertions.BaseActualValueValidator;
+import ru.d_shap.assertions.ActualValueValidatorProvider;
 
 /**
  * Actual value validator to check if the actual value is instance of the specified class.
  *
  * @author Dmitry Shapovalov
  */
-public final class ClassActualValueValidator extends BaseActualValueValidator {
+public final class ClassActualValueValidator implements ActualValueValidatorProvider {
 
     private final Class<?> _clazz;
 
@@ -41,7 +41,7 @@ public final class ClassActualValueValidator extends BaseActualValueValidator {
     }
 
     @Override
-    protected boolean isValid(final Object actual) {
+    public boolean isValid(final Object actual) {
         return _clazz.isInstance(actual);
     }
 

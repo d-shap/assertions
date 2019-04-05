@@ -19,14 +19,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
-import ru.d_shap.assertions.BaseActualValueValidator;
+import ru.d_shap.assertions.ActualValueValidatorProvider;
 
 /**
  * Actual value validator to check if the actual value is the enum class.
  *
  * @author Dmitry Shapovalov
  */
-public final class EnumActualValueValidator extends BaseActualValueValidator {
+public final class EnumActualValueValidator implements ActualValueValidatorProvider {
 
     /**
      * Create new object.
@@ -36,7 +36,7 @@ public final class EnumActualValueValidator extends BaseActualValueValidator {
     }
 
     @Override
-    protected boolean isValid(final Object actual) {
+    public boolean isValid(final Object actual) {
         return actual instanceof Class<?> && Enum.class.isAssignableFrom((Class<?>) actual);
     }
 
