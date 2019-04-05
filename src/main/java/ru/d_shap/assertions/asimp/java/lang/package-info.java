@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the core data types.
+ * Assertion implementation classes for the java.lang data types.
  */
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
