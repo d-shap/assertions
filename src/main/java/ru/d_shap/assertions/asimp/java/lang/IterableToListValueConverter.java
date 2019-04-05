@@ -17,20 +17,21 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
  * Value converter from the iterable to the list.
  *
  * @author Dmitry Shapovalov
  */
-public final class IterableToListValueConverter extends BaseValueConverter {
+public final class IterableToListValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
@@ -40,27 +41,20 @@ public final class IterableToListValueConverter extends BaseValueConverter {
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return Iterable.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
+    public Class<?> getTargetClass() {
         return List.class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         if (value instanceof List) {
             return value;
         } else {
