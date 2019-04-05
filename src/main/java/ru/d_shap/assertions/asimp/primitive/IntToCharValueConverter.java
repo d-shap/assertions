@@ -17,50 +17,48 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the int to the byte.
+ * Value converter from the int to the char.
  *
  * @author Dmitry Shapovalov
  */
-public final class IntToByteValueConverter extends BaseValueConverter {
+public final class IntToCharValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public IntToByteValueConverter() {
+    public IntToCharValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return Integer.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return Byte.class;
+    public Class<?> getTargetClass() {
+        return Character.class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         int intValue = (int) value;
-        byte byteValue = (byte) intValue;
-        return intValue == byteValue;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return (byte) (int) value;
+        char charValue = (char) intValue;
+        if (intValue == charValue) {
+            return charValue;
+        } else {
+            return value;
+        }
     }
 
 }
