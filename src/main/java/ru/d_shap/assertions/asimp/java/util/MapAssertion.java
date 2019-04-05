@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -28,9 +28,9 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.core.IterableAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the map.
@@ -422,9 +422,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx >= 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy.remove(idx);
             } else {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL).addActual().addExpected(expected).build();
@@ -532,9 +532,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx >= 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy = actualKeysCopy.subList(idx + 1, actualKeysCopy.size());
             } else {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
@@ -650,9 +650,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotNull(expected);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         int elementCount = 0;
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx >= 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy.remove(idx);
                 elementCount++;
             }
@@ -769,9 +769,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx == 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx == 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy.remove(idx);
             } else {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
@@ -883,9 +883,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotEmptyFalse(expected.isEmpty());
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         boolean found = false;
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx >= 0 && isValuesEqual(expected, key)) {
                 found = true;
                 break;
             }
@@ -995,9 +995,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
-        for (K expectedKey : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(expectedKey);
-            if (idx >= 0 && isValuesEqual(expected, expectedKey)) {
+        for (K key : expected.keySet()) {
+            int idx = actualKeysCopy.indexOf(key);
+            if (idx >= 0 && isValuesEqual(expected, key)) {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
         }
