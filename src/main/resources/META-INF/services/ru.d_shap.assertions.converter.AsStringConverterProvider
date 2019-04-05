@@ -1,0 +1,7 @@
+ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter
+ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter
+ru.d_shap.assertions.asimp.primitive.CharAsStringConverter
+ru.d_shap.assertions.asimp.primitive.DoubleAsStringConverter
+ru.d_shap.assertions.asimp.primitive.FloatAsStringConverter
+ru.d_shap.assertions.asimp.primitive.LongAsStringConverter
+ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter
