@@ -18,6 +18,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Assertions for the collection data types.
+ * Assertion implementation classes for the java.util data types.
  */
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
