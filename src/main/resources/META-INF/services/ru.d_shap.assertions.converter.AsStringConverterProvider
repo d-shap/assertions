@@ -1,3 +1,15 @@
+ru.d_shap.assertions.asimp.array.BooleanArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.DoubleArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.FloatArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.IntArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.LongArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.ObjectArrayAsStringConverter
+ru.d_shap.assertions.asimp.array.ShortArrayAsStringConverter
+ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter
+ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter
+ru.d_shap.assertions.asimp.java.util.MapAsStringConverter
 ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter
 ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter
 ru.d_shap.assertions.asimp.primitive.CharAsStringConverter
@@ -5,6 +17,3 @@ ru.d_shap.assertions.asimp.primitive.DoubleAsStringConverter
 ru.d_shap.assertions.asimp.primitive.FloatAsStringConverter
 ru.d_shap.assertions.asimp.primitive.LongAsStringConverter
 ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter
-ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter
-ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter
-ru.d_shap.assertions.asimp.java.util.MapAsStringConverter
