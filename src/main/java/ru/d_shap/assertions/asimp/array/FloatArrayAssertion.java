@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,27 +25,27 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the double array.
+ * Assertions for the float array.
  *
  * @author Dmitry Shapovalov
  */
-public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
+public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
 
     /**
      * Create new object.
      */
-    public DoubleArrayAssertion() {
+    public FloatArrayAssertion() {
         super();
     }
 
     @Override
-    protected final Class<double[]> getActualValueClass() {
-        return double[].class;
+    protected final Class<float[]> getActualValueClass() {
+        return float[].class;
     }
 
     /**
@@ -82,8 +82,8 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final double expected) {
-        createListAssertion().contains(expected);
+    public final void contains(final float expected) {
+        createIterableAssertion().contains(expected);
     }
 
     /**
@@ -91,8 +91,8 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final double expected) {
-        createListAssertion().doesNotContain(expected);
+    public final void doesNotContain(final float expected) {
+        createIterableAssertion().doesNotContain(expected);
     }
 
     /**
@@ -100,9 +100,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final double... expected) {
+    public final void containsAll(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -110,9 +110,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Double> expected) {
+    public final void containsAll(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -120,9 +120,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final double... expected) {
+    public final void containsAllInOrder(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -130,9 +130,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Double> expected) {
+    public final void containsAllInOrder(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -140,9 +140,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final double... expected) {
+    public final void containsExactly(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -150,9 +150,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Double> expected) {
+    public final void containsExactly(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -160,9 +160,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final double... expected) {
+    public final void containsExactlyInOrder(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -170,9 +170,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Double> expected) {
+    public final void containsExactlyInOrder(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -180,9 +180,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final double... expected) {
+    public final void containsAny(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -190,9 +190,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Double> expected) {
+    public final void containsAny(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -200,9 +200,9 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final double... expected) {
+    public final void containsNone(final float... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -210,14 +210,14 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Double> expected) {
+    public final void containsNone(final Iterable<Float> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Object> createListAssertion() {
+    private IterableAssertion<Object> createIterableAssertion() {
         List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
     /**

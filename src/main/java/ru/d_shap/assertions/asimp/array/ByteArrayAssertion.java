@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,27 +25,27 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the short array.
+ * Assertions for the byte array.
  *
  * @author Dmitry Shapovalov
  */
-public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
+public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
 
     /**
      * Create new object.
      */
-    public ShortArrayAssertion() {
+    public ByteArrayAssertion() {
         super();
     }
 
     @Override
-    protected final Class<short[]> getActualValueClass() {
-        return short[].class;
+    protected final Class<byte[]> getActualValueClass() {
+        return byte[].class;
     }
 
     /**
@@ -83,7 +83,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected value.
      */
     public final void contains(final int expected) {
-        createListAssertion().contains((short) expected);
+        createIterableAssertion().contains((byte) expected);
     }
 
     /**
@@ -92,7 +92,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
-        createListAssertion().doesNotContain((short) expected);
+        createIterableAssertion().doesNotContain((byte) expected);
     }
 
     /**
@@ -100,9 +100,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final short... expected) {
+    public final void containsAll(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -111,9 +111,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsAll(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -121,9 +121,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Short> expected) {
+    public final void containsAll(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -131,9 +131,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final short... expected) {
+    public final void containsAllInOrder(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -142,9 +142,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -152,9 +152,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Short> expected) {
+    public final void containsAllInOrder(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -162,9 +162,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final short... expected) {
+    public final void containsExactly(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -173,9 +173,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsExactly(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -183,9 +183,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Short> expected) {
+    public final void containsExactly(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -193,9 +193,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final short... expected) {
+    public final void containsExactlyInOrder(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -204,9 +204,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -214,9 +214,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Short> expected) {
+    public final void containsExactlyInOrder(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -224,9 +224,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final short... expected) {
+    public final void containsAny(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -235,9 +235,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsAny(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -245,9 +245,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Short> expected) {
+    public final void containsAny(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -255,9 +255,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final short... expected) {
+    public final void containsNone(final byte... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -266,9 +266,9 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final int... expected) {
-        Object expectedShorts = convertValue(expected, short[].class);
-        List<Object> expectedList = convertValue(expectedShorts, List.class);
-        createListAssertion().containsNone(expectedList);
+        Object expectedBytes = convertValue(expected, byte[].class);
+        List<Object> expectedList = convertValue(expectedBytes, List.class);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -276,14 +276,14 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Short> expected) {
+    public final void containsNone(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Object> createListAssertion() {
+    private IterableAssertion<Object> createIterableAssertion() {
         List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
     /**

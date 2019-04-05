@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,27 +25,27 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the boolean array.
+ * Assertions for the char array.
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
+public class CharArrayAssertion extends ReferenceAssertion<char[]> {
 
     /**
      * Create new object.
      */
-    public BooleanArrayAssertion() {
+    public CharArrayAssertion() {
         super();
     }
 
     @Override
-    protected final Class<boolean[]> getActualValueClass() {
-        return boolean[].class;
+    protected final Class<char[]> getActualValueClass() {
+        return char[].class;
     }
 
     /**
@@ -82,8 +82,8 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final boolean expected) {
-        createListAssertion().contains(expected);
+    public final void contains(final int expected) {
+        createIterableAssertion().contains((char) expected);
     }
 
     /**
@@ -91,8 +91,8 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final boolean expected) {
-        createListAssertion().doesNotContain(expected);
+    public final void doesNotContain(final int expected) {
+        createIterableAssertion().doesNotContain((char) expected);
     }
 
     /**
@@ -100,9 +100,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final boolean... expected) {
+    public final void containsAll(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -110,9 +110,20 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Boolean> expected) {
+    public final void containsAll(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsAll(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAll(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -120,9 +131,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final boolean... expected) {
+    public final void containsAllInOrder(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -130,9 +141,20 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Boolean> expected) {
+    public final void containsAllInOrder(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsAllInOrder(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAllInOrder(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -140,9 +162,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final boolean... expected) {
+    public final void containsExactly(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -150,9 +172,20 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Boolean> expected) {
+    public final void containsExactly(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsExactly(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactly(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -160,9 +193,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final boolean... expected) {
+    public final void containsExactlyInOrder(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -170,9 +203,20 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Boolean> expected) {
+    public final void containsExactlyInOrder(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsExactlyInOrder(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -180,9 +224,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final boolean... expected) {
+    public final void containsAny(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -190,9 +234,20 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Boolean> expected) {
+    public final void containsAny(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsAny(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsAny(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -200,9 +255,9 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final boolean... expected) {
+    public final void containsNone(final char... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -210,14 +265,25 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Boolean> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+    public final void containsNone(final int... expected) {
+        Object expectedChars = convertValue(expected, char[].class);
+        List<Object> expectedList = convertValue(expectedChars, List.class);
+        createIterableAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Object> createListAssertion() {
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void containsNone(final Iterable<Character> expected) {
+        List<Object> expectedList = convertValue(expected, List.class);
+        createIterableAssertion().containsNone(expectedList);
+    }
+
+    private IterableAssertion<Object> createIterableAssertion() {
         List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
     /**

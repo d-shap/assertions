@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,27 +25,27 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the byte array.
+ * Assertions for the long array.
  *
  * @author Dmitry Shapovalov
  */
-public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
+public class LongArrayAssertion extends ReferenceAssertion<long[]> {
 
     /**
      * Create new object.
      */
-    public ByteArrayAssertion() {
+    public LongArrayAssertion() {
         super();
     }
 
     @Override
-    protected final Class<byte[]> getActualValueClass() {
-        return byte[].class;
+    protected final Class<long[]> getActualValueClass() {
+        return long[].class;
     }
 
     /**
@@ -82,8 +82,8 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final int expected) {
-        createListAssertion().contains((byte) expected);
+    public final void contains(final long expected) {
+        createIterableAssertion().contains(expected);
     }
 
     /**
@@ -91,8 +91,8 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final int expected) {
-        createListAssertion().doesNotContain((byte) expected);
+    public final void doesNotContain(final long expected) {
+        createIterableAssertion().doesNotContain(expected);
     }
 
     /**
@@ -100,9 +100,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final byte... expected) {
+    public final void containsAll(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -110,20 +110,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsAll(expectedList);
-    }
-
-    /**
-     * Check if the actual value contains all of the expected values.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsAll(final Iterable<Byte> expected) {
+    public final void containsAll(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -131,9 +120,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final byte... expected) {
+    public final void containsAllInOrder(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -141,20 +130,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
-    }
-
-    /**
-     * Check if the actual value contains all of the expected values in the specified order.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsAllInOrder(final Iterable<Byte> expected) {
+    public final void containsAllInOrder(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -162,9 +140,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final byte... expected) {
+    public final void containsExactly(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -172,20 +150,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsExactly(expectedList);
-    }
-
-    /**
-     * Check if the actual value contains all of the expected values exactly.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsExactly(final Iterable<Byte> expected) {
+    public final void containsExactly(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -193,9 +160,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final byte... expected) {
+    public final void containsExactlyInOrder(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -203,20 +170,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
-    }
-
-    /**
-     * Check if the actual value contains all of the expected values exactly in the specified order.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsExactlyInOrder(final Iterable<Byte> expected) {
+    public final void containsExactlyInOrder(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -224,9 +180,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final byte... expected) {
+    public final void containsAny(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -234,20 +190,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsAny(expectedList);
-    }
-
-    /**
-     * Check if the actual value contains any of the expected values.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsAny(final Iterable<Byte> expected) {
+    public final void containsAny(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -255,9 +200,9 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final byte... expected) {
+    public final void containsNone(final long... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -265,25 +210,14 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final int... expected) {
-        Object expectedBytes = convertValue(expected, byte[].class);
-        List<Object> expectedList = convertValue(expectedBytes, List.class);
-        createListAssertion().containsNone(expectedList);
-    }
-
-    /**
-     * Check if the actual value does NOT contain any of the expected values.
-     *
-     * @param expected the expected values.
-     */
-    public final void containsNone(final Iterable<Byte> expected) {
+    public final void containsNone(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Object> createListAssertion() {
+    private IterableAssertion<Object> createIterableAssertion() {
         List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
     /**

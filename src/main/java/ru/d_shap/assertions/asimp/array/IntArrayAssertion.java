@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,9 +25,9 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.collection.ListAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the int array.
@@ -83,7 +83,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected value.
      */
     public final void contains(final int expected) {
-        createListAssertion().contains(expected);
+        createIterableAssertion().contains(expected);
     }
 
     /**
@@ -92,7 +92,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param expected the expected value.
      */
     public final void doesNotContain(final int expected) {
-        createListAssertion().doesNotContain(expected);
+        createIterableAssertion().doesNotContain(expected);
     }
 
     /**
@@ -102,7 +102,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAll(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -112,7 +112,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAll(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAll(expectedList);
+        createIterableAssertion().containsAll(expectedList);
     }
 
     /**
@@ -122,7 +122,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAllInOrder(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -132,7 +132,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAllInOrder(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAllInOrder(expectedList);
+        createIterableAssertion().containsAllInOrder(expectedList);
     }
 
     /**
@@ -142,7 +142,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsExactly(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -152,7 +152,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsExactly(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactly(expectedList);
+        createIterableAssertion().containsExactly(expectedList);
     }
 
     /**
@@ -162,7 +162,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsExactlyInOrder(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -172,7 +172,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsExactlyInOrder(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsExactlyInOrder(expectedList);
+        createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -182,7 +182,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAny(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -192,7 +192,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsAny(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsAny(expectedList);
+        createIterableAssertion().containsAny(expectedList);
     }
 
     /**
@@ -202,7 +202,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsNone(final int... expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
     /**
@@ -212,12 +212,12 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      */
     public final void containsNone(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, List.class);
-        createListAssertion().containsNone(expectedList);
+        createIterableAssertion().containsNone(expectedList);
     }
 
-    private ListAssertion<Object> createListAssertion() {
+    private IterableAssertion<Object> createIterableAssertion() {
         List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.listAssertion(), list);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
     /**
