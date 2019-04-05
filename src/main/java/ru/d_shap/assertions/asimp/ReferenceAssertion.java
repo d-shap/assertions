@@ -17,17 +17,21 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.asimp;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 
 import org.hamcrest.Matcher;
 
-import ru.d_shap.assertions.core.CharSequenceAssertion;
-import ru.d_shap.assertions.core.ClassAssertion;
-import ru.d_shap.assertions.core.ObjectAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.BaseAssertion;
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.PrivateAccessor;
+import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
+import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Base class for all reference type assertions.
@@ -247,7 +251,8 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName);
         try {
-            return initializeAssertion(Raw.objectAssertion(), getFieldValue(fieldName), Messages.Check.FIELD, fieldName);
+            Object fieldValue = getFieldValue(fieldName);
+            return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -282,7 +287,8 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(fieldName);
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getFieldValue(fieldName), (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
+            Object fieldValue = getFieldValue(fieldName);
+            matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.ActualFail.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -294,7 +300,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         return field.get(getActual());
     }
 
-    private Field getField(final String fieldName) throws NoSuchFieldException {
+    private Field getField(final String fieldName) throws ReflectiveOperationException {
         Class<?> currentClass = getActual().getClass();
         NoSuchFieldException noSuchFieldException = null;
         while (currentClass != null) {
