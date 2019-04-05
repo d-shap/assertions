@@ -20,18 +20,11 @@
 package ru.d_shap.assertions;
 
 /**
- * Base class for all actual value validators.
+ * Service provider interface for the actual value validator.
  *
  * @author Dmitry Shapovalov
  */
-public abstract class BaseActualValueValidator {
-
-    /**
-     * Create new object.
-     */
-    protected BaseActualValueValidator() {
-        super();
-    }
+public interface ActualValueValidatorProvider {
 
     /**
      * Check if the actual value is valid.
@@ -40,6 +33,6 @@ public abstract class BaseActualValueValidator {
      *
      * @return true, if the actual value is valid.
      */
-    protected abstract boolean isValid(Object actual);
+    boolean isValid(Object actual);
 
 }
