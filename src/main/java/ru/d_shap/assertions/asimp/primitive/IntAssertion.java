@@ -17,39 +17,38 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import ru.d_shap.assertions.Messages;
-import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
- * Assertions for the double.
+ * Assertions for the int.
  *
  * @author Dmitry Shapovalov
  */
-public class DoubleAssertion extends ReferenceAssertion<Double> {
+public class IntAssertion extends ReferenceAssertion<Integer> {
 
     /**
      * Create new object.
      */
-    public DoubleAssertion() {
+    public IntAssertion() {
         super();
     }
 
     @Override
-    protected final Class<Double> getActualValueClass() {
-        return Double.class;
+    protected final Class<Integer> getActualValueClass() {
+        return Integer.class;
     }
 
     /**
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
-     * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isEqualTo(final double expected, final double delta) {
+    public final void isEqualTo(final int expected) {
         checkActualIsNotNull();
-        if (Math.abs(expected - getActual()) > delta) {
+        if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
         }
     }
@@ -58,11 +57,10 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
-     * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isNotEqualTo(final double expected, final double delta) {
+    public final void isNotEqualTo(final int expected) {
         checkActualIsNotNull();
-        if (Math.abs(expected - getActual()) <= delta) {
+        if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
         }
     }
@@ -72,7 +70,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final double expected) {
+    public final void isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
@@ -84,7 +82,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final double expected) {
+    public final void isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
@@ -96,7 +94,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final double expected) {
+    public final void isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
@@ -108,7 +106,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final double expected) {
+    public final void isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
@@ -121,7 +119,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final double expectedFrom, final double expectedTo) {
+    public final void isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -134,90 +132,10 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final double expectedFrom, final double expectedTo) {
+    public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
-        }
-    }
-
-    /**
-     * Check if the actual value is zero.
-     */
-    public final void isZero() {
-        checkActualIsNotNull();
-        if (getActual() != 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_ZERO).addActual().build();
-        }
-    }
-
-    /**
-     * Check if the actual value is not zero.
-     */
-    public final void isNonZero() {
-        checkActualIsNotNull();
-        if (getActual() == 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NON_ZERO).build();
-        }
-    }
-
-    /**
-     * Check if the actual value is positive infinity.
-     */
-    public final void isPositiveInfinity() {
-        checkActualIsNotNull();
-        if (getActual() != Double.POSITIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_POSITIVE_INFINITY).addActual().build();
-        }
-    }
-
-    /**
-     * Check if the actual value is negative infinity.
-     */
-    public final void isNegativeInfinity() {
-        checkActualIsNotNull();
-        if (getActual() != Double.NEGATIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NEGATIVE_INFINITY).addActual().build();
-        }
-    }
-
-    /**
-     * Check if the actual value is infinity.
-     */
-    public final void isInfinity() {
-        checkActualIsNotNull();
-        if (!getActual().isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_INFINITY).addActual().build();
-        }
-    }
-
-    /**
-     * Check if the actual value is NaN.
-     */
-    public final void isNaN() {
-        checkActualIsNotNull();
-        if (!getActual().isNaN()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NAN).addActual().build();
-        }
-    }
-
-    /**
-     * Check if the actual value is not NaN.
-     */
-    public final void isNotNaN() {
-        checkActualIsNotNull();
-        if (getActual().isNaN()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_NAN).build();
-        }
-    }
-
-    /**
-     * Check if the actual value is finite value.
-     */
-    public final void isFinite() {
-        checkActualIsNotNull();
-        if (getActual().isNaN() || getActual().isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_FINITE).addActual().build();
         }
     }
 

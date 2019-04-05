@@ -17,28 +17,28 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import ru.d_shap.assertions.Messages;
-import ru.d_shap.assertions.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
- * Assertions for the int.
+ * Assertions for the short.
  *
  * @author Dmitry Shapovalov
  */
-public class IntAssertion extends ReferenceAssertion<Integer> {
+public class ShortAssertion extends ReferenceAssertion<Short> {
 
     /**
      * Create new object.
      */
-    public IntAssertion() {
+    public ShortAssertion() {
         super();
     }
 
     @Override
-    protected final Class<Integer> getActualValueClass() {
-        return Integer.class;
+    protected final Class<Short> getActualValueClass() {
+        return Short.class;
     }
 
     /**
