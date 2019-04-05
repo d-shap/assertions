@@ -17,59 +17,61 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the int array to the char array.
+ * Value converter from the int array to the short array.
  *
  * @author Dmitry Shapovalov
  */
-public final class IntArrayToCharArrayValueConverter extends BaseValueConverter {
+public final class IntArrayToShortArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public IntArrayToCharArrayValueConverter() {
+    public IntArrayToShortArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return int[].class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return char[].class;
+    public Class<?> getTargetClass() {
+        return short[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 0);
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
+
+        if (canConvertToTargetClass(value)) {
+            short[] result = new short[((int[]) value).length];
+            for (int i = 0; i < ((int[]) value).length; i++) {
+                result[i] = (short) ((int[]) value)[i];
+            }
+            return result;
+        } else {
+            return value;
+        }
     }
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
+    private boolean canConvertToTargetClass(final Object value) throws ConversionException {
         for (int i = 0; i < ((int[]) value).length; i++) {
             int intValue = ((int[]) value)[i];
-            char charValue = (char) intValue;
-            if (intValue != charValue) {
+            short shortValue = (short) intValue;
+            if (intValue != shortValue) {
                 return false;
             }
         }
         return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        char[] result = new char[((int[]) value).length];
-        for (int i = 0; i < ((int[]) value).length; i++) {
-            result[i] = (char) ((int[]) value)[i];
-        }
-        return result;
     }
 
 }
