@@ -55,7 +55,9 @@ public final class IntArrayToByteArrayValueConverter implements ValueConverterPr
         if (canConvertToTargetClass(value)) {
             byte[] result = new byte[((int[]) value).length];
             for (int i = 0; i < ((int[]) value).length; i++) {
-                result[i] = (byte) ((int[]) value)[i];
+                int intValue = ((int[]) value)[i];
+                byte byteValue = (byte) intValue;
+                result[i] = byteValue;
             }
             return result;
         } else {

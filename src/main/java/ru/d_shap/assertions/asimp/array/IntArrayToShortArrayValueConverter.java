@@ -55,7 +55,9 @@ public final class IntArrayToShortArrayValueConverter implements ValueConverterP
         if (canConvertToTargetClass(value)) {
             short[] result = new short[((int[]) value).length];
             for (int i = 0; i < ((int[]) value).length; i++) {
-                result[i] = (short) ((int[]) value)[i];
+                int intValue = ((int[]) value)[i];
+                short shortValue = (short) intValue;
+                result[i] = shortValue;
             }
             return result;
         } else {

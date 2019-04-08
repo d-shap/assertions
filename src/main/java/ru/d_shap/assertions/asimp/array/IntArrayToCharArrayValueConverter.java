@@ -55,7 +55,9 @@ public final class IntArrayToCharArrayValueConverter implements ValueConverterPr
         if (canConvertToTargetClass(value)) {
             char[] result = new char[((int[]) value).length];
             for (int i = 0; i < ((int[]) value).length; i++) {
-                result[i] = (char) ((int[]) value)[i];
+                int intValue = ((int[]) value)[i];
+                char charValue = (char) intValue;
+                result[i] = charValue;
             }
             return result;
         } else {
