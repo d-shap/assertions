@@ -17,77 +17,77 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.FloatBuffer;
+import java.nio.LongBuffer;
 
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.array.FloatArrayAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.array.LongArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the float buffer.
+ * Assertions for the long buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
+public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
 
     /**
      * Create new object.
      */
-    public FloatBufferAssertion() {
+    public LongBufferAssertion() {
         super();
     }
 
     @Override
-    protected final Class<FloatBuffer> getActualValueClass() {
-        return FloatBuffer.class;
+    protected final Class<LongBuffer> getActualValueClass() {
+        return LongBuffer.class;
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        createFloatArrayAssertion(false).isEmpty();
+        createLongBufferAssertion(false).isEmpty();
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
-        createFloatArrayAssertion(true).isEmpty();
+        createLongBufferAssertion(true).isEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        createFloatArrayAssertion(false).isNullOrEmpty();
+        createLongBufferAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
-        createFloatArrayAssertion(true).isNullOrEmpty();
+        createLongBufferAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        createFloatArrayAssertion(false).isNotEmpty();
+        createLongBufferAssertion(false).isNotEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
-        createFloatArrayAssertion(true).isNotEmpty();
+        createLongBufferAssertion(true).isNotEmpty();
     }
 
     /**
@@ -95,8 +95,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final float expected) {
-        createFloatArrayAssertion(false).contains(expected);
+    public final void contains(final long expected) {
+        createLongBufferAssertion(false).contains(expected);
     }
 
     /**
@@ -104,8 +104,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndContains(final float expected) {
-        createFloatArrayAssertion(true).contains(expected);
+    public final void rewindAndContains(final long expected) {
+        createLongBufferAssertion(true).contains(expected);
     }
 
     /**
@@ -113,8 +113,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final float expected) {
-        createFloatArrayAssertion(false).doesNotContain(expected);
+    public final void doesNotContain(final long expected) {
+        createLongBufferAssertion(false).doesNotContain(expected);
     }
 
     /**
@@ -122,8 +122,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndDoesNotContain(final float expected) {
-        createFloatArrayAssertion(true).doesNotContain(expected);
+    public final void rewindAndDoesNotContain(final long expected) {
+        createLongBufferAssertion(true).doesNotContain(expected);
     }
 
     /**
@@ -131,8 +131,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final float... expected) {
-        createFloatArrayAssertion(false).containsAll(expected);
+    public final void containsAll(final long... expected) {
+        createLongBufferAssertion(false).containsAll(expected);
     }
 
     /**
@@ -140,8 +140,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsAll(expected);
+    public final void containsAll(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsAll(expected);
     }
 
     /**
@@ -149,8 +149,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final float... expected) {
-        createFloatArrayAssertion(true).containsAll(expected);
+    public final void rewindAndContainsAll(final long... expected) {
+        createLongBufferAssertion(true).containsAll(expected);
     }
 
     /**
@@ -158,8 +158,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsAll(expected);
+    public final void rewindAndContainsAll(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsAll(expected);
     }
 
     /**
@@ -167,8 +167,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final float... expected) {
-        createFloatArrayAssertion(false).containsAllInOrder(expected);
+    public final void containsAllInOrder(final long... expected) {
+        createLongBufferAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -176,8 +176,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsAllInOrder(expected);
+    public final void containsAllInOrder(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -185,8 +185,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final float... expected) {
-        createFloatArrayAssertion(true).containsAllInOrder(expected);
+    public final void rewindAndContainsAllInOrder(final long... expected) {
+        createLongBufferAssertion(true).containsAllInOrder(expected);
     }
 
     /**
@@ -194,8 +194,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsAllInOrder(expected);
+    public final void rewindAndContainsAllInOrder(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsAllInOrder(expected);
     }
 
     /**
@@ -203,8 +203,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final float... expected) {
-        createFloatArrayAssertion(false).containsExactly(expected);
+    public final void containsExactly(final long... expected) {
+        createLongBufferAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -212,8 +212,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsExactly(expected);
+    public final void containsExactly(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -221,8 +221,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final float... expected) {
-        createFloatArrayAssertion(true).containsExactly(expected);
+    public final void rewindAndContainsExactly(final long... expected) {
+        createLongBufferAssertion(true).containsExactly(expected);
     }
 
     /**
@@ -230,8 +230,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsExactly(expected);
+    public final void rewindAndContainsExactly(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsExactly(expected);
     }
 
     /**
@@ -239,8 +239,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final float... expected) {
-        createFloatArrayAssertion(false).containsExactlyInOrder(expected);
+    public final void containsExactlyInOrder(final long... expected) {
+        createLongBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -248,8 +248,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsExactlyInOrder(expected);
+    public final void containsExactlyInOrder(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -257,8 +257,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final float... expected) {
-        createFloatArrayAssertion(true).containsExactlyInOrder(expected);
+    public final void rewindAndContainsExactlyInOrder(final long... expected) {
+        createLongBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
     /**
@@ -266,8 +266,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsExactlyInOrder(expected);
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
     /**
@@ -275,8 +275,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final float... expected) {
-        createFloatArrayAssertion(false).containsAny(expected);
+    public final void containsAny(final long... expected) {
+        createLongBufferAssertion(false).containsAny(expected);
     }
 
     /**
@@ -284,8 +284,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsAny(expected);
+    public final void containsAny(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsAny(expected);
     }
 
     /**
@@ -293,8 +293,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final float... expected) {
-        createFloatArrayAssertion(true).containsAny(expected);
+    public final void rewindAndContainsAny(final long... expected) {
+        createLongBufferAssertion(true).containsAny(expected);
     }
 
     /**
@@ -302,8 +302,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsAny(expected);
+    public final void rewindAndContainsAny(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsAny(expected);
     }
 
     /**
@@ -311,8 +311,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final float... expected) {
-        createFloatArrayAssertion(false).containsNone(expected);
+    public final void containsNone(final long... expected) {
+        createLongBufferAssertion(false).containsNone(expected);
     }
 
     /**
@@ -320,8 +320,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Float> expected) {
-        createFloatArrayAssertion(false).containsNone(expected);
+    public final void containsNone(final Iterable<Long> expected) {
+        createLongBufferAssertion(false).containsNone(expected);
     }
 
     /**
@@ -329,8 +329,8 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final float... expected) {
-        createFloatArrayAssertion(true).containsNone(expected);
+    public final void rewindAndContainsNone(final long... expected) {
+        createLongBufferAssertion(true).containsNone(expected);
     }
 
     /**
@@ -338,13 +338,13 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final Iterable<Float> expected) {
-        createFloatArrayAssertion(true).containsNone(expected);
+    public final void rewindAndContainsNone(final Iterable<Long> expected) {
+        createLongBufferAssertion(true).containsNone(expected);
     }
 
-    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
-        float[] floats = convertValue(getActual(), float[].class, rewind);
-        return initializeAssertion(Raw.floatArrayAssertion(), floats);
+    private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
+        long[] longs = convertValue(getActual(), long[].class, rewind);
+        return initializeAssertion(Raw.longArrayAssertion(), longs);
     }
 
     /**

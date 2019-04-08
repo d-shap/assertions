@@ -17,77 +17,77 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.LongBuffer;
+import java.nio.ByteBuffer;
 
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.array.LongArrayAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
- * Assertions for the long buffer.
+ * Assertions for the byte buffer.
  *
  * @author Dmitry Shapovalov
  */
-public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
+public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
 
     /**
      * Create new object.
      */
-    public LongBufferAssertion() {
+    public ByteBufferAssertion() {
         super();
     }
 
     @Override
-    protected final Class<LongBuffer> getActualValueClass() {
-        return LongBuffer.class;
+    protected final Class<ByteBuffer> getActualValueClass() {
+        return ByteBuffer.class;
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isEmpty() {
-        createLongBufferAssertion(false).isEmpty();
+        createByteArrayAssertion(false).isEmpty();
     }
 
     /**
      * Check if the actual value is empty.
      */
     public final void isRewindAndEmpty() {
-        createLongBufferAssertion(true).isEmpty();
+        createByteArrayAssertion(true).isEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isNullOrEmpty() {
-        createLongBufferAssertion(false).isNullOrEmpty();
+        createByteArrayAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
     public final void isRewindAndNullOrEmpty() {
-        createLongBufferAssertion(true).isNullOrEmpty();
+        createByteArrayAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isNotEmpty() {
-        createLongBufferAssertion(false).isNotEmpty();
+        createByteArrayAssertion(false).isNotEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
     public final void isRewindAndNotEmpty() {
-        createLongBufferAssertion(true).isNotEmpty();
+        createByteArrayAssertion(true).isNotEmpty();
     }
 
     /**
@@ -95,8 +95,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final long expected) {
-        createLongBufferAssertion(false).contains(expected);
+    public final void contains(final int expected) {
+        createByteArrayAssertion(false).contains((byte) expected);
     }
 
     /**
@@ -104,8 +104,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndContains(final long expected) {
-        createLongBufferAssertion(true).contains(expected);
+    public final void rewindAndContains(final int expected) {
+        createByteArrayAssertion(true).contains((byte) expected);
     }
 
     /**
@@ -113,8 +113,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final long expected) {
-        createLongBufferAssertion(false).doesNotContain(expected);
+    public final void doesNotContain(final int expected) {
+        createByteArrayAssertion(false).doesNotContain((byte) expected);
     }
 
     /**
@@ -122,8 +122,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndDoesNotContain(final long expected) {
-        createLongBufferAssertion(true).doesNotContain(expected);
+    public final void rewindAndDoesNotContain(final int expected) {
+        createByteArrayAssertion(true).doesNotContain((byte) expected);
     }
 
     /**
@@ -131,8 +131,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final long... expected) {
-        createLongBufferAssertion(false).containsAll(expected);
+    public final void containsAll(final byte... expected) {
+        createByteArrayAssertion(false).containsAll(expected);
     }
 
     /**
@@ -140,8 +140,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsAll(expected);
+    public final void containsAll(final int... expected) {
+        createByteArrayAssertion(false).containsAll(expected);
     }
 
     /**
@@ -149,8 +149,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final long... expected) {
-        createLongBufferAssertion(true).containsAll(expected);
+    public final void containsAll(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsAll(expected);
     }
 
     /**
@@ -158,8 +158,26 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsAll(expected);
+    public final void rewindAndContainsAll(final byte... expected) {
+        createByteArrayAssertion(true).containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final int... expected) {
+        createByteArrayAssertion(true).containsAll(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAll(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsAll(expected);
     }
 
     /**
@@ -167,8 +185,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final long... expected) {
-        createLongBufferAssertion(false).containsAllInOrder(expected);
+    public final void containsAllInOrder(final byte... expected) {
+        createByteArrayAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -176,8 +194,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsAllInOrder(expected);
+    public final void containsAllInOrder(final int... expected) {
+        createByteArrayAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -185,8 +203,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final long... expected) {
-        createLongBufferAssertion(true).containsAllInOrder(expected);
+    public final void containsAllInOrder(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsAllInOrder(expected);
     }
 
     /**
@@ -194,8 +212,26 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsAllInOrder(expected);
+    public final void rewindAndContainsAllInOrder(final byte... expected) {
+        createByteArrayAssertion(true).containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final int... expected) {
+        createByteArrayAssertion(true).containsAllInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAllInOrder(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsAllInOrder(expected);
     }
 
     /**
@@ -203,8 +239,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final long... expected) {
-        createLongBufferAssertion(false).containsExactly(expected);
+    public final void containsExactly(final byte... expected) {
+        createByteArrayAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -212,8 +248,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsExactly(expected);
+    public final void containsExactly(final int... expected) {
+        createByteArrayAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -221,8 +257,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final long... expected) {
-        createLongBufferAssertion(true).containsExactly(expected);
+    public final void containsExactly(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsExactly(expected);
     }
 
     /**
@@ -230,8 +266,26 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsExactly(expected);
+    public final void rewindAndContainsExactly(final byte... expected) {
+        createByteArrayAssertion(true).containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final int... expected) {
+        createByteArrayAssertion(true).containsExactly(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactly(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsExactly(expected);
     }
 
     /**
@@ -239,8 +293,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final long... expected) {
-        createLongBufferAssertion(false).containsExactlyInOrder(expected);
+    public final void containsExactlyInOrder(final byte... expected) {
+        createByteArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -248,8 +302,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsExactlyInOrder(expected);
+    public final void containsExactlyInOrder(final int... expected) {
+        createByteArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -257,8 +311,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final long... expected) {
-        createLongBufferAssertion(true).containsExactlyInOrder(expected);
+    public final void containsExactlyInOrder(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
     /**
@@ -266,8 +320,26 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsExactlyInOrder(expected);
+    public final void rewindAndContainsExactlyInOrder(final byte... expected) {
+        createByteArrayAssertion(true).containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final int... expected) {
+        createByteArrayAssertion(true).containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains all of the expected values exactly in the specified order.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsExactlyInOrder(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
     /**
@@ -275,8 +347,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final long... expected) {
-        createLongBufferAssertion(false).containsAny(expected);
+    public final void containsAny(final byte... expected) {
+        createByteArrayAssertion(false).containsAny(expected);
     }
 
     /**
@@ -284,8 +356,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsAny(expected);
+    public final void containsAny(final int... expected) {
+        createByteArrayAssertion(false).containsAny(expected);
     }
 
     /**
@@ -293,8 +365,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final long... expected) {
-        createLongBufferAssertion(true).containsAny(expected);
+    public final void containsAny(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsAny(expected);
     }
 
     /**
@@ -302,8 +374,26 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsAny(expected);
+    public final void rewindAndContainsAny(final byte... expected) {
+        createByteArrayAssertion(true).containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final int... expected) {
+        createByteArrayAssertion(true).containsAny(expected);
+    }
+
+    /**
+     * Check if the actual value contains any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsAny(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsAny(expected);
     }
 
     /**
@@ -311,8 +401,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final long... expected) {
-        createLongBufferAssertion(false).containsNone(expected);
+    public final void containsNone(final byte... expected) {
+        createByteArrayAssertion(false).containsNone(expected);
     }
 
     /**
@@ -320,8 +410,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Long> expected) {
-        createLongBufferAssertion(false).containsNone(expected);
+    public final void containsNone(final int... expected) {
+        createByteArrayAssertion(false).containsNone(expected);
     }
 
     /**
@@ -329,8 +419,8 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final long... expected) {
-        createLongBufferAssertion(true).containsNone(expected);
+    public final void containsNone(final Iterable<Byte> expected) {
+        createByteArrayAssertion(false).containsNone(expected);
     }
 
     /**
@@ -338,13 +428,31 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final Iterable<Long> expected) {
-        createLongBufferAssertion(true).containsNone(expected);
+    public final void rewindAndContainsNone(final byte... expected) {
+        createByteArrayAssertion(true).containsNone(expected);
     }
 
-    private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
-        long[] longs = convertValue(getActual(), long[].class, rewind);
-        return initializeAssertion(Raw.longArrayAssertion(), longs);
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final int... expected) {
+        createByteArrayAssertion(true).containsNone(expected);
+    }
+
+    /**
+     * Check if the actual value does NOT contain any of the expected values.
+     *
+     * @param expected the expected values.
+     */
+    public final void rewindAndContainsNone(final Iterable<Byte> expected) {
+        createByteArrayAssertion(true).containsNone(expected);
+    }
+
+    private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
+        byte[] bytes = convertValue(getActual(), byte[].class, rewind);
+        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
     }
 
     /**
