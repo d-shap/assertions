@@ -154,7 +154,7 @@
  * <li>{@link ru.d_shap.assertions.BaseAssertion#as(ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
  * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.ReferenceAssertion#toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
+ * <li>{@link ru.d_shap.assertions.asimp.ReferenceAssertion#toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
  * </ul>
  */
 package ru.d_shap.assertions;
