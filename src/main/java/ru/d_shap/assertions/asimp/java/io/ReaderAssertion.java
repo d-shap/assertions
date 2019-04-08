@@ -57,7 +57,9 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         try {
             int nextChar = readChar();
-            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
+            if (nextChar >= 0) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
+            }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -70,7 +72,9 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         try {
             int nextChar = readChar();
-            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
+            if (nextChar < 0) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
+            }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
