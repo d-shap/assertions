@@ -89,6 +89,12 @@ public final class Messages {
 
         public static final String CHARS_COUNT = "Check next N actual value''s chars: {0}.";
 
+        public static final String NEXT_STRING = "Check next actual value''s string.";
+
+        public static final String STRINGS_ALL = "Check all actual value''s strings.";
+
+        public static final String STRINGS_COUNT = "Check next N actual value''s strings: {0}.";
+
         public static final String AVAILABLE = "Check actual value''s available.";
 
         public static final String POSITION = "Check actual value''s position.";
