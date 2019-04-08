@@ -325,6 +325,10 @@ public final class Messages {
 
             public static final String DOES_NOT_END_WITH_IGNORE_CASE = "Actual value should not end with the expected value ignoring case.";
 
+            public static final String IS_COMPLETED = "Actual value should be completed.";
+
+            public static final String IS_NOT_COMPLETED = "Actual value should not be completed.";
+
             public static final String IS_DIRECT = "Actual value should be direct.";
 
             public static final String IS_NOT_DIRECT = "Actual value should not be direct.";
