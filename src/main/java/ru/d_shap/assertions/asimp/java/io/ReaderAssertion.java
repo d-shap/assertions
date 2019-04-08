@@ -59,7 +59,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
             int nextChar = readChar();
             initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
@@ -72,7 +72,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
             int nextChar = readChar();
             initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
@@ -144,7 +144,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
             int nextChar = readChar();
             initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
@@ -229,7 +229,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         try {
             return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
@@ -244,7 +244,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         try {
             matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
