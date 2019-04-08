@@ -296,10 +296,9 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse(expected.isEmpty());
         List<?> list = convertValue(getActual(), List.class);
-        List<?> listCopy = new ArrayList<>(list);
         boolean found = false;
         for (Object expectedItem : expected) {
-            int idx = listCopy.indexOf(expectedItem);
+            int idx = list.indexOf(expectedItem);
             if (idx >= 0) {
                 found = true;
                 break;
@@ -337,9 +336,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.isEmpty());
         List<?> list = convertValue(getActual(), List.class);
-        List<?> listCopy = new ArrayList<>(list);
         for (Object expectedItem : expected) {
-            int idx = listCopy.indexOf(expectedItem);
+            int idx = list.indexOf(expectedItem);
             if (idx >= 0) {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
