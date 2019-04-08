@@ -9,6 +9,13 @@ ru.d_shap.assertions.asimp.array.ObjectArrayAsStringConverter
 ru.d_shap.assertions.asimp.array.ShortArrayAsStringConverter
 ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter
 ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.ByteBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.CharBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.DoubleBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.FloatBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter
+ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter
 ru.d_shap.assertions.asimp.java.util.MapAsStringConverter
 ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter
 ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter
