@@ -22,6 +22,8 @@ package ru.d_shap.assertions;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 
+import ru.d_shap.assertions.fail.FailDescription;
+
 /**
  * Class to perform hamcrest assertions.
  *
