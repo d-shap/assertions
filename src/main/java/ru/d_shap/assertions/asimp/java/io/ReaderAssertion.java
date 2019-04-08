@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -27,9 +27,9 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.array.CharArrayAssertion;
-import ru.d_shap.assertions.primitive.LongAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.array.CharArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.LongAssertion;
 
 /**
  * Assertions for the reader.
@@ -55,8 +55,12 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        int nextChar = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
+        try {
+            int nextChar = readChar();
+            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isLessThan(0);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
     }
 
     /**
@@ -64,8 +68,16 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isNotCompleted() {
         checkActualIsNotNull();
-        int nextChar = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
+        try {
+            int nextChar = readChar();
+            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isGreaterThanOrEqualTo(0);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
+    }
+
+    private int readChar() throws IOException {
+        return getActual().read();
     }
 
     /**
@@ -75,7 +87,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final CharArrayAssertion toCharArray() {
         checkActualIsNotNull();
-        char[] nextChars = convertValue(getActual(), char[].class, 0);
+        char[] nextChars = convertValue(getActual(), char[].class);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
     }
 
@@ -101,7 +113,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void toCharArray(final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        char[] nextChars = convertValue(getActual(), char[].class, 0);
+        char[] nextChars = convertValue(getActual(), char[].class);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
     }
@@ -128,8 +140,12 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isNextCharEqualTo(final int expected) {
         checkActualIsNotNull();
-        int nextChar = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
+        try {
+            int nextChar = readChar();
+            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
     }
 
     /**

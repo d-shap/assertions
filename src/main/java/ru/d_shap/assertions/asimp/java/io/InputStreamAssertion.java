@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,10 +27,10 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.ReferenceAssertion;
-import ru.d_shap.assertions.array.ByteArrayAssertion;
-import ru.d_shap.assertions.primitive.IntAssertion;
-import ru.d_shap.assertions.primitive.LongAssertion;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.primitive.LongAssertion;
 
 /**
  * Assertions for the input stream.
@@ -56,8 +56,12 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isCompleted() {
         checkActualIsNotNull();
-        int nextByte = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isLessThan(0);
+        try {
+            int nextByte = readByte();
+            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isLessThan(0);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
     }
 
     /**
@@ -65,8 +69,16 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isNotCompleted() {
         checkActualIsNotNull();
-        int nextByte = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isGreaterThanOrEqualTo(0);
+        try {
+            int nextByte = readByte();
+            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isGreaterThanOrEqualTo(0);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
+    }
+
+    private int readByte() throws IOException {
+        return getActual().read();
     }
 
     /**
@@ -76,7 +88,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final ByteArrayAssertion toByteArray() {
         checkActualIsNotNull();
-        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
+        byte[] nextBytes = convertValue(getActual(), byte[].class);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_ALL);
     }
 
@@ -102,7 +114,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void toByteArray(final Matcher<Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
+        byte[] nextBytes = convertValue(getActual(), byte[].class);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_ALL);
     }
@@ -129,8 +141,12 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isNextByteEqualTo(final int expected) {
         checkActualIsNotNull();
-        int nextByte = convertValue(getActual(), Integer.class);
-        initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isEqualTo(expected);
+        try {
+            int nextByte = readByte();
+            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isEqualTo(expected);
+        } catch (IOException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        }
     }
 
     /**
