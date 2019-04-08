@@ -21,7 +21,11 @@ package ru.d_shap.assertions;
 
 import org.hamcrest.Matcher;
 
-import ru.d_shap.assertions.core.ClassActualValueValidator;
+import ru.d_shap.assertions.asimp.java.lang.ClassActualValueValidator;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ValueConverter;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
+import ru.d_shap.assertions.fail.FailDescription;
 
 /**
  * Base class for all assertions.
@@ -47,7 +51,7 @@ public abstract class BaseAssertion<T> {
         super();
         _actualValueValidator = new ActualValueValidator();
         Class<T> actualValueClass = getActualValueClass();
-        BaseActualValueValidator actualValueValidator = new ClassActualValueValidator(actualValueClass);
+        ActualValueValidatorProvider actualValueValidator = new ClassActualValueValidator(actualValueClass);
         addActualValueValidator(actualValueValidator);
         _initialized = false;
         _actual = null;
@@ -66,7 +70,7 @@ public abstract class BaseAssertion<T> {
      *
      * @param actualValueValidator validator for the actual value.
      */
-    protected final void addActualValueValidator(final BaseActualValueValidator actualValueValidator) {
+    protected final void addActualValueValidator(final ActualValueValidatorProvider actualValueValidator) {
         _actualValueValidator.addActualValueValidator(actualValueValidator);
     }
 
@@ -222,7 +226,7 @@ public abstract class BaseAssertion<T> {
         try {
             return ValueConverter.convert(value, targetClass, arguments);
         } catch (ConversionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+            throw createWrapperAssertionError(ex);
         }
     }
 
@@ -288,6 +292,17 @@ public abstract class BaseAssertion<T> {
         if (!valid) {
             throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_VALID).build();
         }
+    }
+
+    /**
+     * Create the assertion error for the underlying exception.
+     *
+     * @param ex the underlying exception.
+     *
+     * @return the assertion error.
+     */
+    protected final AssertionError createWrapperAssertionError(final Exception ex) {
+        return getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
     }
 
     /**
