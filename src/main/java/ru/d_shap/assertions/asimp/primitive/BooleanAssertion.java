@@ -47,7 +47,7 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
     public final void isTrue() {
         checkActualIsNotNull();
         if (!getActual()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_TRUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_TRUE).build();
         }
     }
 
@@ -57,7 +57,7 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
     public final void isFalse() {
         checkActualIsNotNull();
         if (getActual()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_FALSE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FALSE).build();
         }
     }
 

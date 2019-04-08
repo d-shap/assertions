@@ -61,7 +61,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
     public final void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
     }
 
@@ -70,7 +70,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -80,7 +80,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
     public final void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
     }
 

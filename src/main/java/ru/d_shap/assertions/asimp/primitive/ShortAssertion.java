@@ -49,7 +49,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -61,7 +61,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isNotEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() == expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -73,7 +73,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -85,7 +85,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -97,7 +97,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -109,7 +109,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -122,7 +122,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -135,7 +135,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public final void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 

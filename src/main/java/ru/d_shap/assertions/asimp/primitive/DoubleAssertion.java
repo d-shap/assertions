@@ -50,7 +50,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isEqualTo(final double expected, final double delta) {
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) > delta) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotEqualTo(final double expected, final double delta) {
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) <= delta) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -75,7 +75,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isGreaterThan(final double expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -87,7 +87,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isGreaterThanOrEqualTo(final double expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -99,7 +99,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isLessThan(final double expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -111,7 +111,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isLessThanOrEqualTo(final double expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -124,7 +124,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isInRange(final double expectedFrom, final double expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -137,7 +137,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotInRange(final double expectedFrom, final double expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -147,7 +147,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isZero() {
         checkActualIsNotNull();
         if (getActual() != 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_ZERO).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ZERO).addActual().build();
         }
     }
 
@@ -157,7 +157,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNonZero() {
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NON_ZERO).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NON_ZERO).build();
         }
     }
 
@@ -167,7 +167,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isPositiveInfinity() {
         checkActualIsNotNull();
         if (getActual() != Double.POSITIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_POSITIVE_INFINITY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_POSITIVE_INFINITY).addActual().build();
         }
     }
 
@@ -177,7 +177,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNegativeInfinity() {
         checkActualIsNotNull();
         if (getActual() != Double.NEGATIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NEGATIVE_INFINITY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NEGATIVE_INFINITY).addActual().build();
         }
     }
 
@@ -187,7 +187,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isInfinity() {
         checkActualIsNotNull();
         if (!getActual().isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_INFINITY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INFINITY).addActual().build();
         }
     }
 
@@ -197,7 +197,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNaN() {
         checkActualIsNotNull();
         if (!getActual().isNaN()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NAN).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NAN).addActual().build();
         }
     }
 
@@ -207,7 +207,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotNaN() {
         checkActualIsNotNull();
         if (getActual().isNaN()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_NAN).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NAN).build();
         }
     }
 
@@ -217,7 +217,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isFinite() {
         checkActualIsNotNull();
         if (getActual().isNaN() || getActual().isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_FINITE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE).addActual().build();
         }
     }
 

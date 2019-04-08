@@ -57,7 +57,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -70,7 +70,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) == 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -83,7 +83,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) <= 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
     }
 
@@ -96,7 +96,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) < 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -109,7 +109,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) >= 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
     }
 
@@ -122,7 +122,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().compareTo(expected) > 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
     }
 
@@ -137,7 +137,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (getActual().compareTo(expectedFrom) < 0 || getActual().compareTo(expectedTo) >= 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 
@@ -152,7 +152,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
         checkArgumentIsNotNull(expectedFrom);
         checkArgumentIsNotNull(expectedTo);
         if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
     }
 

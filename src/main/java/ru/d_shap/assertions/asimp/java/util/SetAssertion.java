@@ -61,7 +61,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void isEmpty() {
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
     }
 
@@ -70,7 +70,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null && !getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -80,7 +80,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
     }
 
@@ -92,7 +92,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void contains(final E expected) {
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
         }
     }
 
@@ -104,7 +104,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
     public final void doesNotContain(final E expected) {
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
     }
 

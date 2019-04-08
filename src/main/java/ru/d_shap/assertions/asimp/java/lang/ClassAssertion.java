@@ -60,7 +60,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
     }
 
@@ -73,7 +73,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
 
@@ -86,7 +86,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!expected.isAssignableFrom(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SUBTYPE_OF).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -99,7 +99,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (expected.isAssignableFrom(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_SUBTYPE_OF).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -112,7 +112,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (!getActual().isAssignableFrom(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_SUPERTYPE_OF).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -125,7 +125,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         if (getActual().isAssignableFrom(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_SUPERTYPE_OF).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
     }
 
@@ -137,15 +137,15 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         checkActualIsNotNull();
         Constructor<?>[] constructors = getActual().getDeclaredConstructors();
         if (constructors.length != 1) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_CONSTRUCTOR_DEFAULT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_DEFAULT).addActual().build();
         }
         Constructor<?> constructor = constructors[0];
         if (constructor.getParameterTypes().length != 0) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_CONSTRUCTOR_DEFAULT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_DEFAULT).addActual().build();
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
         }
         setAccessible(constructor);
         try {

@@ -66,7 +66,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void isEmpty() {
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
     }
 
@@ -75,7 +75,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void isNullOrEmpty() {
         if (getActual() != null && !getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NULL_OR_EMPTY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
     }
 
@@ -85,7 +85,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_EMPTY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
     }
 
@@ -428,7 +428,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx >= 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy.remove(idx);
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_ALL).addActual().addExpected(expected).build();
             }
         }
     }
@@ -538,7 +538,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx >= 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy = actualKeysCopy.subList(idx + 1, actualKeysCopy.size());
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_ALL_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
     }
@@ -659,7 +659,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             }
         }
         if (!actualKeysCopy.isEmpty() || elementCount != expected.size()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_EXACTLY).addActual().addExpected(expected).build();
         }
     }
 
@@ -775,11 +775,11 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             if (idx == 0 && isValuesEqual(expected, key)) {
                 actualKeysCopy.remove(idx);
             } else {
-                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
             }
         }
         if (!actualKeysCopy.isEmpty()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_EXACTLY_IN_ORDER).addActual().addExpected(expected).build();
         }
     }
 
@@ -891,7 +891,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
             }
         }
         if (!found) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_ANY).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_ANY).addActual().addExpected(expected).build();
         }
     }
 
@@ -997,7 +997,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         Set<K> actualKeys = getActual().keySet();
         for (K key : expected.keySet()) {
             if (actualKeys.contains(key) && isValuesEqual(expected, key)) {
-                throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
         }
     }

@@ -594,7 +594,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     public final void isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_DIRECT).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
     }
 
@@ -604,7 +604,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     public final void isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_DIRECT).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
     }
 
@@ -614,7 +614,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     public final void isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_READ_ONLY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
     }
 
@@ -624,7 +624,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     public final void isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_READ_ONLY).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
     }
 
