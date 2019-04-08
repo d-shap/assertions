@@ -17,35 +17,39 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.CharBuffer;
+import java.nio.DoubleBuffer;
 
-import ru.d_shap.assertions.BaseAsStringConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
- * Value to string converter for the char buffer.
+ * Value to string converter for the double buffer.
  *
  * @author Dmitry Shapovalov
  */
-public final class CharBufferAsStringConverter extends BaseAsStringConverter {
+public final class DoubleBufferAsStringConverter implements AsStringConverterProvider {
 
     /**
      * Create new object.
      */
-    public CharBufferAsStringConverter() {
+    public DoubleBufferAsStringConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return CharBuffer.class;
+    public Class<?> getValueClass() {
+        return DoubleBuffer.class;
     }
 
     @Override
-    protected String convertToString(final Object value) throws ConversionException {
-        return convertValueToString(value, char[].class, false);
+    public String asString(final Object value) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+
+        return AsStringConverter.asString(value, double[].class);
     }
 
 }
