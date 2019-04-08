@@ -18,6 +18,7 @@ ru.d_shap.assertions.asimp.array.LongArrayToObjectArrayValueConverter
 ru.d_shap.assertions.asimp.array.ObjectArrayToListValueConverter
 ru.d_shap.assertions.asimp.array.ShortArrayToListValueConverter
 ru.d_shap.assertions.asimp.array.ShortArrayToObjectArrayValueConverter
+ru.d_shap.assertions.asimp.java.io.BufferedReaderToStringArrayValueConverter
 ru.d_shap.assertions.asimp.java.io.InputStreamToByteArrayValueConverter
 ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter
 ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter
