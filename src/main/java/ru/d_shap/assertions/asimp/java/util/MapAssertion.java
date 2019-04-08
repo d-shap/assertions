@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hamcrest.Matcher;
 
@@ -881,11 +882,10 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyFalse(expected.isEmpty());
-        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        Set<K> actualKeys = getActual().keySet();
         boolean found = false;
         for (K key : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(key);
-            if (idx >= 0 && isValuesEqual(expected, key)) {
+            if (actualKeys.contains(key) && isValuesEqual(expected, key)) {
                 found = true;
                 break;
             }
@@ -994,10 +994,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.isEmpty());
-        List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
+        Set<K> actualKeys = getActual().keySet();
         for (K key : expected.keySet()) {
-            int idx = actualKeysCopy.indexOf(key);
-            if (idx >= 0 && isValuesEqual(expected, key)) {
+            if (actualKeys.contains(key) && isValuesEqual(expected, key)) {
                 throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.CONTAINS_NONE).addActual().addExpected(expected).build();
             }
         }
