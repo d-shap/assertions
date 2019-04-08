@@ -106,10 +106,10 @@ public abstract class BaseAssertion<T> {
 
     private void initialize(final T actual, final FailDescription failDescription) {
         if (_initialized) {
-            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.AssertionFail.IS_NOT_INITIALIZED).build();
+            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.Assertion.IS_NOT_INITIALIZED).build();
         }
         if (!_actualValueValidator.isValid(actual)) {
-            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.AssertionFail.MATCHES).build();
+            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.Assertion.MATCHES).build();
         }
         _initialized = true;
         _actual = actual;
@@ -232,7 +232,7 @@ public abstract class BaseAssertion<T> {
 
     private void checkInitialized() {
         if (!_initialized) {
-            throw getAssertionErrorBuilder().addMessage(Messages.AssertionFail.IS_INITIALIZED).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Assertion.IS_INITIALIZED).build();
         }
     }
 
@@ -242,7 +242,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkActualIsNotNull() {
         checkInitialized();
         if (_actual == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ActualFail.IS_NOT_NULL).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NULL).build();
         }
     }
 
@@ -254,7 +254,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsNotNull(final Object argument) {
         checkInitialized();
         if (argument == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_NULL).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_NULL).build();
         }
     }
 
@@ -266,7 +266,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
         checkInitialized();
         if (isEmpty) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_EMPTY).addMessage(Messages.ArgumentFail.RESULT_IS_ALWAYS_TRUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY).addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE).build();
         }
     }
 
@@ -278,7 +278,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
         checkInitialized();
         if (isEmpty) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_NOT_EMPTY).addMessage(Messages.ArgumentFail.RESULT_IS_ALWAYS_FALSE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY).addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE).build();
         }
     }
 
@@ -290,7 +290,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsValid(final boolean valid) {
         checkInitialized();
         if (!valid) {
-            throw getAssertionErrorBuilder().addMessage(Messages.ArgumentFail.IS_VALID).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID).build();
         }
     }
 
