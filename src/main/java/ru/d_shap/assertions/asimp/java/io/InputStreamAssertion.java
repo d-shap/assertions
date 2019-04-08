@@ -58,7 +58,9 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         try {
             int nextByte = readByte();
-            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isLessThan(0);
+            if (nextByte >= 0) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
+            }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -71,7 +73,9 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         try {
             int nextByte = readByte();
-            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isGreaterThanOrEqualTo(0);
+            if (nextByte < 0) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
+            }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
