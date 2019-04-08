@@ -29,12 +29,33 @@ import java.util.List;
  *
  * @author Dmitry Shapovalov
  */
-final class ClassDistance {
+final class ConverterSelector {
 
     private static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
 
-    private ClassDistance() {
+    private ConverterSelector() {
         super();
+    }
+
+    static <T> void retainMinimumDistanceConverters(final List<T> list, final Class<?> clazz, final ClassExtractor<T> classExtractor) {
+        List<Integer> distances = new ArrayList<>(list.size());
+        int minimumDistance = NON_RELATIVE_DISTANCE;
+
+        for (T element : list) {
+            Class<?> targetClazz = classExtractor.extractClass(element);
+            int distance = getDistance(clazz, targetClazz);
+            distances.add(distance);
+            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
+                minimumDistance = distance;
+            }
+        }
+
+        for (int i = distances.size() - 1; i >= 0; i--) {
+            int distance = distances.get(i);
+            if (minimumDistance < 0 || distance > minimumDistance) {
+                list.remove(i);
+            }
+        }
     }
 
     static int getDistance(final Class<?> clazz, final Class<?> targetClazz) {
@@ -60,28 +81,7 @@ final class ClassDistance {
         return distance;
     }
 
-    static <T> void retainWithMinimumClassDistance(final List<T> list, final Class<?> clazz, final ClassExtractor<T> classExtractor) {
-        List<Integer> distances = new ArrayList<>(list.size());
-        int minimumDistance = NON_RELATIVE_DISTANCE;
-
-        for (T element : list) {
-            Class<?> targetClazz = classExtractor.extractClass(element);
-            int distance = getDistance(clazz, targetClazz);
-            distances.add(distance);
-            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
-                minimumDistance = distance;
-            }
-        }
-
-        for (int i = distances.size() - 1; i >= 0; i--) {
-            int distance = distances.get(i);
-            if (minimumDistance < 0 || distance > minimumDistance) {
-                list.remove(i);
-            }
-        }
-    }
-
-    static <T> T getElementWithClassFirst(final List<T> list, final ClassExtractor<T> classExtractor) {
+    static <T> T selectConverter(final List<T> list, final ClassExtractor<T> classExtractor) {
         if (list.isEmpty()) {
             return null;
         }

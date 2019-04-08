@@ -47,9 +47,9 @@ public final class ValueConverter {
 
     private static final Map<ConverterKey, ValueConverterProvider> CONVERTER_MAP = new HashMap<>();
 
-    private static final ClassDistance.ClassExtractor<ValueConverterProvider> VALUE_CLASS_EXTRACTOR = new ValueClassExtractor();
+    private static final ConverterSelector.ClassExtractor<ValueConverterProvider> VALUE_CLASS_EXTRACTOR = new ValueClassExtractor();
 
-    private static final ClassDistance.ClassExtractor<ValueConverterProvider> TARGET_CLASS_EXTRACTOR = new TargetClassExtractor();
+    private static final ConverterSelector.ClassExtractor<ValueConverterProvider> TARGET_CLASS_EXTRACTOR = new TargetClassExtractor();
 
     private ValueConverter() {
         super();
@@ -101,9 +101,9 @@ public final class ValueConverter {
                 converterProviders.add(converterProvider);
             }
         }
-        ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
-        ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, TARGET_CLASS_EXTRACTOR);
-        return ClassDistance.getElementWithClassFirst(converterProviders, VALUE_CLASS_EXTRACTOR);
+        ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
+        ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, TARGET_CLASS_EXTRACTOR);
+        return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
     /**
@@ -111,7 +111,7 @@ public final class ValueConverter {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ValueClassExtractor implements ClassDistance.ClassExtractor<ValueConverterProvider> {
+    private static final class ValueClassExtractor implements ConverterSelector.ClassExtractor<ValueConverterProvider> {
 
         ValueClassExtractor() {
             super();
@@ -129,7 +129,7 @@ public final class ValueConverter {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class TargetClassExtractor implements ClassDistance.ClassExtractor<ValueConverterProvider> {
+    private static final class TargetClassExtractor implements ConverterSelector.ClassExtractor<ValueConverterProvider> {
 
         TargetClassExtractor() {
             super();

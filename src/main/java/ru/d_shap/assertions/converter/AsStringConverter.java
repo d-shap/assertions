@@ -47,7 +47,7 @@ public final class AsStringConverter {
 
     private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
 
-    private static final ClassDistance.ClassExtractor<AsStringConverterProvider> VALUE_CLASS_EXTRACTOR = new ValueClassExtractor();
+    private static final ConverterSelector.ClassExtractor<AsStringConverterProvider> VALUE_CLASS_EXTRACTOR = new ValueClassExtractor();
 
     private AsStringConverter() {
         super();
@@ -110,8 +110,8 @@ public final class AsStringConverter {
                 converterProviders.add(converterProvider);
             }
         }
-        ClassDistance.retainWithMinimumClassDistance(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
-        return ClassDistance.getElementWithClassFirst(converterProviders, VALUE_CLASS_EXTRACTOR);
+        ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
+        return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
     /**
@@ -119,7 +119,7 @@ public final class AsStringConverter {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ValueClassExtractor implements ClassDistance.ClassExtractor<AsStringConverterProvider> {
+    private static final class ValueClassExtractor implements ConverterSelector.ClassExtractor<AsStringConverterProvider> {
 
         ValueClassExtractor() {
             super();
