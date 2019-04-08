@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to define the number of classes or interfaces between the specified class and the target class.
- * The target class should be the superclass or the implemented interface of the specified class.
- * Otherwise the distance is negative.
+ * Class to select the best matching converter from the list.
+ * The best matching converter has the minimum class distance between the converter class and the
+ * actual value class. The distance - is the number of classes or interfaces between two classes.
  *
  * @author Dmitry Shapovalov
  */
