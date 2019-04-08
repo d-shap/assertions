@@ -29,6 +29,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.CharArrayAssertion;
+import ru.d_shap.assertions.asimp.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.asimp.primitive.LongAssertion;
 
 /**
@@ -135,6 +136,57 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         char[] nextChars = convertValue(getActual(), char[].class, count);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the strings read from the actual from the current position.
+     *
+     * @return the assertion.
+     */
+    public final ObjectArrayAssertion<String> toStringArray() {
+        checkActualIsNotNull();
+        String[] nextStrings = convertValue(getActual(), String[].class);
+        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.STRINGS_ALL);
+    }
+
+    /**
+     * Make assertion about the strings read from the actual from the current position.
+     *
+     * @param count the number of strings to read from the actual.
+     *
+     * @return the assertion.
+     */
+    public final ObjectArrayAssertion<String> toStringArray(final int count) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
+        String[] nextStrings = convertValue(getActual(), String[].class, count);
+        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.STRINGS_COUNT, count);
+    }
+
+    /**
+     * Make assertion about the strings read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toStringArray(final Matcher<String[]> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
+        String[] nextStrings = convertValue(getActual(), String[].class);
+        matcherAssertion(nextStrings, matcher, Messages.Check.STRINGS_ALL);
+    }
+
+    /**
+     * Make assertion about the strings read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     * @param count   the number of strings to read from the actual.
+     */
+    public final void toStringArray(final int count, final Matcher<String[]> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0);
+        checkArgumentIsNotNull(matcher);
+        String[] nextStrings = convertValue(getActual(), String[].class, count);
+        matcherAssertion(nextStrings, matcher, Messages.Check.STRINGS_COUNT, count);
     }
 
     /**
