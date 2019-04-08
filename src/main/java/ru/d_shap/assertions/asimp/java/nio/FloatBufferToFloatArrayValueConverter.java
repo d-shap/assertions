@@ -17,60 +17,54 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the double buffer to the double array.
+ * Value converter from the float buffer to the float array.
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleBufferToDoubleArrayValueConverter extends BaseValueConverter {
+public final class FloatBufferToFloatArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public DoubleBufferToDoubleArrayValueConverter() {
+    public FloatBufferToFloatArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return DoubleBuffer.class;
+    public Class<?> getValueClass() {
+        return FloatBuffer.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return double[].class;
+    public Class<?> getTargetClass() {
+        return float[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 1);
-        checkArgumentClass(arguments, 0, Boolean.class);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        boolean rewind = (Boolean) arguments[0];
-        int position = ((DoubleBuffer) value).position();
+        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        int position = ((FloatBuffer) value).position();
         if (rewind) {
-            ((DoubleBuffer) value).rewind();
+            ((FloatBuffer) value).rewind();
         }
-        double[] result = new double[((DoubleBuffer) value).remaining()];
+        float[] result = new float[((FloatBuffer) value).remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((DoubleBuffer) value).get();
+            result[i] = ((FloatBuffer) value).get();
         }
-        ((DoubleBuffer) value).position(position);
+        ((FloatBuffer) value).position(position);
         return result;
     }
 

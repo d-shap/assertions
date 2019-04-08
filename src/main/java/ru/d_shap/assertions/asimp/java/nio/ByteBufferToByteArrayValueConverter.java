@@ -17,60 +17,54 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.LongBuffer;
+import java.nio.ByteBuffer;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the long buffer to the long array.
+ * Value converter from the byte buffer to the byte array.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongBufferToLongArrayValueConverter extends BaseValueConverter {
+public final class ByteBufferToByteArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public LongBufferToLongArrayValueConverter() {
+    public ByteBufferToByteArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return LongBuffer.class;
+    public Class<?> getValueClass() {
+        return ByteBuffer.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return long[].class;
+    public Class<?> getTargetClass() {
+        return byte[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 1);
-        checkArgumentClass(arguments, 0, Boolean.class);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        boolean rewind = (Boolean) arguments[0];
-        int position = ((LongBuffer) value).position();
+        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        int position = ((ByteBuffer) value).position();
         if (rewind) {
-            ((LongBuffer) value).rewind();
+            ((ByteBuffer) value).rewind();
         }
-        long[] result = new long[((LongBuffer) value).remaining()];
+        byte[] result = new byte[((ByteBuffer) value).remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((LongBuffer) value).get();
+            result[i] = ((ByteBuffer) value).get();
         }
-        ((LongBuffer) value).position(position);
+        ((ByteBuffer) value).position(position);
         return result;
     }
 

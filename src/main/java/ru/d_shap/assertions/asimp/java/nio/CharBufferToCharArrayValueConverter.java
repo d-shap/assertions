@@ -17,60 +17,54 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
-import java.nio.ShortBuffer;
+import java.nio.CharBuffer;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the short buffer to the short array.
+ * Value converter from the char buffer to the char array.
  *
  * @author Dmitry Shapovalov
  */
-public final class ShortBufferToShortArrayValueConverter extends BaseValueConverter {
+public final class CharBufferToCharArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public ShortBufferToShortArrayValueConverter() {
+    public CharBufferToCharArrayValueConverter() {
         super();
     }
 
     @Override
-    protected Class<?> getValueClass() {
-        return ShortBuffer.class;
+    public Class<?> getValueClass() {
+        return CharBuffer.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
-        return short[].class;
+    public Class<?> getTargetClass() {
+        return char[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 1);
-        checkArgumentClass(arguments, 0, Boolean.class);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        boolean rewind = (Boolean) arguments[0];
-        int position = ((ShortBuffer) value).position();
+        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        int position = ((CharBuffer) value).position();
         if (rewind) {
-            ((ShortBuffer) value).rewind();
+            ((CharBuffer) value).rewind();
         }
-        short[] result = new short[((ShortBuffer) value).remaining()];
+        char[] result = new char[((CharBuffer) value).remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((ShortBuffer) value).get();
+            result[i] = ((CharBuffer) value).get();
         }
-        ((ShortBuffer) value).position(position);
+        ((CharBuffer) value).position(position);
         return result;
     }
 
