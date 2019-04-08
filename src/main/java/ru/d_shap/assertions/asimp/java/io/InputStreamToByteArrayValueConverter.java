@@ -17,21 +17,22 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import ru.d_shap.assertions.BaseValueConverter;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
  * Value converter from the input stream to the byte array.
  *
  * @author Dmitry Shapovalov
  */
-public final class InputStreamToByteArrayValueConverter extends BaseValueConverter {
+public final class InputStreamToByteArrayValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
@@ -41,30 +42,23 @@ public final class InputStreamToByteArrayValueConverter extends BaseValueConvert
     }
 
     @Override
-    protected Class<?> getValueClass() {
+    public Class<?> getValueClass() {
         return InputStream.class;
     }
 
     @Override
-    protected Class<?> getTargetClass() {
+    public Class<?> getTargetClass() {
         return byte[].class;
     }
 
     @Override
-    protected void checkArguments(final Object... arguments) {
-        checkArgumentCount(arguments, 1);
-        checkArgumentClass(arguments, 0, Integer.class);
-    }
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Integer.class);
 
-    @Override
-    protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-        return true;
-    }
-
-    @Override
-    protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
         try {
-            int count = (Integer) arguments[0];
+            int count = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
             int read;
             ByteArrayOutputStream result = new ByteArrayOutputStream();
             for (int i = 0; count == 0 || i < count; i++) {
