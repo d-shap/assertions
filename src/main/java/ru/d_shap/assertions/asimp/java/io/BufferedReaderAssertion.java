@@ -256,7 +256,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     public final void isNextLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toStringArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -269,7 +269,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<String> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toStringArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 

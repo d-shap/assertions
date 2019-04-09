@@ -137,7 +137,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAllKeys(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsAll(expected);
     }
 
@@ -150,7 +150,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsAll(expectedList);
     }
 
@@ -163,7 +163,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAllKeysInOrder(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsAllInOrder(expected);
     }
 
@@ -176,7 +176,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsAllInOrder(expectedList);
     }
 
@@ -235,7 +235,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAnyKey(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, false);
         toKeys().containsAny(expected);
     }
 
@@ -248,7 +248,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyFalse(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), false);
         toKeys().containsAny(expectedList);
     }
 
@@ -261,7 +261,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsNoKey(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsNone(expected);
     }
 
@@ -274,7 +274,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsNone(expectedList);
     }
 
@@ -421,7 +421,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAll(final Map<K, V> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        checkArgumentIsNotEmpty(expected.isEmpty(), true);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         for (K key : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(key);
@@ -531,7 +531,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAllInOrder(final Map<K, V> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        checkArgumentIsNotEmpty(expected.isEmpty(), true);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         for (K key : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(key);
@@ -881,7 +881,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsAny(final Map<K, V> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.isEmpty());
+        checkArgumentIsNotEmpty(expected.isEmpty(), false);
         Set<K> actualKeys = getActual().keySet();
         boolean found = false;
         for (K key : expected.keySet()) {
@@ -993,7 +993,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     public final void containsNone(final Map<K, V> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.isEmpty());
+        checkArgumentIsNotEmpty(expected.isEmpty(), true);
         Set<K> actualKeys = getActual().keySet();
         for (K key : expected.keySet()) {
             if (actualKeys.contains(key) && isValuesEqual(expected, key)) {

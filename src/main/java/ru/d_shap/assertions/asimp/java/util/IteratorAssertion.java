@@ -173,7 +173,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void isNextElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toList(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -186,7 +186,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toList(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
@@ -240,7 +240,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsAll(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toList().containsAll(expected);
     }
 
@@ -253,7 +253,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toList().containsAll(expectedList);
     }
 
@@ -266,7 +266,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsAllInOrder(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toList().containsAllInOrder(expected);
     }
 
@@ -279,7 +279,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toList().containsAllInOrder(expectedList);
     }
 
@@ -338,7 +338,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsAny(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, false);
         toList().containsAny(expected);
     }
 
@@ -351,7 +351,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyFalse(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), false);
         toList().containsAny(expectedList);
     }
 
@@ -364,7 +364,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsNone(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toList().containsNone(expected);
     }
 
@@ -377,7 +377,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toList().containsNone(expectedList);
     }
 

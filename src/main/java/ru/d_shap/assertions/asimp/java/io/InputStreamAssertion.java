@@ -157,7 +157,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -169,7 +169,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -182,7 +182,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Byte> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toByteArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 

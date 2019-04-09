@@ -236,7 +236,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAllKeys(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsAll(expected);
     }
 
@@ -249,7 +249,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsAll(expectedList);
     }
 
@@ -262,7 +262,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAllKeysInOrder(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsAllInOrder(expected);
     }
 
@@ -275,7 +275,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsAllInOrder(expectedList);
     }
 
@@ -336,7 +336,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsAnyKey(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyFalse(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, false);
         toKeys().containsAny(expected);
     }
 
@@ -349,7 +349,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyFalse(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), false);
         toKeys().containsAny(expectedList);
     }
 
@@ -362,7 +362,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsNoKey(final K... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toKeys().containsNone(expected);
     }
 
@@ -375,7 +375,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toKeys().containsNone(expectedList);
     }
 

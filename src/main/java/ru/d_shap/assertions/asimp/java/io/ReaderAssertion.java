@@ -156,7 +156,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -168,7 +168,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        checkArgumentIsNotEmpty(expected.length == 0, true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -181,7 +181,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<Character> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
         toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
