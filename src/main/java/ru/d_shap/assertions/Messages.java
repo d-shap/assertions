@@ -51,6 +51,8 @@ public final class Messages {
 
         public static final String LENGTH = "Check actual value''s length.";
 
+        public static final String LINES_LENGTH = "Check actual value''s lines length.";
+
         public static final String SIZE = "Check actual value''s size.";
 
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
