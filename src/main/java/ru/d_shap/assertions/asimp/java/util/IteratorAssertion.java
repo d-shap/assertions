@@ -155,7 +155,11 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param expected the expected value.
      */
     public final void isNextElementEqualTo(final E expected) {
-        isNotCompleted();
+        checkActualIsNotNull();
+        if (!getActual().hasNext()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
+        }
+        checkArgumentIsNotNull(expected);
         E nextElement = getActual().next();
         initializeAssertion(Raw.objectAssertion(), nextElement, Messages.Check.NEXT_ELEMENT).isEqualTo(expected);
     }
@@ -195,7 +199,6 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void isAllElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
         toList().containsExactlyInOrder(expected);
     }
 
@@ -207,9 +210,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void isAllElementsEqualTo(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
-        toList().containsExactlyInOrder(expectedList);
+        toList().containsExactlyInOrder(expected);
     }
 
     /**
@@ -302,8 +303,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsExactly(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<E> expectedList = convertValue(expected, List.class);
-        toList().containsExactly(expectedList);
+        toList().containsExactly(expected);
     }
 
     /**
@@ -326,8 +326,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void containsExactlyInOrder(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<E> expectedList = convertValue(expected, List.class);
-        toList().containsExactlyInOrder(expectedList);
+        toList().containsExactlyInOrder(expected);
     }
 
     /**
