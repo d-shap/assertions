@@ -191,9 +191,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     @SafeVarargs
     public final void isAllElementsEqualTo(final E... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        toList().containsExactlyInOrder(expected);
+        containsExactlyInOrder(expected);
     }
 
     /**
@@ -202,9 +200,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param expected the expected values.
      */
     public final void isAllElementsEqualTo(final Iterable<E> expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        toList().containsExactlyInOrder(expected);
+        containsExactlyInOrder(expected);
     }
 
     /**
