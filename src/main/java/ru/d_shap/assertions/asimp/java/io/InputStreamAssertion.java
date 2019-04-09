@@ -140,13 +140,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param expected the expected byte.
      */
     public final void isNextByteEqualTo(final int expected) {
-        checkActualIsNotNull();
-        try {
-            int nextByte = getActual().read();
-            initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isEqualTo(expected);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        isNextBytesEqualTo(expected);
     }
 
     /**

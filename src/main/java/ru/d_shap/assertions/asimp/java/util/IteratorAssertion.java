@@ -155,13 +155,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param expected the expected value.
      */
     public final void isNextElementEqualTo(final E expected) {
-        checkActualIsNotNull();
-        if (!getActual().hasNext()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
-        }
-        checkArgumentIsNotNull(expected);
-        E nextElement = getActual().next();
-        initializeAssertion(Raw.objectAssertion(), nextElement, Messages.Check.NEXT_ELEMENT).isEqualTo(expected);
+        isNextElementsEqualTo(expected);
     }
 
     /**

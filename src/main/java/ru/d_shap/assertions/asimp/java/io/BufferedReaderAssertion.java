@@ -224,28 +224,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected string.
      */
     public final void isNextLineEqualTo(final String expected) {
-        checkActualIsNotNull();
-        try {
-            String nextString = getActual().readLine();
-            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_LINE).isEqualTo(expected);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
-    }
-
-    /**
-     * Check if the actual value's next line matches the expected string from the current position.
-     *
-     * @param expected the expected string.
-     */
-    public final void nextLineMatches(final String expected) {
-        checkActualIsNotNull();
-        try {
-            String nextString = getActual().readLine();
-            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_LINE).matches(expected);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        isNextLinesEqualTo(expected);
     }
 
     /**

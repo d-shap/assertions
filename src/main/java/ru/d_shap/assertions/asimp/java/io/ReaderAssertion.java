@@ -139,13 +139,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param expected the expected char.
      */
     public final void isNextCharEqualTo(final int expected) {
-        checkActualIsNotNull();
-        try {
-            int nextChar = getActual().read();
-            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        isNextCharsEqualTo(expected);
     }
 
     /**
