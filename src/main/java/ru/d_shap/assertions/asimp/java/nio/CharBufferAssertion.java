@@ -451,7 +451,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's position.
+     * Make assertion about the actual value's position.
      *
      * @return the assertion.
      */
@@ -461,7 +461,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's position.
+     * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
      */
@@ -472,7 +472,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Check if the actual value position is equal to the expected position.
+     * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
      */
@@ -481,7 +481,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's limit.
+     * Make assertion about the actual value's limit.
      *
      * @return the assertion.
      */
@@ -491,7 +491,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's limit.
+     * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
      */
@@ -502,7 +502,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Check if the actual value limit is equal to the expected limit.
+     * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
      */
@@ -511,7 +511,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's capacity.
+     * Make assertion about the actual value's capacity.
      *
      * @return the assertion.
      */
@@ -521,7 +521,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's capacity.
+     * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
      */
@@ -532,7 +532,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Check if the actual value capacity is equal to the expected capacity.
+     * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
      */
@@ -554,7 +554,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's remaining.
+     * Make assertion about the actual value's remaining.
      *
      * @return the assertion.
      */
@@ -564,7 +564,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Make assertion about the actual buffer's remaining.
+     * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
      */
@@ -575,7 +575,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     /**
-     * Check if the actual value remaining is equal to the expected remaining.
+     * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
      */
