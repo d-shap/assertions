@@ -56,6 +56,26 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     }
 
     /**
+     * Check if the actual value does not contain any more elements.
+     */
+    public final void isCompleted() {
+        checkActualIsNotNull();
+        if (getActual().hasNext()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
+        }
+    }
+
+    /**
+     * Check if the actual value contains more elements.
+     */
+    public final void isNotCompleted() {
+        checkActualIsNotNull();
+        if (!getActual().hasNext()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
+        }
+    }
+
+    /**
      * Make assertion about the iterator elements from the current position.
      *
      * @return the assertion.
@@ -130,6 +150,17 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     }
 
     /**
+     * Check if the actual value's next element is equal to the expected value from the current position.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNextElementEqualTo(final E expected) {
+        isNotCompleted();
+        E nextElement = getActual().next();
+        initializeAssertion(Raw.objectAssertion(), nextElement, Messages.Check.NEXT_ELEMENT).isEqualTo(expected);
+    }
+
+    /**
      * Check if the actual value contains the expected values from the current position.
      *
      * @param expected the expected values.
@@ -153,6 +184,32 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
         List<E> expectedList = convertValue(expected, List.class);
         checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
         toList(expectedList.size()).containsExactlyInOrder(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains the expected values from the current position and does not contain any more values.
+     *
+     * @param expected the expected values.
+     */
+    @SafeVarargs
+    public final void isAllElementsEqualTo(final E... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        toList().containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains the expected values from the current position and does not contain any more values.
+     *
+     * @param expected the expected values.
+     */
+    public final void isAllElementsEqualTo(final Iterable<E> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        List<E> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toList().containsExactlyInOrder(expectedList);
     }
 
     /**
