@@ -55,34 +55,14 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * Check if the actual value does not contain any more chars.
      */
     public final void isCompleted() {
-        checkActualIsNotNull();
-        try {
-            int nextChar = readChar();
-            if (nextChar >= 0) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
-            }
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        createReaderAssertion().isCompleted();
     }
 
     /**
      * Check if the actual value contains more chars.
      */
     public final void isNotCompleted() {
-        checkActualIsNotNull();
-        try {
-            int nextChar = readChar();
-            if (nextChar < 0) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
-            }
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
-    }
-
-    private int readChar() throws IOException {
-        return getActual().read();
+        createReaderAssertion().isNotCompleted();
     }
 
     /**
@@ -91,9 +71,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray() {
-        checkActualIsNotNull();
-        char[] nextChars = convertValue(getActual(), char[].class);
-        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
+        return createReaderAssertion().toCharArray();
     }
 
     /**
@@ -104,10 +82,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @return the assertion.
      */
     public final CharArrayAssertion toCharArray(final int count) {
-        checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        char[] nextChars = convertValue(getActual(), char[].class, count);
-        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
+        return createReaderAssertion().toCharArray(count);
     }
 
     /**
@@ -116,11 +91,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param matcher the hamcrest matcher.
      */
     public final void toCharArray(final Matcher<Character[]> matcher) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
-        char[] nextChars = convertValue(getActual(), char[].class);
-        Character[] nextObjects = convertValue(nextChars, Character[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
+        createReaderAssertion().toCharArray(matcher);
     }
 
     /**
@@ -130,12 +101,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param count   the number of chars to read from the actual.
      */
     public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
-        checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        checkArgumentIsNotNull(matcher);
-        char[] nextChars = convertValue(getActual(), char[].class, count);
-        Character[] nextObjects = convertValue(nextChars, Character[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
+        createReaderAssertion().toCharArray(count, matcher);
     }
 
     /**
@@ -195,13 +161,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected char.
      */
     public final void isNextCharEqualTo(final int expected) {
-        checkActualIsNotNull();
-        try {
-            int nextChar = readChar();
-            initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        createReaderAssertion().isNextCharEqualTo(expected);
     }
 
     /**
@@ -210,10 +170,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final char... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toCharArray(expected.length).containsExactlyInOrder(expected);
+        createReaderAssertion().isNextCharsEqualTo(expected);
     }
 
     /**
@@ -222,10 +179,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final int... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmptyTrue(expected.length == 0);
-        toCharArray(expected.length).containsExactlyInOrder(expected);
+        createReaderAssertion().isNextCharsEqualTo(expected);
     }
 
     /**
@@ -234,11 +188,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isNextCharsEqualTo(final Iterable<Character> expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        List<Character> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
-        toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
+        createReaderAssertion().isNextCharsEqualTo(expected);
     }
 
     /**
@@ -247,9 +197,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final char... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        toCharArray().containsExactlyInOrder(expected);
+        createReaderAssertion().isAllCharsEqualTo(expected);
     }
 
     /**
@@ -258,9 +206,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final int... expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        toCharArray().containsExactlyInOrder(expected);
+        createReaderAssertion().isAllCharsEqualTo(expected);
     }
 
     /**
@@ -269,10 +215,70 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected chars.
      */
     public final void isAllCharsEqualTo(final Iterable<Character> expected) {
+        createReaderAssertion().isAllCharsEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value's next string is equal to the expected string from the current position.
+     *
+     * @param expected the expected string.
+     */
+    public final void isNextStringEqualTo(final String expected) {
+        checkActualIsNotNull();
+        try {
+            String nextString = getActual().readLine();
+            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_STRING).isEqualTo(expected);
+        } catch (IOException ex) {
+            throw createWrapperAssertionError(ex);
+        }
+    }
+
+    /**
+     * Check if the actual value contains the expected strings from the current position.
+     *
+     * @param expected the expected strings.
+     */
+    public final void isNextStringsEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
-        List<Character> expectedList = convertValue(expected, List.class);
-        toCharArray().containsExactlyInOrder(expectedList);
+        checkArgumentIsNotEmptyTrue(expected.length == 0);
+        toStringArray(expected.length).containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains the expected strings from the current position.
+     *
+     * @param expected the expected strings.
+     */
+    public final void isNextStringsEqualTo(final Iterable<String> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        List<String> expectedList = convertValue(expected, List.class);
+        checkArgumentIsNotEmptyTrue(expectedList.isEmpty());
+        toStringArray(expectedList.size()).containsExactlyInOrder(expectedList);
+    }
+
+    /**
+     * Check if the actual value contains the expected strings from the current position and does not contain any more strings.
+     *
+     * @param expected the expected strings.
+     */
+    public final void isAllStringsEqualTo(final String... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        toStringArray().containsExactlyInOrder(expected);
+    }
+
+    /**
+     * Check if the actual value contains the expected strings from the current position and does not contain any more strings.
+     *
+     * @param expected the expected strings.
+     */
+    public final void isAllStringsEqualTo(final Iterable<String> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        List<String> expectedList = convertValue(expected, List.class);
+        toStringArray().containsExactlyInOrder(expectedList);
     }
 
     /**
@@ -281,12 +287,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @return the assertion.
      */
     public final LongAssertion toLength() {
-        checkActualIsNotNull();
-        try {
-            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        return createReaderAssertion().toLength();
     }
 
     /**
@@ -295,26 +296,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param matcher the hamcrest matcher.
      */
     public final void toLength(final Matcher<Long> matcher) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
-        try {
-            matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
-    }
-
-    private long getLength() throws IOException {
-        int read;
-        long length = 0;
-        while (true) {
-            read = getActual().read();
-            if (read < 0) {
-                break;
-            }
-            length++;
-        }
-        return length;
+        createReaderAssertion().toLength(matcher);
     }
 
     /**
@@ -323,7 +305,11 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param expected the expected length.
      */
     public final void hasLength(final long expected) {
-        toLength().isEqualTo(expected);
+        createReaderAssertion().hasLength(expected);
+    }
+
+    private ReaderAssertion createReaderAssertion() {
+        return initializeAssertion(Raw.readerAssertion(), getActual());
     }
 
 }
