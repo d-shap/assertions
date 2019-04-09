@@ -368,7 +368,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     /**
-     * Check if the actual value size is equal to the expected size.
+     * Check if the actual value's size is equal to the expected size.
      *
      * @param expected the expected size.
      */
