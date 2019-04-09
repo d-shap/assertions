@@ -112,7 +112,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     public final ObjectArrayAssertion<String> toStringArray() {
         checkActualIsNotNull();
         String[] nextStrings = convertValue(getActual(), String[].class);
-        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.STRINGS_ALL);
+        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_ALL);
     }
 
     /**
@@ -126,7 +126,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         String[] nextStrings = convertValue(getActual(), String[].class, count);
-        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.STRINGS_COUNT, count);
+        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_COUNT, count);
     }
 
     /**
@@ -138,7 +138,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         String[] nextStrings = convertValue(getActual(), String[].class);
-        matcherAssertion(nextStrings, matcher, Messages.Check.STRINGS_ALL);
+        matcherAssertion(nextStrings, matcher, Messages.Check.LINES_ALL);
     }
 
     /**
@@ -152,7 +152,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
         String[] nextStrings = convertValue(getActual(), String[].class, count);
-        matcherAssertion(nextStrings, matcher, Messages.Check.STRINGS_COUNT, count);
+        matcherAssertion(nextStrings, matcher, Messages.Check.LINES_COUNT, count);
     }
 
     /**
@@ -227,7 +227,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkActualIsNotNull();
         try {
             String nextString = getActual().readLine();
-            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_STRING).isEqualTo(expected);
+            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_LINE).isEqualTo(expected);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -242,7 +242,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
         checkActualIsNotNull();
         try {
             String nextString = getActual().readLine();
-            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_STRING).matches(expected);
+            initializeAssertion(Raw.charSequenceAssertion(), nextString, Messages.Check.NEXT_LINE).matches(expected);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
