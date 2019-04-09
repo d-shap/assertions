@@ -55,6 +55,8 @@ public final class Messages {
 
         public static final String SIZE = "Check actual value''s size.";
 
+        public static final String NEXT_ELEMENT = "Check next actual value''s element.";
+
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
         public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
@@ -79,13 +81,19 @@ public final class Messages {
 
         public static final String VALUE_COUNT = "Check actual value''s value count.";
 
+        public static final String NEXT_BYTE = "Check next actual value''s byte.";
+
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
         public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
 
+        public static final String NEXT_CHAR = "Check next actual value''s char.";
+
         public static final String CHARS_ALL = "Check all actual value''s chars.";
 
         public static final String CHARS_COUNT = "Check next N actual value''s chars: {0}.";
+
+        public static final String NEXT_STRING = "Check next actual value''s string.";
 
         public static final String STRINGS_ALL = "Check all actual value''s strings.";
 
