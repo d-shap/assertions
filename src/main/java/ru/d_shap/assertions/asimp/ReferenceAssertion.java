@@ -232,7 +232,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
-     * Check if the actual values hash code is equal to the expected value.
+     * Check if the actual value's hash code is equal to the expected value.
      *
      * @param expected the expected value.
      */
