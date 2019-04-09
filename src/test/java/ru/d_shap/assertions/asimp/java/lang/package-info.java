@@ -20,4 +20,4 @@
 /**
  * Tests for project classes.
  */
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.lang;
