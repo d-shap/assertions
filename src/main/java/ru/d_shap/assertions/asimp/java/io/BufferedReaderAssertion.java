@@ -105,7 +105,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Make assertion about the strings read from the actual from the current position.
+     * Make assertion about the lines read from the actual from the current position.
      *
      * @return the assertion.
      */
@@ -116,9 +116,9 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Make assertion about the strings read from the actual from the current position.
+     * Make assertion about the lines read from the actual from the current position.
      *
-     * @param count the number of strings to read from the actual.
+     * @param count the number of lines to read from the actual.
      *
      * @return the assertion.
      */
@@ -130,7 +130,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Make assertion about the strings read from the actual from the current position.
+     * Make assertion about the lines read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
      */
@@ -142,10 +142,10 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Make assertion about the strings read from the actual from the current position.
+     * Make assertion about the lines read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
-     * @param count   the number of strings to read from the actual.
+     * @param count   the number of lines to read from the actual.
      */
     public final void toStringArray(final int count, final Matcher<String[]> matcher) {
         checkActualIsNotNull();
@@ -219,11 +219,11 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Check if the actual value's next string is equal to the expected string from the current position.
+     * Check if the actual value's next line is equal to the expected string from the current position.
      *
      * @param expected the expected string.
      */
-    public final void isNextStringEqualTo(final String expected) {
+    public final void isNextLineEqualTo(final String expected) {
         checkActualIsNotNull();
         try {
             String nextString = getActual().readLine();
@@ -238,7 +238,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param expected the expected strings.
      */
-    public final void isNextStringsEqualTo(final String... expected) {
+    public final void isNextLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         checkArgumentIsNotEmptyTrue(expected.length == 0);
@@ -250,7 +250,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param expected the expected strings.
      */
-    public final void isNextStringsEqualTo(final Iterable<String> expected) {
+    public final void isNextLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<String> expectedList = convertValue(expected, List.class);
@@ -263,7 +263,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param expected the expected strings.
      */
-    public final void isAllStringsEqualTo(final String... expected) {
+    public final void isAllLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         toStringArray().containsExactlyInOrder(expected);
@@ -274,7 +274,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param expected the expected strings.
      */
-    public final void isAllStringsEqualTo(final Iterable<String> expected) {
+    public final void isAllLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected);
         List<String> expectedList = convertValue(expected, List.class);
@@ -306,6 +306,58 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void hasLength(final long expected) {
         createReaderAssertion().hasLength(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's lines length.
+     *
+     * @return the assertion.
+     */
+    public final LongAssertion toLinesLength() {
+        checkActualIsNotNull();
+        try {
+            long linesLength = getLinesLength();
+            return initializeAssertion(Raw.longAssertion(), linesLength, Messages.Check.LINES_LENGTH);
+        } catch (IOException ex) {
+            throw createWrapperAssertionError(ex);
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's lines length.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLinesLength(final Matcher<Long> matcher) {
+        checkActualIsNotNull();
+        try {
+            long linesLength = getLinesLength();
+            matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);
+        } catch (IOException ex) {
+            throw createWrapperAssertionError(ex);
+        }
+    }
+
+    private long getLinesLength() throws IOException {
+        String read;
+        long length = 0;
+        while (true) {
+            read = getActual().readLine();
+            if (read == null) {
+                break;
+            }
+            length++;
+        }
+        return length;
+    }
+
+    /**
+     * Check if the actual value lines length is equal to the expected lines length.
+     *
+     * @param expected the expected lines length.
+     */
+    public final void hasLinesLength(final long expected) {
+        toLinesLength().isEqualTo(expected);
     }
 
     private ReaderAssertion createReaderAssertion() {
