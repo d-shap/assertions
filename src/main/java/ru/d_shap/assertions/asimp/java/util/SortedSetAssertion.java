@@ -357,10 +357,6 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         createIterableAssertion().containsNone(expected);
     }
 
-    private IterableAssertion<E> createIterableAssertion() {
-        return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
-    }
-
     /**
      * Make assertion about the actual value's size.
      *
@@ -389,6 +385,10 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
+    }
+
+    private IterableAssertion<E> createIterableAssertion() {
+        return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
     }
 
 }

@@ -1168,10 +1168,6 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         createMapAssertion().containsNone(expected);
     }
 
-    private MapAssertion<K, V> createMapAssertion() {
-        return initializeAssertion(Raw.<K, V>mapAssertion(), getActual());
-    }
-
     /**
      * Make assertion about the actual value's size.
      *
@@ -1200,6 +1196,10 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final void hasSize(final int expected) {
         toSize().isEqualTo(expected);
+    }
+
+    private MapAssertion<K, V> createMapAssertion() {
+        return initializeAssertion(Raw.<K, V>mapAssertion(), getActual());
     }
 
 }
