@@ -57,7 +57,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isCompleted() {
         checkActualIsNotNull();
         try {
-            int nextByte = readByte();
+            int nextByte = getActual().read();
             if (nextByte >= 0) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
             }
@@ -72,17 +72,13 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isNotCompleted() {
         checkActualIsNotNull();
         try {
-            int nextByte = readByte();
+            int nextByte = getActual().read();
             if (nextByte < 0) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
             }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
-    }
-
-    private int readByte() throws IOException {
-        return getActual().read();
     }
 
     /**
@@ -146,7 +142,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void isNextByteEqualTo(final int expected) {
         checkActualIsNotNull();
         try {
-            int nextByte = readByte();
+            int nextByte = getActual().read();
             initializeAssertion(Raw.intAssertion(), nextByte, Messages.Check.NEXT_BYTE).isEqualTo(expected);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
@@ -232,7 +228,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final IntAssertion toAvailable() {
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.intAssertion(), getActual().available(), Messages.Check.AVAILABLE);
+            int available = getActual().available();
+            return initializeAssertion(Raw.intAssertion(), available, Messages.Check.AVAILABLE);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -247,7 +244,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getActual().available(), matcher, Messages.Check.AVAILABLE);
+            int available = getActual().available();
+            matcherAssertion(available, matcher, Messages.Check.AVAILABLE);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -270,7 +268,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final LongAssertion toLength() {
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
+            long length = getLength();
+            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -285,7 +284,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
+            long length = getLength();
+            matcherAssertion(length, matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
