@@ -28,6 +28,7 @@ import ru.d_shap.assertions.asimp.array.IntArrayAssertion;
 import ru.d_shap.assertions.asimp.array.LongArrayAssertion;
 import ru.d_shap.assertions.asimp.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.asimp.array.ShortArrayAssertion;
+import ru.d_shap.assertions.asimp.java.io.BufferedReaderAssertion;
 import ru.d_shap.assertions.asimp.java.io.InputStreamAssertion;
 import ru.d_shap.assertions.asimp.java.io.ReaderAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
@@ -376,6 +377,15 @@ public final class Raw {
      */
     public static ReaderAssertion readerAssertion() {
         return new ReaderAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the buffered reader.
+     *
+     * @return the assertion.
+     */
+    public static BufferedReaderAssertion bufferedReaderAssertion() {
+        return new BufferedReaderAssertion();
     }
 
     /**

@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.Reader;
 import java.nio.ByteBuffer;
@@ -46,6 +47,7 @@ import ru.d_shap.assertions.asimp.array.IntArrayAssertion;
 import ru.d_shap.assertions.asimp.array.LongArrayAssertion;
 import ru.d_shap.assertions.asimp.array.ObjectArrayAssertion;
 import ru.d_shap.assertions.asimp.array.ShortArrayAssertion;
+import ru.d_shap.assertions.asimp.java.io.BufferedReaderAssertion;
 import ru.d_shap.assertions.asimp.java.io.InputStreamAssertion;
 import ru.d_shap.assertions.asimp.java.io.ReaderAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
@@ -683,6 +685,19 @@ public final class MessageAssertion {
     public ReaderAssertion that(final Reader actual) {
         ReaderAssertion assertion = Raw.readerAssertion();
         ((BaseAssertion<Reader>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the buffered reader.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public BufferedReaderAssertion that(final BufferedReader actual) {
+        BufferedReaderAssertion assertion = Raw.bufferedReaderAssertion();
+        ((BaseAssertion<BufferedReader>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
