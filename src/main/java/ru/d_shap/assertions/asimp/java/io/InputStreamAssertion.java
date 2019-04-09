@@ -252,7 +252,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     }
 
     /**
-     * Check if the actual value available is equal to the expected available.
+     * Check if the actual value's available is equal to the expected available.
      *
      * @param expected the expected available.
      */
@@ -305,7 +305,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     }
 
     /**
-     * Check if the actual value length is equal to the expected length.
+     * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
      */

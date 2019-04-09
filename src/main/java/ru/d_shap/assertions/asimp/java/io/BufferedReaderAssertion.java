@@ -315,7 +315,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Check if the actual value length is equal to the expected length.
+     * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
      */
@@ -367,7 +367,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     }
 
     /**
-     * Check if the actual value lines length is equal to the expected lines length.
+     * Check if the actual value's lines length is equal to the expected lines length.
      *
      * @param expected the expected lines length.
      */

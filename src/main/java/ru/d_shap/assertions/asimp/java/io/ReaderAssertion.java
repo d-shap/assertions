@@ -264,7 +264,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     }
 
     /**
-     * Check if the actual value length is equal to the expected length.
+     * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
      */
