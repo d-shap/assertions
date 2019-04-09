@@ -55,6 +55,8 @@ public final class Messages {
 
         public static final String SIZE = "Check actual value''s size.";
 
+        public static final String NEXT_ELEMENT = "Check next actual value''s element.";
+
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
         public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
