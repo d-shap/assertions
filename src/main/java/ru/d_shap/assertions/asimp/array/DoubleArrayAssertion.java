@@ -215,11 +215,6 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
         createIterableAssertion().containsNone(expectedList);
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
-    }
-
     /**
      * Make assertion about the actual value's length.
      *
@@ -248,6 +243,11 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      */
     public final void hasLength(final int expected) {
         toLength().isEqualTo(expected);
+    }
+
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
 }
