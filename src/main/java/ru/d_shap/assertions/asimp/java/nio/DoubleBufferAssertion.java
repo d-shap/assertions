@@ -342,11 +342,6 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         createDoubleArrayAssertion(true).containsNone(expected);
     }
 
-    private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
-        double[] doubles = convertValue(getActual(), double[].class, rewind);
-        return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
-    }
-
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -518,6 +513,11 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+    }
+
+    private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
+        double[] doubles = convertValue(getActual(), double[].class, rewind);
+        return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
     }
 
 }

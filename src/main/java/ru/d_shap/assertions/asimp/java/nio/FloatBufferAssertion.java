@@ -342,11 +342,6 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
         createFloatArrayAssertion(true).containsNone(expected);
     }
 
-    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
-        float[] floats = convertValue(getActual(), float[].class, rewind);
-        return initializeAssertion(Raw.floatArrayAssertion(), floats);
-    }
-
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -518,6 +513,11 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+    }
+
+    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
+        float[] floats = convertValue(getActual(), float[].class, rewind);
+        return initializeAssertion(Raw.floatArrayAssertion(), floats);
     }
 
 }

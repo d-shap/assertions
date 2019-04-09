@@ -450,11 +450,6 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         createByteArrayAssertion(true).containsNone(expected);
     }
 
-    private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
-        byte[] bytes = convertValue(getActual(), byte[].class, rewind);
-        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
-    }
-
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -626,6 +621,11 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+    }
+
+    private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
+        byte[] bytes = convertValue(getActual(), byte[].class, rewind);
+        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
     }
 
 }

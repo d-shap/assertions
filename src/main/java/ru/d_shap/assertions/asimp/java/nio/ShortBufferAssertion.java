@@ -450,11 +450,6 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
         createShortBufferAssertion(true).containsNone(expected);
     }
 
-    private ShortArrayAssertion createShortBufferAssertion(final boolean rewind) {
-        short[] shorts = convertValue(getActual(), short[].class, rewind);
-        return initializeAssertion(Raw.shortArrayAssertion(), shorts);
-    }
-
     /**
      * Make assertion about the actual buffer's position.
      *
@@ -626,6 +621,11 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+    }
+
+    private ShortArrayAssertion createShortBufferAssertion(final boolean rewind) {
+        short[] shorts = convertValue(getActual(), short[].class, rewind);
+        return initializeAssertion(Raw.shortArrayAssertion(), shorts);
     }
 
 }
