@@ -20,4 +20,4 @@
 /**
  * Tests for project classes.
  */
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
