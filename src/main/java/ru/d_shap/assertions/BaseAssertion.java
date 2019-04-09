@@ -259,26 +259,20 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Check if the argument is NOT empty because the result is always true.
+     * Check if the argument is NOT empty because the result is always known.
      *
-     * @param isEmpty is the argument empty.
+     * @param isEmpty     is the argument empty.
+     * @param knownResult the known result of the check.
      */
-    protected final void checkArgumentIsNotEmptyTrue(final boolean isEmpty) {
+    protected final void checkArgumentIsNotEmpty(final boolean isEmpty, final boolean knownResult) {
         checkInitialized();
         if (isEmpty) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY).addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE).build();
-        }
-    }
-
-    /**
-     * Check if the argument is NOT empty because the result is always false.
-     *
-     * @param isEmpty is the argument empty.
-     */
-    protected final void checkArgumentIsNotEmptyFalse(final boolean isEmpty) {
-        checkInitialized();
-        if (isEmpty) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY).addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE).build();
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY);
+            if (knownResult) {
+                throw assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE).build();
+            } else {
+                throw assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE).build();
+            }
         }
     }
 
