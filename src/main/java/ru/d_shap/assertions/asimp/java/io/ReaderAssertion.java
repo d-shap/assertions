@@ -56,7 +56,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isCompleted() {
         checkActualIsNotNull();
         try {
-            int nextChar = readChar();
+            int nextChar = getActual().read();
             if (nextChar >= 0) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_COMPLETED).build();
             }
@@ -71,17 +71,13 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNotCompleted() {
         checkActualIsNotNull();
         try {
-            int nextChar = readChar();
+            int nextChar = getActual().read();
             if (nextChar < 0) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_COMPLETED).build();
             }
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
-    }
-
-    private int readChar() throws IOException {
-        return getActual().read();
     }
 
     /**
@@ -145,7 +141,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNextCharEqualTo(final int expected) {
         checkActualIsNotNull();
         try {
-            int nextChar = readChar();
+            int nextChar = getActual().read();
             initializeAssertion(Raw.intAssertion(), nextChar, Messages.Check.NEXT_CHAR).isEqualTo(expected);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
@@ -231,7 +227,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final LongAssertion toLength() {
         checkActualIsNotNull();
         try {
-            return initializeAssertion(Raw.longAssertion(), getLength(), Messages.Check.LENGTH);
+            long length = getLength();
+            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
@@ -246,7 +243,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
         try {
-            matcherAssertion(getLength(), matcher, Messages.Check.LENGTH);
+            long length = getLength();
+            matcherAssertion(length, matcher, Messages.Check.LENGTH);
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
