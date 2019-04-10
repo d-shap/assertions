@@ -47,11 +47,7 @@ public final class DoubleAsStringConverter implements AsStringConverterProvider 
         ConverterArgumentHelper.checkValueClass(value, getValueClass());
 
         double doubleValue = (double) value;
-        if (Double.isNaN(doubleValue) || Double.isInfinite(doubleValue)) {
-            return String.format("%s", doubleValue);
-        } else {
-            return String.format("%sf", doubleValue);
-        }
+        return String.format("%s", doubleValue);
     }
 
 }
