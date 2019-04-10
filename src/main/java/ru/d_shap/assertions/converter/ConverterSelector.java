@@ -69,6 +69,10 @@ final class ConverterSelector {
         }
 
         int distance = getDistanceStep(clazz.getSuperclass(), targetClazz, currentDistance + 1);
+        if (clazz.isArray() && targetClazz.isArray()) {
+            int componentDistance = getDistanceStep(clazz.getComponentType(), targetClazz.getComponentType(), currentDistance);
+            distance = getMinimumDistance(distance, componentDistance);
+        }
         Class<?>[] ifaces = clazz.getInterfaces();
         for (Class<?> iface : ifaces) {
             int ifaceDistance = getDistanceStep(iface, targetClazz, currentDistance + 1);
