@@ -17,67 +17,67 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link LongArrayAsStringConverter}.
+ * Tests for {@link CharArrayAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongArrayAsStringConverterTest extends AssertionTest {
+public final class CharArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public LongArrayAsStringConverterTest() {
+    public CharArrayAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link LongArrayAsStringConverter} class test.
+     * {@link CharArrayAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new LongArrayAsStringConverter().getValueClass()).isEqualTo(long[].class);
+        Assertions.assertThat(new CharArrayAsStringConverter().getValueClass()).isEqualTo(char[].class);
     }
 
     /**
-     * {@link LongArrayAsStringConverter} class test.
+     * {@link CharArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{})).isEqualTo("[]");
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L})).isEqualTo("[1L]");
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L})).isEqualTo("[1L, 2L]");
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L, 3L, 4L})).isEqualTo("[1L, 2L, 3L, 4L]");
+        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{})).isEqualTo("[]");
+        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1'})).isEqualTo("[1(49)]");
+        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2'})).isEqualTo("[1(49), 2(50)]");
+        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2', '3', '4'})).isEqualTo("[1(49), 2(50), 3(51), 4(52)]");
     }
 
     /**
-     * {@link LongArrayAsStringConverter} class test.
+     * {@link CharArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new LongArrayAsStringConverter().asString(null);
+        new CharArrayAsStringConverter().asString(null);
     }
 
     /**
-     * {@link LongArrayAsStringConverter} class test.
+     * {@link CharArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new LongArrayAsStringConverter().asString(new Object());
+        new CharArrayAsStringConverter().asString(new Object());
     }
 
 }

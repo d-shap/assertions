@@ -17,67 +17,67 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link FloatArrayAsStringConverter}.
+ * Tests for {@link DoubleArrayAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatArrayAsStringConverterTest extends AssertionTest {
+public final class DoubleArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public FloatArrayAsStringConverterTest() {
+    public DoubleArrayAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link FloatArrayAsStringConverter} class test.
+     * {@link DoubleArrayAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new FloatArrayAsStringConverter().getValueClass()).isEqualTo(float[].class);
+        Assertions.assertThat(new DoubleArrayAsStringConverter().getValueClass()).isEqualTo(double[].class);
     }
 
     /**
-     * {@link FloatArrayAsStringConverter} class test.
+     * {@link DoubleArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{})).isEqualTo("[]");
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f})).isEqualTo("[1.0f]");
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f})).isEqualTo("[1.0f, 2.0f]");
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isEqualTo("[1.0f, 2.0f, 3.0f, 4.0f]");
+        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{})).isEqualTo("[]");
+        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0})).isEqualTo("[1.0]");
+        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
+        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0, 3.0, 4.0})).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
     }
 
     /**
-     * {@link FloatArrayAsStringConverter} class test.
+     * {@link DoubleArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new FloatArrayAsStringConverter().asString(null);
+        new DoubleArrayAsStringConverter().asString(null);
     }
 
     /**
-     * {@link FloatArrayAsStringConverter} class test.
+     * {@link DoubleArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new FloatArrayAsStringConverter().asString(new Object());
+        new DoubleArrayAsStringConverter().asString(new Object());
     }
 
 }

@@ -17,67 +17,67 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link ShortArrayAsStringConverter}.
+ * Tests for {@link BooleanArrayAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class ShortArrayAsStringConverterTest extends AssertionTest {
+public final class BooleanArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public ShortArrayAsStringConverterTest() {
+    public BooleanArrayAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link ShortArrayAsStringConverter} class test.
+     * {@link BooleanArrayAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new ShortArrayAsStringConverter().getValueClass()).isEqualTo(short[].class);
+        Assertions.assertThat(new BooleanArrayAsStringConverter().getValueClass()).isEqualTo(boolean[].class);
     }
 
     /**
-     * {@link ShortArrayAsStringConverter} class test.
+     * {@link BooleanArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{})).isEqualTo("[]");
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1})).isEqualTo("[1s]");
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2})).isEqualTo("[1s, 2s]");
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2, 3, 4})).isEqualTo("[1s, 2s, 3s, 4s]");
+        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{})).isEqualTo("[]");
+        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true})).isEqualTo("[T]");
+        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, false})).isEqualTo("[T, F]");
+        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, true, false, false})).isEqualTo("[T, T, F, F]");
     }
 
     /**
-     * {@link ShortArrayAsStringConverter} class test.
+     * {@link BooleanArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new ShortArrayAsStringConverter().asString(null);
+        new BooleanArrayAsStringConverter().asString(null);
     }
 
     /**
-     * {@link ShortArrayAsStringConverter} class test.
+     * {@link BooleanArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new ShortArrayAsStringConverter().asString(new Object());
+        new BooleanArrayAsStringConverter().asString(new Object());
     }
 
 }

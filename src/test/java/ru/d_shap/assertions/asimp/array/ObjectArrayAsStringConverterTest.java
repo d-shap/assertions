@@ -17,67 +17,67 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link DoubleArrayAsStringConverter}.
+ * Tests for {@link ObjectArrayAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleArrayAsStringConverterTest extends AssertionTest {
+public final class ObjectArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public DoubleArrayAsStringConverterTest() {
+    public ObjectArrayAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link DoubleArrayAsStringConverter} class test.
+     * {@link ObjectArrayAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new DoubleArrayAsStringConverter().getValueClass()).isEqualTo(double[].class);
+        Assertions.assertThat(new ObjectArrayAsStringConverter().getValueClass()).isEqualTo(Object[].class);
     }
 
     /**
-     * {@link DoubleArrayAsStringConverter} class test.
+     * {@link ObjectArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{})).isEqualTo("[]");
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0})).isEqualTo("[1.0]");
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0, 3.0, 4.0})).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
+        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{})).isEqualTo("[]");
+        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1"})).isEqualTo("[val1]");
+        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2"})).isEqualTo("[val1, val2]");
+        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2", "val3", "val4"})).isEqualTo("[val1, val2, val3, val4]");
     }
 
     /**
-     * {@link DoubleArrayAsStringConverter} class test.
+     * {@link ObjectArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new DoubleArrayAsStringConverter().asString(null);
+        new ObjectArrayAsStringConverter().asString(null);
     }
 
     /**
-     * {@link DoubleArrayAsStringConverter} class test.
+     * {@link ObjectArrayAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new DoubleArrayAsStringConverter().asString(new Object());
+        new ObjectArrayAsStringConverter().asString(new Object());
     }
 
 }
