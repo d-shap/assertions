@@ -102,7 +102,7 @@ public final class ValueConverter {
             }
         }
         ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
-        ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, TARGET_CLASS_EXTRACTOR);
+        ConverterSelector.retainMinimumDistanceConverters(converterProviders, targetClass, TARGET_CLASS_EXTRACTOR);
         return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
