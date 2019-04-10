@@ -45,14 +45,12 @@ final class ConverterSelector {
             Class<?> targetClazz = classExtractor.extractClass(element);
             int distance = getDistance(clazz, targetClazz);
             distances.add(distance);
-            if (distance >= 0 && (minimumDistance < 0 || minimumDistance > distance)) {
-                minimumDistance = distance;
-            }
+            minimumDistance = getMinimumDistance(minimumDistance, distance);
         }
 
         for (int i = distances.size() - 1; i >= 0; i--) {
             int distance = distances.get(i);
-            if (minimumDistance < 0 || distance > minimumDistance) {
+            if (!isMinimumDistance(minimumDistance, distance)) {
                 list.remove(i);
             }
         }
@@ -74,11 +72,21 @@ final class ConverterSelector {
         Class<?>[] ifaces = clazz.getInterfaces();
         for (Class<?> iface : ifaces) {
             int ifaceDistance = getDistanceStep(iface, targetClazz, currentDistance + 1);
-            if (ifaceDistance >= 0 && (distance < 0 || distance > ifaceDistance)) {
-                distance = ifaceDistance;
-            }
+            distance = getMinimumDistance(distance, ifaceDistance);
         }
         return distance;
+    }
+
+    private static int getMinimumDistance(final int minimumDistance, final int currentDistance) {
+        if (currentDistance >= 0 && (minimumDistance < 0 || minimumDistance > currentDistance)) {
+            return currentDistance;
+        } else {
+            return minimumDistance;
+        }
+    }
+
+    private static boolean isMinimumDistance(final int minimumDistance, final int currentDistance) {
+        return minimumDistance >= 0 && currentDistance <= minimumDistance;
     }
 
     static <T> T selectConverter(final List<T> list, final ClassExtractor<T> classExtractor) {
