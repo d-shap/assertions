@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
 import java.nio.DoubleBuffer;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link DoubleBufferToDoubleArrayValueConverter}.
@@ -64,111 +64,11 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), false)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), true)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), false)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), true)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 1), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), false)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 1), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), true)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 0, 1), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), false)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 0, 1), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), true)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), false)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5), false)).isTrue();
-
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), true)).isTrue();
-        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5), true)).isTrue();
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}));
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), new Object(), new Object());
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), (Object) null);
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().canConvert(createDoubleBuffer(new double[]{}), new Object());
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{})), Raw.doubleArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false), Raw.doubleArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
@@ -176,6 +76,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), true), Raw.doubleArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0})), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
@@ -185,6 +89,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0})), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
@@ -192,6 +100,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
@@ -201,6 +113,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
@@ -208,6 +124,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0);
@@ -217,6 +137,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0, 3.0, 4.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0, 3.0, 4.0);
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0, 3.0, 4.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(2.0, 3.0, 4.0);
@@ -224,6 +148,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
@@ -233,6 +161,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
@@ -240,6 +172,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
@@ -249,6 +185,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 1), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
@@ -257,6 +197,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0}, 0, 5, 5), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 0.0, 0.0, 0.0, 0.0);
 
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
+
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
@@ -264,6 +208,10 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), true)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), true), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0}, 0, 5, 5), true)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 0.0, 0.0, 0.0);
+
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5))).isInstanceOf(double[].class);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5)), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 0.0);
+        Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5))).as(Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 0.0);
 
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 0, 5, 5), false), Raw.doubleArrayAssertion()).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 0.0);
@@ -292,16 +240,6 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
         new DoubleBufferToDoubleArrayValueConverter().convert(new Object());
-    }
-
-    /**
-     * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConversionException {
-        new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}));
     }
 
     /**

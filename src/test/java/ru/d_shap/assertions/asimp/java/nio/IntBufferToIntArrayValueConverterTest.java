@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.nio;
+package ru.d_shap.assertions.asimp.java.nio;
 
 import java.nio.IntBuffer;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntBufferToIntArrayValueConverter}.
@@ -64,111 +64,11 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}), false)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}), true)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}), false)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}), true)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 1), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 1), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), false)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 1), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 1), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), true)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 0, 1), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 0, 1), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), false)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 0, 1), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 0, 1), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), true)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 0, 5, 5), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), false)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5), false)).isTrue();
-
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1}, 0, 5, 5), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), true)).isTrue();
-        Assertions.assertThat(new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5), true)).isTrue();
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}));
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}), new Object(), new Object());
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}), (Object) null);
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().canConvert(createIntBuffer(new int[]{}), new Object());
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{})), Raw.intArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}))).as(Raw.intArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), false), Raw.intArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder();
@@ -176,6 +76,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), true), Raw.intArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1})), Raw.intArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}), false), Raw.intArrayAssertion()).containsExactlyInOrder(1);
@@ -185,6 +89,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}), true), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2})), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), false), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
@@ -192,6 +100,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4})), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}), false), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
@@ -201,6 +113,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1)), Raw.intArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder();
@@ -208,6 +124,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1)), Raw.intArrayAssertion()).containsExactlyInOrder(2);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder(2);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder(2);
@@ -217,6 +137,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1)), Raw.intArrayAssertion()).containsExactlyInOrder(2, 3, 4);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder(2, 3, 4);
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder(2, 3, 4);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder(2, 3, 4);
@@ -224,6 +148,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1)), Raw.intArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder(1);
@@ -233,6 +161,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1)), Raw.intArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
@@ -240,6 +172,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1)), Raw.intArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), false), Raw.intArrayAssertion()).containsExactlyInOrder(1);
@@ -249,6 +185,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), true), Raw.intArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 1), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5)), Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5), false), Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
@@ -257,6 +197,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1}, 0, 5, 5), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
 
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5)), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
+
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), false), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), false)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
@@ -264,6 +208,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), true)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), true), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2}, 0, 5, 5), true)).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
+
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5))).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5)), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
+        Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5))).as(Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
 
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5), false)).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{1, 2, 3, 4}, 0, 5, 5), false), Raw.intArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
@@ -292,16 +240,6 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
         new IntBufferToIntArrayValueConverter().convert(new Object());
-    }
-
-    /**
-     * {@link IntBufferToIntArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConversionException {
-        new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}));
     }
 
     /**
