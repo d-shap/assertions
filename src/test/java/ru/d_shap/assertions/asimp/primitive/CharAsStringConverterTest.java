@@ -17,68 +17,71 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link LongAsStringConverter}.
+ * Tests for {@link CharAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongAsStringConverterTest extends AssertionTest {
+public final class CharAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public LongAsStringConverterTest() {
+    public CharAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link LongAsStringConverter} class test.
+     * {@link CharAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new LongAsStringConverter().getValueClass()).isEqualTo(Long.class);
+        Assertions.assertThat(new CharAsStringConverter().getValueClass()).isEqualTo(Character.class);
     }
 
     /**
-     * {@link LongAsStringConverter} class test.
+     * {@link CharAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new LongAsStringConverter().asString(1L)).isEqualTo("1L");
-        Assertions.assertThat(new LongAsStringConverter().asString(10L)).isEqualTo("10L");
-        Assertions.assertThat(new LongAsStringConverter().asString(1000000L)).isEqualTo("1000000L");
-        Assertions.assertThat(new LongAsStringConverter().asString(-10L)).isEqualTo("-10L");
-        Assertions.assertThat(new LongAsStringConverter().asString(-1000000L)).isEqualTo("-1000000L");
+        Assertions.assertThat(new CharAsStringConverter().asString('0')).isEqualTo("0(48)");
+        Assertions.assertThat(new CharAsStringConverter().asString('1')).isEqualTo("1(49)");
+        Assertions.assertThat(new CharAsStringConverter().asString('a')).isEqualTo("a(97)");
+        Assertions.assertThat(new CharAsStringConverter().asString('A')).isEqualTo("A(65)");
+        Assertions.assertThat(new CharAsStringConverter().asString('и')).isEqualTo("и(1080)");
+        Assertions.assertThat(new CharAsStringConverter().asString('Ё')).isEqualTo("Ё(1025)");
+        Assertions.assertThat(new CharAsStringConverter().asString('\n')).isEqualTo(" (10)");
+        Assertions.assertThat(new CharAsStringConverter().asString((char) 10000)).isEqualTo(" (10000)");
     }
 
     /**
-     * {@link LongAsStringConverter} class test.
+     * {@link CharAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new LongAsStringConverter().asString(null);
+        new CharAsStringConverter().asString(null);
     }
 
     /**
-     * {@link LongAsStringConverter} class test.
+     * {@link CharAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new LongAsStringConverter().asString(new Object());
+        new CharAsStringConverter().asString(new Object());
     }
 
 }

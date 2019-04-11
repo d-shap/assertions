@@ -17,71 +17,68 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link CharAsStringConverter}.
+ * Tests for {@link ByteAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class CharAsStringConverterTest extends AssertionTest {
+public final class ByteAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public CharAsStringConverterTest() {
+    public ByteAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link CharAsStringConverter} class test.
+     * {@link ByteAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new CharAsStringConverter().getValueClass()).isEqualTo(Character.class);
+        Assertions.assertThat(new ByteAsStringConverter().getValueClass()).isEqualTo(Byte.class);
     }
 
     /**
-     * {@link CharAsStringConverter} class test.
+     * {@link ByteAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new CharAsStringConverter().asString('0')).isEqualTo("0(48)");
-        Assertions.assertThat(new CharAsStringConverter().asString('1')).isEqualTo("1(49)");
-        Assertions.assertThat(new CharAsStringConverter().asString('a')).isEqualTo("a(97)");
-        Assertions.assertThat(new CharAsStringConverter().asString('A')).isEqualTo("A(65)");
-        Assertions.assertThat(new CharAsStringConverter().asString('и')).isEqualTo("и(1080)");
-        Assertions.assertThat(new CharAsStringConverter().asString('Ё')).isEqualTo("Ё(1025)");
-        Assertions.assertThat(new CharAsStringConverter().asString('\n')).isEqualTo(" (10)");
-        Assertions.assertThat(new CharAsStringConverter().asString((char) 10000)).isEqualTo(" (10000)");
+        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 1)).isEqualTo("1b");
+        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 100)).isEqualTo("100b");
+        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 127)).isEqualTo("127b");
+        Assertions.assertThat(new ByteAsStringConverter().asString((byte) -100)).isEqualTo("-100b");
+        Assertions.assertThat(new ByteAsStringConverter().asString((byte) -128)).isEqualTo("-128b");
     }
 
     /**
-     * {@link CharAsStringConverter} class test.
+     * {@link ByteAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new CharAsStringConverter().asString(null);
+        new ByteAsStringConverter().asString(null);
     }
 
     /**
-     * {@link CharAsStringConverter} class test.
+     * {@link ByteAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new CharAsStringConverter().asString(new Object());
+        new ByteAsStringConverter().asString(new Object());
     }
 
 }

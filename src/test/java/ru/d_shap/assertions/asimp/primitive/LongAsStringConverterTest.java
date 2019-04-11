@@ -17,68 +17,68 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link ByteAsStringConverter}.
+ * Tests for {@link LongAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteAsStringConverterTest extends AssertionTest {
+public final class LongAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public ByteAsStringConverterTest() {
+    public LongAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link ByteAsStringConverter} class test.
+     * {@link LongAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new ByteAsStringConverter().getValueClass()).isEqualTo(Byte.class);
+        Assertions.assertThat(new LongAsStringConverter().getValueClass()).isEqualTo(Long.class);
     }
 
     /**
-     * {@link ByteAsStringConverter} class test.
+     * {@link LongAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 1)).isEqualTo("1b");
-        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 100)).isEqualTo("100b");
-        Assertions.assertThat(new ByteAsStringConverter().asString((byte) 127)).isEqualTo("127b");
-        Assertions.assertThat(new ByteAsStringConverter().asString((byte) -100)).isEqualTo("-100b");
-        Assertions.assertThat(new ByteAsStringConverter().asString((byte) -128)).isEqualTo("-128b");
+        Assertions.assertThat(new LongAsStringConverter().asString(1L)).isEqualTo("1L");
+        Assertions.assertThat(new LongAsStringConverter().asString(10L)).isEqualTo("10L");
+        Assertions.assertThat(new LongAsStringConverter().asString(1000000L)).isEqualTo("1000000L");
+        Assertions.assertThat(new LongAsStringConverter().asString(-10L)).isEqualTo("-10L");
+        Assertions.assertThat(new LongAsStringConverter().asString(-1000000L)).isEqualTo("-1000000L");
     }
 
     /**
-     * {@link ByteAsStringConverter} class test.
+     * {@link LongAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new ByteAsStringConverter().asString(null);
+        new LongAsStringConverter().asString(null);
     }
 
     /**
-     * {@link ByteAsStringConverter} class test.
+     * {@link LongAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new ByteAsStringConverter().asString(new Object());
+        new LongAsStringConverter().asString(new Object());
     }
 
 }

@@ -17,67 +17,69 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
- * Tests for {@link BooleanAsStringConverter}.
+ * Tests for {@link ShortAsStringConverter}.
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanAsStringConverterTest extends AssertionTest {
+public final class ShortAsStringConverterTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public BooleanAsStringConverterTest() {
+    public ShortAsStringConverterTest() {
         super();
     }
 
     /**
-     * {@link BooleanAsStringConverter} class test.
+     * {@link ShortAsStringConverter} class test.
      */
     @Test
     public void getValueClassTest() {
-        Assertions.assertThat(new BooleanAsStringConverter().getValueClass()).isEqualTo(Boolean.class);
+        Assertions.assertThat(new ShortAsStringConverter().getValueClass()).isEqualTo(Short.class);
     }
 
     /**
-     * {@link BooleanAsStringConverter} class test.
+     * {@link ShortAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
     public void asStringTest() throws ConversionException {
-        Assertions.assertThat(new BooleanAsStringConverter().asString(true)).isEqualTo("T");
-        Assertions.assertThat(new BooleanAsStringConverter().asString(Boolean.TRUE)).isEqualTo("T");
-        Assertions.assertThat(new BooleanAsStringConverter().asString(false)).isEqualTo("F");
-        Assertions.assertThat(new BooleanAsStringConverter().asString(Boolean.FALSE)).isEqualTo("F");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) 1)).isEqualTo("1s");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) 100)).isEqualTo("100s");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) 127)).isEqualTo("127s");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) 32767)).isEqualTo("32767s");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) -100)).isEqualTo("-100s");
+        Assertions.assertThat(new ShortAsStringConverter().asString((short) -32768)).isEqualTo("-32768s");
     }
 
     /**
-     * {@link BooleanAsStringConverter} class test.
+     * {@link ShortAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = NullPointerException.class)
     public void asStringNullValueFailTest() throws ConversionException {
-        new BooleanAsStringConverter().asString(null);
+        new ShortAsStringConverter().asString(null);
     }
 
     /**
-     * {@link BooleanAsStringConverter} class test.
+     * {@link ShortAsStringConverter} class test.
      *
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws ConversionException {
-        new BooleanAsStringConverter().asString(new Object());
+        new ShortAsStringConverter().asString(new Object());
     }
 
 }
