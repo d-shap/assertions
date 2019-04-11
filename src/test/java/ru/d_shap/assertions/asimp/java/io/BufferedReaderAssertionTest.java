@@ -538,6 +538,38 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      * {@link BufferedReaderAssertion} class test.
      */
     @Test
+    public void toStringArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void toStringArrayLengthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void toStringArrayMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void toStringArrayLengthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
     public void isNextCharEqualToTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharEqualTo('1');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("234"))).isNextCharEqualTo('2');
@@ -1111,6 +1143,46 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
     /**
      * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void isNextLineEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void isNextLinesEqualToArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void isNextLinesEqualToIterableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void isAllLinesEqualToArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void isAllLinesEqualToIterableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
      *
      * @throws IOException IO exception.
      */
@@ -1401,6 +1473,30 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void toLinesLengthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void toLinesLengthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BufferedReaderAssertion} class test.
+     */
+    @Test
+    public void hasLinesLengthTest() {
+        // TODO
     }
 
     /**
