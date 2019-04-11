@@ -112,13 +112,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's byte.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's byte.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
         }
     }
 
@@ -167,13 +167,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNotCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's byte.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be completed.");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").isNotCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's byte.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be completed.");
         }
     }
 
@@ -562,13 +562,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextByteEqualTo(2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's byte.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b]> but was:<[1b]>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").isNextByteEqualTo(2);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's byte.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b]> but was:<[1b]>");
         }
     }
 

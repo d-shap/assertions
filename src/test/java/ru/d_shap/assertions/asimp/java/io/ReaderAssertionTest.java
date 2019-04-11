@@ -115,13 +115,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual value should be less then the expected.\n\tExpected:<0> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
         }
     }
 
@@ -170,13 +170,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("")).isNotCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not be completed.");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader(""), "Message").isNotCompleted();
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<0> but was:<-1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be completed.");
         }
     }
 
@@ -565,13 +565,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).isNextCharEqualTo('2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next actual value's char.\n\tActual and expected values should be the same.\n\tExpected:<50> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50)]> but was:<[1(49)]>");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").isNextCharEqualTo('2');
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next actual value's char.\n\tActual and expected values should be the same.\n\tExpected:<50> but was:<49>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50)]> but was:<[1(49)]>");
         }
     }
 
