@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntToShortValueConverter}.
@@ -62,52 +62,6 @@ public final class IntToShortValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(0)).isTrue();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(100)).isTrue();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(32767)).isTrue();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(32768)).isFalse();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(-100)).isTrue();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(-32768)).isTrue();
-        Assertions.assertThat(new IntToShortValueConverter().canConvert(-32769)).isFalse();
-    }
-
-    /**
-     * {@link IntToShortValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IntToShortValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IntToShortValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IntToShortValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IntToShortValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new IntToShortValueConverter().canConvert(0, new Object());
-    }
-
-    /**
-     * {@link IntToShortValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntToShortValueConverter().convert(0)).isInstanceOf(Short.class);
         Assertions.assertThat(new IntToShortValueConverter().convert(0), Raw.shortAssertion()).isEqualTo(0);
@@ -121,9 +75,9 @@ public final class IntToShortValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntToShortValueConverter().convert(32767), Raw.shortAssertion()).isEqualTo(32767);
         Assertions.assertThat(new IntToShortValueConverter().convert(32767)).as(Raw.shortAssertion()).isEqualTo(32767);
 
-        Assertions.assertThat(new IntToShortValueConverter().convert(32768)).isInstanceOf(Short.class);
-        Assertions.assertThat(new IntToShortValueConverter().convert(32768), Raw.shortAssertion()).isEqualTo(-32768);
-        Assertions.assertThat(new IntToShortValueConverter().convert(32768)).as(Raw.shortAssertion()).isEqualTo(-32768);
+        Assertions.assertThat(new IntToShortValueConverter().convert(32768)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToShortValueConverter().convert(32768), Raw.intAssertion()).isEqualTo(32768);
+        Assertions.assertThat(new IntToShortValueConverter().convert(32768)).as(Raw.intAssertion()).isEqualTo(32768);
 
         Assertions.assertThat(new IntToShortValueConverter().convert(-100)).isInstanceOf(Short.class);
         Assertions.assertThat(new IntToShortValueConverter().convert(-100), Raw.shortAssertion()).isEqualTo(-100);
@@ -133,9 +87,9 @@ public final class IntToShortValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntToShortValueConverter().convert(-32768), Raw.shortAssertion()).isEqualTo(-32768);
         Assertions.assertThat(new IntToShortValueConverter().convert(-32768)).as(Raw.shortAssertion()).isEqualTo(-32768);
 
-        Assertions.assertThat(new IntToShortValueConverter().convert(-32769)).isInstanceOf(Short.class);
-        Assertions.assertThat(new IntToShortValueConverter().convert(-32769), Raw.shortAssertion()).isEqualTo(32767);
-        Assertions.assertThat(new IntToShortValueConverter().convert(-32769)).as(Raw.shortAssertion()).isEqualTo(32767);
+        Assertions.assertThat(new IntToShortValueConverter().convert(-32769)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToShortValueConverter().convert(-32769), Raw.intAssertion()).isEqualTo(-32769);
+        Assertions.assertThat(new IntToShortValueConverter().convert(-32769)).as(Raw.intAssertion()).isEqualTo(-32769);
     }
 
     /**

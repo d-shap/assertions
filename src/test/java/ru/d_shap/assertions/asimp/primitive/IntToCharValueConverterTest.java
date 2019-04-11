@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntToCharValueConverter}.
@@ -62,51 +62,6 @@ public final class IntToCharValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(0)).isTrue();
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(100)).isTrue();
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(65535)).isTrue();
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(65536)).isFalse();
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(-1)).isFalse();
-        Assertions.assertThat(new IntToCharValueConverter().canConvert(-100)).isFalse();
-    }
-
-    /**
-     * {@link IntToCharValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IntToCharValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IntToCharValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IntToCharValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IntToCharValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new IntToCharValueConverter().canConvert(0, new Object());
-    }
-
-    /**
-     * {@link IntToCharValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntToCharValueConverter().convert(0)).isInstanceOf(Character.class);
         Assertions.assertThat(new IntToCharValueConverter().convert(0), Raw.charAssertion()).isEqualTo(0);
@@ -120,17 +75,17 @@ public final class IntToCharValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntToCharValueConverter().convert(65535), Raw.charAssertion()).isEqualTo(65535);
         Assertions.assertThat(new IntToCharValueConverter().convert(65535)).as(Raw.charAssertion()).isEqualTo(65535);
 
-        Assertions.assertThat(new IntToCharValueConverter().convert(65536)).isInstanceOf(Character.class);
-        Assertions.assertThat(new IntToCharValueConverter().convert(65536), Raw.charAssertion()).isEqualTo(0);
-        Assertions.assertThat(new IntToCharValueConverter().convert(65536)).as(Raw.charAssertion()).isEqualTo(0);
+        Assertions.assertThat(new IntToCharValueConverter().convert(65536)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToCharValueConverter().convert(65536), Raw.intAssertion()).isEqualTo(65536);
+        Assertions.assertThat(new IntToCharValueConverter().convert(65536)).as(Raw.intAssertion()).isEqualTo(65536);
 
-        Assertions.assertThat(new IntToCharValueConverter().convert(-1)).isInstanceOf(Character.class);
-        Assertions.assertThat(new IntToCharValueConverter().convert(-1), Raw.charAssertion()).isEqualTo(65535);
-        Assertions.assertThat(new IntToCharValueConverter().convert(-1)).as(Raw.charAssertion()).isEqualTo(65535);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-1)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-1), Raw.intAssertion()).isEqualTo(-1);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-1)).as(Raw.intAssertion()).isEqualTo(-1);
 
-        Assertions.assertThat(new IntToCharValueConverter().convert(-100)).isInstanceOf(Character.class);
-        Assertions.assertThat(new IntToCharValueConverter().convert(-100), Raw.charAssertion()).isEqualTo(65436);
-        Assertions.assertThat(new IntToCharValueConverter().convert(-100)).as(Raw.charAssertion()).isEqualTo(65436);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-100)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-100), Raw.intAssertion()).isEqualTo(-100);
+        Assertions.assertThat(new IntToCharValueConverter().convert(-100)).as(Raw.intAssertion()).isEqualTo(-100);
     }
 
     /**

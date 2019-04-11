@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.primitive;
+package ru.d_shap.assertions.asimp.primitive;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntToByteValueConverter}.
@@ -62,52 +62,6 @@ public final class IntToByteValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(0)).isTrue();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(100)).isTrue();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(127)).isTrue();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(128)).isFalse();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(-100)).isTrue();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(-128)).isTrue();
-        Assertions.assertThat(new IntToByteValueConverter().canConvert(-129)).isFalse();
-    }
-
-    /**
-     * {@link IntToByteValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IntToByteValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IntToByteValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IntToByteValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IntToByteValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new IntToByteValueConverter().canConvert(0, new Object());
-    }
-
-    /**
-     * {@link IntToByteValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntToByteValueConverter().convert(0)).isInstanceOf(Byte.class);
         Assertions.assertThat(new IntToByteValueConverter().convert(0), Raw.byteAssertion()).isEqualTo(0);
@@ -121,9 +75,9 @@ public final class IntToByteValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntToByteValueConverter().convert(127), Raw.byteAssertion()).isEqualTo(127);
         Assertions.assertThat(new IntToByteValueConverter().convert(127)).as(Raw.byteAssertion()).isEqualTo(127);
 
-        Assertions.assertThat(new IntToByteValueConverter().convert(128)).isInstanceOf(Byte.class);
-        Assertions.assertThat(new IntToByteValueConverter().convert(128), Raw.byteAssertion()).isEqualTo(-128);
-        Assertions.assertThat(new IntToByteValueConverter().convert(128)).as(Raw.byteAssertion()).isEqualTo(-128);
+        Assertions.assertThat(new IntToByteValueConverter().convert(128)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToByteValueConverter().convert(128), Raw.intAssertion()).isEqualTo(128);
+        Assertions.assertThat(new IntToByteValueConverter().convert(128)).as(Raw.intAssertion()).isEqualTo(128);
 
         Assertions.assertThat(new IntToByteValueConverter().convert(-100)).isInstanceOf(Byte.class);
         Assertions.assertThat(new IntToByteValueConverter().convert(-100), Raw.byteAssertion()).isEqualTo(-100);
@@ -133,9 +87,9 @@ public final class IntToByteValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IntToByteValueConverter().convert(-128), Raw.byteAssertion()).isEqualTo(-128);
         Assertions.assertThat(new IntToByteValueConverter().convert(-128)).as(Raw.byteAssertion()).isEqualTo(-128);
 
-        Assertions.assertThat(new IntToByteValueConverter().convert(-129)).isInstanceOf(Byte.class);
-        Assertions.assertThat(new IntToByteValueConverter().convert(-129), Raw.byteAssertion()).isEqualTo(127);
-        Assertions.assertThat(new IntToByteValueConverter().convert(-129)).as(Raw.byteAssertion()).isEqualTo(127);
+        Assertions.assertThat(new IntToByteValueConverter().convert(-129)).isInstanceOf(Integer.class);
+        Assertions.assertThat(new IntToByteValueConverter().convert(-129), Raw.intAssertion()).isEqualTo(-129);
+        Assertions.assertThat(new IntToByteValueConverter().convert(-129)).as(Raw.intAssertion()).isEqualTo(-129);
     }
 
     /**
