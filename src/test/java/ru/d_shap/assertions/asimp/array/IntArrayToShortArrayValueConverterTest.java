@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntArrayToShortArrayValueConverter}.
@@ -62,51 +62,6 @@ public final class IntArrayToShortArrayValueConverterTest extends AssertionTest 
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{})).isTrue();
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{1})).isTrue();
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{100000})).isFalse();
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{1, 2})).isTrue();
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{1, 2, 3, 4})).isTrue();
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().canConvert(new int[]{100000, 100001})).isFalse();
-    }
-
-    /**
-     * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IntArrayToShortArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IntArrayToShortArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new IntArrayToShortArrayValueConverter().canConvert(new int[]{}, new Object());
-    }
-
-    /**
-     * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{})).isInstanceOf(short[].class);
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{}), Raw.shortArrayAssertion()).containsExactlyInOrder();
@@ -116,9 +71,9 @@ public final class IntArrayToShortArrayValueConverterTest extends AssertionTest 
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1}), Raw.shortArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1})).as(Raw.shortArrayAssertion()).containsExactlyInOrder(1);
 
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000})).isInstanceOf(short[].class);
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000}), Raw.shortArrayAssertion()).containsExactlyInOrder(-31072);
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000})).as(Raw.shortArrayAssertion()).containsExactlyInOrder(-31072);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000})).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000}), Raw.intArrayAssertion()).containsExactlyInOrder(100000);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000})).as(Raw.intArrayAssertion()).containsExactlyInOrder(100000);
 
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1, 2})).isInstanceOf(short[].class);
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1, 2}), Raw.shortArrayAssertion()).containsExactlyInOrder(1, 2);
@@ -128,9 +83,9 @@ public final class IntArrayToShortArrayValueConverterTest extends AssertionTest 
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1, 2, 3, 4}), Raw.shortArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{1, 2, 3, 4})).as(Raw.shortArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001})).isInstanceOf(short[].class);
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001}), Raw.shortArrayAssertion()).containsExactlyInOrder(-31072, -31071);
-        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001})).as(Raw.shortArrayAssertion()).containsExactlyInOrder(-31072, -31071);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001})).isInstanceOf(int[].class);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001}), Raw.intArrayAssertion()).containsExactlyInOrder(100000, 100001);
+        Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{100000, 100001})).as(Raw.intArrayAssertion()).containsExactlyInOrder(100000, 100001);
     }
 
     /**
