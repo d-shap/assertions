@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link CharArrayToListValueConverter}.
@@ -56,48 +56,6 @@ public final class CharArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void getTargetClassTest() {
         Assertions.assertThat(new CharArrayToListValueConverter().getTargetClass()).isEqualTo(List.class);
-    }
-
-    /**
-     * {@link CharArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{})).isTrue();
-        Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{'1', '2'})).isTrue();
-        Assertions.assertThat(new CharArrayToListValueConverter().canConvert(new char[]{'1', '2', '3', '4'})).isTrue();
-    }
-
-    /**
-     * {@link CharArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new CharArrayToListValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link CharArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new CharArrayToListValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link CharArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new CharArrayToListValueConverter().canConvert(new char[]{}, new Object());
     }
 
     /**

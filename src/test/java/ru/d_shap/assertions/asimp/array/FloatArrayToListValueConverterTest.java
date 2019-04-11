@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link FloatArrayToListValueConverter}.
@@ -56,48 +56,6 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void getTargetClassTest() {
         Assertions.assertThat(new FloatArrayToListValueConverter().getTargetClass()).isEqualTo(List.class);
-    }
-
-    /**
-     * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{})).isTrue();
-        Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{1.0f, 2.0f})).isTrue();
-        Assertions.assertThat(new FloatArrayToListValueConverter().canConvert(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isTrue();
-    }
-
-    /**
-     * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new FloatArrayToListValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new FloatArrayToListValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new FloatArrayToListValueConverter().canConvert(new float[]{}, new Object());
     }
 
     /**

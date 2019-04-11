@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link BooleanArrayToListValueConverter}.
@@ -56,48 +56,6 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void getTargetClassTest() {
         Assertions.assertThat(new BooleanArrayToListValueConverter().getTargetClass()).isEqualTo(List.class);
-    }
-
-    /**
-     * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{})).isTrue();
-        Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{true, false})).isTrue();
-        Assertions.assertThat(new BooleanArrayToListValueConverter().canConvert(new boolean[]{true, true, false, false})).isTrue();
-    }
-
-    /**
-     * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new BooleanArrayToListValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new BooleanArrayToListValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new BooleanArrayToListValueConverter().canConvert(new boolean[]{}, new Object());
     }
 
     /**

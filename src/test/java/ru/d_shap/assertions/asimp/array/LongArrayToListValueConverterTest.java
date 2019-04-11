@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link LongArrayToListValueConverter}.
@@ -56,48 +56,6 @@ public final class LongArrayToListValueConverterTest extends AssertionTest {
     @Test
     public void getTargetClassTest() {
         Assertions.assertThat(new LongArrayToListValueConverter().getTargetClass()).isEqualTo(List.class);
-    }
-
-    /**
-     * {@link LongArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new LongArrayToListValueConverter().canConvert(new long[]{})).isTrue();
-        Assertions.assertThat(new LongArrayToListValueConverter().canConvert(new long[]{1L, 2L})).isTrue();
-        Assertions.assertThat(new LongArrayToListValueConverter().canConvert(new long[]{1L, 2L, 3L, 4L})).isTrue();
-    }
-
-    /**
-     * {@link LongArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new LongArrayToListValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link LongArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new LongArrayToListValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link LongArrayToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new LongArrayToListValueConverter().canConvert(new long[]{}, new Object());
     }
 
     /**

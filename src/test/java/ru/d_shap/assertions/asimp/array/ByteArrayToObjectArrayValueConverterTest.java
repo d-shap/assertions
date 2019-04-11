@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.array;
+package ru.d_shap.assertions.asimp.array;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link ByteArrayToObjectArrayValueConverter}.
@@ -54,48 +54,6 @@ public final class ByteArrayToObjectArrayValueConverterTest extends AssertionTes
     @Test
     public void getTargetClassTest() {
         Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().getTargetClass()).isEqualTo(Byte[].class);
-    }
-
-    /**
-     * {@link ByteArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().canConvert(new byte[]{})).isTrue();
-        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().canConvert(new byte[]{1, 2})).isTrue();
-        Assertions.assertThat(new ByteArrayToObjectArrayValueConverter().canConvert(new byte[]{1, 2, 3, 4})).isTrue();
-    }
-
-    /**
-     * {@link ByteArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new ByteArrayToObjectArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link ByteArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new ByteArrayToObjectArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link ByteArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCountFailTest() throws ConversionException {
-        new ByteArrayToObjectArrayValueConverter().canConvert(new byte[]{}, new Object());
     }
 
     /**
