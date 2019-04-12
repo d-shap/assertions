@@ -324,6 +324,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void toLinesLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher);
         try {
             long linesLength = getLinesLength();
             matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);
