@@ -17,13 +17,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IterableAsStringConverter}.
@@ -55,6 +55,8 @@ public final class IterableAsStringConverterTest extends AssertionTest {
     @Test
     public void asStringTest() throws ConversionException {
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("[]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable(""))).isEqualTo("[]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1"))).isEqualTo("[val1]");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }

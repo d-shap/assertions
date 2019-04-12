@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.core;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import java.util.Map;
 
@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link ClassAsStringConverter}.
@@ -59,7 +59,7 @@ public final class ClassAsStringConverterTest extends AssertionTest {
         Assertions.assertThat(new ClassAsStringConverter().asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAsStringConverter().asString(Boolean.class)).isEqualTo("java.lang.Boolean");
         Assertions.assertThat(new ClassAsStringConverter().asString(Map.class)).isEqualTo("java.util.Map");
-        Assertions.assertThat(new ClassAsStringConverter().asString(ClassAsStringConverter.class)).isEqualTo("ru.d_shap.assertions.core.ClassAsStringConverter");
+        Assertions.assertThat(new ClassAsStringConverter().asString(ClassAsStringConverter.class)).isEqualTo("ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter");
     }
 
     /**
