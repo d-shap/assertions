@@ -130,6 +130,46 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     }
 
     /**
+     * Check if the actual value is the interface type.
+     */
+    public final void isInterface() {
+        checkActualIsNotNull();
+        if (!getActual().isInterface()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INTERCACE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the interface type.
+     */
+    public final void isNotInterface() {
+        checkActualIsNotNull();
+        if (getActual().isInterface()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INTERCACE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is the array type.
+     */
+    public final void isArray() {
+        checkActualIsNotNull();
+        if (!getActual().isArray()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ARRAY).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the array type.
+     */
+    public final void isNotArray() {
+        checkActualIsNotNull();
+        if (getActual().isArray()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY).addActual().build();
+        }
+    }
+
+    /**
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      * Side-effect: invokes the private constractor for the code coverage.
      */
