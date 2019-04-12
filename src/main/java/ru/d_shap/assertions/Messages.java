@@ -275,13 +275,13 @@ public final class Messages {
 
             public static final String IS_NOT_SUPERTYPE_OF = "Actual value should not be the supertype of the expected value.";
 
-            public static final String IS_INTERCACE = "Actual value should be the interface.";
+            public static final String IS_INTERCACE_TYPE = "Actual value should be the interface type.";
 
-            public static final String IS_NOT_INTERCACE = "Actual value should not be the interface.";
+            public static final String IS_NOT_INTERCACE_TYPE = "Actual value should not be the interface type.";
 
-            public static final String IS_ARRAY = "Actual value should be the array.";
+            public static final String IS_ARRAY_TYPE = "Actual value should be the array type.";
 
-            public static final String IS_NOT_ARRAY = "Actual value should not be the array.";
+            public static final String IS_NOT_ARRAY_TYPE = "Actual value should not be the array type.";
 
             public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor.";
 

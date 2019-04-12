@@ -135,7 +135,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     public final void isInterface() {
         checkActualIsNotNull();
         if (!getActual().isInterface()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INTERCACE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INTERCACE_TYPE).addActual().build();
         }
     }
 
@@ -145,7 +145,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     public final void isNotInterface() {
         checkActualIsNotNull();
         if (getActual().isInterface()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INTERCACE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INTERCACE_TYPE).addActual().build();
         }
     }
 
@@ -155,7 +155,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     public final void isArray() {
         checkActualIsNotNull();
         if (!getActual().isArray()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ARRAY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ARRAY_TYPE).addActual().build();
         }
     }
 
@@ -165,7 +165,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     public final void isNotArray() {
         checkActualIsNotNull();
         if (getActual().isArray()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY_TYPE).addActual().build();
         }
     }
 
