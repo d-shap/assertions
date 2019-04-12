@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -27,8 +27,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link InputStreamToByteArrayValueConverter}.
@@ -66,89 +66,23 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}), 0)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1}), 0)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1, 2}), 0)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 0)).isTrue();
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}), 2)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1}), 2)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1, 2}), 2)).isTrue();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2)).isTrue();
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(createErrorInputStream(), 0)).isTrue();
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().canConvert(createErrorInputStream(), 2)).isTrue();
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}));
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}), new Object(), new Object());
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}), (Object) null);
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().canConvert(new ByteArrayInputStream(new byte[]{}), new Object());
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}))).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{})), Raw.byteArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}))).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1})), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}))).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}))).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0)).isInstanceOf(byte[].class);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
@@ -180,6 +114,14 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2)).isInstanceOf(byte[].class);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
+
+        try {
+            Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(createErrorInputStream()));
+            Assertions.fail("InputStreamToByteArrayValueConverter test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+        }
 
         try {
             Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 0));
@@ -216,16 +158,6 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
         new InputStreamToByteArrayValueConverter().convert(new Object());
-    }
-
-    /**
-     * {@link InputStreamToByteArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConversionException {
-        new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}));
     }
 
     /**

@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.io;
+package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -27,8 +27,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link ReaderToCharArrayValueConverter}.
@@ -66,89 +66,23 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader(""), 0)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("1"), 0)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("12"), 0)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("1234"), 0)).isTrue();
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader(""), 2)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("1"), 2)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("12"), 2)).isTrue();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(new StringReader("1234"), 2)).isTrue();
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(createErrorReader(), 0)).isTrue();
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().canConvert(createErrorReader(), 2)).isTrue();
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(new StringReader(""));
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(new StringReader(""), new Object(), new Object());
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(new StringReader(""), (Object) null);
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().canConvert(new StringReader(""), new Object());
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("")), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"))).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1")), Raw.charArrayAssertion()).containsExactlyInOrder('1');
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1');
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"))).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12")), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"))).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234")), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
+
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0)).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
@@ -180,6 +114,14 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2)).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
+
+        try {
+            Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(createErrorReader()));
+            Assertions.fail("ReaderToCharArrayValueConverter test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+        }
 
         try {
             Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(createErrorReader(), 0));
@@ -216,16 +158,6 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
         new ReaderToCharArrayValueConverter().convert(new Object());
-    }
-
-    /**
-     * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConversionException {
-        new ReaderToCharArrayValueConverter().convert(new StringReader(""));
     }
 
     /**
