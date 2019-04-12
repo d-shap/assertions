@@ -617,6 +617,62 @@ public final class ClassAssertionTest extends AssertionTest {
      * {@link ClassAssertion} class test.
      */
     @Test
+    public void isInterfaceTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isNotInterfaceTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isNotArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void toComponentTypeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void toComponentTypeMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void hasComponentTypeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
     public void hasOnePrivateConstructorTest() {
         initialize(Raw.classAssertion(), Math.class).hasOnePrivateConstructor();
 
