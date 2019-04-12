@@ -433,7 +433,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toHeadMap(final K key) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(key), Messages.Check.HEAD_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(key), Messages.Check.ELEMENTS_HEAD_ELEMENT, key);
     }
 
     /**
@@ -446,7 +446,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toHeadMap(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.HEAD_COUNT, count);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
 
     /**
@@ -458,7 +458,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void toHeadMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getHeadMap(key), matcher, Messages.Check.HEAD_ELEMENT, key);
+        matcherAssertion(getHeadMap(key), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, key);
     }
 
     /**
@@ -471,7 +471,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getHeadMap(count), matcher, Messages.Check.HEAD_COUNT, count);
+        matcherAssertion(getHeadMap(count), matcher, Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
 
     private SortedMap<K, V> getHeadMap(final K key) {
@@ -496,7 +496,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toTailMap(final K key) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(key), Messages.Check.TAIL_ELEMENT, key);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(key), Messages.Check.ELEMENTS_TAIL_ELEMENT, key);
     }
 
     /**
@@ -509,7 +509,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final SortedMapAssertion<K, V> toTailMap(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.TAIL_COUNT, count);
+        return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
 
     /**
@@ -521,7 +521,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void toTailMap(final K key, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getTailMap(key), matcher, Messages.Check.TAIL_ELEMENT, key);
+        matcherAssertion(getTailMap(key), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, key);
     }
 
     /**
@@ -534,7 +534,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getTailMap(count), matcher, Messages.Check.TAIL_COUNT, count);
+        matcherAssertion(getTailMap(count), matcher, Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
 
     private SortedMap<K, V> getTailMap(final K key) {

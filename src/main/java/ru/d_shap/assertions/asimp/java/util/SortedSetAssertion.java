@@ -118,7 +118,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      */
     public final SortedSetAssertion<E> toHeadSet(final E element) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(element), Messages.Check.HEAD_ELEMENT, element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(element), Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
     }
 
     /**
@@ -131,7 +131,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toHeadSet(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(count), Messages.Check.HEAD_COUNT, count);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(count), Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
 
     /**
@@ -143,7 +143,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void toHeadSet(final E element, final Matcher<Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getHeadSet(element), matcher, Messages.Check.HEAD_ELEMENT, element);
+        matcherAssertion(getHeadSet(element), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
     }
 
     /**
@@ -156,7 +156,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getHeadSet(count), matcher, Messages.Check.HEAD_COUNT, count);
+        matcherAssertion(getHeadSet(count), matcher, Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
 
     private SortedSet<E> getHeadSet(final E element) {
@@ -181,7 +181,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      */
     public final SortedSetAssertion<E> toTailSet(final E element) {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(element), Messages.Check.TAIL_ELEMENT, element);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(element), Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
     }
 
     /**
@@ -194,7 +194,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final SortedSetAssertion<E> toTailSet(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
-        return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(count), Messages.Check.TAIL_COUNT, count);
+        return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(count), Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
 
     /**
@@ -206,7 +206,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     public final void toTailSet(final E element, final Matcher<Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getTailSet(element), matcher, Messages.Check.TAIL_ELEMENT, element);
+        matcherAssertion(getTailSet(element), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
     }
 
     /**
@@ -219,7 +219,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0);
         checkArgumentIsNotNull(matcher);
-        matcherAssertion(getTailSet(count), matcher, Messages.Check.TAIL_COUNT, count);
+        matcherAssertion(getTailSet(count), matcher, Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
 
     private SortedSet<E> getTailSet(final E element) {
