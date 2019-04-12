@@ -2172,26 +2172,299 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
     /**
      * {@link BufferedReaderAssertion} class test.
+     *
+     * @throws IOException IO exception.
      */
     @Test
-    public void toLinesLengthTest() {
-        // TODO
+    public void toLinesLengthTest() throws IOException {
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).toLinesLength().isEqualTo(2L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength().isEqualTo(2L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength().isEqualTo(5L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength().isEqualTo(0L);
+
+        BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
+        initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength().isEqualTo(3L);
+        Assertions.assertThat(reader1.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength().isEqualTo(0L);
+
+        BufferedReader reader2 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader2.readLine()).isEqualTo("1");
+        initialize(Raw.bufferedReaderAssertion(), reader2).toLinesLength().isEqualTo(2L);
+        Assertions.assertThat(reader2.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader2).toLinesLength().isEqualTo(0L);
+
+        BufferedReader reader3 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader3.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader3.readLine()).isEqualTo("2");
+        initialize(Raw.bufferedReaderAssertion(), reader3).toLinesLength().isEqualTo(1L);
+        Assertions.assertThat(reader3.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader3).toLinesLength().isEqualTo(0L);
+
+        BufferedReader reader4 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader4.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("3");
+        initialize(Raw.bufferedReaderAssertion(), reader4).toLinesLength().isEqualTo(0L);
+        Assertions.assertThat(reader4.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader4).toLinesLength().isEqualTo(0L);
+
+        BufferedReader reader5 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader5.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("3");
+        Assertions.assertThat(reader5.readLine()).isNull();
+        initialize(Raw.bufferedReaderAssertion(), reader5).toLinesLength().isEqualTo(0L);
+        Assertions.assertThat(reader5.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader5).toLinesLength().isEqualTo(0L);
+
+        try {
+            Raw.bufferedReaderAssertion().toLinesLength();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null).toLinesLength();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLinesLength();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLinesLength();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toLinesLength().isEqualTo(2L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toLinesLength().isEqualTo(2L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
+        }
     }
 
     /**
      * {@link BufferedReaderAssertion} class test.
+     *
+     * @throws IOException IO exception.
      */
     @Test
-    public void toLinesLengthMatcherTest() {
-        // TODO
+    public void toLinesLengthMatcherTest() throws IOException {
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).toLinesLength(Matchers.is(Matchers.equalTo(2L)));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength(Matchers.is(Matchers.equalTo(2L)));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength(Matchers.equalTo(5L));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength(Matchers.equalTo(0L));
+
+        BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
+        initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength(Matchers.equalTo(3L));
+        Assertions.assertThat(reader1.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength(Matchers.equalTo(0L));
+
+        BufferedReader reader2 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader2.readLine()).isEqualTo("1");
+        initialize(Raw.bufferedReaderAssertion(), reader2).toLinesLength(Matchers.equalTo(2L));
+        Assertions.assertThat(reader2.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader2).toLinesLength(Matchers.equalTo(0L));
+
+        BufferedReader reader3 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader3.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader3.readLine()).isEqualTo("2");
+        initialize(Raw.bufferedReaderAssertion(), reader3).toLinesLength(Matchers.equalTo(1L));
+        Assertions.assertThat(reader3.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader3).toLinesLength(Matchers.equalTo(0L));
+
+        BufferedReader reader4 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader4.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("3");
+        initialize(Raw.bufferedReaderAssertion(), reader4).toLinesLength(Matchers.equalTo(0L));
+        Assertions.assertThat(reader4.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader4).toLinesLength(Matchers.equalTo(0L));
+
+        BufferedReader reader5 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader5.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("3");
+        Assertions.assertThat(reader5.readLine()).isNull();
+        initialize(Raw.bufferedReaderAssertion(), reader5).toLinesLength(Matchers.equalTo(0L));
+        Assertions.assertThat(reader5.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader5).toLinesLength(Matchers.equalTo(0L));
+
+        try {
+            Raw.bufferedReaderAssertion().toLinesLength(Matchers.equalTo(0L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null).toLinesLength(Matchers.equalTo(0L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength(Matchers.equalTo(0L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null).toLinesLength(null);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength(null);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength(null);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toLinesLength(null);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLinesLength(Matchers.equalTo(0L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLinesLength(Matchers.equalTo(0L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toLinesLength(Matchers.equalTo(2L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\nExpected: <2L>\n     but: was <3L>");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toLinesLength(Matchers.equalTo(2L));
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\nExpected: <2L>\n     but: was <3L>");
+        }
     }
 
     /**
      * {@link BufferedReaderAssertion} class test.
+     *
+     * @throws IOException IO exception.
      */
     @Test
-    public void hasLinesLengthTest() {
-        // TODO
+    public void hasLinesLengthTest() throws IOException {
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).hasLinesLength(2L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).hasLinesLength(2L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).hasLinesLength(5L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).hasLinesLength(0L);
+
+        BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
+        initialize(Raw.bufferedReaderAssertion(), reader1).hasLinesLength(3L);
+        Assertions.assertThat(reader1.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader1).hasLinesLength(0L);
+
+        BufferedReader reader2 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader2.readLine()).isEqualTo("1");
+        initialize(Raw.bufferedReaderAssertion(), reader2).hasLinesLength(2L);
+        Assertions.assertThat(reader2.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader2).hasLinesLength(0L);
+
+        BufferedReader reader3 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader3.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader3.readLine()).isEqualTo("2");
+        initialize(Raw.bufferedReaderAssertion(), reader3).hasLinesLength(1L);
+        Assertions.assertThat(reader3.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader3).hasLinesLength(0L);
+
+        BufferedReader reader4 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader4.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader4.readLine()).isEqualTo("3");
+        initialize(Raw.bufferedReaderAssertion(), reader4).hasLinesLength(0L);
+        Assertions.assertThat(reader4.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader4).hasLinesLength(0L);
+
+        BufferedReader reader5 = new BufferedReader(new StringReader("1\n2\n3"));
+        Assertions.assertThat(reader5.readLine()).isEqualTo("1");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("2");
+        Assertions.assertThat(reader5.readLine()).isEqualTo("3");
+        Assertions.assertThat(reader5.readLine()).isNull();
+        initialize(Raw.bufferedReaderAssertion(), reader5).hasLinesLength(0L);
+        Assertions.assertThat(reader5.read()).isLessThan(0);
+        initialize(Raw.bufferedReaderAssertion(), reader5).hasLinesLength(0L);
+
+        try {
+            Raw.bufferedReaderAssertion().hasLinesLength(0L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null).hasLinesLength(0L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), null, "Message").hasLinesLength(0L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).hasLinesLength(0L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").hasLinesLength(0L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).hasLinesLength(2L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").hasLinesLength(2L);
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
+        }
     }
 
     /**
