@@ -69,7 +69,9 @@ public final class BufferedReaderToStringArrayValueConverter implements ValueCon
                 }
                 result.add(read);
             }
-            return result.toArray();
+            int size = result.size();
+            String[] array = new String[size];
+            return result.toArray(array);
         } catch (IOException ex) {
             throw new ConversionException(ex);
         }
