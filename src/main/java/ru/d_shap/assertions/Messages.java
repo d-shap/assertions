@@ -47,11 +47,11 @@ public final class Messages {
 
         public static final String HASH_CODE = "Check actual value''s hash code.";
 
+        public static final String COMPONENT_TYPE = "Check actual value''s component type.";
+
         public static final String FIELD = "Check actual value''s field: {0}.";
 
         public static final String LENGTH = "Check actual value''s length.";
-
-        public static final String LINES_LENGTH = "Check actual value''s lines length.";
 
         public static final String SIZE = "Check actual value''s size.";
 
@@ -59,13 +59,13 @@ public final class Messages {
 
         public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
 
-        public static final String HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
+        public static final String ELEMENTS_HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
 
-        public static final String HEAD_COUNT = "Check actual value''s N head elements: {0}.";
+        public static final String ELEMENTS_HEAD_COUNT = "Check actual value''s N head elements: {0}.";
 
-        public static final String TAIL_ELEMENT = "Check actual value''s tail elements from element: {0}.";
+        public static final String ELEMENTS_TAIL_ELEMENT = "Check actual value''s tail elements from element: {0}.";
 
-        public static final String TAIL_COUNT = "Check actual value''s N tail elements: {0}.";
+        public static final String ELEMENTS_TAIL_COUNT = "Check actual value''s N tail elements: {0}.";
 
         public static final String KEYS = "Check actual value''s keys.";
 
@@ -90,6 +90,8 @@ public final class Messages {
         public static final String LINES_ALL = "Check all actual value''s lines.";
 
         public static final String LINES_COUNT = "Check next N actual value''s lines: {0}.";
+
+        public static final String LINES_LENGTH = "Check actual value''s lines length.";
 
         public static final String AVAILABLE = "Check actual value''s available.";
 
