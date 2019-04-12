@@ -23,6 +23,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
@@ -167,6 +169,37 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         if (getActual().isArray()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY_TYPE).addActual().build();
         }
+    }
+
+    /**
+     * Make assertion about the actual value's component type.
+     *
+     * @return the assertion.
+     */
+    public final ClassAssertion toComponentType() {
+        isArray();
+        return initializeAssertion(Raw.classAssertion(), getActual().getComponentType(), Messages.Check.COMPONENT_TYPE);
+    }
+
+    /**
+     * Make assertion about the actual value's component type.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toComponentType(final Matcher<Class<?>> matcher) {
+        isArray();
+        matcherAssertion(getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
+    }
+
+    /**
+     * Check if the actual value's component type is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasComponentType(final Class<?> expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected);
+        toComponentType().isEqualTo(expected);
     }
 
     /**
