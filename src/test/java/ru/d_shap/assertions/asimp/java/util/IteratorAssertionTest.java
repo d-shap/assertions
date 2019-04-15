@@ -69,6 +69,22 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
+    public void isCompletedTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void isNotCompletedTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
     public void toListTest() {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator()).toList().containsExactlyInOrder("val1", "val2", "val3", "val4");
 
@@ -512,6 +528,14 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
+    public void isNextElementEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
     public void isNextElementsEqualToArrayTest() {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator()).isNextElementsEqualTo("val1", "val2");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator()).isNextElementsEqualTo("val1", "val2", "val3");
@@ -686,6 +710,22 @@ public final class IteratorAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void isAllElementsEqualToArrayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void isAllElementsEqualToIterableTest() {
+        // TODO
     }
 
     /**
