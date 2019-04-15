@@ -83,6 +83,22 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234")), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
 
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), -1)).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), -1)).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), -1)).isInstanceOf(char[].class);
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0)).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), 0)).as(Raw.charArrayAssertion()).containsExactlyInOrder();

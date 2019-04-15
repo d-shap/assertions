@@ -83,6 +83,22 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1)).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1), Raw.byteArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), -1)).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), -1), Raw.byteArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), -1)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), -1)).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), -1), Raw.byteArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), -1)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), -1)).isInstanceOf(byte[].class);
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), -1), Raw.byteArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), -1)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0)).isInstanceOf(byte[].class);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), 0)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();

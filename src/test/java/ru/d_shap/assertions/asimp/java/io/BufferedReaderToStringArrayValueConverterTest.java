@@ -87,6 +87,26 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n"))), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
 
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1)).isInstanceOf(String[].class);
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), -1)).isInstanceOf(String[].class);
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), -1)).isInstanceOf(String[].class);
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), -1)).isInstanceOf(String[].class);
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), -1)).isInstanceOf(String[].class);
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
+
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), 0)).isInstanceOf(String[].class);
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), 0), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), 0)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
