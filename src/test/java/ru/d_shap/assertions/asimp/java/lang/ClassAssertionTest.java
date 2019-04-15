@@ -768,7 +768,43 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isArrayTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Object[].class).isArray();
+        initialize(Raw.classAssertion(), Object[][].class).isArray();
+        initialize(Raw.classAssertion(), String[].class).isArray();
+        initialize(Raw.classAssertion(), String[][].class).isArray();
+        initialize(Raw.classAssertion(), int[].class).isArray();
+        initialize(Raw.classAssertion(), int[][].class).isArray();
+
+        try {
+            Raw.classAssertion().isArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").isArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
     }
 
     /**
@@ -776,7 +812,76 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotArrayTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Object.class).isNotArray();
+        initialize(Raw.classAssertion(), String.class).isNotArray();
+        initialize(Raw.classAssertion(), int.class).isNotArray();
+
+        try {
+            Raw.classAssertion().isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class).isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the array type.\n\tActual:<[Ljava.lang.Object;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class, "Message").isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the array type.\n\tActual:<[Ljava.lang.Object;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[][].class).isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the array type.\n\tActual:<[[Ljava.lang.Object;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[][].class, "Message").isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the array type.\n\tActual:<[[Ljava.lang.Object;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String[].class).isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the array type.\n\tActual:<[Ljava.lang.String;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), String[].class, "Message").isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the array type.\n\tActual:<[Ljava.lang.String;>");
+        }
+        try {
+            initialize(Raw.classAssertion(), int[].class).isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the array type.\n\tActual:<[I>");
+        }
+        try {
+            initialize(Raw.classAssertion(), int[].class, "Message").isNotArray();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the array type.\n\tActual:<[I>");
+        }
     }
 
     /**
