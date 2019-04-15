@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -889,7 +890,55 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void toComponentTypeTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Object[].class).toComponentType().isEqualTo(Object.class);
+        initialize(Raw.classAssertion(), Object[][].class).toComponentType().isEqualTo(Object[].class);
+        initialize(Raw.classAssertion(), String[].class).toComponentType().isEqualTo(String.class);
+        initialize(Raw.classAssertion(), String[][].class).toComponentType().isEqualTo(String[].class);
+        initialize(Raw.classAssertion(), int[].class).toComponentType().isEqualTo(int.class);
+        initialize(Raw.classAssertion(), int[][].class).toComponentType().isEqualTo(int[].class);
+
+        try {
+            Raw.classAssertion().toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class).toComponentType().isEqualTo(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class, "Message").toComponentType().isEqualTo(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
     }
 
     /**
@@ -897,7 +946,55 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void toComponentTypeMatcherTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Object[].class).toComponentType(Matchers.is(Matchers.equalTo(Object.class)));
+        initialize(Raw.classAssertion(), Object[][].class).toComponentType(Matchers.is(Matchers.equalTo(Object[].class)));
+        initialize(Raw.classAssertion(), String[].class).toComponentType(Matchers.is(Matchers.equalTo(String.class)));
+        initialize(Raw.classAssertion(), String[][].class).toComponentType(Matchers.is(Matchers.equalTo(String[].class)));
+        initialize(Raw.classAssertion(), int[].class).toComponentType(Matchers.is(Matchers.equalTo(int.class)));
+        initialize(Raw.classAssertion(), int[][].class).toComponentType(Matchers.is(Matchers.equalTo(int[].class)));
+
+        try {
+            Raw.classAssertion().toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").toComponentType();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class).toComponentType().isEqualTo(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class, "Message").toComponentType().isEqualTo(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
     }
 
     /**
