@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.collection;
+package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,8 +27,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.ConversionException;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IteratorToListValueConverter}.
@@ -66,98 +66,12 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
      * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @Test
-    public void canConvertTest() throws ConversionException {
-        List<String> list = new ArrayList<>();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), -1)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 0)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 3)).isTrue();
-
-        list.add("val1");
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), -1)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 0)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 3)).isTrue();
-
-        list.add("val2");
-        list.add("val3");
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), -1)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 0)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 3)).isTrue();
-
-        list.add("val4");
-        list.add("val5");
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), -1)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 0)).isTrue();
-        Assertions.assertThat(new IteratorToListValueConverter().canConvert(list.iterator(), 3)).isTrue();
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullValueFailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(null);
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongValueTypeFailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(new Object());
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount0FailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(new ArrayList<String>().iterator());
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void canConvertWrongArgumentCount2FailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(new ArrayList<String>().iterator(), new Object(), new Object());
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = NullPointerException.class)
-    public void canConvertNullArgumentFailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(new ArrayList<String>().iterator(), (Object) null);
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ClassCastException.class)
-    public void canConvertWrongArgumentTypeFailTest() throws ConversionException {
-        new IteratorToListValueConverter().canConvert(new ArrayList<String>().iterator(), new Object());
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
     public void convertTest() throws ConversionException {
         List<String> list = new ArrayList<>();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator()), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).as(Raw.<String>listAssertion()).containsExactlyInOrder();
 
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1)).isInstanceOf(List.class);
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1), Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -172,6 +86,10 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), 3)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
 
         list.add("val1");
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator()), Raw.<String>listAssertion()).containsExactlyInOrder("val1");
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).as(Raw.<String>listAssertion()).containsExactlyInOrder("val1");
 
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1)).isInstanceOf(List.class);
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1), Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -188,6 +106,10 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
         list.add("val2");
         list.add("val3");
 
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator()), Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3");
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).as(Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3");
+
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1)).isInstanceOf(List.class);
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1), Raw.<String>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -202,6 +124,10 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
 
         list.add("val4");
         list.add("val5");
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator()), Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).as(Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
 
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1)).isInstanceOf(List.class);
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator(), -1), Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -234,16 +160,6 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws ConversionException {
         new IteratorToListValueConverter().convert(new Object());
-    }
-
-    /**
-     * {@link IteratorToListValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws ConversionException {
-        new IteratorToListValueConverter().convert(new ArrayList<String>().iterator());
     }
 
     /**
