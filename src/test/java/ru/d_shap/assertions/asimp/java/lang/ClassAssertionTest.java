@@ -21,6 +21,13 @@ package ru.d_shap.assertions.asimp.java.lang;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -618,7 +625,65 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isInterfaceTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Collection.class).isInterface();
+        initialize(Raw.classAssertion(), List.class).isInterface();
+        initialize(Raw.classAssertion(), Set.class).isInterface();
+        initialize(Raw.classAssertion(), Map.class).isInterface();
+
+        try {
+            Raw.classAssertion().isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), ArrayList.class).isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the interface type.\n\tActual:<java.util.ArrayList>");
+        }
+        try {
+            initialize(Raw.classAssertion(), ArrayList.class, "Message").isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the interface type.\n\tActual:<java.util.ArrayList>");
+        }
+        try {
+            initialize(Raw.classAssertion(), HashSet.class).isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the interface type.\n\tActual:<java.util.HashSet>");
+        }
+        try {
+            initialize(Raw.classAssertion(), HashSet.class, "Message").isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the interface type.\n\tActual:<java.util.HashSet>");
+        }
+        try {
+            initialize(Raw.classAssertion(), HashMap.class).isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the interface type.\n\tActual:<java.util.HashMap>");
+        }
+        try {
+            initialize(Raw.classAssertion(), HashMap.class, "Message").isInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the interface type.\n\tActual:<java.util.HashMap>");
+        }
     }
 
     /**
@@ -626,7 +691,76 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInterfaceTest() {
-        // TODO
+        initialize(Raw.classAssertion(), ArrayList.class).isNotInterface();
+        initialize(Raw.classAssertion(), HashSet.class).isNotInterface();
+        initialize(Raw.classAssertion(), HashMap.class).isNotInterface();
+
+        try {
+            Raw.classAssertion().isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Collection.class).isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the interface type.\n\tActual:<java.util.Collection>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Collection.class, "Message").isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the interface type.\n\tActual:<java.util.Collection>");
+        }
+        try {
+            initialize(Raw.classAssertion(), List.class).isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the interface type.\n\tActual:<java.util.List>");
+        }
+        try {
+            initialize(Raw.classAssertion(), List.class, "Message").isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the interface type.\n\tActual:<java.util.List>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Set.class).isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the interface type.\n\tActual:<java.util.Set>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Set.class, "Message").isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the interface type.\n\tActual:<java.util.Set>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Map.class).isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the interface type.\n\tActual:<java.util.Map>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Map.class, "Message").isNotInterface();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the interface type.\n\tActual:<java.util.Map>");
+        }
     }
 
     /**
