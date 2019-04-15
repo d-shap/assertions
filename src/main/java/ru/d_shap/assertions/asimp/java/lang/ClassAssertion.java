@@ -190,6 +190,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     @SuppressWarnings("unchecked")
     public final <T> void toComponentType(final Matcher<Class<T>> matcher) {
         isArray();
+        checkArgumentIsNotNull(matcher);
         matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
     }
 
