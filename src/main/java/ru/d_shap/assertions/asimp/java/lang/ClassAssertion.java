@@ -185,10 +185,12 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * Make assertion about the actual value's component type.
      *
      * @param matcher the hamcrest matcher.
+     * @param <T>     the generic type of the actual value's component type.
      */
-    public final void toComponentType(final Matcher<Class<?>> matcher) {
+    @SuppressWarnings("unchecked")
+    public final <T> void toComponentType(final Matcher<Class<T>> matcher) {
         isArray();
-        matcherAssertion(getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
+        matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
     }
 
     /**
