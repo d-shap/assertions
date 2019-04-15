@@ -70,7 +70,43 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isCompletedTest() {
-        // TODO
+        initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator()).isCompleted();
+        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
+        Assertions.assertThat(iterator.next()).isEqualTo("val1");
+        Assertions.assertThat(iterator.next()).isEqualTo("val2");
+        Assertions.assertThat(iterator.next()).isEqualTo("val3");
+        initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
+
+        try {
+            Raw.<String>iteratorAssertion().isCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null).isCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").isCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator()).isCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4").iterator(), "Message").isCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
+        }
     }
 
     /**
@@ -78,7 +114,49 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotCompletedTest() {
-        // TODO
+        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        Assertions.assertThat(iterator.next()).isEqualTo("val1");
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        Assertions.assertThat(iterator.next()).isEqualTo("val2");
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
+        Assertions.assertThat(iterator.next()).isEqualTo("val3");
+        initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
+
+        try {
+            Raw.<String>iteratorAssertion().isNotCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null).isNotCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").isNotCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator()).isNotCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be completed.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), new ArrayList<String>().iterator(), "Message").isNotCompleted();
+            Assertions.fail("IteratorAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be completed.");
+        }
     }
 
     /**
