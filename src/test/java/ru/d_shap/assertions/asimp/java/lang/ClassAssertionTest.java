@@ -1038,7 +1038,79 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void hasComponentTypeTest() {
-        // TODO
+        initialize(Raw.classAssertion(), Object[].class).hasComponentType(Object.class);
+        initialize(Raw.classAssertion(), Object[][].class).hasComponentType(Object[].class);
+        initialize(Raw.classAssertion(), String[].class).hasComponentType(String.class);
+        initialize(Raw.classAssertion(), String[][].class).hasComponentType(String[].class);
+        initialize(Raw.classAssertion(), int[].class).hasComponentType(int.class);
+        initialize(Raw.classAssertion(), int[][].class).hasComponentType(int[].class);
+
+        try {
+            Raw.classAssertion().hasComponentType(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).hasComponentType(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").hasComponentType(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).hasComponentType(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").hasComponentType(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class).hasComponentType(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class, "Message").hasComponentType(null);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).hasComponentType(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").hasComponentType(Object.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the array type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class).hasComponentType(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object[].class, "Message").hasComponentType(String.class);
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's component type.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.Object>");
+        }
     }
 
     /**
