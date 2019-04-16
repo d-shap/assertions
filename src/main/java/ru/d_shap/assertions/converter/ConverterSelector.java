@@ -65,9 +65,6 @@ final class ConverterSelector {
     }
 
     private static int getInterfaceDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final boolean withSuperObject, final int currentDistance) {
-        if (clazz == null) {
-            return NON_RELATIVE_DISTANCE;
-        }
         if (clazz == targetClazz) {
             return currentDistance;
         }
