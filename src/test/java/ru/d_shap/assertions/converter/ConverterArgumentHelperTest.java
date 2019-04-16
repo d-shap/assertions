@@ -134,7 +134,29 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      */
     @Test
     public void checkArgumentClassTest() {
-        // TODO
+        ConverterArgumentHelper.checkArgumentClass(new Object[0], -1, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[0], 0, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[0], 1, Object.class);
+
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, -1, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 0, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 0, String.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 1, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 2, Object.class);
+
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, -1, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 0, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 0, String.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 1, Object.class);
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 2, Object.class);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void checkArgumentClassWrongClassFailTest() {
+        ConverterArgumentHelper.checkArgumentClass(new Object[]{new Object()}, 0, String.class);
     }
 
     /**
