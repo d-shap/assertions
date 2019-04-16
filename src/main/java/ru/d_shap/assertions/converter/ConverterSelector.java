@@ -57,7 +57,34 @@ final class ConverterSelector {
     }
 
     static int getDistance(final Class<?> clazz, final Class<?> targetClazz) {
-        return getDistanceStep(clazz, targetClazz, 0);
+        if (clazz.isInterface()) {
+            return getInterfaceDistanceStep(clazz, targetClazz, true, 0);
+        } else {
+            return getDistanceStep(clazz, targetClazz, 0);
+        }
+    }
+
+    private static int getInterfaceDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final boolean withSuperObject, final int currentDistance) {
+        if (clazz == null) {
+            return NON_RELATIVE_DISTANCE;
+        }
+        if (clazz == targetClazz) {
+            return currentDistance;
+        }
+        int distance = NON_RELATIVE_DISTANCE;
+        Class<?>[] ifaces = clazz.getInterfaces();
+        if (ifaces.length == 0) {
+            if (withSuperObject) {
+                int ifaceDistance = getDistanceStep(Object.class, targetClazz, currentDistance + 1);
+                distance = getMinimumDistance(distance, ifaceDistance);
+            }
+        } else {
+            for (Class<?> iface : ifaces) {
+                int ifaceDistance = getInterfaceDistanceStep(iface, targetClazz, withSuperObject, currentDistance + 1);
+                distance = getMinimumDistance(distance, ifaceDistance);
+            }
+        }
+        return distance;
     }
 
     private static int getDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final int currentDistance) {
@@ -67,18 +94,23 @@ final class ConverterSelector {
         if (clazz == targetClazz) {
             return currentDistance;
         }
-
-        int distance = getDistanceStep(clazz.getSuperclass(), targetClazz, currentDistance + 1);
         if (clazz.isArray() && targetClazz.isArray()) {
-            int componentDistance = getDistanceStep(clazz.getComponentType(), targetClazz.getComponentType(), currentDistance);
-            distance = getMinimumDistance(distance, componentDistance);
+            Class<?> componentClazz = clazz.getComponentType();
+            Class<?> componentTargetClazz = targetClazz.getComponentType();
+            if (componentClazz.isInterface()) {
+                return getInterfaceDistanceStep(componentClazz, componentTargetClazz, true, currentDistance);
+            } else {
+                return getDistanceStep(componentClazz, componentTargetClazz, currentDistance);
+            }
+        } else {
+            int distance = getDistanceStep(clazz.getSuperclass(), targetClazz, currentDistance + 1);
+            Class<?>[] ifaces = clazz.getInterfaces();
+            for (Class<?> iface : ifaces) {
+                int ifaceDistance = getInterfaceDistanceStep(iface, targetClazz, false, currentDistance + 1);
+                distance = getMinimumDistance(distance, ifaceDistance);
+            }
+            return distance;
         }
-        Class<?>[] ifaces = clazz.getInterfaces();
-        for (Class<?> iface : ifaces) {
-            int ifaceDistance = getDistanceStep(iface, targetClazz, currentDistance + 1);
-            distance = getMinimumDistance(distance, ifaceDistance);
-        }
-        return distance;
     }
 
     private static int getMinimumDistance(final int minimumDistance, final int currentDistance) {
