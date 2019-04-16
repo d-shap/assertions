@@ -61,8 +61,7 @@ public final class ConverterArgumentHelper {
      * @param clazz     the class.
      */
     public static void checkArgumentClass(final Object[] arguments, final int index, final Class<?> clazz) {
-        if (index >= 0 && index < arguments.length) {
-            arguments[index].getClass();
+        if (index >= 0 && index < arguments.length && arguments[index] != null) {
             clazz.cast(arguments[index]);
         }
     }
