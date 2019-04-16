@@ -224,7 +224,13 @@ public final class ConverterSelectorTest extends AssertionTest {
      */
     @Test
     public void selectConverterTest() {
-        // TODO
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(), new ClassExtractorImpl())).isNull();
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(LinkedList.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(LinkedList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(AbstractList.class, Queue.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, AbstractList.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class, AbstractList.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(Queue.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Collection.class, Queue.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(Collection.class));
     }
 
     private static List<ClassHolder> createClassHolders(final Class<?>... clazzes) {
