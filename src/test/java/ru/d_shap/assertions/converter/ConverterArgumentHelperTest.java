@@ -164,7 +164,27 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      */
     @Test
     public void getArgumentTest() {
-        // TODO
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], -1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], 0, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], 1, Object.class, "default")).isEqualTo("default");
+
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, -1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, String.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 2, Object.class, "default")).isEqualTo("default");
+
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, -1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, Object.class, "default")).isEqualTo("value");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, String.class, "default")).isEqualTo("value");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 2, Object.class, "default")).isEqualTo("default");
+
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, -1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 0, Object.class, "default")).isEqualTo(5);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 0, String.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 2, Object.class, "default")).isEqualTo("default");
     }
 
 }
