@@ -49,7 +49,7 @@ public final class ConverterArgumentHelper {
      */
     public static void checkArgumentsLength(final Object[] arguments, final int length) {
         if (arguments.length > length) {
-            throw new ArrayIndexOutOfBoundsException(length);
+            throw new ArrayIndexOutOfBoundsException(arguments.length);
         }
     }
 
