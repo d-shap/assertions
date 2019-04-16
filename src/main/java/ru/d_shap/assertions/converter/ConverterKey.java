@@ -58,7 +58,7 @@ final class ConverterKey {
 
     @Override
     public int hashCode() {
-        return _clazz1.hashCode() + _clazz2.hashCode();
+        return _clazz1.getName().hashCode() + _clazz2.getName().hashCode();
     }
 
 }
