@@ -66,6 +66,7 @@ public final class ConverterSelectorTest extends AssertionTest {
     public void retainMinimumDistanceConvertersTest() {
         List<ClassHolder> classHolders11 = createClassHolders();
         ConverterSelector.retainMinimumDistanceConverters(classHolders11, LinkedList.class, new ClassExtractorImpl());
+        Assertions.assertThat(classHolders11).containsExactlyInOrder();
 
         List<ClassHolder> classHolders21 = createClassHolders(LinkedList.class);
         ConverterSelector.retainMinimumDistanceConverters(classHolders21, LinkedList.class, new ClassExtractorImpl());
