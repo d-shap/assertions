@@ -119,6 +119,14 @@ public final class ConverterSelectorTest extends AssertionTest {
     /**
      * {@link ConverterSelector} class test.
      */
+    @Test(expected = NullPointerException.class)
+    public void retainMinimumDistanceConvertersNullFailTest() {
+        ConverterSelector.retainMinimumDistanceConverters(null, Object.class, new ClassExtractorImpl());
+    }
+
+    /**
+     * {@link ConverterSelector} class test.
+     */
     @Test
     public void getDistanceTest() {
         Assertions.assertThat(ConverterSelector.getDistance(LinkedList.class, LinkedList.class)).isEqualTo(0);
