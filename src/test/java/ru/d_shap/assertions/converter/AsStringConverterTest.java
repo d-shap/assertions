@@ -17,13 +17,16 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.converter;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
 
 /**
  * Tests for {@link AsStringConverter}.
@@ -86,60 +89,6 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isEqualTo("[1]");
 
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
-    }
-
-    /**
-     * {@link AsStringConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void registerAsStringConverterTest() throws ConversionException {
-        CustomClass value = new CustomClass();
-        Assertions.assertThat(AsStringConverter.asString(value)).isEqualTo("string value");
-        AsStringConverter.registerAsStringConverter(new CustomClassAsStringConverter());
-        Assertions.assertThat(AsStringConverter.asString(value)).isEqualTo("converted string value");
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class CustomClass {
-
-        CustomClass() {
-            super();
-        }
-
-        @Override
-        public String toString() {
-            return "string value";
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class CustomClassAsStringConverter extends BaseAsStringConverter {
-
-        CustomClassAsStringConverter() {
-            super();
-        }
-
-        @Override
-        protected Class<?> getValueClass() {
-            return CustomClass.class;
-        }
-
-        @Override
-        protected String convertToString(final Object value) throws ConversionException {
-            return "converted string value";
-        }
-
     }
 
 }

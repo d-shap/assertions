@@ -17,13 +17,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.converter;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link ValueConverter}.
@@ -73,71 +77,6 @@ public final class ValueConverterTest extends AssertionTest {
         Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
-    }
-
-    /**
-     * {@link ValueConverter} class test.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    @Test
-    public void registerValueConverterTest() throws ConversionException {
-        CustomClass value = new CustomClass();
-        Assertions.assertThat(ValueConverter.convert(value, Integer.class)).isInstanceOf(CustomClass.class);
-        ValueConverter.registerValueConverter(new CustomClassToIntegerValueConverter());
-        Assertions.assertThat(ValueConverter.convert(value, Integer.class)).isInstanceOf(Integer.class);
-        Assertions.assertThat(ValueConverter.convert(value, Integer.class)).isEqualTo(10);
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class CustomClass {
-
-        CustomClass() {
-            super();
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class CustomClassToIntegerValueConverter extends BaseValueConverter {
-
-        CustomClassToIntegerValueConverter() {
-            super();
-        }
-
-        @Override
-        protected Class<?> getValueClass() {
-            return CustomClass.class;
-        }
-
-        @Override
-        protected Class<?> getTargetClass() {
-            return Integer.class;
-        }
-
-        @Override
-        protected void checkArguments(final Object... arguments) {
-            // Ignore
-        }
-
-        @Override
-        protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-            return true;
-        }
-
-        @Override
-        protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-            return 10;
-        }
-
     }
 
 }
