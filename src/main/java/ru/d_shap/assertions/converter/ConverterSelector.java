@@ -56,6 +56,18 @@ final class ConverterSelector {
         }
     }
 
+    private static int getMinimumDistance(final int minimumDistance, final int currentDistance) {
+        if (currentDistance >= 0 && (minimumDistance < 0 || minimumDistance > currentDistance)) {
+            return currentDistance;
+        } else {
+            return minimumDistance;
+        }
+    }
+
+    private static boolean isMinimumDistance(final int minimumDistance, final int currentDistance) {
+        return minimumDistance >= 0 && currentDistance <= minimumDistance;
+    }
+
     static int getDistance(final Class<?> clazz, final Class<?> targetClazz) {
         if (clazz.isInterface()) {
             return getInterfaceDistanceStep(clazz, targetClazz, true, 0);
@@ -85,9 +97,6 @@ final class ConverterSelector {
     }
 
     private static int getDistanceStep(final Class<?> clazz, final Class<?> targetClazz, final int currentDistance) {
-        if (clazz == null) {
-            return NON_RELATIVE_DISTANCE;
-        }
         if (clazz == targetClazz) {
             return currentDistance;
         }
@@ -100,7 +109,12 @@ final class ConverterSelector {
                 return getDistanceStep(componentClazz, componentTargetClazz, currentDistance);
             }
         } else {
-            int distance = getDistanceStep(clazz.getSuperclass(), targetClazz, currentDistance + 1);
+            int distance = NON_RELATIVE_DISTANCE;
+            Class<?> superclass = clazz.getSuperclass();
+            if (superclass != null) {
+                int superclassDistance = getDistanceStep(superclass, targetClazz, currentDistance + 1);
+                distance = getMinimumDistance(distance, superclassDistance);
+            }
             Class<?>[] ifaces = clazz.getInterfaces();
             for (Class<?> iface : ifaces) {
                 int ifaceDistance = getInterfaceDistanceStep(iface, targetClazz, false, currentDistance + 1);
@@ -108,18 +122,6 @@ final class ConverterSelector {
             }
             return distance;
         }
-    }
-
-    private static int getMinimumDistance(final int minimumDistance, final int currentDistance) {
-        if (currentDistance >= 0 && (minimumDistance < 0 || minimumDistance > currentDistance)) {
-            return currentDistance;
-        } else {
-            return minimumDistance;
-        }
-    }
-
-    private static boolean isMinimumDistance(final int minimumDistance, final int currentDistance) {
-        return minimumDistance >= 0 && currentDistance <= minimumDistance;
     }
 
     static <T> T selectConverter(final List<T> list, final ClassExtractor<T> classExtractor) {
