@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import org.hamcrest.Description;
 import org.hamcrest.Matchers;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
+
+import ru.d_shap.assertions.fail.FailDescription;
 
 /**
  * Tests for {@link HamcrestMatcher}.
@@ -121,14 +125,122 @@ public final class HamcrestMatcherTest extends AssertionTest {
      */
     @Test
     public void genericsTest() {
-        HamcrestMatcher.matcherAssertion(createClassA(), createMatcherA());
-        HamcrestMatcher.matcherAssertion(createClassB(), createMatcherA());
-        HamcrestMatcher.matcherAssertion(createClassC(), createMatcherA());
+        HamcrestMatcher.matcherAssertion(new ClassA(), new MatcherA());
+        HamcrestMatcher.matcherAssertion(new ClassB(), new MatcherA());
+        HamcrestMatcher.matcherAssertion(new ClassC(), new MatcherA());
 
-        HamcrestMatcher.matcherAssertion(createClassB(), createMatcherB());
-        HamcrestMatcher.matcherAssertion(createClassC(), createMatcherB());
+        HamcrestMatcher.matcherAssertion(new ClassB(), new MatcherB());
+        HamcrestMatcher.matcherAssertion(new ClassC(), new MatcherB());
 
-        HamcrestMatcher.matcherAssertion(createClassC(), createMatcherC());
+        HamcrestMatcher.matcherAssertion(new ClassC(), new MatcherC());
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassA {
+
+        ClassA() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassB extends ClassA {
+
+        ClassB() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassC extends ClassB {
+
+        ClassC() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherA extends TypeSafeMatcher<ClassA> {
+
+        MatcherA() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassA classA) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherB extends TypeSafeMatcher<ClassB> {
+
+        MatcherB() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassB classB) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherC extends TypeSafeMatcher<ClassC> {
+
+        MatcherC() {
+            super();
+        }
+
+        @Override
+        protected boolean matchesSafely(final ClassC classB) {
+            return true;
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+
+        }
+
     }
 
 }
