@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.io;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -70,10 +69,10 @@ public final class ReaderAssertionTest extends AssertionTest {
     /**
      * {@link ReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void isCompletedTest() throws IOException {
+    public void isCompletedTest() throws Exception {
         initialize(Raw.readerAssertion(), new StringReader("")).isCompleted();
         StringReader reader = new StringReader("123");
         Assertions.assertThat(reader.read()).isEqualTo(49);
@@ -1112,10 +1111,10 @@ public final class ReaderAssertionTest extends AssertionTest {
     /**
      * {@link ReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLengthTest() throws IOException {
+    public void toLengthTest() throws Exception {
         initialize(Raw.readerAssertion(), new StringReader("12")).toLength().isEqualTo(2L);
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).toLength().isEqualTo(5L);
         initialize(Raw.readerAssertion(), new StringReader("")).toLength().isEqualTo(0L);
@@ -1202,10 +1201,10 @@ public final class ReaderAssertionTest extends AssertionTest {
     /**
      * {@link ReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLengthMatcherTest() throws IOException {
+    public void toLengthMatcherTest() throws Exception {
         initialize(Raw.readerAssertion(), new StringReader("12")).toLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).toLength(Matchers.equalTo(5L));
         initialize(Raw.readerAssertion(), new StringReader("")).toLength(Matchers.equalTo(0L));
@@ -1316,10 +1315,10 @@ public final class ReaderAssertionTest extends AssertionTest {
     /**
      * {@link ReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void hasLengthTest() throws IOException {
+    public void hasLengthTest() throws Exception {
         initialize(Raw.readerAssertion(), new StringReader("12")).hasLength(2L);
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000\u0000\u0000")).hasLength(5L);
         initialize(Raw.readerAssertion(), new StringReader("")).hasLength(0L);

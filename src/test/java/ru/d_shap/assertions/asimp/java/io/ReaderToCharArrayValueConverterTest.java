@@ -63,10 +63,10 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("")), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).as(Raw.charArrayAssertion()).containsExactlyInOrder();
@@ -175,40 +175,40 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new ReaderToCharArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new ReaderToCharArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""), new Object(), new Object());
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""), new Object());
     }
 

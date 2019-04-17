@@ -63,10 +63,10 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
     /**
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")))).isInstanceOf(String[].class);
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader(""))), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -195,40 +195,40 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
     /**
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new BufferedReaderToStringArrayValueConverter().convert(null);
     }
 
     /**
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new BufferedReaderToStringArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), new Object(), new Object());
     }
 
     /**
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), new Object());
     }
 

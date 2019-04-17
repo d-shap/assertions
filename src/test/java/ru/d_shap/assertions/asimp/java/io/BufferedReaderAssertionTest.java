@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,10 +69,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void isCompletedTest() throws IOException {
+    public void isCompletedTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isCompleted();
         BufferedReader reader = new BufferedReader(new StringReader("123"));
         Assertions.assertThat(reader.read()).isEqualTo(49);
@@ -1879,10 +1878,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLengthTest() throws IOException {
+    public void toLengthTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).toLength().isEqualTo(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).toLength().isEqualTo(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLength().isEqualTo(0L);
@@ -1969,10 +1968,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLengthMatcherTest() throws IOException {
+    public void toLengthMatcherTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).toLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).toLength(Matchers.equalTo(5L));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLength(Matchers.equalTo(0L));
@@ -2083,10 +2082,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void hasLengthTest() throws IOException {
+    public void hasLengthTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).hasLength(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).hasLength(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).hasLength(0L);
@@ -2173,10 +2172,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLinesLengthTest() throws IOException {
+    public void toLinesLengthTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).toLinesLength().isEqualTo(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength().isEqualTo(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength().isEqualTo(5L);
@@ -2264,10 +2263,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void toLinesLengthMatcherTest() throws IOException {
+    public void toLinesLengthMatcherTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).toLinesLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength(Matchers.equalTo(5L));
@@ -2379,10 +2378,10 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     /**
      * {@link BufferedReaderAssertion} class test.
      *
-     * @throws IOException IO exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void hasLinesLengthTest() throws IOException {
+    public void hasLinesLengthTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2"))).hasLinesLength(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).hasLinesLength(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).hasLinesLength(5L);
