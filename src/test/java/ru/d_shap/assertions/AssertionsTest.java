@@ -732,17 +732,16 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void iterableAssertionTest() {
-        Iterable<String> iterable = Arrays.asList("1", "2", "3");
         Assertions.assertThat((Iterable<String>) null).isNull();
-        Assertions.assertThat(iterable).hasSize(3);
+        Assertions.assertThat(createIterable("1", "2", "3")).hasSize(3);
         Assertions.assertThat(null, Raw.<String>iterableAssertion()).isNull();
-        Assertions.assertThat(iterable, Raw.<String>iterableAssertion()).hasSize(3);
+        Assertions.assertThat(createIterable("1", "2", "3"), Raw.<String>iterableAssertion()).hasSize(3);
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>iterableAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterable").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterable", Raw.<String>iterableAssertion()).hasSize(3);
 
         try {
-            Assertions.assertThat(iterable).hasSize(4);
+            Assertions.assertThat(createIterable("1", "2", "3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -776,15 +775,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void iteratorAssertionTest() {
         Assertions.assertThat((Iterator<String>) null).isNull();
-        Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(null, Raw.<String>iteratorAssertion()).isNull();
-        Assertions.assertThat(Arrays.asList("1", "2", "3").iterator(), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(createIterator("1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertThat(Arrays.asList("1", "2", "3").iterator()).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertThat(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
