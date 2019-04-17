@@ -65,16 +65,18 @@ public final class ValueConverterTest extends AssertionTest {
         Assertions.assertThat(ValueConverter.convert(100000, Character.class)).isInstanceOf(Integer.class);
         Assertions.assertThat(ValueConverter.convert(100000, Character.class)).isEqualTo(100000);
 
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5)).isInstanceOf(List.class);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 5), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4, 5);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4)).isInstanceOf(List.class);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 4), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3)).isInstanceOf(List.class);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 3), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2)).isInstanceOf(List.class);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 2), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1)).isInstanceOf(List.class);
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5).iterator(), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 6)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 6), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4, 5);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 5)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 5), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4, 5);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 4)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 4), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3, 4);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 3)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 3), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 2)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 2), Raw.<Integer>listAssertion()).containsExactlyInOrder(1, 2);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 1)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
     }
