@@ -54,10 +54,10 @@ public final class ValueConverterTest extends AssertionTest {
     /**
      * {@link ValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(ValueConverter.convert(null, String.class)).isNull();
 
         Assertions.assertThat(ValueConverter.convert(100, Character.class)).isInstanceOf(Character.class);

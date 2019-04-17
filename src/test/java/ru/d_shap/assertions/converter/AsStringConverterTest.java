@@ -53,10 +53,10 @@ public final class AsStringConverterTest extends AssertionTest {
     /**
      * {@link AsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws ConversionException {
+    public void asStringTest() throws Exception {
         Assertions.assertThat(AsStringConverter.asString(null)).isNull();
 
         Assertions.assertThat(AsStringConverter.asString(1)).isEqualTo("1");
@@ -71,10 +71,10 @@ public final class AsStringConverterTest extends AssertionTest {
     /**
      * {@link AsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void asStringValueConverterTest() throws ConversionException {
+    public void asStringValueConverterTest() throws Exception {
         Assertions.assertThat(AsStringConverter.asString(null, String.class)).isNull();
 
         Assertions.assertThat(AsStringConverter.asString(100, Character.class)).isEqualTo("d(100)");
