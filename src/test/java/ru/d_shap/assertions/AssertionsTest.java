@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -934,6 +935,27 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void bufferedReaderAssertionTest() {
+        Assertions.assertThat((BufferedReader) null).isNull();
+        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "2");
+        Assertions.assertThat(null, Raw.bufferedReaderAssertion()).isNull();
+        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3")), Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.bufferedReaderAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_bufferedReader").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_bufferedReader", Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+
+        try {
+            Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 

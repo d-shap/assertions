@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Reader;
@@ -1690,6 +1691,45 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void bufferedReaderAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((BufferedReader) null).isNull();
+        Assertions.assertWithMessage("Test message").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "2");
+        Assertions.assertWithMessage("Test message").that(null, Raw.bufferedReaderAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(new BufferedReader(new StringReader("1\n2\n3")), Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.bufferedReaderAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_bufferedReader").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_bufferedReader", Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+
+        try {
+            Assertions.assertWithMessage(null).that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
     }
 
