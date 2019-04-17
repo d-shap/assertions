@@ -24,7 +24,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link ShortArrayToObjectArrayValueConverter}.
@@ -59,10 +58,10 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).isInstanceOf(Short[].class);
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -79,30 +78,30 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new ShortArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new ShortArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConversionException {
+    public void convertWrongArgumentCountFailTest() throws Exception {
         new ShortArrayToObjectArrayValueConverter().convert(new short[]{}, new Object());
     }
 

@@ -26,7 +26,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link DoubleArrayToListValueConverter}.
@@ -61,10 +60,10 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
     /**
      * {@link DoubleArrayToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new DoubleArrayToListValueConverter().convert(new double[]{})).isInstanceOf(List.class);
         Assertions.assertThat(new DoubleArrayToListValueConverter().convert(new double[]{}), Raw.<Double>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleArrayToListValueConverter().convert(new double[]{})).as(Raw.<Double>listAssertion()).containsExactlyInOrder();
@@ -81,30 +80,30 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
     /**
      * {@link DoubleArrayToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new DoubleArrayToListValueConverter().convert(null);
     }
 
     /**
      * {@link DoubleArrayToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new DoubleArrayToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link DoubleArrayToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConversionException {
+    public void convertWrongArgumentCountFailTest() throws Exception {
         new DoubleArrayToListValueConverter().convert(new double[]{}, new Object());
     }
 
