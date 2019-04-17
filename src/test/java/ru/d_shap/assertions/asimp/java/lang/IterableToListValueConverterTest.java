@@ -27,7 +27,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IterableToListValueConverter}.
@@ -62,10 +61,10 @@ public final class IterableToListValueConverterTest extends AssertionTest {
     /**
      * {@link IterableToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable())).isInstanceOf(List.class);
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable()), Raw.<String>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable())).as(Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -96,30 +95,30 @@ public final class IterableToListValueConverterTest extends AssertionTest {
     /**
      * {@link IterableToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new IterableToListValueConverter().convert(null);
     }
 
     /**
      * {@link IterableToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new IterableToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link IterableToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConversionException {
+    public void convertWrongArgumentCountFailTest() throws Exception {
         new IterableToListValueConverter().convert(createIterable(), new Object());
     }
 
