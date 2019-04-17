@@ -17,9 +17,15 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
 
 /**
  * Tests for {@link FailDescriptionEntry}.
@@ -129,6 +135,13 @@ public final class FailDescriptionEntryTest extends AssertionTest {
     @Test(expected = IllegalArgumentException.class)
     public void convertArgumentToStringFailTest() {
         getFormattedMessages("{0,number,integer}", new Object[]{1}, true);
+    }
+
+    private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
+        FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
+        List<String> formattedMessages = new ArrayList<>();
+        failDescriptionEntry.addFormattedMessage(formattedMessages);
+        return formattedMessages;
     }
 
 }
