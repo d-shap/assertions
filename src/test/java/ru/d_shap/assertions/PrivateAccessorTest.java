@@ -21,7 +21,6 @@ package ru.d_shap.assertions;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
@@ -51,11 +50,10 @@ public final class PrivateAccessorTest extends AssertionTest {
     /**
      * {@link PrivateAccessor} class test.
      *
-     * @throws NoSuchFieldException   no such field exception.
-     * @throws IllegalAccessException illegal access exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void setAccessibleFieldTest() throws NoSuchFieldException, IllegalAccessException {
+    public void setAccessibleFieldTest() throws Exception {
         PrivateFieldClass privateField = new PrivateFieldClass();
         Field field = privateField.getClass().getDeclaredField("_value");
         try {
@@ -72,12 +70,10 @@ public final class PrivateAccessorTest extends AssertionTest {
     /**
      * {@link PrivateAccessor} class test.
      *
-     * @throws NoSuchMethodException     no such method exception.
-     * @throws InvocationTargetException invocation target exception.
-     * @throws IllegalAccessException    illegal access exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void setAccessibleMethodTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void setAccessibleMethodTest() throws Exception {
         PrivateMethodClass privateMethod = new PrivateMethodClass();
         Method method = privateMethod.getClass().getDeclaredMethod("getValue");
         try {
@@ -94,13 +90,10 @@ public final class PrivateAccessorTest extends AssertionTest {
     /**
      * {@link PrivateAccessor} class test.
      *
-     * @throws NoSuchMethodException     no such method exception.
-     * @throws InvocationTargetException invocation target exception.
-     * @throws InstantiationException    instantiation exception.
-     * @throws IllegalAccessException    illegal access exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void setAccessibleConstructorTest() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void setAccessibleConstructorTest() throws Exception {
         Constructor<PrivateConstructorClass> constructor = PrivateConstructorClass.class.getDeclaredConstructor();
         try {
             constructor.newInstance();
