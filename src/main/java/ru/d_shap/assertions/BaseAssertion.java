@@ -191,7 +191,7 @@ public abstract class BaseAssertion<T> {
      */
     @SuppressWarnings("unchecked")
     public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion) {
-        checkArgumentIsNotNull(assertion);
+        checkArgumentIsNotNull(assertion, "assertion");
         return initializeAssertion(assertion, (W) _actual);
     }
 
@@ -207,7 +207,7 @@ public abstract class BaseAssertion<T> {
      */
     @SuppressWarnings("unchecked")
     public final <W extends T, S extends BaseAssertion<W>> S as(final S assertion, final String message) {
-        checkArgumentIsNotNull(assertion);
+        checkArgumentIsNotNull(assertion, "assertion");
         return initializeAssertion(assertion, (W) _actual, Messages.SIMPLE_MESSAGE, message);
     }
 
@@ -249,25 +249,27 @@ public abstract class BaseAssertion<T> {
     /**
      * Check if the argument is NOT null.
      *
-     * @param argument the argument.
+     * @param argument     the argument.
+     * @param argumentName the argument name.
      */
-    protected final void checkArgumentIsNotNull(final Object argument) {
+    protected final void checkArgumentIsNotNull(final Object argument, final String argumentName) {
         checkInitialized();
         if (argument == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_NULL).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_NULL, argumentName).build();
         }
     }
 
     /**
      * Check if the argument is NOT empty because the result is always known.
      *
-     * @param isEmpty     is the argument empty.
-     * @param knownResult the known result of the check.
+     * @param isEmpty      is the argument empty.
+     * @param argumentName the argument name.
+     * @param knownResult  the known result of the check.
      */
-    protected final void checkArgumentIsNotEmpty(final boolean isEmpty, final boolean knownResult) {
+    protected final void checkArgumentIsNotEmpty(final boolean isEmpty, final String argumentName, final boolean knownResult) {
         checkInitialized();
         if (isEmpty) {
-            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY);
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY, argumentName);
             if (knownResult) {
                 throw assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE).build();
             } else {
@@ -279,12 +281,13 @@ public abstract class BaseAssertion<T> {
     /**
      * Check if the argument is valid.
      *
-     * @param valid is the argument valid.
+     * @param valid        is the argument valid.
+     * @param argumentName the argument name.
      */
-    protected final void checkArgumentIsValid(final boolean valid) {
+    protected final void checkArgumentIsValid(final boolean valid, final String argumentName) {
         checkInitialized();
         if (!valid) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID, argumentName).build();
         }
     }
 
