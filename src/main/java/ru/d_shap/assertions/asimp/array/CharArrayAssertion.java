@@ -298,7 +298,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      */
     public final void toLength(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
     }
 

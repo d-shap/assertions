@@ -232,7 +232,7 @@ public class FloatArrayAssertion extends ReferenceAssertion<float[]> {
      */
     public final void toLength(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
     }
 

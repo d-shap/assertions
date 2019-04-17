@@ -232,7 +232,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      */
     public final void toLength(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
     }
 
