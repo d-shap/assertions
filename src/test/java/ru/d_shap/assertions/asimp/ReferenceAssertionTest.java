@@ -1481,11 +1481,10 @@ public final class ReferenceAssertionTest extends AssertionTest {
     /**
      * {@link ReferenceAssertion} class test.
      *
-     * @throws NoSuchFieldException   no such field exception.
-     * @throws IllegalAccessException illegal access exception.
+     * @throws Exception exception in test.
      */
     @Test
-    public void setAccessibleTest() throws NoSuchFieldException, IllegalAccessException {
+    public void setAccessibleTest() throws Exception {
         PrivateFieldClass privateField = new PrivateFieldClass();
         Field field = privateField.getClass().getDeclaredField("_value");
         try {
