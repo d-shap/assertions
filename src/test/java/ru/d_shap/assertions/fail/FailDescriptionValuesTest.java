@@ -17,9 +17,16 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link FailDescriptionValues}.
@@ -43,51 +50,51 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     @Test
     public void addFailDescriptionEntryNullValueClassTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues01 = new FailDescriptionValues(null, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues01)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues01)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues02 = new FailDescriptionValues(null, null);
         failDescriptionValues02.addActual();
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues02)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues02)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues03 = new FailDescriptionValues(null, "actual");
         failDescriptionValues03.addActual();
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues03)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues03)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues04 = new FailDescriptionValues(null, null);
         failDescriptionValues04.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues04)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues04)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues05 = new FailDescriptionValues(null, "actual");
         failDescriptionValues05.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues05)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues05)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues06 = new FailDescriptionValues(null, null);
         failDescriptionValues06.addActual();
         failDescriptionValues06.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues06)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues06)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues07 = new FailDescriptionValues(null, "actual");
         failDescriptionValues07.addActual();
         failDescriptionValues07.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues07)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues07)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues08 = new FailDescriptionValues(null, null);
         failDescriptionValues08.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues08)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues08)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues09 = new FailDescriptionValues(null, "actual");
         failDescriptionValues09.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues09)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues09)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues10 = new FailDescriptionValues(null, null);
         failDescriptionValues10.addActual();
         failDescriptionValues10.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues10)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues10)).containsExactlyInOrder();
 
         FailDescriptionValues failDescriptionValues11 = new FailDescriptionValues(null, "actual");
         failDescriptionValues11.addActual();
         failDescriptionValues11.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues11)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues11)).containsExactlyInOrder();
     }
 
     /**
@@ -98,7 +105,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     @Test
     public void addFailDescriptionEntryTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues = new FailDescriptionValues(String.class, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues)).isEmpty();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues)).containsExactlyInOrder();
     }
 
     /**
@@ -110,35 +117,29 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryExpectedTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues1).get(0))).containsExactlyInOrder("Expected:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addExpected(null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues2)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues2).get(0))).containsExactlyInOrder("Expected:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues3)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues3).get(0))).containsExactlyInOrder("Expected:<expected>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues4)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues4).get(0))).containsExactlyInOrder("Expected:<expected>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected>");
 
         FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
         failDescriptionValues5.addExpected("expected1", "expected2");
         failDescriptionValues5.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues5)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues5).get(0))).containsExactlyInOrder("Expected:<expected>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addExpected("expected1", "expected2");
         failDescriptionValues6.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues6)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues6).get(0))).containsExactlyInOrder("Expected:<expected>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected>");
     }
 
     /**
@@ -150,35 +151,29 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryExpected2Test() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues1).get(0))).containsExactlyInOrder("Expected:<null:null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null:null>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addExpected(null, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues2)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues2).get(0))).containsExactlyInOrder("Expected:<null:null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null:null>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues3)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues3).get(0))).containsExactlyInOrder("Expected:<expected1:expected2>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues4)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues4).get(0))).containsExactlyInOrder("Expected:<expected1:expected2>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2>");
 
         FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
         failDescriptionValues5.addExpected("expected");
         failDescriptionValues5.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues5)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues5).get(0))).containsExactlyInOrder("Expected:<expected1:expected2>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addExpected("expected");
         failDescriptionValues6.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues6)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues6).get(0))).containsExactlyInOrder("Expected:<expected1:expected2>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2>");
     }
 
     /**
@@ -190,13 +185,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryActualTest() throws ConversionException {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues1).get(0))).containsExactlyInOrder("Actual:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<null>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues2)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues2).get(0))).containsExactlyInOrder("Actual:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Actual:<actual>");
     }
 
     /**
@@ -209,40 +202,34 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues1).get(0))).containsExactlyInOrder("Expected:<null> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null> but was:<null>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
         failDescriptionValues2.addExpected(null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues2)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues2).get(0))).containsExactlyInOrder("Expected:<null> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addActual();
         failDescriptionValues3.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues3)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues3).get(0))).containsExactlyInOrder("Expected:<expected> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected> but was:<null>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addActual();
         failDescriptionValues4.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues4)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues4).get(0))).containsExactlyInOrder("Expected:<expected> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
         failDescriptionValues5.addActual();
         failDescriptionValues5.addExpected("expected1", "expected2");
         failDescriptionValues5.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues5)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues5).get(0))).containsExactlyInOrder("Expected:<expected> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected> but was:<null>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addActual();
         failDescriptionValues6.addExpected("expected1", "expected2");
         failDescriptionValues6.addExpected("expected");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues6)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues6).get(0))).containsExactlyInOrder("Expected:<expected> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected> but was:<actual>");
     }
 
     /**
@@ -255,40 +242,45 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues1)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues1).get(0))).containsExactlyInOrder("Expected:<null:null> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null:null> but was:<null>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
         failDescriptionValues2.addExpected(null, null);
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues2)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues2).get(0))).containsExactlyInOrder("Expected:<null:null> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null:null> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addActual();
         failDescriptionValues3.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues3)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues3).get(0))).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addActual();
         failDescriptionValues4.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues4)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues4).get(0))).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
         failDescriptionValues5.addActual();
         failDescriptionValues5.addExpected("expected");
         failDescriptionValues5.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues5)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues5).get(0))).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addActual();
         failDescriptionValues6.addExpected("expected");
         failDescriptionValues6.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFailDescriptionEntries(failDescriptionValues6)).hasSize(1);
-        Assertions.assertThat(getFormattedMessages(getFailDescriptionEntries(failDescriptionValues6).get(0))).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
+    }
+
+    private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws ConversionException {
+        List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
+        failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
+        List<String> formattedMessages = new ArrayList<>();
+        if (!failDescriptionEntries.isEmpty()) {
+            FailDescriptionEntry failDescriptionEntry = failDescriptionEntries.get(0);
+            failDescriptionEntry.addFormattedMessage(formattedMessages);
+        }
+        return formattedMessages;
     }
 
 }
