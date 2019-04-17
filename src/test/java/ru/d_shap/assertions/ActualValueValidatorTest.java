@@ -77,4 +77,29 @@ public final class ActualValueValidatorTest extends AssertionTest {
         Assertions.assertThat(actualValueValidator6.isValid(new Object())).isFalse();
     }
 
+    private ActualValueValidatorProvider createActualValueValidator(final boolean valid) {
+        return new BaseActualValueValidatorImpl(valid);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseActualValueValidatorImpl implements ActualValueValidatorProvider {
+
+        private final boolean _valid;
+
+        BaseActualValueValidatorImpl(final boolean valid) {
+            super();
+            _valid = valid;
+        }
+
+        @Override
+        public boolean isValid(final Object actual) {
+            return _valid;
+        }
+
+    }
+
 }
