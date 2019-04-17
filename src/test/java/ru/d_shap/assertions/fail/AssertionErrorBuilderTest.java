@@ -17,11 +17,20 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.fail;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.List;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.PrivateAccessor;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ValueConverter;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
  * Tests for {@link AssertionErrorBuilder}.
@@ -392,10 +401,16 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
 
     /**
      * {@link AssertionErrorBuilder} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void conversionExceptionTest() {
-        ValueConverter.registerValueConverter(new ErrorTypeConverter());
+    @SuppressWarnings("unchecked")
+    public void conversionExceptionTest() throws Exception {
+        Field field = ValueConverter.class.getDeclaredField("CONVERTER_PROVIDERS");
+        PrivateAccessor.setAccessible(field);
+        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) field.get(null);
+        converterProviders.add(new ErrorTypeConverter());
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).hasMessage("");
@@ -416,14 +431,17 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasMessage("");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("message.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
     }
 
     /**
@@ -444,34 +462,24 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ErrorTypeConverter extends BaseValueConverter {
+    private static final class ErrorTypeConverter implements ValueConverterProvider {
 
         ErrorTypeConverter() {
             super();
         }
 
         @Override
-        protected Class<?> getValueClass() {
+        public Class<?> getValueClass() {
             return ErrorType.class;
         }
 
         @Override
-        protected Class<?> getTargetClass() {
+        public Class<?> getTargetClass() {
             return String.class;
         }
 
         @Override
-        protected void checkArguments(final Object... arguments) {
-            // Ignore
-        }
-
-        @Override
-        protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-            return true;
-        }
-
-        @Override
-        protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 
