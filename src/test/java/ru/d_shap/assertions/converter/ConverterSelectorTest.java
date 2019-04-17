@@ -65,55 +65,55 @@ public final class ConverterSelectorTest extends AssertionTest {
     @Test
     public void retainMinimumDistanceConvertersTest() {
         List<ClassHolder> classHolders11 = createClassHolders();
-        ConverterSelector.retainMinimumDistanceConverters(classHolders11, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders11, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders11).containsExactlyInOrder();
 
         List<ClassHolder> classHolders21 = createClassHolders(LinkedList.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders21, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders21, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders21).containsExactlyInOrder(new ClassHolder(LinkedList.class));
         List<ClassHolder> classHolders22 = createClassHolders(AbstractList.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders22, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders22, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders22).containsExactlyInOrder(new ClassHolder(AbstractList.class));
         List<ClassHolder> classHolders23 = createClassHolders(List.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders23, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders23, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders23).containsExactlyInOrder(new ClassHolder(List.class));
         List<ClassHolder> classHolders24 = createClassHolders(Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders24, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders24, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders24).containsExactlyInOrder(new ClassHolder(Collection.class));
         List<ClassHolder> classHolders25 = createClassHolders(Iterable.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders25, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders25, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders25).containsExactlyInOrder(new ClassHolder(Iterable.class));
         List<ClassHolder> classHolders26 = createClassHolders(Object.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders26, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders26, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders26).containsExactlyInOrder(new ClassHolder(Object.class));
         List<ClassHolder> classHolders27 = createClassHolders(ArrayList.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders27, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders27, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders27).containsExactlyInOrder();
 
         List<ClassHolder> classHolders31 = createClassHolders(AbstractList.class, Queue.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders31, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders31, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders31).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(Queue.class), new ClassHolder(Collection.class));
         List<ClassHolder> classHolders32 = createClassHolders(AbstractCollection.class, AbstractList.class, Iterable.class, Queue.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders32, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders32, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders32).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(Queue.class), new ClassHolder(Collection.class));
         List<ClassHolder> classHolders33 = createClassHolders(AbstractList.class, Queue.class, AbstractCollection.class, Iterable.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders33, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders33, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders33).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(Queue.class), new ClassHolder(Collection.class));
         List<ClassHolder> classHolders34 = createClassHolders(AbstractList.class, Queue.class, AbstractCollection.class, Collection.class, Iterable.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders34, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders34, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders34).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(Queue.class), new ClassHolder(Collection.class));
         List<ClassHolder> classHolders35 = createClassHolders(AbstractList.class, Queue.class, Object.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders35, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders35, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders35).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(Queue.class), new ClassHolder(Collection.class));
         List<ClassHolder> classHolders36 = createClassHolders(AbstractList.class, Queue.class, AbstractSequentialList.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders36, LinkedList.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders36, LinkedList.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders36).containsExactlyInOrder(new ClassHolder(AbstractSequentialList.class));
 
         List<ClassHolder> classHolders41 = createClassHolders(AbstractList.class, Queue.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders41, HashMap.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders41, HashMap.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders41).containsExactlyInOrder();
         List<ClassHolder> classHolders42 = createClassHolders(AbstractList.class, Queue.class, Collection.class);
-        ConverterSelector.retainMinimumDistanceConverters(classHolders42, TreeMap.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(classHolders42, TreeMap.class, new ClassHolderExtractor());
         Assertions.assertThat(classHolders42).containsExactlyInOrder();
     }
 
@@ -122,7 +122,7 @@ public final class ConverterSelectorTest extends AssertionTest {
      */
     @Test(expected = NullPointerException.class)
     public void retainMinimumDistanceConvertersNullFailTest() {
-        ConverterSelector.retainMinimumDistanceConverters(null, Object.class, new ClassExtractorImpl());
+        ConverterSelector.retainMinimumDistanceConverters(null, Object.class, new ClassHolderExtractor());
     }
 
     /**
@@ -224,13 +224,13 @@ public final class ConverterSelectorTest extends AssertionTest {
      */
     @Test
     public void selectConverterTest() {
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(), new ClassExtractorImpl())).isNull();
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(LinkedList.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(LinkedList.class));
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(AbstractList.class, Queue.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, AbstractList.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class, AbstractList.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(AbstractList.class));
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(Queue.class));
-        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Collection.class, Queue.class), new ClassExtractorImpl())).isEqualTo(new ClassHolder(Collection.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(), new ClassHolderExtractor())).isNull();
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(LinkedList.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(LinkedList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(AbstractList.class, Queue.class, Collection.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, AbstractList.class, Collection.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class, AbstractList.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(AbstractList.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Queue.class, Collection.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(Queue.class));
+        Assertions.assertThat(ConverterSelector.selectConverter(createClassHolders(Collection.class, Queue.class), new ClassHolderExtractor())).isEqualTo(new ClassHolder(Collection.class));
     }
 
     private static List<ClassHolder> createClassHolders(final Class<?>... clazzes) {
@@ -286,9 +286,9 @@ public final class ConverterSelectorTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ClassExtractorImpl implements ConverterSelector.ClassExtractor<ClassHolder> {
+    private static final class ClassHolderExtractor implements ConverterSelector.ClassExtractor<ClassHolder> {
 
-        ClassExtractorImpl() {
+        ClassHolderExtractor() {
             super();
         }
 
