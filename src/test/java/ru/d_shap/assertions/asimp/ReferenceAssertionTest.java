@@ -1498,6 +1498,36 @@ public final class ReferenceAssertionTest extends AssertionTest {
         Assertions.assertThat(value).isEqualTo("value");
     }
 
+    private ReferenceAssertion<Object> createReferenceAssertion() {
+        return new ReferenceAssertionImpl();
+    }
+
+    private ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
+        return initialize(createReferenceAssertion(), actual);
+    }
+
+    private ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
+        return initialize(createReferenceAssertion(), actual, message);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
+
+        ReferenceAssertionImpl() {
+            super();
+        }
+
+        @Override
+        protected Class<Object> getActualValueClass() {
+            return Object.class;
+        }
+
+    }
+
     /**
      * Test class.
      *

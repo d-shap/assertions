@@ -1737,4 +1737,34 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertion(null, "Message.").getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message.");
     }
 
+    private BaseAssertion<Object> createBaseAssertion() {
+        return new BaseAssertionImpl();
+    }
+
+    private BaseAssertion<Object> createBaseAssertion(final Object actual) {
+        return initialize(createBaseAssertion(), actual);
+    }
+
+    private BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
+        return initialize(createBaseAssertion(), actual, message);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class BaseAssertionImpl extends BaseAssertion<Object> {
+
+        BaseAssertionImpl() {
+            super();
+        }
+
+        @Override
+        protected Class<Object> getActualValueClass() {
+            return Object.class;
+        }
+
+    }
+
 }
