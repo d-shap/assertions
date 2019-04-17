@@ -24,7 +24,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntToShortValueConverter}.
@@ -59,10 +58,10 @@ public final class IntToShortValueConverterTest extends AssertionTest {
     /**
      * {@link IntToShortValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new IntToShortValueConverter().convert(0)).isInstanceOf(Short.class);
         Assertions.assertThat(new IntToShortValueConverter().convert(0), Raw.shortAssertion()).isEqualTo(0);
         Assertions.assertThat(new IntToShortValueConverter().convert(0)).as(Raw.shortAssertion()).isEqualTo(0);
@@ -95,30 +94,30 @@ public final class IntToShortValueConverterTest extends AssertionTest {
     /**
      * {@link IntToShortValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new IntToShortValueConverter().convert(null);
     }
 
     /**
      * {@link IntToShortValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new IntToShortValueConverter().convert(new Object());
     }
 
     /**
      * {@link IntToShortValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConversionException {
+    public void convertWrongArgumentCountFailTest() throws Exception {
         new IntToShortValueConverter().convert(0, new Object());
     }
 

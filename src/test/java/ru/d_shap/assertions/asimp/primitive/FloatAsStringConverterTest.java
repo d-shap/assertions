@@ -23,7 +23,6 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link FloatAsStringConverter}.
@@ -50,10 +49,10 @@ public final class FloatAsStringConverterTest extends AssertionTest {
     /**
      * {@link FloatAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws ConversionException {
+    public void asStringTest() throws Exception {
         Assertions.assertThat(new FloatAsStringConverter().asString(0.99f)).isEqualTo("0.99f");
         Assertions.assertThat(new FloatAsStringConverter().asString(1.0f)).isEqualTo("1.0f");
         Assertions.assertThat(new FloatAsStringConverter().asString(5000.0f)).isEqualTo("5000.0f");
@@ -73,20 +72,20 @@ public final class FloatAsStringConverterTest extends AssertionTest {
     /**
      * {@link FloatAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConversionException {
+    public void asStringNullValueFailTest() throws Exception {
         new FloatAsStringConverter().asString(null);
     }
 
     /**
      * {@link FloatAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConversionException {
+    public void asStringWrongValueTypeFailTest() throws Exception {
         new FloatAsStringConverter().asString(new Object());
     }
 

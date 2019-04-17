@@ -23,7 +23,6 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link BooleanAsStringConverter}.
@@ -50,10 +49,10 @@ public final class BooleanAsStringConverterTest extends AssertionTest {
     /**
      * {@link BooleanAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws ConversionException {
+    public void asStringTest() throws Exception {
         Assertions.assertThat(new BooleanAsStringConverter().asString(true)).isEqualTo("T");
         Assertions.assertThat(new BooleanAsStringConverter().asString(Boolean.TRUE)).isEqualTo("T");
         Assertions.assertThat(new BooleanAsStringConverter().asString(false)).isEqualTo("F");
@@ -63,20 +62,20 @@ public final class BooleanAsStringConverterTest extends AssertionTest {
     /**
      * {@link BooleanAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConversionException {
+    public void asStringNullValueFailTest() throws Exception {
         new BooleanAsStringConverter().asString(null);
     }
 
     /**
      * {@link BooleanAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConversionException {
+    public void asStringWrongValueTypeFailTest() throws Exception {
         new BooleanAsStringConverter().asString(new Object());
     }
 

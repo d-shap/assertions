@@ -24,7 +24,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntToByteValueConverter}.
@@ -59,10 +58,10 @@ public final class IntToByteValueConverterTest extends AssertionTest {
     /**
      * {@link IntToByteValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new IntToByteValueConverter().convert(0)).isInstanceOf(Byte.class);
         Assertions.assertThat(new IntToByteValueConverter().convert(0), Raw.byteAssertion()).isEqualTo(0);
         Assertions.assertThat(new IntToByteValueConverter().convert(0)).as(Raw.byteAssertion()).isEqualTo(0);
@@ -95,30 +94,30 @@ public final class IntToByteValueConverterTest extends AssertionTest {
     /**
      * {@link IntToByteValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new IntToByteValueConverter().convert(null);
     }
 
     /**
      * {@link IntToByteValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new IntToByteValueConverter().convert(new Object());
     }
 
     /**
      * {@link IntToByteValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws ConversionException {
+    public void convertWrongArgumentCountFailTest() throws Exception {
         new IntToByteValueConverter().convert(0, new Object());
     }
 
