@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,9 +48,6 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
-
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 
 /**
  * Base class for all tests.
@@ -149,99 +147,6 @@ public class AssertionTest {
         } catch (NoSuchFieldException | IllegalAccessException ex) {
             throw new AssertionError(ex);
         }
-    }
-
-    /**
-     * Create the uninitialized base assertion.
-     *
-     * @return the uninitialized base assertion.
-     */
-    protected final BaseAssertion<Object> createBaseAssertion() {
-        return new BaseAssertionImpl();
-    }
-
-    /**
-     * Create the initialized base assertion with the actual value.
-     *
-     * @param actual the actual value.
-     *
-     * @return the initialized base assertion.
-     */
-    protected final BaseAssertion<Object> createBaseAssertion(final Object actual) {
-        return initialize(createBaseAssertion(), actual);
-    }
-
-    /**
-     * Create the initialized base assertion with the actual value and the message.
-     *
-     * @param actual  the actual value.
-     * @param message the message.
-     *
-     * @return the initialized base assertion.
-     */
-    protected final BaseAssertion<Object> createBaseAssertion(final Object actual, final String message) {
-        return initialize(createBaseAssertion(), actual, message);
-    }
-
-    /**
-     * Create the uninitialized reference assertion.
-     *
-     * @return the uninitialized reference assertion.
-     */
-    protected final ReferenceAssertion<Object> createReferenceAssertion() {
-        return new ReferenceAssertionImpl();
-    }
-
-    /**
-     * Create the initialized reference assertion with the actual value.
-     *
-     * @param actual the actual value.
-     *
-     * @return the initialized reference assertion.
-     */
-    protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
-        return initialize(createReferenceAssertion(), actual);
-    }
-
-    /**
-     * Create the initialized reference assertion with the actual value and the message.
-     *
-     * @param actual  the actual value.
-     * @param message the message.
-     *
-     * @return the initialized reference assertion.
-     */
-    protected final ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
-        return initialize(createReferenceAssertion(), actual, message);
-    }
-
-    /**
-     * Create the actual value validator.
-     *
-     * @param valid true if the value is valid.
-     *
-     * @return the actual value validator.
-     */
-    protected final BaseActualValueValidator createActualValueValidator(final boolean valid) {
-        return new BaseActualValueValidatorImpl(valid);
-    }
-
-    /**
-     * Create the value converter.
-     *
-     * @return the value converter.
-     */
-    protected final BaseValueConverter createValueConverter() {
-        return new BaseValueConverterImpl();
-    }
-
-    /**
-     * Create the value to string converter.
-     *
-     * @return the value to string converter.
-     */
-    protected final BaseAsStringConverter createAsStringConverter() {
-        return new BaseAsStringConverterImpl();
     }
 
     /**
@@ -1187,48 +1092,6 @@ public class AssertionTest {
     }
 
     /**
-     * Get the formatted message.
-     *
-     * @param message         the message.
-     * @param arguments       the message arguments.
-     * @param checkLastSymbol true to check the last symbol.
-     *
-     * @return the formatted message.
-     */
-    protected final List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
-        FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
-        return getFormattedMessages(failDescriptionEntry);
-    }
-
-    /**
-     * Get the formatted message.
-     *
-     * @param failDescriptionEntry the fail description entry.
-     *
-     * @return the formatted message.
-     */
-    protected final List<String> getFormattedMessages(final FailDescriptionEntry failDescriptionEntry) {
-        List<String> formattedMessages = new ArrayList<>();
-        failDescriptionEntry.addFormattedMessage(formattedMessages);
-        return formattedMessages;
-    }
-
-    /**
-     * Get the fail description entries for the fail description values.
-     *
-     * @param failDescriptionValues the fail description values
-     *
-     * @return the fail description entries
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
-     */
-    protected final List<FailDescriptionEntry> getFailDescriptionEntries(final FailDescriptionValues failDescriptionValues) throws ConversionException {
-        List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
-        failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
-        return failDescriptionEntries;
-    }
-
-    /**
      * Create the input stream.
      *
      * @return the input stream.
@@ -1247,175 +1110,12 @@ public class AssertionTest {
     }
 
     /**
-     * Create the class A instance.
+     * Create the buffered reader.
      *
-     * @return the class A instance.
+     * @return the buffered reader.
      */
-    protected final ClassA createClassA() {
-        return new ClassA();
-    }
-
-    /**
-     * Create the class B instance.
-     *
-     * @return the class B instance.
-     */
-    protected final ClassB createClassB() {
-        return new ClassB();
-    }
-
-    /**
-     * Create the class C instance.
-     *
-     * @return the class C instance.
-     */
-    protected final ClassC createClassC() {
-        return new ClassC();
-    }
-
-    /**
-     * Create hamcrest matcher for the class A.
-     *
-     * @return hamcrest matcher for the class A.
-     */
-    protected final MatcherA createMatcherA() {
-        return new MatcherA();
-    }
-
-    /**
-     * Create hamcrest matcher for the class B.
-     *
-     * @return hamcrest matcher for the class B.
-     */
-    protected final MatcherB createMatcherB() {
-        return new MatcherB();
-    }
-
-    /**
-     * Create hamcrest matcher for the class C.
-     *
-     * @return hamcrest matcher for the class C.
-     */
-    protected final MatcherC createMatcherC() {
-        return new MatcherC();
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class BaseAssertionImpl extends BaseAssertion<Object> {
-
-        BaseAssertionImpl() {
-            super();
-        }
-
-        @Override
-        protected Class<Object> getActualValueClass() {
-            return Object.class;
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
-
-        ReferenceAssertionImpl() {
-            super();
-        }
-
-        @Override
-        protected Class<Object> getActualValueClass() {
-            return Object.class;
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class BaseActualValueValidatorImpl extends BaseActualValueValidator {
-
-        private final boolean _valid;
-
-        BaseActualValueValidatorImpl(final boolean valid) {
-            super();
-            _valid = valid;
-        }
-
-        @Override
-        protected boolean isValid(final Object actual) {
-            return _valid;
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class BaseValueConverterImpl extends BaseValueConverter {
-
-        BaseValueConverterImpl() {
-            super();
-        }
-
-        @Override
-        protected Class<?> getValueClass() {
-            return Object.class;
-        }
-
-        @Override
-        protected Class<?> getTargetClass() {
-            return Object.class;
-        }
-
-        @Override
-        protected void checkArguments(final Object... arguments) {
-            // Ignore
-        }
-
-        @Override
-        protected boolean canConvertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-            return true;
-        }
-
-        @Override
-        protected Object convertToTargetClass(final Object value, final Object... arguments) throws ConversionException {
-            return value;
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    private static final class BaseAsStringConverterImpl extends BaseAsStringConverter {
-
-        BaseAsStringConverterImpl() {
-            super();
-        }
-
-        @Override
-        protected Class<?> getValueClass() {
-            return Object.class;
-        }
-
-        @Override
-        protected String convertToString(final Object value) throws ConversionException {
-            return convertValueToString(value);
-        }
-
+    protected final BufferedReader createErrorBufferedReader() {
+        return new BufferedReader(createErrorReader());
     }
 
     /**
@@ -1520,6 +1220,8 @@ public class AssertionTest {
 
         private final Reader _reader;
 
+        private final BufferedReader _bufferedReader;
+
         private final ByteBuffer _byteBuffer;
 
         private final ShortBuffer _shortBuffer;
@@ -1576,6 +1278,7 @@ public class AssertionTest {
             _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
             _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
             _reader = new StringReader("123");
+            _bufferedReader = new BufferedReader(new StringReader("1\n2\n3"));
             _byteBuffer = assertionTest.createByteBuffer(new byte[]{1, 2});
             _shortBuffer = assertionTest.createShortBuffer(new short[]{1, 2});
             _intBuffer = assertionTest.createIntBuffer(new int[]{1, 2});
@@ -1954,114 +1657,6 @@ public class AssertionTest {
         @Override
         public void close() throws IOException {
             // Ignore
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static class ClassA {
-
-        ClassA() {
-            super();
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static class ClassB extends ClassA {
-
-        ClassB() {
-            super();
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static class ClassC extends ClassB {
-
-        ClassC() {
-            super();
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static final class MatcherA extends TypeSafeMatcher<ClassA> {
-
-        MatcherA() {
-            super();
-        }
-
-        @Override
-        protected boolean matchesSafely(final ClassA classA) {
-            return true;
-        }
-
-        @Override
-        public void describeTo(final Description description) {
-
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static final class MatcherB extends TypeSafeMatcher<ClassB> {
-
-        MatcherB() {
-            super();
-        }
-
-        @Override
-        protected boolean matchesSafely(final ClassB classB) {
-            return true;
-        }
-
-        @Override
-        public void describeTo(final Description description) {
-
-        }
-
-    }
-
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
-    public static final class MatcherC extends TypeSafeMatcher<ClassC> {
-
-        MatcherC() {
-            super();
-        }
-
-        @Override
-        protected boolean matchesSafely(final ClassC classB) {
-            return true;
-        }
-
-        @Override
-        public void describeTo(final Description description) {
-
         }
 
     }
