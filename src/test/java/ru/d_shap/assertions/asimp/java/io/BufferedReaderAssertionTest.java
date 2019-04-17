@@ -99,13 +99,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).isCompleted();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).isCompleted();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").isCompleted();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").isCompleted();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -154,13 +154,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).isNotCompleted();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).isNotCompleted();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").isNotCompleted();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").isNotCompleted();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -205,13 +205,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toCharArray();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toCharArray();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toCharArray();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toCharArray();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -307,13 +307,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toCharArray(3);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toCharArray(3);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toCharArray(3);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toCharArray(3);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -394,13 +394,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toCharArray(Matchers.arrayContaining((char) 0));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toCharArray(Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toCharArray(Matchers.arrayContaining((char) 0));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toCharArray(Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -508,13 +508,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toCharArray(3, Matchers.arrayContaining((char) 0));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toCharArray(3, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toCharArray(3, Matchers.arrayContaining((char) 0));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toCharArray(3, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -560,13 +560,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toStringArray();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toStringArray();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toStringArray();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toStringArray();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -667,13 +667,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toStringArray(3);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toStringArray(3);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toStringArray(3);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toStringArray(3);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -755,13 +755,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toStringArray(Matchers.arrayContaining(""));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toStringArray(Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toStringArray(Matchers.arrayContaining(""));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toStringArray(Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -874,13 +874,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toStringArray(3, Matchers.arrayContaining(""));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toStringArray(3, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toStringArray(3, Matchers.arrayContaining(""));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toStringArray(3, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -1940,13 +1940,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLength();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toLength();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLength();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toLength();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -2054,13 +2054,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLength(Matchers.equalTo(0L));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toLength(Matchers.equalTo(0L));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLength(Matchers.equalTo(0L));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toLength(Matchers.equalTo(0L));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -2144,13 +2144,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).hasLength(0L);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).hasLength(0L);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").hasLength(0L);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").hasLength(0L);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -2235,13 +2235,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLinesLength();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toLinesLength();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLinesLength();
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toLinesLength();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -2350,13 +2350,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).toLinesLength(Matchers.equalTo(0L));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toLinesLength(Matchers.equalTo(0L));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").toLinesLength(Matchers.equalTo(0L));
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").toLinesLength(Matchers.equalTo(0L));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
@@ -2441,13 +2441,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader()).hasLinesLength(0L);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).hasLinesLength(0L);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            initialize(Raw.bufferedReaderAssertion(), createBufferedErrorReader(), "Message").hasLinesLength(0L);
+            initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader(), "Message").hasLinesLength(0L);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
