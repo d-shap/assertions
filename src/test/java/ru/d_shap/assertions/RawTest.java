@@ -495,6 +495,20 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
+    public void bufferedReaderAssertionTest() {
+        initialize(Raw.bufferedReaderAssertion(), null).isNull();
+        try {
+            Raw.bufferedReaderAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
     public void byteBufferAssertionTest() {
         initialize(Raw.byteBufferAssertion(), null).isNull();
         try {
