@@ -26,7 +26,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntBufferToIntArrayValueConverter}.
@@ -61,10 +60,10 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
     /**
      * {@link IntBufferToIntArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}))).isInstanceOf(int[].class);
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{})), Raw.intArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}))).as(Raw.intArrayAssertion()).containsExactlyInOrder();
@@ -277,40 +276,40 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
     /**
      * {@link IntBufferToIntArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new IntBufferToIntArrayValueConverter().convert(null);
     }
 
     /**
      * {@link IntBufferToIntArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new IntBufferToIntArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link IntBufferToIntArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), new Object(), new Object());
     }
 
     /**
      * {@link IntBufferToIntArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), new Object());
     }
 

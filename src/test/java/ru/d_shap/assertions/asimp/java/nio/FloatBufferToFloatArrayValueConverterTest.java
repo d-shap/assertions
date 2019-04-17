@@ -26,7 +26,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link FloatBufferToFloatArrayValueConverter}.
@@ -61,10 +60,10 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
     /**
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}))).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{})), Raw.floatArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}))).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
@@ -277,40 +276,40 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
     /**
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new FloatBufferToFloatArrayValueConverter().convert(null);
     }
 
     /**
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new FloatBufferToFloatArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), new Object(), new Object());
     }
 
     /**
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), new Object());
     }
 

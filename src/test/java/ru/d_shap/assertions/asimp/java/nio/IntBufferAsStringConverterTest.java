@@ -25,7 +25,6 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IntBufferAsStringConverter}.
@@ -52,10 +51,10 @@ public final class IntBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws ConversionException {
+    public void asStringTest() throws Exception {
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{}))).isEqualTo("[]");
 
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1}))).isEqualTo("[1]");
@@ -78,20 +77,20 @@ public final class IntBufferAsStringConverterTest extends AssertionTest {
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws ConversionException {
+    public void asStringNullValueFailTest() throws Exception {
         new IntBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link IntBufferAsStringConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws ConversionException {
+    public void asStringWrongValueTypeFailTest() throws Exception {
         new IntBufferAsStringConverter().asString(new Object());
     }
 

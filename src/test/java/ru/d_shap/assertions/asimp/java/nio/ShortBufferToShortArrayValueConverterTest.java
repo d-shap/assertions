@@ -26,7 +26,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link ShortBufferToShortArrayValueConverter}.
@@ -61,10 +60,10 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}))).isInstanceOf(short[].class);
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{})), Raw.shortArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}))).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
@@ -277,40 +276,40 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new ShortBufferToShortArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new ShortBufferToShortArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), new Object(), new Object());
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), new Object());
     }
 
