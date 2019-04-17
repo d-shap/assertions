@@ -26,7 +26,6 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link FailDescriptionValues}.
@@ -45,10 +44,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryNullValueClassTest() throws ConversionException {
+    public void addFailDescriptionEntryNullValueClassTest() throws Exception {
         FailDescriptionValues failDescriptionValues01 = new FailDescriptionValues(null, null);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues01)).containsExactlyInOrder();
 
@@ -100,10 +99,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryTest() throws ConversionException {
+    public void addFailDescriptionEntryTest() throws Exception {
         FailDescriptionValues failDescriptionValues = new FailDescriptionValues(String.class, null);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues)).containsExactlyInOrder();
     }
@@ -111,10 +110,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryExpectedTest() throws ConversionException {
+    public void addFailDescriptionEntryExpectedTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null>");
@@ -145,10 +144,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryExpected2Test() throws ConversionException {
+    public void addFailDescriptionEntryExpected2Test() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null, null);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null:null>");
@@ -179,10 +178,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryActualTest() throws ConversionException {
+    public void addFailDescriptionEntryActualTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<null>");
@@ -195,10 +194,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryActualAndExpectedTest() throws ConversionException {
+    public void addFailDescriptionEntryActualAndExpectedTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null);
@@ -235,10 +234,10 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     /**
      * {@link FailDescriptionValues} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFailDescriptionEntryActualAndExpected2Test() throws ConversionException {
+    public void addFailDescriptionEntryActualAndExpected2Test() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null, null);
@@ -272,7 +271,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
     }
 
-    private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws ConversionException {
+    private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws Exception {
         List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
         failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
         List<String> formattedMessages = new ArrayList<>();
