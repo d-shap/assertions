@@ -28,7 +28,6 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link IteratorToListValueConverter}.
@@ -63,10 +62,10 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
     /**
      * {@link IteratorToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws ConversionException {
+    public void convertTest() throws Exception {
         List<String> list = new ArrayList<>();
 
         Assertions.assertThat(new IteratorToListValueConverter().convert(list.iterator())).isInstanceOf(List.class);
@@ -161,40 +160,40 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
     /**
      * {@link IteratorToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws ConversionException {
+    public void convertNullValueFailTest() throws Exception {
         new IteratorToListValueConverter().convert(null);
     }
 
     /**
      * {@link IteratorToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws ConversionException {
+    public void convertWrongValueTypeFailTest() throws Exception {
         new IteratorToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link IteratorToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws ConversionException {
+    public void convertWrongArgumentCount2FailTest() throws Exception {
         new IteratorToListValueConverter().convert(new ArrayList<String>().iterator(), new Object(), new Object());
     }
 
     /**
      * {@link IteratorToListValueConverter} class test.
      *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
+     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws ConversionException {
+    public void convertWrongArgumentTypeFailTest() throws Exception {
         new IteratorToListValueConverter().convert(new ArrayList<String>().iterator(), new Object());
     }
 
