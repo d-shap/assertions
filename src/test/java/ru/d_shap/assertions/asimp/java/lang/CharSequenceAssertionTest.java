@@ -1555,6 +1555,18 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
+            initialize(Raw.charSequenceAssertion(), "").isInRange(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "", "Message").isInRange(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
             initialize(Raw.charSequenceAssertion(), "").isInRange("value", null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -1683,6 +1695,18 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charSequenceAssertion(), "", "Message").isInRangeIgnoreCase(null, "value");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "").isInRangeIgnoreCase(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "", "Message").isInRangeIgnoreCase(null, null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
@@ -1818,6 +1842,18 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
+            initialize(Raw.charSequenceAssertion(), "").isNotInRange(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "", "Message").isNotInRange(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
             initialize(Raw.charSequenceAssertion(), "").isNotInRange("value", null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -1941,6 +1977,18 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charSequenceAssertion(), "", "Message").isNotInRangeIgnoreCase(null, "value");
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "").isNotInRangeIgnoreCase(null, null);
+            Assertions.fail("CharSequenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.charSequenceAssertion(), "", "Message").isNotInRangeIgnoreCase(null, null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
