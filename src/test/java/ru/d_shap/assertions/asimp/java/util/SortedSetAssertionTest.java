@@ -432,25 +432,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             clearActual(initialize(Raw.sortedSetAssertion(), createTreeSet()).toHeadSet(1)).containsExactlyInOrder("val");
@@ -575,13 +575,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet("val", null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet("val", null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val3", Matchers.hasItems("val4", "val5"));
@@ -643,49 +643,49 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(1, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(1, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(3, Matchers.hasItems("val4", "val6"));
@@ -859,25 +859,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             clearActual(initialize(Raw.sortedSetAssertion(), createTreeSet()).toTailSet(1)).containsExactlyInOrder("val");
@@ -1002,13 +1002,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet("val", null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet("val", null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val3", Matchers.hasItems("val1", "val2"));
@@ -1070,49 +1070,49 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(1, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(1, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(3, Matchers.hasItems("val4", "val6"));
@@ -1199,25 +1199,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAll((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAll((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAll();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAll();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
@@ -1310,25 +1310,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAll((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAll(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val6"));
@@ -1408,25 +1408,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAllInOrder((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAllInOrder();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAllInOrder();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
@@ -1518,25 +1518,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val6"));
@@ -1618,13 +1618,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsExactly((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsExactly((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
@@ -1730,13 +1730,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsExactly((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
@@ -1826,13 +1826,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsExactlyInOrder((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
@@ -1934,13 +1934,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2"));
@@ -2031,25 +2031,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAny((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAny((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAny();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAny();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
@@ -2128,25 +2128,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAny((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsAny(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val4", "val5", "val6"));
@@ -2212,25 +2212,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsNone((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsNone((String[]) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsNone();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsNone();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone("val4", "val2");
@@ -2308,25 +2308,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsNone((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).containsNone(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val2"));
@@ -2452,13 +2452,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toSize(null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toSize(null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3")).toSize(Matchers.equalTo(4));

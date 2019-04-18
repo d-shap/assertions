@@ -430,25 +430,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
@@ -541,25 +541,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val6"));
@@ -640,25 +640,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
@@ -751,25 +751,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val6"));
@@ -851,13 +851,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
@@ -963,13 +963,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
@@ -1059,13 +1059,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
@@ -1167,13 +1167,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2"));
@@ -1264,25 +1264,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
@@ -1361,25 +1361,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny(Arrays.asList("val4", "val5", "val6"));
@@ -1446,25 +1446,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val2");
@@ -1542,25 +1542,25 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val2"));
@@ -1686,13 +1686,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>()).toSize(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").toSize(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize(Matchers.equalTo(4));

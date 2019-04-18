@@ -346,25 +346,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAll((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAll((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAll();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAll();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
@@ -469,25 +469,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAll((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAll(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val6"));
@@ -568,25 +568,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAllInOrder((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAllInOrder();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAllInOrder();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
@@ -690,25 +690,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val6"));
@@ -791,13 +791,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsExactly((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsExactly((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
@@ -915,13 +915,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsExactly((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
@@ -1012,13 +1012,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsExactlyInOrder((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
@@ -1132,13 +1132,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2"));
@@ -1231,25 +1231,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAny((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAny((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAny();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAny();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
@@ -1328,25 +1328,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAny((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsAny(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsAny(Arrays.asList("val4", "val5", "val6"));
@@ -1413,25 +1413,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsNone((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsNone((String[]) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsNone();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsNone();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsNone("val4", "val2");
@@ -1509,25 +1509,25 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsNone((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("")).containsNone(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val2"));
@@ -1653,13 +1653,13 @@ public final class SetAssertionTest extends AssertionTest {
             initialize(Raw.<String>setAssertion(), createHashSet("")).toSize(null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet(""), "Message").toSize(null);
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).toSize(Matchers.equalTo(4));
