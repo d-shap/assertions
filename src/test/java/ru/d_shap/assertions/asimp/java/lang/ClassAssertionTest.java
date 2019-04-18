@@ -113,13 +113,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isEqualTo(Integer.class);
@@ -177,13 +177,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isNotEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isNotEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isNotEqualTo(String.class);
@@ -247,13 +247,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isSubtypeOf(Integer.class);
@@ -352,13 +352,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isNotSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isNotSubtypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Integer.class).isNotSubtypeOf(Integer.class);
@@ -458,13 +458,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isSupertypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isSupertypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isSupertypeOf(Integer.class);
@@ -563,13 +563,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).isNotSupertypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isNotSupertypeOf(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Integer.class).isNotSupertypeOf(Integer.class);
@@ -999,13 +999,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object[].class).toComponentType(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.classAssertion(), Object[].class, "Message").toComponentType(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class).toComponentType(Matchers.is(Matchers.equalTo(Object.class)));
@@ -1079,13 +1079,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object[].class).hasComponentType(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object[].class, "Message").hasComponentType(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), Object.class).hasComponentType(Object.class);
