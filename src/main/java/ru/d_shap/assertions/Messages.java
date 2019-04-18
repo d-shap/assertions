@@ -156,7 +156,7 @@ public final class Messages {
 
             public static final String RESULT_IS_ALWAYS_FALSE = "The result is always false.";
 
-            public static final String GREATER_THEN_ZERO = "The value should be greater then zero.";
+            public static final String GREATER_THAN_ZERO = "The argument's value should be greater than zero.";
 
             private Argument() {
                 super();
@@ -183,21 +183,21 @@ public final class Messages {
 
             public static final String IS_DIFFERENT_IGNORE_CASE = "Actual and expected values should be different ignoring case.";
 
-            public static final String IS_GREATER = "Actual value should be greater then the expected.";
+            public static final String IS_GREATER = "Actual value should be greater than the expected.";
 
-            public static final String IS_GREATER_IGNORE_CASE = "Actual value should be greater then the expected ignoring case.";
+            public static final String IS_GREATER_IGNORE_CASE = "Actual value should be greater than the expected ignoring case.";
 
-            public static final String IS_GREATER_OR_EQUAL = "Actual value should be greater then or equal to the expected.";
+            public static final String IS_GREATER_OR_EQUAL = "Actual value should be greater than or equal to the expected.";
 
-            public static final String IS_GREATER_OR_EQUAL_IGNORE_CASE = "Actual value should be greater then or equal to the expected ignoring case.";
+            public static final String IS_GREATER_OR_EQUAL_IGNORE_CASE = "Actual value should be greater than or equal to the expected ignoring case.";
 
-            public static final String IS_LESS = "Actual value should be less then the expected.";
+            public static final String IS_LESS = "Actual value should be less than the expected.";
 
-            public static final String IS_LESS_IGNORE_CASE = "Actual value should be less then the expected ignoring case.";
+            public static final String IS_LESS_IGNORE_CASE = "Actual value should be less than the expected ignoring case.";
 
-            public static final String IS_LESS_OR_EQUAL = "Actual value should be less then or equal to the expected.";
+            public static final String IS_LESS_OR_EQUAL = "Actual value should be less than or equal to the expected.";
 
-            public static final String IS_LESS_OR_EQUAL_IGNORE_CASE = "Actual value should be less then or equal to the expected ignoring case.";
+            public static final String IS_LESS_OR_EQUAL_IGNORE_CASE = "Actual value should be less than or equal to the expected ignoring case.";
 
             public static final String IS_IN_RANGE = "Actual value should be in the expected range.";
 
