@@ -137,8 +137,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsAll(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         List<?> list = convertValue(getActual(), List.class);
         List<?> listCopy = new ArrayList<>(list);
         for (Object expectedItem : expected) {
@@ -175,8 +175,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsAllInOrder(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         List<?> list = convertValue(getActual(), List.class);
         List<?> listCopy = new ArrayList<>(list);
         for (Object expectedItem : expected) {
@@ -213,7 +213,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsExactly(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<?> list = convertValue(getActual(), List.class);
         List<?> listCopy = new ArrayList<>(list);
         int elementCount = 0;
@@ -253,7 +253,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsExactlyInOrder(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<?> list = convertValue(getActual(), List.class);
         List<?> listCopy = new ArrayList<>(list);
         for (Object expectedItem : expected) {
@@ -293,8 +293,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsAny(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", false);
         List<?> list = convertValue(getActual(), List.class);
         boolean found = false;
         for (Object expectedItem : expected) {
@@ -333,8 +333,8 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     private void containsNone(final List<?> expected) {
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         List<?> list = convertValue(getActual(), List.class);
         for (Object expectedItem : expected) {
             int idx = list.indexOf(expectedItem);
@@ -362,7 +362,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      */
     public final void toSize(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), List.class);
         matcherAssertion(list.size(), matcher, Messages.Check.SIZE);
     }

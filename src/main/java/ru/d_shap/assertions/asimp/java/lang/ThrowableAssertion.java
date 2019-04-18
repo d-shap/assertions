@@ -61,7 +61,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void toMessage(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
     }
 
@@ -72,7 +72,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void hasMessage(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toMessage().isEqualTo(expected);
     }
 
@@ -83,7 +83,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void messageMatches(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toMessage().matches(expected);
     }
 
@@ -104,7 +104,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void toCause(final Matcher<Throwable> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);
     }
 
@@ -115,7 +115,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void hasCause(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toCause().isInstanceOf(expected);
     }
 
@@ -126,7 +126,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void hasCauseMessage(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toCause().hasMessage(expected);
     }
 
@@ -137,7 +137,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      */
     public final void causeMessageMatches(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toCause().messageMatches(expected);
     }
 

@@ -75,7 +75,7 @@ public class EnumAssertion extends ClassAssertion {
      */
     public final void toValueCount(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
     }
 

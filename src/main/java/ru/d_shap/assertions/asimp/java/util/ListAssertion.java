@@ -254,7 +254,7 @@ public class ListAssertion<E> extends ReferenceAssertion<List<E>> {
      */
     public final void toSize(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 

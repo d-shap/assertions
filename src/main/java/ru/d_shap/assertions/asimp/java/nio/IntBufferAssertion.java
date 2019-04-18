@@ -359,7 +359,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      */
     public final void toPosition(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
     }
 
@@ -389,7 +389,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      */
     public final void toLimit(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
     }
 
@@ -419,7 +419,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      */
     public final void toCapacity(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
     }
 
@@ -462,7 +462,7 @@ public class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      */
     public final void toRemaining(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
     }
 

@@ -467,7 +467,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      */
     public final void toPosition(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
     }
 
@@ -497,7 +497,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      */
     public final void toLimit(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
     }
 
@@ -527,7 +527,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      */
     public final void toCapacity(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
     }
 
@@ -570,7 +570,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      */
     public final void toRemaining(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
     }
 

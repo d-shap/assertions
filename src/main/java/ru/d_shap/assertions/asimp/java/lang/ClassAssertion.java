@@ -60,7 +60,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isEqualTo(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
@@ -73,7 +73,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isNotEqualTo(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -86,7 +86,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!expected.isAssignableFrom(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
@@ -99,7 +99,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isNotSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (expected.isAssignableFrom(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
@@ -112,7 +112,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().isAssignableFrom(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
@@ -125,7 +125,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void isNotSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().isAssignableFrom(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
@@ -190,7 +190,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     @SuppressWarnings("unchecked")
     public final <T> void toComponentType(final Matcher<Class<T>> matcher) {
         isArray();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
     }
 
@@ -201,7 +201,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void hasComponentType(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toComponentType().isEqualTo(expected);
     }
 

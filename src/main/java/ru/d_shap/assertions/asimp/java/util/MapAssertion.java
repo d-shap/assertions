@@ -106,7 +106,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void toKeys(final Matcher<Iterable<K>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
     }
 
@@ -136,8 +136,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsAllKeys(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toKeys().containsAll(expected);
     }
 
@@ -148,9 +148,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAllKeys(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toKeys().containsAll(expectedList);
     }
 
@@ -162,8 +162,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsAllKeysInOrder(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toKeys().containsAllInOrder(expected);
     }
 
@@ -174,9 +174,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAllKeysInOrder(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toKeys().containsAllInOrder(expectedList);
     }
 
@@ -188,7 +188,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsKeysExactly(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactly(expected);
     }
 
@@ -199,7 +199,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsKeysExactly(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactly(expected);
     }
 
@@ -211,7 +211,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsKeysExactlyInOrder(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactlyInOrder(expected);
     }
 
@@ -222,7 +222,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsKeysExactlyInOrder(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactlyInOrder(expected);
     }
 
@@ -234,8 +234,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsAnyKey(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", false);
         toKeys().containsAny(expected);
     }
 
@@ -246,9 +246,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAnyKey(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), false);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", false);
         toKeys().containsAny(expectedList);
     }
 
@@ -260,8 +260,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
     @SafeVarargs
     public final void containsNoKey(final K... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toKeys().containsNone(expected);
     }
 
@@ -272,9 +272,9 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsNoKey(final Iterable<K> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toKeys().containsNone(expectedList);
     }
 
@@ -295,7 +295,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void toValues(final Matcher<Iterable<V>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
     }
 
@@ -420,8 +420,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAll(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         for (K key : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(key);
@@ -530,8 +530,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAllInOrder(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         for (K key : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(key);
@@ -648,7 +648,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsExactly(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         int elementCount = 0;
         for (K key : expected.keySet()) {
@@ -768,7 +768,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsExactlyInOrder(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<K> actualKeysCopy = new ArrayList<>(getActual().keySet());
         for (K key : expected.keySet()) {
             int idx = actualKeysCopy.indexOf(key);
@@ -880,8 +880,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsAny(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", false);
         Set<K> actualKeys = getActual().keySet();
         boolean found = false;
         for (K key : expected.keySet()) {
@@ -992,8 +992,8 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void containsNone(final Map<K, V> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.isEmpty(), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.isEmpty(), "expected", true);
         Set<K> actualKeys = getActual().keySet();
         for (K key : expected.keySet()) {
             if (actualKeys.contains(key) && isValuesEqual(expected, key)) {
@@ -1025,7 +1025,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      */
     public final void toSize(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 

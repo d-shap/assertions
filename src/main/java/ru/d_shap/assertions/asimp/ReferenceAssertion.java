@@ -72,7 +72,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void isSameAs(final T expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
@@ -85,7 +85,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void isNotSameAs(final T expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -108,7 +108,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void toClass(final Matcher<Class<?>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getClass(), matcher, Messages.Check.CLASS);
     }
 
@@ -119,7 +119,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void hasClass(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toClass().isEqualTo(expected);
     }
 
@@ -130,7 +130,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void hasNotClass(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toClass().isNotEqualTo(expected);
     }
 
@@ -141,7 +141,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void isInstanceOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toClass().isSubtypeOf(expected);
     }
 
@@ -152,7 +152,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void isNotInstanceOf(final Class<?> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toClass().isNotSubtypeOf(expected);
     }
 
@@ -173,7 +173,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void toToString(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().toString(), matcher, Messages.Check.TO_STRING);
     }
 
@@ -184,7 +184,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void hasToString(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toToString().isEqualTo(expected);
     }
 
@@ -195,7 +195,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void toStringContains(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toToString().contains(expected);
     }
 
@@ -206,7 +206,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void toStringMatches(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toToString().matches(expected);
     }
 
@@ -227,7 +227,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final void toHashCode(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().hashCode(), matcher, Messages.Check.HASH_CODE);
     }
 
@@ -249,7 +249,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final ObjectAssertion toField(final String fieldName) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(fieldName);
+        checkArgumentIsNotNull(fieldName, "fieldName");
         try {
             Object fieldValue = getFieldValue(fieldName);
             return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
@@ -270,8 +270,8 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      */
     public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(fieldName);
-        checkArgumentIsNotNull(assertion);
+        checkArgumentIsNotNull(fieldName, "fieldName");
+        checkArgumentIsNotNull(assertion, "assertion");
         return toField(fieldName).as(assertion);
     }
 
@@ -284,8 +284,8 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     @SuppressWarnings("unchecked")
     public final void toField(final String fieldName, final Matcher<?> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(fieldName);
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(fieldName, "fieldName");
+        checkArgumentIsNotNull(matcher, "matcher");
         try {
             Object fieldValue = getFieldValue(fieldName);
             matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);

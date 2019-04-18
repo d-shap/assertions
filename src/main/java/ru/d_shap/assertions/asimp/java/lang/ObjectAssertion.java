@@ -48,7 +48,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      */
     public final void isEqualTo(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
@@ -61,7 +61,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      */
     public final void isNotEqualTo(final Object expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }

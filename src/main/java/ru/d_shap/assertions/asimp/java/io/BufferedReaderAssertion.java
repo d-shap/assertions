@@ -124,7 +124,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final ObjectArrayAssertion<String> toStringArray(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
+        checkArgumentIsValid(count > 0, "count");
         String[] nextStrings = convertValue(getActual(), String[].class, count);
         return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_COUNT, count);
     }
@@ -136,7 +136,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void toStringArray(final Matcher<String[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), String[].class);
         matcherAssertion(nextStrings, matcher, Messages.Check.LINES_ALL);
     }
@@ -149,8 +149,8 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void toStringArray(final int count, final Matcher<String[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), String[].class, count);
         matcherAssertion(nextStrings, matcher, Messages.Check.LINES_COUNT, count);
     }
@@ -234,8 +234,8 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void isNextLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toStringArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -246,9 +246,9 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void isNextLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toStringArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
@@ -259,7 +259,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void isAllLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toStringArray().containsExactlyInOrder(expected);
     }
 
@@ -270,7 +270,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void isAllLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, List.class);
         toStringArray().containsExactlyInOrder(expectedList);
     }
@@ -324,7 +324,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final void toLinesLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         try {
             long linesLength = getLinesLength();
             matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);

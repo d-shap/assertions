@@ -95,7 +95,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final ListAssertion<E> toList(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
+        checkArgumentIsValid(count > 0, "count");
         List<E> list = convertValue(getActual(), List.class, count);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_COUNT, count);
     }
@@ -107,7 +107,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void toList(final Matcher<Iterable<E>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), List.class);
         matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL);
     }
@@ -120,8 +120,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void toList(final int count, final Matcher<Iterable<E>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), List.class, count);
         matcherAssertion(list, matcher, Messages.Check.ELEMENTS_COUNT, count);
     }
@@ -166,8 +166,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void isNextElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toList(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -178,9 +178,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void isNextElementsEqualTo(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toList(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
@@ -229,8 +229,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsAll(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toList().containsAll(expected);
     }
 
@@ -241,9 +241,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsAll(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toList().containsAll(expectedList);
     }
 
@@ -255,8 +255,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsAllInOrder(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toList().containsAllInOrder(expected);
     }
 
@@ -267,9 +267,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsAllInOrder(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toList().containsAllInOrder(expectedList);
     }
 
@@ -281,7 +281,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsExactly(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toList().containsExactly(expected);
     }
 
@@ -292,7 +292,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsExactly(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toList().containsExactly(expected);
     }
 
@@ -304,7 +304,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsExactlyInOrder(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toList().containsExactlyInOrder(expected);
     }
 
@@ -315,7 +315,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsExactlyInOrder(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toList().containsExactlyInOrder(expected);
     }
 
@@ -327,8 +327,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsAny(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", false);
         toList().containsAny(expected);
     }
 
@@ -339,9 +339,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsAny(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), false);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", false);
         toList().containsAny(expectedList);
     }
 
@@ -353,8 +353,8 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     @SafeVarargs
     public final void containsNone(final E... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toList().containsNone(expected);
     }
 
@@ -365,9 +365,9 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void containsNone(final Iterable<E> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toList().containsNone(expectedList);
     }
 
@@ -387,7 +387,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final void toSize(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         toList().toSize(matcher);
     }
 

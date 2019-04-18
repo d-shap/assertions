@@ -130,7 +130,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().toString().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
@@ -143,7 +143,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().toString().equalsIgnoreCase(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_IGNORE_CASE).addActual().addExpected(expected).build();
         }
@@ -156,7 +156,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().equals(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -169,7 +169,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().equalsIgnoreCase(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_IGNORE_CASE).addActual().build();
         }
@@ -182,8 +182,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isGreaterThan(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (getActual().toString().compareTo(expected) <= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
@@ -196,8 +196,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isGreaterThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (getActual().toString().compareToIgnoreCase(expected) <= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_IGNORE_CASE).addActual().addExpected(expected).build();
         }
@@ -210,7 +210,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isGreaterThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareTo(expected) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -223,7 +223,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isGreaterThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareToIgnoreCase(expected) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
@@ -236,8 +236,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isLessThan(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().compareTo(expected) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
@@ -250,8 +250,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isLessThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().compareToIgnoreCase(expected) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_IGNORE_CASE).addActual().addExpected(expected).build();
         }
@@ -264,7 +264,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isLessThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareTo(expected) > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -277,7 +277,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isLessThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareToIgnoreCase(expected) > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
@@ -291,9 +291,9 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo), false);
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        checkArgumentIsNotEmpty("".equals(expectedTo), "expectedTo", false);
         if (getActual().toString().compareTo(expectedFrom) < 0 || getActual().toString().compareTo(expectedTo) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -307,9 +307,9 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo), false);
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        checkArgumentIsNotEmpty("".equals(expectedTo), "expectedTo", false);
         if (getActual().toString().compareToIgnoreCase(expectedFrom) < 0 || getActual().toString().compareToIgnoreCase(expectedTo) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -323,9 +323,9 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo), true);
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        checkArgumentIsNotEmpty("".equals(expectedTo), "expectedTo", true);
         if (getActual().toString().compareTo(expectedFrom) >= 0 && getActual().toString().compareTo(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -339,9 +339,9 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom);
-        checkArgumentIsNotNull(expectedTo);
-        checkArgumentIsNotEmpty("".equals(expectedTo), true);
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        checkArgumentIsNotEmpty("".equals(expectedTo), "expectedTo", true);
         if (getActual().toString().compareToIgnoreCase(expectedFrom) >= 0 && getActual().toString().compareToIgnoreCase(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -354,8 +354,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void contains(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
         }
@@ -368,8 +368,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void containsIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (!matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -383,8 +383,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotContain(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
@@ -397,8 +397,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotContainIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -412,7 +412,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isPartOf(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!expected.contains(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_PART_OF).addActual().addExpected(expected).build();
         }
@@ -425,7 +425,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -439,7 +439,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotPartOf(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (expected.contains(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_PART_OF).addActual().addExpected(expected).build();
         }
@@ -452,7 +452,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void isNotPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -466,7 +466,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void matches(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (!getActual().toString().matches(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.MATCHES).addActual().addExpected(expected).build();
         }
@@ -479,7 +479,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotMatch(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().matches(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_MATCH).addActual().addExpected(expected).build();
         }
@@ -492,8 +492,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void startsWith(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().startsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.STARTS_WITH).addActual().addExpected(expected).build();
         }
@@ -506,8 +506,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void startsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (!matcher.find() || matcher.start() != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.STARTS_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -521,8 +521,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotStartWith(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().startsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_START_WITH).addActual().addExpected(expected).build();
         }
@@ -535,8 +535,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotStartWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         if (matcher.find() && matcher.start() == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_START_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
@@ -550,8 +550,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void endsWith(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().endsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.ENDS_WITH).addActual().addExpected(expected).build();
         }
@@ -564,8 +564,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void endsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         int lastIndexStart = 0;
         int lastIndexEnd = -1;
@@ -585,8 +585,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotEndWith(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().endsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_END_WITH).addActual().addExpected(expected).build();
         }
@@ -599,8 +599,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void doesNotEndWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty("".equals(expected), false);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         Matcher matcher = Pattern.compile(expected, PATTERN_FLAGS).matcher(getActual());
         int lastIndexStart = 0;
         int lastIndexEnd = -1;
@@ -630,7 +630,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toLength(final org.hamcrest.Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length(), matcher, Messages.Check.LENGTH);
     }
 
@@ -663,7 +663,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final ListAssertion<String> toTokens(final String delimiters) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(delimiters);
+        checkArgumentIsNotNull(delimiters, "delimiters");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
         return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.TOKENS);
     }
@@ -678,7 +678,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final ListAssertion<String> toTokens(final String delimiters, final boolean returnDelimiters) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(delimiters);
+        checkArgumentIsNotNull(delimiters, "delimiters");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
         return initializeAssertion(Raw.<String>listAssertion(), getTokens(stringTokenizer), Messages.Check.TOKENS);
     }
@@ -690,7 +690,7 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toTokens(final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
@@ -703,8 +703,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toTokens(final String delimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
-        checkArgumentIsNotNull(delimiters);
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(delimiters, "delimiters");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
@@ -718,8 +718,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toTokens(final String delimiters, final boolean returnDelimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
-        checkArgumentIsNotNull(delimiters);
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(delimiters, "delimiters");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }

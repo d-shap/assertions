@@ -101,7 +101,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final ByteArrayAssertion toByteArray(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
+        checkArgumentIsValid(count > 0, "count");
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_COUNT, count);
     }
@@ -113,7 +113,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void toByteArray(final Matcher<Byte[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), byte[].class);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_ALL);
@@ -127,8 +127,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_COUNT, count);
@@ -150,8 +150,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -162,8 +162,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -174,9 +174,9 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isNextBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toByteArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
@@ -187,7 +187,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
     }
 
@@ -198,7 +198,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
     }
 
@@ -209,7 +209,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void isAllBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, List.class);
         toByteArray().containsExactlyInOrder(expectedList);
     }
@@ -236,7 +236,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void toAvailable(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         try {
             int available = getActual().available();
             matcherAssertion(available, matcher, Messages.Check.AVAILABLE);
@@ -276,7 +276,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void toLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         try {
             long length = getLength();
             matcherAssertion(length, matcher, Messages.Check.LENGTH);

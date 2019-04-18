@@ -100,7 +100,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final CharArrayAssertion toCharArray(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
+        checkArgumentIsValid(count > 0, "count");
         char[] nextChars = convertValue(getActual(), char[].class, count);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
     }
@@ -112,7 +112,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void toCharArray(final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), char[].class);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
@@ -126,8 +126,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0);
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), char[].class, count);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
@@ -149,8 +149,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -161,8 +161,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
-        checkArgumentIsNotEmpty(expected.length == 0, true);
+        checkArgumentIsNotNull(expected, "expected");
+        checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
     }
 
@@ -173,9 +173,9 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isNextCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, List.class);
-        checkArgumentIsNotEmpty(expectedList.isEmpty(), true);
+        checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
 
@@ -186,7 +186,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
     }
 
@@ -197,7 +197,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
     }
 
@@ -208,7 +208,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void isAllCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected);
+        checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, List.class);
         toCharArray().containsExactlyInOrder(expectedList);
     }
@@ -235,7 +235,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void toLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         try {
             long length = getLength();
             matcherAssertion(length, matcher, Messages.Check.LENGTH);

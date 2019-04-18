@@ -239,7 +239,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      */
     public final void toSize(final Matcher<Integer> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher);
+        checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
     }
 
