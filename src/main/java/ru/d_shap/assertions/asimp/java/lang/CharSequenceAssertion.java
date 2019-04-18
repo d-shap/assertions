@@ -703,8 +703,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toTokens(final String delimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(delimiters, "delimiters");
+        checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
@@ -718,8 +718,8 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      */
     public final void toTokens(final String delimiters, final boolean returnDelimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(delimiters, "delimiters");
+        checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
     }
