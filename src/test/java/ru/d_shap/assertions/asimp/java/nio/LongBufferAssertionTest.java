@@ -593,25 +593,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAll(1L, 2L);
@@ -682,25 +682,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAll(Arrays.asList(1L, 2L));
@@ -772,25 +772,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAll(4L, 5L);
@@ -856,25 +856,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAll(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAll(Arrays.asList(4L, 5L));
@@ -938,25 +938,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(2L, 3L);
@@ -1032,25 +1032,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(Arrays.asList(2L, 3L));
@@ -1127,25 +1127,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(2L, 3L);
@@ -1216,25 +1216,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(Arrays.asList(2L, 3L));
@@ -1306,13 +1306,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(2L, 3L);
@@ -1402,13 +1402,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactly(Arrays.asList(2L, 3L));
@@ -1499,13 +1499,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactly((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(2L, 3L);
@@ -1590,13 +1590,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactly((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactly(Arrays.asList(2L, 3L));
@@ -1679,13 +1679,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(2L, 1L);
@@ -1780,13 +1780,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(Arrays.asList(2L, 1L));
@@ -1882,13 +1882,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactlyInOrder((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(2L, 1L);
@@ -1978,13 +1978,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsExactlyInOrder(Arrays.asList(2L, 1L));
@@ -2074,25 +2074,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAny(1L, 3L);
@@ -2164,25 +2164,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsAny(Arrays.asList(1L, 3L));
@@ -2255,25 +2255,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAny(4L, 5L);
@@ -2340,25 +2340,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsAny(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsAny(Arrays.asList(4L, 5L));
@@ -2424,25 +2424,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(2L, 1L);
@@ -2502,25 +2502,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").containsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(Arrays.asList(2L, 1L));
@@ -2579,25 +2579,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone((long[]) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsNone(1L, 3L);
@@ -2662,25 +2662,25 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone((Iterable<Long>) null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").rewindAndContainsNone(new ArrayList<Long>());
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsNone(Arrays.asList(1L, 3L));
@@ -2814,13 +2814,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toPosition(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toPosition(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition(Matchers.equalTo(4));
@@ -2989,13 +2989,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toLimit(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toLimit(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toLimit(Matchers.equalTo(4));
@@ -3164,13 +3164,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toCapacity(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toCapacity(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toCapacity(Matchers.equalTo(4));
@@ -3412,13 +3412,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).toRemaining(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}), "Message").toRemaining(null);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));

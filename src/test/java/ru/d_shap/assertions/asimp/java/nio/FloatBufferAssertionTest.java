@@ -593,25 +593,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAll();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAll();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsAll(1.0f, 2.0f);
@@ -682,25 +682,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAll((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAll((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAll(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAll(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsAll(Arrays.asList(1.0f, 2.0f));
@@ -772,25 +772,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAll((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAll();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).rewindAndContainsAll(4.0f, 5.0f);
@@ -856,25 +856,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAll((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAll((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAll(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAll(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).rewindAndContainsAll(Arrays.asList(4.0f, 5.0f));
@@ -938,25 +938,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAllInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAllInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAllInOrder();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAllInOrder();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAllInOrder(2.0f, 3.0f);
@@ -1032,25 +1032,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAllInOrder(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAllInOrder(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAllInOrder(Arrays.asList(2.0f, 3.0f));
@@ -1127,25 +1127,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAllInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAllInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsAllInOrder(2.0f, 3.0f);
@@ -1216,25 +1216,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAllInOrder(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsAllInOrder(Arrays.asList(2.0f, 3.0f));
@@ -1306,13 +1306,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactly((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsExactly((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactly(2.0f, 3.0f);
@@ -1402,13 +1402,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactly((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsExactly((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactly(Arrays.asList(2.0f, 3.0f));
@@ -1499,13 +1499,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsExactly((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsExactly((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsExactly(2.0f, 3.0f);
@@ -1590,13 +1590,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsExactly((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsExactly((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsExactly(Arrays.asList(2.0f, 3.0f));
@@ -1679,13 +1679,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactlyInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsExactlyInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(2.0f, 1.0f);
@@ -1780,13 +1780,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(Arrays.asList(2.0f, 1.0f));
@@ -1882,13 +1882,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsExactlyInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsExactlyInOrder((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsExactlyInOrder(2.0f, 1.0f);
@@ -1978,13 +1978,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).rewindAndContainsExactlyInOrder(Arrays.asList(2.0f, 1.0f));
@@ -2074,25 +2074,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAny((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAny((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAny();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAny();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsAny(1.0f, 3.0f);
@@ -2164,25 +2164,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAny((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAny((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsAny(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsAny(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsAny(Arrays.asList(1.0f, 3.0f));
@@ -2255,25 +2255,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAny((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAny((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAny();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).rewindAndContainsAny(4.0f, 5.0f);
@@ -2340,25 +2340,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAny((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAny((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsAny(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsAny(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).rewindAndContainsAny(Arrays.asList(4.0f, 5.0f));
@@ -2424,25 +2424,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsNone((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsNone((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsNone();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsNone();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsNone(2.0f, 1.0f);
@@ -2502,25 +2502,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsNone((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsNone((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsNone(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").containsNone(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsNone(Arrays.asList(2.0f, 1.0f));
@@ -2579,25 +2579,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsNone((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsNone((float[]) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsNone();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).rewindAndContainsNone(1.0f, 3.0f);
@@ -2662,25 +2662,25 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsNone((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsNone((Iterable<Float>) null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).rewindAndContainsNone(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").rewindAndContainsNone(new ArrayList<Float>());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).rewindAndContainsNone(Arrays.asList(1.0f, 3.0f));
@@ -2814,13 +2814,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).toPosition(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").toPosition(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}, 3)).toPosition(Matchers.equalTo(4));
@@ -2989,13 +2989,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).toLimit(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").toLimit(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}, 3)).toLimit(Matchers.equalTo(4));
@@ -3164,13 +3164,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).toCapacity(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").toCapacity(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}, 3)).toCapacity(Matchers.equalTo(4));
@@ -3412,13 +3412,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).toRemaining(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{}), "Message").toRemaining(null);
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));

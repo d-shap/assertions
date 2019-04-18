@@ -593,25 +593,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAll(1.0, 2.0);
@@ -682,25 +682,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAll(Arrays.asList(1.0, 2.0));
@@ -772,25 +772,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAll(4.0, 5.0);
@@ -856,25 +856,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAll(Arrays.asList(4.0, 5.0));
@@ -938,25 +938,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(2.0, 3.0);
@@ -1032,25 +1032,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(Arrays.asList(2.0, 3.0));
@@ -1127,25 +1127,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(2.0, 3.0);
@@ -1216,25 +1216,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(Arrays.asList(2.0, 3.0));
@@ -1306,13 +1306,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(2.0, 3.0);
@@ -1402,13 +1402,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(Arrays.asList(2.0, 3.0));
@@ -1499,13 +1499,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsExactly((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(2.0, 3.0);
@@ -1590,13 +1590,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsExactly((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(Arrays.asList(2.0, 3.0));
@@ -1679,13 +1679,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(2.0, 1.0);
@@ -1780,13 +1780,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(Arrays.asList(2.0, 1.0));
@@ -1882,13 +1882,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsExactlyInOrder((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(2.0, 1.0);
@@ -1978,13 +1978,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(Arrays.asList(2.0, 1.0));
@@ -2074,25 +2074,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAny(1.0, 3.0);
@@ -2164,25 +2164,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsAny(Arrays.asList(1.0, 3.0));
@@ -2255,25 +2255,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAny(4.0, 5.0);
@@ -2340,25 +2340,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsAny(Arrays.asList(4.0, 5.0));
@@ -2424,25 +2424,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(2.0, 1.0);
@@ -2502,25 +2502,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(Arrays.asList(2.0, 1.0));
@@ -2579,25 +2579,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone((double[]) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsNone(1.0, 3.0);
@@ -2662,25 +2662,25 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone((Iterable<Double>) null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone(new ArrayList<Double>());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsNone(Arrays.asList(1.0, 3.0));
@@ -2814,13 +2814,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).toPosition(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").toPosition(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).toPosition(Matchers.equalTo(4));
@@ -2989,13 +2989,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).toLimit(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").toLimit(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).toLimit(Matchers.equalTo(4));
@@ -3164,13 +3164,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).toCapacity(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").toCapacity(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).toCapacity(Matchers.equalTo(4));
@@ -3412,13 +3412,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).toRemaining(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").toRemaining(null);
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));

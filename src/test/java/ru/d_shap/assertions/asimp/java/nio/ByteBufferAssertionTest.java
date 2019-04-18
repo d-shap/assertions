@@ -592,25 +592,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll((byte) 1, (byte) 2);
@@ -681,25 +681,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll(1, 2);
@@ -770,25 +770,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAll(Arrays.asList((byte) 1, (byte) 2));
@@ -860,25 +860,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll((byte) 4, (byte) 5);
@@ -944,25 +944,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll(4, 5);
@@ -1028,25 +1028,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAll(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAll(Arrays.asList((byte) 4, (byte) 5));
@@ -1110,25 +1110,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder((byte) 2, (byte) 3);
@@ -1204,25 +1204,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(2, 3);
@@ -1298,25 +1298,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(Arrays.asList((byte) 2, (byte) 3));
@@ -1393,25 +1393,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder((byte) 2, (byte) 3);
@@ -1482,25 +1482,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(2, 3);
@@ -1571,25 +1571,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(Arrays.asList((byte) 2, (byte) 3));
@@ -1661,13 +1661,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly((byte) 2, (byte) 3);
@@ -1757,13 +1757,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(2, 3);
@@ -1853,13 +1853,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactly(Arrays.asList((byte) 2, (byte) 3));
@@ -1950,13 +1950,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactly((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly((byte) 2, (byte) 3);
@@ -2041,13 +2041,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactly((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(2, 3);
@@ -2132,13 +2132,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactly((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactly(Arrays.asList((byte) 2, (byte) 3));
@@ -2221,13 +2221,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder((byte) 2, (byte) 1);
@@ -2322,13 +2322,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(2, 1);
@@ -2423,13 +2423,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 1));
@@ -2525,13 +2525,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactlyInOrder((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder((byte) 2, (byte) 1);
@@ -2621,13 +2621,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactlyInOrder((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(2, 1);
@@ -2717,13 +2717,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsExactlyInOrder((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsExactlyInOrder(Arrays.asList((byte) 2, (byte) 1));
@@ -2813,25 +2813,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny((byte) 1, (byte) 3);
@@ -2903,25 +2903,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny(1, 3);
@@ -2993,25 +2993,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsAny(Arrays.asList((byte) 1, (byte) 3));
@@ -3084,25 +3084,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny((byte) 4, (byte) 5);
@@ -3169,25 +3169,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny(4, 5);
@@ -3254,25 +3254,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsAny(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always false.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsAny(Arrays.asList((byte) 4, (byte) 5));
@@ -3338,25 +3338,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone((byte) 2, (byte) 1);
@@ -3416,25 +3416,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(2, 1);
@@ -3494,25 +3494,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").containsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(Arrays.asList((byte) 2, (byte) 1));
@@ -3571,25 +3571,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone((byte[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone();
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone((byte) 1, (byte) 3);
@@ -3654,25 +3654,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone((int[]) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone(new int[]{});
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone(1, 3);
@@ -3737,25 +3737,25 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone((Iterable<Byte>) null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").rewindAndContainsNone(new ArrayList<Byte>());
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty.\n\tThe result is always true.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsNone(Arrays.asList((byte) 1, (byte) 3));
@@ -3889,13 +3889,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toPosition(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toPosition(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition(Matchers.equalTo(4));
@@ -4064,13 +4064,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toLimit(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toLimit(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toLimit(Matchers.equalTo(4));
@@ -4239,13 +4239,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toCapacity(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toCapacity(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toCapacity(Matchers.equalTo(4));
@@ -4487,13 +4487,13 @@ public final class ByteBufferAssertionTest extends AssertionTest {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toRemaining(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toRemaining(null);
             Assertions.fail("ByteBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
