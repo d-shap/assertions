@@ -175,25 +175,25 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), 10).isGreaterThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 10).isGreaterThan(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11> but was:<10>");
         }
     }
 
@@ -228,13 +228,13 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 10, "Message").isGreaterThanOrEqualTo(11);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11> but was:<10>");
         }
     }
 
@@ -269,25 +269,25 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), 10).isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 10, "Message").isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10> but was:<10>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10> but was:<10>");
         }
         try {
             initialize(Raw.intAssertion(), 11).isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10> but was:<11>");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").isLessThan(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10> but was:<11>");
         }
     }
 
@@ -322,13 +322,13 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), 11).isLessThanOrEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<10> but was:<11>");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").isLessThanOrEqualTo(10);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<10> but was:<11>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<10> but was:<11>");
         }
     }
 

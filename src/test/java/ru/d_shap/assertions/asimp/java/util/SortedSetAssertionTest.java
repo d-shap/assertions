@@ -432,25 +432,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             clearActual(initialize(Raw.sortedSetAssertion(), createTreeSet()).toHeadSet(1)).containsExactlyInOrder("val");
@@ -643,37 +643,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toHeadSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toHeadSet(1, null);
@@ -859,25 +859,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(-1);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             clearActual(initialize(Raw.sortedSetAssertion(), createTreeSet()).toTailSet(1)).containsExactlyInOrder("val");
@@ -1070,37 +1070,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(-1, Matchers.hasItems(""));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet(""), "Message").toTailSet(0, null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("")).toTailSet(1, null);

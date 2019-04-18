@@ -175,25 +175,25 @@ public final class LongAssertionTest extends AssertionTest {
             initialize(Raw.longAssertion(), 10L).isGreaterThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 10L, "Message").isGreaterThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 10L).isGreaterThan(11L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 10L, "Message").isGreaterThan(11L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11L> but was:<10L>");
         }
     }
 
@@ -228,13 +228,13 @@ public final class LongAssertionTest extends AssertionTest {
             initialize(Raw.longAssertion(), 10L).isGreaterThanOrEqualTo(11L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 10L, "Message").isGreaterThanOrEqualTo(11L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11L> but was:<10L>");
         }
     }
 
@@ -269,25 +269,25 @@ public final class LongAssertionTest extends AssertionTest {
             initialize(Raw.longAssertion(), 10L).isLessThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 10L, "Message").isLessThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10L> but was:<10L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10L> but was:<10L>");
         }
         try {
             initialize(Raw.longAssertion(), 11L).isLessThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10L> but was:<11L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10L> but was:<11L>");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").isLessThan(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10L> but was:<11L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10L> but was:<11L>");
         }
     }
 
@@ -322,13 +322,13 @@ public final class LongAssertionTest extends AssertionTest {
             initialize(Raw.longAssertion(), 11L).isLessThanOrEqualTo(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<10L> but was:<11L>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<10L> but was:<11L>");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").isLessThanOrEqualTo(10L);
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<10L> but was:<11L>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<10L> but was:<11L>");
         }
     }
 

@@ -187,25 +187,25 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThan(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11s> but was:<10s>");
         }
     }
 
@@ -240,13 +240,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isGreaterThanOrEqualTo(11);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11s> but was:<10s>");
         }
     }
 
@@ -281,25 +281,25 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 10).isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10, "Message").isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10s> but was:<10s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10s> but was:<10s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10s> but was:<11s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10s> but was:<11s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").isLessThan(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10s> but was:<11s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10s> but was:<11s>");
         }
     }
 
@@ -334,13 +334,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), (short) 11).isLessThanOrEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<10s> but was:<11s>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<10s> but was:<11s>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").isLessThanOrEqualTo(10);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<10s> but was:<11s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<10s> but was:<11s>");
         }
     }
 

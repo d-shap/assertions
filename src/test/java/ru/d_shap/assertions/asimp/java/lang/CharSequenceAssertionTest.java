@@ -840,25 +840,25 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("valuea");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isGreaterThan("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -931,37 +931,37 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected ignoring case.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("VALUE");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<VALUE> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected ignoring case.\n\tExpected:<VALUE> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("XYZ");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("valuea");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected ignoring case.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isGreaterThanIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected ignoring case.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -1025,19 +1025,19 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualTo("valuea");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualTo("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isGreaterThanOrEqualTo("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -1102,25 +1102,25 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("XYZ");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected ignoring case.\n\tExpected:<XYZ> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("valuea");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected ignoring case.\n\tExpected:<valuea> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isGreaterThanOrEqualToIgnoreCase("x");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected ignoring case.\n\tExpected:<x> but was:<value>");
         }
     }
 
@@ -1193,25 +1193,25 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isLessThan("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThan("valu");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThan("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isLessThan("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1284,37 +1284,37 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanIgnoreCase("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected ignoring case.\n\tExpected:<value> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "VALUE").isLessThanIgnoreCase("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<VALUE>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected ignoring case.\n\tExpected:<value> but was:<VALUE>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "XYZ").isLessThanIgnoreCase("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanIgnoreCase("valu");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected ignoring case.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected ignoring case.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isLessThanIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected ignoring case.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1377,25 +1377,25 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualTo("");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualTo("valu");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualTo("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isLessThanOrEqualTo("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<c> but was:<value>");
         }
     }
 
@@ -1459,31 +1459,31 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualToIgnoreCase("");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected ignoring case.\n\tExpected:<> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "XYZ").isLessThanOrEqualToIgnoreCase("value");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected ignoring case.\n\tExpected:<value> but was:<XYZ>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualToIgnoreCase("valu");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<valu> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected ignoring case.\n\tExpected:<valu> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualToIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value", "Message").isLessThanOrEqualToIgnoreCase("c");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected ignoring case.\n\tExpected:<c> but was:<value>");
         }
     }
 

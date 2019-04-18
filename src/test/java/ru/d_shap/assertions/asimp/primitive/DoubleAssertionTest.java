@@ -249,25 +249,25 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(10.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<10.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(10.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<10.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(11.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then the expected.\n\tExpected:<11.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(11.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then the expected.\n\tExpected:<11.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
     }
 
@@ -302,13 +302,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(11.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be greater then or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThanOrEqualTo(11.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater then or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
     }
 
@@ -343,25 +343,25 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(10.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<10.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(10.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<10.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(9.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then the expected.\n\tExpected:<9.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(9.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then the expected.\n\tExpected:<9.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
     }
 
@@ -396,13 +396,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(9.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be less then or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThanOrEqualTo(9.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less then or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
     }
 
