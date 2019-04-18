@@ -286,25 +286,25 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(-1);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(-1);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toCharArray(3);
@@ -463,37 +463,37 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(-1, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(-1, Matchers.arrayContaining((char) 0));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0, null);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0, null);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(1, null);
@@ -646,25 +646,25 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(-1);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(-1);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), createErrorBufferedReader()).toStringArray(3);
@@ -829,37 +829,37 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(-1, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(-1, Matchers.arrayContaining(""));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0, null);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0, null);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(1, null);
