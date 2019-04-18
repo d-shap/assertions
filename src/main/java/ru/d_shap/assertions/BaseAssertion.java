@@ -271,10 +271,11 @@ public abstract class BaseAssertion<T> {
         if (isEmpty) {
             AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY, argumentName);
             if (knownResult) {
-                throw assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE).build();
+                assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE);
             } else {
-                throw assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE).build();
+                assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE);
             }
+            throw assertionErrorBuilder.build();
         }
     }
 
@@ -283,11 +284,15 @@ public abstract class BaseAssertion<T> {
      *
      * @param valid        is the argument valid.
      * @param argumentName the argument name.
+     * @param message      the message template.
+     * @param arguments    the message arguments.
      */
-    protected final void checkArgumentIsValid(final boolean valid, final String argumentName) {
+    protected final void checkArgumentIsValid(final boolean valid, final String argumentName, final String message, final Object... arguments) {
         checkInitialized();
         if (!valid) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID, argumentName).build();
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID, argumentName);
+            assertionErrorBuilder.addMessage(message, arguments);
+            throw assertionErrorBuilder.build();
         }
     }
 
