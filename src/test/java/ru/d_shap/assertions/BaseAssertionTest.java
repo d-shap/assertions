@@ -1789,51 +1789,105 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void checkArgumentIsValidTest() {
-        createBaseAssertion(null).checkArgumentIsValid(true, null);
-        createBaseAssertion(null).checkArgumentIsValid(true, "");
-        createBaseAssertion(null).checkArgumentIsValid(true, "arg");
+        createBaseAssertion(null).checkArgumentIsValid(true, null, null);
+        createBaseAssertion(null).checkArgumentIsValid(true, "", null);
+        createBaseAssertion(null).checkArgumentIsValid(true, "arg", null);
+
+        createBaseAssertion(null).checkArgumentIsValid(true, "arg", "");
+        createBaseAssertion(null).checkArgumentIsValid(true, "arg", "message");
+        createBaseAssertion(null).checkArgumentIsValid(true, "arg", "message.");
+        createBaseAssertion(null).checkArgumentIsValid(true, "arg", "message: {0}.", true);
 
         try {
-            createBaseAssertion().checkArgumentIsValid(false, "arg");
+            createBaseAssertion().checkArgumentIsValid(false, "arg", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createBaseAssertion(new Object()).checkArgumentIsValid(false, null);
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, null, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: null.");
         }
         try {
-            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, null);
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, null, null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: null.");
         }
         try {
-            createBaseAssertion(new Object()).checkArgumentIsValid(false, "");
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: .");
         }
         try {
-            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "");
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: .");
         }
         try {
-            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg");
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.");
         }
         try {
-            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg");
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg", null);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.");
+        }
+
+        try {
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.");
+        }
+        try {
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.");
+        }
+        try {
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg", "message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.");
+        }
+        try {
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg", "message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.");
+        }
+        try {
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg", "message.");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.");
+        }
+        try {
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg", "message.");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.");
+        }
+        try {
+            createBaseAssertion(new Object()).checkArgumentIsValid(false, "arg", "message: {0}.", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage: true.");
+        }
+        try {
+            createBaseAssertion(new Object(), "Message").checkArgumentIsValid(false, "arg", "message: {0}.", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage: true.");
         }
     }
 
