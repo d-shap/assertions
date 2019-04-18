@@ -156,6 +156,8 @@ public final class Messages {
 
             public static final String RESULT_IS_ALWAYS_FALSE = "The result is always false.";
 
+            public static final String GREATER_THEN_ZERO = "The value should be greater then zero.";
+
             private Argument() {
                 super();
             }
