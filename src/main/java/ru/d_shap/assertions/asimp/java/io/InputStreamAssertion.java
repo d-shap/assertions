@@ -101,7 +101,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final ByteArrayAssertion toByteArray(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_COUNT, count);
     }
@@ -127,7 +127,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), byte[].class, count);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);

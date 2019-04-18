@@ -149,7 +149,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedSetAssertion<K> toHeadKeys(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return toKeys().toHeadSet(count);
     }
 
@@ -173,7 +173,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final void toHeadKeys(final int count, final Matcher<Iterable<K>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         toKeys().toHeadSet(count, matcher);
     }
@@ -198,7 +198,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedSetAssertion<K> toTailKeys(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return toKeys().toTailSet(count);
     }
 
@@ -222,7 +222,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final void toTailKeys(final int count, final Matcher<Iterable<K>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         toKeys().toTailSet(count, matcher);
     }
@@ -445,7 +445,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toHeadMap(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
 
@@ -469,7 +469,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final void toHeadMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadMap(count), matcher, Messages.Check.ELEMENTS_HEAD_COUNT, count);
     }
@@ -508,7 +508,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final SortedMapAssertion<K, V> toTailMap(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
 
@@ -532,7 +532,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      */
     public final void toTailMap(final int count, final Matcher<Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailMap(count), matcher, Messages.Check.ELEMENTS_TAIL_COUNT, count);
     }
