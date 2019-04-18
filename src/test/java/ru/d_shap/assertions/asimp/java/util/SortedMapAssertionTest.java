@@ -554,25 +554,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadKeys(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadKeys(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             clearActual(initialize(Raw.sortedMapAssertion(), createTreeMap()).toHeadKeys(1)).containsExactlyInOrder("key");
@@ -761,37 +761,37 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(0, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadKeys(0, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(-1, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadKeys(-1, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadKeys(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadKeys(1, null);
@@ -968,25 +968,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailKeys(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailKeys(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             clearActual(initialize(Raw.sortedMapAssertion(), createTreeMap()).toTailKeys(1)).containsExactlyInOrder("key");
@@ -1175,37 +1175,37 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(0, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailKeys(0, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(-1, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailKeys(-1, Matchers.hasItems(""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailKeys(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailKeys(1, null);
@@ -2880,25 +2880,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadMap(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadMap(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             clearActual(initialize(Raw.sortedMapAssertion(), createTreeMap()).toHeadMap(1)).containsExactlyInOrder(createHashMap((Object) "key", (Object) "value"));
@@ -3095,37 +3095,37 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(0, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadMap(0, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(-1, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadMap(-1, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toHeadMap(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toHeadMap(1, null);
@@ -3319,25 +3319,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailMap(0);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailMap(-1);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             clearActual(initialize(Raw.sortedMapAssertion(), createTreeMap()).toTailMap(1)).containsExactlyInOrder(createHashMap((Object) "key", (Object) "value"));
@@ -3537,37 +3537,37 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(0, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailMap(0, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(-1, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailMap(-1, Matchers.hasEntry("", ""));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", ""), "Message").toTailMap(0, null);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe value should be greater then zero.");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("", "")).toTailMap(1, null);
