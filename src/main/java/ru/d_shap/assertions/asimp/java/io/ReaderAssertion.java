@@ -100,7 +100,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final CharArrayAssertion toCharArray(final int count) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
         char[] nextChars = convertValue(getActual(), char[].class, count);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
     }
@@ -126,7 +126,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
-        checkArgumentIsValid(count > 0, "count");
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.GREATER_THEN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), char[].class, count);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
