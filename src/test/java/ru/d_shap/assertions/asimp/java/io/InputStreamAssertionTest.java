@@ -109,6 +109,18 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0})).isCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0}), "Message").isCompleted();
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
+        }
+        try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isCompleted();
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
@@ -127,7 +139,9 @@ public final class InputStreamAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotCompletedTest() {
-        ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3});
+        ByteArrayInputStream bais = new ByteArrayInputStream(new byte[]{1, 2, 3, 0, 4});
+        initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
+        initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
         initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
         initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();
         initialize(Raw.inputStreamAssertion(), bais).isNotCompleted();

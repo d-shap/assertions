@@ -111,6 +111,18 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000"))).isCompleted();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
+        }
+        try {
+            initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000")), "Message").isCompleted();
+            Assertions.fail("BufferedReaderAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
+        }
+        try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isCompleted();
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
@@ -129,7 +141,9 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotCompletedTest() {
-        BufferedReader reader = new BufferedReader(new StringReader("123"));
+        BufferedReader reader = new BufferedReader(new StringReader("123\u00004"));
+        initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
+        initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
         initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
         initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
         initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
