@@ -72,10 +72,8 @@ public final class ConverterArgumentHelper {
             Object value = arguments[index];
             if (value == null) {
                 return defaultValue;
-            } else if (clazz.isInstance(value)) {
-                return clazz.cast(value);
             } else {
-                return defaultValue;
+                return clazz.cast(value);
             }
         } else {
             return defaultValue;
