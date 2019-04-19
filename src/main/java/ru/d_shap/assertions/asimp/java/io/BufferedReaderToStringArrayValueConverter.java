@@ -54,16 +54,15 @@ public final class BufferedReaderToStringArrayValueConverter implements ValueCon
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        BufferedReader castedValue = ConverterArgumentHelper.getValue(value, BufferedReader.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Integer.class);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
 
         try {
-            int count = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
             String read;
             List<String> result = new ArrayList<>();
-            for (int i = 0; count == 0 || i < count; i++) {
-                read = ((BufferedReader) value).readLine();
+            for (int i = 0; castedCount == 0 || i < castedCount; i++) {
+                read = castedValue.readLine();
                 if (read == null) {
                     break;
                 }

@@ -53,16 +53,15 @@ public final class ReaderToCharArrayValueConverter implements ValueConverterProv
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Reader castedValue = ConverterArgumentHelper.getValue(value, Reader.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Integer.class);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
 
         try {
-            int count = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
             int read;
             StringWriter result = new StringWriter();
-            for (int i = 0; count == 0 || i < count; i++) {
-                read = ((Reader) value).read();
+            for (int i = 0; castedCount == 0 || i < castedCount; i++) {
+                read = castedValue.read();
                 if (read < 0) {
                     break;
                 }
