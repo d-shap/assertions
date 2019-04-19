@@ -84,14 +84,17 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
     @Test
     public void checkArgumentsLengthTest() {
         ConverterArgumentHelper.checkArgumentsLength(new Object[0], 0);
-        ConverterArgumentHelper.checkArgumentsLength(new Object[0], 1);
         ConverterArgumentHelper.checkArgumentsLength(new Object[1], 1);
-        ConverterArgumentHelper.checkArgumentsLength(new Object[0], 2);
-        ConverterArgumentHelper.checkArgumentsLength(new Object[1], 2);
         ConverterArgumentHelper.checkArgumentsLength(new Object[2], 2);
 
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[0], -1);
+            Assertions.fail("ConverterArgumentHelper test fail");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("Array index out of range: 0");
+        }
+        try {
+            ConverterArgumentHelper.checkArgumentsLength(new Object[0], 1);
             Assertions.fail("ConverterArgumentHelper test fail");
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 0");
@@ -104,6 +107,12 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[1], 0);
+            Assertions.fail("ConverterArgumentHelper test fail");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
+        }
+        try {
+            ConverterArgumentHelper.checkArgumentsLength(new Object[1], 2);
             Assertions.fail("ConverterArgumentHelper test fail");
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
@@ -126,6 +135,12 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
         }
+        try {
+            ConverterArgumentHelper.checkArgumentsLength(new Object[2], 3);
+            Assertions.fail("ConverterArgumentHelper test fail");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
+        }
     }
 
     /**
@@ -141,26 +156,44 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      */
     @Test
     public void getArgumentTest() {
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], -1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], 0, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], 1, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, Object.class)).isEqualTo("value");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, String.class)).isEqualTo("value");
 
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, -1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, String.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 2, Object.class, "default")).isEqualTo("default");
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 0, Object.class)).isEqualTo(5);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 0, Integer.class)).isEqualTo(5);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 1, Object.class)).isEqualTo(7);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 1, Integer.class)).isEqualTo(7);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 2, Object.class)).isEqualTo(9);
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5, 7, 9}, 2, Integer.class)).isEqualTo(9);
 
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, -1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, Object.class, "default")).isEqualTo("value");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, String.class, "default")).isEqualTo("value");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 2, Object.class, "default")).isEqualTo("default");
+        try {
+            ConverterArgumentHelper.getArgument(new Object[]{new Object()}, -1, String.class);
+            Assertions.fail("ConverterArgumentHelper test fail");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
+        }
+        try {
+            ConverterArgumentHelper.getArgument(new Object[]{new Object()}, 1, String.class);
+            Assertions.fail("ConverterArgumentHelper test fail");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
+        }
+    }
 
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, -1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 0, Object.class, "default")).isEqualTo(5);
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 1, Object.class, "default")).isEqualTo("default");
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 2, Object.class, "default")).isEqualTo("default");
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void getArgumentNull1FailTest() {
+        ConverterArgumentHelper.getArgument(null, 0, Object.class);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void getArgumentNull2FailTest() {
+        ConverterArgumentHelper.getArgument(new Object[]{null}, 0, Object.class);
     }
 
     /**
@@ -168,7 +201,7 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      */
     @Test(expected = ClassCastException.class)
     public void getArgumentWrongClassFailTest() {
-        ConverterArgumentHelper.getArgument(new Object[]{new Object()}, 0, String.class, "default");
+        ConverterArgumentHelper.getArgument(new Object[]{new Object()}, 0, String.class);
     }
 
 }
