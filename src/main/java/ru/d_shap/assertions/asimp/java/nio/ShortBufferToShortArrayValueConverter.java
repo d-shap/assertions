@@ -51,20 +51,19 @@ public final class ShortBufferToShortArrayValueConverter implements ValueConvert
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ShortBuffer castedValue = ConverterArgumentHelper.getValue(value, ShortBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((ShortBuffer) value).position();
-        if (rewind) {
-            ((ShortBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        short[] result = new short[((ShortBuffer) value).remaining()];
+        short[] result = new short[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((ShortBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((ShortBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 

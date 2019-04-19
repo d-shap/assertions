@@ -51,20 +51,19 @@ public final class ByteBufferToByteArrayValueConverter implements ValueConverter
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        ByteBuffer castedValue = ConverterArgumentHelper.getValue(value, ByteBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((ByteBuffer) value).position();
-        if (rewind) {
-            ((ByteBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        byte[] result = new byte[((ByteBuffer) value).remaining()];
+        byte[] result = new byte[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((ByteBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((ByteBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 

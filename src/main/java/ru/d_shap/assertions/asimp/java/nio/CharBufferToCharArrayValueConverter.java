@@ -51,20 +51,19 @@ public final class CharBufferToCharArrayValueConverter implements ValueConverter
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        CharBuffer castedValue = ConverterArgumentHelper.getValue(value, CharBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((CharBuffer) value).position();
-        if (rewind) {
-            ((CharBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        char[] result = new char[((CharBuffer) value).remaining()];
+        char[] result = new char[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((CharBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((CharBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 

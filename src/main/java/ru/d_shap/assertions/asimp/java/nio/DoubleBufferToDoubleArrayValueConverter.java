@@ -51,20 +51,19 @@ public final class DoubleBufferToDoubleArrayValueConverter implements ValueConve
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        DoubleBuffer castedValue = ConverterArgumentHelper.getValue(value, DoubleBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((DoubleBuffer) value).position();
-        if (rewind) {
-            ((DoubleBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        double[] result = new double[((DoubleBuffer) value).remaining()];
+        double[] result = new double[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((DoubleBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((DoubleBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 

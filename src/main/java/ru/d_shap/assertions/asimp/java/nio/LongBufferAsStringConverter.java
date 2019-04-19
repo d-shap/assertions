@@ -47,9 +47,9 @@ public final class LongBufferAsStringConverter implements AsStringConverterProvi
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        LongBuffer castedValue = ConverterArgumentHelper.getValue(value, LongBuffer.class);
 
-        return AsStringConverter.asString(value, long[].class);
+        return AsStringConverter.asString(castedValue, long[].class);
     }
 
 }

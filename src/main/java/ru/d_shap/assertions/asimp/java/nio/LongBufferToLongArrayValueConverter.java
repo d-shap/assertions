@@ -51,20 +51,19 @@ public final class LongBufferToLongArrayValueConverter implements ValueConverter
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        LongBuffer castedValue = ConverterArgumentHelper.getValue(value, LongBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((LongBuffer) value).position();
-        if (rewind) {
-            ((LongBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        long[] result = new long[((LongBuffer) value).remaining()];
+        long[] result = new long[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((LongBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((LongBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 

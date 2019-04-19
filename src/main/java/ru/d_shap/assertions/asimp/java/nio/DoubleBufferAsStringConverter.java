@@ -47,9 +47,9 @@ public final class DoubleBufferAsStringConverter implements AsStringConverterPro
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        DoubleBuffer castedValue = ConverterArgumentHelper.getValue(value, DoubleBuffer.class);
 
-        return AsStringConverter.asString(value, double[].class);
+        return AsStringConverter.asString(castedValue, double[].class);
     }
 
 }

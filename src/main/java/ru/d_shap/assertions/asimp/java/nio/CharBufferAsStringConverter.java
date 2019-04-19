@@ -47,9 +47,9 @@ public final class CharBufferAsStringConverter implements AsStringConverterProvi
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        CharBuffer castedValue = ConverterArgumentHelper.getValue(value, CharBuffer.class);
 
-        return AsStringConverter.asString(value, char[].class);
+        return AsStringConverter.asString(castedValue, char[].class);
     }
 
 }

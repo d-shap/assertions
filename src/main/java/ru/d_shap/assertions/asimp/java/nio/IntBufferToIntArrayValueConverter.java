@@ -51,20 +51,19 @@ public final class IntBufferToIntArrayValueConverter implements ValueConverterPr
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        IntBuffer castedValue = ConverterArgumentHelper.getValue(value, IntBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Boolean.class);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
 
-        boolean rewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
-        int position = ((IntBuffer) value).position();
-        if (rewind) {
-            ((IntBuffer) value).rewind();
+        int position = castedValue.position();
+        if (castedRewind) {
+            castedValue.rewind();
         }
-        int[] result = new int[((IntBuffer) value).remaining()];
+        int[] result = new int[castedValue.remaining()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = ((IntBuffer) value).get();
+            result[i] = castedValue.get();
         }
-        ((IntBuffer) value).position(position);
+        castedValue.position(position);
         return result;
     }
 
