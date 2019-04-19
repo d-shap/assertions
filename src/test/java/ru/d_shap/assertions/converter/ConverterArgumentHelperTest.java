@@ -50,25 +50,32 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      * {@link ConverterArgumentHelper} class test.
      */
     @Test
-    public void checkValueClassTest() {
-        ConverterArgumentHelper.checkValueClass("", String.class);
-        ConverterArgumentHelper.checkValueClass("", Object.class);
+    public void getValueTest() {
+        Assertions.assertThat(ConverterArgumentHelper.getValue("value", String.class)).isInstanceOf(String.class);
+        Assertions.assertThat(ConverterArgumentHelper.getValue("value", String.class)).isEqualTo("value");
+
+        Assertions.assertThat(ConverterArgumentHelper.getValue("value", Object.class)).isInstanceOf(String.class);
+        Assertions.assertThat(ConverterArgumentHelper.getValue("value", Object.class)).isInstanceOf(Object.class);
+        Assertions.assertThat(ConverterArgumentHelper.getValue("value", Object.class)).isEqualTo("value");
+
+        Assertions.assertThat(ConverterArgumentHelper.getValue(new Object(), Object.class)).isInstanceOf(Object.class);
+        Assertions.assertThat(ConverterArgumentHelper.getValue(new Object(), Object.class)).isNotNull();
     }
 
     /**
      * {@link ConverterArgumentHelper} class test.
      */
     @Test(expected = NullPointerException.class)
-    public void checkValueClassNullFailTest() {
-        ConverterArgumentHelper.checkValueClass(null, String.class);
+    public void getValueNullFailTest() {
+        ConverterArgumentHelper.getValue(null, String.class);
     }
 
     /**
      * {@link ConverterArgumentHelper} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void checkValueClassWrongClassFailTest() {
-        ConverterArgumentHelper.checkValueClass(new Object(), String.class);
+    public void getValueWrongClassFailTest() {
+        ConverterArgumentHelper.getValue(new Object(), String.class);
     }
 
     /**
@@ -133,36 +140,6 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      * {@link ConverterArgumentHelper} class test.
      */
     @Test
-    public void checkArgumentClassTest() {
-        ConverterArgumentHelper.checkArgumentClass(new Object[0], -1, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[0], 0, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[0], 1, Object.class);
-
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, -1, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 0, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 0, String.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 1, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{null}, 2, Object.class);
-
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, -1, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 0, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 0, String.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 1, Object.class);
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{"value"}, 2, Object.class);
-    }
-
-    /**
-     * {@link ConverterArgumentHelper} class test.
-     */
-    @Test(expected = ClassCastException.class)
-    public void checkArgumentClassWrongClassFailTest() {
-        ConverterArgumentHelper.checkArgumentClass(new Object[]{new Object()}, 0, String.class);
-    }
-
-    /**
-     * {@link ConverterArgumentHelper} class test.
-     */
-    @Test
     public void getArgumentTest() {
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], -1, Object.class, "default")).isEqualTo("default");
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[0], 0, Object.class, "default")).isEqualTo("default");
@@ -182,9 +159,16 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
 
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, -1, Object.class, "default")).isEqualTo("default");
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 0, Object.class, "default")).isEqualTo(5);
-        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 0, String.class, "default")).isEqualTo("default");
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 1, Object.class, "default")).isEqualTo("default");
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{5}, 2, Object.class, "default")).isEqualTo("default");
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void getArgumentWrongClassFailTest() {
+        ConverterArgumentHelper.getArgument(new Object[]{new Object()}, 0, String.class, "default");
     }
 
 }
