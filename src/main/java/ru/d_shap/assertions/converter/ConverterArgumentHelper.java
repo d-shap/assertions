@@ -59,24 +59,20 @@ public final class ConverterArgumentHelper {
     /**
      * Get the argument value, casted to the target class.
      *
-     * @param arguments    the argument array.
-     * @param index        the index of the argument in the argument array.
-     * @param clazz        the target class.
-     * @param defaultValue the default argument value, if argument is not provided.
-     * @param <T>          the generic type of the target class.
+     * @param arguments the argument array.
+     * @param index     the index of the argument in the argument array.
+     * @param clazz     the target class.
+     * @param <T>       the generic type of the target class.
      *
      * @return the argument value, casted to the target class.
      */
-    public static <T> T getArgument(final Object[] arguments, final int index, final Class<T> clazz, final T defaultValue) {
+    public static <T> T getArgument(final Object[] arguments, final int index, final Class<T> clazz) {
         if (index >= 0 && index < arguments.length) {
             Object value = arguments[index];
-            if (value == null) {
-                return defaultValue;
-            } else {
-                return clazz.cast(value);
-            }
+            value.getClass();
+            return clazz.cast(value);
         } else {
-            return defaultValue;
+            throw new ArrayIndexOutOfBoundsException(arguments.length);
         }
     }
 
