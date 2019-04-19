@@ -45,12 +45,12 @@ public final class IterableAsStringConverter implements AsStringConverterProvide
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Iterable<?> castedValue = ConverterArgumentHelper.getValue(value, Iterable.class);
 
         StringBuilder result = new StringBuilder();
         result.append('[');
         boolean first = true;
-        for (Object element : (Iterable<?>) value) {
+        for (Object element : castedValue) {
             if (first) {
                 first = false;
             } else {

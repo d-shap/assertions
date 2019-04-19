@@ -52,14 +52,14 @@ public final class IterableToListValueConverter implements ValueConverterProvide
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Iterable<?> castedValue = ConverterArgumentHelper.getValue(value, Iterable.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (value instanceof List) {
-            return value;
+        if (castedValue instanceof List) {
+            return castedValue;
         } else {
             List<Object> result = new ArrayList<>();
-            for (Object element : (Iterable<?>) value) {
+            for (Object element : castedValue) {
                 result.add(element);
             }
             return result;

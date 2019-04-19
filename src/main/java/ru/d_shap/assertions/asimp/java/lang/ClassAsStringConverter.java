@@ -44,9 +44,9 @@ public final class ClassAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Class<?> castedValue = ConverterArgumentHelper.getValue(value, Class.class);
 
-        return ((Class<?>) value).getName();
+        return castedValue.getName();
     }
 
 }
