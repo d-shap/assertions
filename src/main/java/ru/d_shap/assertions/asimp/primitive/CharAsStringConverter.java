@@ -44,12 +44,11 @@ public final class CharAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        char castedValue = ConverterArgumentHelper.getValue(value, Character.class);
 
-        int intValue = (char) value;
-        char charValue = (char) value;
-        if (Character.isLetterOrDigit(charValue)) {
-            return charValue + "(" + intValue + ")";
+        int intValue = castedValue;
+        if (Character.isLetterOrDigit(castedValue)) {
+            return castedValue + "(" + intValue + ")";
         } else {
             return " (" + intValue + ")";
         }

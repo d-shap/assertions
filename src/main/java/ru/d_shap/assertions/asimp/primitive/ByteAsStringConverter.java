@@ -44,10 +44,9 @@ public final class ByteAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        byte castedValue = ConverterArgumentHelper.getValue(value, Byte.class);
 
-        byte byteValue = (byte) value;
-        return byteValue + "b";
+        return castedValue + "b";
     }
 
 }

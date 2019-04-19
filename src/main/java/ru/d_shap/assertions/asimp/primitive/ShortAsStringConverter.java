@@ -44,10 +44,9 @@ public final class ShortAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        short castedValue = ConverterArgumentHelper.getValue(value, Short.class);
 
-        short shortValue = (short) value;
-        return shortValue + "s";
+        return castedValue + "s";
     }
 
 }

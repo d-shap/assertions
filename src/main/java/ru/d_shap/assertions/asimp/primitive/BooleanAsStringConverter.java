@@ -44,9 +44,9 @@ public final class BooleanAsStringConverter implements AsStringConverterProvider
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        boolean castedValue = ConverterArgumentHelper.getValue(value, Boolean.class);
 
-        if ((boolean) value) {
+        if (castedValue) {
             return "T";
         } else {
             return "F";

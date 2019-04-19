@@ -44,10 +44,9 @@ public final class DoubleAsStringConverter implements AsStringConverterProvider 
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        double castedValue = ConverterArgumentHelper.getValue(value, Double.class);
 
-        double doubleValue = (double) value;
-        return String.format("%s", doubleValue);
+        return String.format("%s", castedValue);
     }
 
 }

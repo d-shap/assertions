@@ -44,10 +44,9 @@ public final class LongAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        long castedValue = ConverterArgumentHelper.getValue(value, Long.class);
 
-        long longValue = (long) value;
-        return longValue + "L";
+        return castedValue + "L";
     }
 
 }

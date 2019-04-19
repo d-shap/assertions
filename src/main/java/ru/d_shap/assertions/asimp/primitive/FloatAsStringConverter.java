@@ -44,13 +44,12 @@ public final class FloatAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        float castedValue = ConverterArgumentHelper.getValue(value, Float.class);
 
-        float floatValue = (float) value;
-        if (Float.isNaN(floatValue) || Float.isInfinite(floatValue)) {
-            return String.format("%s", floatValue);
+        if (Float.isNaN(castedValue) || Float.isInfinite(castedValue)) {
+            return String.format("%s", castedValue);
         } else {
-            return String.format("%sf", floatValue);
+            return String.format("%sf", castedValue);
         }
     }
 
