@@ -49,7 +49,7 @@ public final class DoubleBufferAsStringConverter implements AsStringConverterPro
     public String asString(final Object value) throws ConversionException {
         DoubleBuffer castedValue = ConverterArgumentHelper.getValue(value, DoubleBuffer.class);
 
-        return AsStringConverter.asString(castedValue, double[].class);
+        return AsStringConverter.asString(castedValue, double[].class, false);
     }
 
 }

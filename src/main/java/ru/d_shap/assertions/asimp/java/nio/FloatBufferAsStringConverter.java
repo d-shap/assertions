@@ -49,7 +49,7 @@ public final class FloatBufferAsStringConverter implements AsStringConverterProv
     public String asString(final Object value) throws ConversionException {
         FloatBuffer castedValue = ConverterArgumentHelper.getValue(value, FloatBuffer.class);
 
-        return AsStringConverter.asString(castedValue, float[].class);
+        return AsStringConverter.asString(castedValue, float[].class, false);
     }
 
 }

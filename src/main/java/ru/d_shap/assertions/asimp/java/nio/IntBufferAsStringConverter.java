@@ -49,7 +49,7 @@ public final class IntBufferAsStringConverter implements AsStringConverterProvid
     public String asString(final Object value) throws ConversionException {
         IntBuffer castedValue = ConverterArgumentHelper.getValue(value, IntBuffer.class);
 
-        return AsStringConverter.asString(castedValue, int[].class);
+        return AsStringConverter.asString(castedValue, int[].class, false);
     }
 
 }

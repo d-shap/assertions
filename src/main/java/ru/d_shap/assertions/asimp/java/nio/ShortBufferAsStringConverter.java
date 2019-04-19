@@ -49,7 +49,7 @@ public final class ShortBufferAsStringConverter implements AsStringConverterProv
     public String asString(final Object value) throws ConversionException {
         ShortBuffer castedValue = ConverterArgumentHelper.getValue(value, ShortBuffer.class);
 
-        return AsStringConverter.asString(castedValue, short[].class);
+        return AsStringConverter.asString(castedValue, short[].class, false);
     }
 
 }

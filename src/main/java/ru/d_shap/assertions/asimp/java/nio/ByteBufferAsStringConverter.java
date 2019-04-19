@@ -49,7 +49,7 @@ public final class ByteBufferAsStringConverter implements AsStringConverterProvi
     public String asString(final Object value) throws ConversionException {
         ByteBuffer castedValue = ConverterArgumentHelper.getValue(value, ByteBuffer.class);
 
-        return AsStringConverter.asString(castedValue, byte[].class);
+        return AsStringConverter.asString(castedValue, byte[].class, false);
     }
 
 }
