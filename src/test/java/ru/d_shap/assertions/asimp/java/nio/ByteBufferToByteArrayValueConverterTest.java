@@ -64,14 +64,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
      */
     @Test
     public void convertTest() throws Exception {
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{})), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
@@ -79,14 +71,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), true), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1})), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
@@ -96,14 +80,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
@@ -111,14 +87,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
@@ -128,14 +96,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
@@ -143,14 +103,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder(2);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(2);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(2);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(2);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder(2);
@@ -160,14 +112,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(2, 3, 4);
@@ -175,14 +119,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
@@ -192,14 +128,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
@@ -207,14 +135,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1)), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
@@ -224,14 +144,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 1), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5)), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
@@ -240,14 +152,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1}, 0, 5, 5), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 0, 0, 0, 0);
 
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5)), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
-
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
@@ -255,14 +159,6 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), true)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), true), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2}, 0, 5, 5), true)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 0, 0, 0);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5)), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
-
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
-        Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
 
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{1, 2, 3, 4}, 0, 5, 5), false), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4, 0);
@@ -291,6 +187,16 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws Exception {
         new ByteBufferToByteArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link ByteBufferToByteArrayValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount0FailTest() throws Exception {
+        new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}));
     }
 
     /**

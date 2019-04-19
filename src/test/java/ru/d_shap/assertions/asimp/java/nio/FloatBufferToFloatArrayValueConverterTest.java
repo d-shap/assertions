@@ -64,14 +64,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
      */
     @Test
     public void convertTest() throws Exception {
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{})), Raw.floatArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}))).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), false), Raw.floatArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
@@ -79,14 +71,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), true), Raw.floatArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f})), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
@@ -96,14 +80,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f})), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
@@ -111,14 +87,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
@@ -128,14 +96,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder();
@@ -143,14 +103,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f);
@@ -160,14 +112,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(2.0f, 3.0f, 4.0f);
@@ -175,14 +119,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
@@ -192,14 +128,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
@@ -207,14 +135,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
@@ -224,14 +144,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 1), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -240,14 +152,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f}, 0, 5, 5), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
-
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), false)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
@@ -255,14 +159,6 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), true)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), true), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f}, 0, 5, 5), true)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 0.0f, 0.0f, 0.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5))).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5)), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5))).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f, 0.0f);
-
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5), (Object) null)).isInstanceOf(float[].class);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5), (Object) null), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f, 0.0f);
-        Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5), (Object) null)).as(Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f, 0.0f);
 
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5), false)).isInstanceOf(float[].class);
         Assertions.assertThat(new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, 0, 5, 5), false), Raw.floatArrayAssertion()).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f, 0.0f);
@@ -291,6 +187,16 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws Exception {
         new FloatBufferToFloatArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link FloatBufferToFloatArrayValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount0FailTest() throws Exception {
+        new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}));
     }
 
     /**
