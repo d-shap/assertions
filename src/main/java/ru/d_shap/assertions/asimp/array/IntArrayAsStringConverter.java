@@ -47,9 +47,9 @@ public final class IntArrayAsStringConverter implements AsStringConverterProvide
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

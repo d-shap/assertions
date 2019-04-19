@@ -47,9 +47,9 @@ public final class ShortArrayAsStringConverter implements AsStringConverterProvi
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        short[] castedValue = ConverterArgumentHelper.getValue(value, short[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

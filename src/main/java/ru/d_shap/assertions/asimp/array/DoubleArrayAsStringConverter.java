@@ -47,9 +47,9 @@ public final class DoubleArrayAsStringConverter implements AsStringConverterProv
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        double[] castedValue = ConverterArgumentHelper.getValue(value, double[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

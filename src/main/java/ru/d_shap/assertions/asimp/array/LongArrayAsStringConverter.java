@@ -47,9 +47,9 @@ public final class LongArrayAsStringConverter implements AsStringConverterProvid
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        long[] castedValue = ConverterArgumentHelper.getValue(value, long[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

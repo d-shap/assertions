@@ -47,9 +47,9 @@ public final class CharArrayAsStringConverter implements AsStringConverterProvid
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        char[] castedValue = ConverterArgumentHelper.getValue(value, char[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

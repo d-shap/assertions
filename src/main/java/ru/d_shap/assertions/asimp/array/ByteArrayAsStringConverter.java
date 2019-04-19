@@ -47,9 +47,9 @@ public final class ByteArrayAsStringConverter implements AsStringConverterProvid
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        byte[] castedValue = ConverterArgumentHelper.getValue(value, byte[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }

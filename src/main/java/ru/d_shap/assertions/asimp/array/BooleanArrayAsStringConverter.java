@@ -47,9 +47,9 @@ public final class BooleanArrayAsStringConverter implements AsStringConverterPro
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        boolean[] castedValue = ConverterArgumentHelper.getValue(value, boolean[].class);
 
-        return AsStringConverter.asString(value, List.class);
+        return AsStringConverter.asString(castedValue, List.class);
     }
 
 }
