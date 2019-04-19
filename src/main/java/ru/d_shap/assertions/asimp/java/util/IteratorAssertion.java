@@ -82,7 +82,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      */
     public final ListAssertion<E> toList() {
         checkActualIsNotNull();
-        List<E> list = convertValue(getActual(), List.class);
+        List<E> list = convertValue(getActual(), List.class, 0);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_ALL);
     }
 
@@ -108,7 +108,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
     public final void toList(final Matcher<Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        List<E> list = convertValue(getActual(), List.class);
+        List<E> list = convertValue(getActual(), List.class, 0);
         matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL);
     }
 

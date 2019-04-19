@@ -87,7 +87,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final CharArrayAssertion toCharArray() {
         checkActualIsNotNull();
-        char[] nextChars = convertValue(getActual(), char[].class);
+        char[] nextChars = convertValue(getActual(), char[].class, 0);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
     }
 
@@ -113,7 +113,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void toCharArray(final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        char[] nextChars = convertValue(getActual(), char[].class);
+        char[] nextChars = convertValue(getActual(), char[].class, 0);
         Character[] nextObjects = convertValue(nextChars, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
     }

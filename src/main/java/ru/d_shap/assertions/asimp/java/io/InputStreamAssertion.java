@@ -88,7 +88,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final ByteArrayAssertion toByteArray() {
         checkActualIsNotNull();
-        byte[] nextBytes = convertValue(getActual(), byte[].class);
+        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_ALL);
     }
 
@@ -114,7 +114,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void toByteArray(final Matcher<Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        byte[] nextBytes = convertValue(getActual(), byte[].class);
+        byte[] nextBytes = convertValue(getActual(), byte[].class, 0);
         Byte[] nextObjects = convertValue(nextBytes, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_ALL);
     }

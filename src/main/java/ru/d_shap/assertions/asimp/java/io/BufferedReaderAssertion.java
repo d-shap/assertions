@@ -111,7 +111,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final ObjectArrayAssertion<String> toStringArray() {
         checkActualIsNotNull();
-        String[] nextStrings = convertValue(getActual(), String[].class);
+        String[] nextStrings = convertValue(getActual(), String[].class, 0);
         return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_ALL);
     }
 
@@ -137,7 +137,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     public final void toStringArray(final Matcher<String[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        String[] nextStrings = convertValue(getActual(), String[].class);
+        String[] nextStrings = convertValue(getActual(), String[].class, 0);
         matcherAssertion(nextStrings, matcher, Messages.Check.LINES_ALL);
     }
 
