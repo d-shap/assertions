@@ -53,14 +53,13 @@ public final class IteratorToListValueConverter implements ValueConverterProvide
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Iterator<?> castedValue = ConverterArgumentHelper.getValue(value, Iterator.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        ConverterArgumentHelper.checkArgumentClass(arguments, 0, Integer.class);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
 
-        int count = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
         List<Object> result = new ArrayList<>();
-        for (int i = 0; (count == 0 || i < count) && ((Iterator<?>) value).hasNext(); i++) {
-            Object element = ((Iterator<?>) value).next();
+        for (int i = 0; (castedCount == 0 || i < castedCount) && castedValue.hasNext(); i++) {
+            Object element = castedValue.next();
             result.add(element);
         }
         return result;

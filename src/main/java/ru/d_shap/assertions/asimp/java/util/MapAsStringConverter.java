@@ -47,12 +47,12 @@ public final class MapAsStringConverter implements AsStringConverterProvider {
 
     @Override
     public String asString(final Object value) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Map<?, ?> castedValue = ConverterArgumentHelper.getValue(value, Map.class);
 
         StringBuilder result = new StringBuilder();
         result.append('{');
         boolean first = true;
-        for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
+        for (Map.Entry<?, ?> entry : castedValue.entrySet()) {
             if (first) {
                 first = false;
             } else {
