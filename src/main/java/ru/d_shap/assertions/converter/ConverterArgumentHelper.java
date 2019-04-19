@@ -31,14 +31,17 @@ public final class ConverterArgumentHelper {
     }
 
     /**
-     * Check the value class.
+     * Get the value, casted to the target class.
      *
      * @param value the value.
-     * @param clazz the class.
+     * @param clazz the target class.
+     * @param <T>   the generic type of the target class.
+     *
+     * @return the value, casted to the target class.
      */
-    public static void checkValueClass(final Object value, final Class<?> clazz) {
+    public static <T> T getValue(final Object value, final Class<T> clazz) {
         value.getClass();
-        clazz.cast(value);
+        return clazz.cast(value);
     }
 
     /**
@@ -54,28 +57,15 @@ public final class ConverterArgumentHelper {
     }
 
     /**
-     * Check the argument class.
-     *
-     * @param arguments the argument array.
-     * @param index     the index of the argument in the argument array.
-     * @param clazz     the class.
-     */
-    public static void checkArgumentClass(final Object[] arguments, final int index, final Class<?> clazz) {
-        if (index >= 0 && index < arguments.length && arguments[index] != null) {
-            clazz.cast(arguments[index]);
-        }
-    }
-
-    /**
-     * Get the argument value.
+     * Get the argument value, casted to the target class.
      *
      * @param arguments    the argument array.
      * @param index        the index of the argument in the argument array.
-     * @param clazz        the class.
+     * @param clazz        the target class.
      * @param defaultValue the default argument value, if argument is not provided.
-     * @param <T>          the generic type of the argument.
+     * @param <T>          the generic type of the target class.
      *
-     * @return the argument value.
+     * @return the argument value, casted to the target class.
      */
     public static <T> T getArgument(final Object[] arguments, final int index, final Class<T> clazz, final T defaultValue) {
         if (index >= 0 && index < arguments.length) {
