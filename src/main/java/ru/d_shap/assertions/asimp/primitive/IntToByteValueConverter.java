@@ -49,15 +49,14 @@ public final class IntToByteValueConverter implements ValueConverterProvider {
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int castedValue = ConverterArgumentHelper.getValue(value, Integer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        int intValue = (int) value;
-        byte byteValue = (byte) intValue;
-        if (intValue == byteValue) {
+        byte byteValue = (byte) castedValue;
+        if (castedValue == byteValue) {
             return byteValue;
         } else {
-            return value;
+            return castedValue;
         }
     }
 

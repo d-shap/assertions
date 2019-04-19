@@ -49,15 +49,14 @@ public final class IntToShortValueConverter implements ValueConverterProvider {
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int castedValue = ConverterArgumentHelper.getValue(value, Integer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        int intValue = (int) value;
-        short shortValue = (short) intValue;
-        if (intValue == shortValue) {
+        short shortValue = (short) castedValue;
+        if (castedValue == shortValue) {
             return shortValue;
         } else {
-            return value;
+            return castedValue;
         }
     }
 

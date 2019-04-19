@@ -49,15 +49,14 @@ public final class IntToCharValueConverter implements ValueConverterProvider {
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int castedValue = ConverterArgumentHelper.getValue(value, Integer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        int intValue = (int) value;
-        char charValue = (char) intValue;
-        if (intValue == charValue) {
+        char charValue = (char) castedValue;
+        if (castedValue == charValue) {
             return charValue;
         } else {
-            return value;
+            return castedValue;
         }
     }
 
