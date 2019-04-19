@@ -66,8 +66,7 @@ public final class IntArrayToShortArrayValueConverter implements ValueConverterP
     }
 
     private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
-        for (int i = 0; i < castedValue.length; i++) {
-            int intValue = castedValue[i];
+        for (int intValue : castedValue) {
             short shortValue = (short) intValue;
             if (intValue != shortValue) {
                 return false;

@@ -66,8 +66,7 @@ public final class IntArrayToCharArrayValueConverter implements ValueConverterPr
     }
 
     private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
-        for (int i = 0; i < castedValue.length; i++) {
-            int intValue = castedValue[i];
+        for (int intValue : castedValue) {
             char charValue = (char) intValue;
             if (intValue != charValue) {
                 return false;
