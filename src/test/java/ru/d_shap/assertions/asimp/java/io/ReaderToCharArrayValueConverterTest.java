@@ -67,38 +67,6 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
      */
     @Test
     public void convertTest() throws Exception {
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("")), Raw.charArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""))).as(Raw.charArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"))).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1")), Raw.charArrayAssertion()).containsExactlyInOrder('1');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1');
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"))).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12")), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"))).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234")), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"))).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), (Object) null)).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), (Object) null), Raw.charArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), (Object) null)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), (Object) null)).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), (Object) null), Raw.charArrayAssertion()).containsExactlyInOrder('1');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1"), (Object) null)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1');
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), (Object) null)).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), (Object) null), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("12"), (Object) null)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
-
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), (Object) null)).isInstanceOf(char[].class);
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), (Object) null), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
-        Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), (Object) null)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2', '3', '4');
-
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
@@ -147,24 +115,16 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
 
+        new ReaderToCharArrayValueConverter().convert(createErrorReader(), -1);
         try {
-            Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(createErrorReader()));
+            new ReaderToCharArrayValueConverter().convert(createErrorReader(), 0);
             Assertions.fail("ReaderToCharArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
-
         try {
-            Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(createErrorReader(), 0));
-            Assertions.fail("ReaderToCharArrayValueConverter test fail");
-        } catch (ConversionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
-            Assertions.assertThat(ex).hasCause(IOException.class);
-        }
-
-        try {
-            Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(createErrorReader(), 2));
+            new ReaderToCharArrayValueConverter().convert(createErrorReader(), 2);
             Assertions.fail("ReaderToCharArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
@@ -190,6 +150,16 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws Exception {
         new ReaderToCharArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link ReaderToCharArrayValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount0FailTest() throws Exception {
+        new ReaderToCharArrayValueConverter().convert(new StringReader(""));
     }
 
     /**

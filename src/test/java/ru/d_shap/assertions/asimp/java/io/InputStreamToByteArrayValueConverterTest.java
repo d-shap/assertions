@@ -67,38 +67,6 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
      */
     @Test
     public void convertTest() throws Exception {
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{})), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1})), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}))).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4})), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}))).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1);
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
-
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), (Object) null)).isInstanceOf(byte[].class);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), (Object) null), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-        Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), (Object) null)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2, 3, 4);
-
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1)).isInstanceOf(byte[].class);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), -1)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
@@ -147,24 +115,16 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
 
+        new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), -1);
         try {
-            Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(createErrorInputStream()));
+            new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 0);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
-
         try {
-            Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 0));
-            Assertions.fail("InputStreamToByteArrayValueConverter test fail");
-        } catch (ConversionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
-            Assertions.assertThat(ex).hasCause(IOException.class);
-        }
-
-        try {
-            Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 2));
+            new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 2);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
@@ -190,6 +150,16 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws Exception {
         new InputStreamToByteArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link InputStreamToByteArrayValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount0FailTest() throws Exception {
+        new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}));
     }
 
     /**

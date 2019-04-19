@@ -67,46 +67,6 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
      */
     @Test
     public void convertTest() throws Exception {
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")))).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader(""))), Raw.objectArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")))).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1"))), Raw.objectArrayAssertion()).containsExactlyInOrder("1");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")))).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2"))), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")))).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4"))), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")))).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n"))), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")))).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), (Object) null)).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), (Object) null), Raw.objectArrayAssertion()).containsExactlyInOrder();
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), (Object) null)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), (Object) null)).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), (Object) null), Raw.objectArrayAssertion()).containsExactlyInOrder("1");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1")), (Object) null)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), (Object) null)).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), (Object) null), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2")), (Object) null)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), (Object) null)).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), (Object) null), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4")), (Object) null)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), (Object) null)).isInstanceOf(String[].class);
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), (Object) null), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-        Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), (Object) null)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2", "3", "4");
-
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1)).isInstanceOf(String[].class);
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), -1)).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -167,24 +127,16 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), 2), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), 2)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
 
+        new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), -1);
         try {
-            Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader())));
+            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 0);
             Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
-
         try {
-            Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 0));
-            Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
-        } catch (ConversionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
-            Assertions.assertThat(ex).hasCause(IOException.class);
-        }
-
-        try {
-            Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 2));
+            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 2);
             Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
@@ -210,6 +162,16 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
     @Test(expected = ClassCastException.class)
     public void convertWrongValueTypeFailTest() throws Exception {
         new BufferedReaderToStringArrayValueConverter().convert(new Object());
+    }
+
+    /**
+     * {@link BufferedReaderToStringArrayValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount0FailTest() throws Exception {
+        new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")));
     }
 
     /**
