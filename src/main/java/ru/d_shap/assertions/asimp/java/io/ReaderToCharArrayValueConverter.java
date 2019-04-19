@@ -55,7 +55,7 @@ public final class ReaderToCharArrayValueConverter implements ValueConverterProv
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         Reader castedValue = ConverterArgumentHelper.getValue(value, Reader.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);
 
         try {
             int read;

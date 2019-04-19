@@ -56,7 +56,7 @@ public final class BufferedReaderToStringArrayValueConverter implements ValueCon
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         BufferedReader castedValue = ConverterArgumentHelper.getValue(value, BufferedReader.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);
 
         try {
             String read;

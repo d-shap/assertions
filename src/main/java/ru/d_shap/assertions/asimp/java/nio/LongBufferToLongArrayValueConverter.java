@@ -53,7 +53,7 @@ public final class LongBufferToLongArrayValueConverter implements ValueConverter
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         LongBuffer castedValue = ConverterArgumentHelper.getValue(value, LongBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
         int position = castedValue.position();
         if (castedRewind) {

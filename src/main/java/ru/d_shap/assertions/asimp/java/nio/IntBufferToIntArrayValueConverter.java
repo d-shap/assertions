@@ -53,7 +53,7 @@ public final class IntBufferToIntArrayValueConverter implements ValueConverterPr
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         IntBuffer castedValue = ConverterArgumentHelper.getValue(value, IntBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
         int position = castedValue.position();
         if (castedRewind) {

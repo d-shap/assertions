@@ -55,7 +55,7 @@ public final class IteratorToListValueConverter implements ValueConverterProvide
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         Iterator<?> castedValue = ConverterArgumentHelper.getValue(value, Iterator.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class, 0);
+        int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);
 
         List<Object> result = new ArrayList<>();
         for (int i = 0; (castedCount == 0 || i < castedCount) && castedValue.hasNext(); i++) {

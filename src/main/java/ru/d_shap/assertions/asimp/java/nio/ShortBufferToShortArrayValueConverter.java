@@ -53,7 +53,7 @@ public final class ShortBufferToShortArrayValueConverter implements ValueConvert
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         ShortBuffer castedValue = ConverterArgumentHelper.getValue(value, ShortBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
         int position = castedValue.position();
         if (castedRewind) {

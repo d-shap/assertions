@@ -53,7 +53,7 @@ public final class DoubleBufferToDoubleArrayValueConverter implements ValueConve
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
         DoubleBuffer castedValue = ConverterArgumentHelper.getValue(value, DoubleBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class, false);
+        boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
         int position = castedValue.position();
         if (castedRewind) {
