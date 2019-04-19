@@ -49,12 +49,12 @@ public final class FloatArrayToObjectArrayValueConverter implements ValueConvert
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        float[] castedValue = ConverterArgumentHelper.getValue(value, float[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Float[] result = new Float[((float[]) value).length];
-        for (int i = 0; i < ((float[]) value).length; i++) {
-            result[i] = ((float[]) value)[i];
+        Float[] result = new Float[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

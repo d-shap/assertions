@@ -49,12 +49,12 @@ public final class ShortArrayToObjectArrayValueConverter implements ValueConvert
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        short[] castedValue = ConverterArgumentHelper.getValue(value, short[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Short[] result = new Short[((short[]) value).length];
-        for (int i = 0; i < ((short[]) value).length; i++) {
-            result[i] = ((short[]) value)[i];
+        Short[] result = new Short[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

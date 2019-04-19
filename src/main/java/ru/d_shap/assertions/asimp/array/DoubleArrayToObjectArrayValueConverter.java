@@ -49,12 +49,12 @@ public final class DoubleArrayToObjectArrayValueConverter implements ValueConver
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        double[] castedValue = ConverterArgumentHelper.getValue(value, double[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Double[] result = new Double[((double[]) value).length];
-        for (int i = 0; i < ((double[]) value).length; i++) {
-            result[i] = ((double[]) value)[i];
+        Double[] result = new Double[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

@@ -49,25 +49,25 @@ public final class IntArrayToCharArrayValueConverter implements ValueConverterPr
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (canConvertToTargetClass(value)) {
-            char[] result = new char[((int[]) value).length];
-            for (int i = 0; i < ((int[]) value).length; i++) {
-                int intValue = ((int[]) value)[i];
+        if (canConvertToTargetClass(castedValue)) {
+            char[] result = new char[castedValue.length];
+            for (int i = 0; i < castedValue.length; i++) {
+                int intValue = castedValue[i];
                 char charValue = (char) intValue;
                 result[i] = charValue;
             }
             return result;
         } else {
-            return value;
+            return castedValue;
         }
     }
 
-    private boolean canConvertToTargetClass(final Object value) throws ConversionException {
-        for (int i = 0; i < ((int[]) value).length; i++) {
-            int intValue = ((int[]) value)[i];
+    private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
+        for (int i = 0; i < castedValue.length; i++) {
+            int intValue = castedValue[i];
             char charValue = (char) intValue;
             if (intValue != charValue) {
                 return false;

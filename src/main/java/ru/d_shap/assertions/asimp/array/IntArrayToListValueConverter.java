@@ -52,11 +52,11 @@ public final class IntArrayToListValueConverter implements ValueConverterProvide
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Integer> result = new ArrayList<>(((int[]) value).length);
-        for (int element : (int[]) value) {
+        List<Integer> result = new ArrayList<>(castedValue.length);
+        for (int element : castedValue) {
             result.add(element);
         }
         return result;

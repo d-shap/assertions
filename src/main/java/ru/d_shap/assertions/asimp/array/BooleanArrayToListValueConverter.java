@@ -52,11 +52,11 @@ public final class BooleanArrayToListValueConverter implements ValueConverterPro
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        boolean[] castedValue = ConverterArgumentHelper.getValue(value, boolean[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Boolean> result = new ArrayList<>(((boolean[]) value).length);
-        for (boolean element : (boolean[]) value) {
+        List<Boolean> result = new ArrayList<>(castedValue.length);
+        for (boolean element : castedValue) {
             result.add(element);
         }
         return result;

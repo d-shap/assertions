@@ -49,12 +49,12 @@ public final class LongArrayToObjectArrayValueConverter implements ValueConverte
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        long[] castedValue = ConverterArgumentHelper.getValue(value, long[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Long[] result = new Long[((long[]) value).length];
-        for (int i = 0; i < ((long[]) value).length; i++) {
-            result[i] = ((long[]) value)[i];
+        Long[] result = new Long[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

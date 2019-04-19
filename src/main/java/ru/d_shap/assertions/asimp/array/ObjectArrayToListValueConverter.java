@@ -52,10 +52,10 @@ public final class ObjectArrayToListValueConverter implements ValueConverterProv
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        Object[] castedValue = ConverterArgumentHelper.getValue(value, Object[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        return Arrays.asList((Object[]) value);
+        return Arrays.asList(castedValue);
     }
 
 }

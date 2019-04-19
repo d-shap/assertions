@@ -49,25 +49,25 @@ public final class IntArrayToByteArrayValueConverter implements ValueConverterPr
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (canConvertToTargetClass(value)) {
-            byte[] result = new byte[((int[]) value).length];
-            for (int i = 0; i < ((int[]) value).length; i++) {
-                int intValue = ((int[]) value)[i];
+        if (canConvertToTargetClass(castedValue)) {
+            byte[] result = new byte[castedValue.length];
+            for (int i = 0; i < castedValue.length; i++) {
+                int intValue = castedValue[i];
                 byte byteValue = (byte) intValue;
                 result[i] = byteValue;
             }
             return result;
         } else {
-            return value;
+            return castedValue;
         }
     }
 
-    private boolean canConvertToTargetClass(final Object value) throws ConversionException {
-        for (int i = 0; i < ((int[]) value).length; i++) {
-            int intValue = ((int[]) value)[i];
+    private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
+        for (int i = 0; i < castedValue.length; i++) {
+            int intValue = castedValue[i];
             byte byteValue = (byte) intValue;
             if (intValue != byteValue) {
                 return false;

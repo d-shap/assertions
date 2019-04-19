@@ -52,11 +52,11 @@ public final class LongArrayToListValueConverter implements ValueConverterProvid
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        long[] castedValue = ConverterArgumentHelper.getValue(value, long[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Long> result = new ArrayList<>(((long[]) value).length);
-        for (long element : (long[]) value) {
+        List<Long> result = new ArrayList<>(castedValue.length);
+        for (long element : castedValue) {
             result.add(element);
         }
         return result;

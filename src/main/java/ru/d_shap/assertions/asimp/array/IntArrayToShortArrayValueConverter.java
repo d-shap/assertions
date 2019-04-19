@@ -49,25 +49,25 @@ public final class IntArrayToShortArrayValueConverter implements ValueConverterP
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (canConvertToTargetClass(value)) {
-            short[] result = new short[((int[]) value).length];
-            for (int i = 0; i < ((int[]) value).length; i++) {
-                int intValue = ((int[]) value)[i];
+        if (canConvertToTargetClass(castedValue)) {
+            short[] result = new short[castedValue.length];
+            for (int i = 0; i < castedValue.length; i++) {
+                int intValue = castedValue[i];
                 short shortValue = (short) intValue;
                 result[i] = shortValue;
             }
             return result;
         } else {
-            return value;
+            return castedValue;
         }
     }
 
-    private boolean canConvertToTargetClass(final Object value) throws ConversionException {
-        for (int i = 0; i < ((int[]) value).length; i++) {
-            int intValue = ((int[]) value)[i];
+    private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
+        for (int i = 0; i < castedValue.length; i++) {
+            int intValue = castedValue[i];
             short shortValue = (short) intValue;
             if (intValue != shortValue) {
                 return false;

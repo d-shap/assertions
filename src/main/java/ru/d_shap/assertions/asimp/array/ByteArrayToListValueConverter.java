@@ -52,11 +52,11 @@ public final class ByteArrayToListValueConverter implements ValueConverterProvid
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        byte[] castedValue = ConverterArgumentHelper.getValue(value, byte[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Byte> result = new ArrayList<>(((byte[]) value).length);
-        for (byte element : (byte[]) value) {
+        List<Byte> result = new ArrayList<>(castedValue.length);
+        for (byte element : castedValue) {
             result.add(element);
         }
         return result;

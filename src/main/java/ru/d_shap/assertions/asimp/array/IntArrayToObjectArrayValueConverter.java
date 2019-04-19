@@ -49,12 +49,12 @@ public final class IntArrayToObjectArrayValueConverter implements ValueConverter
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Integer[] result = new Integer[((int[]) value).length];
-        for (int i = 0; i < ((int[]) value).length; i++) {
-            result[i] = ((int[]) value)[i];
+        Integer[] result = new Integer[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

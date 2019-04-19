@@ -52,11 +52,11 @@ public final class CharArrayToListValueConverter implements ValueConverterProvid
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        char[] castedValue = ConverterArgumentHelper.getValue(value, char[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Character> result = new ArrayList<>(((char[]) value).length);
-        for (char element : (char[]) value) {
+        List<Character> result = new ArrayList<>(castedValue.length);
+        for (char element : castedValue) {
             result.add(element);
         }
         return result;

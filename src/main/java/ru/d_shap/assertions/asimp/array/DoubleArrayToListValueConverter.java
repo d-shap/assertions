@@ -52,11 +52,11 @@ public final class DoubleArrayToListValueConverter implements ValueConverterProv
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        double[] castedValue = ConverterArgumentHelper.getValue(value, double[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Double> result = new ArrayList<>(((double[]) value).length);
-        for (double element : (double[]) value) {
+        List<Double> result = new ArrayList<>(castedValue.length);
+        for (double element : castedValue) {
             result.add(element);
         }
         return result;

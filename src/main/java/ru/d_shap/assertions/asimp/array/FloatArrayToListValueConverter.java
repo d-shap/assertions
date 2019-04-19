@@ -52,11 +52,11 @@ public final class FloatArrayToListValueConverter implements ValueConverterProvi
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        float[] castedValue = ConverterArgumentHelper.getValue(value, float[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Float> result = new ArrayList<>(((float[]) value).length);
-        for (float element : (float[]) value) {
+        List<Float> result = new ArrayList<>(castedValue.length);
+        for (float element : castedValue) {
             result.add(element);
         }
         return result;

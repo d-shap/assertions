@@ -52,11 +52,11 @@ public final class ShortArrayToListValueConverter implements ValueConverterProvi
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        short[] castedValue = ConverterArgumentHelper.getValue(value, short[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Short> result = new ArrayList<>(((short[]) value).length);
-        for (short element : (short[]) value) {
+        List<Short> result = new ArrayList<>(castedValue.length);
+        for (short element : castedValue) {
             result.add(element);
         }
         return result;

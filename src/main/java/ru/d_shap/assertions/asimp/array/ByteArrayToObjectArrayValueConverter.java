@@ -49,12 +49,12 @@ public final class ByteArrayToObjectArrayValueConverter implements ValueConverte
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        byte[] castedValue = ConverterArgumentHelper.getValue(value, byte[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Byte[] result = new Byte[((byte[]) value).length];
-        for (int i = 0; i < ((byte[]) value).length; i++) {
-            result[i] = ((byte[]) value)[i];
+        Byte[] result = new Byte[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }

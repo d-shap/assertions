@@ -49,12 +49,12 @@ public final class BooleanArrayToObjectArrayValueConverter implements ValueConve
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        ConverterArgumentHelper.checkValueClass(value, getValueClass());
+        boolean[] castedValue = ConverterArgumentHelper.getValue(value, boolean[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Boolean[] result = new Boolean[((boolean[]) value).length];
-        for (int i = 0; i < ((boolean[]) value).length; i++) {
-            result[i] = ((boolean[]) value)[i];
+        Boolean[] result = new Boolean[castedValue.length];
+        for (int i = 0; i < castedValue.length; i++) {
+            result[i] = castedValue[i];
         }
         return result;
     }
