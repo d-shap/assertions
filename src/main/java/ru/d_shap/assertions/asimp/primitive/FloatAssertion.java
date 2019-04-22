@@ -29,6 +29,8 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  */
 public class FloatAssertion extends ReferenceAssertion<Float> {
 
+    private static final float DEFAULT_DELTA = 1.0e-5f;
+
     /**
      * Create new object.
      */
@@ -45,6 +47,15 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     */
+    public final void isEqualTo(final float expected) {
+        isEqualTo(expected, DEFAULT_DELTA);
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final float expected, final float delta) {
@@ -52,6 +63,15 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (Math.abs(expected - getActual()) > delta) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final float expected) {
+        isNotEqualTo(expected, DEFAULT_DELTA);
     }
 
     /**
