@@ -108,8 +108,13 @@ public abstract class BaseAssertion<T> {
         if (_initialized) {
             throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.Assertion.IS_NOT_INITIALIZED).build();
         }
-        if (!_actualValueValidator.isValid(actual)) {
-            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.Assertion.MATCHES).build();
+        ActualValueValidatorProvider actualValueValidatorProvider = _actualValueValidator.validate(actual);
+        if (actualValueValidatorProvider != null) {
+            Object value = actualValueValidatorProvider.getFailValue(actual);
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder(failDescription, value.getClass(), value);
+            assertionErrorBuilder.addMessage(Messages.Fail.Assertion.MATCHES);
+            actualValueValidatorProvider.addFailMessage(actual, assertionErrorBuilder);
+            throw assertionErrorBuilder.build();
         }
         _initialized = true;
         _actual = actual;
@@ -317,7 +322,11 @@ public abstract class BaseAssertion<T> {
     }
 
     private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription) {
-        return AssertionErrorBuilder.getInstance(failDescription, getActualValueClass(), _actual);
+        return getAssertionErrorBuilder(failDescription, getActualValueClass(), _actual);
+    }
+
+    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
+        return AssertionErrorBuilder.getInstance(failDescription, valueClass, actual);
     }
 
 }
