@@ -133,7 +133,7 @@ public final class Messages {
 
             public static final String MATCHES = "Actual value should match the assertion.";
 
-            public static final String IS_SUBTYPE_OF = "Actual value should be the instance of the expected class.";
+            public static final String IS_INSTANCE_OF = "Actual value should be the instance of the expected class.";
 
             private Assertion() {
                 super();

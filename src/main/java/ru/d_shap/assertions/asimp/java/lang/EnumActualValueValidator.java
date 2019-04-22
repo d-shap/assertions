@@ -49,7 +49,7 @@ public final class EnumActualValueValidator implements ActualValueValidatorProvi
 
     @Override
     public void addFailMessage(final AssertionErrorBuilder assertionErrorBuilder) {
-        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(Enum.class);
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_INSTANCE_OF).addExpected(Enum.class);
     }
 
 }

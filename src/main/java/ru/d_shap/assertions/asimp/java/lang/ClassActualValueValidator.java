@@ -54,7 +54,7 @@ public final class ClassActualValueValidator implements ActualValueValidatorProv
 
     @Override
     public void addFailMessage(final AssertionErrorBuilder assertionErrorBuilder) {
-        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(_clazz);
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_INSTANCE_OF).addExpected(_clazz);
     }
 
 }
