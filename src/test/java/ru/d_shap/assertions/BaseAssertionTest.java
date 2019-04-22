@@ -1347,7 +1347,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.byteAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Byte> but was:<java.lang.Object>");
         }
 
         createBaseAssertion((short) 10).as(Raw.shortAssertion()).isEqualTo(10);
@@ -1357,7 +1357,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.shortAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Short> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(10).as(Raw.intAssertion()).isEqualTo(10);
@@ -1367,7 +1367,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.intAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Integer> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(10L).as(Raw.longAssertion()).isEqualTo(10L);
@@ -1377,7 +1377,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.longAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Long> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(10.0f).as(Raw.floatAssertion()).isEqualTo(10.0f, 0.01f);
@@ -1387,7 +1387,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.floatAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Float> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(10.0).as(Raw.doubleAssertion()).isEqualTo(10.0, 0.01);
@@ -1397,7 +1397,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.doubleAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Double> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(true).as(Raw.booleanAssertion()).isTrue();
@@ -1407,7 +1407,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.booleanAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Boolean> but was:<java.lang.Object>");
         }
 
         createBaseAssertion('c').as(Raw.charAssertion()).isEqualTo(99);
@@ -1417,7 +1417,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.charAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Character> but was:<java.lang.Object>");
         }
     }
 
@@ -1433,7 +1433,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.byteArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[B> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new short[]{}).as(Raw.shortArrayAssertion()).hasLength(0);
@@ -1443,7 +1443,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.shortArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[S> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new int[]{}).as(Raw.intArrayAssertion()).hasLength(0);
@@ -1453,7 +1453,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.intArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[I> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new long[]{}).as(Raw.longArrayAssertion()).hasLength(0);
@@ -1463,7 +1463,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.longArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[J> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new float[]{}).as(Raw.floatArrayAssertion()).hasLength(0);
@@ -1473,7 +1473,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.floatArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[F> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new double[]{}).as(Raw.doubleArrayAssertion()).hasLength(0);
@@ -1483,7 +1483,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.doubleArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[D> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new boolean[]{}).as(Raw.booleanArrayAssertion()).hasLength(0);
@@ -1493,7 +1493,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.booleanArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Z> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new char[]{}).as(Raw.charArrayAssertion()).hasLength(0);
@@ -1503,7 +1503,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.charArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[C> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new String[]{}).as(Raw.<String>objectArrayAssertion()).hasLength(0);
@@ -1513,7 +1513,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>objectArrayAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Ljava.lang.Object;> but was:<java.lang.Object>");
         }
     }
 
@@ -1529,7 +1529,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.<String>listAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.List> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(new ArrayList<String>()).as(Raw.<String>iterableAssertion()).isEmpty();
@@ -1543,7 +1543,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.setAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.Set> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(createHashSet()).as(Raw.iterableAssertion()).isEmpty();
@@ -1557,7 +1557,7 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertion(new Object()).as(Raw.sortedSetAssertion());
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.SortedSet> but was:<java.lang.Object>");
         }
 
         createBaseAssertion(createTreeSet()).as(Raw.iterableAssertion()).isEmpty();
