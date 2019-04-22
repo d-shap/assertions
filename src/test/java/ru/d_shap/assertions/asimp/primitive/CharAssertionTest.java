@@ -50,13 +50,13 @@ public final class CharAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.charAssertion(), new Object());
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Character> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.charAssertion(), new Object(), "Message");
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Character> but was:<java.lang.Object>");
         }
     }
 

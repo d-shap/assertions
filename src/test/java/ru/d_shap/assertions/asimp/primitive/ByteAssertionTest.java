@@ -50,13 +50,13 @@ public final class ByteAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.byteAssertion(), new Object());
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Byte> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.byteAssertion(), new Object(), "Message");
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Byte> but was:<java.lang.Object>");
         }
     }
 
