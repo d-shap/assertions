@@ -54,13 +54,13 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.booleanArrayAssertion(), new Object());
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Z> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.booleanArrayAssertion(), new Object(), "Message");
             Assertions.fail("BooleanArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Z> but was:<java.lang.Object>");
         }
     }
 

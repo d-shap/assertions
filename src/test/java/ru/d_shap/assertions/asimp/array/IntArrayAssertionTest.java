@@ -54,13 +54,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.intArrayAssertion(), new Object());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[I> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.intArrayAssertion(), new Object(), "Message");
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[I> but was:<java.lang.Object>");
         }
     }
 

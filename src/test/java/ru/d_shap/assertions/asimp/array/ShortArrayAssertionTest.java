@@ -54,13 +54,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.shortArrayAssertion(), new Object());
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[S> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.shortArrayAssertion(), new Object(), "Message");
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[S> but was:<java.lang.Object>");
         }
     }
 

@@ -54,13 +54,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.longArrayAssertion(), new Object());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[J> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.longArrayAssertion(), new Object(), "Message");
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[J> but was:<java.lang.Object>");
         }
     }
 
