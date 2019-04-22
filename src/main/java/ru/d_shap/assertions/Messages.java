@@ -289,11 +289,11 @@ public final class Messages {
 
             public static final String IS_NOT_ARRAY_TYPE = "Actual value should not be the array type.";
 
+            public static final String IS_ENUM_TYPE = "Actual value should be the enum type.";
+
             public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor.";
 
             public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
-
-            public static final String IS_ENUM_TYPE = "Actual value should be the enum type.";
 
             public static final String CONTAINS = "Actual value should contain the expected value.";
 
