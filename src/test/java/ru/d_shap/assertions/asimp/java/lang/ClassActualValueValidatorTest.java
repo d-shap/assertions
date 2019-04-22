@@ -23,6 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
  * Tests for {@link ClassActualValueValidator}.
@@ -47,6 +48,32 @@ public final class ClassActualValueValidatorTest extends AssertionTest {
         Assertions.assertThat(new ClassActualValueValidator(Object.class).isValid("value")).isTrue();
         Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid("value")).isFalse();
         Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid(new Object())).isFalse();
+    }
+
+    /**
+     * {@link ClassActualValueValidator} class test.
+     */
+    @Test
+    public void getFailActualValueTest() {
+        Assertions.assertThat(new ClassActualValueValidator(null).getFailActualValue("")).isEqualTo(String.class);
+        Assertions.assertThat(new ClassActualValueValidator(null).getFailActualValue(new Object())).isEqualTo(Object.class);
+        Assertions.assertThat(new ClassActualValueValidator(null).getFailActualValue(String.class)).isEqualTo(Class.class);
+        Assertions.assertThat(new ClassActualValueValidator(null).getFailActualValue(Values.class)).isEqualTo(Class.class);
+    }
+
+    /**
+     * {@link ClassActualValueValidator} class test.
+     */
+    @Test
+    public void addFailMessageTest() {
+        AssertionErrorBuilder assertionErrorBuilder1 = AssertionErrorBuilder.getInstance(null, String.class, Integer.class);
+        new ClassActualValueValidator(String.class).addFailMessage(assertionErrorBuilder1);
+        Assertions.assertThat(assertionErrorBuilder1.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.String>");
+
+        AssertionErrorBuilder assertionErrorBuilder2 = AssertionErrorBuilder.getInstance(null, String.class, Integer.class);
+        new ClassActualValueValidator(String.class).addFailMessage(assertionErrorBuilder2);
+        assertionErrorBuilder2.addActual();
+        Assertions.assertThat(assertionErrorBuilder2.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.String> but was:<java.lang.Integer>");
     }
 
 }
