@@ -54,13 +54,13 @@ public final class IterableAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.<String>iterableAssertion(), new Object());
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Iterable> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.<String>iterableAssertion(), new Object(), "Message");
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Iterable> but was:<java.lang.Object>");
         }
     }
 

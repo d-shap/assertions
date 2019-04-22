@@ -61,13 +61,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.classAssertion(), new Object());
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Class> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.classAssertion(), new Object(), "Message");
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Class> but was:<java.lang.Object>");
         }
     }
 
@@ -1213,6 +1213,18 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).asEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Class>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").asEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Class>");
         }
         try {
             initialize(Raw.classAssertion(), Values.class).asEnum().hasValueCount(4);

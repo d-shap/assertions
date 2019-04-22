@@ -56,13 +56,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.intBufferAssertion(), new Object());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.IntBuffer> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.intBufferAssertion(), new Object(), "Message");
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.IntBuffer> but was:<java.lang.Object>");
         }
     }
 

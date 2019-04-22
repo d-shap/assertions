@@ -56,13 +56,13 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.floatBufferAssertion(), new Object());
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.FloatBuffer> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.floatBufferAssertion(), new Object(), "Message");
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.FloatBuffer> but was:<java.lang.Object>");
         }
     }
 

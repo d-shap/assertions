@@ -56,13 +56,13 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initializeWithRawActual(Raw.charBufferAssertion(), new Object());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.CharBuffer> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.charBufferAssertion(), new Object(), "Message");
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.nio.CharBuffer> but was:<java.lang.Object>");
         }
     }
 
