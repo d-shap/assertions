@@ -20,6 +20,8 @@
 package ru.d_shap.assertions.asimp.java.lang;
 
 import ru.d_shap.assertions.ActualValueValidatorProvider;
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
  * Actual value validator to check if the actual value is the enum class.
@@ -38,6 +40,11 @@ public final class EnumActualValueValidator implements ActualValueValidatorProvi
     @Override
     public boolean isValid(final Object actual) {
         return actual instanceof Class<?> && Enum.class.isAssignableFrom((Class<?>) actual);
+    }
+
+    @Override
+    public void addFailMessage(final Object actual, final AssertionErrorBuilder assertionErrorBuilder) {
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(Enum.class);
     }
 
 }
