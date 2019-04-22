@@ -110,10 +110,10 @@ public abstract class BaseAssertion<T> {
         }
         ActualValueValidatorProvider actualValueValidatorProvider = _actualValueValidator.validate(actual);
         if (actualValueValidatorProvider != null) {
-            Object value = actualValueValidatorProvider.getFailValue(actual);
-            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder(failDescription, value.getClass(), value);
+            Object failValue = actualValueValidatorProvider.getFailValue(actual);
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder(failDescription, failValue.getClass(), failValue);
             assertionErrorBuilder.addMessage(Messages.Fail.Assertion.MATCHES);
-            actualValueValidatorProvider.addFailMessage(actual, assertionErrorBuilder);
+            actualValueValidatorProvider.addFailMessage(assertionErrorBuilder);
             throw assertionErrorBuilder.build();
         }
         _initialized = true;

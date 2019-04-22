@@ -49,9 +49,8 @@ public interface ActualValueValidatorProvider {
     /**
      * Add the message to the assertion error.
      *
-     * @param actual                the actual value.
      * @param assertionErrorBuilder builder for the assertion error.
      */
-    void addFailMessage(Object actual, AssertionErrorBuilder assertionErrorBuilder);
+    void addFailMessage(AssertionErrorBuilder assertionErrorBuilder);
 
 }
