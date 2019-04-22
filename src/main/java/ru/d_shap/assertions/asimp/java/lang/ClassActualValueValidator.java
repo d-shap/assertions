@@ -48,13 +48,13 @@ public final class ClassActualValueValidator implements ActualValueValidatorProv
     }
 
     @Override
-    public Object getFailValue(final Object actual) {
+    public Object getFailActualValue(final Object actual) {
         return actual.getClass();
     }
 
     @Override
     public void addFailMessage(final AssertionErrorBuilder assertionErrorBuilder) {
-        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addActual().addExpected(_clazz);
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(_clazz);
     }
 
 }

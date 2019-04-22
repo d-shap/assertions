@@ -43,13 +43,13 @@ public final class EnumActualValueValidator implements ActualValueValidatorProvi
     }
 
     @Override
-    public Object getFailValue(final Object actual) {
+    public Object getFailActualValue(final Object actual) {
         return actual.getClass();
     }
 
     @Override
     public void addFailMessage(final AssertionErrorBuilder assertionErrorBuilder) {
-        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addActual().addExpected(Enum.class);
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(Enum.class);
     }
 
 }
