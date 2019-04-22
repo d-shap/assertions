@@ -64,7 +64,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToDefaultDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isEqualToSpecifiedDeltaTest() {
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.0, 0.01);
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(9.999, 0.01);
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.001, 0.01);
@@ -133,7 +141,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isNotEqualToDefaultDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotEqualSpecifiedDeltaTest() {
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.01, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(9.99, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(20.0, 0.0);

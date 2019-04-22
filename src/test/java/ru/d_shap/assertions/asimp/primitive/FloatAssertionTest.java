@@ -64,7 +64,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToDefaultDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isEqualToSpecifiedDeltaTest() {
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.0f, 0.01f);
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(9.999f, 0.01f);
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.001f, 0.01f);
@@ -133,7 +141,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isNotEqualToDefaultDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToSpecifiedDeltaTest() {
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.01f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(9.99f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(20.0f, 0.0f);
