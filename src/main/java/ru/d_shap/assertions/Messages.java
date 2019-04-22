@@ -293,6 +293,8 @@ public final class Messages {
 
             public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
 
+            public static final String IS_ENUM_TYPE = "Actual value should be the enum type.";
+
             public static final String CONTAINS = "Actual value should contain the expected value.";
 
             public static final String CONTAINS_IGNORE_CASE = "Actual value should contain the expected value ignoring case.";
