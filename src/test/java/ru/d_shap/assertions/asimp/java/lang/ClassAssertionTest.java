@@ -1218,13 +1218,13 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), Object.class).asEnum();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Class>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be the enum type.\n\tActual:<java.lang.Object>");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").asEnum();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Class>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the enum type.\n\tActual:<java.lang.Object>");
         }
         try {
             initialize(Raw.classAssertion(), Values.class).asEnum().hasValueCount(4);
