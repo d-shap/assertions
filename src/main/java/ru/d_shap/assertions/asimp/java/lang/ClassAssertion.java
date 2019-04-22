@@ -237,6 +237,9 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
+        if (getActual() != null && !Enum.class.isAssignableFrom(getActual())) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ENUM_TYPE).addActual().build();
+        }
         return as(Raw.enumAssertion());
     }
 
