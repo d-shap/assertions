@@ -40,16 +40,16 @@ final class ActualValueValidator {
         _actualValueValidators.add(actualValueValidator);
     }
 
-    boolean isValid(final Object actual) {
+    ActualValueValidatorProvider validate(final Object actual) {
         if (actual == null) {
-            return true;
+            return null;
         } else {
             for (ActualValueValidatorProvider actualValueValidator : _actualValueValidators) {
                 if (!actualValueValidator.isValid(actual)) {
-                    return false;
+                    return actualValueValidator;
                 }
             }
-            return true;
+            return null;
         }
     }
 
