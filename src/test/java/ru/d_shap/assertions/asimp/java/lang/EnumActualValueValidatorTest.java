@@ -23,6 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
  * Tests for {@link EnumActualValueValidator}.
@@ -46,6 +47,32 @@ public final class EnumActualValueValidatorTest extends AssertionTest {
         Assertions.assertThat(new EnumActualValueValidator().isValid(Values.class)).isTrue();
         Assertions.assertThat(new EnumActualValueValidator().isValid(Object.class)).isFalse();
         Assertions.assertThat(new EnumActualValueValidator().isValid("value")).isFalse();
+    }
+
+    /**
+     * {@link EnumActualValueValidator} class test.
+     */
+    @Test
+    public void getFailActualValueTest() {
+        Assertions.assertThat(new EnumActualValueValidator().getFailActualValue("")).isEqualTo(String.class);
+        Assertions.assertThat(new EnumActualValueValidator().getFailActualValue(new Object())).isEqualTo(Object.class);
+        Assertions.assertThat(new EnumActualValueValidator().getFailActualValue(String.class)).isEqualTo(Class.class);
+        Assertions.assertThat(new EnumActualValueValidator().getFailActualValue(Values.class)).isEqualTo(Class.class);
+    }
+
+    /**
+     * {@link EnumActualValueValidator} class test.
+     */
+    @Test
+    public void addFailMessageTest() {
+        AssertionErrorBuilder assertionErrorBuilder1 = AssertionErrorBuilder.getInstance(null, Class.class, Integer.class);
+        new EnumActualValueValidator().addFailMessage(assertionErrorBuilder1);
+        Assertions.assertThat(assertionErrorBuilder1.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum>");
+
+        AssertionErrorBuilder assertionErrorBuilder2 = AssertionErrorBuilder.getInstance(null, Class.class, Integer.class);
+        new EnumActualValueValidator().addFailMessage(assertionErrorBuilder2);
+        assertionErrorBuilder2.addActual();
+        Assertions.assertThat(assertionErrorBuilder2.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Integer>");
     }
 
 }
