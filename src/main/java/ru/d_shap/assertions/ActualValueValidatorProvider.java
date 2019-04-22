@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
+
 /**
  * Service provider interface for the actual value validator.
  *
@@ -34,5 +36,13 @@ public interface ActualValueValidatorProvider {
      * @return true, if the actual value is valid.
      */
     boolean isValid(Object actual);
+
+    /**
+     * Add the message to the assertion error.
+     *
+     * @param actual                the actual value.
+     * @param assertionErrorBuilder builder for the assertion error.
+     */
+    void addFailMessage(Object actual, AssertionErrorBuilder assertionErrorBuilder);
 
 }
