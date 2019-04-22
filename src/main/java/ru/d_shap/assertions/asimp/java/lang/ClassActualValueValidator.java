@@ -20,6 +20,8 @@
 package ru.d_shap.assertions.asimp.java.lang;
 
 import ru.d_shap.assertions.ActualValueValidatorProvider;
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
  * Actual value validator to check if the actual value is instance of the specified class.
@@ -43,6 +45,11 @@ public final class ClassActualValueValidator implements ActualValueValidatorProv
     @Override
     public boolean isValid(final Object actual) {
         return _clazz.isInstance(actual);
+    }
+
+    @Override
+    public void addFailMessage(final Object actual, final AssertionErrorBuilder assertionErrorBuilder) {
+        assertionErrorBuilder.addMessage(Messages.Fail.Assertion.IS_SUBTYPE_OF).addExpected(_clazz);
     }
 
 }
