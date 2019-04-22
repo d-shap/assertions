@@ -38,16 +38,16 @@ public interface ActualValueValidatorProvider {
     boolean isValid(Object actual);
 
     /**
-     * Get the fail value.
+     * Get the actual value for the fail message.
      *
      * @param actual the actual value.
      *
-     * @return the fail value.
+     * @return the actual value for the fail message.
      */
-    Object getFailValue(Object actual);
+    Object getFailActualValue(Object actual);
 
     /**
-     * Add the message to the assertion error.
+     * Add the fail message to the assertion error.
      *
      * @param assertionErrorBuilder builder for the assertion error.
      */
