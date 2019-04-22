@@ -44,9 +44,6 @@ final class ConverterKey {
 
     @Override
     public boolean equals(final Object object) {
-        if (object == null) {
-            return false;
-        }
         if (object == this) {
             return true;
         }
