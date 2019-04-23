@@ -44,6 +44,8 @@ public final class ClassActualValueValidatorTest extends AssertionTest {
      */
     @Test
     public void isValidTest() {
+        Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid(null)).isFalse();
+
         Assertions.assertThat(new ClassActualValueValidator(String.class).isValid("value")).isTrue();
         Assertions.assertThat(new ClassActualValueValidator(Object.class).isValid("value")).isTrue();
         Assertions.assertThat(new ClassActualValueValidator(Integer.class).isValid("value")).isFalse();
@@ -64,6 +66,14 @@ public final class ClassActualValueValidatorTest extends AssertionTest {
     /**
      * {@link ClassActualValueValidator} class test.
      */
+    @Test(expected = NullPointerException.class)
+    public void getFailActualValueNullFailTest() {
+        new ClassActualValueValidator(Object.class).getFailActualValue(null);
+    }
+
+    /**
+     * {@link ClassActualValueValidator} class test.
+     */
     @Test
     public void addFailMessageTest() {
         AssertionErrorBuilder assertionErrorBuilder1 = AssertionErrorBuilder.getInstance(null, Class.class, Integer.class);
@@ -74,6 +84,14 @@ public final class ClassActualValueValidatorTest extends AssertionTest {
         new ClassActualValueValidator(Class.class).addFailMessage(assertionErrorBuilder2);
         assertionErrorBuilder2.addActual();
         Assertions.assertThat(assertionErrorBuilder2.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.Class> but was:<java.lang.Integer>");
+    }
+
+    /**
+     * {@link ClassActualValueValidator} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addFailMessageNullFailTest() {
+        new ClassActualValueValidator(Object.class).addFailMessage(null);
     }
 
 }

@@ -44,6 +44,8 @@ public final class EnumActualValueValidatorTest extends AssertionTest {
      */
     @Test
     public void isValidTest() {
+        Assertions.assertThat(new EnumActualValueValidator().isValid(null)).isFalse();
+
         Assertions.assertThat(new EnumActualValueValidator().isValid(Values.class)).isTrue();
         Assertions.assertThat(new EnumActualValueValidator().isValid(Object.class)).isFalse();
         Assertions.assertThat(new EnumActualValueValidator().isValid("value")).isFalse();
@@ -63,6 +65,14 @@ public final class EnumActualValueValidatorTest extends AssertionTest {
     /**
      * {@link EnumActualValueValidator} class test.
      */
+    @Test(expected = NullPointerException.class)
+    public void getFailActualValueNullFailTest() {
+        new EnumActualValueValidator().getFailActualValue(null);
+    }
+
+    /**
+     * {@link EnumActualValueValidator} class test.
+     */
     @Test
     public void addFailMessageTest() {
         AssertionErrorBuilder assertionErrorBuilder1 = AssertionErrorBuilder.getInstance(null, Class.class, Integer.class);
@@ -73,6 +83,14 @@ public final class EnumActualValueValidatorTest extends AssertionTest {
         new EnumActualValueValidator().addFailMessage(assertionErrorBuilder2);
         assertionErrorBuilder2.addActual();
         Assertions.assertThat(assertionErrorBuilder2.build()).hasMessage("Actual value should be the instance of the expected class.\n\tExpected:<java.lang.Enum> but was:<java.lang.Integer>");
+    }
+
+    /**
+     * {@link EnumActualValueValidator} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addFailMessageNullFailTest() {
+        new EnumActualValueValidator().addFailMessage(null);
     }
 
 }
