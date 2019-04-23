@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.fail;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import org.junit.Test;
@@ -407,9 +406,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void conversionExceptionTest() throws Exception {
-        Field field = ValueConverter.class.getDeclaredField("CONVERTER_PROVIDERS");
-        PrivateAccessor.setAccessible(field);
-        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) field.get(null);
+        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
         converterProviders.add(new ErrorTypeConverter());
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);

@@ -142,8 +142,7 @@ public class AssertionTest {
      */
     protected final <W, S extends BaseAssertion<W>> S clearActual(final S assertion) {
         try {
-            Field field = BaseAssertion.class.getDeclaredField("_actual");
-            PrivateAccessor.setAccessible(field);
+            Field field = PrivateAccessor.getField(BaseAssertion.class, assertion, "_actual");
             field.set(assertion, null);
             return assertion;
         } catch (NoSuchFieldException | IllegalAccessException ex) {
