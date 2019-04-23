@@ -19,9 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp;
 
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Field;
-
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.BaseAssertion;
@@ -251,7 +248,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         try {
-            Object fieldValue = getFieldValue(fieldName);
+            Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
             return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
@@ -287,40 +284,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(fieldName, "fieldName");
         checkArgumentIsNotNull(matcher, "matcher");
         try {
-            Object fieldValue = getFieldValue(fieldName);
+            Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
             matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
-    }
-
-    private Object getFieldValue(final String fieldName) throws ReflectiveOperationException {
-        Field field = getField(fieldName);
-        setAccessible(field);
-        return field.get(getActual());
-    }
-
-    private Field getField(final String fieldName) throws ReflectiveOperationException {
-        Class<?> currentClass = getActual().getClass();
-        NoSuchFieldException noSuchFieldException = null;
-        while (currentClass != null) {
-            try {
-                return currentClass.getDeclaredField(fieldName);
-            } catch (NoSuchFieldException ex) {
-                noSuchFieldException = ex;
-                currentClass = currentClass.getSuperclass();
-            }
-        }
-        throw noSuchFieldException;
-    }
-
-    /**
-     * Make the private class element accessible.
-     *
-     * @param accessibleObject the private class element.
-     */
-    protected final void setAccessible(final AccessibleObject accessibleObject) {
-        PrivateAccessor.setAccessible(accessibleObject);
     }
 
 }
