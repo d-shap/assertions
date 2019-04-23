@@ -889,6 +889,86 @@ public final class ClassAssertionTest extends AssertionTest {
      * {@link ClassAssertion} class test.
      */
     @Test
+    public void isEnumTest() {
+        initialize(Raw.classAssertion(), Values.class).isEnum();
+
+        try {
+            Raw.classAssertion().isEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class).isEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be the enum type.\n\tActual:<java.lang.Object>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Object.class, "Message").isEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be the enum type.\n\tActual:<java.lang.Object>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
+    public void isNotEnumTest() {
+        initialize(Raw.classAssertion(), Object.class).isNotEnum();
+        initialize(Raw.classAssertion(), String.class).isNotEnum();
+        initialize(Raw.classAssertion(), int.class).isNotEnum();
+
+        try {
+            Raw.classAssertion().isNotEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null).isNotEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), null, "Message").isNotEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.classAssertion(), Values.class).isNotEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be the enum type.\n\tActual:<ru.d_shap.assertions.AssertionTest$Values>");
+        }
+        try {
+            initialize(Raw.classAssertion(), Values.class, "Message").isNotEnum();
+            Assertions.fail("ClassAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be the enum type.\n\tActual:<ru.d_shap.assertions.AssertionTest$Values>");
+        }
+    }
+
+    /**
+     * {@link ClassAssertion} class test.
+     */
+    @Test
     public void toComponentTypeTest() {
         initialize(Raw.classAssertion(), Object[].class).toComponentType().isEqualTo(Object.class);
         initialize(Raw.classAssertion(), Object[][].class).toComponentType().isEqualTo(Object[].class);
