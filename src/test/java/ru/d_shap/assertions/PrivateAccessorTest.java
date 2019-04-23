@@ -207,7 +207,21 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     @Test
     public void getMethodWithObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
 
+        Method parentMethodParent = PrivateAccessor.getMethod(parentClass, "parentMethod");
+        Object parentMethodParentValue = parentMethodParent.invoke(parentClass);
+        Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
+
+        ChildClass childClass = new ChildClass();
+
+        Method parentMethodChild = PrivateAccessor.getMethod(childClass, "parentMethod");
+        Object parentMethodChildValue = parentMethodChild.invoke(childClass);
+        Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
+
+        Method childMethodChild = PrivateAccessor.getMethod(childClass, "childMethod", String.class);
+        Object childMethodChildValue = childMethodChild.invoke(childClass, "param");
+        Assertions.assertThat(childMethodChildValue).isEqualTo("childMethod:param");
     }
 
     /**
@@ -217,7 +231,33 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     @Test
     public void getMethodWithClassAndObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
 
+        Method parentStaticMethodParent = PrivateAccessor.getMethod(ParentClass.class, null, "parentStaticMethod");
+        Object parentStaticMethodParentValue = parentStaticMethodParent.invoke(null);
+        Assertions.assertThat(parentStaticMethodParentValue).isEqualTo("parentStaticMethod");
+
+        Method parentMethodParent = PrivateAccessor.getMethod(ParentClass.class, parentClass, "parentMethod");
+        Object parentMethodParentValue = parentMethodParent.invoke(parentClass);
+        Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
+
+        ChildClass childClass = new ChildClass();
+
+        Method parentStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, null, "parentStaticMethod");
+        Object parentStaticMethodChildValue = parentStaticMethodChild.invoke(null);
+        Assertions.assertThat(parentStaticMethodChildValue).isEqualTo("parentStaticMethod");
+
+        Method childStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, null, "childStaticMethod", String.class);
+        Object childStaticMethodChildValue = childStaticMethodChild.invoke(null, "param");
+        Assertions.assertThat(childStaticMethodChildValue).isEqualTo("childStaticMethod:param");
+
+        Method parentMethodChild = PrivateAccessor.getMethod(ChildClass.class, childClass, "parentMethod");
+        Object parentMethodChildValue = parentMethodChild.invoke(childClass);
+        Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
+
+        Method childMethodChild = PrivateAccessor.getMethod(ChildClass.class, childClass, "childMethod", String.class);
+        Object childMethodChildValue = childMethodChild.invoke(childClass, "param");
+        Assertions.assertThat(childMethodChildValue).isEqualTo("childMethod:param");
     }
 
     /**
@@ -334,11 +374,11 @@ public final class PrivateAccessorTest extends AssertionTest {
         }
 
         private static String childStaticMethod(final String param) {
-            return "parentStaticMethod:" + param;
+            return "childStaticMethod:" + param;
         }
 
         private String childMethod(final String param) {
-            return "parentMethod:" + param;
+            return "childMethod:" + param;
         }
 
     }
