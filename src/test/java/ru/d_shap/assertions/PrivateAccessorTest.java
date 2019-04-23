@@ -136,6 +136,16 @@ public final class PrivateAccessorTest extends AssertionTest {
      *
      * @throws Exception exception in test.
      */
+    @Test(expected = NoSuchFieldException.class)
+    public void getFieldWrongNameFailTest() throws Exception {
+        PrivateAccessor.getField(new ChildClass(), "wrongFieldName");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
     @Test
     public void getFieldValueWithObjectTest() throws Exception {
         ParentClass parentClass = new ParentClass();
@@ -265,11 +275,31 @@ public final class PrivateAccessorTest extends AssertionTest {
      *
      * @throws Exception exception in test.
      */
+    @Test(expected = NoSuchMethodException.class)
+    public void getMethodWrongNameFailTest() throws Exception {
+        PrivateAccessor.getMethod(new ChildClass(), "wrongMethodName");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
     @Test
     public void getConstructorWithClassTest() throws Exception {
         Constructor<PrivateConstructorClass> constructor = PrivateAccessor.getConstructor(PrivateConstructorClass.class);
         PrivateConstructorClass object = constructor.newInstance();
         Assertions.assertThat(object).isNotNull();
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = NoSuchMethodException.class)
+    public void getConstructorWrongNameFailTest() throws Exception {
+        PrivateAccessor.getConstructor(ChildClass.class, String.class);
     }
 
     /**
