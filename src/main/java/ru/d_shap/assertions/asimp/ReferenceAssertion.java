@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp;
 
+import java.lang.reflect.AccessibleObject;
+
 import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.BaseAssertion;
@@ -289,6 +291,15 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         } catch (ReflectiveOperationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
+    }
+
+    /**
+     * Make the private class element accessible.
+     *
+     * @param accessibleObject the private class element.
+     */
+    protected final void setAccessible(final AccessibleObject accessibleObject) {
+        PrivateAccessor.setAccessible(accessibleObject);
     }
 
 }
