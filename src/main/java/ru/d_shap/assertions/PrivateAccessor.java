@@ -82,6 +82,39 @@ public final class PrivateAccessor {
     }
 
     /**
+     * Get the value of the specified field.
+     *
+     * @param object    the object.
+     * @param fieldName the field name.
+     * @param <T>       the generic type of the class.
+     *
+     * @return the value of the specified field.
+     *
+     * @throws NoSuchFieldException   if the specified field can not be found.
+     * @throws IllegalAccessException if the specified field is not accessible.
+     */
+    public static <T> Object getFieldValue(final T object, final String fieldName) throws NoSuchFieldException, IllegalAccessException {
+        return getField(object, fieldName).get(object);
+    }
+
+    /**
+     * Get the value of the specified field.
+     *
+     * @param clazz     the class.
+     * @param object    the object or null for static field.
+     * @param fieldName the field name.
+     * @param <T>       the generic type of the class.
+     *
+     * @return the value of the specified field.
+     *
+     * @throws NoSuchFieldException   if the specified field can not be found.
+     * @throws IllegalAccessException if the specified field is not accessible.
+     */
+    public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) throws NoSuchFieldException, IllegalAccessException {
+        return getField(clazz, object, fieldName).get(object);
+    }
+
+    /**
      * Get the specified method.
      *
      * @param object         the object.
