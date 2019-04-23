@@ -267,7 +267,9 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     @Test
     public void getConstructorWithClassTest() throws Exception {
-
+        Constructor<PrivateConstructorClass> constructor = PrivateAccessor.getConstructor(PrivateConstructorClass.class);
+        PrivateConstructorClass object = constructor.newInstance();
+        Assertions.assertThat(object).isNotNull();
     }
 
     /**
