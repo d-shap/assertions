@@ -1485,17 +1485,17 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void setAccessibleTest() throws Exception {
-        PrivateFieldClass privateField = new PrivateFieldClass();
-        Field field = privateField.getClass().getDeclaredField("_value");
+        ToFieldChildClass privateField = new ToFieldChildClass();
+        Field field = privateField.getClass().getDeclaredField("_childField");
         try {
             field.get(privateField);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
         }
         createReferenceAssertion(new Object()).setAccessible(field);
         Object value = field.get(privateField);
-        Assertions.assertThat(value).isEqualTo("value");
+        Assertions.assertThat(value).isEqualTo("childField");
     }
 
     private ReferenceAssertion<Object> createReferenceAssertion() {
