@@ -39,7 +39,7 @@ public final class EnumActualValueValidator implements ActualValueValidatorProvi
 
     @Override
     public boolean isValid(final Object actual) {
-        return actual instanceof Class<?> && Enum.class.isAssignableFrom((Class<?>) actual);
+        return actual instanceof Class<?> && ((Class<?>) actual).isEnum();
     }
 
     @Override
