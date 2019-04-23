@@ -172,6 +172,26 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     }
 
     /**
+     * Check if the actual value is the enum type.
+     */
+    public final void isEnum() {
+        checkActualIsNotNull();
+        if (!getActual().isEnum()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ENUM_TYPE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT the enum type.
+     */
+    public final void isNotEnum() {
+        checkActualIsNotNull();
+        if (getActual().isEnum()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ENUM_TYPE).addActual().build();
+        }
+    }
+
+    /**
      * Make assertion about the actual value's component type.
      *
      * @return the assertion.
@@ -237,8 +257,8 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @return the assertion.
      */
     public final EnumAssertion asEnum() {
-        if (getActual() != null && !Enum.class.isAssignableFrom(getActual())) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ENUM_TYPE).addActual().build();
+        if (getActual() != null) {
+            isEnum();
         }
         return as(Raw.enumAssertion());
     }
