@@ -85,14 +85,15 @@ public class AssertionTest {
      * @param assertion the specified assertion.
      * @param actual    the actual value.
      * @param message   the message.
+     * @param arguments the message arguments.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <U>       the generic type of the actual value.
      * @param <S>       the generic type of the assertion.
      *
      * @return the initialized assertion.
      */
-    protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message) {
-        assertion.initialize(actual, message);
+    protected final <W, U extends W, S extends BaseAssertion<W>> S initialize(final S assertion, final U actual, final String message, final Object... arguments) {
+        assertion.initialize(actual, message, arguments);
         return assertion;
     }
 
@@ -118,14 +119,15 @@ public class AssertionTest {
      * @param assertion the specified assertion.
      * @param actual    the actual value.
      * @param message   the message.
+     * @param arguments the message arguments.
      * @param <W>       the generic type of the assertion's actual value.
      * @param <S>       the generic type of the assertion.
      *
      * @return the initialized assertion.
      */
     @SuppressWarnings("unchecked")
-    protected final <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message) {
-        assertion.initialize((W) actual, message);
+    protected final <W, S extends BaseAssertion<W>> S initializeWithRawActual(final S assertion, final Object actual, final String message, final Object... arguments) {
+        assertion.initialize((W) actual, message, arguments);
         return assertion;
     }
 
