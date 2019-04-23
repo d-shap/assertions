@@ -40,6 +40,22 @@ public final class PrivateAccessor {
     /**
      * Get the specified field.
      *
+     * @param object    the object.
+     * @param fieldName the field name.
+     * @param <T>       the generic type of the class.
+     *
+     * @return the specified field.
+     *
+     * @throws NoSuchFieldException if the specified field can not be found.
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Field getField(final T object, final String fieldName) throws NoSuchFieldException {
+        return getField((Class<T>) object.getClass(), object, fieldName);
+    }
+
+    /**
+     * Get the specified field.
+     *
      * @param clazz     the class.
      * @param object    the object or null for static field.
      * @param fieldName the field name.
@@ -63,6 +79,23 @@ public final class PrivateAccessor {
             }
         }
         throw noSuchFieldException;
+    }
+
+    /**
+     * Get the specified method.
+     *
+     * @param object         the object.
+     * @param methodName     the method name.
+     * @param parameterTypes the method parameter types.
+     * @param <T>            the generic type of the class.
+     *
+     * @return the specified method.
+     *
+     * @throws NoSuchMethodException if the specified method can not be found.
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Method getMethod(final T object, final String methodName, final Class<?>... parameterTypes) throws NoSuchMethodException {
+        return getMethod((Class<T>) object.getClass(), object, methodName, parameterTypes);
     }
 
     /**
