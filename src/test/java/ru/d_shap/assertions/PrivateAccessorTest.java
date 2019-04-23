@@ -53,18 +53,201 @@ public final class PrivateAccessorTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void getFieldWithObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
+
+        Field nullFieldParent = PrivateAccessor.getField(parentClass, "_nullField");
+        Object nullFieldParentValue = nullFieldParent.get(parentClass);
+        Assertions.assertThat(nullFieldParentValue).isNull();
+
+        Field parentFieldParent = PrivateAccessor.getField(parentClass, "_parentField");
+        Object parentFieldParentValue = parentFieldParent.get(parentClass);
+        Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
+
+        ChildClass childClass = new ChildClass();
+
+        Field nullFieldChild = PrivateAccessor.getField(childClass, "_nullField");
+        Object nullFieldChildValue = nullFieldChild.get(childClass);
+        Assertions.assertThat(nullFieldChildValue).isNull();
+
+        Field parentFieldChild = PrivateAccessor.getField(childClass, "_parentField");
+        Object parentFieldChildValue = parentFieldChild.get(childClass);
+        Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
+
+        Field childFieldChild = PrivateAccessor.getField(childClass, "_childField");
+        Object childFieldChildValue = childFieldChild.get(childClass);
+        Assertions.assertThat(childFieldChildValue).isEqualTo("childField");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getFieldWithClassAndObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
+
+        Field nullStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "nullStaticField");
+        Object nullStaticFieldParentValue = nullStaticFieldParent.get(null);
+        Assertions.assertThat(nullStaticFieldParentValue).isNull();
+
+        Field parentStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "parentStaticField");
+        Object parentStaticFieldParentValue = parentStaticFieldParent.get(null);
+        Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
+
+        Field nullFieldParent = PrivateAccessor.getField(ParentClass.class, parentClass, "_nullField");
+        Object nullFieldParentValue = nullFieldParent.get(parentClass);
+        Assertions.assertThat(nullFieldParentValue).isNull();
+
+        Field parentFieldParent = PrivateAccessor.getField(ParentClass.class, parentClass, "_parentField");
+        Object parentFieldParentValue = parentFieldParent.get(parentClass);
+        Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
+
+        ChildClass childClass = new ChildClass();
+
+        Field nullStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "nullStaticField");
+        Object nullStaticFieldChildValue = nullStaticFieldChild.get(null);
+        Assertions.assertThat(nullStaticFieldChildValue).isNull();
+
+        Field parentStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "parentStaticField");
+        Object parentStaticFieldChildValue = parentStaticFieldChild.get(null);
+        Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
+
+        Field childStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "childStaticField");
+        Object childStaticFieldChildValue = childStaticFieldChild.get(null);
+        Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
+
+        Field nullFieldChild = PrivateAccessor.getField(ChildClass.class, childClass, "_nullField");
+        Object nullFieldChildValue = nullFieldChild.get(childClass);
+        Assertions.assertThat(nullFieldChildValue).isNull();
+
+        Field parentFieldChild = PrivateAccessor.getField(ChildClass.class, childClass, "_parentField");
+        Object parentFieldChildValue = parentFieldChild.get(childClass);
+        Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
+
+        Field childField = PrivateAccessor.getField(ChildClass.class, childClass, "_childField");
+        Object childFieldValue = childField.get(childClass);
+        Assertions.assertThat(childFieldValue).isEqualTo("childField");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getFieldValueWithObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
+
+        Object nullFieldParentValue = PrivateAccessor.getFieldValue(parentClass, "_nullField");
+        Assertions.assertThat(nullFieldParentValue).isNull();
+
+        Object parentFieldParentValue = PrivateAccessor.getFieldValue(parentClass, "_parentField");
+        Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
+
+        ChildClass childClass = new ChildClass();
+
+        Object nullFieldChildValue = PrivateAccessor.getFieldValue(childClass, "_nullField");
+        Assertions.assertThat(nullFieldChildValue).isNull();
+
+        Object parentFieldChildValue = PrivateAccessor.getFieldValue(childClass, "_parentField");
+        Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
+
+        Object childFieldChildValue = PrivateAccessor.getFieldValue(childClass, "_childField");
+        Assertions.assertThat(childFieldChildValue).isEqualTo("childField");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getFieldValueWithClassAndObjectTest() throws Exception {
+        ParentClass parentClass = new ParentClass();
+
+        Object nullStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "nullStaticField");
+        Assertions.assertThat(nullStaticFieldParentValue).isNull();
+
+        Object parentStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "parentStaticField");
+        Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
+
+        Object nullFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, parentClass, "_nullField");
+        Assertions.assertThat(nullFieldParentValue).isNull();
+
+        Object parentFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, parentClass, "_parentField");
+        Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
+
+        ChildClass childClass = new ChildClass();
+
+        Object nullStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "nullStaticField");
+        Assertions.assertThat(nullStaticFieldChildValue).isNull();
+
+        Object parentStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "parentStaticField");
+        Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
+
+        Object childStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "childStaticField");
+        Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
+
+        Object nullFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, childClass, "_nullField");
+        Assertions.assertThat(nullFieldChildValue).isNull();
+
+        Object parentFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, childClass, "_parentField");
+        Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
+
+        Object childFieldValue = PrivateAccessor.getFieldValue(ChildClass.class, childClass, "_childField");
+        Assertions.assertThat(childFieldValue).isEqualTo("childField");
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getMethodWithObjectTest() throws Exception {
+
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getMethodWithClassAndObjectTest() throws Exception {
+
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void getConstructorWithClassTest() throws Exception {
+
+    }
+
+    /**
+     * {@link PrivateAccessor} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void setAccessibleFieldTest() throws Exception {
-        PrivateFieldClass privateField = new PrivateFieldClass();
-        Field field = privateField.getClass().getDeclaredField("_value");
+        ParentClass parentClass = new ParentClass();
+        Field field = parentClass.getClass().getDeclaredField("_parentField");
         try {
-            field.get(privateField);
+            field.get(parentClass);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
         }
         PrivateAccessor.setAccessible(field);
-        Object value = field.get(privateField);
-        Assertions.assertThat(value).isEqualTo("value");
+        Object value = field.get(parentClass);
+        Assertions.assertThat(value).isEqualTo("parentField");
     }
 
     /**
@@ -74,17 +257,17 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     @Test
     public void setAccessibleMethodTest() throws Exception {
-        PrivateMethodClass privateMethod = new PrivateMethodClass();
-        Method method = privateMethod.getClass().getDeclaredMethod("getValue");
+        ParentClass parentClass = new ParentClass();
+        Method method = parentClass.getClass().getDeclaredMethod("parentMethod");
         try {
-            method.invoke(privateMethod);
+            method.invoke(parentClass);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
         }
         PrivateAccessor.setAccessible(method);
-        Object value = method.invoke(privateMethod);
-        Assertions.assertThat(value).isEqualTo("value");
+        Object value = method.invoke(parentClass);
+        Assertions.assertThat(value).isEqualTo("parentMethod");
     }
 
     /**
@@ -104,6 +287,73 @@ public final class PrivateAccessorTest extends AssertionTest {
         PrivateAccessor.setAccessible(constructor);
         PrivateConstructorClass privateConstructor = constructor.newInstance();
         Assertions.assertThat(privateConstructor).isNotNull();
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ParentClass {
+
+        private static String nullStaticField;
+
+        private static String parentStaticField = "parentStaticField";
+
+        private String _nullField;
+
+        private String _parentField = "parentField";
+
+        ParentClass() {
+            super();
+        }
+
+        private static String parentStaticMethod() {
+            return "parentStaticMethod";
+        }
+
+        private String parentMethod() {
+            return "parentMethod";
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ChildClass extends ParentClass {
+
+        private static String childStaticField = "childStaticField";
+
+        private String _childField = "childField";
+
+        ChildClass() {
+            super();
+        }
+
+        private static String childStaticMethod(final String param) {
+            return "parentStaticMethod:" + param;
+        }
+
+        private String childMethod(final String param) {
+            return "parentMethod:" + param;
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class PrivateConstructorClass {
+
+        private PrivateConstructorClass() {
+            super();
+        }
+
     }
 
 }
