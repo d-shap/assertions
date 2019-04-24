@@ -21,6 +21,7 @@ package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Map;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
@@ -64,7 +65,7 @@ public final class MapAsStringConverter implements AsStringConverterProvider {
         }
         result.append('}');
         if (first) {
-            return "<EMPTY>";
+            return Messages.EMPTY;
         } else {
             return result.toString();
         }

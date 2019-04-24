@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
@@ -60,7 +61,7 @@ public final class IterableAsStringConverter implements AsStringConverterProvide
         }
         result.append(']');
         if (first) {
-            return "<EMPTY>";
+            return Messages.EMPTY;
         } else {
             return result.toString();
         }
