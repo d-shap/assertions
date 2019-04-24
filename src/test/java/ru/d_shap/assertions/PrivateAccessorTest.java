@@ -88,11 +88,11 @@ public final class PrivateAccessorTest extends AssertionTest {
     public void getFieldWithClassAndObjectTest() throws Exception {
         ParentClass parentClass = new ParentClass();
 
-        Field nullStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "nullStaticField");
+        Field nullStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "NULL_STATIC_FIELD");
         Object nullStaticFieldParentValue = nullStaticFieldParent.get(null);
         Assertions.assertThat(nullStaticFieldParentValue).isNull();
 
-        Field parentStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "parentStaticField");
+        Field parentStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "PARENT_STATIC_FIELD");
         Object parentStaticFieldParentValue = parentStaticFieldParent.get(null);
         Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
 
@@ -106,15 +106,15 @@ public final class PrivateAccessorTest extends AssertionTest {
 
         ChildClass childClass = new ChildClass();
 
-        Field nullStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "nullStaticField");
+        Field nullStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "NULL_STATIC_FIELD");
         Object nullStaticFieldChildValue = nullStaticFieldChild.get(null);
         Assertions.assertThat(nullStaticFieldChildValue).isNull();
 
-        Field parentStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "parentStaticField");
+        Field parentStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "PARENT_STATIC_FIELD");
         Object parentStaticFieldChildValue = parentStaticFieldChild.get(null);
         Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
 
-        Field childStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "childStaticField");
+        Field childStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "CHILD_STATIC_FIELD");
         Object childStaticFieldChildValue = childStaticFieldChild.get(null);
         Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
 
@@ -177,10 +177,10 @@ public final class PrivateAccessorTest extends AssertionTest {
     public void getFieldValueWithClassAndObjectTest() throws Exception {
         ParentClass parentClass = new ParentClass();
 
-        Object nullStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "nullStaticField");
+        Object nullStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "NULL_STATIC_FIELD");
         Assertions.assertThat(nullStaticFieldParentValue).isNull();
 
-        Object parentStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "parentStaticField");
+        Object parentStaticFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, null, "PARENT_STATIC_FIELD");
         Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
 
         Object nullFieldParentValue = PrivateAccessor.getFieldValue(ParentClass.class, parentClass, "_nullField");
@@ -191,13 +191,13 @@ public final class PrivateAccessorTest extends AssertionTest {
 
         ChildClass childClass = new ChildClass();
 
-        Object nullStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "nullStaticField");
+        Object nullStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "NULL_STATIC_FIELD");
         Assertions.assertThat(nullStaticFieldChildValue).isNull();
 
-        Object parentStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "parentStaticField");
+        Object parentStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "PARENT_STATIC_FIELD");
         Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
 
-        Object childStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "childStaticField");
+        Object childStaticFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, null, "CHILD_STATIC_FIELD");
         Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
 
         Object nullFieldChildValue = PrivateAccessor.getFieldValue(ChildClass.class, childClass, "_nullField");
@@ -315,7 +315,7 @@ public final class PrivateAccessorTest extends AssertionTest {
             field.get(parentClass);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
+            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
         }
         PrivateAccessor.setAccessible(field);
         Object value = field.get(parentClass);
@@ -368,16 +368,18 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     private static class ParentClass {
 
-        private static String nullStaticField;
+        private static final String NULL_STATIC_FIELD = null;
 
-        private static String parentStaticField = "parentStaticField";
+        private static final String PARENT_STATIC_FIELD = "parentStaticField";
 
-        private String _nullField;
+        private final String _nullField;
 
-        private String _parentField = "parentField";
+        private final String _parentField;
 
         ParentClass() {
             super();
+            _nullField = null;
+            _parentField = "parentField";
         }
 
         private static String parentStaticMethod() {
@@ -397,12 +399,13 @@ public final class PrivateAccessorTest extends AssertionTest {
      */
     private static class ChildClass extends ParentClass {
 
-        private static String childStaticField = "childStaticField";
+        private static final String CHILD_STATIC_FIELD = "childStaticField";
 
-        private String _childField = "childField";
+        private final String _childField;
 
         ChildClass() {
             super();
+            _childField = "childField";
         }
 
         private static String childStaticMethod(final String param) {
