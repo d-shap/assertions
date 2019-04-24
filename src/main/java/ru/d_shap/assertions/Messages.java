@@ -30,6 +30,10 @@ public final class Messages {
 
     public static final String SEPARATOR = "\n\t";
 
+    public static final String NULL = "<NULL>";
+
+    public static final String EMPTY = "<EMPTY>";
+
     private Messages() {
         super();
     }
