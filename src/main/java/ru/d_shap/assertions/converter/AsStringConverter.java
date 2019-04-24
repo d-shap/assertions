@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 
+import ru.d_shap.assertions.Messages;
+
 /**
  * Class to convert the value to the string representation of the value.
  *
@@ -64,7 +66,7 @@ public final class AsStringConverter {
      */
     public static String asString(final Object value) throws ConversionException {
         if (value == null) {
-            return null;
+            return Messages.NULL;
         }
         Class<?> valueClass = value.getClass();
         AsStringConverterProvider converterProvider = getConverterProvider(valueClass);
