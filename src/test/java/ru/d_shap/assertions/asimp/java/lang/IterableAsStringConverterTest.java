@@ -53,7 +53,7 @@ public final class IterableAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("[]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("<EMPTY>");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable(""))).isEqualTo("[]");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1"))).isEqualTo("[val1]");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");

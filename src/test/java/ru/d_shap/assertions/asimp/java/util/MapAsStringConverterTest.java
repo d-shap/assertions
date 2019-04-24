@@ -57,7 +57,7 @@ public final class MapAsStringConverterTest extends AssertionTest {
     @Test
     public void asStringTest() throws Exception {
         Map<String, String> map = new LinkedHashMap<>();
-        Assertions.assertThat(new MapAsStringConverter().asString(map)).isEqualTo("{}");
+        Assertions.assertThat(new MapAsStringConverter().asString(map)).isEqualTo("<EMPTY>");
 
         map.put("key1", "val1");
         Assertions.assertThat(new MapAsStringConverter().asString(map)).isEqualTo("{key1=val1}");
