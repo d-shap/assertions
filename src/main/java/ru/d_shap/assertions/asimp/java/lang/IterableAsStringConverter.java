@@ -59,7 +59,11 @@ public final class IterableAsStringConverter implements AsStringConverterProvide
             result.append(AsStringConverter.asString(element));
         }
         result.append(']');
-        return result.toString();
+        if (first) {
+            return "<EMPTY>";
+        } else {
+            return result.toString();
+        }
     }
 
 }

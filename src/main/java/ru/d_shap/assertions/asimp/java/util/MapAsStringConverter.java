@@ -63,7 +63,11 @@ public final class MapAsStringConverter implements AsStringConverterProvider {
             result.append(AsStringConverter.asString(entry.getValue()));
         }
         result.append('}');
-        return result.toString();
+        if (first) {
+            return "<EMPTY>";
+        } else {
+            return result.toString();
+        }
     }
 
 }
