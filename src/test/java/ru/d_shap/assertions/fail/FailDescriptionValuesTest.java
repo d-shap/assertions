@@ -113,6 +113,22 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void addFailDescriptionEntryActualTest() throws Exception {
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
+        failDescriptionValues1.addActual();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
+        failDescriptionValues2.addActual();
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Actual:<actual>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void addFailDescriptionEntryExpectedTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
@@ -173,22 +189,6 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues6.addExpected("expected");
         failDescriptionValues6.addExpected("expected1", "expected2");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2>");
-    }
-
-    /**
-     * {@link FailDescriptionValues} class test.
-     *
-     * @throws Exception exception in test.
-     */
-    @Test
-    public void addFailDescriptionEntryActualTest() throws Exception {
-        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
-        failDescriptionValues1.addActual();
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<<NULL>>");
-
-        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
-        failDescriptionValues2.addActual();
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Actual:<actual>");
     }
 
     /**
