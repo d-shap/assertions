@@ -46,6 +46,10 @@ final class FailDescriptionValues {
 
     private Object _expected2;
 
+    private boolean _deltaDefined;
+
+    private Object _delta;
+
     FailDescriptionValues(final Class<?> valueClass, final Object actual) {
         super();
         _valueClass = valueClass;
@@ -55,6 +59,8 @@ final class FailDescriptionValues {
         _expected1 = null;
         _expected2Defined = false;
         _expected2 = null;
+        _deltaDefined = false;
+        _delta = null;
     }
 
     void addActual() {
@@ -75,19 +81,32 @@ final class FailDescriptionValues {
         _expected2 = expectedTo;
     }
 
+    void addDelta(final Object delta) {
+        _deltaDefined = true;
+        _delta = delta;
+    }
+
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_valueClass != null) {
+            addActualEntry(failDescriptionEntries);
             addExpectedEntry(failDescriptionEntries);
             addExpected2Entry(failDescriptionEntries);
-            addActualEntry(failDescriptionEntries);
             addActualAndExpectedEntry(failDescriptionEntries);
             addActualAndExpected2Entry(failDescriptionEntries);
         }
     }
 
+    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+        if (_actualDefined && !_expected1Defined && !_expected2Defined) {
+            String actual = getActualMessage(true);
+            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL, new Object[]{actual}, false);
+            failDescriptionEntries.add(failDescriptionEntry);
+        }
+    }
+
     private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected1Defined) {
-            String expected = getValueMessage(_expected1, _valueClass);
+            String expected = getExpectedMessage();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
@@ -95,24 +114,16 @@ final class FailDescriptionValues {
 
     private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (!_actualDefined && _expected2Defined) {
-            String expected = getValueMessage(_expected1, _expected2, _valueClass);
+            String expected = getExpected2Message();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
-            failDescriptionEntries.add(failDescriptionEntry);
-        }
-    }
-
-    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
-        if (_actualDefined && !_expected1Defined && !_expected2Defined) {
-            String actual = getValueMessage(_actual, _valueClass);
-            FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL, new Object[]{actual}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
 
     private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && _expected1Defined) {
-            String actual = getValueMessage(_actual, _valueClass);
-            String expected = getValueMessage(_expected1, _valueClass);
+            String actual = getActualMessage(false);
+            String expected = getExpectedMessage();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
@@ -120,22 +131,40 @@ final class FailDescriptionValues {
 
     private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
         if (_actualDefined && _expected2Defined) {
-            String actual = getValueMessage(_actual, _valueClass);
-            String expected = getValueMessage(_expected1, _expected2, _valueClass);
+            String actual = getActualMessage(false);
+            String expected = getExpected2Message();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
 
-    private String getValueMessage(final Object object, final Class<?> valueClass) throws ConversionException {
-        String objectStr = AsStringConverter.asString(object, valueClass);
+    private String getActualMessage(final boolean withDelta) throws ConversionException {
+        String objectStr = AsStringConverter.asString(_actual, _valueClass);
+        if (withDelta && _deltaDefined) {
+            objectStr += "\u00b1";
+            objectStr += AsStringConverter.asString(_delta, _valueClass);
+        }
         return "<" + objectStr + ">";
     }
 
-    private String getValueMessage(final Object objectFrom, final Object objectTo, final Class<?> valueClass) throws ConversionException {
-        String objectFromStr = AsStringConverter.asString(objectFrom, valueClass);
-        String objectToStr = AsStringConverter.asString(objectTo, valueClass);
-        return "<" + objectFromStr + ":" + objectToStr + ">";
+    private String getExpectedMessage() throws ConversionException {
+        String objectStr = AsStringConverter.asString(_expected1, _valueClass);
+        if (_deltaDefined) {
+            objectStr += "\u00b1";
+            objectStr += AsStringConverter.asString(_delta, _valueClass);
+        }
+        return "<" + objectStr + ">";
+    }
+
+    private String getExpected2Message() throws ConversionException {
+        String objectStr = AsStringConverter.asString(_expected1, _valueClass);
+        objectStr += ":";
+        objectStr += AsStringConverter.asString(_expected2, _valueClass);
+        if (_deltaDefined) {
+            objectStr += "\u00b1";
+            objectStr += AsStringConverter.asString(_delta, _valueClass);
+        }
+        return "<" + objectStr + ">";
     }
 
 }
