@@ -57,7 +57,7 @@ public final class AsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(AsStringConverter.asString(null)).isNull();
+        Assertions.assertThat(AsStringConverter.asString(null)).isEqualTo("<NULL>");
 
         Assertions.assertThat(AsStringConverter.asString(1)).isEqualTo("1");
         Assertions.assertThat(AsStringConverter.asString('1')).isEqualTo("1(49)");
@@ -75,7 +75,7 @@ public final class AsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringValueConverterTest() throws Exception {
-        Assertions.assertThat(AsStringConverter.asString(null, String.class)).isNull();
+        Assertions.assertThat(AsStringConverter.asString(null, String.class)).isEqualTo("<NULL>");
 
         Assertions.assertThat(AsStringConverter.asString(100, Character.class)).isEqualTo("d(100)");
         Assertions.assertThat(AsStringConverter.asString(100, Integer.class)).isEqualTo("100");

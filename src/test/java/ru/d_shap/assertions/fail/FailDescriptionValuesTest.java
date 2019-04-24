@@ -116,11 +116,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryExpectedTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addExpected(null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addExpected("expected");
@@ -150,11 +150,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryExpected2Test() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null, null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null:null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addExpected(null, null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null:null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addExpected("expected1", "expected2");
@@ -184,7 +184,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     public void addFailDescriptionEntryActualTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Actual:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
@@ -201,17 +201,17 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
         failDescriptionValues2.addExpected(null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addActual();
         failDescriptionValues3.addExpected("expected");
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addActual();
@@ -222,7 +222,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues5.addActual();
         failDescriptionValues5.addExpected("expected1", "expected2");
         failDescriptionValues5.addExpected("expected");
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addActual();
@@ -241,17 +241,17 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
         failDescriptionValues1.addExpected(null, null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<null:null> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues2.addActual();
         failDescriptionValues2.addExpected(null, null);
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<null:null> but was:<actual>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>> but was:<actual>");
 
         FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(String.class, null);
         failDescriptionValues3.addActual();
         failDescriptionValues3.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues4.addActual();
@@ -262,7 +262,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues5.addActual();
         failDescriptionValues5.addExpected("expected");
         failDescriptionValues5.addExpected("expected1", "expected2");
-        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<null>");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<<NULL>>");
 
         FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(String.class, "actual");
         failDescriptionValues6.addActual();

@@ -276,13 +276,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null, "val2")).doesNotContain(null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<null> but was:<[null, val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[<NULL>, val1, val2]>");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", null, "val2"), "Message").doesNotContain(null);
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<null> but was:<[null, val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[<NULL>, val1, val2]>");
         }
         try {
             initialize(Raw.<Character>sortedSetAssertion(), createTreeSet('1', '2')).doesNotContain('2');

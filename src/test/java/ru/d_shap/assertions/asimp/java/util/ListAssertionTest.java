@@ -361,13 +361,13 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2")).doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[val1, <NULL>, val2]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2"), "Message").doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<null> but was:<[val1, null, val2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[val1, <NULL>, val2]>");
         }
         try {
             initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", '1')).doesNotContain("val1");

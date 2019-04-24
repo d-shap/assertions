@@ -196,7 +196,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).hasMessage("Actual:<null>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).hasMessage("Actual:<<NULL>>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().build()).isInstanceOf(AssertionError.class);
@@ -264,7 +264,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(12345).build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345).build()).hasMessage("Expected:<12345> but was:<null>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345).build()).hasMessage("Expected:<12345> but was:<<NULL>>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345).build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(12345).build()).isInstanceOf(AssertionError.class);
@@ -332,7 +332,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(12345, 67890).build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<null>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<<NULL>>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(12345, 67890).build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
