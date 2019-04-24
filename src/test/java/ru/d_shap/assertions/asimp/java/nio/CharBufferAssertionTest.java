@@ -1686,7 +1686,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactly('1', '2', '3', '4', '5');
@@ -1782,7 +1782,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactly(49, 50, 51, 52, 53);
@@ -1878,7 +1878,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactly(Arrays.asList('1', '2', '3', '4', '5'));
@@ -1975,7 +1975,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactly('1', '2', '3', '4', '5');
@@ -2066,7 +2066,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactly(49, 50, 51, 52, 53);
@@ -2157,7 +2157,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactly(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactly(Arrays.asList('1', '2', '3', '4', '5'));
@@ -2252,7 +2252,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactlyInOrder('1', '2', '3', '4', '5');
@@ -2353,7 +2353,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactlyInOrder(49, 50, 51, 52, 53);
@@ -2454,7 +2454,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));
@@ -2556,7 +2556,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder();
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
@@ -2652,7 +2652,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(new int[]{});
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
@@ -2748,7 +2748,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsExactlyInOrder(new ArrayList<Character>());
             Assertions.fail("CharBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1(49), 2(50)]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsExactlyInOrder(Arrays.asList('1', '2', '3', '4', '5'));

@@ -705,7 +705,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val1", "val3", "val2");
@@ -802,7 +802,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactly(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(Arrays.asList("val1", "val1", "val3", "val2"));
@@ -892,7 +892,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder();
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val2", "val3", "val1", "val4");
@@ -994,7 +994,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ObjectArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2]>");
         }
         try {
             initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder(Arrays.asList("val2", "val3", "val1", "val4"));

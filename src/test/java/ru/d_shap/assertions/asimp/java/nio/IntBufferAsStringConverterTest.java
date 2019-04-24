@@ -55,13 +55,13 @@ public final class IntBufferAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{}))).isEqualTo("[]");
+        Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1}))).isEqualTo("[1]");
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1, 2}))).isEqualTo("[1, 2]");
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1, 2, 3, 4}))).isEqualTo("[1, 2, 3, 4]");
 
-        Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1}, 1))).isEqualTo("[]");
+        Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1}, 1))).isEqualTo("<EMPTY>");
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1, 2}, 1))).isEqualTo("[2]");
         Assertions.assertThat(new IntBufferAsStringConverter().asString(createIntBuffer(new int[]{1, 2, 3, 4}, 1))).isEqualTo("[2, 3, 4]");
 

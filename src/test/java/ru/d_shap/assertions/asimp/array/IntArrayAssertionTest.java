@@ -635,7 +635,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(1, 1, 3, 2);
@@ -719,7 +719,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactly(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactly(Arrays.asList(1, 1, 3, 2));
@@ -808,7 +808,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder();
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactlyInOrder(2, 3, 1, 4);
@@ -897,7 +897,7 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2}).containsExactlyInOrder(new ArrayList<Integer>());
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), new int[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList(2, 3, 1, 4));

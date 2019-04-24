@@ -53,7 +53,7 @@ public final class ShortArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{})).isEqualTo("[]");
+        Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1})).isEqualTo("[1s]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2})).isEqualTo("[1s, 2s]");
         Assertions.assertThat(new ShortArrayAsStringConverter().asString(new short[]{1, 2, 3, 4})).isEqualTo("[1s, 2s, 3s, 4s]");

@@ -55,13 +55,13 @@ public final class LongBufferAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{}))).isEqualTo("[]");
+        Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L}))).isEqualTo("[1L]");
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L, 2L}))).isEqualTo("[1L, 2L]");
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L}))).isEqualTo("[1L, 2L, 3L, 4L]");
 
-        Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L}, 1))).isEqualTo("[]");
+        Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L}, 1))).isEqualTo("<EMPTY>");
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L, 2L}, 1))).isEqualTo("[2L]");
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L, 2L, 3L, 4L}, 1))).isEqualTo("[2L, 3L, 4L]");
 

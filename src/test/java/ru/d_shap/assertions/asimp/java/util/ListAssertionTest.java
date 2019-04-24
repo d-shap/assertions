@@ -887,7 +887,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val4", "val1");
@@ -999,7 +999,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val4", "val1"));
@@ -1095,7 +1095,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val3", "val1", "val2");
@@ -1203,7 +1203,7 @@ public final class ListAssertionTest extends AssertionTest {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));

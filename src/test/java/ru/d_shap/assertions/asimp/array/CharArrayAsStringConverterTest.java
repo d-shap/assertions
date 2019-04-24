@@ -53,7 +53,7 @@ public final class CharArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{})).isEqualTo("[]");
+        Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1'})).isEqualTo("[1(49)]");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2'})).isEqualTo("[1(49), 2(50)]");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2', '3', '4'})).isEqualTo("[1(49), 2(50), 3(51), 4(52)]");

@@ -53,7 +53,7 @@ public final class ObjectArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{})).isEqualTo("[]");
+        Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1"})).isEqualTo("[val1]");
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2"})).isEqualTo("[val1, val2]");
         Assertions.assertThat(new ObjectArrayAsStringConverter().asString(new String[]{"val1", "val2", "val3", "val4"})).isEqualTo("[val1, val2, val3, val4]");

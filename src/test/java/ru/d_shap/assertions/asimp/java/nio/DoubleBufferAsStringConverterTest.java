@@ -55,13 +55,13 @@ public final class DoubleBufferAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{}))).isEqualTo("[]");
+        Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0}))).isEqualTo("[1.0]");
         Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0, 2.0}))).isEqualTo("[1.0, 2.0]");
         Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}))).isEqualTo("[1.0, 2.0, 3.0, 4.0]");
 
-        Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0}, 1))).isEqualTo("[]");
+        Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0}, 1))).isEqualTo("<EMPTY>");
         Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0, 2.0}, 1))).isEqualTo("[2.0]");
         Assertions.assertThat(new DoubleBufferAsStringConverter().asString(createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0}, 1))).isEqualTo("[2.0, 3.0, 4.0]");
 

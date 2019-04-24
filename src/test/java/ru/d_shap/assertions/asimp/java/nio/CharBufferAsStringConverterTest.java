@@ -55,13 +55,13 @@ public final class CharBufferAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{}))).isEqualTo("[]");
+        Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1'}))).isEqualTo("[1(49)]");
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1', '2'}))).isEqualTo("[1(49), 2(50)]");
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1', '2', '3', '4'}))).isEqualTo("[1(49), 2(50), 3(51), 4(52)]");
 
-        Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1'}, 1))).isEqualTo("[]");
+        Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1'}, 1))).isEqualTo("<EMPTY>");
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1', '2'}, 1))).isEqualTo("[2(50)]");
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1', '2', '3', '4'}, 1))).isEqualTo("[2(50), 3(51), 4(52)]");
 

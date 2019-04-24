@@ -818,7 +818,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly();
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly((short) 1, (short) 1, (short) 3, (short) 2);
@@ -902,7 +902,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(1, 1, 3, 2);
@@ -998,7 +998,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(new ArrayList<Short>());
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
@@ -1087,7 +1087,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder();
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder((short) 2, (short) 3, (short) 1, (short) 4);
@@ -1176,7 +1176,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(new int[]{});
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(2, 3, 1, 4);
@@ -1277,7 +1277,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(new ArrayList<Short>());
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1s, 2s]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));

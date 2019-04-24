@@ -53,7 +53,7 @@ public final class DoubleArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{})).isEqualTo("[]");
+        Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0})).isEqualTo("[1.0]");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0, 3.0, 4.0})).isEqualTo("[1.0, 2.0, 3.0, 4.0]");

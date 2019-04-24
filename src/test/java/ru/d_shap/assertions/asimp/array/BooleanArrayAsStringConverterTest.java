@@ -53,7 +53,7 @@ public final class BooleanArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{})).isEqualTo("[]");
+        Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true})).isEqualTo("[T]");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, false})).isEqualTo("[T, F]");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, true, false, false})).isEqualTo("[T, T, F, F]");

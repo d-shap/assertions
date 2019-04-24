@@ -905,7 +905,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[key1, key2]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly("key3", "key1");
@@ -1007,7 +1007,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly(new ArrayList<String>());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[key1, key2]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly(Arrays.asList("key3", "key1"));
@@ -1084,7 +1084,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[key1, key2]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsKeysExactlyInOrder("key3", "key1");
@@ -1203,7 +1203,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(new ArrayList<String>());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[key1, key2]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[key1, key2]>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsKeysExactlyInOrder(Arrays.asList("key3", "key1"));
@@ -2619,13 +2619,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactly();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<{}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactly();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<{}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
         }
     }
 
@@ -2910,7 +2910,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", "value2")).containsExactly(createHashMap());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<{}> but was:<{key1=value1, key2=value2}>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<{key1=value1, key2=value2}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsExactly(createHashMap("key1", "value2", "key2", "value1"));
@@ -2997,13 +2997,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5"), "Message").containsExactlyInOrder();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{}> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<{k1=v1, k2=v2, k3=v3, k4=v4, k5=v5}>");
         }
     }
 
@@ -3283,7 +3283,7 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.mapAssertion(), createHashMap((Object) "key1", (Object) "value1", "key2", "value2")).containsExactlyInOrder(createHashMap());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{}> but was:<{key1=value1, key2=value2}>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<{key1=value1, key2=value2}>");
         }
         try {
             initialize(Raw.<String, String>mapAssertion(), createHashMap("key1", "value1", "key2", "value2")).containsExactlyInOrder(createHashMap("key2", "value2", "key1", "value1"));
@@ -4161,13 +4161,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.mapAssertion(), createHashMap()).isNull();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<{}>");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<EMPTY>>");
         }
         try {
             initialize(Raw.mapAssertion(), createHashMap(), "Message").isNull();
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<{}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<EMPTY>>");
         }
     }
 
@@ -4183,13 +4183,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.mapAssertion(), value).isSameAs(createHashMap());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{}> but was:<{}>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.mapAssertion(), value, "Message").isSameAs(createHashMap());
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{}> but was:<{}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
         }
     }
 
@@ -4205,13 +4205,13 @@ public final class MapAssertionTest extends AssertionTest {
             initialize(Raw.mapAssertion(), value).isNotSameAs(value);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{}>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<EMPTY>>");
         }
         try {
             initialize(Raw.mapAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("MapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<EMPTY>>");
         }
     }
 

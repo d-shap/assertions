@@ -55,13 +55,13 @@ public final class ByteBufferAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{}))).isEqualTo("[]");
+        Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1}))).isEqualTo("[1b]");
         Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1, 2}))).isEqualTo("[1b, 2b]");
         Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1, 2, 3, 4}))).isEqualTo("[1b, 2b, 3b, 4b]");
 
-        Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1}, 1))).isEqualTo("[]");
+        Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1}, 1))).isEqualTo("<EMPTY>");
         Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1, 2}, 1))).isEqualTo("[2b]");
         Assertions.assertThat(new ByteBufferAsStringConverter().asString(createByteBuffer(new byte[]{1, 2, 3, 4}, 1))).isEqualTo("[2b, 3b, 4b]");
 

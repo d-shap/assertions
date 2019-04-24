@@ -818,7 +818,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactly();
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly((byte) 1, (byte) 1, (byte) 3, (byte) 2);
@@ -902,7 +902,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactly(new int[]{});
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(1, 1, 3, 2);
@@ -998,7 +998,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactly(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(Arrays.asList((byte) 1, (byte) 1, (byte) 3, (byte) 2));
@@ -1087,7 +1087,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder();
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder((byte) 2, (byte) 3, (byte) 1, (byte) 4);
@@ -1176,7 +1176,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder(new int[]{});
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(2, 3, 1, 4);
@@ -1277,7 +1277,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder(new ArrayList<Byte>());
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((byte) 2, (byte) 3, (byte) 1, (byte) 4));

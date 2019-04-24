@@ -53,7 +53,7 @@ public final class ByteArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{})).isEqualTo("[]");
+        Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1})).isEqualTo("[1b]");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1, 2})).isEqualTo("[1b, 2b]");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1, 2, 3, 4})).isEqualTo("[1b, 2b, 3b, 4b]");

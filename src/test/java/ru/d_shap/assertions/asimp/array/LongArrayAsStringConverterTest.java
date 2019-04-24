@@ -53,7 +53,7 @@ public final class LongArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{})).isEqualTo("[]");
+        Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L})).isEqualTo("[1L]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L})).isEqualTo("[1L, 2L]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L, 3L, 4L})).isEqualTo("[1L, 2L, 3L, 4L]");

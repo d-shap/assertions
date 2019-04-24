@@ -635,7 +635,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(1L, 1L, 3L, 2L);
@@ -719,7 +719,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactly(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(Arrays.asList(1L, 1L, 3L, 2L));
@@ -808,7 +808,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder();
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(2L, 3L, 1L, 4L);
@@ -897,7 +897,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder(new ArrayList<Long>());
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(Arrays.asList(2L, 3L, 1L, 4L));

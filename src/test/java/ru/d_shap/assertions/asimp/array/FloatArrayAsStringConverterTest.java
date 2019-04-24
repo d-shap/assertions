@@ -53,7 +53,7 @@ public final class FloatArrayAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() throws Exception {
-        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{})).isEqualTo("[]");
+        Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f})).isEqualTo("[1.0f]");
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f})).isEqualTo("[1.0f, 2.0f]");
         Assertions.assertThat(new FloatArrayAsStringConverter().asString(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).isEqualTo("[1.0f, 2.0f, 3.0f, 4.0f]");
