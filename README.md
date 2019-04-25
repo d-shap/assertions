@@ -1,11 +1,11 @@
-# Assertions framework
-Assertions framework provides facilities for the unit testing.
-Assertions framework allows checking of conditions using predefined assertions.
+# Assertions library
+Assertions library provides facilities for the unit testing.
+Assertions library allows checking of conditions using predefined assertions.
 This assertions make tests more readable, understandable and maintainable.
 Also this assertions reduce the amount of code needed to perform some complicated checks.
 
-Assertions framework is based on the following pillars:
-* The tests should be as simple, as possible
+Assertions library is based on the following pillars:
+* The tests should be as simple and as readable, as possible
 * The fail messages should be as informative, as possible
 
 Import declaration for all the following examples:
@@ -25,7 +25,7 @@ assertThat(doubleValue).isEqualTo(5.0, 0.001);
 assertThat(charValue).isLetter();
 ```
 
-Assertion examples for the core data types:
+Assertion examples for the java.lang data types:
 ```
 assertThat(objectValue).isNotNull();
 assertThat(objectValue).isNotSameAs(new Object());
@@ -56,7 +56,7 @@ assertThat(charArrayValue).doesNotContain('c');
 assertThat(stringArrayValue).containsAllInOrder("val1", "val2", "val3");
 ```
 
-Assertion examples for the collection data types:
+Assertion examples for the java.util data types:
 ```
 assertThat(listValue).isNotEmpty();
 assertThat(listValue).hasSize(3);
@@ -74,7 +74,7 @@ assertThat(mapValue).containsEntry("key", "value");
 assertThat(mapValue).containsNone("key1", "value1", "key2", "value2", "key3", "value3");
 ```
 
-Assertion examples for the io data types:
+Assertion examples for the java.io data types:
 ```
 assertThat(inputStreamValue).isNextBytesEqualTo(1, 2, 3);
 assertThat(inputStreamValue).isAllBytesEqualTo(10, 100, 15);
@@ -85,7 +85,7 @@ assertThat(readerValue).isAllCharsEqualTo('v', 'a', 'l', '2');
 assertThat(readerValue).isCompleted();
 ```
 
-Assertion examples for the nio data types:
+Assertion examples for the java.nio data types:
 ```
 assertThat(byteBufferValue).hasCapacity(10);
 assertThat(shortBufferValue).hasLimit(5);
