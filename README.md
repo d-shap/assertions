@@ -123,7 +123,7 @@ Custom assertion classes can be used in the next extension points:
 * MessageAssertion.that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
 * ReferenceAssertion.toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)
 
-# Assertions framework and Hamcrest
+# Assertions library and Hamcrest
 ## Too many braces
 Hamcrest has the target to make tests as readable as possible.
 But Hamcrest tends to use too many braces in even simple assertions.
@@ -137,7 +137,7 @@ Hamcrest check for equals:
 ```
 assertThat(actual, is(equalTo(expected)));
 ```
-Assertions framework check for equals:
+Assertions library check for equals:
 ```
 assertThat(actual).isEqualTo(expected);
 ```
@@ -154,7 +154,7 @@ Also valid Hamcrest check for not equals, but with less sense:
 ```
 assertThat(actual, not(is(equalTo(expected))));
 ```
-Assertions framework check for not equals:
+Assertions library check for not equals:
 ```
 assertThat(actual).isNotEqualTo(expected);
 ```
@@ -172,11 +172,11 @@ Hamcrest check without static import:
 ```
 MatcherAssert.assertThat(actual, Matchers.is(Matchers.not(Matchers.equalTo(expected))));
 ```
-Assertions framework check with static import:
+Assertions library check with static import:
 ```
 assertThat(actual).isNotEqualTo(expected);
 ```
-Assertions framework check without static import:
+Assertions library check without static import:
 ```
 Assertions.assertThat(actual).isNotEqualTo(expected);
 ```
@@ -192,9 +192,9 @@ assertThat(new HashMap<String, String>(), allOf(hasEntry(equalTo("key1"), anyOf(
 But some combinations of matchers do not make sense.
 Also it is too difficult to understand some complicated combinations of matchers.
 The test should be as simple as possible - to prevent mistakes in the test itself.
-And too difficult combinations of matchers are error prone.
+And too complicated combinations of matchers are error prone.
 
-Assertions framework provides methods for specific combinations of assertions:
+Assertions library provides methods for specific combinations of assertions:
 ```
 assertThat(intValue).isInRange(1, 4);
 assertThat(intValue).isNotInRange(1, 4);
@@ -206,14 +206,14 @@ This prevents creation of the error prone combinations of assertions.
 
 ## Custom assertions and matchers
 Custom Hamcrest matchers can be easily developed and used in assertions.
-Assertions framework's support for custom assertions is rather awkward.
+Assertions library does not support custom assertions.
 
-But Assertions framework can use Hamcrest matchers.
-In this case Assertions framework can be used as a main framework for the unit testing.
+But Assertions library can use Hamcrest matchers.
+In this case Assertions library can be used as a main library for the unit testing.
 And in case of specific assertions custom Hamcrest matchers can be used.
 
 # Latest release
-Assertions framework:
+Assertions library:
 * **&lt;groupId&gt;**: ru.d-shap
 * **&lt;artifactId&gt;**: assertions
 * **&lt;version&gt;**: 1.2
