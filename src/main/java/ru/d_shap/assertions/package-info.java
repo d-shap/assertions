@@ -19,15 +19,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * <p>
- * Assertions framework provides facilities for the unit testing. Assertions framework allows checking of conditions
+ * Assertions library provides facilities for the unit testing. Assertions library allows checking of conditions
  * using predefined assertions. This assertions make tests more readable, understandable and maintainable.
  * Also this assertions reduce the amount of code needed to perform some complicated checks.
  * </p>
  * <p>
- * Assertions framework is based on the following pillars:
+ * Assertions library is based on the following pillars:
  * </p>
  * <ul>
- * <li>The tests should be as simple, as possible</li>
+ * <li>The tests should be as simple and as readable, as possible</li>
  * <li>The fail messages should be as informative, as possible</li>
  * </ul>
  * <p>
@@ -50,7 +50,7 @@
  * assertThat(charValue).isLetter();
  * }</pre>
  * <p>
- * Assertion examples for the core data types:
+ * Assertion examples for the java.lang data types:
  * </p>
  * <pre>{@code
  * assertThat(objectValue).isNotNull();
@@ -83,7 +83,7 @@
  * assertThat(stringArrayValue).containsAllInOrder("val1", "val2", "val3");
  * }</pre>
  * <p>
- * Assertion examples for the collection data types:
+ * Assertion examples for the java.util data types:
  * </p>
  * <pre>{@code
  * assertThat(listValue).isNotEmpty();
@@ -102,7 +102,7 @@
  * assertThat(mapValue).containsNone("key1", "value1", "key2", "value2", "key3", "value3");
  * }</pre>
  * <p>
- * Assertion examples for the io data types:
+ * Assertion examples for the java.io data types:
  * </p>
  * <pre>{@code
  * assertThat(inputStreamValue).isNextBytesEqualTo(1, 2, 3);
@@ -114,7 +114,7 @@
  * assertThat(readerValue).isCompleted();
  * }</pre>
  * <p>
- * Assertion examples for the nio data types:
+ * Assertion examples for the java.nio data types:
  * </p>
  * <pre>{@code
  * assertThat(byteBufferValue).hasCapacity(10);
