@@ -245,7 +245,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
     }
 
@@ -266,7 +266,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
     }
 
@@ -283,7 +283,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(5.0).isEqualTo(6.0, 0.001);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
     }
 
@@ -304,7 +304,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
     }
 

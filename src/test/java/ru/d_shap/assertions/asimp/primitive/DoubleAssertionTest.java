@@ -102,13 +102,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.00000000001).isEqualTo(10.00000000002);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.00000000002> but was:<10.00000000001>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.00000000001, "Message").isEqualTo(10.00000000002);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.00000000002> but was:<10.00000000001>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
     }
 
@@ -147,37 +147,37 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.01, 0.001);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.01> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(10.01, 0.001);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.01> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(9.99, 0.001);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<9.99> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(9.99, 0.001);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<9.99> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(20.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(20.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20.0> but was:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
     }
 
@@ -220,13 +220,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.000000000001).isNotEqualTo(10.000000000002);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.000000000001>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.000000000001, "Message").isNotEqualTo(10.000000000002);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.000000000001>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
     }
 
@@ -261,61 +261,61 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.001, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(10.001, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(9.999, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(9.999, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(10.0, 0.01);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0).isNotEqualTo(-0.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<0.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0, "Message").isNotEqualTo(-0.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<0.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0).isNotEqualTo(+0.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<-0.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<-0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0, "Message").isNotEqualTo(+0.0, 0.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<-0.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<-0.0±0.0>");
         }
     }
 

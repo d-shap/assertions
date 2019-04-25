@@ -365,25 +365,25 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(5.0f).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
     }
 
@@ -404,25 +404,25 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(Float.valueOf(5.0f)).isEqualTo(6.0f, 0.001f);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0f> but was:<5.0f>");
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0f±0.001f> but was:<5.0f>");
         }
     }
 
@@ -439,25 +439,25 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(5.0).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(5.0).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(5.0).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(5.0).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
     }
 
@@ -478,25 +478,25 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(Double.valueOf(5.0)).isEqualTo(6.0, 0.001);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0> but was:<5.0>");
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tActual and expected values should be the same.\n\tExpected:<6.0±0.001> but was:<5.0>");
         }
     }
 
