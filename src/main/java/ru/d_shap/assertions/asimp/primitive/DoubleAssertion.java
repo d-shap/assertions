@@ -61,7 +61,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isEqualTo(final double expected, final double delta) {
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) > delta) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).addDelta(delta).build();
         }
     }
 
@@ -83,7 +83,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotEqualTo(final double expected, final double delta) {
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) <= delta) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
         }
     }
 
