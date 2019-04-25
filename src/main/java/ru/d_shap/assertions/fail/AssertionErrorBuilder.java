@@ -130,6 +130,18 @@ public final class AssertionErrorBuilder {
     }
 
     /**
+     * Add the actual and expected values' delta to the assertion error.
+     *
+     * @param delta the actual and expected values' delta.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addDelta(final Object delta) {
+        _failDescriptionValues.addDelta(delta);
+        return this;
+    }
+
+    /**
      * Add the throwabe to the assertion error.
      *
      * @param throwable the throwabe.
