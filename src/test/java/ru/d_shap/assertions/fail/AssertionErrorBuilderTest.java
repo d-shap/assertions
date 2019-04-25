@@ -212,6 +212,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      * {@link AssertionErrorBuilder} class test.
      */
     @Test
+    public void buildWithActualAndDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
     public void buildWithExpectedTest() {
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345).build()).hasMessage("");
@@ -240,6 +248,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).hasMessage("message.\n\tExpected:<12345>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).toCause().isNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithExpectedAndDeltaTest() {
+        // TODO
     }
 
     /**
@@ -280,6 +296,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      * {@link AssertionErrorBuilder} class test.
      */
     @Test
+    public void buildWithActualExpectedAndDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
     public void buildWithExpected2Test() {
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345, 67890).build()).hasMessage("");
@@ -314,6 +338,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      * {@link AssertionErrorBuilder} class test.
      */
     @Test
+    public void buildWithExpected2AndDeltaTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
     public void buildWithActualAndExpected2Test() {
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(12345, 67890).build()).hasMessage("");
@@ -342,6 +374,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(12345, 67890).build()).hasMessage("message.\n\tExpected:<12345:67890> but was:<actual>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(12345, 67890).build()).toCause().isNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualExpected2AndDeltaTest() {
+        // TODO
     }
 
     /**
