@@ -149,6 +149,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues4.addActual();
         failDescriptionValues4.addDelta("D!");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Actual:<actual±D!>");
+
+        FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, "actual");
+        failDescriptionValues5.addActual();
+        failDescriptionValues5.addDelta(5.0f);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Actual:<actual±5.0f>");
     }
 
     /**
@@ -211,6 +216,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues4.addExpected("expected");
         failDescriptionValues4.addDelta("D!");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected±D!>");
+
+        FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
+        failDescriptionValues5.addExpected("expected");
+        failDescriptionValues5.addDelta(5.0f);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected±5.0f>");
     }
 
     /**
@@ -273,6 +283,11 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues4.addExpected("expected1", "expected2");
         failDescriptionValues4.addDelta("D!");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2±D!>");
+
+        FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(String.class, null);
+        failDescriptionValues5.addExpected("expected1", "expected2");
+        failDescriptionValues5.addDelta(5.0f);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2±5.0f>");
     }
 
     /**
@@ -369,6 +384,12 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues8.addExpected("expected");
         failDescriptionValues8.addDelta("D!");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues8)).containsExactlyInOrder("Expected:<expected±D!> but was:<actual>");
+
+        FailDescriptionValues failDescriptionValues9 = new FailDescriptionValues(String.class, "actual");
+        failDescriptionValues9.addActual();
+        failDescriptionValues9.addExpected("expected");
+        failDescriptionValues9.addDelta(5.0f);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues9)).containsExactlyInOrder("Expected:<expected±5.0f> but was:<actual>");
     }
 
     /**
@@ -465,6 +486,12 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues8.addExpected("expected1", "expected2");
         failDescriptionValues8.addDelta("D!");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues8)).containsExactlyInOrder("Expected:<expected1:expected2±D!> but was:<actual>");
+
+        FailDescriptionValues failDescriptionValues9 = new FailDescriptionValues(String.class, "actual");
+        failDescriptionValues9.addActual();
+        failDescriptionValues9.addExpected("expected1", "expected2");
+        failDescriptionValues9.addDelta(5.0f);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues9)).containsExactlyInOrder("Expected:<expected1:expected2±5.0f> but was:<actual>");
     }
 
     private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws Exception {
