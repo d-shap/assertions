@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.PrivateAccessor;
 import ru.d_shap.assertions.Raw;
 
 /**
@@ -79,6 +80,190 @@ public final class ValueConverterTest extends AssertionTest {
         Assertions.assertThat(ValueConverter.convert(createIterator(1, 2, 3, 4, 5), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
 
         Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
+    }
+
+    /**
+     * {@link ValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    @SuppressWarnings("unchecked")
+    public void converterSelectTest() throws Exception {
+        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
+        converterProviders.add(new ClassAToClassXConverter());
+        converterProviders.add(new ClassAToClassYConverter());
+        converterProviders.add(new ClassBToClassXConverter());
+        converterProviders.add(new ClassBToClassYConverter());
+
+        Assertions.assertThat(ValueConverter.convert(new FromClassA(), ToClassX.class)).hasClass(ToClassX.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassA(), ToClassY.class)).hasClass(ToClassY.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassB(), ToClassX.class)).hasClass(ToClassX.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassB(), ToClassY.class)).hasClass(ToClassY.class);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class FromClassA {
+
+        FromClassA() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class FromClassB extends FromClassA {
+
+        FromClassB() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ToClassX {
+
+        ToClassX() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ToClassY extends ToClassX {
+
+        ToClassY() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassAToClassXConverter implements ValueConverterProvider {
+
+        ClassAToClassXConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassA.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassX.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassX();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassAToClassYConverter implements ValueConverterProvider {
+
+        ClassAToClassYConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassA.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassY.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassY();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassBToClassXConverter implements ValueConverterProvider {
+
+        ClassBToClassXConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassB.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassX.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassX();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ClassBToClassYConverter implements ValueConverterProvider {
+
+        ClassBToClassYConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassB.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassY.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassY();
+        }
+
     }
 
 }
