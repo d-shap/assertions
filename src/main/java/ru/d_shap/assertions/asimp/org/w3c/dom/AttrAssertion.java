@@ -177,6 +177,38 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
         toQualifiedName().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's value.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toValue() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getValue(), Messages.Check.VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's value.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toValue(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getValue(), matcher, Messages.Check.VALUE);
+    }
+
+    /**
+     * Check if the actual value's value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public void hasValue(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toValue().isEqualTo(expected);
+    }
+
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
