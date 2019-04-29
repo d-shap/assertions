@@ -19,9 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Matcher;
 import org.w3c.dom.Node;
 
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
 /**
  * Assertions for the node.
@@ -40,6 +44,128 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
     @Override
     protected final Class<Node> getActualValueClass() {
         return Node.class;
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Node expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (!getActual().isSameNode(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Node expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().isSameNode(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toNamespaceURI() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getNamespaceURI(), Messages.Check.NAMESPACE_URI);
+    }
+
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toNamespaceURI(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
+    }
+
+    /**
+     * Check if the actual value's namespace URI is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasNamespaceURI(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toNamespaceURI().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toPrefix() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getPrefix(), Messages.Check.PREFIX);
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toPrefix(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
+    }
+
+    /**
+     * Check if the actual value's prefix is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasPrefix(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toPrefix().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toLocalName() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalName(), Messages.Check.LOCAL_NAME);
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLocalName(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getLocalName(), matcher, Messages.Check.LOCAL_NAME);
+    }
+
+    /**
+     * Check if the actual value's local name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasLocalName(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toLocalName().isEqualTo(expected);
     }
 
 }
