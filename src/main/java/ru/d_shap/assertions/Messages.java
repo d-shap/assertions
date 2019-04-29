@@ -117,6 +117,8 @@ public final class Messages {
 
         public static final String QUALIFIED_NAME = "Check actual value''s qualified name.";
 
+        public static final String DATA = "Check actual value''s data.";
+
         private Check() {
             super();
         }
