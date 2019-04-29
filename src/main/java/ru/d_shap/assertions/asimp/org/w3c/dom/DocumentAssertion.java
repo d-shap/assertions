@@ -21,6 +21,7 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import org.w3c.dom.Document;
 
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
@@ -40,6 +41,28 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     @Override
     protected final Class<Document> getActualValueClass() {
         return Document.class;
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Document expected) {
+        createNodeAssertion().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Document expected) {
+        createNodeAssertion().isNotEqualTo(expected);
+    }
+
+    private NodeAssertion createNodeAssertion() {
+        return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
 
 }
