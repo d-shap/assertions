@@ -51,6 +51,12 @@ import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
+import ru.d_shap.assertions.asimp.javax.xml.namespace.QNameAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.DocumentAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.ElementAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.NodeAssertion;
 import ru.d_shap.assertions.asimp.primitive.BooleanAssertion;
 import ru.d_shap.assertions.asimp.primitive.ByteAssertion;
 import ru.d_shap.assertions.asimp.primitive.CharAssertion;
@@ -449,6 +455,60 @@ public final class Raw {
      */
     public static CharBufferAssertion charBufferAssertion() {
         return new CharBufferAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the qname.
+     *
+     * @return the assertion.
+     */
+    public static QNameAssertion qnameAssertion() {
+        return new QNameAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the node.
+     *
+     * @return the assertion.
+     */
+    public static NodeAssertion nodeAssertion() {
+        return new NodeAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the element.
+     *
+     * @return the assertion.
+     */
+    public static ElementAssertion elementAssertion() {
+        return new ElementAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the document.
+     *
+     * @return the assertion.
+     */
+    public static DocumentAssertion documentAssertion() {
+        return new DocumentAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the attr.
+     *
+     * @return the assertion.
+     */
+    public static AttrAssertion attrAssertion() {
+        return new AttrAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the character data.
+     *
+     * @return the assertion.
+     */
+    public static CharacterDataAssertion characterDataAssertion() {
+        return new CharacterDataAssertion();
     }
 
 }
