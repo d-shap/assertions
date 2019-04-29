@@ -177,6 +177,27 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         toQualifiedName().isEqualTo(expected);
     }
 
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param namespaceURI the expected namespace URI.
+     * @param localName    the expected local name.
+     */
+    public void hasProperties(final String namespaceURI, final String localName) {
+        hasNamespaceURI(namespaceURI);
+        hasLocalName(localName);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param localName the expected local name.
+     */
+    public void hasProperties(final String localName) {
+        toNamespaceURI().isNull();
+        hasLocalName(localName);
+    }
+
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
