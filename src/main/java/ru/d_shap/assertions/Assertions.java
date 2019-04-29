@@ -36,7 +36,14 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import javax.xml.namespace.QName;
+
 import org.hamcrest.Matcher;
+import org.w3c.dom.Attr;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.asimp.array.BooleanArrayAssertion;
 import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
@@ -69,6 +76,12 @@ import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
+import ru.d_shap.assertions.asimp.javax.xml.namespace.QNameAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.DocumentAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.ElementAssertion;
+import ru.d_shap.assertions.asimp.org.w3c.dom.NodeAssertion;
 import ru.d_shap.assertions.asimp.primitive.BooleanAssertion;
 import ru.d_shap.assertions.asimp.primitive.ByteAssertion;
 import ru.d_shap.assertions.asimp.primitive.CharAssertion;
@@ -798,6 +811,84 @@ public final class Assertions {
     public static CharBufferAssertion assertThat(final CharBuffer actual) {
         CharBufferAssertion assertion = Raw.charBufferAssertion();
         ((BaseAssertion<CharBuffer>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the qname.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static QNameAssertion assertThat(final QName actual) {
+        QNameAssertion assertion = Raw.qnameAssertion();
+        ((BaseAssertion<QName>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the node.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static NodeAssertion assertThat(final Node actual) {
+        NodeAssertion assertion = Raw.nodeAssertion();
+        ((BaseAssertion<Node>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the element.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static ElementAssertion assertThat(final Element actual) {
+        ElementAssertion assertion = Raw.elementAssertion();
+        ((BaseAssertion<Element>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the document.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static DocumentAssertion assertThat(final Document actual) {
+        DocumentAssertion assertion = Raw.documentAssertion();
+        ((BaseAssertion<Document>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the attr.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static AttrAssertion assertThat(final Attr actual) {
+        AttrAssertion assertion = Raw.attrAssertion();
+        ((BaseAssertion<Attr>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the character data.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static CharacterDataAssertion assertThat(final CharacterData actual) {
+        CharacterDataAssertion assertion = Raw.characterDataAssertion();
+        ((BaseAssertion<CharacterData>) assertion).initialize(actual);
         return assertion;
     }
 
