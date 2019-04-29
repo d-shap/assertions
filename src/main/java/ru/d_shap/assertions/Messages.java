@@ -73,6 +73,10 @@ public final class Messages {
 
         public static final String KEYS = "Check actual value''s keys.";
 
+        public static final String VALUE = "Check actual value''s value.";
+
+        public static final String VALUE_COUNT = "Check actual value''s value count.";
+
         public static final String VALUES = "Check actual value''s values.";
 
         public static final String TOKENS = "Check actual value''s tokens.";
@@ -80,8 +84,6 @@ public final class Messages {
         public static final String MESSAGE = "Check actual value''s message.";
 
         public static final String CAUSE = "Check actual value''s cause.";
-
-        public static final String VALUE_COUNT = "Check actual value''s value count.";
 
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
