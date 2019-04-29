@@ -22,6 +22,7 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 import org.hamcrest.Matcher;
 import org.w3c.dom.Element;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
@@ -142,6 +143,38 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      */
     public final void hasLocalName(final String expected) {
         createNodeAssertion().hasLocalName(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toQualifiedName() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getTagName(), Messages.Check.QUALIFIED_NAME);
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toQualifiedName(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getTagName(), matcher, Messages.Check.QUALIFIED_NAME);
+    }
+
+    /**
+     * Check if the actual value's qualified name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasQualifiedName(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toQualifiedName().isEqualTo(expected);
     }
 
     private NodeAssertion createNodeAssertion() {
