@@ -109,9 +109,9 @@ public final class Messages {
 
         public static final String NAMESPACE_URI = "Check actual value''s namespace URI.";
 
-        public static final String NAMESPACE_PREFIX = "Check actual value''s prefix.";
+        public static final String PREFIX = "Check actual value''s prefix.";
 
-        public static final String NAMESPACE_LOCAL_NAME = "Check actual value''s local name.";
+        public static final String LOCAL_NAME = "Check actual value''s local name.";
 
         private Check() {
             super();
