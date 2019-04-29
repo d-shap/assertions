@@ -212,12 +212,11 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param namespaceURI the expected namespace URI.
-     * @param localName    the expected local name.
-     * @param value        the expected value.
+     * @param localName the expected local name.
+     * @param value     the expected value.
      */
-    public void hasProperties(final String namespaceURI, final String localName, final String value) {
-        hasNamespaceURI(namespaceURI);
+    public void hasProperties(final String localName, final String value) {
+        toNamespaceURI().isNull();
         hasLocalName(localName);
         hasValue(value);
     }
@@ -225,11 +224,12 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param localName the expected local name.
-     * @param value     the expected value.
+     * @param namespaceURI the expected namespace URI.
+     * @param localName    the expected local name.
+     * @param value        the expected value.
      */
-    public void hasProperties(final String localName, final String value) {
-        toNamespaceURI().isNull();
+    public void hasProperties(final String namespaceURI, final String localName, final String value) {
+        hasNamespaceURI(namespaceURI);
         hasLocalName(localName);
         hasValue(value);
     }
