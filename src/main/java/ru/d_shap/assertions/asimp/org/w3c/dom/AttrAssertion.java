@@ -19,9 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Matcher;
 import org.w3c.dom.Attr;
 
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
 /**
  * Assertions for the attr.
@@ -40,6 +44,141 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
     @Override
     protected final Class<Attr> getActualValueClass() {
         return Attr.class;
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Attr expected) {
+        createNodeAssertion().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Attr expected) {
+        createNodeAssertion().isNotEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toNamespaceURI() {
+        return createNodeAssertion().toNamespaceURI();
+    }
+
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toNamespaceURI(final Matcher<String> matcher) {
+        createNodeAssertion().toNamespaceURI(matcher);
+    }
+
+    /**
+     * Check if the actual value's namespace URI is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasNamespaceURI(final String expected) {
+        createNodeAssertion().hasNamespaceURI(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toPrefix() {
+        return createNodeAssertion().toPrefix();
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toPrefix(final Matcher<String> matcher) {
+        createNodeAssertion().toPrefix(matcher);
+    }
+
+    /**
+     * Check if the actual value's prefix is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasPrefix(final String expected) {
+        createNodeAssertion().hasPrefix(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toLocalName() {
+        return createNodeAssertion().toLocalName();
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLocalName(final Matcher<String> matcher) {
+        createNodeAssertion().toLocalName(matcher);
+    }
+
+    /**
+     * Check if the actual value's local name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasLocalName(final String expected) {
+        createNodeAssertion().hasLocalName(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toQualifiedName() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getName(), Messages.Check.QUALIFIED_NAME);
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toQualifiedName(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getName(), matcher, Messages.Check.QUALIFIED_NAME);
+    }
+
+    /**
+     * Check if the actual value's qualified name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasQualifiedName(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toQualifiedName().isEqualTo(expected);
+    }
+
+    private NodeAssertion createNodeAssertion() {
+        return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
 
 }
