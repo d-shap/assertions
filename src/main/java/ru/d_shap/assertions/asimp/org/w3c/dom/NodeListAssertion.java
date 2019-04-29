@@ -19,27 +19,27 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
-import org.w3c.dom.CharacterData;
+import org.w3c.dom.NodeList;
 
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
- * Assertions for the character data.
+ * Assertions for the node list.
  *
  * @author Dmitry Shapovalov
  */
-public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
+public class NodeListAssertion extends ReferenceAssertion<NodeList> {
 
     /**
      * Create new object.
      */
-    public CharacterDataAssertion() {
+    public NodeListAssertion() {
         super();
     }
 
     @Override
-    protected final Class<CharacterData> getActualValueClass() {
-        return CharacterData.class;
+    protected final Class<NodeList> getActualValueClass() {
+        return NodeList.class;
     }
 
 }

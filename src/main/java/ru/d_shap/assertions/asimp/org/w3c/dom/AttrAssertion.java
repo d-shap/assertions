@@ -19,27 +19,27 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
-import org.w3c.dom.CharacterData;
+import org.w3c.dom.Attr;
 
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
- * Assertions for the character data.
+ * Assertions for the attr.
  *
  * @author Dmitry Shapovalov
  */
-public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
+public class AttrAssertion extends ReferenceAssertion<Attr> {
 
     /**
      * Create new object.
      */
-    public CharacterDataAssertion() {
+    public AttrAssertion() {
         super();
     }
 
     @Override
-    protected final Class<CharacterData> getActualValueClass() {
-        return CharacterData.class;
+    protected final Class<Attr> getActualValueClass() {
+        return Attr.class;
     }
 
 }
