@@ -433,7 +433,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
     }
 
     /**
-     * Check if the actual value properties is equal to the expected properties.
+     * Check if the actual's value properties is equal to the expected properties.
      *
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
