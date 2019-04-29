@@ -19,9 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Matcher;
 import org.w3c.dom.CharacterData;
 
+import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
 /**
  * Assertions for the character data.
@@ -40,6 +44,60 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
     @Override
     protected final Class<CharacterData> getActualValueClass() {
         return CharacterData.class;
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final CharacterData expected) {
+        createNodeAssertion().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final CharacterData expected) {
+        createNodeAssertion().isNotEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's data.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toData() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getData(), Messages.Check.DATA);
+    }
+
+    /**
+     * Make assertion about the actual value's data.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toData(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getData(), matcher, Messages.Check.DATA);
+    }
+
+    /**
+     * Check if the actual value's data is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasData(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toData().isEqualTo(expected);
+    }
+
+    private NodeAssertion createNodeAssertion() {
+        return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
 
 }
