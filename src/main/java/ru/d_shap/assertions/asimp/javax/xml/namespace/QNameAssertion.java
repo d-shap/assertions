@@ -138,35 +138,35 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
     }
 
     /**
-     * Make assertion about the actual value's local name.
+     * Make assertion about the actual value's local part.
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toLocalName() {
+    public final CharSequenceAssertion toLocalPart() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalPart(), Messages.Check.LOCAL_NAME);
     }
 
     /**
-     * Make assertion about the actual value's local name.
+     * Make assertion about the actual value's local part.
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<String> matcher) {
+    public final void toLocalPart(final Matcher<String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_NAME);
     }
 
     /**
-     * Check if the actual value's local name is equal to the expected value.
+     * Check if the actual value's local part is equal to the expected value.
      *
      * @param expected the expected value.
      */
-    public final void hasLocalName(final String expected) {
+    public final void hasLocalPart(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        toLocalName().isEqualTo(expected);
+        toLocalPart().isEqualTo(expected);
     }
 
 }
