@@ -209,6 +209,31 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
         toValue().isEqualTo(expected);
     }
 
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param namespaceURI the expected namespace URI.
+     * @param localName    the expected local name.
+     * @param value        the expected value.
+     */
+    public void hasProperties(final String namespaceURI, final String localName, final String value) {
+        hasNamespaceURI(namespaceURI);
+        hasLocalName(localName);
+        hasValue(value);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param localName the expected local name.
+     * @param value     the expected value.
+     */
+    public void hasProperties(final String localName, final String value) {
+        toNamespaceURI().isNull();
+        hasLocalName(localName);
+        hasValue(value);
+    }
+
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
