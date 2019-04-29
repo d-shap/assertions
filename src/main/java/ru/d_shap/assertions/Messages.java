@@ -117,7 +117,7 @@ public final class Messages {
 
         public static final String QUALIFIED_NAME = "Check actual value''s qualified name.";
 
-        public static final String ATTRIBUTE = "Check actual value''s attribute.";
+        public static final String ATTRIBUTE = "Check actual value''s attribute: {0}.";
 
         public static final String DATA = "Check actual value''s data.";
 
