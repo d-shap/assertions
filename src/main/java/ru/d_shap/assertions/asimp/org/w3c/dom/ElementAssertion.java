@@ -183,7 +183,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param localName the expected local name.
      */
-    public void hasProperties(final String localName) {
+    public final void hasProperties(final String localName) {
         toNamespaceURI().isNull();
         hasLocalName(localName);
     }
@@ -194,7 +194,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param namespaceURI the expected namespace URI.
      * @param localName    the expected local name.
      */
-    public void hasProperties(final String namespaceURI, final String localName) {
+    public final void hasProperties(final String namespaceURI, final String localName) {
         hasNamespaceURI(namespaceURI);
         hasLocalName(localName);
     }
