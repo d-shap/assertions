@@ -145,16 +145,5 @@
  * assertThat(listValue, containsInAnyOrder(2, 4, 5));
  * assertThat(listValue, everyItem(greaterThan(1)));
  * }</pre>
- * <p>
- * Custom assertion classes can be used in the next extension points:
- * </p>
- * <ul>
- * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.Assertions#assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.BaseAssertion#as(ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.MessageAssertion#that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * <li>{@link ru.d_shap.assertions.asimp.ReferenceAssertion#toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)}</li>
- * </ul>
  */
 package ru.d_shap.assertions;
