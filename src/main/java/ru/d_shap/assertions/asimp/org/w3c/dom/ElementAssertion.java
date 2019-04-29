@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import org.hamcrest.Matcher;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 
 import ru.d_shap.assertions.Messages;
@@ -180,6 +181,16 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
+     * @param localName the expected local name.
+     */
+    public void hasProperties(final String localName) {
+        toNamespaceURI().isNull();
+        hasLocalName(localName);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
      * @param namespaceURI the expected namespace URI.
      * @param localName    the expected local name.
      */
@@ -189,13 +200,59 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     }
 
     /**
-     * Check if the actual value's properties are equal to the expected properties.
+     * Make assertion about the actual value's attribute.
      *
-     * @param localName the expected local name.
+     * @param localName the local name of the actual value's attribute.
+     *
+     * @return the assertion.
      */
-    public void hasProperties(final String localName) {
-        toNamespaceURI().isNull();
-        hasLocalName(localName);
+    public final AttrAssertion toAttr(final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNode(localName), Messages.Check.ATTRIBUTE);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     *
+     * @return the assertion.
+     */
+    public final AttrAssertion toAttr(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNodeNS(namespaceURI, localName), Messages.Check.ATTRIBUTE);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param matcher   the hamcrest matcher.
+     */
+    public final void toAttr(final String localName, final Matcher<Attr> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getAttributeNode(localName), matcher, Messages.Check.ATTRIBUTE);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param matcher      the hamcrest matcher.
+     */
+    public final void toAttr(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getAttributeNodeNS(namespaceURI, localName), matcher, Messages.Check.ATTRIBUTE);
     }
 
     private NodeAssertion createNodeAssertion() {
