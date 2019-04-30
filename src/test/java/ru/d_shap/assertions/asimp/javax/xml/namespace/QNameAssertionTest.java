@@ -809,7 +809,53 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPropertiesLocalPartTest() {
-        // TODO
+        initialize(Raw.qnameAssertion(), new QName("local")).hasProperties("local");
+        initialize(Raw.qnameAssertion(), new QName("", "local")).hasProperties("local");
+        initialize(Raw.qnameAssertion(), new QName(null, "local")).hasProperties("local");
+        initialize(Raw.qnameAssertion(), new QName("")).hasProperties("");
+
+        try {
+            Raw.qnameAssertion().hasProperties("");
+            Assertions.fail("qnameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).hasProperties("");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").hasProperties("");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local1")).hasProperties("local2");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local1"), "Message").hasProperties("local2");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasProperties("local");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<> but was:<namespace>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").hasProperties("local");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<> but was:<namespace>");
+        }
     }
 
     /**
@@ -817,7 +863,55 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPropertiesNamespaceURIAndLocalPartTest() {
-        // TODO
+        initialize(Raw.qnameAssertion(), new QName("local")).hasProperties("", "local");
+        initialize(Raw.qnameAssertion(), new QName("", "local")).hasProperties("", "local");
+        initialize(Raw.qnameAssertion(), new QName(null, "local")).hasProperties("", "local");
+        initialize(Raw.qnameAssertion(), new QName("")).hasProperties("", "");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasProperties("namespace", "local");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "")).hasProperties("namespace", "");
+
+        try {
+            Raw.qnameAssertion().hasProperties("", "");
+            Assertions.fail("qnameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).hasProperties("", "");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").hasProperties("", "");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).hasProperties("namespace", "local2");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local1"), "Message").hasProperties("namespace", "local2");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).hasProperties("namespace2", "local");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").hasProperties("namespace2", "local");
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
+        }
     }
 
     /**
