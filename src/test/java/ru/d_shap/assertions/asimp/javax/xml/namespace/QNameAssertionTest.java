@@ -32,7 +32,7 @@ import ru.d_shap.assertions.Raw;
  *
  * @author Dmitry Shapovalov
  */
-public class QNameAssertionTest extends AssertionTest {
+public final class QNameAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
@@ -60,6 +60,134 @@ public class QNameAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<javax.xml.namespace.QName> but was:<java.lang.Object>");
         }
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void isEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toNamespaceURITest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toNamespaceURIMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void hasNamespaceURITest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toPrefixTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toPrefixMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void hasPrefixTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toLocalPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void toLocalPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void hasLocalPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void hasPropertiesLocalPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void hasPropertiesNamespaceURIAndLocalPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link QNameAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        // TODO
     }
 
 }
