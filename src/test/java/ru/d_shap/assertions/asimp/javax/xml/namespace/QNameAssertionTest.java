@@ -46,7 +46,7 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.qnameAssertion(), new QName("value"));
+        initialize(Raw.qnameAssertion(), new QName("local"));
 
         try {
             initializeWithRawActual(Raw.qnameAssertion(), new Object());
@@ -67,7 +67,89 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        // TODO
+        initialize(Raw.qnameAssertion(), new QName("local")).isEqualTo(new QName("local"));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isEqualTo(new QName("namespace", "local"));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).isEqualTo(new QName("namespace", "local", "ns"));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).isEqualTo(new QName("namespace", "local", "ns2"));
+
+        try {
+            Raw.qnameAssertion().isEqualTo(new QName("local"));
+            Assertions.fail("qnameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).isEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").isEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).isEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").isEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local")).isEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local"), "Message").isEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local1")).isEqualTo(new QName("local2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local1"), "Message").isEqualTo(new QName("local2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).isEqualTo(new QName("namespace", "local2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{namespace}local2> but was:<{namespace}local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local1"), "Message").isEqualTo(new QName("namespace", "local2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{namespace}local2> but was:<{namespace}local1>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).isEqualTo(new QName("namespace2", "local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{namespace2}local> but was:<{namespace1}local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").isEqualTo(new QName("namespace2", "local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{namespace2}local> but was:<{namespace1}local>");
+        }
     }
 
     /**
@@ -75,7 +157,89 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        // TODO
+        initialize(Raw.qnameAssertion(), new QName("local1")).isNotEqualTo(new QName("local2"));
+        initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(new QName("namespace", "local"));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).isNotEqualTo(new QName("namespace", "local2"));
+        initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).isNotEqualTo(new QName("namespace2", "local"));
+
+        try {
+            Raw.qnameAssertion().isNotEqualTo(new QName("local"));
+            Assertions.fail("qnameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).isNotEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").isNotEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local"), "Message").isNotEqualTo(null);
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("local"), "Message").isNotEqualTo(new QName("local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotEqualTo(new QName("namespace", "local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{namespace}local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").isNotEqualTo(new QName("namespace", "local"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{namespace}local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).isNotEqualTo(new QName("namespace", "local", "ns2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{namespace}local>");
+        }
+        try {
+            initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1"), "Message").isNotEqualTo(new QName("namespace", "local", "ns2"));
+            Assertions.fail("QNameAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{namespace}local>");
+        }
     }
 
     /**
