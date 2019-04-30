@@ -200,6 +200,62 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     }
 
     /**
+     * Check if the actual value has the specified attribute.
+     *
+     * @param localName the specified local name.
+     */
+    public final void hasAttribute(final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        if (getActual().getAttributeNode(localName) == null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addExpected(localName).build();
+        }
+    }
+
+    /**
+     * Check if the actual value has the specified attribute.
+     *
+     * @param namespaceURI the specified namespace URI.
+     * @param localName    the specified local name.
+     */
+    public final void hasAttribute(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        if (getActual().getAttributeNodeNS(namespaceURI, localName) == null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addExpected(namespaceURI + ":" + localName).build();
+        }
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute.
+     *
+     * @param localName the specified local name.
+     */
+    public final void hasNotAttribute(final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        if (getActual().getAttributeNode(localName) != null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute.
+     *
+     * @param namespaceURI the specified namespace URI.
+     * @param localName    the specified local name.
+     */
+    public final void hasNotAttribute(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        if (getActual().getAttributeNodeNS(namespaceURI, localName) != null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().build();
+        }
+    }
+
+    /**
      * Make assertion about the actual value's attribute.
      *
      * @param localName the local name of the actual value's attribute.
