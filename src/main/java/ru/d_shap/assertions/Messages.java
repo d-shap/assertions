@@ -113,6 +113,8 @@ public final class Messages {
 
         public static final String PREFIX = "Check actual value''s prefix.";
 
+        public static final String LOCAL_PART = "Check actual value''s local part.";
+
         public static final String LOCAL_NAME = "Check actual value''s local name.";
 
         public static final String QUALIFIED_NAME = "Check actual value''s qualified name.";
