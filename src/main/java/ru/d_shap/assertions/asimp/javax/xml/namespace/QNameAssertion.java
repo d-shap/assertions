@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.javax.xml.namespace;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 import org.hamcrest.Matcher;
@@ -144,7 +145,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      */
     public final CharSequenceAssertion toLocalPart() {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalPart(), Messages.Check.LOCAL_NAME);
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalPart(), Messages.Check.LOCAL_PART);
     }
 
     /**
@@ -155,7 +156,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
     public final void toLocalPart(final Matcher<String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_NAME);
+        matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_PART);
     }
 
     /**
@@ -167,6 +168,27 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLocalPart().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param localPart the expected local part.
+     */
+    public void hasProperties(final String localPart) {
+        hasNamespaceURI(XMLConstants.NULL_NS_URI);
+        hasLocalPart(localPart);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param namespaceURI the expected namespace URI.
+     * @param localPart    the expected local part.
+     */
+    public void hasProperties(final String namespaceURI, final String localPart) {
+        hasNamespaceURI(namespaceURI);
+        hasLocalPart(localPart);
     }
 
 }
