@@ -19,10 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Matcher;
 import org.w3c.dom.Document;
 
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
 /**
  * Assertions for the document.
@@ -61,8 +63,139 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
         createNodeAssertion().isNotEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toNamespaceURI() {
+        return createElementAssertion().toNamespaceURI();
+    }
+
+    /**
+     * Make assertion about the actual value's namespace URI.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toNamespaceURI(final Matcher<String> matcher) {
+        createElementAssertion().toNamespaceURI(matcher);
+    }
+
+    /**
+     * Check if the actual value's namespace URI is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasNamespaceURI(final String expected) {
+        createElementAssertion().hasNamespaceURI(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toPrefix() {
+        return createElementAssertion().toPrefix();
+    }
+
+    /**
+     * Make assertion about the actual value's prefix.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toPrefix(final Matcher<String> matcher) {
+        createElementAssertion().toPrefix(matcher);
+    }
+
+    /**
+     * Check if the actual value's prefix is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasPrefix(final String expected) {
+        createElementAssertion().hasPrefix(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toLocalName() {
+        return createElementAssertion().toLocalName();
+    }
+
+    /**
+     * Make assertion about the actual value's local name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toLocalName(final Matcher<String> matcher) {
+        createElementAssertion().toLocalName(matcher);
+    }
+
+    /**
+     * Check if the actual value's local name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasLocalName(final String expected) {
+        createElementAssertion().hasLocalName(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toQualifiedName() {
+        return createElementAssertion().toQualifiedName();
+    }
+
+    /**
+     * Make assertion about the actual value's qualified name.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toQualifiedName(final Matcher<String> matcher) {
+        createElementAssertion().toQualifiedName(matcher);
+    }
+
+    /**
+     * Check if the actual value's qualified name is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasQualifiedName(final String expected) {
+        createElementAssertion().hasQualifiedName(expected);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param localName the expected local name.
+     */
+    public final void hasProperties(final String localName) {
+        createElementAssertion().hasProperties(localName);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param namespaceURI the expected namespace URI.
+     * @param localName    the expected local name.
+     */
+    public final void hasProperties(final String namespaceURI, final String localName) {
+        createElementAssertion().hasProperties(namespaceURI, localName);
+    }
+
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
+    }
+
+    private ElementAssertion createElementAssertion() {
+        return initializeAssertion(Raw.elementAssertion(), getActual().getDocumentElement());
     }
 
 }
