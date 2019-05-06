@@ -54,7 +54,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
     public final void isEqualTo(final Node expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().isSameNode(expected)) {
+        if (!getActual().isEqualNode(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
     }
@@ -67,7 +67,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
     public final void isNotEqualTo(final Node expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        if (getActual().isSameNode(expected)) {
+        if (getActual().isEqualNode(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
