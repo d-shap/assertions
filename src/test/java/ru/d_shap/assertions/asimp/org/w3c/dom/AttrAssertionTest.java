@@ -27,7 +27,6 @@ import org.w3c.dom.Element;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
@@ -67,7 +66,227 @@ public final class AttrAssertionTest extends AssertionTest {
         }
     }
 
-    private Attr createAttr(final String element) throws ConversionException {
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isEqualToTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isNotEqualToTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toNamespaceURITest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toNamespaceURIMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNamespaceURITest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toPrefixTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toPrefixMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasPrefixTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toLocalNameMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toQualifiedNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toQualifiedNameMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasQualifiedNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toValueTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toValueMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasValueTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasPropertiesLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasPropertiesNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isNullTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isSameAsTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link AttrAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isNotSameAsTest() throws Exception {
+        // TODO
+    }
+
+    private Attr createAttr(final String element) throws Exception {
         Document document = ValueConverter.convert(element, Document.class);
         Element documentElement = document.getDocumentElement();
         return (Attr) documentElement.getAttributes().item(0);
