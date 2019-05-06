@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.asimp.org.w3c.dom;
+package ru.d_shap.assertions.asimp.java.lang;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -30,56 +30,56 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.converter.ValueConverterProvider;
+
 /**
- * Helper class to create XML Document.
+ * Value converter from the string to the document.
  *
  * @author Dmitry Shapovalov
  */
-public final class XmlDocumentBuilder {
+public final class StringToDocumentValueConverter implements ValueConverterProvider {
 
     private static final DocumentBuilderFactory DOCUMENT_BUILDER_FACTORY;
 
     static {
         DOCUMENT_BUILDER_FACTORY = DocumentBuilderFactory.newInstance();
         DOCUMENT_BUILDER_FACTORY.setNamespaceAware(true);
+        DOCUMENT_BUILDER_FACTORY.setXIncludeAware(true);
     }
 
-    private XmlDocumentBuilder() {
+    /**
+     * Create new object.
+     */
+    public StringToDocumentValueConverter() {
         super();
     }
 
-    /**
-     * Parse the input string and create XML Document.
-     *
-     * @param str the input string.
-     *
-     * @return XML Document.
-     *
-     * @throws ParserConfigurationException if parser configuration exception occured.
-     * @throws SAXException                 if the input string is not a valid XML Document.
-     * @throws IOException                  if IO exception occured.
-     */
-    public static Document parse(final String str) throws ParserConfigurationException, SAXException, IOException {
-        StringReader reader = new StringReader(str);
-        InputSource inputSource = new InputSource(reader);
-        return parse(inputSource);
+    @Override
+    public Class<?> getValueClass() {
+        return String.class;
     }
 
-    /**
-     * Parse the input source and create XML Document.
-     *
-     * @param inputSource the input source.
-     *
-     * @return XML Document.
-     *
-     * @throws ParserConfigurationException if parser configuration exception occured.
-     * @throws SAXException                 if the input string is not a valid XML Document.
-     * @throws IOException                  if IO exception occured.
-     */
-    public static Document parse(final InputSource inputSource) throws ParserConfigurationException, SAXException, IOException {
-        DocumentBuilder documentBuilder = DOCUMENT_BUILDER_FACTORY.newDocumentBuilder();
-        documentBuilder.setErrorHandler(null);
-        return documentBuilder.parse(inputSource);
+    @Override
+    public Class<?> getTargetClass() {
+        return Document.class;
+    }
+
+    @Override
+    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        String castedValue = ConverterArgumentHelper.getValue(value, String.class);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
+
+        try {
+            DocumentBuilder documentBuilder = DOCUMENT_BUILDER_FACTORY.newDocumentBuilder();
+            documentBuilder.setErrorHandler(null);
+            StringReader reader = new StringReader(castedValue);
+            InputSource inputSource = new InputSource(reader);
+            return documentBuilder.parse(inputSource);
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
+            throw new ConversionException(ex);
+        }
     }
 
 }
