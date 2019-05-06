@@ -61,15 +61,19 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
     public String asString(final Object value) throws ConversionException {
         Node castedValue = ConverterArgumentHelper.getValue(value, Node.class);
 
+        Source source = new DOMSource(castedValue);
+        StringWriter writer = new StringWriter();
+        Result result = new StreamResult(writer);
+        transform(source, result);
+        return writer.toString();
+    }
+
+    void transform(final Source source, final Result result) throws ConversionException {
         try {
             Transformer transformer = TRANSFORMER_FACTORY.newTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.setOutputProperty(OutputKeys.INDENT, "no");
-            Source source = new DOMSource(castedValue);
-            StringWriter writer = new StringWriter();
-            Result result = new StreamResult(writer);
             transformer.transform(source, result);
-            return writer.toString();
         } catch (TransformerException ex) {
             throw new ConversionException(ex);
         }
