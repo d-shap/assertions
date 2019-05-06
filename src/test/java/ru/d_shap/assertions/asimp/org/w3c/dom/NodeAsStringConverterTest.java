@@ -126,7 +126,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
         new NodeAsStringConverter().asString(new Object());
     }
 
-    private Node createNode(final String content) throws ConversionException {
+    private Node createNode(final String content) throws Exception {
         String element = "<element>" + content + "</element>";
         Document document = ValueConverter.convert(element, Document.class);
         Element documentElement = document.getDocumentElement();
