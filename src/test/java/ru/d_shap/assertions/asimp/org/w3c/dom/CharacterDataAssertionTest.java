@@ -527,7 +527,20 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() throws Exception {
-        // TODO
+        initialize(Raw.characterDataAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNull();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<text>");
+        }
+        try {
+            initialize(Raw.characterDataAssertion(), createCharacterData("text"), "Message").isNull();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<text>");
+        }
     }
 
     /**
@@ -537,7 +550,21 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() throws Exception {
-        // TODO
+        CharacterData value = createCharacterData("text");
+        initialize(Raw.characterDataAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.characterDataAssertion(), value).isSameAs(createCharacterData("text"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<text> but was:<text>");
+        }
+        try {
+            initialize(Raw.characterDataAssertion(), value, "Message").isSameAs(createCharacterData("text"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<text> but was:<text>");
+        }
     }
 
     /**
@@ -547,7 +574,21 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() throws Exception {
-        // TODO
+        CharacterData value = createCharacterData("text");
+        initialize(Raw.characterDataAssertion(), value).isNotSameAs(createCharacterData("text"));
+
+        try {
+            initialize(Raw.characterDataAssertion(), value).isNotSameAs(value);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<text>");
+        }
+        try {
+            initialize(Raw.characterDataAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<text>");
+        }
     }
 
     private CharacterData createCharacterData(final String data) throws ConversionException {
