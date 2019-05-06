@@ -35,11 +35,11 @@ import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the string to the document.
+ * Value converter from the char sequence to the document.
  *
  * @author Dmitry Shapovalov
  */
-public final class StringToDocumentValueConverter implements ValueConverterProvider {
+public final class CharSequenceToDocumentValueConverter implements ValueConverterProvider {
 
     private static final DocumentBuilderFactory DOCUMENT_BUILDER_FACTORY;
 
@@ -52,13 +52,13 @@ public final class StringToDocumentValueConverter implements ValueConverterProvi
     /**
      * Create new object.
      */
-    public StringToDocumentValueConverter() {
+    public CharSequenceToDocumentValueConverter() {
         super();
     }
 
     @Override
     public Class<?> getValueClass() {
-        return String.class;
+        return CharSequence.class;
     }
 
     @Override
@@ -68,13 +68,13 @@ public final class StringToDocumentValueConverter implements ValueConverterProvi
 
     @Override
     public Object convert(final Object value, final Object... arguments) throws ConversionException {
-        String castedValue = ConverterArgumentHelper.getValue(value, String.class);
+        CharSequence castedValue = ConverterArgumentHelper.getValue(value, CharSequence.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
         try {
             DocumentBuilder documentBuilder = DOCUMENT_BUILDER_FACTORY.newDocumentBuilder();
             documentBuilder.setErrorHandler(null);
-            StringReader reader = new StringReader(castedValue);
+            StringReader reader = new StringReader(castedValue.toString());
             InputSource inputSource = new InputSource(reader);
             return documentBuilder.parse(inputSource);
         } catch (ParserConfigurationException | SAXException | IOException ex) {
