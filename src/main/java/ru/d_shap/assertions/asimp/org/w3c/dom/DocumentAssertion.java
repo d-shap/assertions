@@ -69,7 +69,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toNamespaceURI() {
-        return createElementAssertion().toNamespaceURI();
+        return createDocumentElementAssertion().toNamespaceURI();
     }
 
     /**
@@ -78,7 +78,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toNamespaceURI(final Matcher<String> matcher) {
-        createElementAssertion().toNamespaceURI(matcher);
+        createDocumentElementAssertion().toNamespaceURI(matcher);
     }
 
     /**
@@ -87,7 +87,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasNamespaceURI(final String expected) {
-        createElementAssertion().hasNamespaceURI(expected);
+        createDocumentElementAssertion().hasNamespaceURI(expected);
     }
 
     /**
@@ -96,7 +96,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toPrefix() {
-        return createElementAssertion().toPrefix();
+        return createDocumentElementAssertion().toPrefix();
     }
 
     /**
@@ -105,7 +105,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toPrefix(final Matcher<String> matcher) {
-        createElementAssertion().toPrefix(matcher);
+        createDocumentElementAssertion().toPrefix(matcher);
     }
 
     /**
@@ -114,7 +114,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasPrefix(final String expected) {
-        createElementAssertion().hasPrefix(expected);
+        createDocumentElementAssertion().hasPrefix(expected);
     }
 
     /**
@@ -123,7 +123,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toLocalName() {
-        return createElementAssertion().toLocalName();
+        return createDocumentElementAssertion().toLocalName();
     }
 
     /**
@@ -132,7 +132,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLocalName(final Matcher<String> matcher) {
-        createElementAssertion().toLocalName(matcher);
+        createDocumentElementAssertion().toLocalName(matcher);
     }
 
     /**
@@ -141,7 +141,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasLocalName(final String expected) {
-        createElementAssertion().hasLocalName(expected);
+        createDocumentElementAssertion().hasLocalName(expected);
     }
 
     /**
@@ -150,7 +150,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toQualifiedName() {
-        return createElementAssertion().toQualifiedName();
+        return createDocumentElementAssertion().toQualifiedName();
     }
 
     /**
@@ -159,7 +159,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toQualifiedName(final Matcher<String> matcher) {
-        createElementAssertion().toQualifiedName(matcher);
+        createDocumentElementAssertion().toQualifiedName(matcher);
     }
 
     /**
@@ -168,7 +168,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasQualifiedName(final String expected) {
-        createElementAssertion().hasQualifiedName(expected);
+        createDocumentElementAssertion().hasQualifiedName(expected);
     }
 
     /**
@@ -177,7 +177,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName the expected local name.
      */
     public final void hasProperties(final String localName) {
-        createElementAssertion().hasProperties(localName);
+        createDocumentElementAssertion().hasProperties(localName);
     }
 
     /**
@@ -187,14 +187,14 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName    the expected local name.
      */
     public final void hasProperties(final String namespaceURI, final String localName) {
-        createElementAssertion().hasProperties(namespaceURI, localName);
+        createDocumentElementAssertion().hasProperties(namespaceURI, localName);
     }
 
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
 
-    private ElementAssertion createElementAssertion() {
+    private ElementAssertion createDocumentElementAssertion() {
         return initializeAssertion(Raw.elementAssertion(), getActual().getDocumentElement());
     }
 
