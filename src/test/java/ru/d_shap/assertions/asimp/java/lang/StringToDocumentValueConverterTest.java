@@ -21,10 +21,12 @@ package ru.d_shap.assertions.asimp.java.lang;
 
 import org.junit.Test;
 import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Tests for {@link StringToDocumentValueConverter}.
@@ -78,6 +80,14 @@ public final class StringToDocumentValueConverterTest extends AssertionTest {
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>")).isInstanceOf(Document.class);
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>"), Raw.documentAssertion()).hasProperties("aaa", "element");
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>")).as(Raw.documentAssertion()).hasProperties("aaa", "element");
+
+        try {
+            new StringToDocumentValueConverter().convert("<element>");
+            Assertions.fail("StringToDocumentValueConverter test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).toMessage().contains("XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).hasCause(SAXException.class);
+        }
     }
 
     /**
