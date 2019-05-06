@@ -22,6 +22,7 @@ ru.d_shap.assertions.asimp.java.io.BufferedReaderToStringArrayValueConverter
 ru.d_shap.assertions.asimp.java.io.InputStreamToByteArrayValueConverter
 ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter
 ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter
+ru.d_shap.assertions.asimp.java.lang.StringToDocumentValueConverter
 ru.d_shap.assertions.asimp.java.nio.ByteBufferToByteArrayValueConverter
 ru.d_shap.assertions.asimp.java.nio.CharBufferToCharArrayValueConverter
 ru.d_shap.assertions.asimp.java.nio.DoubleBufferToDoubleArrayValueConverter
