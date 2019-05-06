@@ -28,7 +28,6 @@ import org.w3c.dom.Element;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
@@ -591,7 +590,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         }
     }
 
-    private CharacterData createCharacterData(final String data) throws ConversionException {
+    private CharacterData createCharacterData(final String data) throws Exception {
         String element = "<element>" + data + "</element>";
         Document document = ValueConverter.convert(element, Document.class);
         Element documentElement = document.getDocumentElement();
