@@ -21,6 +21,7 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import java.io.StringWriter;
 
+import javax.xml.transform.ErrorListener;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -73,10 +74,39 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
             Transformer transformer = TRANSFORMER_FACTORY.newTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.setOutputProperty(OutputKeys.INDENT, "no");
+            transformer.setErrorListener(new NoopErrorListener());
             transformer.transform(source, result);
         } catch (TransformerException ex) {
             throw new ConversionException(ex);
         }
+    }
+
+    /**
+     * Error listener to prevent output to system error stream.
+     *
+     * @author Dmitry Shapovalov
+     */
+    static final class NoopErrorListener implements ErrorListener {
+
+        NoopErrorListener() {
+            super();
+        }
+
+        @Override
+        public void warning(final TransformerException exception) throws TransformerException {
+            // Ignore
+        }
+
+        @Override
+        public void error(final TransformerException exception) throws TransformerException {
+            // Ignore
+        }
+
+        @Override
+        public void fatalError(final TransformerException exception) throws TransformerException {
+            // Ignore
+        }
+
     }
 
 }
