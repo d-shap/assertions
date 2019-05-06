@@ -19,10 +19,20 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import java.io.StringReader;
+import java.io.StringWriter;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.xml.sax.SAXParseException;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
@@ -64,6 +74,26 @@ public final class NodeAsStringConverterTest extends AssertionTest {
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<element attr='val'/>"))).isEqualTo("<element attr=\"val\"/>");
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<ns1:element xmlns:ns1='aaa'><!--comment--></ns1:element>"))).isEqualTo("<ns1:element xmlns:ns1=\"aaa\"><!--comment--></ns1:element>");
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<ns1:element xmlns:ns1='aaa'><!--comment--><child>value</child></ns1:element>"))).isEqualTo("<ns1:element xmlns:ns1=\"aaa\"><!--comment--><child>value</child></ns1:element>");
+    }
+
+    /**
+     * {@link NodeAsStringConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void transformTest() throws Exception {
+        try {
+            Source source = new StreamSource(new StringReader("<element>"));
+            Result result = new StreamResult(new StringWriter());
+            new NodeAsStringConverter().transform(source, result);
+            Assertions.fail("NodeAsStringConverter test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).toMessage().contains("XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).hasCause(TransformerException.class);
+            Assertions.assertThat(ex).toCause().hasCause(SAXParseException.class);
+        }
+
     }
 
     /**
