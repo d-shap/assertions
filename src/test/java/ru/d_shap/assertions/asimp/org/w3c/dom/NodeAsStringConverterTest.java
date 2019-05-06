@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
-import java.io.StringReader;
+import java.io.IOException;
 import java.io.StringWriter;
 
 import javax.xml.transform.Result;
@@ -32,7 +32,6 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.xml.sax.SAXParseException;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
@@ -84,16 +83,27 @@ public final class NodeAsStringConverterTest extends AssertionTest {
     @Test
     public void transformTest() throws Exception {
         try {
-            Source source = new StreamSource(new StringReader("<element>"));
+            Source source = new StreamSource(createErrorReader());
             Result result = new StreamResult(new StringWriter());
             new NodeAsStringConverter().transform(source, result);
             Assertions.fail("NodeAsStringConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).toMessage().contains("XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).toMessage().contains("read exception");
             Assertions.assertThat(ex).hasCause(TransformerException.class);
-            Assertions.assertThat(ex).toCause().hasCause(SAXParseException.class);
+            Assertions.assertThat(ex).toCause().hasCause(IOException.class);
         }
+    }
 
+    /**
+     * {@link NodeAsStringConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void noopErrorListenerTest() throws Exception {
+        new NodeAsStringConverter.NoopErrorListener().warning(null);
+        new NodeAsStringConverter.NoopErrorListener().error(null);
+        new NodeAsStringConverter.NoopErrorListener().fatalError(null);
     }
 
     /**
