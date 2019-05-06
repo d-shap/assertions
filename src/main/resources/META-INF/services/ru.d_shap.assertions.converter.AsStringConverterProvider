@@ -17,6 +17,7 @@ ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter
 ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter
 ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter
 ru.d_shap.assertions.asimp.java.util.MapAsStringConverter
+ru.d_shap.assertions.asimp.org.w3c.dom.NodeAsStringConverter
 ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter
 ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter
 ru.d_shap.assertions.asimp.primitive.CharAsStringConverter
