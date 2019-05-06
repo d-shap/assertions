@@ -66,6 +66,18 @@ public final class StringToDocumentValueConverterTest extends AssertionTest {
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<element/>")).isInstanceOf(Document.class);
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<element/>"), Raw.documentAssertion()).hasProperties("element");
         Assertions.assertThat(new StringToDocumentValueConverter().convert("<element/>")).as(Raw.documentAssertion()).hasProperties("element");
+
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<element attr1='val1'><child>content</child></element>")).isInstanceOf(Document.class);
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<element attr1='val1'><child>content</child></element>"), Raw.documentAssertion()).hasProperties("element");
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<element attr1='val1'><child>content</child></element>")).as(Raw.documentAssertion()).hasProperties("element");
+
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><element attr1='val1'><child>content</child></element>")).isInstanceOf(Document.class);
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><element attr1='val1'><child>content</child></element>"), Raw.documentAssertion()).hasProperties("element");
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><element attr1='val1'><child>content</child></element>")).as(Raw.documentAssertion()).hasProperties("element");
+
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>")).isInstanceOf(Document.class);
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>"), Raw.documentAssertion()).hasProperties("aaa", "element");
+        Assertions.assertThat(new StringToDocumentValueConverter().convert("<?xml version='1.0'?><ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb' xmlns:ns3='ccc' ns2:attr1='val1'><ns3:child>content</ns3:child></ns1:element>")).as(Raw.documentAssertion()).hasProperties("aaa", "element");
     }
 
     /**
