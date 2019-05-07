@@ -595,7 +595,40 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName().isEqualTo("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName().isEqualTo("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName().isEqualTo("attr");
+
+        try {
+            Raw.attrAssertion().toLocalName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toLocalName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toLocalName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName().isEqualTo("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toLocalName().isEqualTo("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
     }
 
     /**
@@ -605,7 +638,64 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toLocalNameMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
+
+        try {
+            Raw.attrAssertion().toLocalName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toLocalName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toLocalName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").toLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName(Matchers.equalTo("bttr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\nExpected: \"bttr\"\n     but: was \"attr\"");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toLocalName(Matchers.equalTo("bttr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\nExpected: \"bttr\"\n     but: was \"attr\"");
+        }
     }
 
     /**
@@ -615,7 +705,64 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void hasLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasLocalName("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasLocalName("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasLocalName("attr");
+
+        try {
+            Raw.attrAssertion().hasLocalName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasLocalName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasLocalName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasLocalName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasLocalName("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasLocalName("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
     }
 
     /**
