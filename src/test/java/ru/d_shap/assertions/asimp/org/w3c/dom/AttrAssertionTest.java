@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import javax.xml.XMLConstants;
+
 import org.junit.Test;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -73,7 +75,87 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(createAttr("<element attr='val'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr1='val1'/>")).isEqualTo(createAttr("<element attr1='val1'/>"));
+
+        try {
+            Raw.attrAssertion().isEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).isEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").isEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).isEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").isEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").isEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isEqualTo(createAttr("<element attr='val2'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<attr=val2> but was:<attr=val1>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").isEqualTo(createAttr("<element attr='val2'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<attr=val2> but was:<attr=val1>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isEqualTo(createAttr("<element attr2='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<attr2=val> but was:<attr1=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>"), "Message").isEqualTo(createAttr("<element attr2='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<attr2=val> but was:<attr1=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<attr=val> but was:<{aaa}attr=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").isEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<attr=val> but was:<{aaa}attr=val>");
+        }
     }
 
     /**
@@ -83,7 +165,76 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(createAttr("<element attr='val2'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isNotEqualTo(createAttr("<element attr2='val'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
+
+        try {
+            Raw.attrAssertion().isNotEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).isNotEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").isNotEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").isNotEqualTo(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<attr=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").isNotEqualTo(createAttr("<element attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<attr=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{aaa}attr=val>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").isNotEqualTo(createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{aaa}attr=val>");
+        }
     }
 
     /**
@@ -289,7 +440,12 @@ public final class AttrAssertionTest extends AssertionTest {
     private Attr createAttr(final String element) throws Exception {
         Document document = ValueConverter.convert(element, Document.class);
         Element documentElement = document.getDocumentElement();
-        return (Attr) documentElement.getAttributes().item(0);
+        Attr attr = (Attr) documentElement.getAttributes().item(0);
+        if (XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(attr.getNamespaceURI())) {
+            return (Attr) documentElement.getAttributes().item(1);
+        } else {
+            return attr;
+        }
     }
 
 }
