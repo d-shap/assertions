@@ -176,6 +176,8 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      * @param localPart the expected local part.
      */
     public void hasProperties(final String localPart) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localPart, "localPart");
         hasNamespaceURI(XMLConstants.NULL_NS_URI);
         hasLocalPart(localPart);
     }
@@ -187,6 +189,9 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      * @param localPart    the expected local part.
      */
     public void hasProperties(final String namespaceURI, final String localPart) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localPart, "localPart");
         hasNamespaceURI(namespaceURI);
         hasLocalPart(localPart);
     }
