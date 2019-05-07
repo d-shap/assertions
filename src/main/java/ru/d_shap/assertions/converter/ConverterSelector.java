@@ -37,6 +37,35 @@ final class ConverterSelector {
         super();
     }
 
+    static <T> void retainSubclassConverters(final List<T> list, final ClassExtractor<T> classExtractor) {
+        boolean result;
+        do {
+            result = retainSubclassConvertersStep(list, classExtractor);
+        } while (result);
+    }
+
+    private static <T> boolean retainSubclassConvertersStep(final List<T> list, final ClassExtractor<T> classExtractor) {
+        for (int i = 0; i < list.size(); i++) {
+            T element = list.get(i);
+            Class<?> clazz = classExtractor.extractClass(element);
+            for (int j = 0; j < list.size(); j++) {
+                if (i == j) {
+                    continue;
+                }
+                T checkElement = list.get(j);
+                Class<?> checkClazz = classExtractor.extractClass(checkElement);
+                if (checkClazz.equals(clazz)) {
+                    continue;
+                }
+                if (checkClazz.isAssignableFrom(clazz)) {
+                    list.remove(j);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     static <T> void retainMinimumDistanceConverters(final List<T> list, final Class<?> clazz, final ClassExtractor<T> classExtractor) {
         List<Integer> distances = new ArrayList<>(list.size());
         int minimumDistance = NON_RELATIVE_DISTANCE;
