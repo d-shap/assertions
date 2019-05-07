@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import javax.xml.XMLConstants;
+
 import org.junit.Test;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -88,7 +90,12 @@ public final class AttrAsStringConverterTest extends AssertionTest {
     private Attr createAttr(final String element) throws Exception {
         Document document = ValueConverter.convert(element, Document.class);
         Element documentElement = document.getDocumentElement();
-        return (Attr) documentElement.getAttributes().item(0);
+        Attr attr = (Attr) documentElement.getAttributes().item(0);
+        if (XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(attr.getNamespaceURI())) {
+            return (Attr) documentElement.getAttributes().item(1);
+        } else {
+            return attr;
+        }
     }
 
 }
