@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.junit.Test;
@@ -57,6 +58,58 @@ public final class ConverterSelectorTest extends AssertionTest {
     @Test
     public void constructorTest() {
         Assertions.assertThat(ConverterSelector.class).hasOnePrivateConstructor();
+    }
+
+    /**
+     * {@link ConverterSelector} class test.
+     */
+    @Test
+    public void retainSubclassConvertersTest() {
+        List<ClassHolder> classHolders11 = createClassHolders();
+        ConverterSelector.retainSubclassConverters(classHolders11, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders11).containsExactlyInOrder();
+
+        List<ClassHolder> classHolders21 = createClassHolders(LinkedList.class);
+        ConverterSelector.retainSubclassConverters(classHolders21, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders21).containsExactlyInOrder(new ClassHolder(LinkedList.class));
+        List<ClassHolder> classHolders22 = createClassHolders(AbstractList.class);
+        ConverterSelector.retainSubclassConverters(classHolders22, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders22).containsExactlyInOrder(new ClassHolder(AbstractList.class));
+        List<ClassHolder> classHolders23 = createClassHolders(List.class);
+        ConverterSelector.retainSubclassConverters(classHolders23, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders23).containsExactlyInOrder(new ClassHolder(List.class));
+        List<ClassHolder> classHolders24 = createClassHolders(Set.class);
+        ConverterSelector.retainSubclassConverters(classHolders24, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders24).containsExactlyInOrder(new ClassHolder(Set.class));
+        List<ClassHolder> classHolders25 = createClassHolders(Collection.class);
+        ConverterSelector.retainSubclassConverters(classHolders25, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders25).containsExactlyInOrder(new ClassHolder(Collection.class));
+
+        List<ClassHolder> classHolders31 = createClassHolders(LinkedList.class, LinkedList.class);
+        ConverterSelector.retainSubclassConverters(classHolders31, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders31).containsExactlyInOrder(new ClassHolder(LinkedList.class), new ClassHolder(LinkedList.class));
+        List<ClassHolder> classHolders32 = createClassHolders(AbstractList.class, AbstractList.class);
+        ConverterSelector.retainSubclassConverters(classHolders32, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders32).containsExactlyInOrder(new ClassHolder(AbstractList.class), new ClassHolder(AbstractList.class));
+        List<ClassHolder> classHolders33 = createClassHolders(List.class, List.class);
+        ConverterSelector.retainSubclassConverters(classHolders33, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders33).containsExactlyInOrder(new ClassHolder(List.class), new ClassHolder(List.class));
+        List<ClassHolder> classHolders34 = createClassHolders(Set.class, Set.class);
+        ConverterSelector.retainSubclassConverters(classHolders34, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders34).containsExactlyInOrder(new ClassHolder(Set.class), new ClassHolder(Set.class));
+        List<ClassHolder> classHolders35 = createClassHolders(Collection.class, Collection.class);
+        ConverterSelector.retainSubclassConverters(classHolders35, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders35).containsExactlyInOrder(new ClassHolder(Collection.class), new ClassHolder(Collection.class));
+
+        List<ClassHolder> classHolders41 = createClassHolders(LinkedList.class, AbstractList.class, List.class);
+        ConverterSelector.retainSubclassConverters(classHolders41, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders41).containsExactlyInOrder(new ClassHolder(LinkedList.class));
+        List<ClassHolder> classHolders42 = createClassHolders(LinkedList.class, AbstractList.class, Set.class);
+        ConverterSelector.retainSubclassConverters(classHolders42, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders42).containsExactlyInOrder(new ClassHolder(LinkedList.class), new ClassHolder(Set.class));
+        List<ClassHolder> classHolders43 = createClassHolders(LinkedList.class, Collection.class, Set.class);
+        ConverterSelector.retainSubclassConverters(classHolders43, new ClassHolderExtractor());
+        Assertions.assertThat(classHolders43).containsExactlyInOrder(new ClassHolder(LinkedList.class), new ClassHolder(Set.class));
     }
 
     /**
