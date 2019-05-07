@@ -112,6 +112,7 @@ public final class AsStringConverter {
                 converterProviders.add(converterProvider);
             }
         }
+        ConverterSelector.retainSubclassConverters(converterProviders, VALUE_CLASS_EXTRACTOR);
         ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
         return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
