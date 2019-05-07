@@ -772,7 +772,52 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toQualifiedNameTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName().isEqualTo("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName().isEqualTo("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName().isEqualTo("ns1:attr");
+
+        try {
+            Raw.attrAssertion().toQualifiedName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toQualifiedName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toQualifiedName();
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).toQualifiedName().isEqualTo("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").toQualifiedName().isEqualTo("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName().isEqualTo("ns2:attr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:attr> but was:<ns1:attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toQualifiedName().isEqualTo("ns2:attr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:attr> but was:<ns1:attr>");
+        }
     }
 
     /**
@@ -782,7 +827,76 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toQualifiedNameMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:attr")));
+
+        try {
+            Raw.attrAssertion().toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).toQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").toQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").toQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).toQualifiedName(Matchers.equalTo("bttr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\nExpected: \"bttr\"\n     but: was \"attr\"");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").toQualifiedName(Matchers.equalTo("bttr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\nExpected: \"bttr\"\n     but: was \"attr\"");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName(Matchers.equalTo("ns2:attr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\nExpected: \"ns2:attr\"\n     but: was \"ns1:attr\"");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toQualifiedName(Matchers.equalTo("ns2:attr"));
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\nExpected: \"ns2:attr\"\n     but: was \"ns1:attr\"");
+        }
     }
 
     /**
@@ -792,7 +906,76 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void hasQualifiedNameTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasQualifiedName("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasQualifiedName("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasQualifiedName("ns1:attr");
+
+        try {
+            Raw.attrAssertion().hasQualifiedName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasQualifiedName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasQualifiedName("");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasQualifiedName(null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).hasQualifiedName("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").hasQualifiedName("bttr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<bttr> but was:<attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasQualifiedName("ns2:attr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:attr> but was:<ns1:attr>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasQualifiedName("ns2:attr");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:attr> but was:<ns1:attr>");
+        }
     }
 
     /**
