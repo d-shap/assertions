@@ -62,6 +62,7 @@ public final class AttrAsStringConverterTest extends AssertionTest {
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element attr='val1'/>"))).isEqualTo("attr=val1");
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element attr=\"val\"/>"))).isEqualTo("attr=val");
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element xmlns:ns1='http://example.com' ns1:attr='val'/>"))).isEqualTo("{http://example.com}attr=val");
+        Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element xmlns:ns1='http://example.com' attr='ns1:val'/>"))).isEqualTo("attr=ns1:val");
     }
 
     /**
