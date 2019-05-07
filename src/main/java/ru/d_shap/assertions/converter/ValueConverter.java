@@ -101,6 +101,8 @@ public final class ValueConverter {
                 converterProviders.add(converterProvider);
             }
         }
+        ConverterSelector.retainSubclassConverters(converterProviders, VALUE_CLASS_EXTRACTOR);
+        ConverterSelector.retainSubclassConverters(converterProviders, TARGET_CLASS_EXTRACTOR);
         ConverterSelector.retainMinimumDistanceConverters(converterProviders, valueClass, VALUE_CLASS_EXTRACTOR);
         ConverterSelector.retainMinimumDistanceConverters(converterProviders, targetClass, TARGET_CLASS_EXTRACTOR);
         return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
