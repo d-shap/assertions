@@ -57,12 +57,7 @@ public final class AsStringConverterTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
-    @SuppressWarnings("unchecked")
     public void asStringTest() throws Exception {
-        List<AsStringConverterProvider> converterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
-        converterProviders.add(new InterfaceAAsStringConverter());
-        converterProviders.add(new InterfaceBAsStringConverter());
-
         Assertions.assertThat(AsStringConverter.asString(null)).isEqualTo("<NULL>");
 
         Assertions.assertThat(AsStringConverter.asString(1)).isEqualTo("1");
@@ -72,15 +67,6 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
         Assertions.assertThat(AsStringConverter.asString(createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
         Assertions.assertThat(AsStringConverter.asString(createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
-
-        System.out.println(ConverterSelector.getDistance(ClassA.class, InterfaceA.class));
-        System.out.println(ConverterSelector.getDistance(ClassB.class, InterfaceA.class));
-
-        System.out.println(ConverterSelector.getDistance(ClassA.class, InterfaceB.class));
-        System.out.println(ConverterSelector.getDistance(ClassB.class, InterfaceB.class));
-
-        Assertions.assertThat(AsStringConverter.asString(new ClassA())).isEqualTo("InterfaceA as string");
-        Assertions.assertThat(AsStringConverter.asString(new ClassB())).isEqualTo("InterfaceB as string");
     }
 
     /**
@@ -104,6 +90,22 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 1)).isEqualTo("[1]");
 
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
+    }
+
+    /**
+     * {@link AsStringConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    @SuppressWarnings("unchecked")
+    public void converterSelectTest() throws Exception {
+        List<AsStringConverterProvider> converterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        converterProviders.add(new InterfaceAAsStringConverter());
+        converterProviders.add(new InterfaceBAsStringConverter());
+
+        Assertions.assertThat(AsStringConverter.asString(new ClassA())).isEqualTo("InterfaceA as string");
+        Assertions.assertThat(AsStringConverter.asString(new ClassB())).isEqualTo("InterfaceB as string");
     }
 
     /**
