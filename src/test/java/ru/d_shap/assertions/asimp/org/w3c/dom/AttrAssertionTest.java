@@ -1165,7 +1165,112 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPropertiesLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties("attr", "val1");
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).hasProperties("attr", "val2");
+        initialize(Raw.attrAssertion(), createAttr("<element bttr='val1'/>")).hasProperties("bttr", "val1");
+
+        try {
+            Raw.attrAssertion().hasProperties("", "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasProperties("", "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasProperties("", "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null).hasProperties(null, "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), null, "Message").hasProperties(null, "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties(null, "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasProperties(null, "");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties(null, null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasProperties(null, null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties("", null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: value.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasProperties("", null);
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: value.");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasProperties("attr", "val");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual value should be null.\n\tActual:<aaa>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasProperties("attr", "val");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual value should be null.\n\tActual:<aaa>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).hasProperties("attr2", "val");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<attr2> but was:<attr1>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>"), "Message").hasProperties("attr2", "val");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<attr2> but was:<attr1>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>"), "Message").hasProperties("attr", "val2");
+            Assertions.fail("CharacterDataAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
     }
 
     /**
