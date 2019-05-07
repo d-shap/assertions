@@ -91,15 +91,79 @@ public final class ValueConverterTest extends AssertionTest {
     @SuppressWarnings("unchecked")
     public void converterSelectTest() throws Exception {
         List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
-        converterProviders.add(new ClassAToClassXConverter());
-        converterProviders.add(new ClassAToClassYConverter());
-        converterProviders.add(new ClassBToClassXConverter());
-        converterProviders.add(new ClassBToClassYConverter());
+        converterProviders.add(new FromClassAToClassXConverter());
+        converterProviders.add(new FromClassAToClassYConverter());
+        converterProviders.add(new FromClassBToClassXConverter());
+        converterProviders.add(new FromClassBToClassYConverter());
+
+        converterProviders.add(new InterfaceAToClassZ1Converter());
+        converterProviders.add(new InterfaceBToClassZ1Converter());
+        converterProviders.add(new FromClassC1InterfaceAConverter());
+        converterProviders.add(new FromClassC1InterfaceBConverter());
 
         Assertions.assertThat(ValueConverter.convert(new FromClassA(), ToClassX.class)).hasClass(ToClassX.class);
         Assertions.assertThat(ValueConverter.convert(new FromClassA(), ToClassY.class)).hasClass(ToClassY.class);
         Assertions.assertThat(ValueConverter.convert(new FromClassB(), ToClassX.class)).hasClass(ToClassX.class);
         Assertions.assertThat(ValueConverter.convert(new FromClassB(), ToClassY.class)).hasClass(ToClassY.class);
+
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), ToClassZ1.class)).hasClass(ToClassZ1.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), ToClassZ1.class)).hasClass(ToClassZ2.class);
+
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), InterfaceA.class)).hasClass(ToClassZ1.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), InterfaceB.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), InterfaceC.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), InterfaceD.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC1(), InterfaceE.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceA.class)).hasClass(ToClassZ1.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceB.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceC.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceD.class)).hasClass(ToClassZ2.class);
+        Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceE.class)).hasClass(ToClassZ2.class);
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private interface InterfaceA {
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private interface InterfaceB extends InterfaceA {
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private interface InterfaceC extends InterfaceB {
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private interface InterfaceD extends InterfaceC {
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private interface InterfaceE extends InterfaceD {
+
     }
 
     /**
@@ -123,6 +187,32 @@ public final class ValueConverterTest extends AssertionTest {
     private static class FromClassB extends FromClassA {
 
         FromClassB() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class FromClassC1 implements InterfaceA {
+
+        FromClassC1() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class FromClassC2 extends FromClassC1 implements InterfaceE {
+
+        FromClassC2() {
             super();
         }
 
@@ -159,9 +249,35 @@ public final class ValueConverterTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassAToClassXConverter implements ValueConverterProvider {
+    private static class ToClassZ1 implements InterfaceA {
 
-        ClassAToClassXConverter() {
+        ToClassZ1() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static class ToClassZ2 extends ToClassZ1 implements InterfaceE {
+
+        ToClassZ2() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class FromClassAToClassXConverter implements ValueConverterProvider {
+
+        FromClassAToClassXConverter() {
             super();
         }
 
@@ -187,9 +303,9 @@ public final class ValueConverterTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassAToClassYConverter implements ValueConverterProvider {
+    private static final class FromClassAToClassYConverter implements ValueConverterProvider {
 
-        ClassAToClassYConverter() {
+        FromClassAToClassYConverter() {
             super();
         }
 
@@ -215,9 +331,9 @@ public final class ValueConverterTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassBToClassXConverter implements ValueConverterProvider {
+    private static final class FromClassBToClassXConverter implements ValueConverterProvider {
 
-        ClassBToClassXConverter() {
+        FromClassBToClassXConverter() {
             super();
         }
 
@@ -243,9 +359,9 @@ public final class ValueConverterTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ClassBToClassYConverter implements ValueConverterProvider {
+    private static final class FromClassBToClassYConverter implements ValueConverterProvider {
 
-        ClassBToClassYConverter() {
+        FromClassBToClassYConverter() {
             super();
         }
 
@@ -262,6 +378,118 @@ public final class ValueConverterTest extends AssertionTest {
         @Override
         public Object convert(final Object value, final Object... arguments) throws ConversionException {
             return new ToClassY();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class InterfaceAToClassZ1Converter implements ValueConverterProvider {
+
+        InterfaceAToClassZ1Converter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return InterfaceA.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassZ1.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassZ1();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class InterfaceBToClassZ1Converter implements ValueConverterProvider {
+
+        InterfaceBToClassZ1Converter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return InterfaceB.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return ToClassZ1.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassZ2();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class FromClassC1InterfaceAConverter implements ValueConverterProvider {
+
+        FromClassC1InterfaceAConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassC1.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return InterfaceA.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassZ1();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class FromClassC1InterfaceBConverter implements ValueConverterProvider {
+
+        FromClassC1InterfaceBConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return FromClassC1.class;
+        }
+
+        @Override
+        public Class<?> getTargetClass() {
+            return InterfaceB.class;
+        }
+
+        @Override
+        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            return new ToClassZ2();
         }
 
     }
