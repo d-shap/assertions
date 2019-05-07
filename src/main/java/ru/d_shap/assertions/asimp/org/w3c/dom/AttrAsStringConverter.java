@@ -50,7 +50,12 @@ public final class AttrAsStringConverter implements AsStringConverterProvider {
     public String asString(final Object value) throws ConversionException {
         Attr castedValue = ConverterArgumentHelper.getValue(value, Attr.class);
 
-        QName qName = new QName(castedValue.getNamespaceURI(), castedValue.getLocalName(), castedValue.getPrefix());
+        QName qName;
+        if (castedValue.getPrefix() == null) {
+            qName = new QName(castedValue.getNamespaceURI(), castedValue.getLocalName());
+        } else {
+            qName = new QName(castedValue.getNamespaceURI(), castedValue.getLocalName(), castedValue.getPrefix());
+        }
         return qName + "=" + castedValue.getValue();
     }
 
