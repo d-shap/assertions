@@ -216,6 +216,9 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param value     the expected value.
      */
     public void hasProperties(final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
         toNamespaceURI().isNull();
         hasLocalName(localName);
         hasValue(value);
@@ -229,6 +232,10 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param value        the expected value.
      */
     public void hasProperties(final String namespaceURI, final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
         hasNamespaceURI(namespaceURI);
         hasLocalName(localName);
         hasValue(value);
