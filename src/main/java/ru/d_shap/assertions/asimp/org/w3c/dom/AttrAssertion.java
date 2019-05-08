@@ -212,33 +212,33 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param localName the expected local name.
-     * @param value     the expected value.
+     * @param expectedLocalName the expected local name.
+     * @param expectedValue     the expected value.
      */
-    public void hasProperties(final String localName, final String value) {
+    public void hasProperties(final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(localName, "localName");
-        checkArgumentIsNotNull(value, "value");
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
+        checkArgumentIsNotNull(expectedValue, "expectedValue");
         toNamespaceURI().isNull();
-        hasLocalName(localName);
-        hasValue(value);
+        hasLocalName(expectedLocalName);
+        hasValue(expectedValue);
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param namespaceURI the expected namespace URI.
-     * @param localName    the expected local name.
-     * @param value        the expected value.
+     * @param expectedNamespaceURI the expected namespace URI.
+     * @param expectedLocalName    the expected local name.
+     * @param expectedValue        the expected value.
      */
-    public void hasProperties(final String namespaceURI, final String localName, final String value) {
+    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
-        checkArgumentIsNotNull(localName, "localName");
-        checkArgumentIsNotNull(value, "value");
-        hasNamespaceURI(namespaceURI);
-        hasLocalName(localName);
-        hasValue(value);
+        checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
+        checkArgumentIsNotNull(expectedValue, "expectedValue");
+        hasNamespaceURI(expectedNamespaceURI);
+        hasLocalName(expectedLocalName);
+        hasValue(expectedValue);
     }
 
     private NodeAssertion createNodeAssertion() {
