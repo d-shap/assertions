@@ -168,4 +168,30 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
         toLocalName().isEqualTo(expected);
     }
 
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param expectedLocalName the expected local name.
+     */
+    public final void hasProperties(final String expectedLocalName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
+        toNamespaceURI().isNull();
+        hasLocalName(expectedLocalName);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param expectedNamespaceURI the expected namespace URI.
+     * @param expectedLocalName    the expected local name.
+     */
+    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
+        hasNamespaceURI(expectedNamespaceURI);
+        hasLocalName(expectedLocalName);
+    }
+
 }

@@ -184,10 +184,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param expectedLocalName the expected local name.
      */
     public final void hasProperties(final String expectedLocalName) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
-        toNamespaceURI().isNull();
-        hasLocalName(expectedLocalName);
+        createNodeAssertion().hasProperties(expectedLocalName);
     }
 
     /**
@@ -197,11 +194,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param expectedLocalName    the expected local name.
      */
     public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
-        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
-        hasNamespaceURI(expectedNamespaceURI);
-        hasLocalName(expectedLocalName);
+        createNodeAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
     }
 
     /**
