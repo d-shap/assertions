@@ -49,6 +49,17 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import javax.xml.XMLConstants;
+
+import org.w3c.dom.Attr;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+
+import ru.d_shap.assertions.converter.ValueConverter;
+
 /**
  * Base class for all tests.
  *
@@ -1117,6 +1128,82 @@ public class AssertionTest {
      */
     protected final BufferedReader createErrorBufferedReader() {
         return new BufferedReader(createErrorReader());
+    }
+
+    /**
+     * Create the node from the content.
+     *
+     * @param content the content.
+     *
+     * @return the node.
+     *
+     * @throws Exception exception in test.
+     */
+    protected final Node createNode(final String content) throws Exception {
+        String enclosedContent = "<element>" + content + "</element>";
+        Element element = createElement(enclosedContent);
+        return element.getFirstChild();
+    }
+
+    /**
+     * Create the element from the content.
+     *
+     * @param content the content.
+     *
+     * @return the element.
+     *
+     * @throws Exception exception in test.
+     */
+    protected final Element createElement(final String content) throws Exception {
+        Document document = createDocument(content);
+        return document.getDocumentElement();
+    }
+
+    /**
+     * Create the document from the content.
+     *
+     * @param content the content.
+     *
+     * @return the document.
+     *
+     * @throws Exception exception in test.
+     */
+    protected final Document createDocument(final String content) throws Exception {
+        return ValueConverter.convert(content, Document.class);
+    }
+
+    /**
+     * Create the attr from the content.
+     *
+     * @param content the content.
+     *
+     * @return the attr.
+     *
+     * @throws Exception exception in test.
+     */
+    protected final Attr createAttr(final String content) throws Exception {
+        Element element = createElement(content);
+        NamedNodeMap attributes = element.getAttributes();
+        for (int i = 0; i < attributes.getLength(); i++) {
+            Attr attr = (Attr) attributes.item(i);
+            if (!XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(attr.getNamespaceURI())) {
+                return attr;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Create the character data from the content.
+     *
+     * @param content the content.
+     *
+     * @return the character data.
+     *
+     * @throws Exception exception in test.
+     */
+    protected final CharacterData createCharacterData(final String content) throws Exception {
+        return (CharacterData) createNode(content);
     }
 
     /**

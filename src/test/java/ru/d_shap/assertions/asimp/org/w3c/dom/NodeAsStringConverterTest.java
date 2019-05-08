@@ -29,14 +29,11 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.converter.ConversionException;
-import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
  * Tests for {@link NodeAsStringConverter}.
@@ -124,13 +121,6 @@ public final class NodeAsStringConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws Exception {
         new NodeAsStringConverter().asString(new Object());
-    }
-
-    private Node createNode(final String content) throws Exception {
-        String element = "<element>" + content + "</element>";
-        Document document = ValueConverter.convert(element, Document.class);
-        Element documentElement = document.getDocumentElement();
-        return documentElement.getFirstChild();
     }
 
 }

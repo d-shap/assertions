@@ -19,18 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
-import javax.xml.XMLConstants;
-
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
  * Tests for {@link AttrAssertion}.
@@ -1482,17 +1477,6 @@ public final class AttrAssertionTest extends AssertionTest {
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<attr=val1>");
-        }
-    }
-
-    private Attr createAttr(final String element) throws Exception {
-        Document document = ValueConverter.convert(element, Document.class);
-        Element documentElement = document.getDocumentElement();
-        Attr attr = (Attr) documentElement.getAttributes().item(0);
-        if (XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(attr.getNamespaceURI())) {
-            return (Attr) documentElement.getAttributes().item(1);
-        } else {
-            return attr;
         }
     }
 

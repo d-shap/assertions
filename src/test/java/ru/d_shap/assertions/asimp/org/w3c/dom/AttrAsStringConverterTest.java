@@ -19,16 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
-import javax.xml.XMLConstants;
-
 import org.junit.Test;
 import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
  * Tests for {@link AttrAsStringConverter}.
@@ -85,17 +80,6 @@ public final class AttrAsStringConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws Exception {
         new AttrAsStringConverter().asString(new Object());
-    }
-
-    private Attr createAttr(final String element) throws Exception {
-        Document document = ValueConverter.convert(element, Document.class);
-        Element documentElement = document.getDocumentElement();
-        Attr attr = (Attr) documentElement.getAttributes().item(0);
-        if (XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(attr.getNamespaceURI())) {
-            return (Attr) documentElement.getAttributes().item(1);
-        } else {
-            return attr;
-        }
     }
 
 }

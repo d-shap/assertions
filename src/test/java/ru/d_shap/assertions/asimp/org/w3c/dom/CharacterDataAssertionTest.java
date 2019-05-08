@@ -22,13 +22,10 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.w3c.dom.CharacterData;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
  * Tests for {@link CharacterDataAssertion}.
@@ -588,13 +585,6 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<text>");
         }
-    }
-
-    private CharacterData createCharacterData(final String data) throws Exception {
-        String element = "<element>" + data + "</element>";
-        Document document = ValueConverter.convert(element, Document.class);
-        Element documentElement = document.getDocumentElement();
-        return (CharacterData) documentElement.getFirstChild();
     }
 
 }
