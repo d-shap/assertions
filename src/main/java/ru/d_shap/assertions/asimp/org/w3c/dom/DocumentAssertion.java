@@ -69,6 +69,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toNamespaceURI() {
+        checkActualIsNotNull();
         return createDocumentElementAssertion().toNamespaceURI();
     }
 
@@ -78,6 +79,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toNamespaceURI(final Matcher<String> matcher) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().toNamespaceURI(matcher);
     }
 
@@ -87,6 +89,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasNamespaceURI(final String expected) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().hasNamespaceURI(expected);
     }
 
@@ -96,6 +99,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toPrefix() {
+        checkActualIsNotNull();
         return createDocumentElementAssertion().toPrefix();
     }
 
@@ -105,6 +109,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toPrefix(final Matcher<String> matcher) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().toPrefix(matcher);
     }
 
@@ -114,6 +119,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasPrefix(final String expected) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().hasPrefix(expected);
     }
 
@@ -123,6 +129,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toLocalName() {
+        checkActualIsNotNull();
         return createDocumentElementAssertion().toLocalName();
     }
 
@@ -132,6 +139,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toLocalName(final Matcher<String> matcher) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().toLocalName(matcher);
     }
 
@@ -141,6 +149,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasLocalName(final String expected) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().hasLocalName(expected);
     }
 
@@ -150,6 +159,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @return the assertion.
      */
     public final CharSequenceAssertion toQualifiedName() {
+        checkActualIsNotNull();
         return createDocumentElementAssertion().toQualifiedName();
     }
 
@@ -159,6 +169,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param matcher the hamcrest matcher.
      */
     public final void toQualifiedName(final Matcher<String> matcher) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().toQualifiedName(matcher);
     }
 
@@ -168,26 +179,29 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void hasQualifiedName(final String expected) {
+        checkActualIsNotNull();
         createDocumentElementAssertion().hasQualifiedName(expected);
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param localName the expected local name.
+     * @param expectedLocalName the expected local name.
      */
-    public final void hasProperties(final String localName) {
-        createDocumentElementAssertion().hasProperties(localName);
+    public final void hasProperties(final String expectedLocalName) {
+        checkActualIsNotNull();
+        createDocumentElementAssertion().hasProperties(expectedLocalName);
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param namespaceURI the expected namespace URI.
-     * @param localName    the expected local name.
+     * @param expectedNamespaceURI the expected namespace URI.
+     * @param expectedLocalName    the expected local name.
      */
-    public final void hasProperties(final String namespaceURI, final String localName) {
-        createDocumentElementAssertion().hasProperties(namespaceURI, localName);
+    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+        checkActualIsNotNull();
+        createDocumentElementAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
     }
 
     private NodeAssertion createNodeAssertion() {
