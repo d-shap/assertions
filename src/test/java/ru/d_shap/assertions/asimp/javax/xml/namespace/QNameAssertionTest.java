@@ -848,13 +848,13 @@ public final class QNameAssertionTest extends AssertionTest {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: localPart.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localPart.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).hasProperties("local2");
@@ -928,37 +928,37 @@ public final class QNameAssertionTest extends AssertionTest {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null, "");
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null, "");
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null, null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null, null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties("", null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: localPart.");
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties("", null);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localPart.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).hasProperties("namespace", "local2");
