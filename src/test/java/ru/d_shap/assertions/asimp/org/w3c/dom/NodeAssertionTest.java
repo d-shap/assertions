@@ -22,6 +22,8 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link NodeAssertion}.
@@ -44,7 +46,20 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>"));
+
+        try {
+            initializeWithRawActual(Raw.nodeAssertion(), new Object());
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<org.w3c.dom.Node> but was:<java.lang.Object>");
+        }
+        try {
+            initializeWithRawActual(Raw.nodeAssertion(), new Object(), "Message");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<org.w3c.dom.Node> but was:<java.lang.Object>");
+        }
     }
 
     /**
