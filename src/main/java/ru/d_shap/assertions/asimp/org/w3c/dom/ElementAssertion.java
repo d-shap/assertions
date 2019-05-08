@@ -181,22 +181,27 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param localName the expected local name.
+     * @param expectedLocalName the expected local name.
      */
-    public final void hasProperties(final String localName) {
+    public final void hasProperties(final String expectedLocalName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         toNamespaceURI().isNull();
-        hasLocalName(localName);
+        hasLocalName(expectedLocalName);
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
-     * @param namespaceURI the expected namespace URI.
-     * @param localName    the expected local name.
+     * @param expectedNamespaceURI the expected namespace URI.
+     * @param expectedLocalName    the expected local name.
      */
-    public final void hasProperties(final String namespaceURI, final String localName) {
-        hasNamespaceURI(namespaceURI);
-        hasLocalName(localName);
+    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
+        checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
+        hasNamespaceURI(expectedNamespaceURI);
+        hasLocalName(expectedLocalName);
     }
 
     /**
