@@ -458,7 +458,42 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toPrefixTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns1");
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix().isNull();
+
+        try {
+            Raw.nodeAssertion().toPrefix();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toPrefix();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toPrefix();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>"), "Message").toPrefix().isEqualTo("ns2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
+        }
     }
 
     /**
@@ -468,7 +503,66 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toPrefixMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+
+        try {
+            Raw.nodeAssertion().toPrefix(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toPrefix(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toPrefix(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>"), "Message").toPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.equalTo("ns2"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\nExpected: \"ns2\"\n     but: was \"ns1\"");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>"), "Message").toPrefix(Matchers.equalTo("ns2"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\nExpected: \"ns2\"\n     but: was \"ns1\"");
+        }
     }
 
     /**
@@ -478,7 +572,62 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void hasPrefixTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
+
+        try {
+            Raw.nodeAssertion().hasPrefix("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).hasPrefix("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").hasPrefix("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).hasPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").hasPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>")).hasPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>"), "Message").hasPrefix(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>"), "Message").hasPrefix("ns2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
+        }
     }
 
     /**
