@@ -101,7 +101,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
 
@@ -111,7 +111,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAll(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
 
@@ -121,7 +121,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
 
@@ -131,7 +131,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAllInOrder(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
 
@@ -141,7 +141,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
 
@@ -151,7 +151,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsExactly(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
 
@@ -161,7 +161,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -171,7 +171,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsExactlyInOrder(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
 
@@ -181,7 +181,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
 
@@ -191,7 +191,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsAny(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
 
@@ -201,7 +201,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final long... expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
 
@@ -211,7 +211,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param expected the expected values.
      */
     public final void containsNone(final Iterable<Long> expected) {
-        List<Object> expectedList = convertValue(expected, List.class);
+        List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
 
@@ -246,7 +246,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
     }
 
     private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), List.class);
+        List<Object> list = convertValue(getActual(), null, List.class);
         return initializeAssertion(Raw.iterableAssertion(), list);
     }
 
