@@ -624,7 +624,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {
-        char[] chars = convertValue(getActual(), char[].class, rewind);
+        char[] chars = convertValue(getActual(), null, char[].class, rewind);
         return initializeAssertion(Raw.charArrayAssertion(), chars);
     }
 

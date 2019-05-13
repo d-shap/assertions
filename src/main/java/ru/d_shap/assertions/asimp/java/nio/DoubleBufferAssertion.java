@@ -516,7 +516,7 @@ public class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer> {
     }
 
     private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
-        double[] doubles = convertValue(getActual(), double[].class, rewind);
+        double[] doubles = convertValue(getActual(), null, double[].class, rewind);
         return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
     }
 

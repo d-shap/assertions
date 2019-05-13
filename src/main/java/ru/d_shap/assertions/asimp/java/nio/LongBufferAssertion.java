@@ -516,7 +516,7 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
     }
 
     private LongArrayAssertion createLongBufferAssertion(final boolean rewind) {
-        long[] longs = convertValue(getActual(), long[].class, rewind);
+        long[] longs = convertValue(getActual(), null, long[].class, rewind);
         return initializeAssertion(Raw.longArrayAssertion(), longs);
     }
 
