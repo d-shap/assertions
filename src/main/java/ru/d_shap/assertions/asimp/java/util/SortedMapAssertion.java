@@ -299,8 +299,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsKeysExactly(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        List<K> expectedList = convertValue(expected, null, List.class);
-        toKeys().containsExactly(expectedList);
+        toKeys().containsExactly(expected);
     }
 
     /**
@@ -323,8 +322,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     public final void containsKeysExactlyInOrder(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        List<K> expectedList = convertValue(expected, null, List.class);
-        toKeys().containsExactlyInOrder(expectedList);
+        toKeys().containsExactlyInOrder(expected);
     }
 
     /**
