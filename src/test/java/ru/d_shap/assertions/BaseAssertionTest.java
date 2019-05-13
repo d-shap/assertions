@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,8 @@ import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 
 /**
  * Tests for {@link BaseAssertion}.
@@ -1791,30 +1794,53 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void convertValueTest() {
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), List.class)).isInstanceOf(List.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), List.class)).isNotInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, List.class)).isInstanceOf(List.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, List.class)).isNotInstanceOf(Set.class);
 
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), Map.class)).isInstanceOf(Set.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), Map.class)).isNotInstanceOf(Map.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isInstanceOf(List.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isNotInstanceOf(Set.class);
+
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, Map.class)).isInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, Map.class)).isNotInstanceOf(Map.class);
+
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isNotInstanceOf(Map.class);
 
         try {
-            createBaseAssertionObject().convertValue(createHashSet("value1", "value2"), List.class);
+            createBaseAssertionObject().convertValue(createHashSet("value1", "value2"), null, List.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createBaseAssertionObject(null, null).convertValue(createErrorInputStream(), byte[].class, 1);
+            createBaseAssertionObject().convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+
+        try {
+            createBaseAssertionObject(null, null).convertValue(createErrorInputStream(), null, byte[].class, 1);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            createBaseAssertionObject(null, "Message").convertValue(createErrorInputStream(), byte[].class, 1);
+            createBaseAssertionObject(null, "Message").convertValue(createErrorInputStream(), null, byte[].class, 1);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
+
+        ConversionExceptionHolder conversionExceptionHolder1 = new ConversionExceptionHolder();
+        Assertions.assertThat(createBaseAssertionObject(null, null).convertValue(createErrorInputStream(), conversionExceptionHolder1, byte[].class, 1)).isNull();
+        Assertions.assertThat(conversionExceptionHolder1.getConversionException()).hasCause(IOException.class);
+        Assertions.assertThat(conversionExceptionHolder1.getConversionException()).hasCauseMessage("read exception");
+
+        ConversionExceptionHolder conversionExceptionHolder2 = new ConversionExceptionHolder();
+        Assertions.assertThat(createBaseAssertionObject(null, "Message").convertValue(createErrorInputStream(), conversionExceptionHolder2, byte[].class, 1)).isNull();
+        Assertions.assertThat(conversionExceptionHolder2.getConversionException()).hasCause(IOException.class);
+        Assertions.assertThat(conversionExceptionHolder2.getConversionException()).hasCauseMessage("read exception");
     }
 
     /**
@@ -2009,7 +2035,7 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
-    public void checkArgumentIsValidTest() {
+    public void checkArgumentIsValidBooleanTest() {
         createBaseAssertionObject(null).checkArgumentIsValid(true, null, null);
         createBaseAssertionObject(null).checkArgumentIsValid(true, "", null);
         createBaseAssertionObject(null).checkArgumentIsValid(true, "arg", null);
@@ -2109,6 +2135,151 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage: true.");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentIsValidConversionExceptionHolderTest() {
+        createBaseAssertionObject(null).checkArgumentIsValid(null, null, null);
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "", null);
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "arg", null);
+
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "arg", "");
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "arg", "message");
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "arg", "message.");
+        createBaseAssertionObject(null).checkArgumentIsValid(null, "arg", "message: {0}.", true);
+
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), null, null);
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "", null);
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "arg", null);
+
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "arg", "");
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "arg", "message");
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "arg", "message.");
+        createBaseAssertionObject(null).checkArgumentIsValid(new ConversionExceptionHolder(), "arg", "message: {0}.", true);
+
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject().checkArgumentIsValid(conversionExceptionHolder, "arg", null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: null.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: null.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "", null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: .\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "", null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: .\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "arg", null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "arg", null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "arg", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "arg", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "arg", "message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "arg", "message");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "arg", "message.");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "arg", "message.");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object()).checkArgumentIsValid(conversionExceptionHolder, "arg", "message: {0}.", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage: true.\n\tjava.io.IOException: IO ex.");
+        }
+        try {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            conversionExceptionHolder.setConversionException(new ConversionException(new IOException("IO ex")));
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsValid(conversionExceptionHolder, "arg", "message: {0}.", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage: true.\n\tjava.io.IOException: IO ex.");
         }
     }
 
