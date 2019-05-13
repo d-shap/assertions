@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 
 /**
  * Assertions for the element.
@@ -64,7 +65,9 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        Element expectedElement = convertValue(expected, Element.class);
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
         createNodeAssertion().isEqualTo(expectedElement);
     }
 
@@ -85,7 +88,9 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        Element expectedElement = convertValue(expected, Element.class);
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
         createNodeAssertion().isNotEqualTo(expectedElement);
     }
 

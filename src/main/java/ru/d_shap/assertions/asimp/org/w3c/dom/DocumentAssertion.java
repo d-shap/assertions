@@ -22,9 +22,11 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 import org.hamcrest.Matcher;
 import org.w3c.dom.Document;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 
 /**
  * Assertions for the document.
@@ -62,7 +64,9 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        Document expectedDocument = convertValue(expected, Document.class);
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
         createNodeAssertion().isEqualTo(expectedDocument);
     }
 
@@ -83,7 +87,9 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        Document expectedDocument = convertValue(expected, Document.class);
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
         createNodeAssertion().isNotEqualTo(expectedDocument);
     }
 
