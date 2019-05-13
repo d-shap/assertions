@@ -87,7 +87,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      */
     public final CharArrayAssertion toCharArray() {
         checkActualIsNotNull();
-        char[] nextChars = convertValue(getActual(), char[].class, 0);
+        char[] nextChars = convertValue(getActual(), null, char[].class, 0);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_ALL);
     }
 
@@ -101,7 +101,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final CharArrayAssertion toCharArray(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
-        char[] nextChars = convertValue(getActual(), char[].class, count);
+        char[] nextChars = convertValue(getActual(), null, char[].class, count);
         return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
     }
 
@@ -113,8 +113,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void toCharArray(final Matcher<Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        char[] nextChars = convertValue(getActual(), char[].class, 0);
-        Character[] nextObjects = convertValue(nextChars, Character[].class);
+        char[] nextChars = convertValue(getActual(), null, char[].class, 0);
+        Character[] nextObjects = convertValue(nextChars, null, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
     }
 
@@ -128,8 +128,8 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
-        char[] nextChars = convertValue(getActual(), char[].class, count);
-        Character[] nextObjects = convertValue(nextChars, Character[].class);
+        char[] nextChars = convertValue(getActual(), null, char[].class, count);
+        Character[] nextObjects = convertValue(nextChars, null, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
     }
 
@@ -174,7 +174,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isNextCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        List<Character> expectedList = convertValue(expected, List.class);
+        List<Character> expectedList = convertValue(expected, null, List.class);
         checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
     }
@@ -209,7 +209,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
     public final void isAllCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
-        List<Character> expectedList = convertValue(expected, List.class);
+        List<Character> expectedList = convertValue(expected, null, List.class);
         toCharArray().containsExactlyInOrder(expectedList);
     }
 
