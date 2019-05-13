@@ -310,7 +310,7 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error.
      */
     protected final AssertionError createWrapperAssertionError(final Exception ex) {
-        return getAssertionErrorBuilder().addThrowable(ex).addMessage(ex).build();
+        return getAssertionErrorBuilder().addMessage(ex).addThrowable(ex).build();
     }
 
     /**
