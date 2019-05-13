@@ -603,4 +603,88 @@ public final class RawTest extends AssertionTest {
         }
     }
 
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void qnameAssertionTest() {
+        initialize(Raw.qnameAssertion(), null).isNull();
+        try {
+            Raw.qnameAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void nodeAssertionTest() {
+        initialize(Raw.nodeAssertion(), null).isNull();
+        try {
+            Raw.nodeAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void elementAssertionTest() {
+        initialize(Raw.elementAssertion(), null).isNull();
+        try {
+            Raw.elementAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void documentAssertionTest() {
+        initialize(Raw.documentAssertion(), null).isNull();
+        try {
+            Raw.documentAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void attrAssertionTest() {
+        initialize(Raw.attrAssertion(), null).isNull();
+        try {
+            Raw.attrAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void characterDataAssertionTest() {
+        initialize(Raw.characterDataAssertion(), null).isNull();
+        try {
+            Raw.characterDataAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
 }
