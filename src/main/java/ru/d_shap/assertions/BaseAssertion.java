@@ -23,6 +23,7 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.asimp.java.lang.ClassActualValueValidator;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 import ru.d_shap.assertions.fail.FailDescription;
@@ -218,21 +219,28 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
-     * Get the value converted to the target class.
+     * Get the value converted to the target class. If conversion exception holder is specified,
+     * then assertion error is not thrown if conversion exception occured.
      *
-     * @param value       the value.
-     * @param targetClass the target class.
-     * @param arguments   the conversion arguments.
-     * @param <V>         the generic type of the value converted to the target class.
+     * @param value                     the value.
+     * @param conversionExceptionHolder the holder for the conversion exception.
+     * @param targetClass               the target class.
+     * @param arguments                 the conversion arguments.
+     * @param <V>                       the generic type of the value converted to the target class.
      *
      * @return the value converted to the target class.
      */
-    protected final <V> V convertValue(final Object value, final Class<?> targetClass, final Object... arguments) {
+    protected final <V> V convertValue(final Object value, final ConversionExceptionHolder conversionExceptionHolder, final Class<?> targetClass, final Object... arguments) {
         checkInitialized();
         try {
             return ValueConverter.convert(value, targetClass, arguments);
         } catch (ConversionException ex) {
-            throw createWrapperAssertionError(ex);
+            if (conversionExceptionHolder == null) {
+                throw createWrapperAssertionError(ex);
+            } else {
+                conversionExceptionHolder.setConversionException(ex);
+                return null;
+            }
         }
     }
 
@@ -298,6 +306,25 @@ public abstract class BaseAssertion<T> {
         if (!valid) {
             AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID, argumentName);
             assertionErrorBuilder.addMessage(message, arguments);
+            throw assertionErrorBuilder.build();
+        }
+    }
+
+    /**
+     * Check if the argument is valid.
+     *
+     * @param conversionExceptionHolder the holder for the conversion exception.
+     * @param argumentName              the argument name.
+     * @param message                   the message template.
+     * @param arguments                 the message arguments.
+     */
+    protected final void checkArgumentIsValid(final ConversionExceptionHolder conversionExceptionHolder, final String argumentName, final String message, final Object... arguments) {
+        checkInitialized();
+        if (conversionExceptionHolder != null && conversionExceptionHolder.hasConversionException()) {
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_VALID, argumentName);
+            assertionErrorBuilder.addMessage(message, arguments);
+            ConversionException conversionException = conversionExceptionHolder.getConversionException();
+            assertionErrorBuilder.addMessage(conversionException).addThrowable(conversionException);
             throw assertionErrorBuilder.build();
         }
     }
