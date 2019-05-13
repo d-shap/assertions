@@ -55,12 +55,36 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        Document expectedDocument = convertValue(expected, Document.class);
+        createNodeAssertion().isEqualTo(expectedDocument);
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Document expected) {
         createNodeAssertion().isNotEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        Document expectedDocument = convertValue(expected, Document.class);
+        createNodeAssertion().isNotEqualTo(expectedDocument);
     }
 
     /**

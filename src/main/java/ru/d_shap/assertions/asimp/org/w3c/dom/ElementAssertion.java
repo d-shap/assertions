@@ -57,12 +57,36 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        Element expectedElement = convertValue(expected, Element.class);
+        createNodeAssertion().isEqualTo(expectedElement);
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Element expected) {
         createNodeAssertion().isNotEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        Element expectedElement = convertValue(expected, Element.class);
+        createNodeAssertion().isNotEqualTo(expectedElement);
     }
 
     /**
