@@ -66,7 +66,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
         checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
-        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
         createNodeAssertion().isEqualTo(expectedDocument);
     }
 
@@ -89,7 +89,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
         checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
-        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.VALID_XML);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
         createNodeAssertion().isNotEqualTo(expectedDocument);
     }
 

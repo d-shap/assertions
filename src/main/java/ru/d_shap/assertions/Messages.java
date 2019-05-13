@@ -180,7 +180,7 @@ public final class Messages {
 
             public static final String IS_GREATER_THAN_ZERO = "The argument''s value should be greater than zero.";
 
-            public static final String VALID_XML = "The argument''s value should be the valid XML.";
+            public static final String IS_VALID_XML = "The argument''s value should be the valid XML.";
 
             private Argument() {
                 super();
