@@ -39,8 +39,15 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import javax.xml.namespace.QName;
+
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import org.w3c.dom.Attr;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * Tests for {@link MessageAssertion}.
@@ -711,49 +718,49 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertWithMessage(null).that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
         }
         try {
             Assertions.assertWithMessage("").that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: is <11>\n     but: was <10>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\nExpected: is <11>\n     but: was <10>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(10, Matchers.is(Matchers.equalTo(11)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\nExpected: is <11>\n     but: was <10>");
         }
         try {
             Assertions.assertWithMessage(null).that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
         }
@@ -1221,37 +1228,37 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertWithMessage(null).that("Expected:<aaa>").isEqualTo("but was:<10>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
         }
         try {
             Assertions.assertWithMessage("").that("Expected:<aaa>").isEqualTo("but was:<10>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
         }
         try {
             Assertions.assertWithMessage("Test message").that("Expected:<aaa>").isEqualTo("but was:<10>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<but was:<10>> but was:<Expected:<aaa>>");
         }
         try {
             Assertions.assertWithMessage(null).that("but was:<10>").isEqualTo("Expected:<aaa>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
         }
         try {
             Assertions.assertWithMessage("").that("but was:<10>").isEqualTo("Expected:<aaa>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
         }
         try {
             Assertions.assertWithMessage("Test message").that("but was:<10>").isEqualTo("Expected:<aaa>");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual and expected values should be the same.\n\tExpected:<Expected:<aaa>> but was:<but was:<10>>");
         }
@@ -1694,7 +1701,7 @@ public final class MessageAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void bufferedReaderAssertionTest() {
@@ -1708,25 +1715,25 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertWithMessage(null).that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
-            Assertions.fail("Assertions test fail");
+            Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
         }
@@ -2002,6 +2009,250 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void qnameAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((QName) null).isNull();
+        Assertions.assertWithMessage("Test message").that(new QName("local")).hasProperties("local");
+        Assertions.assertWithMessage("Test message").that(null, Raw.qnameAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(new QName("local"), Raw.qnameAssertion()).hasProperties("local");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.qnameAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_qname").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_qname", Raw.qnameAssertion()).hasProperties("local");
+
+        try {
+            Assertions.assertWithMessage(null).that(new QName("local1")).hasProperties("local2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(new QName("local1")).hasProperties("local2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(new QName("local1")).hasProperties("local2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(new QName("local1")).hasProperties("local2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void nodeAssertionTest() throws Exception {
+        Assertions.assertWithMessage("Test message").that((Node) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createNode("<node>content</node>")).hasProperties("node");
+        Assertions.assertWithMessage("Test message").that(null, Raw.nodeAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createNode("<node>content</node>"), Raw.nodeAssertion()).hasProperties("node");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.nodeAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_node").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_node", Raw.nodeAssertion()).hasProperties("node");
+
+        try {
+            Assertions.assertWithMessage(null).that(createNode("<node1>content</node1>")).hasProperties("node2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<node2> but was:<node1>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createNode("<node1>content</node1>")).hasProperties("node2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<node2> but was:<node1>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createNode("<node1>content</node1>")).hasProperties("node2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<node2> but was:<node1>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createNode("<node1>content</node1>")).hasProperties("node2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<node2> but was:<node1>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void elementAssertionTest() throws Exception {
+        Assertions.assertWithMessage("Test message").that((Element) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createElement("<element>content</element>")).hasProperties("element");
+        Assertions.assertWithMessage("Test message").that(null, Raw.elementAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createElement("<element>content</element>"), Raw.elementAssertion()).hasProperties("element");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.elementAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_element").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_element", Raw.elementAssertion()).hasProperties("element");
+
+        try {
+            Assertions.assertWithMessage(null).that(createElement("<element1>content</element1>")).hasProperties("element2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createElement("<element1>content</element1>")).hasProperties("element2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createElement("<element1>content</element1>")).hasProperties("element2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createElement("<element1>content</element1>")).hasProperties("element2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void documentAssertionTest() throws Exception {
+        Assertions.assertWithMessage("Test message").that((Document) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createDocument("<document>content</document>")).hasProperties("document");
+        Assertions.assertWithMessage("Test message").that(null, Raw.documentAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createDocument("<document>content</document>"), Raw.documentAssertion()).hasProperties("document");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.documentAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_document").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_document", Raw.documentAssertion()).hasProperties("document");
+
+        try {
+            Assertions.assertWithMessage(null).that(createDocument("<document1>content</document1>")).hasProperties("document2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<document2> but was:<document1>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createDocument("<document1>content</document1>")).hasProperties("document2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<document2> but was:<document1>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createDocument("<document1>content</document1>")).hasProperties("document2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<document2> but was:<document1>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createDocument("<document1>content</document1>")).hasProperties("document2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<document2> but was:<document1>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void attrAssertionTest() throws Exception {
+        Assertions.assertWithMessage("Test message").that((Attr) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createAttr("<element attr='val'/>")).hasProperties("attr", "val");
+        Assertions.assertWithMessage("Test message").that(null, Raw.attrAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createAttr("<element attr='val'/>"), Raw.attrAssertion()).hasProperties("attr", "val");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.attrAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_attr").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_attr", Raw.attrAssertion()).hasProperties("attr", "val");
+
+        try {
+            Assertions.assertWithMessage(null).that(createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void characterDataAssertionTest() throws Exception {
+        Assertions.assertWithMessage("Test message").that((CharacterData) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createCharacterData("<!-- character data -->")).hasData(" character data ");
+        Assertions.assertWithMessage("Test message").that(null, Raw.characterDataAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createCharacterData("<!-- character data -->"), Raw.characterDataAssertion()).hasData(" character data ");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.characterDataAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_characterData").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_characterData", Raw.characterDataAssertion()).hasData(" character data ");
+
+        try {
+            Assertions.assertWithMessage(null).that(createCharacterData("<!-- character data -->")).hasData("character data");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's data.\n\tActual and expected values should be the same.\n\tExpected:<character data> but was:< character data >");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createCharacterData("<!-- character data -->")).hasData("character data");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's data.\n\tActual and expected values should be the same.\n\tExpected:<character data> but was:< character data >");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createCharacterData("<!-- character data -->")).hasData("character data");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's data.\n\tActual and expected values should be the same.\n\tExpected:<character data> but was:< character data >");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createCharacterData("<!-- character data -->")).hasData("character data");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's data.\n\tActual and expected values should be the same.\n\tExpected:<character data> but was:< character data >");
         }
     }
 
